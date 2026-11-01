@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "ops-canvas-real-visual-diff",
+  "workflowIds": ["image2-to-figma-page"],
+  "status": "failed",
+  "recordedAt": "2026-07-17T09:18:52.178Z",
+  "summary": "The real 1440x1100 full-page and composite-region comparisons ran with immutable thresholds and failed. The semantic exception and follow-up calibration study were approved; the raw visual verdict remains failed and no gate change is authorized.",
+  "commands": [
+    {
+      "command": "node scripts/visual-diff.mjs --config design-systems/ops-canvas/workflow/visual-diff.config.json",
+      "exitCode": 1,
+      "result": "{\"global\":{\"ssim\":0.44287147997,\"rms\":0.118726213747,\"changedPixelRatio\":0.118380050505},\"composite-components\":{\"ssim\":0.33002536126,\"rms\":0.127941696219,\"changedPixelRatio\":0.169103448276}}"
+    },
+    {
+      "command": "node scripts/visual-diff.mjs --config design-systems/ops-canvas/workflow/calibration-diagnostic.config.json",
+      "exitCode": 1,
+      "result": "Ran the same immutable thresholds across seven diagnostic regions; every region exceeded at least one gate."
+    },
+    {
+      "command": "node scripts/run-image2-workflow.mjs --request design-systems/ops-canvas/workflow/existing.request.json --out design-systems/ops-canvas/workflow/existing-run.json",
+      "exitCode": 1,
+      "result": "Fail-closed at the real visual diff gate after validating prompt, reference, reconstruction, Browser, Playwright, and region bindings."
+    }
+  ],
+  "artifacts": [
+    "design-systems/ops-canvas/workflow/visual-diff.config.json",
+    "design-systems/ops-canvas/workflow/visual-diff-artifacts/metrics.json",
+    "design-systems/ops-canvas/workflow/visual-diff-artifacts/heatmap.png",
+    "design-systems/ops-canvas/workflow/calibration-diagnostic.config.json",
+    "design-systems/ops-canvas/workflow/calibration-diagnostics/metrics.json",
+    "design-systems/ops-canvas/workflow/calibration-diagnostics/heatmap.png",
+    "design-systems/ops-canvas/workflow/visual-calibration-proposal.md",
+    "design-systems/ops-canvas/workflow/visual-calibration-decision.json"
+  ],
+  "blockers": [
+    "The fixed visual gate rejects the real pair. The approved semantic exception does not override this raw verdict; complete the authorized calibration study and obtain a separate gate decision, or iterate pixel fidelity."
+  ]
+}

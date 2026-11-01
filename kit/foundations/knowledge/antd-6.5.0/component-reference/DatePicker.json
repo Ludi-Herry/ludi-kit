@@ -1,0 +1,1221 @@
+{
+  "version": "1.0.0",
+  "component": "DatePicker",
+  "queryComponent": "DatePicker",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "DatePicker",
+        "nameZh": "日期选择框",
+        "description": "输入或选择日期的控件。",
+        "props": [
+          {
+            "name": "allowClear",
+            "type": "boolean | { clearIcon?: ReactNode }",
+            "default": "true",
+            "since": "5.8.0: Support object type"
+          },
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "default": "true",
+            "since": "-"
+          },
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "dateRender",
+            "type": "function(currentDate: dayjs, today: dayjs) => React.ReactNode",
+            "default": "-",
+            "since": "< 5.4.0"
+          },
+          {
+            "name": "cellRender",
+            "type": "(current: dayjs, info: { originNode: React.ReactElement,today: DateType, range?: 'start' | 'end', type: PanelMode, locale?: Locale, subType?: 'hour' | 'minute' | 'second' | 'meridiem' }) => React.ReactNode",
+            "default": "-",
+            "since": "5.4.0"
+          },
+          {
+            "name": "components",
+            "type": "Record<Panel | 'input', React.ComponentType>",
+            "default": "-",
+            "since": "5.14.0"
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "disabledDate",
+            "type": "(currentDate: dayjs, info: { from?: dayjs, type: Picker }) => boolean",
+            "default": "-",
+            "since": "`info`: 5.14.0"
+          },
+          {
+            "name": "dropdownClassName",
+            "type": "string",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "format",
+            "type": "[formatType](#formattype)",
+            "default": "[@rc-component/picker](https://github.com/react-component/picker/blob/f512f18ed59d6791280d1c3d7d37abbb9867eb0b/src/utils/uiUtil.ts#L155-L177)",
+            "since": ""
+          },
+          {
+            "name": "order",
+            "type": "boolean",
+            "default": "true",
+            "since": "5.14.0"
+          },
+          {
+            "name": "popupClassName",
+            "type": "string",
+            "default": "-",
+            "since": "4.23.0"
+          },
+          {
+            "name": "preserveInvalidOnBlur",
+            "type": "boolean",
+            "default": "false",
+            "since": "5.14.0"
+          },
+          {
+            "name": "getPopupContainer",
+            "type": "function(trigger)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "inputReadOnly",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "locale",
+            "type": "object",
+            "default": "[default](https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json)",
+            "since": ""
+          },
+          {
+            "name": "minDate",
+            "type": "dayjs",
+            "default": "-",
+            "since": "5.14.0"
+          },
+          {
+            "name": "maxDate",
+            "type": "dayjs",
+            "default": "-",
+            "since": "5.14.0"
+          },
+          {
+            "name": "mode",
+            "type": "`time` | `date` | `month` | `year` | `decade`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "needConfirm",
+            "type": "boolean",
+            "default": "-",
+            "since": "5.14.0"
+          },
+          {
+            "name": "nextIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "4.17.0"
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "panelRender",
+            "type": "(panelNode) => ReactNode",
+            "default": "-",
+            "since": "4.5.0"
+          },
+          {
+            "name": "picker",
+            "type": "`date` | `week` | `month` | `quarter` | `year`",
+            "default": "`date`",
+            "since": "`quarter`: 4.1.0"
+          },
+          {
+            "name": "placeholder",
+            "type": "string | [string,string]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "placement",
+            "type": "`bottomLeft` `bottomRight` `topLeft` `topRight`",
+            "default": "bottomLeft",
+            "since": ""
+          },
+          {
+            "name": "popupStyle",
+            "type": "CSSProperties",
+            "default": "{}",
+            "since": ""
+          },
+          {
+            "name": "prefix",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "5.22.0"
+          },
+          {
+            "name": "presets",
+            "type": "{ label: React.ReactNode, value: Dayjs | (() => Dayjs) }[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "prevIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "4.17.0"
+          },
+          {
+            "name": "previewValue",
+            "type": "false | hover",
+            "default": "hover",
+            "since": "6.0.0"
+          },
+          {
+            "name": "size",
+            "type": "`large` | `medium` | `small`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "status",
+            "type": "'error' | 'warning'",
+            "default": "-",
+            "since": "4.19.0"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "{}",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "suffixIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "superNextIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "4.17.0"
+          },
+          {
+            "name": "superPrevIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "4.17.0"
+          },
+          {
+            "name": "clearIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "×"
+          },
+          {
+            "name": "variant",
+            "type": "`outlined` | `borderless` | `filled` | `underlined`",
+            "default": "`outlined`",
+            "since": "5.13.0 | `underlined`: 5.24.0"
+          },
+          {
+            "name": "onClear",
+            "type": "() => void",
+            "default": "-",
+            "since": "6.5.0"
+          },
+          {
+            "name": "onOpenChange",
+            "type": "function(open)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onPanelChange",
+            "type": "function(value, mode)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onSelect",
+            "type": "function(value)",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "defaultPickerValue",
+            "type": "[dayjs](https://day.js.org/)",
+            "default": "-",
+            "since": "5.14.0"
+          },
+          {
+            "name": "defaultValue",
+            "type": "[dayjs](https://day.js.org/)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "disabledTime",
+            "type": "function(date)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "default": "false",
+            "since": "5.14.0"
+          },
+          {
+            "name": "pickerValue",
+            "type": "[dayjs](https://day.js.org/)",
+            "default": "-",
+            "since": "5.14.0"
+          },
+          {
+            "name": "renderExtraFooter",
+            "type": "(mode) => React.ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "showNow",
+            "type": "boolean",
+            "default": "-",
+            "since": "4.4.0"
+          },
+          {
+            "name": "showTime",
+            "type": "object | boolean",
+            "default": "[TimePicker Options](/components/time-picker/#api)",
+            "since": ""
+          },
+          {
+            "name": "showTime.defaultValue",
+            "type": "[dayjs](https://day.js.org/)",
+            "default": "dayjs()",
+            "since": "5.27.3"
+          },
+          {
+            "name": "showTime.defaultOpenValue",
+            "type": "[dayjs](https://day.js.org/)",
+            "default": "dayjs()",
+            "since": ""
+          },
+          {
+            "name": "showWeek",
+            "type": "boolean",
+            "default": "false",
+            "since": "5.14.0"
+          },
+          {
+            "name": "value",
+            "type": "[dayjs](https://day.js.org/)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onChange",
+            "type": "function(date: dayjs | null, dateString: string | null)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onOk",
+            "type": "function()",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "DatePicker.Common Methods": [
+            {
+              "name": "blur()",
+              "type": "",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "focus()",
+              "type": "",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "DatePicker.DatePicker\\[picker=year]": [
+            {
+              "name": "defaultValue",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "format",
+              "type": "[formatType](#formattype)",
+              "default": "`YYYY`",
+              "since": ""
+            },
+            {
+              "name": "multiple",
+              "type": "boolean",
+              "default": "false",
+              "since": "5.14.0"
+            },
+            {
+              "name": "renderExtraFooter",
+              "type": "() => React.ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "tagRender",
+              "type": "(props) => ReactNode",
+              "default": "-",
+              "since": "6.4.0"
+            },
+            {
+              "name": "value",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "function(date: dayjs | null, dateString: string | null)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "DatePicker.DatePicker\\[picker=quarter]": [
+            {
+              "name": "defaultValue",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "format",
+              "type": "[formatType](#formattype)",
+              "default": "`YYYY-\\QQ`",
+              "since": ""
+            },
+            {
+              "name": "multiple",
+              "type": "boolean",
+              "default": "false",
+              "since": "5.14.0"
+            },
+            {
+              "name": "renderExtraFooter",
+              "type": "() => React.ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "tagRender",
+              "type": "(props) => ReactNode",
+              "default": "-",
+              "since": "6.4.0"
+            },
+            {
+              "name": "value",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "function(date: dayjs | null, dateString: string | null)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "DatePicker.DatePicker\\[picker=month]": [
+            {
+              "name": "defaultValue",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "format",
+              "type": "[formatType](#formattype)",
+              "default": "`YYYY-MM`",
+              "since": ""
+            },
+            {
+              "name": "multiple",
+              "type": "boolean",
+              "default": "false",
+              "since": "5.14.0"
+            },
+            {
+              "name": "renderExtraFooter",
+              "type": "() => React.ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "tagRender",
+              "type": "(props) => ReactNode",
+              "default": "-",
+              "since": "6.4.0"
+            },
+            {
+              "name": "value",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "function(date: dayjs | null, dateString: string | null)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "DatePicker.DatePicker\\[picker=week]": [
+            {
+              "name": "defaultValue",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "format",
+              "type": "[formatType](#formattype)",
+              "default": "`YYYY-wo`",
+              "since": ""
+            },
+            {
+              "name": "multiple",
+              "type": "boolean",
+              "default": "false",
+              "since": "5.14.0"
+            },
+            {
+              "name": "renderExtraFooter",
+              "type": "(mode) => React.ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "tagRender",
+              "type": "(props) => ReactNode",
+              "default": "-",
+              "since": "6.4.0"
+            },
+            {
+              "name": "value",
+              "type": "[dayjs](https://day.js.org/)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "function(date: dayjs | null, dateString: string | null)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "showWeek",
+              "type": "boolean",
+              "default": "true",
+              "since": "5.14.0"
+            }
+          ],
+          "DatePicker.RangePicker": [
+            {
+              "name": "allowEmpty",
+              "type": "[boolean, boolean]",
+              "default": "[false, false]",
+              "since": ""
+            },
+            {
+              "name": "cellRender",
+              "type": "(current: dayjs, info: { originNode: React.ReactElement,today: DateType, range?: 'start' | 'end', type: PanelMode, locale?: Locale, subType?: 'hour' | 'minute' | 'second' | 'meridiem' }) => React.ReactNode",
+              "default": "-",
+              "since": "5.4.0"
+            },
+            {
+              "name": "dateRender",
+              "type": "function(currentDate: dayjs, today: dayjs) => React.ReactNode",
+              "default": "-",
+              "since": "< 5.4.0"
+            },
+            {
+              "name": "defaultPickerValue",
+              "type": "[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)]",
+              "default": "-",
+              "since": "5.14.0"
+            },
+            {
+              "name": "defaultValue",
+              "type": "[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "disabled",
+              "type": "[boolean, boolean]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "disabledTime",
+              "type": "function(date: dayjs, partial: `start` | `end`, info: { from?: dayjs })",
+              "default": "-",
+              "since": "`info.from`: 5.17.0"
+            },
+            {
+              "name": "format",
+              "type": "[formatType](#formattype)",
+              "default": "`YYYY-MM-DD HH:mm:ss`",
+              "since": ""
+            },
+            {
+              "name": "id",
+              "type": "{ start?: string, end?: string }",
+              "default": "-",
+              "since": "5.14.0"
+            },
+            {
+              "name": "pickerValue",
+              "type": "[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)]",
+              "default": "-",
+              "since": "5.14.0"
+            },
+            {
+              "name": "presets",
+              "type": "{ label: React.ReactNode, value: [(Dayjs | (() => Dayjs)), (Dayjs | (() => Dayjs))] }[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "renderExtraFooter",
+              "type": "() => React.ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "separator",
+              "type": "React.ReactNode",
+              "default": "`<SwapRightOutlined />`",
+              "since": ""
+            },
+            {
+              "name": "showTime",
+              "type": "object | boolean",
+              "default": "[TimePicker Options](/components/time-picker/#api)",
+              "since": ""
+            },
+            {
+              "name": "showTime.defaultValue",
+              "type": "[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)]",
+              "default": "[dayjs(), dayjs()]",
+              "since": "5.27.3"
+            },
+            {
+              "name": "showTime.defaultOpenValue",
+              "type": "[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)]",
+              "default": "[dayjs(), dayjs()]",
+              "since": ""
+            },
+            {
+              "name": "value",
+              "type": "[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onCalendarChange",
+              "type": "function(dates: [dayjs, dayjs], dateStrings: [string, string], info: { range:`start`|`end` })",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "function(dates: [dayjs, dayjs] | null, dateStrings: [string, string] | null)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onFocus",
+              "type": "function(event, { range: 'start' | 'end' })",
+              "default": "-",
+              "since": "`range`: 5.14.0"
+            },
+            {
+              "name": "onBlur",
+              "type": "function(event, { range: 'start' | 'end' })",
+              "default": "-",
+              "since": "`range`: 5.14.0"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "DatePicker",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n当用户需要输入一个日期，可以点击标准输入框，弹出日期面板进行选择。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/range-picker.tsx\">范围选择器</code>\n<code src=\"./demo/multiple.tsx\" version=\"5.14.0\">多选</code>\n<code src=\"./demo/multiple-debug.tsx\" debug>多选 Debug</code>\n<code src=\"./demo/needConfirm.tsx\" version=\"5.14.0\">选择确认</code>\n<code src=\"./demo/switchable.tsx\">切换不同的选择器</code>\n<code src=\"./demo/format.tsx\">日期格式</code>\n<code src=\"./demo/time.tsx\">日期时间选择</code>\n<code src=\"./demo/mask.tsx\" version=\"5.14.0\">格式对齐</code>\n<code src=\"./demo/date-range.tsx\" version=\"5.14.0\">日期限定范围</code>\n<code src=\"./demo/disabled.tsx\">禁用</code>\n<code src=\"./demo/disabled-date.tsx\">不可选择日期和时间</code>\n<code src=\"./demo/allow-empty.tsx\">允许留空</code>\n<code src=\"./demo/select-in-range.tsx\">选择不超过一定的范围</code>\n<code src=\"./demo/preset-ranges.tsx\">预设范围</code>\n<code src=\"./demo/extra-footer.tsx\">额外的页脚</code>\n<code src=\"./demo/size.tsx\">三种大小</code>\n<code src=\"./demo/cell-render.tsx\">定制单元格</code>\n<code src=\"./demo/components.tsx\" version=\"5.14.0\">定制面板</code>\n<code src=\"./demo/external-panel.tsx\">外部使用面板</code>\n<code src=\"./demo/buddhist-era.tsx\" version=\"5.14.0\">佛历格式</code>\n<code src=\"./demo/status.tsx\">自定义状态</code>\n<code src=\"./demo/variant.tsx\" version=\"5.13.0\">形态变体</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/filled-debug.tsx\" debug>Filled Debug</code>\n<code src=\"./demo/placement.tsx\">弹出位置</code>\n<code src=\"./demo/mode.tsx\" debug>受控面板</code>\n<code src=\"./demo/start-end.tsx\" debug>自定义日期范围选择</code>\n<code src=\"./demo/suffix.tsx\">前后缀</code>\n<code src=\"./demo/render-panel.tsx\" debug>\\_InternalPanelDoNotUseOrYouWillBeFired</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/suffixIcon-debug.tsx\" debug>suffixIcon</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n日期类组件包括以下五种形式。\n\n- DatePicker\n- DatePicker\\[picker=\"month\"]\n- DatePicker\\[picker=\"week\"]\n- DatePicker\\[picker=\"year\"]\n- DatePicker\\[picker=\"quarter\"] (4.1.0 新增)\n- RangePicker\n\n### 国际化配置\n\n默认配置为 en-US，如果你需要设置其他语言，推荐在入口处使用我们提供的国际化组件，详见：[ConfigProvider 国际化](https://ant.design/components/config-provider-cn/)。\n\n如有特殊需求（仅修改单一组件的语言），请使用 locale 参数，参考：[默认配置](https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json)。\n\n```jsx\n// 默认语言为 en-US，如果你需要设置其他语言，推荐在入口文件全局设置 locale\n// 确保还导入相关的 dayjs 文件，否则所有文本的区域设置都不会更改（例如范围选择器月份）\nimport locale from 'antd/locale/zh_CN';\nimport dayjs from 'dayjs';\n\nimport 'dayjs/locale/zh-cn';\n\ndayjs.locale('zh-cn');\n\n<ConfigProvider locale={locale}>\n  <DatePicker defaultValue={dayjs('2015-01-01', 'YYYY-MM-DD')} />\n</ConfigProvider>;\n```\n\n<!-- prettier-ignore -->\n:::warning\n在搭配 Next.js 的 App Router 使用时，注意在引入 dayjs 的 locale 文件时加上 `'use client'`。这是由于 Ant Design 的组件都是客户端组件，在 RSC 中引入 dayjs 的 locale 文件将不会在客户端生效。\n:::\n\n### 共同的 API\n\n以下 API 为 DatePicker、 RangePicker 共享的 API。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| allowClear | 自定义清除按钮 | boolean \\| { clearIcon?: ReactNode } | true | 5.8.0: 支持对象类型 | 6.4.0 |\n| ~~bordered~~ | 是否带边框，请使用 `variant` 替代 | boolean | true | - | × |\n| className | 选择器 className | string | - |  | DatePicker: 5.7.0，RangePicker: 5.11.0 |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | DatePicker: 5.25.0，RangePicker: 5.25.0 |\n| dateRender | 自定义日期单元格的内容，5.4.0 起用 `cellRender` 代替 | function(currentDate: dayjs, today: dayjs) => React.ReactNode | - | < 5.4.0 | × |\n| cellRender | 自定义单元格的内容 | (current: dayjs, info: { originNode: React.ReactElement,today: DateType, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | 5.4.0 | × |\n| components | 自定义面板 | Record<Panel \\| 'input', React.ComponentType> | - | 5.14.0 | × |\n| defaultOpen | 是否默认展开控制弹层 | boolean | - |  | × |\n| disabled | 禁用 | boolean | false |  | × |\n| disabledDate | 不可选择的日期 | (currentDate: dayjs, info: { from?: dayjs, type: Picker }) => boolean | - | `info`: 5.14.0 | × |\n| ~~dropdownClassName~~ | 弹出日历的 className，请使用 `classNames.popup.root` 替代 | string | - | - | × |\n| format | 设置日期格式，为数组时支持多格式匹配，展示以第一个为准。配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。示例：[自定义格式](#date-picker-demo-format) | [formatType](#formattype) | [@rc-component/picker](https://github.com/react-component/picker/blob/f512f18ed59d6791280d1c3d7d37abbb9867eb0b/src/utils/uiUtil.ts#L155-L177) |  | × |\n| order | 多选、范围时是否自动排序 | boolean | true | 5.14.0 | × |\n| preserveInvalidOnBlur | 失去焦点是否要清空输入框内无效内容 | boolean | false | 5.14.0 | × |\n| ~~popupClassName~~ | 额外的弹出日历 className，使用 `classNames.popup.root` 替代 | string | - | 4.23.0 | × |\n| getPopupContainer | 定义浮层的容器，默认为 body 上新建 div | function(trigger) | - |  | × |\n| inputReadOnly | 设置输入框为只读（避免在移动设备上打开虚拟键盘） | boolean | false |  | × |\n| locale | 国际化配置 | object | [默认配置](https://github.com/ant-design/ant-design/blob/master/components/date-picker/locale/example.json) |  | × |\n| minDate | 最小日期，同样会限制面板的切换范围 | dayjs | - | 5.14.0 | × |\n| maxDate | 最大日期，同样会限制面板的切换范围 | dayjs | - | 5.14.0 | × |\n| mode | 日期面板的状态（[设置后无法选择年份/月份？](/docs/react/faq#当我指定了-datepickerrangepicker-的-mode-属性后点击后无法选择年份月份)） | `time` \\| `date` \\| `month` \\| `year` \\| `decade` | - |  | × |\n| needConfirm | 是否需要确认按钮，为 `false` 时失去焦点即代表选择。当设置 `multiple` 时默认为 `false` | boolean | - | 5.14.0 | × |\n| nextIcon | 自定义下一个图标 | ReactNode | - | 4.17.0 | × |\n| open | 控制弹层是否展开 | boolean | - |  | × |\n| panelRender | 自定义渲染面板 | (panelNode) => ReactNode | - | 4.5.0 | × |\n| picker | 设置选择器类型 | `date` \\| `week` \\| `month` \\| `quarter` \\| `year` | `date` | `quarter`: 4.1.0 | × |\n| placeholder | 输入框提示文字 | string \\| \\[string, string] | - |  | × |\n| placement | 选择框弹出的位置 | `bottomLeft` `bottomRight` `topLeft` `topRight` | bottomLeft |  | × |\n| ~~popupStyle~~ | 额外的弹出日历样式，使用 `styles.popup.root` 替代 | CSSProperties | {} |  | × |\n| prefix | 自定义前缀 | ReactNode | - | 5.22.0 | × |\n| prevIcon | 自定义上一个图标 | ReactNode | - | 4.17.0 | × |\n| previewValue | 当用户选择日期悬停选项时，输入字段的值会发生临时更改 | false \\| hover | hover | 6.0.0 | × |\n| presets | 预设时间范围快捷选择, 自 `5.8.0` 起 value 支持函数返回值 | { label: React.ReactNode, value: Dayjs \\| (() => Dayjs) }\\[] | - |  | × |\n| size | 输入框大小，`large` 高度为 40px，`small` 为 24px，默认是 32px | `large` \\| `medium` \\| `small` | - |  | × |\n| status | 设置校验状态 | 'error' \\| 'warning' | - | 4.19.0 | × |\n| style | 自定义输入框样式 | CSSProperties | {} |  | DatePicker: 5.7.0，RangePicker: 5.11.0 |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | DatePicker: 5.25.0，RangePicker: 5.25.0 |\n| suffixIcon | 自定义的选择框后缀图标 | ReactNode | - |  | DatePicker: 6.3.0，RangePicker: 6.4.0 |\n| superNextIcon | 自定义 `>>` 切换图标 | ReactNode | - | 4.17.0 | × |\n| superPrevIcon | 自定义 `<<` 切换图标 | ReactNode | - | 4.17.0 | × |\n| clearIcon | （仅支持全局配置）自定义清除图标 | ReactNode | - | × | 6.4.0 |\n| variant | 形态变体 | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | 5.13.0 \\| `underlined`: 5.24.0 | DatePicker: 5.19.0，RangePicker: 5.19.0 |\n| onClear | 点击清除按钮时的回调 | () => void | - | 6.5.0 | × |\n| onOpenChange | 弹出日历和关闭日历的回调 | function(open) | - |  | × |\n| onPanelChange | 日历面板切换的回调 | function(value, mode) | - |  | × |\n| ~~onSelect~~ | 选中日期时的回调，请使用 `onCalendarChange` 替代 | function(value) | - | - | × |\n\n### 共同的方法\n\n| 名称    | 描述     | 版本 |\n| ------- | -------- | ---- |\n| blur()  | 移除焦点 |      |\n| focus() | 获取焦点 |      |\n\n### DatePicker\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| defaultPickerValue | 默认面板日期，每次面板打开时会被重置到该日期 | [dayjs](https://day.js.org/) | - | 5.14.0 |\n| defaultValue | 默认日期，如果开始时间或结束时间为 `null` 或者 `undefined`，日期范围将是一个开区间 | [dayjs](https://day.js.org/) | - |  |\n| disabledTime | 不可选择的时间 | function(date) | - |  |\n| format | 展示的日期格式，配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。 | [formatType](#formattype) | `YYYY-MM-DD` |  |\n| multiple | 是否为多选，不支持 `showTime` | boolean | false | 5.14.0 |\n| pickerValue | 面板日期，可以用于受控切换面板所在日期。配合 `onPanelChange` 使用。 | [dayjs](https://day.js.org/) | - | 5.14.0 |\n| renderExtraFooter | 在面板中添加额外的页脚 | (mode) => React.ReactNode | - |  |\n| showNow | 显示当前日期时间的快捷选择 | boolean | - |  |\n| showTime | 增加时间选择功能 | Object \\| boolean | [TimePicker Options](/components/time-picker-cn#api) |  |\n| ~~showTime.defaultValue~~ | 请使用 `showTime.defaultOpenValue` | [dayjs](https://day.js.org/) | dayjs() | 5.27.3 |\n| showTime.defaultOpenValue | 设置用户选择日期时默认的时分秒，[例子](#date-picker-demo-disabled-date) | [dayjs](https://day.js.org/) | dayjs() |  |\n| showWeek | DatePicker 下展示当前周 | boolean | false | 5.14.0 |\n| value | 日期 | [dayjs](https://day.js.org/) | - |  |\n| onChange | 时间发生变化的回调 | function(date: dayjs \\| null, dateString: string \\| null) | - |  |\n| onOk | 点击确定按钮的回调 | function() | - |  |\n| onPanelChange | 日期面板变化时的回调 | function(value, mode) | - |  |\n\n### DatePicker\\[picker=year]\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |\n| format | 展示的日期格式，配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。 | [formatType](#formattype) | `YYYY` |  |\n| multiple | 是否为多选 | boolean | false | 5.14.0 |\n| renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  |\n| tagRender | 自定义 tag 内容 render，仅在 `multiple` 模式下生效 | (props) => ReactNode | - | 6.4.0 |\n| value | 日期 | [dayjs](https://day.js.org/) | - |  |\n| onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs \\| null, dateString: string \\| null) | - |  |\n\n### DatePicker\\[picker=quarter]\n\n`4.1.0` 新增。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |\n| format | 展示的日期格式，配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。 | [formatType](#formattype) | `YYYY-\\QQ` |  |\n| multiple | 是否为多选 | boolean | false | 5.14.0 |\n| renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  |\n| tagRender | 自定义 tag 内容 render，仅在 `multiple` 模式下生效 | (props) => ReactNode | - | 6.4.0 |\n| value | 日期 | [dayjs](https://day.js.org/) | - |  |\n| onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs \\| null, dateString: string \\| null) | - |  |\n\n### DatePicker\\[picker=month]\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |\n| format | 展示的日期格式，配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。 | [formatType](#formattype) | `YYYY-MM` |  |\n| multiple | 是否为多选 | boolean | false | 5.14.0 |\n| renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  |\n| tagRender | 自定义 tag 内容 render，仅在 `multiple` 模式下生效 | (props) => ReactNode | - | 6.4.0 |\n| value | 日期 | [dayjs](https://day.js.org/) | - |  |\n| onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs \\| null, dateString: string \\| null) | - |  |\n\n### DatePicker\\[picker=week]\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| defaultValue | 默认日期 | [dayjs](https://day.js.org/) | - |  |\n| format | 展示的日期格式，配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。 | [formatType](#formattype) | `YYYY-wo` |  |\n| multiple | 是否为多选 | boolean | false | 5.14.0 |\n| renderExtraFooter | 在面板中添加额外的页脚 | (mode) => React.ReactNode | - |  |\n| tagRender | 自定义 tag 内容 render，仅在 `multiple` 模式下生效 | (props) => ReactNode | - | 6.4.0 |\n| value | 日期 | [dayjs](https://day.js.org/) | - |  |\n| onChange | 时间发生变化的回调，发生在用户选择时间时 | function(date: dayjs \\| null, dateString: string \\| null) | - |  |\n| showWeek | DatePicker 下展示当前周 | boolean | true | 5.14.0 |\n\n### RangePicker\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| allowEmpty | 允许起始项部分为空 | \\[boolean, boolean] | \\[false, false] |  | × |\n| cellRender | 自定义单元格的内容。 | (current: dayjs, info: { originNode: React.ReactElement,today: DateType, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | 5.4.0 | × |\n| dateRender | 自定义日期单元格的内容，5.4.0 起用 `cellRender` 代替 | function(currentDate: dayjs, today: dayjs) => React.ReactNode | - | < 5.4.0 | × |\n| defaultPickerValue | 默认面板日期，每次面板打开时会被重置到该日期 | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - | 5.14.0 | × |\n| defaultValue | 默认日期 | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  | × |\n| disabled | 禁用起始项 | \\[boolean, boolean] | - |  | × |\n| disabledTime | 不可选择的时间 | function(date: dayjs, partial: `start` \\| `end`, info: { from?: dayjs }) | - | `info.from`: 5.17.0 | × |\n| format | 展示的日期格式，配置参考 [dayjs#format](https://day.js.org/docs/zh-CN/display/format#%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8D%A0%E4%BD%8D%E7%AC%A6%E5%88%97%E8%A1%A8)。 | [formatType](#formattype) | `YYYY-MM-DD HH:mm:ss` |  | × |\n| id | 设置输入框 `id` 属性。 | { start?: string, end?: string } | - | 5.14.0 | × |\n| pickerValue | 面板日期，可以用于受控切换面板所在日期。配合 `onPanelChange` 使用。 | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - | 5.14.0 | × |\n| presets | 预设时间范围快捷选择，自 `5.8.0` 起 value 支持函数返回值 | { label: React.ReactNode, value: \\[(Dayjs \\| (() => Dayjs)), (Dayjs \\| (() => Dayjs))] }\\[] | - |  | × |\n| renderExtraFooter | 在面板中添加额外的页脚 | () => React.ReactNode | - |  | × |\n| separator | 设置分隔符 | React.ReactNode | `<SwapRightOutlined />` |  | 6.3.0 |\n| showTime | 增加时间选择功能 | Object\\|boolean | [TimePicker Options](/components/time-picker-cn#api) |  | × |\n| ~~showTime.defaultValue~~ | 请使用 `showTime.defaultOpenValue` | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | \\[dayjs(), dayjs()] | 5.27.3 | × |\n| showTime.defaultOpenValue | 设置用户选择日期时默认的时分秒，[例子](#date-picker-demo-disabled-date) | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | \\[dayjs(), dayjs()] |  | × |\n| value | 日期 | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - |  | × |\n| onCalendarChange | 待选日期发生变化的回调。`info` 参数自 4.4.0 添加 | function(dates: \\[dayjs, dayjs], dateStrings: \\[string, string], info: { range:`start`\\|`end` }) | - |  | × |\n| onChange | 日期范围发生变化的回调 | function(dates: \\[dayjs, dayjs] \\| null, dateStrings: \\[string, string] \\| null) | - |  | × |\n| onFocus | 聚焦时回调 | function(event, { range: 'start' \\| 'end' }) | - | `range`: 5.14.0 | × |\n| onBlur | 失焦时回调 | function(event, { range: 'start' \\| 'end' }) | - | `range`: 5.14.0 | × |\n\n#### formatType\n\n```typescript\nimport type { Dayjs } from 'dayjs';\n\ntype Generic = string;\ntype GenericFn = (value: Dayjs) => string;\n\nexport type FormatType =\n  | Generic\n  | GenericFn\n  | Array<Generic | GenericFn>\n  | {\n      format: string;\n      type?: 'mask';\n    };\n```\n\n注意：`type` 定义为 `5.14.0` 新增。\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"DatePicker\"></ComponentTokenTable>\n\n## FAQ\n\n### 当我指定了 DatePicker/RangePicker 的 mode 属性后，点击后无法选择年份/月份？ {#faq-mode-cannot-select}\n\n请参考[常见问答](/docs/react/faq#当我指定了-datepickerrangepicker-的-mode-属性后点击后无法选择年份月份)\n\n### 为何日期选择年份后返回的是日期面板而不是月份面板？ {#faq-year-to-date-panel}\n\n当用户选择完年份后，系统会直接切换至日期面板，而非显式提供月份选择。这样做的设计在于用户只需进行一次点击即可完成年份修改，无需再次点击进入月份选择界面，从而减少了用户的操作负担，同时也避免需要额外感知月份的记忆负担。\n\n### 如何在 DatePicker 中使用自定义日期库（如 Moment.js ）？ {#faq-custom-date-library}\n\n请参考[《使用自定义日期库》](/docs/react/use-custom-date-library#datepicker)\n\n### 为什么时间类组件的国际化 locale 设置不生效？ {#faq-locale-not-work}\n\n参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#为什么时间类组件的国际化-locale-设置不生效)。\n\n### 如何修改周的起始日？ {#faq-week-start-day}\n\n请使用正确的[语言包](/docs/react/i18n-cn)（[#5605](https://github.com/ant-design/ant-design/issues/5605)），或者修改 dayjs 的 `locale` 配置：<https://codesandbox.io/s/dayjs-day-of-week-x9tuj2?file=/demo.tsx>\n\n```js\nimport dayjs from 'dayjs';\n\nimport 'dayjs/locale/zh-cn';\n\nimport updateLocale from 'dayjs/plugin/updateLocale';\n\ndayjs.extend(updateLocale);\ndayjs.updateLocale('zh-cn', {\n  weekStart: 0,\n});\n```\n\n### 为何使用 `panelRender` 时，原来面板无法切换？ {#faq-panel-render-switch}\n\n当你通过 `panelRender` 动态改变层级结构时，会使得原本的 Panel 被当做新的节点删除并创建。这使得其原本的状态会被重置，保持结构稳定即可。详情请参考 [#27263](https://github.com/ant-design/ant-design/issues/27263)。\n\n### 如何理解禁用时间日期？ {#faq-disabled-date-time}\n\n欢迎阅读博客[《为什么禁用日期这么难？》](/docs/blog/picker-cn)了解如何使用。\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "DatePicker",
+        "demos": [
+          {
+            "name": "allow-empty",
+            "title": "Allow Empty",
+            "description": "Allow empty for the RangePicker. It's useful when you need to keep the \"to date\"."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Basic use case. Users can select or input a date in a panel."
+          },
+          {
+            "name": "buddhist-era",
+            "title": "Buddhist Era",
+            "description": "Use `locale` to support special calendar format."
+          },
+          {
+            "name": "cell-render",
+            "title": "Customized Cell Rendering",
+            "description": "We can customize the rendering of the cells in the calendar by providing a `cellRender` function to `DatePicker`."
+          },
+          {
+            "name": "components",
+            "title": "Customize Panel",
+            "description": "Replace panel with `components`."
+          },
+          {
+            "name": "date-range",
+            "title": "Limit Date Range",
+            "description": "Limit the range of available dates by using `minDate` and `maxDate`."
+          },
+          {
+            "name": "disabled-date",
+            "title": "Disabled Date & Time",
+            "description": "Disable specific dates and times by using `disabledDate` and `disabledTime` respectively, and `disabledTime` only works with `showTime`."
+          },
+          {
+            "name": "disabled",
+            "title": "Disabled",
+            "description": "A disabled state of the `DatePicker`. You can also set as array to disable one of input."
+          },
+          {
+            "name": "external-panel",
+            "title": "External use panel",
+            "description": "Custom menu, external selection panel."
+          },
+          {
+            "name": "extra-footer",
+            "title": "Extra Footer",
+            "description": "Render extra footer in panel for customized requirements."
+          },
+          {
+            "name": "format",
+            "title": "Date Format",
+            "description": "We can set the date format by `format`. When `format` is an array, the input box can be entered in any of the valid formats of the array."
+          },
+          {
+            "name": "mask",
+            "title": "Mask Format",
+            "description": "Align the date format. Switch the selection by arrow keys. Will try to align the date to the last valid date when blur."
+          },
+          {
+            "name": "multiple",
+            "title": "Multiple",
+            "description": "Multiple selections. Does not support `showTime` and `picker=\"time\"`."
+          },
+          {
+            "name": "needConfirm",
+            "title": "Need Confirm",
+            "description": "DatePicker will automatically determine whether to show a confirm button according to the `picker` property. You can also set the `needConfirm` property to determine whether to show a confirm button. When `needConfirm` is set, the user must click the confirm button to complete the selection. Otherwise, the selection will be submitted when the picker loses focus or selects a date."
+          },
+          {
+            "name": "placement",
+            "title": "Placement",
+            "description": "You can manually specify the position of the popup via `placement`."
+          },
+          {
+            "name": "preset-ranges",
+            "title": "Preset Ranges",
+            "description": "We can set preset ranges to RangePicker to improve user experience. Since `5.8.0`, preset value supports callback function."
+          },
+          {
+            "name": "range-picker",
+            "title": "Range Picker",
+            "description": "Set range picker type by `picker` prop."
+          },
+          {
+            "name": "select-in-range",
+            "title": "Select range dates",
+            "description": "Using `info.from` of `disabledDate` to limit the dynamic date range selection."
+          },
+          {
+            "name": "size",
+            "title": "Three Sizes",
+            "description": "The input box comes in three sizes: small, medium and large. The `medium` size will be used if `size` is omitted."
+          },
+          {
+            "name": "status",
+            "title": "Status",
+            "description": "Add status to DatePicker with `status`, which could be `error` or `warning`."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of DatePicker by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "suffix",
+            "title": "Prefix and Suffix",
+            "description": "Custom `prefix` and `suffixIcon`."
+          },
+          {
+            "name": "switchable",
+            "title": "Switchable picker",
+            "description": "Switch in different types of pickers by Select."
+          },
+          {
+            "name": "time",
+            "title": "Choose Time",
+            "description": "This property provides an additional time selection. When `showTime` is an Object, its properties will be passed on to the built-in `TimePicker`."
+          },
+          {
+            "name": "variant",
+            "title": "Variants",
+            "description": "Variants of DatePicker, there are four variants: `outlined` `filled` `borderless` and `underlined`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "DatePicker",
+        "tokens": [
+          {
+            "name": "activeBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color when the input box is activated",
+            "descriptionZh": "输入框激活状态时背景颜色"
+          },
+          {
+            "name": "activeBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Active border color",
+            "descriptionZh": "激活态边框色"
+          },
+          {
+            "name": "activeShadow",
+            "type": "string",
+            "default": "",
+            "description": "Box-shadow when active",
+            "descriptionZh": "激活态阴影"
+          },
+          {
+            "name": "addonBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of addon",
+            "descriptionZh": "前/后置标签背景色"
+          },
+          {
+            "name": "cellActiveWithRangeBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of cell in range",
+            "descriptionZh": "选取范围内的单元格背景色"
+          },
+          {
+            "name": "cellBgDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Background color of disabled cell",
+            "descriptionZh": "单元格禁用态背景色"
+          },
+          {
+            "name": "cellHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of cell",
+            "descriptionZh": "单元格高度"
+          },
+          {
+            "name": "cellHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of cell hover state",
+            "descriptionZh": "单元格悬浮态背景色"
+          },
+          {
+            "name": "cellHoverWithRangeBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of hovered cell in range",
+            "descriptionZh": "选取范围内的单元格悬浮态背景色"
+          },
+          {
+            "name": "cellRangeBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of cell in range when picking",
+            "descriptionZh": "选取范围时单元格边框色"
+          },
+          {
+            "name": "cellWidth",
+            "type": "number",
+            "default": "",
+            "description": "Width of cell",
+            "descriptionZh": "单元格宽度"
+          },
+          {
+            "name": "errorActiveShadow",
+            "type": "string",
+            "default": "",
+            "description": "Box-shadow when active in error status",
+            "descriptionZh": "错误状态时激活态阴影"
+          },
+          {
+            "name": "hoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color when the input box hovers",
+            "descriptionZh": "输入框hover状态时背景颜色"
+          },
+          {
+            "name": "hoverBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Hover border color",
+            "descriptionZh": "悬浮态边框色"
+          },
+          {
+            "name": "inputFontSize",
+            "type": "number",
+            "default": "",
+            "description": "Font size",
+            "descriptionZh": "字体大小"
+          },
+          {
+            "name": "inputFontSizeLG",
+            "type": "number",
+            "default": "",
+            "description": "Font size of large",
+            "descriptionZh": "大号字体大小"
+          },
+          {
+            "name": "inputFontSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Font size of small",
+            "descriptionZh": "小号字体大小"
+          },
+          {
+            "name": "multipleItemBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of multiple tag",
+            "descriptionZh": "多选标签背景色"
+          },
+          {
+            "name": "multipleItemBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of multiple tag",
+            "descriptionZh": "多选标签边框色"
+          },
+          {
+            "name": "multipleItemBorderColorDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Border color of multiple tag when disabled",
+            "descriptionZh": "多选标签禁用边框色"
+          },
+          {
+            "name": "multipleItemColorDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Text color of multiple tag when disabled",
+            "descriptionZh": "多选标签禁用文本颜色"
+          },
+          {
+            "name": "multipleItemHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of multiple tag",
+            "descriptionZh": "多选标签高度"
+          },
+          {
+            "name": "multipleItemHeightLG",
+            "type": "number",
+            "default": "",
+            "description": "Height of multiple tag with large size",
+            "descriptionZh": "大号多选标签高度"
+          },
+          {
+            "name": "multipleItemHeightSM",
+            "type": "number",
+            "default": "",
+            "description": "Height of multiple tag with small size",
+            "descriptionZh": "小号多选标签高度"
+          },
+          {
+            "name": "multipleSelectorBgDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Background color of multiple selector when disabled",
+            "descriptionZh": "多选框禁用背景"
+          },
+          {
+            "name": "paddingBlock",
+            "type": "number",
+            "default": "",
+            "description": "Vertical padding of input",
+            "descriptionZh": "输入框纵向内边距"
+          },
+          {
+            "name": "paddingBlockLG",
+            "type": "number",
+            "default": "",
+            "description": "Vertical padding of large input",
+            "descriptionZh": "大号输入框纵向内边距"
+          },
+          {
+            "name": "paddingBlockSM",
+            "type": "number",
+            "default": "",
+            "description": "Vertical padding of small input",
+            "descriptionZh": "小号输入框纵向内边距"
+          },
+          {
+            "name": "paddingInline",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of input",
+            "descriptionZh": "输入框横向内边距"
+          },
+          {
+            "name": "paddingInlineLG",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of large input",
+            "descriptionZh": "大号输入框横向内边距"
+          },
+          {
+            "name": "paddingInlineSM",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of small input",
+            "descriptionZh": "小号输入框横向内边距"
+          },
+          {
+            "name": "presetsMaxWidth",
+            "type": "number",
+            "default": "",
+            "description": "Max width of preset area",
+            "descriptionZh": "预设区域最大宽度"
+          },
+          {
+            "name": "presetsWidth",
+            "type": "number",
+            "default": "",
+            "description": "Width of preset area",
+            "descriptionZh": "预设区域宽度"
+          },
+          {
+            "name": "textHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of cell text",
+            "descriptionZh": "单元格文本高度"
+          },
+          {
+            "name": "timeCellHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of time cell",
+            "descriptionZh": "时间单元格高度"
+          },
+          {
+            "name": "timeColumnHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of time column",
+            "descriptionZh": "时间列高度"
+          },
+          {
+            "name": "timeColumnWidth",
+            "type": "number",
+            "default": "",
+            "description": "Width of time column",
+            "descriptionZh": "时间列宽度"
+          },
+          {
+            "name": "warningActiveShadow",
+            "type": "string",
+            "default": "",
+            "description": "Box-shadow when active in warning status",
+            "descriptionZh": "警告状态时激活态阴影"
+          },
+          {
+            "name": "withoutTimeCellHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of decade/year/quarter/month/week cell",
+            "descriptionZh": "十年/年/季/月/周单元格高度"
+          },
+          {
+            "name": "zIndexPopup",
+            "type": "number",
+            "default": "",
+            "description": "z-index of popup",
+            "descriptionZh": "弹窗 z-index"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "DatePicker",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with relative positioning, inline-flex layout, padding, border-radius, transition animations and other basic styles for date picker container",
+            "descriptionZh": "根元素，包含相对定位、行内flex布局、内边距、边框圆角、过渡动画等日期选择器容器的基础样式"
+          },
+          {
+            "key": "prefix",
+            "description": "Prefix element with flex layout and margin styles for prefix content layout",
+            "descriptionZh": "前缀元素，包含flex布局、右外边距等前缀内容的布局样式"
+          },
+          {
+            "key": "input",
+            "description": "Input element with relative positioning, width, color, font, line-height, transition animations and other core interactive styles for input field",
+            "descriptionZh": "输入框元素，包含相对定位、宽度、颜色、字体、行高、过渡动画等输入框的核心交互样式"
+          },
+          {
+            "key": "suffix",
+            "description": "Suffix element with flex layout, color, line-height, pointer events, transition animations and other styles for suffix content",
+            "descriptionZh": "后缀元素，包含flex布局、颜色、行高、指针事件、过渡动画等后缀内容的样式"
+          },
+          {
+            "key": "popup.root",
+            "description": "Popup element",
+            "descriptionZh": "弹出框元素"
+          },
+          {
+            "key": "popup.container",
+            "description": "Container element, set background color, padding, border radius, shadow, border and content display styles",
+            "descriptionZh": "容器元素，设置背景色、内边距、圆角、阴影、边框和内容展示样式"
+          },
+          {
+            "key": "popup.header",
+            "description": "Popup header element with navigation buttons, month/year selectors and other header control area layout and styles",
+            "descriptionZh": "弹出框头部元素，包含导航按钮、月份年份选择器等头部控制区域的布局和样式"
+          },
+          {
+            "key": "popup.body",
+            "description": "Popup body element with container layout and styles for date panel table",
+            "descriptionZh": "弹出框主体元素，包含日期面板表格的容器布局和样式"
+          },
+          {
+            "key": "popup.content",
+            "description": "Popup content element with width, border, cell and other content display styles for date table",
+            "descriptionZh": "弹出框内容元素，包含日期表格的宽度、边框、单元格等内容展示样式"
+          },
+          {
+            "key": "popup.item",
+            "description": "Popup item element with size, background, border-radius, hover state, selected state and other interactive styles for date cells",
+            "descriptionZh": "弹出框单项元素，包含日期单元格的尺寸、背景色、边框圆角、悬停态、选中态等交互样式"
+          },
+          {
+            "key": "popup.footer",
+            "description": "Popup footer element with layout styles for bottom operation area including confirm/cancel buttons and shortcuts",
+            "descriptionZh": "弹出框底部元素，包含确认取消按钮、快捷选择等底部操作区域的布局样式"
+          }
+        ]
+      }
+    }
+  }
+}

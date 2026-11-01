@@ -1,0 +1,8 @@
+{
+  "id": "import-profile-missing-contract-bad",
+  "prompt": "Import profile fixture: production scenarios must fail closed when no frontend foundation contract is bound.",
+  "output": {
+    "file": "examples/list-page.tsx"
+  },
+  "report": "harness/reports/import-profile-missing-contract-bad.json"
+}

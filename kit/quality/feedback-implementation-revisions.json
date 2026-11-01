@@ -1,0 +1,287 @@
+{
+  "version": "1.0.0",
+  "revisions": [
+    {
+      "id": "ai-readable-canonical-rename-20260801",
+      "recordedAt": "2026-08-01",
+      "reason": "Canonical package, public API, schema host, and product naming migration.",
+      "scope": "Mechanical naming changes only; historical promotion evidence remains bound to its original source hashes.",
+      "affectedFeedbackItems": [
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-002"
+        },
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-004"
+        },
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-006"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-independent-reviewer",
+        "reviewedAt": "2026-08-01"
+      },
+      "validationCommands": [
+        {
+          "command": "node scripts/test-feedback-validator.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "node scripts/validate-feedback.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "npm run validate",
+          "status": "passed"
+        },
+        {
+          "command": "npm run check:harness",
+          "status": "passed"
+        },
+        {
+          "command": "npm run check:dom",
+          "status": "passed"
+        },
+        {
+          "command": "npm run build:preview",
+          "status": "passed"
+        },
+        {
+          "command": "npm run build:starter",
+          "status": "passed"
+        },
+        {
+          "command": "npm run check:package",
+          "status": "passed"
+        },
+        {
+          "command": "npm run check:bundle",
+          "status": "passed"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "harness",
+          "status": "passed",
+          "path": "harness/reports/build-tianshu-production-inventory.json",
+          "sha256": "fb7b30629938b4144c7a175973abd5b36a9326cb28749b9825cf8f8aca89ba28"
+        },
+        {
+          "type": "harness",
+          "status": "passed",
+          "path": "harness/reports/build-tianshu-platform-rbac-forbidden.json",
+          "sha256": "48f743649a2225c004df287d2409c366fd371449fa5f5a9f1dae7be1ccb1149a"
+        },
+        {
+          "type": "harness",
+          "status": "passed",
+          "path": "harness/reports/build-tianshu-production-rma.json",
+          "sha256": "5f4a91ba73cbdb8826c33fd5f1b3225d49d6a07caf5304fb40b7ae81e03913f7"
+        }
+      ],
+      "files": [
+        {
+          "path": "components.manifest.json",
+          "previousSha256": "f21bb46bf952f6ed6e4349c83cd13af4cf4cef9322b1f8067096914b987ef7bb",
+          "currentSha256": "014c565dffd97d7eb843f0fa986090bb9130319a035ad8521a2409802cf6ea6e"
+        },
+        {
+          "path": "examples/feedback-states.tsx",
+          "previousSha256": "3ed7d81f052ab4e57e8fd80c0b1f9ee10a5d9e917825e55476021fbd7abfd385",
+          "currentSha256": "ec627073bfc28613e12e3baeea90662a4abe747a609e38539c9338a39c1c1bcb"
+        },
+        {
+          "path": "examples/interaction-foundation.tsx",
+          "previousSha256": "8dfee98cf5646d6df78ea7b175f825dd5161cfdce124ceecbf4d55e689e295b1",
+          "currentSha256": "e25fcf07e6c0058818a49fdaf05a00e0e0ee0241a13b2558cb0760408581c8b5"
+        },
+        {
+          "path": "examples/list-page.tsx",
+          "previousSha256": "27cce2defaf86e835b4305a71b0edf336e8fa6c5fd94485a97f8acdcdaf5bc44",
+          "currentSha256": "94de2d2c57267b0e695b912a3696801d2bacda48c71e38ddf585c335410e515e"
+        },
+        {
+          "path": "figma/component-map.json",
+          "previousSha256": "876b04e80dac7a07187f872a3637fe9484b57a5c8aa6e18e6b384c95caade7db",
+          "currentSha256": "57e15c261612a742d5cda1bef448e09bec9ec944b0825eb77ccc605cad590f3a"
+        },
+        {
+          "path": "scripts/check-dom-contract.mjs",
+          "previousSha256": "67b1d92faa2eb9c74aa0d40e3bca53bbe9b28ef6e97e9273083ffa661c2a5663",
+          "currentSha256": "46a4fb5f65d7cdfbc1feca50bfd9588ce1ea4931ad09671142637097b01eda5c"
+        },
+        {
+          "path": "src/components.tsx",
+          "previousSha256": "17d4120ca2700b3facf97fd25ca4902abce1851306b09db1b8fa0ad964a07a32",
+          "currentSha256": "96f66df9025c71f6f7fb6a562f8f5d702c30ce0194d2745f79deb34c06a90b46"
+        },
+        {
+          "path": "src/index.ts",
+          "previousSha256": "fac5a1de820db55a494ae5493e0d93191939d50843f914ab77ec0b1a4883d421",
+          "currentSha256": "a9e366b5bec8cd63aae0102b7682205cdbbe62ca1ff1c6ba1d2375a84effb950"
+        },
+        {
+          "path": "src/styles.css",
+          "previousSha256": "458bc445d38eb1d9d1e8626f582a7f0f113a04a8d4ccd3a10c383e805b5a4bbe",
+          "currentSha256": "90348183a1402c3964df929d10f96939f6625a1f9b9b84de164b740dbc1b903f"
+        }
+      ]
+    },
+    {
+      "id": "tianshu-content-version-page-plan-20260821",
+      "recordedAt": "2026-08-21",
+      "reason": "Append the accepted content-version page plan to the TianShu page registry.",
+      "scope": "Content-version page registration only; the firmware exact-trigger implementation and historical evidence remain unchanged.",
+      "affectedFeedbackItems": [
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260717-001"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "codex-main",
+        "reviewedAt": "2026-08-21"
+      },
+      "validationCommands": [
+        {
+          "command": "node scripts/test-feedback-validator.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "node scripts/validate-feedback.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "npm run validate:page-acceptance",
+          "status": "passed"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "browser",
+          "status": "passed",
+          "path": "projects/tianshu-ops/evidence/content-version-feedback-rebind-2026-08-21.json",
+          "sha256": "158501eced392e63a6b48a83fbc5655c184886fadc1860dd9646987c5d8bcc51"
+        }
+      ],
+      "files": [
+        {
+          "path": "projects/tianshu-ops/pages.json",
+          "previousSha256": "49aa0b6d0ea5eebf3fd2c68a2f7f7040b84070490c4e69dfdc30102afa0c9fbd",
+          "currentSha256": "ff1f25fe3cf2ba65edd67b0b76da8545f10922ec30429b2c19f394c6574341cd"
+        }
+      ]
+    },
+    {
+      "id": "interaction-decisions-alignment-20260930",
+      "recordedAt": "2026-09-30",
+      "reason": "Owner-directed alignment of kit component registrations with rules/interaction-decisions.md: ConfirmDialog useWhen narrowed to the C-tier confirm definition; FilterPanel gains an opt-in resetVisibility=\"auto\" that hides reset for three or fewer fields.",
+      "scope": "components.manifest.json, src/components.tsx and figma/component-map.json only (plus preview catalog sync); FilterPanel default behavior and all other promoted evidence remain unchanged.",
+      "affectedFeedbackItems": [
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-002"
+        },
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-004"
+        },
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-006"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "zcode-main",
+        "reviewedAt": "2026-09-30"
+      },
+      "validationCommands": [
+        {
+          "command": "node scripts/test-feedback-validator.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "node scripts/validate-feedback.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "node scripts/validate-figma-maps.mjs",
+          "status": "passed"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "browser",
+          "status": "passed",
+          "path": "projects/tianshu-ops/evidence/interaction-decisions-alignment-2026-09-30.json",
+          "sha256": "58c15ba1660b9134fb9290c35c3e5bad325295122ce345ad16e87fe6304cf1c3"
+        }
+      ],
+      "files": [
+        {
+          "path": "components.manifest.json",
+          "previousSha256": "014c565dffd97d7eb843f0fa986090bb9130319a035ad8521a2409802cf6ea6e",
+          "currentSha256": "dd0a71a53305bdb5ad982a07d80e0e18fc4aa317d58faaa2c7feb0b0a37b5c9e"
+        },
+        {
+          "path": "figma/component-map.json",
+          "previousSha256": "57e15c261612a742d5cda1bef448e09bec9ec944b0825eb77ccc605cad590f3a",
+          "currentSha256": "1513161f1cc758f39689968d3de534f41bc34c5637987a01581010dd0c58b792"
+        },
+        {
+          "path": "src/components.tsx",
+          "previousSha256": "96f66df9025c71f6f7fb6a562f8f5d702c30ce0194d2745f79deb34c06a90b46",
+          "currentSha256": "9713b0b8547d1f3d648e9e1ee3fc51a02461bf7a172278edeb1a95265a89c8a6"
+        }
+      ]
+    },
+    {
+      "id": "interaction-controls-guidance-20261101",
+      "recordedAt": "2026-11-01",
+      "reason": "Owner-directed documentation strengthening: adds select-versus-command guidance and a long file name acceptance check to the interaction controls recipe.",
+      "scope": "recipes/interaction-controls.md only; additive text with no change to component APIs, manifests, generated pages or other promoted evidence.",
+      "affectedFeedbackItems": [
+        {
+          "projectId": "tianshu-ops",
+          "itemId": "fb-20260715-006"
+        }
+      ],
+      "review": {
+        "status": "approved",
+        "reviewer": "claude-opus-main",
+        "reviewedAt": "2026-11-01"
+      },
+      "validationCommands": [
+        {
+          "command": "node scripts/test-feedback-validator.mjs",
+          "status": "passed"
+        },
+        {
+          "command": "node scripts/validate-feedback.mjs",
+          "status": "passed"
+        }
+      ],
+      "evidence": [
+        {
+          "type": "review",
+          "status": "passed",
+          "path": "projects/tianshu-ops/evidence/interaction-controls-guidance-2026-11-01.json",
+          "sha256": "c93f258051aff2c4a4ef8e6dc869bd9e3ccb11b8ccea5a91261c87dfd9fe3066"
+        }
+      ],
+      "files": [
+        {
+          "path": "recipes/interaction-controls.md",
+          "previousSha256": "8aef18de0412d972b6e20c0b52bf14944a4548d609b4280b214b464f910d5f01",
+          "currentSha256": "49ac0e702dbc1cbf991e99bfedf17f9ad566b47d2cf22d8d73f53fe7bc405f0d"
+        }
+      ]
+    }
+  ]
+}

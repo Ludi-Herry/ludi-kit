@@ -1,0 +1,14 @@
+{
+  "id": "test-children-drop-evidence",
+  "expectedComponents": ["FilterPanel"],
+  "expectedText": ["DROPPED_CHILD_COPY"],
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/children-drop-evidence.bad.tsx",
+    "symbol": "ChildrenDropEvidencePage"
+  },
+  "report": "harness/reports/test-children-drop-evidence.json"
+}

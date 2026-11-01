@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "baseline": "reference-image.png",
+  "candidate": "../../../../output/playwright/tianshu-firmware-image2-full.png",
+  "output": {
+    "metrics": "visual-diff-artifacts/metrics.json",
+    "heatmap": "visual-diff-artifacts/heatmap.png"
+  },
+  "thresholds": {
+    "minSsim": 0.985,
+    "maxRms": 0.035,
+    "pixelDeltaThreshold": 0.06274509803921569,
+    "maxChangedPixelRatio": 0.025
+  },
+  "regions": [
+    {
+      "name": "firmware-ledger",
+      "x": 260,
+      "y": 480,
+      "width": 1150,
+      "height": 495,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      }
+    }
+  ]
+}

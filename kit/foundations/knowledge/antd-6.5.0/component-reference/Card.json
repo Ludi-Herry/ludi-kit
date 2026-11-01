@@ -1,0 +1,406 @@
+{
+  "version": "1.0.0",
+  "component": "Card",
+  "queryComponent": "Card",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Card",
+        "nameZh": "卡片",
+        "description": "通用卡片容器。",
+        "props": [
+          {
+            "name": "actions",
+            "type": "Array<ReactNode>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "activeTabKey",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "bodyStyle",
+            "type": "CSSProperties",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "variant",
+            "type": "`outlined` | `borderless`",
+            "default": "`outlined`",
+            "since": "5.24.0"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "cover",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultActiveTabKey",
+            "type": "string",
+            "default": "`The key of first tab`",
+            "since": ""
+          },
+          {
+            "name": "extra",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "hoverable",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "headStyle",
+            "type": "CSSProperties",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`medium` | `small`",
+            "default": "`medium`",
+            "since": ""
+          },
+          {
+            "name": "tabBarExtraContent",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "tabList",
+            "type": "[TabItemType](/components/tabs#tabitemtype)[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "tabProps",
+            "type": "-",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onTabChange",
+            "type": "(key) => void",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Card.Grid": [
+            {
+              "name": "hoverable",
+              "type": "boolean",
+              "default": "true",
+              "since": ""
+            }
+          ],
+          "Card.Meta": [
+            {
+              "name": "avatar",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "description",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "title",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Card",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n最基础的卡片容器，可承载文字、列表、图片、段落，常用于后台概览页面。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">典型卡片</code>\n<code src=\"./demo/border-less.tsx\" background=\"grey\">无边框</code>\n<code src=\"./demo/simple.tsx\">简洁卡片</code>\n<code src=\"./demo/flexible-content.tsx\">更灵活的内容展示</code>\n<code src=\"./demo/in-column.tsx\" background=\"grey\">栅格卡片</code>\n<code src=\"./demo/loading.tsx\">预加载的卡片</code>\n<code src=\"./demo/grid-card.tsx\">网格型内嵌卡片</code>\n<code src=\"./demo/inner.tsx\">内部卡片</code>\n<code src=\"./demo/tabs.tsx\">带页签的卡片</code>\n<code src=\"./demo/meta.tsx\">支持更多内容配置</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/no-body-debug.tsx\" debug>封面和操作区不渲染 body</code>\n<code src=\"./demo/button-alignment-debug.tsx\" debug>按钮对齐</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n```jsx\n<Card title=\"卡片标题\">卡片内容</Card>\n```\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| actions | 卡片操作组，位置在卡片底部 | Array&lt;ReactNode> | - |  | × |\n| activeTabKey | 当前激活页签的 key | string | - |  | × |\n| ~~bordered~~ | 是否有边框, 请使用 `variant` 替换 | boolean | true |  | × |\n| ~~bodyStyle~~ | 卡片内容区域样式，请使用 `styles.body` 替代 | CSSProperties | - | - | × |\n| variant | 形态变体 | `outlined` \\| `borderless` | `outlined` | 5.24.0 | 5.24.0 |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 5.14.0 |\n| cover | 卡片封面 | ReactNode | - |  | × |\n| defaultActiveTabKey | 初始化选中页签的 key，如果没有设置 activeTabKey | string | `第一个页签的 key` |  | × |\n| extra | 卡片右上角的操作区域 | ReactNode | - |  | × |\n| hoverable | 鼠标移过时可浮起 | boolean | false |  | × |\n| ~~headStyle~~ | 卡片头部样式，请使用 `styles.header` 替代 | CSSProperties | - | - | × |\n| loading | 当卡片内容还在加载中时，可以用 loading 展示一个占位 | boolean | false |  | × |\n| size | card 的尺寸 | `medium` \\| `small` | `medium` |  | × |\n| tabBarExtraContent | tab bar 上额外的元素 | ReactNode | - |  | × |\n| tabList | 页签标题列表 | [TabItemType](/components/tabs-cn#tabitemtype)[] | - |  | × |\n| tabProps | [Tabs](/components/tabs-cn#tabs) | - | - |  | × |\n| title | 卡片标题 | ReactNode | - |  | × |\n| type | 卡片类型，可设置为 `inner` 或 不设置 | string | - |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.14.0 |\n| onTabChange | 页签切换的回调 | (key) => void | - |  | × |\n\n### Card.Grid\n\n| 参数      | 说明             | 类型    | 默认值 | 版本 |\n| --------- | ---------------- | ------- | ------ | ---- |\n| hoverable | 鼠标移过时可浮起 | boolean | true   |      |\n\n### Card.Meta\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| avatar | 头像/图标 | ReactNode | - |  | × |\n| description | 描述内容 | ReactNode | - |  | × |\n| title | 标题内容 | ReactNode | - |  | × |\n\n## Semantic DOM\n\n### Card\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n### Card.Meta\n\n<code src=\"./demo/_semantic_meta.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Card\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Card",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic card",
+            "description": "A basic card containing a title, content and an extra corner content. Supports two sizes: `medium` and `small`."
+          },
+          {
+            "name": "border-less",
+            "title": "No border",
+            "description": "A borderless card on a gray background."
+          },
+          {
+            "name": "flexible-content",
+            "title": "Customized content",
+            "description": "You can use `Card.Meta` to support more flexible content."
+          },
+          {
+            "name": "grid-card",
+            "title": "Grid card",
+            "description": "Grid style card content."
+          },
+          {
+            "name": "in-column",
+            "title": "Card in column",
+            "description": "Cards usually cooperate with grid column layout in overview page."
+          },
+          {
+            "name": "inner",
+            "title": "Inner card",
+            "description": "It can be placed inside the ordinary card to display the information of the multilevel structure."
+          },
+          {
+            "name": "loading",
+            "title": "Loading card",
+            "description": "Shows a loading indicator while the contents of the card is being fetched."
+          },
+          {
+            "name": "meta",
+            "title": "Support more content configuration",
+            "description": "A Card that supports `cover`, `avatar`, `title` and `description`."
+          },
+          {
+            "name": "simple",
+            "title": "Simple card",
+            "description": "A simple card only containing a content area."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Card by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "tabs",
+            "title": "With tabs",
+            "description": "More content can be hosted."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Card",
+        "tokens": [
+          {
+            "name": "actionsBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of card actions",
+            "descriptionZh": "操作区背景色"
+          },
+          {
+            "name": "actionsLiMargin",
+            "type": "string",
+            "default": "",
+            "description": "Margin of each item in card actions",
+            "descriptionZh": "操作区每一项的外间距"
+          },
+          {
+            "name": "bodyPadding",
+            "type": "number",
+            "default": "",
+            "description": "Padding of card body",
+            "descriptionZh": "卡片内边距"
+          },
+          {
+            "name": "bodyPaddingSM",
+            "type": "number",
+            "default": "",
+            "description": "Padding of small card body",
+            "descriptionZh": "小号卡片内边距"
+          },
+          {
+            "name": "extraColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of extra area",
+            "descriptionZh": "额外区文字颜色"
+          },
+          {
+            "name": "headerBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of card header",
+            "descriptionZh": "卡片头部背景色"
+          },
+          {
+            "name": "headerFontSize",
+            "type": "string | number",
+            "default": "",
+            "description": "Font size of card header",
+            "descriptionZh": "卡片头部文字大小"
+          },
+          {
+            "name": "headerFontSizeSM",
+            "type": "string | number",
+            "default": "",
+            "description": "Font size of small card header",
+            "descriptionZh": "小号卡片头部文字大小"
+          },
+          {
+            "name": "headerHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of card header",
+            "descriptionZh": "卡片头部高度"
+          },
+          {
+            "name": "headerHeightSM",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of small card header",
+            "descriptionZh": "小号卡片头部高度"
+          },
+          {
+            "name": "headerPadding",
+            "type": "number",
+            "default": "",
+            "description": "Padding of card head",
+            "descriptionZh": "卡片头部内边距"
+          },
+          {
+            "name": "headerPaddingSM",
+            "type": "number",
+            "default": "",
+            "description": "Padding of small card head",
+            "descriptionZh": "小号卡片头部内边距"
+          },
+          {
+            "name": "tabsMarginBottom",
+            "type": "number",
+            "default": "",
+            "description": "Margin bottom of tabs component",
+            "descriptionZh": "内置标签页组件下间距"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Card",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Card root element with positioning, background, border, border-radius, box-shadow, padding and other container styles",
+            "descriptionZh": "卡片根元素，包含位置定位、背景色、边框、圆角、阴影、内边距等卡片容器的基础样式"
+          },
+          {
+            "key": "header",
+            "description": "Card header area with flex layout, min-height, padding, text color, font-weight, font-size, background, bottom border and top border-radius",
+            "descriptionZh": "卡片头部区域，包含 flex 布局、最小高度、内边距、文字颜色、字体权重、字体大小、背景色、下边框、顶部圆角等样式"
+          },
+          {
+            "key": "title",
+            "description": "Card title with inline-block display, flex-grow, text ellipsis and other title display styles",
+            "descriptionZh": "卡片标题，包含行内块布局、flex 占比、文本省略等标题显示样式"
+          },
+          {
+            "key": "extra",
+            "description": "Card extra operation area in top-right corner with text color and layout styles for additional content",
+            "descriptionZh": "卡片右上角的操作区域，包含额外内容的文字颜色和布局样式"
+          },
+          {
+            "key": "cover",
+            "description": "Title cover with styles for cover image display and layout",
+            "descriptionZh": "标题封面，包含封面图片的显示和布局样式"
+          },
+          {
+            "key": "body",
+            "description": "Card content area with padding, font-size and other content display styles",
+            "descriptionZh": "卡片内容区域，包含内边距、字体大小等内容展示的基础样式"
+          },
+          {
+            "key": "actions",
+            "description": "Card bottom action group with flex layout, list-style reset, background, top border and bottom border-radius for action buttons container",
+            "descriptionZh": "卡片底部操作组，包含 flex 布局、列表样式重置、背景色、上边框、底部圆角等操作按钮容器样式"
+          }
+        ]
+      }
+    }
+  }
+}

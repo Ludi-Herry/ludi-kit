@@ -1,0 +1,15 @@
+{
+  "id": "test-data-assertions-override",
+  "dataAssertions": [
+    {
+      "array": "alertRows",
+      "field": "handling",
+      "forbiddenValues": ["resolved-alert"]
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/data-assertions-override.bad.tsx"
+  },
+  "report": "harness/reports/test-data-assertions-override.json"
+}

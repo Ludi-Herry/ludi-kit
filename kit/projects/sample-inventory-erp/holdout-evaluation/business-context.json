@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "sample-inventory-erp",
+  "contextType": "real-product",
+  "decision": "Evaluation-only real-product schema adapter for a pre-frozen validation-sandbox source on the shared library-native React and AntD 6.5.0 baseline.",
+  "product": {
+    "name": "Sample Inventory ERP",
+    "realCustomer": false,
+    "audience": [
+      "Warehouse operators",
+      "Procurement specialists"
+    ],
+    "scenario": "Evaluate whether the formal generator can reconstruct the frozen inventory workflow without using the sealed implementation or calibration target."
+  },
+  "sourceOfTruth": [
+    "projects/sample-inventory-erp/business-context.json",
+    "projects/sample-inventory-erp/prd.mdx",
+    "projects/sample-inventory-erp/flows.json",
+    "projects/sample-inventory-erp/pages.json",
+    "quality/image2-calibration/batch-01/inventory-list/reference-prompt.v2.proposed.md",
+    "quality/image2-calibration/batch-01/inventory-list/reference-image.png"
+  ],
+  "coreFlows": [
+    "Inventory risk discovery → purchase-order creation",
+    "Inventory list → SKU detail"
+  ],
+  "firstPages": [
+    "Inventory list (/inventory)"
+  ],
+  "criticalStates": [
+    "Healthy, low-stock, and expiry-risk status remain distinct",
+    "Only rows requiring action remain discoverable",
+    "New purchase-order action opens a panel while preserving page context"
+  ],
+  "boundaries": {
+    "evaluation": "One-shot Holdout final evaluation only; the frozen source identity remains validation-sandbox and the result cannot inform generator repair.",
+    "data": "All inventory, warehouse, person, and time values are frozen synthetic examples.",
+    "sealedSources": "The existing generated page, calibration target, workflow result, browser evidence, and reviewer evidence are excluded."
+  },
+  "thirdPartyBaseline": {
+    "candidate": "antd",
+    "version": "6.5.0",
+    "status": "decided-for-pre-frozen-holdout"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "version": "6.5.0",
+      "packageName": "antd"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://ant.design/docs/spec/introduce",
+      "components": "https://ant.design/components/overview",
+      "templates": "https://procomponents.ant.design/components",
+      "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+      "styles": "https://ant.design/docs/react/introduce#style",
+      "theme": "https://ant.design/docs/react/customize-theme",
+      "variables": "https://ant.design/docs/react/css-variables"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-08-09",
+    "designPack": {
+      "path": "foundations/design-packs/antd-6.5.0.json",
+      "sha256": "3259be1ca4e3be5b0982fc4515b2034a4cd6170090584e0554ee711a66e2a05b"
+    },
+    "icons": {
+      "packageName": "@ant-design/icons",
+      "version": "6.3.2",
+      "source": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react"
+    },
+    "theme": {
+      "entry": "src/foundation/antd-theme.ts#aiReadableAntdTheme",
+      "strategy": "ConfigProvider cssVar theme"
+    },
+    "reset": {
+      "import": "antd/dist/reset.css"
+    },
+    "imports": {
+      "root": "antd",
+      "allowedPackages": [
+        "antd",
+        "@ant-design/icons",
+        "react"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-antd-project",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "holdout-fixture-only"
+  },
+  "requiredBeforeRealWork": []
+}

@@ -1,0 +1,42 @@
+{
+  "id": "build-tianshu-content-schedule",
+  "prompt": "天枢 · 内容排期：素材、排期、审批与发布控制，冲突和紧急下架单独反馈。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "Stepper", "Tabs", "Drawer", "Upload", "DatePicker", "RangePicker", "TreeSelect", "RadioGroup", "Switch", "ConfirmDialog", "ForbiddenState", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "DataSection", "Stepper", "Tabs", "Drawer", "ConfirmDialog"],
+  "expectedText": ["内容排期与上下架", "内容运营主链", "上传内容素材", "批量取消排期？", "确认紧急下架？"],
+  "expectedActions": {
+    "required": ["批量取消", "紧急下架"]
+  },
+  "expectedConfirmations": [
+    {
+      "action": "批量取消",
+      "title": "批量取消排期？",
+      "confirmLabel": "确认取消",
+      "requiredText": ["取消后不可恢复"],
+      "danger": true
+    },
+    {
+      "action": "紧急下架",
+      "title": "确认紧急下架？",
+      "confirmLabel": "确认下架",
+      "requiredText": ["操作不可撤销"],
+      "danger": true,
+      "state": { "variable": "emergencyRow", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/deferred-pages.tsx",
+    "symbol": "TianshuContentSchedulePage"
+  },
+  "report": "harness/reports/build-tianshu-content-schedule.json"
+}

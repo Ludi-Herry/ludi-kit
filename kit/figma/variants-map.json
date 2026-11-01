@@ -1,0 +1,1058 @@
+{
+  "version": "0.1.0",
+  "status": "code-first",
+  "note": "Figma variant property to code prop mapping. Add nodeId values after binding real Figma components.",
+  "mappings": [
+    {
+      "codeComponent": "Button",
+      "figmaComponent": "Button",
+      "figmaProperty": "Variant",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Primary": {
+          "variant": "primary"
+        },
+        "Secondary": {
+          "variant": "secondary"
+        },
+        "Outline": {
+          "variant": "outline"
+        },
+        "Ghost": {
+          "variant": "ghost"
+        },
+        "Danger": {
+          "variant": "danger"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Button",
+      "figmaComponent": "Button",
+      "figmaProperty": "Size",
+      "props": [
+        "size"
+      ],
+      "values": {
+        "Small": {
+          "size": "sm"
+        },
+        "Medium": {
+          "size": "md"
+        },
+        "Large": {
+          "size": "lg"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Button",
+      "figmaComponent": "Button",
+      "figmaProperty": "State",
+      "props": [
+        "disabled",
+        "loading"
+      ],
+      "values": {
+        "Default": {
+          "disabled": false,
+          "loading": false
+        },
+        "Disabled": {
+          "disabled": true,
+          "loading": false
+        },
+        "Loading": {
+          "disabled": false,
+          "loading": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ConfirmDialog",
+      "figmaComponent": "Feedback / ConfirmDialog",
+      "figmaProperty": "Tone",
+      "props": [
+        "danger"
+      ],
+      "values": {
+        "Default": {
+          "danger": false
+        },
+        "Danger": {
+          "danger": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Drawer",
+      "figmaComponent": "Overlay / Drawer",
+      "figmaProperty": "Size",
+      "props": [
+        "size"
+      ],
+      "values": {
+        "Small": {
+          "size": "sm"
+        },
+        "Medium": {
+          "size": "md"
+        },
+        "Large": {
+          "size": "lg"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ImportFlow",
+      "figmaComponent": "Feedback / ImportFlow",
+      "figmaProperty": "Status",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Ready": {
+          "status": "ready"
+        },
+        "Processing": {
+          "status": "processing"
+        },
+        "Success": {
+          "status": "success"
+        },
+        "Error": {
+          "status": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Input",
+      "figmaComponent": "Input",
+      "figmaProperty": "State",
+      "props": [
+        "status",
+        "disabled"
+      ],
+      "values": {
+        "Default": {
+          "status": "default",
+          "disabled": false
+        },
+        "Error": {
+          "status": "error",
+          "disabled": false
+        },
+        "Disabled": {
+          "status": "default",
+          "disabled": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Textarea",
+      "figmaComponent": "Textarea",
+      "figmaProperty": "State",
+      "props": [
+        "status",
+        "disabled"
+      ],
+      "values": {
+        "Default": {
+          "status": "default",
+          "disabled": false
+        },
+        "Error": {
+          "status": "error",
+          "disabled": false
+        },
+        "Disabled": {
+          "status": "default",
+          "disabled": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Select",
+      "figmaComponent": "Select",
+      "figmaProperty": "State",
+      "props": [
+        "status",
+        "disabled"
+      ],
+      "values": {
+        "Default": {
+          "status": "default",
+          "disabled": false
+        },
+        "Error": {
+          "status": "error",
+          "disabled": false
+        },
+        "Disabled": {
+          "status": "default",
+          "disabled": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DatePicker",
+      "figmaComponent": "Input / DatePicker",
+      "figmaProperty": "Mode",
+      "props": [
+        "mode"
+      ],
+      "values": {
+        "Date": {
+          "mode": "date"
+        },
+        "Datetime": {
+          "mode": "datetime"
+        },
+        "Time": {
+          "mode": "time"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DatePicker",
+      "figmaComponent": "Input / DatePicker",
+      "figmaProperty": "State",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Default": {
+          "status": "default"
+        },
+        "Error": {
+          "status": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "RangePicker",
+      "figmaComponent": "Input / RangePicker",
+      "figmaProperty": "Mode",
+      "props": [
+        "mode"
+      ],
+      "values": {
+        "Date": {
+          "mode": "date"
+        },
+        "Datetime": {
+          "mode": "datetime"
+        },
+        "Time": {
+          "mode": "time"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "RangePicker",
+      "figmaComponent": "Input / RangePicker",
+      "figmaProperty": "State",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Default": {
+          "status": "default"
+        },
+        "Error": {
+          "status": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "RadioGroup",
+      "figmaComponent": "Choice / RadioGroup",
+      "figmaProperty": "Layout",
+      "props": [
+        "layout"
+      ],
+      "values": {
+        "Horizontal": {
+          "layout": "horizontal"
+        },
+        "Vertical": {
+          "layout": "vertical"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "RadioGroup",
+      "figmaComponent": "Choice / RadioGroup",
+      "figmaProperty": "State",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Default": {
+          "status": "default"
+        },
+        "Error": {
+          "status": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "CheckboxGroup",
+      "figmaComponent": "Choice / CheckboxGroup",
+      "figmaProperty": "Layout",
+      "props": [
+        "layout"
+      ],
+      "values": {
+        "Horizontal": {
+          "layout": "horizontal"
+        },
+        "Vertical": {
+          "layout": "vertical"
+        },
+        "Grid": {
+          "layout": "grid"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "CheckboxGroup",
+      "figmaComponent": "Choice / CheckboxGroup",
+      "figmaProperty": "State",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Default": {
+          "status": "default"
+        },
+        "Error": {
+          "status": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Switch",
+      "figmaComponent": "Choice / Switch",
+      "figmaProperty": "State",
+      "props": [
+        "checked",
+        "loading"
+      ],
+      "values": {
+        "Off": {
+          "checked": false,
+          "loading": false
+        },
+        "On": {
+          "checked": true,
+          "loading": false
+        },
+        "Loading": {
+          "checked": false,
+          "loading": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Upload",
+      "figmaComponent": "Input / Upload",
+      "figmaProperty": "Type",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Button": {
+          "variant": "button"
+        },
+        "Drag": {
+          "variant": "drag"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Upload",
+      "figmaComponent": "Input / Upload",
+      "figmaProperty": "State",
+      "props": [
+        "status",
+        "disabled"
+      ],
+      "values": {
+        "Default": {
+          "status": "default",
+          "disabled": false
+        },
+        "Error": {
+          "status": "error",
+          "disabled": false
+        },
+        "Disabled": {
+          "status": "default",
+          "disabled": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "TreeSelect",
+      "figmaComponent": "Input / TreeSelect",
+      "figmaProperty": "Selection",
+      "props": [
+        "selectionMode"
+      ],
+      "values": {
+        "Single": {
+          "selectionMode": "single"
+        },
+        "Multiple": {
+          "selectionMode": "multiple"
+        },
+        "Checkbox": {
+          "selectionMode": "checkbox"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "TreeSelect",
+      "figmaComponent": "Input / TreeSelect",
+      "figmaProperty": "State",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Default": {
+          "status": "default"
+        },
+        "Error": {
+          "status": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Card",
+      "figmaComponent": "Card",
+      "figmaProperty": "Type",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Default": {
+          "variant": "default"
+        },
+        "Ghost": {
+          "variant": "ghost"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Badge",
+      "figmaComponent": "Badge",
+      "figmaProperty": "Variant",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Primary": {
+          "variant": "primary"
+        },
+        "Secondary": {
+          "variant": "secondary"
+        },
+        "Success": {
+          "variant": "success"
+        },
+        "Warning": {
+          "variant": "warning"
+        },
+        "Danger": {
+          "variant": "danger"
+        },
+        "Info": {
+          "variant": "info"
+        },
+        "Processing": {
+          "variant": "processing"
+        },
+        "Geekblue": {
+          "variant": "geekblue"
+        },
+        "Cyan": {
+          "variant": "cyan"
+        },
+        "Purple": {
+          "variant": "purple"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Badge",
+      "figmaComponent": "Badge",
+      "figmaProperty": "Appearance",
+      "props": [
+        "appearance"
+      ],
+      "values": {
+        "Solid": {
+          "appearance": "solid"
+        },
+        "Soft": {
+          "appearance": "soft"
+        },
+        "Outline": {
+          "appearance": "outline"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Tabs",
+      "figmaComponent": "Tabs",
+      "figmaProperty": "Type",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Line": {
+          "variant": "line"
+        },
+        "Card": {
+          "variant": "card"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "SideNav",
+      "figmaComponent": "SideNav",
+      "figmaProperty": "State",
+      "props": [
+        "activeKey"
+      ],
+      "values": {
+        "Default": {},
+        "Active": {
+          "activeKey": "activeKey"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ThemeToggle",
+      "figmaComponent": "ThemeToggle",
+      "figmaProperty": "Theme",
+      "props": [
+        "value"
+      ],
+      "values": {
+        "Vivid": {
+          "value": "vivid"
+        },
+        "Calm": {
+          "value": "calm"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "AppShell",
+      "figmaComponent": "AppShell",
+      "figmaProperty": "NavState",
+      "props": [
+        "collapsed"
+      ],
+      "values": {
+        "Expanded": {
+          "collapsed": false
+        },
+        "Collapsed": {
+          "collapsed": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "PageLayout",
+      "figmaComponent": "PageLayout",
+      "figmaProperty": "Density",
+      "props": [
+        "density"
+      ],
+      "values": {
+        "Compact": {
+          "density": "compact"
+        },
+        "Standard": {
+          "density": "standard"
+        },
+        "Loose": {
+          "density": "loose"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "PageHeader",
+      "figmaComponent": "PageHeader",
+      "figmaProperty": "Type",
+      "props": [
+        "tabs"
+      ],
+      "values": {
+        "Default": {
+          "tabs": null
+        },
+        "WithTabs": {
+          "tabs": "tabs"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "FilterPanel",
+      "figmaComponent": "FilterPanel",
+      "figmaProperty": "Layout",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Inline": {
+          "variant": "inline"
+        },
+        "Grid": {
+          "variant": "grid"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DataSection",
+      "figmaComponent": "Data / DataSection",
+      "figmaProperty": "Density",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Default": {
+          "variant": "default"
+        },
+        "Dense": {
+          "variant": "dense"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DataSection",
+      "figmaComponent": "Data / DataSection",
+      "figmaProperty": "State",
+      "props": [
+        "loading",
+        "empty"
+      ],
+      "values": {
+        "Default": {
+          "loading": false
+        },
+        "Loading": {
+          "loading": true
+        },
+        "Empty": {
+          "loading": false,
+          "empty": "empty"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "BulkActionBar",
+      "figmaComponent": "Data / BulkActionBar",
+      "figmaProperty": "State",
+      "props": [
+        "selectedCount"
+      ],
+      "values": {
+        "Hidden": {
+          "selectedCount": 0
+        },
+        "Visible": {
+          "selectedCount": 1
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "FormSection",
+      "figmaComponent": "FormSection",
+      "figmaProperty": "Type",
+      "props": [
+        "description"
+      ],
+      "values": {
+        "Default": {
+          "description": null
+        },
+        "WithDescription": {
+          "description": "description"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "MetricCard",
+      "figmaComponent": "MetricCard",
+      "figmaProperty": "Size",
+      "props": [
+        "variant"
+      ],
+      "values": {
+        "Default": {
+          "variant": "default"
+        },
+        "Compact": {
+          "variant": "compact"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "MetricCard",
+      "figmaComponent": "MetricCard",
+      "figmaProperty": "Trend",
+      "props": [
+        "trend"
+      ],
+      "values": {
+        "Up": {
+          "trend": "up"
+        },
+        "Down": {
+          "trend": "down"
+        },
+        "Flat": {
+          "trend": "flat"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ChartFrame",
+      "figmaComponent": "Visualization / ChartFrame",
+      "figmaProperty": "State",
+      "props": [
+        "state"
+      ],
+      "values": {
+        "Ready": {
+          "state": "ready"
+        },
+        "Loading": {
+          "state": "loading"
+        },
+        "Empty": {
+          "state": "empty"
+        },
+        "Error": {
+          "state": "error"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ChartFrame",
+      "figmaComponent": "Visualization / ChartFrame",
+      "figmaProperty": "Size",
+      "props": [
+        "size"
+      ],
+      "values": {
+        "Small": {
+          "size": "sm"
+        },
+        "Medium": {
+          "size": "md"
+        },
+        "Large": {
+          "size": "lg"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "TrendChart",
+      "figmaComponent": "Visualization / TrendChart",
+      "figmaProperty": "Curve",
+      "props": [
+        "curve"
+      ],
+      "values": {
+        "Linear": {
+          "curve": "linear"
+        },
+        "Smooth": {
+          "curve": "smooth"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "TrendChart",
+      "figmaComponent": "Visualization / TrendChart",
+      "figmaProperty": "Area",
+      "props": [
+        "area"
+      ],
+      "values": {
+        "Off": {
+          "area": false
+        },
+        "On": {
+          "area": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "BarChart",
+      "figmaComponent": "Visualization / BarChart",
+      "figmaProperty": "Orientation",
+      "props": [
+        "orientation"
+      ],
+      "values": {
+        "Vertical": {
+          "orientation": "vertical"
+        },
+        "Horizontal": {
+          "orientation": "horizontal"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DonutChart",
+      "figmaComponent": "Visualization / DonutChart",
+      "figmaProperty": "Legend",
+      "props": [
+        "legendPosition"
+      ],
+      "values": {
+        "Bottom": {
+          "legendPosition": "bottom"
+        },
+        "Right": {
+          "legendPosition": "right"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "GaugeChart",
+      "figmaComponent": "Visualization / GaugeChart",
+      "figmaProperty": "Band",
+      "props": [
+        "bands"
+      ],
+      "values": {
+        "Default": {}
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DetailHeader",
+      "figmaComponent": "DetailHeader",
+      "figmaProperty": "Type",
+      "props": [
+        "status"
+      ],
+      "values": {
+        "Default": {
+          "status": null
+        },
+        "WithStatus": {
+          "status": "status"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DescriptionGrid",
+      "figmaComponent": "DescriptionGrid",
+      "figmaProperty": "Columns",
+      "props": [
+        "columns"
+      ],
+      "values": {
+        "Two": {
+          "columns": 2
+        },
+        "Three": {
+          "columns": 3
+        },
+        "Four": {
+          "columns": 4
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DataGrid",
+      "figmaComponent": "Data / Table",
+      "figmaProperty": "Density",
+      "props": [
+        "density"
+      ],
+      "values": {
+        "Default": {
+          "density": "default"
+        },
+        "Compact": {
+          "density": "compact"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DataGrid",
+      "figmaComponent": "Data / Table",
+      "figmaProperty": "Selectable",
+      "props": [
+        "rowSelection"
+      ],
+      "values": {
+        "Off": {
+          "rowSelection": false
+        },
+        "On": {
+          "rowSelection": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Pagination",
+      "figmaComponent": "Pagination",
+      "figmaProperty": "State",
+      "props": [
+        "disabled"
+      ],
+      "values": {
+        "Default": {
+          "disabled": false
+        },
+        "Disabled": {
+          "disabled": true
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Table",
+      "figmaComponent": "Table",
+      "figmaProperty": "Density",
+      "props": [
+        "density"
+      ],
+      "values": {
+        "Default": {
+          "density": "default"
+        },
+        "Compact": {
+          "density": "compact"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Stepper",
+      "figmaComponent": "Stepper",
+      "figmaProperty": "State",
+      "props": [
+        "currentKey"
+      ],
+      "values": {
+        "Active": {
+          "currentKey": "currentKey"
+        }
+      },
+      "nodeId": null,
+      "source": "components.manifest.json"
+    }
+  ]
+}

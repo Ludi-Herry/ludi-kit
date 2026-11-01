@@ -1,0 +1,955 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-device-ops",
+  "pages": [
+    {
+      "id": "device-list",
+      "route": "/devices",
+      "title": "设备生命周期 · 全部设备",
+      "pattern": "list-page",
+      "flowIds": [
+        "device-inspection"
+      ],
+      "flowCard": {
+        "entry": "SideNav > 设备生命周期 > 全部设备；全局搜索 SN",
+        "previousPages": [],
+        "nextPages": [
+          "/devices/:sn",
+          "/alerts"
+        ],
+        "userGoal": "在一张表里找到需要处理的那台设备，一眼看出轻重缓急。",
+        "businessState": "设备为信息锚点；生命周期状态与在网状态分开显示。"
+      },
+      "intentCard": {
+        "pageGoal": "按角色默认视角浏览全部设备，用阶段、状态和筛选快速收窄到目标设备。",
+        "firstViewport": [
+          "页面标题与视图切换",
+          "阶段分布条",
+          "筛选区（5 常驻 + 6 收纳）",
+          "设备表格"
+        ],
+        "primaryAction": "查询",
+        "secondaryActions": [
+          "保存为我的视图",
+          "导出当前结果",
+          "重置筛选",
+          "列设置"
+        ],
+        "successCriteria": [
+          "常驻筛选恰好 5 个，收纳筛选恰好 6 个。",
+          "刷新后普通条件保留，绑定手机号清空。",
+          "空态区分无数据与筛选无结果；加载、失败重试、无导出权限均有处理。",
+          "批量选中后底部浮出已选操作条。",
+          "2026-09-29 依据复核报告：阶段条计数按当前视图与已生效筛选重算，互斥阶段置灰显示 0；阶段选择随我的视图保存。",
+          "2026-09-29 依据复核报告：默认视图在视图名旁标“默认”；操作列平铺不设更多菜单；默认排序列（未处理告警）在所有宽度可见；0 显示 0。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "Tabs",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "RangePicker",
+        "BulkActionBar",
+        "ConfirmDialog"
+      ],
+      "dataRequirements": [
+        "Device",
+        "AlertRecord"
+      ],
+      "layoutTree": [
+        "PageHeader + 视图切换",
+        "阶段分布条",
+        "筛选区",
+        "工具栏 + Table",
+        "底部选中操作条"
+      ]
+    },
+    {
+      "id": "device-detail",
+      "route": "/devices/:sn",
+      "title": "设备详情",
+      "pattern": "detail-page",
+      "flowIds": [
+        "device-inspection",
+        "alert-closure"
+      ],
+      "flowCard": {
+        "entry": "全部设备点 SN；告警处置查看受影响设备；全局搜索 SN",
+        "previousPages": [
+          "/devices",
+          "/alerts"
+        ],
+        "nextPages": [
+          "/alerts",
+          "/lifecycle/passport"
+        ],
+        "userGoal": "打开一台设备就能判断它现在好不好、问题在哪、下一步找谁。",
+        "businessState": "已出货设备可发起 RMA，发起后状态进入退货 RMA。"
+      },
+      "intentCard": {
+        "pageGoal": "22 个核心字段支撑日常判断，其余 46 个按需展开，异常时浮到顶部。",
+        "firstViewport": [
+          "标题区（SN、机型、批次、生命周期、在网）",
+          "异常横幅（有未处理告警时）",
+          "四组核心字段"
+        ],
+        "primaryAction": "去告警处置（有未处理告警时）；发起 RMA 降为次按钮",
+        "secondaryActions": [
+          "发起 RMA",
+          "导出护照 PDF",
+          "复制 SN"
+        ],
+        "successCriteria": [
+          "常驻恰好 22 个、折叠恰好 46 个，关键字段不截断。",
+          "有未处理告警时顶部横幅出现并可跳告警处置，无告警不占位。",
+          "未出货设备的运行组显示横线并说明。",
+          "SN 不存在时页内空态；发起 RMA 需二次确认。",
+          "2026-09-29 依据复核报告：异常横幅统一 warning 且级别写进文字；补骨架屏加载与失败重试；从告警页进入时返回回到告警页。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "DetailHeader",
+        "DescriptionGrid",
+        "Tabs",
+        "Badge",
+        "Button",
+        "ConfirmDialog",
+        "Select",
+        "Textarea",
+        "ForbiddenState"
+      ],
+      "dataRequirements": [
+        "Device",
+        "AlertRecord",
+        "FoldedFieldGroup"
+      ],
+      "layoutTree": [
+        "PageHeader",
+        "Alert 横幅",
+        "核心字段（4 组 Descriptions）",
+        "折叠区 Tabs（6 组）"
+      ]
+    },
+    {
+      "id": "alerts",
+      "route": "/alerts",
+      "title": "异常处置 · 告警处置",
+      "pattern": "list-page",
+      "flowIds": [
+        "alert-closure"
+      ],
+      "flowCard": {
+        "entry": "SideNav > 异常处置 > 告警处置；设备详情异常横幅（带入 SN）",
+        "previousPages": [
+          "/devices/:sn"
+        ],
+        "nextPages": [
+          "/exceptions/feedback",
+          "/devices",
+          "/devices/:sn"
+        ],
+        "userGoal": "先处理最要紧的告警，看懂影响，一步转成工单或处理掉。",
+        "businessState": "告警状态：待处理、处理中、已转工单、已处理、已静默；级别 P1/P2/P3 不占状态色。"
+      },
+      "intentCard": {
+        "pageGoal": "按状态分栏处理告警，每条告警用三段式说明，直接转工单。",
+        "firstViewport": [
+          "页面标题",
+          "状态分栏（带计数）与筛选",
+          "左侧告警列表",
+          "右侧告警详情"
+        ],
+        "primaryAction": "转工单",
+        "secondaryActions": [
+          "指派",
+          "标记已处理（必填结论，可重新打开）",
+          "静默 24 小时"
+        ],
+        "successCriteria": [
+          "每条告警详情都有发生了什么、影响、下一步三段。",
+          "转工单后状态、计数、工单号同步变化。",
+          "查看受影响设备跳到全部设备并带上筛选条件。",
+          "静默需二次确认；无权限时按钮置灰带提示；已处理与已静默的告警不再出现修改操作。",
+          "2026-09-29 依据复核报告：标记已处理必填处理结论并写入处置记录，详情有处置时间线，已处理告警可重新打开。",
+          "2026-09-29 依据复核报告：下一步每条带行内动作；处理后留在当前分栏并自动选中下一条，提示附查看链接；转工单预填发生了什么、影响、建议处理三段。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "Tabs",
+        "FilterPanel",
+        "DataSection",
+        "Badge",
+        "Button",
+        "ConfirmDialog",
+        "Select",
+        "Input",
+        "Textarea"
+      ],
+      "dataRequirements": [
+        "AlertRecord",
+        "Staff"
+      ],
+      "layoutTree": [
+        "PageHeader",
+        "状态 Tabs + 筛选",
+        "左列表 + 右详情（三段式）"
+      ]
+    },
+    {
+      "id": "dashboard",
+      "route": "/dashboard",
+      "title": "工作台 · 个人首页",
+      "pattern": "dashboard-page",
+      "flowIds": [
+        "workbench-to-ticket"
+      ],
+      "flowCard": {
+        "entry": "登录后默认落地页（壳层 / 重定向）；侧栏 工作台 > 工作台；品牌 Logo 点击回本页；未开放页兜底「返回工作台」。",
+        "previousPages": [],
+        "nextPages": [
+          "/alerts",
+          "/exceptions/rma",
+          "/system/firmware",
+          "/lifecycle/passport"
+        ],
+        "userGoal": "每天第一屏，一眼看到四任务中心里今天要处理的待办与告警，点卡片直达目标模块列表。",
+        "businessState": "卡片计数与目标列表同源同口径；布局个性化存内存 store，刷新复原。"
+      },
+      "intentCard": {
+        "pageGoal": "按角色默认卡片集 + 模块查看权限 + 个性化配置渲染卡片看板。",
+        "firstViewport": [
+          "页面标题",
+          "全局操作行（时间范围 / 刷新全部 / 编辑布局）",
+          "卡片栅格（每卡独立加载）"
+        ],
+        "primaryAction": "常态无主按钮；编辑态下「添加卡片」为唯一主按钮",
+        "secondaryActions": [
+          "编辑布局",
+          "设为全平台默认（仅管理员，当前账号不可见）",
+          "刷新全部",
+          "时间范围"
+        ],
+        "successCriteria": [
+          "「离线告警」卡角标数字 = 告警待处理条数，点击跳转 /alerts?status=open 行数一致（同源口径）。",
+          "编辑态移除卡片出现带「撤销」的轻提示，撤销后恢复原位置。",
+          "注入单卡失败后该卡显示「加载失败，点击重试」且其余卡片不受阻塞。",
+          "时间范围默认「今日」，页头可见「上次刷新时间」。",
+          "2026-09-29 依据批 1 页面卡：默认卡片集为批 1 五张卡 + 统计卡「今日新激活」；广告/内容/平台域与未开通模块卡片不进卡片库；「设为全平台默认」对当前账号（非管理员）不显示。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "Card",
+        "MetricCard",
+        "Badge",
+        "Button",
+        "CheckboxGroup",
+        "Drawer",
+        "RadioGroup"
+      ],
+      "dataRequirements": [
+        "DashboardCardDef",
+        "DashboardPreferences",
+        "AlertRecord",
+        "RmaRecord",
+        "FirmwareVersion",
+        "PushTask",
+        "Device"
+      ],
+      "layoutTree": [
+        "页面标题",
+        "全局操作行",
+        "卡片栅格（响应式）"
+      ]
+    },
+    {
+      "id": "passport-list",
+      "route": "/lifecycle/passport",
+      "title": "设备生命周期 · 数字护照",
+      "pattern": "list-page",
+      "flowIds": [
+        "device-rma-passport"
+      ],
+      "flowCard": {
+        "entry": "侧栏 设备生命周期 > 数字护照；全部设备操作列「查看护照」（带 from）；客服外链 ?sn= 带入并聚焦 SN 框。",
+        "previousPages": [
+          "/devices"
+        ],
+        "nextPages": [
+          "/lifecycle/passport/:sn"
+        ],
+        "userGoal": "按 SN 或条件查到一台设备的完整履历，管理对外公开范围。",
+        "businessState": "档案只读：无新建，护照记录由各生产环节自动写入。"
+      },
+      "intentCard": {
+        "pageGoal": "档案只读查询列表：10 列字段全取自 PRD，筛选常驻 4 + 收纳 4，批量操作浮出。",
+        "firstViewport": [
+          "页面标题",
+          "筛选区（SN 首位）",
+          "护照表格",
+          "底部批量操作条（选中浮出）"
+        ],
+        "primaryAction": "查询",
+        "secondaryActions": [
+          "重置",
+          "导出护照列表",
+          "刷新",
+          "列设置"
+        ],
+        "successCriteria": [
+          "SN 前缀模糊匹配，重置后恢复出厂日期降序、未出货排最后。",
+          "RMA 次数 0 显示浅色 0，≥1 显示橙色数字。",
+          "混合状态选中时对应批量按钮置灰并提示「选中项中包含不支持此操作的记录」。",
+          "只读视角下单行与批量操作置灰，悬停写明缺的权限点。",
+          "2026-09-29 依据批 1 页面卡：批量关闭公开上调为 C 档对话框（批量 + 对外可见）。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "RangePicker",
+        "BulkActionBar",
+        "ConfirmDialog",
+        "Drawer"
+      ],
+      "dataRequirements": [
+        "Device",
+        "PassportEvent",
+        "PassportPublishConfig"
+      ],
+      "layoutTree": [
+        "页面标题",
+        "筛选区（常驻 + 收纳）",
+        "工具栏 + Table",
+        "底部选中操作条"
+      ]
+    },
+    {
+      "id": "passport-detail",
+      "route": "/lifecycle/passport/:sn",
+      "title": "数字护照详情",
+      "pattern": "detail-page",
+      "flowIds": [
+        "device-rma-passport"
+      ],
+      "flowCard": {
+        "entry": "护照查询列表点 SN / 查看详情；全部设备与设备详情「查看护照」（携带 from）。",
+        "previousPages": [
+          "/lifecycle/passport",
+          "/devices",
+          "/devices/:sn"
+        ],
+        "nextPages": [
+          "/devices/:sn",
+          "/exceptions/rma"
+        ],
+        "userGoal": "确认这台设备经过的每个环节，管理消费者扫码可见的内容。",
+        "businessState": "时间轴是主体；与设备详情分工，不重复 22/46 字段。"
+      },
+      "intentCard": {
+        "pageGoal": "单台设备的全生命周期档案 + 对外公开管理；头部不放 primary，操作区克制。",
+        "firstViewport": [
+          "PageHeader（SN 大字可复制、机型、状态 Tag、证书状态 Tag）",
+          "基本信息卡",
+          "生命周期时间轴（主体）",
+          "对外公开预览区（仅已公开）"
+        ],
+        "primaryAction": "无（本页最高频任务是「查」）",
+        "secondaryActions": [
+          "生成二维码",
+          "设置公开范围",
+          "导出护照 PDF",
+          "发起 RMA（仅 shipped）",
+          "查看设备详情（文字链）"
+        ],
+        "successCriteria": [
+          "时间轴节点按时间倒序，收货入场为最早节点；事件类型过滤后仅对应节点可见。",
+          "关闭「公开生命周期时间轴」后「公开 RMA 售后历史」自动置灰且为关；保存后列表「是否对外公开」列联动更新。",
+          "未公开设备打开二维码弹窗显示警告条「该设备护照尚未对外公开，扫码将显示 404」。",
+          "SN 不存在时页内空态 + 返回护照查询 / 全部设备。",
+          "2026-09-29 依据批 1 页面卡：时间轴「激活」节点沿用出货阶段色 geekblue；导出护照 PDF 复用 production:passport:export；客服嵌入 Drawer、App 绑定、审计日志入口不做也不放置灰按钮。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "DetailHeader",
+        "DescriptionGrid",
+        "Badge",
+        "Button",
+        "ConfirmDialog",
+        "Drawer",
+        "Switch",
+        "Textarea"
+      ],
+      "dataRequirements": [
+        "Device",
+        "PassportEvent",
+        "PassportPublishConfig",
+        "RmaRecord"
+      ],
+      "layoutTree": [
+        "PageHeader + 操作区",
+        "基本信息卡",
+        "生命周期时间轴（事件类型过滤）",
+        "对外公开预览区"
+      ]
+    },
+    {
+      "id": "rma",
+      "route": "/exceptions/rma",
+      "title": "异常处置 · 退货 RMA",
+      "pattern": "list-page",
+      "flowIds": [
+        "device-rma-passport"
+      ],
+      "flowCard": {
+        "entry": "侧栏 异常处置 > 退货 RMA；设备详情「发起 RMA」成功提示中「查看 RMA 单」链接（?sn= 带入）；全局搜索 RMA 单号直达。",
+        "previousPages": [
+          "/devices/:sn"
+        ],
+        "nextPages": [
+          "/devices/:sn",
+          "/lifecycle/passport/:sn"
+        ],
+        "userGoal": "接住售后的每一台退回设备，从到件、检测到裁决，把设备状态流转到正确去向。",
+        "businessState": "状态机驱动单行操作显隐；裁决一步到位并自动关闭单据。"
+      },
+      "intentCard": {
+        "pageGoal": "把每条 RMA 单的到件、检测、裁决进度放在一张表里，单行操作由状态机驱动。",
+        "firstViewport": [
+          "页头（标题 + 新建/导出/刷新/列设置）",
+          "筛选区",
+          "表格",
+          "批量操作条（选中浮出）"
+        ],
+        "primaryAction": "新建 RMA 单（页头）；查询（筛选区）",
+        "secondaryActions": [
+          "重置",
+          "导出",
+          "刷新",
+          "列设置"
+        ],
+        "successCriteria": [
+          "设备详情发起成功后「查看 RMA 单」落 /exceptions/rma?sn=…，列表出现该 SN 新行，到件状态「待到件」。",
+          "「已到件-待检」单录入检测提交后行内状态变「已检测」，单行「返修」可点、其余裁决互斥置灰。",
+          "报废裁决需必填裁决说明，确认后设备状态 Tag 变「报废」，操作列只剩查看与导出报废凭证。",
+          "只读视角下新建/录入检测/裁决/批量关闭置灰并写明权限点。",
+          "2026-09-29 依据批 1 页面卡：按正式启用状态做（无灰度徽标与提示条）；「确认到件」挂 production:rma:inspect，B 档；「检测中」在提交检测后才流转，取消不改变状态；RMA 单号格式 RMA-YYYYMMDD-NNNNNN。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "RangePicker",
+        "BulkActionBar",
+        "ConfirmDialog",
+        "Drawer",
+        "FormSection",
+        "Upload"
+      ],
+      "dataRequirements": [
+        "RmaRecord",
+        "Device"
+      ],
+      "layoutTree": [
+        "页头",
+        "筛选区（常驻 + 收纳）",
+        "表格 + 分页",
+        "底部选中操作条",
+        "详情抽屉 / 检测抽屉 / 弹窗"
+      ]
+    },
+    {
+      "id": "firmware",
+      "route": "/system/firmware",
+      "title": "系统配置 · 固件与推送",
+      "pattern": "list-page",
+      "flowIds": [],
+      "flowCard": {
+        "entry": "侧栏 系统配置 > 固件与推送；工作台「待灰度版本」「推送任务已熔断」卡；告警 AL-0927-004 对象文案链接；全局搜索版本号 / 任务名。",
+        "previousPages": [
+          "/dashboard",
+          "/alerts",
+          "/devices/:sn"
+        ],
+        "nextPages": [
+          "/system/firmware/new",
+          "/devices/:sn"
+        ],
+        "userGoal": "看清每个固件版本推到了哪里、推得顺不顺，出问题能一步停住。",
+        "businessState": "双 Tab（?tab=version / ?tab=push-task）筛选互不干扰；版本的灰度中 / 已全量只由推送任务驱动。"
+      },
+      "intentCard": {
+        "pageGoal": "Tab 一管版本从草稿到全量的生命周期，Tab 二管一次定向下发的执行过程。",
+        "firstViewport": [
+          "页面标题 + Tab",
+          "筛选区（常驻 4 + 收纳）",
+          "工具栏 + 表格"
+        ],
+        "primaryAction": "Tab 一「新建固件版本」，Tab 二「新建推送任务」",
+        "secondaryActions": [
+          "导出",
+          "刷新",
+          "列设置"
+        ],
+        "successCriteria": [
+          "打开落地 Tab 一且 URL 为 ?tab=version；切换与刷新后停留原 Tab，两 Tab 筛选各自保留。",
+          "灰度中行灰度比例渲染进度条，已全量 / 已停用行同列为「—」。",
+          "对已全量版本回滚：Modal 显示影响设备数，确认后版本变「已回滚」且 Tab 二出现比例 100% 的新任务。",
+          "任务详情抽屉：执行中只显「暂停」，已暂停只显「恢复」，已熔断无恢复入口。",
+          "2026-09-29 依据批 1 页面卡：告警 AL-0927-004 对象文案链接到推送任务详情；逐台结果 SN 链接进设备详情并返回回任务详情；失败清单旁不加新建推送快捷入口；固件版本表单页（新建 / 编辑）本批做。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "Tabs",
+        "FilterPanel",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "RangePicker",
+        "BulkActionBar",
+        "ConfirmDialog",
+        "Drawer"
+      ],
+      "dataRequirements": [
+        "FirmwareVersion",
+        "PushTask",
+        "PushDeviceResult",
+        "Device"
+      ],
+      "layoutTree": [
+        "页面标题 + Tabs",
+        "筛选区",
+        "工具栏 + Table",
+        "版本详情抽屉（880px）/ 任务详情抽屉（960px）/ 新建任务抽屉（640px）"
+      ]
+    },
+    {
+      "id": "firmware-form",
+      "route": "/system/firmware/new",
+      "title": "固件版本表单",
+      "pattern": "form-page",
+      "flowIds": [],
+      "flowCard": {
+        "entry": "固件与推送 Tab 一「新建固件版本」；仅草稿版本的行内「编辑」（/system/firmware/:id/edit）。",
+        "previousPages": [
+          "/system/firmware"
+        ],
+        "nextPages": [
+          "/system/firmware"
+        ],
+        "userGoal": "登记一个固件版本的基本信息、固件包与变更记录，提交测试或保存草稿。",
+        "businessState": "仅草稿可编辑；编辑态下固件版本号只读。"
+      },
+      "intentCard": {
+        "pageGoal": "作为表单样本：基本信息 + 固件包与签名 + 变更记录三段，校验规则取自 PRD。",
+        "firstViewport": [
+          "页面标题",
+          "基本信息",
+          "固件包与签名",
+          "变更记录",
+          "底部操作"
+        ],
+        "primaryAction": "提交测试",
+        "secondaryActions": [
+          "保存草稿",
+          "取消（B 气泡确认）"
+        ],
+        "successCriteria": [
+          "固件版本号按正则校验且编辑态只读；机型 1–5 个。",
+          "固件包上传后 MD5 自动回填只读；手动签名时签名文件联动必填。",
+          "变更日志必填 10–5000 字，禁纯空白。",
+          "取消走 B 档气泡确认（放弃未保存内容）。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FormSection",
+        "Input",
+        "Textarea",
+        "Select",
+        "Upload",
+        "Button",
+        "ConfirmDialog"
+      ],
+      "dataRequirements": [
+        "FirmwareVersion"
+      ],
+      "layoutTree": [
+        "页面标题",
+        "基本信息",
+        "固件包与签名",
+        "变更记录",
+        "底部操作"
+      ]
+    },
+    {
+      "id": "flashing",
+      "route": "/lifecycle/flashing",
+      "title": "设备生命周期 · 烧录发证",
+      "pattern": "list-page",
+      "flowIds": [],
+      "flowCard": {
+        "entry": "侧栏 设备生命周期 > 烧录发证；全局搜索 SN；工作台「待烧录发证」卡片（?status=flashing,flash_failed 预置筛选）。",
+        "previousPages": [
+          "/dashboard"
+        ],
+        "nextPages": [
+          "/lifecycle/flashing/new",
+          "/devices/:sn",
+          "/devices"
+        ],
+        "userGoal": "产线操作员盯住每台待烧录设备的进度与失败处置，把烧完的设备及时移交测试，把失败设备重试或报废。",
+        "businessState": "行内操作显隐由 flashing / flash_failed 与重试次数推导（PRD §四状态机唯一来源）；处置回写共享 Device.lifecycle 与 cert。"
+      },
+      "intentCard": {
+        "pageGoal": "一张表看全量烧录记录，状态驱动的行内处置一步完成，新建任务两步走完。",
+        "firstViewport": [
+          "页面标题与工具栏（新建烧录任务 / 导出 / 刷新 / 列设置）",
+          "筛选区（常驻 5 + 收纳 6）",
+          "烧录记录表格"
+        ],
+        "primaryAction": "新建烧录任务（页头）；查询（筛选区）",
+        "secondaryActions": [
+          "导出",
+          "刷新",
+          "列设置",
+          "重置"
+        ],
+        "successCriteria": [
+          "常驻筛选恰好 5 个、收纳恰好 6 个；设备状态列含烧录·发证（蓝）与烧录失败（红），证书状态列含未签发（灰）/ 签发成功（绿）/ 签发失败（红）。",
+          "重试未超限行走 B 档气泡（写明 SN 与已重试次数），确认后状态变烧录·发证且重试次数 +1，全部设备页同 SN 同步。",
+          "重试达上限行走 C 档强确认（手动输入「确认报废」），确认后行变报废，操作列只剩查看详情。",
+          "标记成功（→测试中）B 档气泡；标记失败打开原因登记抽屉（分类、描述必填，照片 ≤3 张）。",
+          "2026-09-29 依据批 2 页面卡：只读视角下新建、导出、行内与批量操作全部置灰并写明权限点；列表错误区块内重试。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "RangePicker",
+        "BulkActionBar",
+        "Drawer",
+        "ConfirmDialog"
+      ],
+      "dataRequirements": [
+        "FlashingRecord",
+        "FlashingTask",
+        "Device"
+      ],
+      "layoutTree": [
+        "页头",
+        "筛选区（常驻 + 收纳）",
+        "工具栏 + 表格",
+        "底部选中操作条",
+        "详情抽屉 / 失败登记抽屉 / 确认弹窗"
+      ]
+    },
+    {
+      "id": "flashing-form",
+      "route": "/lifecycle/flashing/new",
+      "title": "新建烧录任务",
+      "pattern": "form-page",
+      "flowIds": [],
+      "flowCard": {
+        "entry": "烧录发证页页头「新建烧录任务」。",
+        "previousPages": [
+          "/lifecycle/flashing"
+        ],
+        "nextPages": [
+          "/lifecycle/flashing"
+        ],
+        "userGoal": "两步登记一次烧录任务：基础配置，再圈定设备范围，提交前预览确认。",
+        "businessState": "取消或提交成功回到列表并保留原筛选；新记录以进行中 / 烧录·发证出现。"
+      },
+      "intentCard": {
+        "pageGoal": "两步分步表单样本：机型联动固件版本，批次联动可烧录设备数，C 档预览确认提交。",
+        "firstViewport": [
+          "页面标题",
+          "分步条",
+          "当前步表单",
+          "底部操作"
+        ],
+        "primaryAction": "下一步 / 提交",
+        "secondaryActions": [
+          "上一步",
+          "取消"
+        ],
+        "successCriteria": [
+          "未选机型时固件版本禁用并提示「请先选择机型」；关闭证书签发显示业务警告。",
+          "选择方式切换清空下方字段；选对批次后出现可烧录设备数；SN 列表校验失败回显错误行号。",
+          "提交前预览弹窗列出任务名称、工位、设备数、重试上限与是否签发证书；确认后回列表且新记录出现。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "Stepper",
+        "FormSection",
+        "Input",
+        "Select",
+        "RadioGroup",
+        "Switch",
+        "Button",
+        "ConfirmDialog"
+      ],
+      "dataRequirements": [
+        "FlashingTask",
+        "Device"
+      ],
+      "layoutTree": [
+        "页面标题",
+        "分步条",
+        "第一步 基础配置",
+        "第二步 设备范围",
+        "预览确认弹窗"
+      ]
+    },
+    {
+      "id": "feedback",
+      "route": "/exceptions/feedback",
+      "title": "异常处置 · 客户反馈",
+      "pattern": "list-page",
+      "flowIds": [
+        "alert-ticket-feedback"
+      ],
+      "flowCard": {
+        "entry": "侧栏 异常处置 > 客户反馈；告警页转工单后的工单号链接（?ticket= 直达详情抽屉）；设备详情「未关闭工单数 / 最近工单编号」；工作台「SLA 超时 / 待受理」卡片；全局搜索反馈编号。",
+        "previousPages": [
+          "/alerts",
+          "/dashboard",
+          "/devices/:sn"
+        ],
+        "nextPages": [
+          "/devices/:sn",
+          "/exceptions/rma",
+          "/alerts"
+        ],
+        "userGoal": "接手每一条用户反馈工单，按 SLA 排出先后，处置流转到闭环。",
+        "businessState": "状态 Tab + SLA 优先序；SLA 以 NOW_LABEL 为固定基准计时，无删除，误建走驳回。"
+      },
+      "intentCard": {
+        "pageGoal": "按状态分组（Tab）+ SLA 优先序处理工单，抽屉内看全上下文并完成受理、回复、指派、驳回、关闭。",
+        "firstViewport": [
+          "页面标题与全局操作",
+          "状态 Tab（带计数）",
+          "筛选区（常驻 5 + 收纳 5）",
+          "工单表格（默认 SLA 剩余升序）"
+        ],
+        "primaryAction": "客服代录工单（页头）",
+        "secondaryActions": [
+          "导出",
+          "刷新",
+          "列设置",
+          "批量指派"
+        ],
+        "successCriteria": [
+          "告警页工单号链接落 ?ticket= 并直接打开对应详情抽屉，抽屉可见「关联告警」，返回回到告警页原分栏与选中项。",
+          "受理后状态变处理中，受理人与受理时间出现，Tab 计数同步增减。",
+          "筛选 SLA=已超时时顶部出现 warning 横幅并已超时行标底；待受理卡计数与预置筛选行数一致。",
+          "回复用户 B 档气泡（发送后不可撤回，推送用户 App 消息）；驳回 C 档必填原因（5–200 字，写入回复历史）；关闭后不可再变更。",
+          "2026-09-29 依据批 2 页面卡：联系方式恒脱敏（无敏感查看入口）；只读视角全部操作置灰写明权限点。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "Tabs",
+        "FilterPanel",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "RangePicker",
+        "BulkActionBar",
+        "Drawer",
+        "ConfirmDialog"
+      ],
+      "dataRequirements": [
+        "FeedbackTicket",
+        "AlertRecord",
+        "Device"
+      ],
+      "layoutTree": [
+        "页头",
+        "状态 Tabs",
+        "筛选区（常驻 + 收纳）",
+        "SLA 超时横幅",
+        "表格 + 分页",
+        "详情抽屉 / 回复抽屉 / 指派弹窗 / 驳回弹窗 / 代录弹窗"
+      ]
+    },
+    {
+      "id": "alert-rules",
+      "route": "/system/alert-rules",
+      "title": "系统配置 · 告警规则",
+      "pattern": "list-page",
+      "flowIds": [
+        "rule-to-alert"
+      ],
+      "flowCard": {
+        "entry": "侧栏 系统配置 > 告警规则；告警处置详情「触发规则」链接（?rule= 定位行）。",
+        "previousPages": [
+          "/alerts"
+        ],
+        "nextPages": [
+          "/alerts"
+        ],
+        "userGoal": "设定什么情况要喊人——离线率、离线超期、升级失败率三类规则，配好后自动盯设备并在站内信通知。",
+        "businessState": "只有停用没有删除；停用期间的告警不会补发，启用立即按最新配置生效，不回溯停用期间数据。"
+      },
+      "intentCard": {
+        "pageGoal": "一屏看清每条规则盯什么、通知谁、是否在跑；表单按规则类型只出现需要的字段。",
+        "firstViewport": [
+          "页头（标题 + 口径副标题）",
+          "工具栏（状态 Segmented + 类型筛选 + 新建规则）",
+          "规则表格"
+        ],
+        "primaryAction": "新建规则",
+        "secondaryActions": [
+          "状态 Segmented",
+          "类型筛选",
+          "刷新"
+        ],
+        "successCriteria": [
+          "规则类型标签均为中性色；启用行开关开、停用行开关关；从未触发规则的最近触发显示「—」。",
+          "切换规则类型时名称与通知对象保留，无关字段卸载；校验拦截阈值 0 或目标缺失。",
+          "停用走 B 档气泡（写明停用期间告警不补发），启用直接生效并轻提示；保存成功后列表出现新规则且默认启用。",
+          "最近触发告警链接跳 /alerts 并选中该告警；从告警处置链接进入时对应行高亮并可返回原分栏与选中项。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataGrid",
+        "Badge",
+        "Button",
+        "Select",
+        "Input",
+        "Switch",
+        "Drawer",
+        "ConfirmDialog"
+      ],
+      "dataRequirements": [
+        "AlertRule",
+        "AlertRecord",
+        "PushTask"
+      ],
+      "layoutTree": [
+        "页头",
+        "工具栏",
+        "规则表格",
+        "规则表单抽屉"
+      ]
+    },
+    {
+      "id": "binding",
+      "route": "/users/binding",
+      "title": "用户与激活 · 用户与绑定",
+      "pattern": "list-page",
+      "flowIds": [],
+      "flowCard": {
+        "entry": "侧栏 用户与激活 > 用户与绑定（进入即空结果态）；设备详情「绑定用户数」带 ?sn=；数字护照「查看完整绑定详情」带 ?sn=；客户反馈工单详情「关联用户」带 ?user_id=。",
+        "previousPages": [
+          "/devices/:sn",
+          "/lifecycle/passport/:sn",
+          "/exceptions/feedback"
+        ],
+        "nextPages": [
+          "/lifecycle/passport/:sn",
+          "/devices/:sn",
+          "/exceptions/feedback"
+        ],
+        "userGoal": "客服 / 运维按手机号、用户 ID 或 SN 精确查到一个 App 用户或一台设备的绑定关系，判断联系谁、设备归谁。",
+        "businessState": "查询优先 + 只读 + 脱敏：无默认列表，三选一精确命中才出结果；明文只经 C 档确认且写审计日志。"
+      },
+      "intentCard": {
+        "pageGoal": "三字段互斥的精确检索：手机号 / 用户 ID 命中出模式 A 用户卡 + 绑定设备表，SN 命中出模式 B 绑定关系表。",
+        "firstViewport": [
+          "页面标题",
+          "检索表单（三字段互斥）",
+          "空态（未检索 / 无结果两条文案）"
+        ],
+        "primaryAction": "查询",
+        "secondaryActions": [
+          "重置",
+          "查看完整（手机号，C 档确认）",
+          "为该用户新建客户反馈工单"
+        ],
+        "successCriteria": [
+          "三字段互斥：任一字段有值其余两个置灰，三个都空时查询置灰；?user_id= / ?sn= 自动带入并触发查询。",
+          "默认显示 1xx****xxxx；「查看完整」需填写查看原因（≤100 字）才确认，确认后明文并提示已记录审计日志。",
+          "SN 命中但 0 绑定时单独显示「该设备暂无绑定用户」，与检索无结果区分；绑定角色挂在绑定关系上。",
+          "模式 B 点用户 ID 切到模式 A；在网状态标签点击跳设备详情；带 ?from= 进入时页头返回回来源页。"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "Card",
+        "DescriptionGrid",
+        "DataGrid",
+        "Badge",
+        "Button",
+        "Input",
+        "ConfirmDialog",
+        "ForbiddenState"
+      ],
+      "dataRequirements": [
+        "AppUser",
+        "Binding",
+        "Device",
+        "SensitiveViewAudit"
+      ],
+      "layoutTree": [
+        "页头",
+        "检索表单",
+        "结果区：用户卡 + 绑定设备表 / SN 反查表",
+        "敏感查看确认弹窗"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "test-action-page-global",
+  "expectedActions": {
+    "conditions": [
+      {
+        "when": "record.status === \"active\"",
+        "branch": "then",
+        "required": ["停用"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/action-page-shadow/generated/pages.tsx",
+    "symbol": "GlobalPageActionPage",
+    "pageId": "global"
+  },
+  "report": "harness/reports/test-action-page-global.json"
+}

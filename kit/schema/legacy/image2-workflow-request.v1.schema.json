@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/legacy/image2-workflow-request.v1.schema.json",
+  "title": "image2-to-figma-page legacy v1 request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "workflowId", "requestId", "designContext", "project", "viewport", "pageEntry", "referencePrompt", "visualDiffConfig", "figmaEvidence", "figmaTarget"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "workflowId": { "const": "image2-to-figma-page" },
+    "requestId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "designContext": { "enum": ["existing", "exploratory"] },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "page", "objective", "audience"],
+      "properties": {
+        "name": { "type": "string", "minLength": 3 },
+        "page": { "type": "string", "minLength": 3 },
+        "objective": { "type": "string", "minLength": 12 },
+        "audience": { "type": "string", "minLength": 4 }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "deviceScaleFactor"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 320, "maximum": 7680 },
+        "height": { "type": "integer", "minimum": 320, "maximum": 4320 },
+        "deviceScaleFactor": { "type": "number", "exclusiveMinimum": 0, "maximum": 4 }
+      }
+    },
+    "pageEntry": { "$ref": "#/$defs/path" },
+    "referencePrompt": { "$ref": "#/$defs/path" },
+    "referenceImage": { "$ref": "#/$defs/path" },
+    "visualDiffConfig": { "$ref": "#/$defs/path" },
+    "browserEvidence": { "$ref": "#/$defs/path" },
+    "figmaEvidence": { "$ref": "#/$defs/path" },
+    "figmaTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileKey", "pageNodeId"],
+      "properties": {
+        "fileKey": { "type": ["string", "null"] },
+        "pageNodeId": { "type": ["string", "null"] }
+      }
+    },
+    "existingContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["designDoc", "tokens", "componentIndex", "figmaSyncContract"],
+      "properties": {
+        "designDoc": { "$ref": "#/$defs/path" },
+        "tokens": { "$ref": "#/$defs/path" },
+        "componentIndex": { "$ref": "#/$defs/path" },
+        "figmaSyncContract": { "$ref": "#/$defs/path" }
+      }
+    },
+    "exploratoryContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directions", "selectedDirectionId", "miniDesignBrief"],
+      "properties": {
+        "directions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "hypothesis"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+              "name": { "type": "string", "minLength": 3 },
+              "hypothesis": { "type": "string", "minLength": 12 }
+            }
+          }
+        },
+        "selectedDirectionId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "miniDesignBrief": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["principles", "colorIntent", "typeIntent", "density"],
+          "properties": {
+            "principles": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "minLength": 4 } },
+            "colorIntent": { "type": "string", "minLength": 8 },
+            "typeIntent": { "type": "string", "minLength": 8 },
+            "density": { "enum": ["compact", "comfortable", "spacious"] }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "path": { "type": "string", "minLength": 3, "pattern": "^(?![A-Za-z]:|/|\\\\).+" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "designContext": { "const": "existing" } }, "required": ["designContext"] },
+      "then": {
+        "type": "object",
+        "properties": {
+          "existingContext": { "$ref": "#/properties/existingContext" },
+          "exploratoryContext": false
+        },
+        "required": ["existingContext"]
+      }
+    },
+    {
+      "if": { "properties": { "designContext": { "const": "exploratory" } }, "required": ["designContext"] },
+      "then": {
+        "type": "object",
+        "properties": {
+          "exploratoryContext": { "$ref": "#/properties/exploratoryContext" },
+          "existingContext": false
+        },
+        "required": ["exploratoryContext"]
+      }
+    }
+  ]
+}

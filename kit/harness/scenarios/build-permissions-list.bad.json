@@ -1,0 +1,20 @@
+{
+  "id": "build-permissions-list-bad",
+  "prompt": "反例：绕过 kit，直接使用第三方 UI 库和硬编码颜色。",
+  "foundationContract": {
+    "businessContext": "projects/sample-inventory-erp/business-context.json",
+    "projectId": "sample-inventory-erp",
+    "outputMode": "kit-consumer",
+    "framework": "react"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.bad.tsx",
+    "symbol": "BadPermissionsListPage"
+  },
+  "report": "harness/reports/build-permissions-list-bad.json"
+}

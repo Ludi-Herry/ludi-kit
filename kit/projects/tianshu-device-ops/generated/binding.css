@@ -1,0 +1,134 @@
+/* kit/projects/tianshu-device-ops/generated/binding.css */
+/* 样式只用 theme/token 与 styles.css 已有类；新样式类名前缀 binding-，不硬编码颜色 */
+
+.binding-back-wrap {
+  margin-bottom: var(--do-space-sm);
+}
+
+.binding-search-panel {
+  margin-bottom: var(--do-space-md);
+}
+
+/* 2026-10-11 Owner 裁决筛选区上方留白统一 18：行内表单行高会把首段文字再压 9px（原实测 25），上内边距收到 9。
+   页面样式先于 styles.css 加载，叠加 .device-ops-panel 才能压过公共区块内边距。 */
+.device-ops-panel.binding-search-panel {
+  padding-top: 9px;
+}
+
+.binding-search-form {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--do-space-md);
+}
+
+.binding-search-form .binding-form-item {
+  flex: 1 1 240px;
+  margin-bottom: 0;
+  margin-inline-end: 0;
+  min-width: 200px;
+}
+
+.binding-search-form .binding-form-actions {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+  margin-inline-end: 0;
+  min-width: auto;
+}
+
+.binding-form-actions .ant-space {
+  gap: var(--do-space-sm, 8px);
+}
+
+.binding-user-panel {
+  margin-bottom: var(--do-space-md);
+}
+
+.binding-panel-head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--do-space-md);
+  justify-content: space-between;
+  margin-bottom: var(--do-space-md);
+}
+
+.binding-panel-title {
+  color: var(--do-text);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.binding-panel-actions {
+  align-items: center;
+  display: flex;
+  gap: var(--do-space-sm);
+}
+
+.binding-phone-text {
+  font-family: var(--ant-font-family-code, monospace);
+  font-size: 14px;
+}
+
+.binding-reveal-btn {
+  font-size: 13px;
+  height: auto;
+  padding: 0;
+}
+
+.binding-inactive-note {
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.binding-role-owner {
+  color: var(--do-text);
+  font-weight: 600;
+}
+
+.binding-role-member {
+  color: var(--do-text-secondary);
+}
+
+.binding-online-link {
+  align-items: center;
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.binding-online-link:hover .ant-tag {
+  opacity: 0.85;
+}
+
+.binding-audit-dialog {
+  padding-top: 4px;
+}
+
+.binding-audit-alert {
+  margin-bottom: var(--do-space-md);
+}
+
+.binding-state-panel {
+  margin-bottom: var(--do-space-md);
+  padding: 48px var(--do-space-lg);
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .binding-search-form {
+    display: grid;
+    gap: var(--do-space-sm);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .binding-search-form .binding-form-item {
+    flex: unset;
+    min-width: 0;
+  }
+
+  .binding-search-form .binding-form-actions {
+    grid-column: span 2;
+    justify-self: end;
+  }
+}

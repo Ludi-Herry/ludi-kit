@@ -1,0 +1,517 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/blind-prd-pre-reveal-contract.schema.json",
+  "title": "Blind PRD Pre-Reveal Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "runId",
+    "slot",
+    "status",
+    "frozenAt",
+    "protocol",
+    "inputGate",
+    "arms",
+    "anonymization",
+    "acceptance",
+    "antiCheat"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "enum": ["1.0.0", "1.1.0"] },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "slot": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 5
+    },
+    "attemptNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "replacesRunId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+        },
+        { "type": "null" }
+      ]
+    },
+    "status": { "const": "pre-reveal-frozen" },
+    "frozenAt": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planCommit", "implementationCommit", "files"],
+      "properties": {
+        "planCommit": { "$ref": "#/$defs/gitCommit" },
+        "implementationCommit": { "$ref": "#/$defs/gitCommit" },
+        "files": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plan",
+            "flowAcceptanceSchema",
+            "artifactReceiptSchema",
+            "negativeSuite",
+            "inputReceiptSchema"
+          ],
+          "properties": {
+            "plan": { "$ref": "#/$defs/fileHash" },
+            "flowAcceptanceSchema": { "$ref": "#/$defs/fileHash" },
+            "artifactReceiptSchema": { "$ref": "#/$defs/fileHash" },
+            "negativeSuite": { "$ref": "#/$defs/fileHash" },
+            "inputReceiptSchema": { "$ref": "#/$defs/fileHash" },
+            "registrySchema": { "$ref": "#/$defs/fileHash" },
+            "preRevealSchema": { "$ref": "#/$defs/fileHash" },
+            "packageReceiptSchema": { "$ref": "#/$defs/fileHash" },
+            "artifactSealSchema": { "$ref": "#/$defs/fileHash" },
+            "evaluatorReceiptSchema": { "$ref": "#/$defs/fileHash" },
+            "evidenceSchema": { "$ref": "#/$defs/fileHash" },
+            "blindProtocolNegativeSuite": { "$ref": "#/$defs/fileHash" },
+            "freezeScript": { "$ref": "#/$defs/fileHash" },
+            "verifyScript": { "$ref": "#/$defs/fileHash" },
+            "flowValidator": { "$ref": "#/$defs/fileHash" },
+            "flowRunner": { "$ref": "#/$defs/fileHash" },
+            "blindProtocolLib": { "$ref": "#/$defs/fileHash" },
+            "sameArtifactLib": { "$ref": "#/$defs/fileHash" },
+            "blindRegistryValidator": { "$ref": "#/$defs/fileHash" },
+            "projectConsistencyValidator": { "$ref": "#/$defs/fileHash" },
+            "assignmentGenerator": { "$ref": "#/$defs/fileHash" },
+            "packageFreezer": { "$ref": "#/$defs/fileHash" }
+          }
+        }
+      }
+    },
+    "consumerPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "npmShasum",
+        "bytes",
+        "files",
+        "manifestPaths",
+        "installedAcceptance",
+        "repeatPackSha"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^\\.local-pack/radesign-kit-0\\.1\\.0-[0-9a-f]{12}\\.tgz$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "npmShasum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "files": { "type": "integer", "minimum": 1 },
+        "manifestPaths": { "type": "integer", "minimum": 1 },
+        "installedAcceptance": { "const": "passed" },
+        "repeatPackSha": { "const": "passed" }
+      }
+    },
+    "consumerPackageReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^quality/blind-runs/blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?/consumer-package-receipt\\.json$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "seal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "rootId", "rootPath"],
+      "properties": {
+        "version": { "const": "1.0.0" },
+        "rootId": { "const": "blind-protocol-v1.2" },
+        "rootPath": { "const": "<local-path-omitted>" }
+      }
+    },
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receiptVersion",
+        "maxRevisions",
+        "bothArmsRequired",
+        "semanticDigestMustRemainStable",
+        "productBuildInvocationsDuringCorrection"
+      ],
+      "properties": {
+        "receiptVersion": { "const": "1.0.0" },
+        "maxRevisions": { "const": 2 },
+        "bothArmsRequired": { "const": true },
+        "semanticDigestMustRemainStable": { "const": true },
+        "productBuildInvocationsDuringCorrection": { "const": 0 }
+      }
+    },
+    "inputGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "metadataStored",
+        "contentAccessed",
+        "title",
+        "sourcePath",
+        "sourceSha256",
+        "receiptPath",
+        "revealRequires",
+        "eligibilityAtReveal"
+      ],
+      "properties": {
+        "state": { "const": "closed" },
+        "metadataStored": { "const": false },
+        "contentAccessed": { "const": false },
+        "title": { "type": "null" },
+        "sourcePath": { "type": "null" },
+        "sourceSha256": { "type": "null" },
+        "receiptPath": {
+          "type": "string",
+          "pattern": "^quality/blind-runs/blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?/input-receipt\\.json$"
+        },
+        "revealRequires": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 8 }
+        },
+        "eligibilityAtReveal": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "independentRealPrd",
+            "informedKitConstruction",
+            "previouslyInspectedByGenerationAgents"
+          ],
+          "properties": {
+            "independentRealPrd": { "const": true },
+            "informedKitConstruction": { "const": false },
+            "previouslyInspectedByGenerationAgents": { "const": false }
+          }
+        }
+      }
+    },
+    "arms": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "$ref": "#/$defs/arm" }
+    },
+    "anonymization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateLabels",
+        "assignmentCommitment",
+        "privateRevealPath",
+        "hashAlgorithm",
+        "revealAfter",
+        "reviewerSourceInspectionBeforeScoring"
+      ],
+      "properties": {
+        "candidateLabels": {
+          "const": ["candidate-a", "candidate-b"]
+        },
+        "assignmentCommitment": { "$ref": "#/$defs/sha256" },
+        "privateRevealPath": {
+          "type": "string",
+          "pattern": "^\\.local-pack/blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?-assignment-reveal\\.private\\.json$"
+        },
+        "hashAlgorithm": { "const": "sha256" },
+        "revealAfter": { "const": "technical-and-visual-evaluation-complete" },
+        "reviewerSourceInspectionBeforeScoring": { "const": false }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sameArtifact",
+        "flow",
+        "runtime",
+        "visual",
+        "perArmMetrics",
+        "programKpi",
+        "firstPassDefinition"
+      ],
+      "properties": {
+        "sameArtifact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mismatchCountMax",
+            "evidenceCompletenessMinPercent",
+            "fixtureProductProofMax"
+          ],
+          "properties": {
+            "mismatchCountMax": { "const": 0 },
+            "evidenceCompletenessMinPercent": { "const": 100 },
+            "fixtureProductProofMax": { "const": 0 }
+          }
+        },
+        "flow": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "approvedCrossPageMin",
+            "pageCountMin",
+            "stableObjectRequired",
+            "observableStateChangeRequired",
+            "resultDestinationRequired",
+            "recoveryRequired"
+          ],
+          "properties": {
+            "approvedCrossPageMin": { "const": 1 },
+            "pageCountMin": { "const": 2 },
+            "stableObjectRequired": { "const": true },
+            "observableStateChangeRequired": { "const": true },
+            "resultDestinationRequired": { "const": true },
+            "recoveryRequired": { "const": true }
+          }
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "buildExitCode",
+            "consoleErrorsMax",
+            "consoleWarningsMax",
+            "pageErrorsMax",
+            "unexpectedHttpErrorsMax"
+          ],
+          "properties": {
+            "buildExitCode": { "const": 0 },
+            "consoleErrorsMax": { "const": 0 },
+            "consoleWarningsMax": { "const": 0 },
+            "pageErrorsMax": { "const": 0 },
+            "unexpectedHttpErrorsMax": { "const": 0 }
+          }
+        },
+        "visual": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["total", "minimumPass", "categories", "technicalFailurePreservesScore"],
+          "properties": {
+            "total": { "const": 100 },
+            "minimumPass": { "const": 85 },
+            "categories": {
+              "type": "array",
+              "minItems": 6,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "weight"],
+                "properties": {
+                  "id": {
+                    "enum": [
+                      "hierarchy",
+                      "foundationFidelity",
+                      "taskFlow",
+                      "density",
+                      "feedback",
+                      "responsive"
+                    ]
+                  },
+                  "weight": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100
+                  }
+                }
+              }
+            },
+            "technicalFailurePreservesScore": { "const": true }
+          }
+        },
+        "perArmMetrics": {
+          "type": "array",
+          "minItems": 8,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 4 }
+        },
+        "programKpi": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "targetRuns",
+            "kitFirstPassMin",
+            "kitWinsMin",
+            "manualAcceptanceTimeReductionMinPercent",
+            "hardContractViolationsMax"
+          ],
+          "properties": {
+            "targetRuns": { "const": 5 },
+            "kitFirstPassMin": { "const": 4 },
+            "kitWinsMin": { "const": 2 },
+            "manualAcceptanceTimeReductionMinPercent": { "const": 30 },
+            "hardContractViolationsMax": { "const": 0 }
+          }
+        },
+        "firstPassDefinition": {
+          "const": "first generated state before any human correction"
+        }
+      }
+    },
+    "antiCheat": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 12 }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "version": { "const": "1.0.0" } },
+        "required": ["version"]
+      },
+      "then": {
+        "required": ["consumerPackage"],
+        "properties": {
+          "consumerPackage": true,
+          "attemptNumber": false,
+          "replacesRunId": false,
+          "consumerPackageReceipt": false,
+          "seal": false,
+          "evaluator": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "version": { "const": "1.1.0" } },
+        "required": ["version"]
+      },
+      "then": {
+        "required": [
+          "attemptNumber",
+          "replacesRunId",
+          "consumerPackageReceipt",
+          "seal",
+          "evaluator"
+        ],
+        "properties": {
+          "protocol": {
+            "type": "object",
+            "properties": {
+              "files": {
+                "type": "object",
+                "properties": {
+                  "blindProtocolLib": true,
+                  "sameArtifactLib": true
+                },
+                "required": ["blindProtocolLib", "sameArtifactLib"]
+              }
+            }
+          },
+          "attemptNumber": true,
+          "replacesRunId": true,
+          "consumerPackageReceipt": true,
+          "seal": true,
+          "evaluator": true,
+          "consumerPackage": false
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gitCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "fileHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?![A-Za-z]:|/|\\\\).+"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "arm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "artifactId",
+        "workspaceRoot",
+        "generationContext",
+        "kitAccess",
+        "outputModeDecision",
+        "allowedInputs",
+        "forbiddenInputs"
+      ],
+      "properties": {
+        "id": { "enum": ["consumer", "control"] },
+        "artifactId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "workspaceRoot": {
+          "type": "string",
+          "pattern": "^<local-path-omitted>])(?:-[a-z0-9][a-z0-9-]*)?/arms/(consumer|control)$"
+        },
+        "generationContext": { "const": "fresh-isolated" },
+        "kitAccess": { "type": "boolean" },
+        "outputModeDecision": { "const": "freeze-after-reveal-before-generation" },
+        "allowedInputs": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 4 }
+        },
+        "forbiddenInputs": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 4 }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "id": { "const": "consumer" } },
+            "required": ["id"]
+          },
+          "then": {
+            "properties": { "kitAccess": { "const": true } }
+          }
+        },
+        {
+          "if": {
+            "properties": { "id": { "const": "control" } },
+            "required": ["id"]
+          },
+          "then": {
+            "properties": { "kitAccess": { "const": false } }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "test-confirmation-stateful-branch",
+  "expectedConfirmations": [
+    {
+      "action": "报废",
+      "title": "确认报废设备？",
+      "confirmLabel": "确认报废",
+      "requiredText": ["报废后不可恢复"],
+      "danger": true,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "scrap" }, "clearValue": null }
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-stateful-branch.bad.tsx",
+    "symbol": "ConfirmationStatefulBranchPage"
+  },
+  "report": "harness/reports/test-confirmation-stateful-branch.json"
+}

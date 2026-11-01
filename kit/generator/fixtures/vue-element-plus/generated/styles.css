@@ -1,0 +1,182 @@
+:root {
+  /* kit tokens (read from src/styles.css) */
+  --color-bg-page: #f5f7fb;
+  --color-bg-surface: #ffffff;
+  --color-brand-primary: #2f6fed;
+  --color-brand-primary-strong: #1d55c7;
+  --color-brand-soft: #e8f0ff;
+  --color-text-primary: #172033;
+  --color-text-secondary: #667085;
+  --color-border: #d8dee9;
+  --color-status-success: #17875d;
+  --color-status-warning: #b25e09;
+  --color-status-danger: #d92d20;
+  --color-status-info: #2161b5;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 20px;
+  --spacing-xl: 28px;
+  --radius-control: 6px;
+  --radius-card: 8px;
+  --shadow-card: 0 1px 2px rgba(23, 32, 51, 0.08);
+  --font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Element Plus theme variables mapped to kit tokens */
+  --el-color-primary: var(--color-brand-primary);
+  --el-color-primary-dark-2: var(--color-brand-primary-strong);
+  --el-color-primary-light-3: color-mix(in srgb, var(--color-brand-primary) 70%, var(--color-bg-surface));
+  --el-color-primary-light-5: color-mix(in srgb, var(--color-brand-primary) 50%, var(--color-bg-surface));
+  --el-color-primary-light-7: color-mix(in srgb, var(--color-brand-primary) 30%, var(--color-bg-surface));
+  --el-color-primary-light-8: color-mix(in srgb, var(--color-brand-primary) 20%, var(--color-bg-surface));
+  --el-color-primary-light-9: var(--color-brand-soft);
+  --el-color-success: var(--color-status-success);
+  --el-color-warning: var(--color-status-warning);
+  --el-color-danger: var(--color-status-danger);
+  --el-color-info: var(--color-status-info);
+  --el-bg-color: var(--color-bg-surface);
+  --el-bg-color-page: var(--color-bg-page);
+  --el-bg-color-overlay: var(--color-bg-surface);
+  --el-text-color-primary: var(--color-text-primary);
+  --el-text-color-regular: var(--color-text-primary);
+  --el-text-color-secondary: var(--color-text-secondary);
+  --el-text-color-placeholder: color-mix(in srgb, var(--color-text-secondary) 65%, var(--color-bg-surface));
+  --el-border-color: var(--color-border);
+  --el-border-color-light: var(--color-border);
+  --el-border-color-lighter: var(--color-border);
+  --el-border-color-hover: var(--color-brand-primary);
+  --el-fill-color-blank: var(--color-bg-surface);
+  --el-fill-color-light: var(--color-bg-page);
+  --el-fill-color-lighter: var(--color-bg-page);
+  --el-border-radius-base: var(--radius-control);
+  --el-border-radius-small: var(--radius-control);
+  --el-box-shadow-light: var(--shadow-card);
+  --el-font-family: var(--font-family-base);
+  --el-component-size: 36px;
+  --el-card-border-radius: var(--radius-card);
+  --el-card-padding: var(--spacing-lg);
+  --el-table-header-bg-color: var(--color-bg-page);
+  --el-table-header-text-color: var(--color-text-primary);
+  --el-table-text-color: var(--color-text-primary);
+  --el-table-border-color: var(--color-border);
+  --el-table-row-hover-bg-color: var(--color-bg-page);
+}
+
+body {
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  margin: 0;
+}
+
+.generated-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin: 0 auto;
+  max-width: 1600px;
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+}
+
+.generated-native-header {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  justify-content: space-between;
+}
+
+.generated-native-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.generated-native-header p {
+  color: var(--color-text-secondary);
+  margin: 6px 0 0;
+}
+
+.generated-header-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.generated-header-actions .el-button,
+.generated-filter-actions .el-button {
+  margin: 0;
+}
+
+.generated-block {
+  --el-card-border-radius: var(--radius-card);
+  --el-card-padding: var(--spacing-lg);
+}
+
+.generated-block .el-table {
+  --el-table-header-bg-color: var(--color-bg-page);
+  --el-table-header-text-color: var(--color-text-primary);
+  --el-table-text-color: var(--color-text-primary);
+  --el-table-border-color: var(--color-border);
+  --el-table-row-hover-bg-color: var(--color-bg-page);
+}
+
+.generated-page .el-button {
+  height: var(--el-component-size);
+}
+
+.generated-filter-form {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md) var(--spacing-lg);
+}
+
+.generated-filter-form .el-form-item {
+  flex: 1 1 220px;
+  margin: 0;
+  max-width: 320px;
+}
+
+.generated-filter-actions {
+  display: flex;
+  flex: none;
+  gap: var(--spacing-sm);
+  margin-left: auto;
+}
+
+.generated-data-toolbar {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  min-height: 24px;
+}
+
+.generated-count {
+  font-weight: 600;
+}
+
+.generated-feedback {
+  color: var(--color-text-secondary);
+}
+
+.generated-pagination {
+  justify-content: flex-end;
+  margin-top: var(--spacing-md);
+}
+
+@media (max-width: 920px) {
+  .generated-page {
+    padding: var(--spacing-md);
+  }
+
+  .generated-filter-form .el-form-item {
+    max-width: none;
+  }
+}

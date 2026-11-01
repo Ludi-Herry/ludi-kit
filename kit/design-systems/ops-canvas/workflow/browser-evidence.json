@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "evidenceId": "ops-canvas-browser-playwright-image2",
+  "requestId": "ops-canvas-existing",
+  "pageEntry": {
+    "path": "design-systems/ops-canvas/spec/index.html",
+    "sha256": "13f42776234f6191bfd43125ab174c4091c49881c93116896c145892fe748f93"
+  },
+  "referenceImage": {
+    "path": "design-systems/ops-canvas/workflow/reference-image.png",
+    "sha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d"
+  },
+  "url": "http://127.0.0.1:4177/",
+  "viewport": { "requestedWidth": 1440, "requestedHeight": 1100, "deviceScaleFactor": 1 },
+  "tools": ["Codex In-app Browser", "@playwright/cli"],
+  "screenshots": [
+    {
+      "kind": "browser-full-page",
+      "format": "png",
+      "path": "design-systems/ops-canvas/workflow/browser-image2-full-page.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "254fb7303a216b2332dfbe05b0d713b48b88d60a90a0fbcd1566f19ad8576807"
+    },
+    {
+      "kind": "browser-interaction",
+      "format": "png",
+      "path": "design-systems/ops-canvas/workflow/browser-image2-filtered-full-page.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "e687d23b6bb2e6b6c7d2b58c122f3babc8ebfb1b5f059b6ae3cd0c0d22dbd095"
+    },
+    {
+      "kind": "browser-interaction-region",
+      "format": "png",
+      "path": "design-systems/ops-canvas/workflow/browser-image2-filtered-region.png",
+      "width": 1160,
+      "height": 300,
+      "sha256": "c1262624d72aaee5d378d19838d588d1d8c24aa03486e99f900b4890c7b2af15"
+    },
+    {
+      "kind": "playwright-full-page",
+      "format": "png",
+      "path": "output/playwright/ops-canvas-image2-full.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "fa316c351bc844db8d7cfa23f572bb68e64fc7af99b280b93440222b89ebae86"
+    },
+    {
+      "kind": "playwright-critical-region",
+      "name": "composite-components",
+      "bounds": { "x": 260, "y": 617, "width": 1160, "height": 300 },
+      "format": "png",
+      "path": "output/playwright/ops-canvas-image2-critical-region.png",
+      "width": 1160,
+      "height": 300,
+      "sha256": "2f82270378686995c80b443143b9e5159ac53b66aa0b48a8c811ae5b206bbefb"
+    },
+    {
+      "kind": "playwright-interaction-region",
+      "format": "png",
+      "path": "output/playwright/ops-canvas-image2-filtered-region.png",
+      "width": 1160,
+      "height": 300,
+      "sha256": "4ebbd77270a1374adbd08eef5e48ac0ceca77eea2f464f116ca18879b23e2a08"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "browser-work-order-filter",
+      "tool": "Codex In-app Browser",
+      "result": "passed",
+      "assertions": { "keyword": "access", "status": "review", "resultLabel": "1 result", "visibleOrderIds": ["WO-2042"] }
+    },
+    {
+      "id": "work-order-filter",
+      "tool": "@playwright/cli",
+      "result": "passed",
+      "assertions": { "keyword": "access", "status": "review", "resultLabel": "1 result", "visibleOrderIds": ["WO-2042"] }
+    }
+  ],
+  "console": { "browserErrors": 0, "browserWarnings": 0, "playwrightErrors": 0, "playwrightWarnings": 0 },
+  "notes": [
+    "Both tools used the same unique local URL and exact 1440x1100 viewport.",
+    "The default Playwright critical-region PNG is pixel-identical to the matching crop in the full-page candidate."
+  ]
+}

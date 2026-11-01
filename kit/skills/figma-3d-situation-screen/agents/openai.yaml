@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma 3D Situation Screen"
+  short_description: "Route, build, and verify one real WebGL situation map"
+  default_prompt: "Use $figma-3d-situation-screen to turn Figma evidence and licensed map data into a verified React situation screen."

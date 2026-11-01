@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schema/synthetic-prd-shape-profiles.schema.json",
+  "version": "1.0.0",
+  "owner": "harness/synthetic-prd/shape-profiles.json",
+  "profiles": [
+    {
+      "profileId": "historical-wide-01",
+      "confidence": "medium",
+      "pagePatterns": [
+        "dashboard-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page",
+        "list-page"
+      ],
+      "fieldUnitsByPage": [4, 7, 7, 7, 7, 7, 4, 4, 7, 7, 7],
+      "flowStepCounts": [3, 3, 3, 3, 3],
+      "entityFieldCounts": [8, 8, 8, 8, 8, 8, 8, 8],
+      "entityRecordCounts": [3, 3, 3, 3, 3, 3, 3, 3],
+      "derived": {
+        "pageCount": 11,
+        "flowCount": 5,
+        "entityCount": 8,
+        "fieldUnitsTotal": 68,
+        "fieldDensity": 6.18
+      }
+    },
+    {
+      "profileId": "compact-flow-02",
+      "confidence": "high",
+      "pagePatterns": ["dashboard-page", "list-page", "detail-page"],
+      "fieldUnitsByPage": [4, 8, 8],
+      "flowStepCounts": [4],
+      "entityFieldCounts": [10],
+      "entityRecordCounts": [3],
+      "derived": {
+        "pageCount": 3,
+        "flowCount": 1,
+        "entityCount": 1,
+        "fieldUnitsTotal": 20,
+        "fieldDensity": 6.67
+      }
+    },
+    {
+      "profileId": "compact-ai-03",
+      "confidence": "high",
+      "pagePatterns": ["list-page", "detail-page", "dashboard-page"],
+      "fieldUnitsByPage": [11, 8, 9],
+      "flowStepCounts": [3],
+      "entityFieldCounts": [15, 9, 9],
+      "entityRecordCounts": [3, 4, 1],
+      "derived": {
+        "pageCount": 3,
+        "flowCount": 1,
+        "entityCount": 3,
+        "fieldUnitsTotal": 28,
+        "fieldDensity": 9.33
+      }
+    }
+  ]
+}

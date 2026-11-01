@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/figma-evidence.schema.json",
+  "title": "AI-readable Figma Workflow Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "evidenceId", "workflowId", "status", "recordedAt", "target", "viewport", "screenshots", "diffs", "componentBindings", "variableBindings", "externalBlockers"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "evidenceId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "workflowId": { "type": "string", "minLength": 3 },
+    "status": { "enum": ["verified", "failed", "external-blocked"] },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileKey", "nodeId", "captureId"],
+      "properties": {
+        "fileKey": { "type": ["string", "null"] },
+        "nodeId": { "type": ["string", "null"] },
+        "captureId": { "type": ["string", "null"] }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "deviceScaleFactor"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "deviceScaleFactor": { "type": "number", "exclusiveMinimum": 0, "maximum": 4 }
+      }
+    },
+    "screenshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "status", "path", "sha256"],
+        "properties": {
+          "kind": { "enum": ["reference", "browser-full-page", "browser-region", "figma-node", "figma-section"] },
+          "status": { "enum": ["passed", "failed", "not-run", "external-blocked"] },
+          "path": { "type": ["string", "null"] },
+          "sha256": {
+            "anyOf": [
+              { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+              { "type": "null" }
+            ]
+          }
+        }
+      }
+    },
+    "diffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scope", "status", "metricsPath", "heatmapPath"],
+        "properties": {
+          "scope": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["passed", "failed", "not-run", "external-blocked"] },
+          "metricsPath": { "type": ["string", "null"] },
+          "heatmapPath": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "componentBindings": { "$ref": "#/$defs/bindingResult" },
+    "variableBindings": { "$ref": "#/$defs/bindingResult" },
+    "externalBlockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dependency", "reason", "resumeRequirements"],
+        "properties": {
+          "dependency": { "type": "string", "minLength": 3 },
+          "reason": { "type": "string", "minLength": 8 },
+          "resumeRequirements": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "bindingResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "indexPath", "bound", "missing"],
+      "properties": {
+        "status": { "enum": ["passed", "failed", "not-run", "external-blocked"] },
+        "indexPath": { "type": ["string", "null"] },
+        "bound": { "type": "array", "items": { "type": "string" } },
+        "missing": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "verified" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "target": {
+            "type": "object",
+            "properties": {
+              "fileKey": { "type": "string", "minLength": 6 },
+              "nodeId": { "type": "string", "pattern": "^[0-9]+:[0-9]+$" },
+              "captureId": { "type": "string", "minLength": 3 }
+            }
+          },
+          "screenshots": { "type": "array", "minItems": 1 },
+          "diffs": { "type": "array", "minItems": 1 },
+          "componentBindings": {
+            "type": "object",
+            "properties": { "status": { "const": "passed" } }
+          },
+          "variableBindings": {
+            "type": "object",
+            "properties": { "status": { "const": "passed" } }
+          },
+          "externalBlockers": { "type": "array", "maxItems": 0 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "external-blocked" } }, "required": ["status"] },
+      "then": { "properties": { "externalBlockers": { "type": "array", "minItems": 1 } } }
+    }
+  ]
+}

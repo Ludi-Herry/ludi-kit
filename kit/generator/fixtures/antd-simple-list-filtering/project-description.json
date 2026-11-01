@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "antd-simple-list-filtering-canary",
+  "contextType": "real-product",
+  "product": {
+    "name": "筛选行为校验台",
+    "description": "用于验证简单列表筛选能把已提交的文本与下拉条件应用到业务表格的独立非 Holdout fixture。"
+  },
+  "pages": [
+    {
+      "id": "filtering-canary",
+      "route": "/fixtures/simple-list-filtering",
+      "title": "待处理任务",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "按任务编号或客户名称和优先级筛选待处理任务，并可一键恢复完整列表。",
+        "primaryAction": "新建任务",
+        "secondaryActions": ["导出"],
+        "successCriteria": [
+          "筛选提交后只显示同时满足条件的行",
+          "重置后恢复全部任务",
+          "结果数量与当前可见行一致"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Button",
+        "Input",
+        "Select"
+      ],
+      "content": {
+        "filters": [
+          { "name": "keyword", "label": "关键字", "type": "text", "placeholder": "任务编号或客户" },
+          {
+            "name": "priority",
+            "label": "优先级",
+            "type": "select",
+            "options": [
+              { "label": "紧急", "value": "urgent" },
+              { "label": "常规", "value": "normal" }
+            ]
+          }
+        ],
+        "simpleListFiltering": {
+          "mappings": [
+            { "name": "keyword", "rowKeys": ["id", "customer"], "match": "contains" },
+            {
+              "name": "priority",
+              "rowKeys": ["priority"],
+              "match": "equals",
+              "valueMap": { "urgent": "紧急", "normal": "常规" }
+            }
+          ]
+        },
+        "table": {
+          "title": "任务列表",
+          "rowKey": "id",
+          "columns": [
+            { "key": "id", "title": "任务编号" },
+            { "key": "customer", "title": "客户" },
+            { "key": "priority", "title": "优先级" },
+            { "key": "owner", "title": "负责人" }
+          ],
+          "rows": [
+            { "id": "TK-1001", "customer": "北岸实验室", "priority": "紧急", "owner": "林师傅" },
+            { "id": "TK-1002", "customer": "新桥仓储", "priority": "常规", "owner": "周师傅" },
+            { "id": "TK-1003", "customer": "东港数据中心", "priority": "紧急", "owner": "待分派" }
+          ]
+        }
+      }
+    }
+  ]
+}

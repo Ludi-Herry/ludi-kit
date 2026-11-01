@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "pairId": "ops-canvas-2026-07-17",
+  "reviewerId": "image2-reviewer-c-20260730",
+  "reviewedAt": "2026-07-30T02:17:41.2050197-07:00",
+  "independence": {
+    "participatedInImplementationOrEvidence": false,
+    "sawOtherReviewerDecisionBeforeSubmission": false,
+    "sawMachineMetricsBeforeFreezingLabel": false,
+    "statement": "I reviewed the frozen reference and candidate independently."
+  },
+  "inputs": {
+    "referenceSha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d",
+    "candidateSha256": "fa316c351bc844db8d7cfa23f572bb68e64fc7af99b280b93440222b89ebae86"
+  },
+  "calibrationLabel": "rejected",
+  "semanticVerdict": "rejected",
+  "pixelFidelityVerdict": "rejected",
+  "interactionEvidenceSupportsTask": "yes",
+  "blockingFindings": [
+    "The candidate changes task-critical type-ramp values and labels.",
+    "The candidate replaces the reference spacing maximum of 64 with 48 and changes the shape sequence from 4px/6px/10px/14px to 6px/10px/14px/pill.",
+    "The Input example loses the reference dropdown affordance, changing the communicated component contract."
+  ],
+  "reasonCodes": [
+    "SEMANTIC_TOKEN_MISMATCH",
+    "CONTROL_AFFORDANCE_MISMATCH",
+    "PIXEL_FIDELITY_MISMATCH"
+  ],
+  "rationale": "The candidate preserves the overall navigation, sections, 42/08/02 summary, composite metrics, filter workflow, work-order table, and page-shell dimensions. However, it alters several specification-defining examples in the type ramp, spacing scale, shape scale, and Input contract. Those changes can mislead users applying the design system, so the semantic reconstruction and overall calibration are rejected. Broad layout, typography, icon, geometry, and alignment differences also reject pixel fidelity. The interaction evidence confirms the filter task works, and the failed machine result matches the frozen visual expectation.",
+  "confidence": "high",
+  "machineResultMatchedExpectation": "yes"
+}

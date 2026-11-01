@@ -1,0 +1,22 @@
+{
+  "id": "test-confirmation-state-good",
+  "expectedComponents": ["PageLayout", "Button", "ConfirmDialog"],
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "expectedConfirmations": [
+    {
+      "action": "删除",
+      "title": "删除解析规则？",
+      "confirmLabel": "删除",
+      "requiredText": ["删除后数据不可恢复"],
+      "danger": true
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-state.good.tsx",
+    "symbol": "ConfirmationStateGoodPage"
+  },
+  "report": "harness/reports/test-confirmation-state-good.json"
+}

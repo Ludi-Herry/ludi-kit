@@ -1,0 +1,38 @@
+{
+  "id": "custom-native-local-0.1.0",
+  "foundationId": "local",
+  "reviewedAt": "2026-07-19",
+  "source": {
+    "registry": "generator fixture local components",
+    "principles": "generator/fixtures/custom-native/business-context.json",
+    "components": "generator/fixtures/custom-native/generated/components.tsx",
+    "templates": "generator/fixtures/custom-native/project-description.json",
+    "source": "generator/fixtures/custom-native/generated/components.tsx",
+    "styles": "generator/fixtures/custom-native/generated/styles.css",
+    "theme": "generator/fixtures/custom-native/generated/components.tsx#ProjectThemeProvider",
+    "variables": "generator/fixtures/custom-native/generated/styles.css",
+    "publicEntry": "./components"
+  },
+  "package": {
+    "name": "project-source",
+    "version": "0.1.0",
+    "license": "project-private"
+  },
+  "distribution": "project-source",
+  "framework": {
+    "name": "react",
+    "version": "19.2.7"
+  },
+  "imports": {
+    "runtime": "./components",
+    "icons": "./components",
+    "themeProvider": "ProjectThemeProvider",
+    "resetCss": "./styles.css",
+    "namedImportsOnly": true
+  },
+  "theme": {
+    "entry": "./components",
+    "exportName": "ProjectThemeProvider",
+    "cssVariables": true
+  }
+}

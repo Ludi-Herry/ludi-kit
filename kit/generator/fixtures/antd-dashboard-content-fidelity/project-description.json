@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "antd-dashboard-content-fidelity-canary",
+  "contextType": "real-product",
+  "product": {
+    "name": "设备状态校验台",
+    "description": "用于验证普通 AntD dashboard 保留业务文案并隔离验收脚手架的独立非 Holdout fixture。"
+  },
+  "pages": [
+    {
+      "id": "content-fidelity-canary",
+      "route": "/fixtures/dashboard-content-fidelity",
+      "title": "设备健康概览",
+      "pattern": "dashboard-page",
+      "intent": {
+        "goal": "在一屏内判断设备在线状态和待处理风险。",
+        "primaryAction": "查看异常设备",
+        "secondaryActions": ["同步状态"],
+        "successCriteria": [
+          "首屏展示全部设备状态",
+          "主操作保持唯一"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "MetricCard",
+        "Card",
+        "Button"
+      ],
+      "content": {
+        "metrics": [
+          { "label": "在线网关", "value": 128, "delta": "+7", "trend": "up" },
+          { "label": "告警设备", "value": 6, "delta": "平稳", "trend": "flat" },
+          { "label": "待校准", "value": 3, "delta": "-1", "trend": "down" }
+        ],
+        "contentFidelity": {
+          "metricDeltas": "visible",
+          "secondaryActions": "visible",
+          "acceptanceCriteria": "evaluation-only"
+        }
+      }
+    }
+  ]
+}

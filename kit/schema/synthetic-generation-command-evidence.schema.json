@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/synthetic-generation-command-evidence.schema.json",
+  "title": "Synthetic Generation Agent Command Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "stage",
+    "profileId",
+    "arm",
+    "cycle",
+    "model",
+    "reasoningEffort",
+    "command",
+    "args",
+    "cwd",
+    "prompt",
+    "startedAtUtc",
+    "stoppedAtUtc",
+    "exitCode",
+    "status",
+    "failure",
+    "timedOut",
+    "terminationSignal",
+    "spawnError",
+    "stdout",
+    "stderr",
+    "immutableBeforeSha256",
+    "immutableAfterSha256"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "stage": { "const": "generation" },
+    "profileId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "arm": { "enum": ["consumer", "control"] },
+    "cycle": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "provider": { "enum": ["codex", "claude"] },
+    "model": { "type": "string", "minLength": 1 },
+    "reasoningEffort": { "enum": ["low", "medium", "high", "xhigh", "max"] },
+    "command": { "type": "string", "minLength": 1 },
+    "args": { "type": "array", "items": { "type": "string" } },
+    "cwd": { "type": "string", "minLength": 1 },
+    "prompt": { "$ref": "#/$defs/file" },
+    "startedAtUtc": { "type": "string", "format": "date-time" },
+    "stoppedAtUtc": { "type": "string", "format": "date-time" },
+    "exitCode": { "type": ["integer", "null"] },
+    "status": { "enum": ["passed", "failed"] },
+    "failure": { "type": ["string", "null"] },
+    "timedOut": { "type": "boolean" },
+    "terminationSignal": { "type": ["string", "null"] },
+    "spawnError": { "type": ["string", "null"] },
+    "stdout": { "$ref": "#/$defs/file" },
+    "stderr": { "$ref": "#/$defs/file" },
+    "immutableBeforeSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "immutableAfterSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "enum": ["prompt.md", "stdout.log", "stderr.log"] },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    }
+  }
+}

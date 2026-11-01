@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/image2-workflow-request.schema.json",
+  "version": "2.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "invalid-existing-forces-image2",
+  "designContext": "existing",
+  "routing": {
+    "strategyDecisionId": "image2-routing-strategy-amendment-2026-08-14",
+    "selectedRoute": "existing",
+    "selectionReason": "This invalid case tries to force Image2 into the default B2B route."
+  },
+  "project": {
+    "name": "Invalid existing route",
+    "page": "Forced Image2 page",
+    "objective": "This request must fail before the existing route can invoke Image2.",
+    "audience": "Validator"
+  },
+  "viewport": { "width": 1440, "height": 1100, "deviceScaleFactor": 1 },
+  "pageEntry": "design-systems/ops-canvas/spec/index.html",
+  "referencePrompt": "design-systems/ops-canvas/workflow/reference-prompt.md",
+  "visualDiffConfig": "visual-diff/fixtures/pass/config.json",
+  "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json",
+  "figmaTarget": { "fileKey": null, "pageNodeId": null },
+  "existingContext": {
+    "designDoc": "design-systems/ops-canvas/Design.md",
+    "tokens": "design-systems/ops-canvas/tokens.json",
+    "componentIndex": "design-systems/ops-canvas/component-index.json",
+    "figmaSyncContract": "design-systems/ops-canvas/figma/sync.contract.json",
+    "patternManifest": "patterns.manifest.json",
+    "recipe": "recipes/dashboard-page.md",
+    "rules": "rules/dashboard.md"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/blind-consumer-package-receipt.schema.json",
+  "title": "Blind Consumer Package Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "runId",
+    "createdAt",
+    "sourceCommit",
+    "package",
+    "repeatPack",
+    "checks"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "runId": { "$ref": "#/$defs/runId" },
+    "createdAt": { "$ref": "#/$defs/dateTime" },
+    "sourceCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "npmShasum",
+        "bytes",
+        "files",
+        "manifestPaths"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^\\.local-pack/radesign-kit-0\\.1\\.0-[0-9a-f]{12}\\.tgz$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "npmShasum": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "files": { "type": "integer", "minimum": 1 },
+        "manifestPaths": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "repeatPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["firstSha256", "secondSha256", "identical"],
+      "properties": {
+        "firstSha256": { "$ref": "#/$defs/sha256" },
+        "secondSha256": { "$ref": "#/$defs/sha256" },
+        "identical": { "const": true }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checkPackage",
+        "isolatedInstall",
+        "crossCwdRunner",
+        "crossCwdGenerator",
+        "fullValidate"
+      ],
+      "properties": {
+        "checkPackage": { "const": "passed" },
+        "isolatedInstall": { "const": "passed" },
+        "crossCwdRunner": { "const": "passed" },
+        "crossCwdGenerator": { "const": "passed" },
+        "fullValidate": { "const": "passed" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "dateTime": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    }
+  }
+}

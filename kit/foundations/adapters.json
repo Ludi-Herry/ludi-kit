@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "adapters": {
+    "lint.react-import-boundary": {
+      "kind": "lint",
+      "framework": "react",
+      "description": "Static import boundary check for generated React output."
+    },
+    "lint.react-antd-project": {
+      "kind": "lint",
+      "framework": "react",
+      "description": "React import boundary plus fail-closed @ant-design/cli lint for a library-native AntD project."
+    },
+    "lint.vue-import-boundary": {
+      "kind": "lint",
+      "framework": "vue3",
+      "description": "Static import boundary check for generated Vue output."
+    },
+    "build.vite-react": {
+      "kind": "build",
+      "framework": "react",
+      "description": "Vite React scaffold build adapter."
+    },
+    "build.vite-vue3": {
+      "kind": "build",
+      "framework": "vue3",
+      "description": "Vite Vue 3 scaffold build adapter."
+    },
+    "browser.playwright-react": {
+      "kind": "browser",
+      "framework": "react",
+      "description": "Playwright runtime smoke for generated React pages."
+    },
+    "browser.playwright-vue3": {
+      "kind": "browser",
+      "framework": "vue3",
+      "description": "Playwright runtime smoke for generated Vue pages."
+    },
+    "visual.playwright-screenshot": {
+      "kind": "visual",
+      "framework": "any",
+      "description": "Screenshot baseline or manual review evidence adapter."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "build-tianshu-production-shipping",
+  "prompt": "天枢 · 出货管理：按出货单号/客户/出货状态筛选出货单，扫描进度颜色示意。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["出货单", "已扫描", "查看详情", "出库扫描", "登记物流", "取消出货"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "shippingOrder": { "sourceGroup": "出货单", "statuses": ["pending", "picking", "shipped", "partial_shipped", "cancelled"] }
+    }
+  },
+  "expectedActions": {
+    "required": ["新建出货单", "导出", "查看详情", "出库扫描", "登记物流", "取消出货"],
+    "forbidden": ["确认出库", "部分发运"],
+    "danger": ["取消出货"],
+    "conditions": [
+      {
+        "when": "record.status === \"pending\" || record.status === \"picking\"",
+        "branch": "then",
+        "required": ["出库扫描"]
+      },
+      {
+        "when": "record.status === \"picking\" || record.status === \"shipped\"",
+        "branch": "then",
+        "required": ["登记物流"]
+      },
+      {
+        "when": "(record.status === \"pending\" || record.status === \"picking\") && Number(record.scanned) === 0",
+        "branch": "then",
+        "required": ["取消出货"],
+        "danger": ["取消出货"]
+      }
+    ]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "ShippingListPage",
+    "pageId": "production-shipping"
+  },
+  "report": "harness/reports/build-tianshu-production-shipping.json"
+}

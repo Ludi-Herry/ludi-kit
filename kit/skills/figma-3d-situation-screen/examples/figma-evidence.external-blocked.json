@@ -1,0 +1,10 @@
+{
+  "status": "external-blocked",
+  "fileKey": null,
+  "nodeId": null,
+  "viewport": "1920x1080",
+  "figmaScreenshot": null,
+  "implementationScreenshot": null,
+  "diff": null,
+  "reason": "No Figma URL, fileKey, nodeId, or access grant was supplied."
+}

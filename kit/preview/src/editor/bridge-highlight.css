@@ -1,0 +1,135 @@
+/* 页面检查的选中高亮：1.5px 蓝色描边，左上角贴蓝底白字的组件名标签（标签文字来自 data-label）。 */
+.ludi-devops-bridge-highlight {
+  background: rgba(37, 99, 235, 0.06);
+  border: 1.5px solid #2563eb;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.7);
+  box-sizing: border-box;
+  pointer-events: none;
+  position: fixed;
+  z-index: 2147483000;
+}
+
+.ludi-devops-bridge-highlight::before {
+  background: #2563eb;
+  border-radius: 4px 4px 4px 0;
+  color: #ffffff;
+  content: attr(data-label);
+  font: 500 11px/18px ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+  left: -1.5px;
+  padding: 0 6px;
+  position: absolute;
+  top: -19.5px;
+  white-space: nowrap;
+}
+
+.ludi-devops-bridge-highlight[data-flip="inside"]::before {
+  border-radius: 0 0 4px 0;
+  top: -1.5px;
+}
+
+
+/* 高亮框右上角的「选中所在区块」按钮：选中的是区块内部元素时出现，点击改选整个区块。 */
+.ludi-devops-bridge-block-btn {
+  background: #ffffff;
+  border: 1px solid #2563eb;
+  border-radius: 999px;
+  color: #1d4ed8;
+  cursor: pointer;
+  font: 500 11px/16px ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+  padding: 0 8px;
+  pointer-events: auto;
+  position: absolute;
+  right: 4px;
+  top: -20px;
+  white-space: nowrap;
+}
+
+.ludi-devops-bridge-block-btn[hidden] {
+  display: none;
+}
+
+.ludi-devops-bridge-highlight[data-flip="inside"] .ludi-devops-bridge-block-btn {
+  top: 4px;
+}
+
+/* 区块 AI 改写反馈层：独立于当前选中框，可同时标出一次请求涉及的多个区块。 */
+.ludi-devops-bridge-rewrite {
+  background: rgba(37, 99, 235, 0.14);
+  border: 2px solid #2563eb;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 9999px rgba(37, 99, 235, 0.035);
+  box-sizing: border-box;
+  pointer-events: none;
+  position: fixed;
+  z-index: 2147482900;
+}
+
+.ludi-devops-bridge-rewrite::before {
+  background: #2563eb;
+  border-radius: 0 0 0 5px;
+  color: #ffffff;
+  content: attr(data-label);
+  font: 600 12px/22px ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+  padding: 0 8px;
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  white-space: nowrap;
+}
+
+.ludi-devops-bridge-rewrite[data-status="unavailable"] {
+  background: rgba(217, 119, 6, 0.12);
+  border-color: #d97706;
+  box-shadow: inset 0 0 0 9999px rgba(217, 119, 6, 0.025);
+}
+
+.ludi-devops-bridge-rewrite[data-status="unavailable"]::before {
+  background: #d97706;
+}
+
+.ludi-devops-bridge-rewrite[data-status="failed"] {
+  background: rgba(220, 38, 38, 0.14);
+  border-color: #dc2626;
+  box-shadow: inset 0 0 0 9999px rgba(220, 38, 38, 0.03);
+}
+
+.ludi-devops-bridge-rewrite[data-status="failed"]::before {
+  background: #dc2626;
+}
+
+/* 区块预览：被删除或被替换的区块隐藏；新增的副本与替换容器带虚线外框与「新增的…」标签，不可操作。 */
+[data-ludi-block-hidden] {
+  display: none !important;
+}
+
+[data-ludi-block-clone],
+[data-ludi-block-mount][data-ludi-clone-label] {
+  outline: 1.5px dashed #2563eb;
+  outline-offset: -1px;
+  position: relative;
+}
+
+[data-ludi-block-clone] *,
+[data-ludi-block-mount][data-ludi-clone-label] * {
+  pointer-events: none !important;
+}
+
+[data-ludi-block-clone]::after,
+[data-ludi-block-mount][data-ludi-clone-label]::after {
+  background: #2563eb;
+  border-radius: 0 0 0 4px;
+  color: #ffffff;
+  content: attr(data-ludi-clone-label);
+  font: 500 11px/18px ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+  padding: 0 6px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.ludi-block-mount {
+  min-width: 0;
+}

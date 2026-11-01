@@ -1,0 +1,12 @@
+{
+  "name": "ludi-design-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node ../node_modules/vite/bin/vite.js --config vite.config.mjs",
+    "build": "node ../node_modules/vite/bin/vite.js build --config vite.config.mjs"
+  },
+  "dependencies": { "react": "19.2.7", "react-dom": "19.2.7", "lucide-react": "1.24.0" },
+  "devDependencies": { "vite": "7.3.6" }
+}

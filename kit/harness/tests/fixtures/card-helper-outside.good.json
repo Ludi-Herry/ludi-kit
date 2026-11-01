@@ -1,0 +1,10 @@
+{
+  "id": "test-card-helper-outside",
+  "forbiddenPatterns": ["card-inside-card"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/nested-card-helper.bad.tsx",
+    "symbol": "CardHelperOutsidePage"
+  },
+  "report": "harness/reports/test-card-helper-outside.json"
+}

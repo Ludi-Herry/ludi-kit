@@ -1,0 +1,13 @@
+{
+  "id": "test-command-injection",
+  "buildRuntime": {
+    "command": "npx",
+    "args": ["tsc", "--noEmit", "-p", "harness/checks/tsconfig.sample-platform.json", "& whoami"],
+    "cwd": "."
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.good.tsx"
+  },
+  "report": "harness/reports/test-command-injection.json"
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../schema/blind-adoption-registry.schema.json",
+  "version": "1.1.0",
+  "programId": "requirement-to-final-page-blind-adoption",
+  "owner": "quality/blind-adoption-registry.json",
+  "updatedAt": "2026-08-04T14:53:57.2281784Z",
+  "kpi": {
+    "targetRuns": 5,
+    "kitFirstPassMin": 4,
+    "kitWinsMin": 2,
+    "manualAcceptanceTimeReductionMinPercent": 30,
+    "hardContractViolationsMax": 0
+  },
+  "counts": {
+    "attemptsRecorded": 0,
+    "invalidatedAttempts": 0,
+    "activeAttempts": 0,
+    "qualifyingCompleted": 0,
+    "preRevealFrozen": 0,
+    "remainingToComplete": 0,
+    "unreservedSlots": 0
+  },
+  "runs": []
+}

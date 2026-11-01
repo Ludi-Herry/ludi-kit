@@ -1,0 +1,11 @@
+{
+  "id": "test-dead-page-return-infinite",
+  "expectedComponents": ["PageLayout"],
+  "expectedText": ["INFINITE_DEAD_COPY"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/dead-page-return.bad.tsx",
+    "symbol": "InfiniteDeadReturnPage"
+  },
+  "report": "harness/reports/test-dead-page-return-infinite.json"
+}

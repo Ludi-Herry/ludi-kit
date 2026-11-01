@@ -1,0 +1,481 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/project-flow-acceptance.schema.json",
+  "title": "Radesign Project Flow Acceptance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "projectId", "flows"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "enum": ["1.0.0", "1.1.0", "1.2.0"] },
+    "runId": { "$ref": "#/$defs/runId" },
+    "arm": { "enum": ["consumer", "control"] },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactUnderTest": { "type": "object" },
+    "evaluator": { "$ref": "#/$defs/evaluator" },
+    "flows": {
+      "type": "array",
+      "minItems": 1
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "version": { "const": "1.0.0" },
+        "runId": false,
+        "arm": false,
+        "artifactUnderTest": false,
+        "evaluator": false,
+        "flows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/flowLegacy" }
+        }
+      },
+      "required": ["version"]
+    },
+    {
+      "properties": {
+        "version": { "const": "1.1.0" },
+        "runId": false,
+        "arm": false,
+        "artifactUnderTest": { "$ref": "#/$defs/artifactUnderTestV11" },
+        "evaluator": false,
+        "flows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/flowLegacy" }
+        }
+      },
+      "required": ["version", "artifactUnderTest"]
+    },
+    {
+      "properties": {
+        "version": { "const": "1.2.0" },
+        "runId": { "$ref": "#/$defs/runId" },
+        "arm": { "enum": ["consumer", "control"] },
+        "artifactUnderTest": { "$ref": "#/$defs/artifactUnderTestV12" },
+        "evaluator": { "$ref": "#/$defs/evaluator" },
+        "flows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/flowV12" }
+        }
+      },
+      "required": ["version", "runId", "arm", "artifactUnderTest", "evaluator"]
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "uuidV4": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "artifactUnderTestV11": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "receiptPath"],
+      "properties": {
+        "artifactId": { "$ref": "#/$defs/uuidV4" },
+        "receiptPath": { "const": "evidence/artifact-under-test.json" }
+      }
+    },
+    "artifactUnderTestV12": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "receiptSha256", "sealSha256"],
+      "properties": {
+        "artifactId": { "$ref": "#/$defs/uuidV4" },
+        "receiptSha256": { "$ref": "#/$defs/sha256" },
+        "sealSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluatorId", "revision"],
+      "properties": {
+        "evaluatorId": {
+          "type": "string",
+          "pattern": "^eval-blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        }
+      }
+    },
+    "stepLegacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pageId"],
+      "properties": {
+        "pageId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "action": { "type": "string", "minLength": 1 },
+        "expectedRoute": { "type": "string", "pattern": "^/" },
+        "expectedState": { "type": "string", "minLength": 1 },
+        "assertionRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "stepV12": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepId",
+        "interactionId",
+        "pageId",
+        "action",
+        "expectedRoute",
+        "expectedState",
+        "assertionRefs",
+        "runtimeAssertions"
+      ],
+      "properties": {
+        "stepId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "interactionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "pageId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "action": { "type": "string", "minLength": 1 },
+        "expectedRoute": { "type": "string", "pattern": "^/" },
+        "expectedState": { "type": "string", "minLength": 1 },
+        "assertionRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "runtimeAssertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/runtimeAssertionV12" }
+        }
+      }
+    },
+    "runtimeAssertionV12": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assertionId",
+        "assertionRef",
+        "targetId",
+        "matcher",
+        "attribute",
+        "expected"
+      ],
+      "properties": {
+        "assertionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "assertionRef": { "type": "string", "minLength": 1 },
+        "targetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "matcher": {
+          "enum": ["visible", "text-equals", "text-includes", "attribute-equals"]
+        },
+        "attribute": { "type": ["string", "null"] },
+        "expected": { "type": ["boolean", "string"] }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "matcher": { "const": "visible" },
+            "attribute": { "type": "null" },
+            "expected": { "type": "boolean" }
+          }
+        },
+        {
+          "properties": {
+            "matcher": { "const": "text-equals" },
+            "attribute": { "type": "null" },
+            "expected": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "properties": {
+            "matcher": { "const": "text-includes" },
+            "attribute": { "type": "null" },
+            "expected": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "properties": {
+            "matcher": { "const": "attribute-equals" },
+            "attribute": { "type": "string", "minLength": 1 },
+            "expected": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "sideEffectAssertionV12": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assertionId",
+        "targetId",
+        "matcher",
+        "attribute",
+        "expected"
+      ],
+      "properties": {
+        "assertionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "targetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "matcher": {
+          "enum": ["visible", "text-equals", "text-includes", "attribute-equals"]
+        },
+        "attribute": { "type": ["string", "null"] },
+        "expected": { "type": ["boolean", "string"] }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "matcher": { "const": "visible" },
+            "attribute": { "type": "null" },
+            "expected": { "type": "boolean" }
+          }
+        },
+        {
+          "properties": {
+            "matcher": { "const": "text-equals" },
+            "attribute": { "type": "null" },
+            "expected": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "properties": {
+            "matcher": { "const": "text-includes" },
+            "attribute": { "type": "null" },
+            "expected": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "properties": {
+            "matcher": { "const": "attribute-equals" },
+            "attribute": { "type": "string", "minLength": 1 },
+            "expected": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route", "sideEffect"],
+      "properties": {
+        "route": { "type": "string", "pattern": "^/" },
+        "sideEffect": { "type": "string", "minLength": 1 },
+        "recovery": { "type": "string", "minLength": 1 }
+      }
+    },
+    "resultV12": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "route",
+        "sideEffect",
+        "recovery",
+        "recoveryInteractionId",
+        "recoveryExpectedRoute",
+        "sideEffectAssertions"
+      ],
+      "properties": {
+        "route": { "type": "string", "pattern": "^/" },
+        "sideEffect": { "type": "string", "minLength": 1 },
+        "recovery": { "type": "string", "minLength": 1 },
+        "recoveryInteractionId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "recoveryExpectedRoute": { "type": "string", "pattern": "^/" },
+        "sideEffectAssertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/sideEffectAssertionV12" }
+        }
+      }
+    },
+    "flowLegacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flowId", "status", "steps"],
+      "properties": {
+        "flowId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "status": { "enum": ["draft", "approved"] },
+        "objectRefs": { "$ref": "#/$defs/objectRefs" },
+        "specPath": { "$ref": "#/$defs/specPathLegacy" },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/stepLegacy" }
+        },
+        "result": { "$ref": "#/$defs/result" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "approved" } },
+            "required": ["status"]
+          },
+          "then": {
+            "required": ["objectRefs", "specPath", "result"],
+            "properties": {
+              "objectRefs": true,
+              "specPath": true,
+              "result": true,
+              "steps": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "allOf": [
+                    { "$ref": "#/$defs/stepLegacy" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "pageId": true,
+                        "action": true,
+                        "expectedRoute": true,
+                        "expectedState": true,
+                        "assertionRefs": true
+                      },
+                      "required": [
+                        "pageId",
+                        "action",
+                        "expectedRoute",
+                        "expectedState",
+                        "assertionRefs"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "flowV12": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flowId", "status", "steps"],
+      "properties": {
+        "flowId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "status": { "enum": ["draft", "approved"] },
+        "objectRefs": { "$ref": "#/$defs/objectRefs" },
+        "specPath": { "$ref": "#/$defs/specPathV12" },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/stepV12" }
+        },
+        "result": { "$ref": "#/$defs/resultV12" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "approved" } },
+            "required": ["status"]
+          },
+          "then": {
+            "required": ["objectRefs", "specPath", "result"],
+            "properties": {
+              "objectRefs": true,
+              "specPath": true,
+              "steps": {
+                "type": "array",
+                "minItems": 2,
+                "items": { "$ref": "#/$defs/stepV12" }
+              },
+              "result": {
+                "allOf": [
+                  { "$ref": "#/$defs/resultV12" },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "route": true,
+                      "sideEffect": true,
+                      "recovery": true,
+                      "recoveryInteractionId": true,
+                      "recoveryExpectedRoute": true
+                    },
+                    "required": [
+                      "route",
+                      "sideEffect",
+                      "recovery",
+                      "recoveryInteractionId",
+                      "recoveryExpectedRoute"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objectRefs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z][A-Za-z0-9]*/[a-z0-9][a-z0-9-]*$"
+      }
+    },
+    "specPathLegacy": {
+      "type": "string",
+      "oneOf": [
+        {
+          "pattern": "^projects/[a-z0-9][a-z0-9-]*/e2e/flows/[a-z0-9][a-z0-9-]*\\.spec\\.mjs$"
+        },
+        {
+          "pattern": "^e2e/flows/[a-z0-9][a-z0-9-]*\\.spec\\.mjs$"
+        }
+      ]
+    },
+    "specPathV12": {
+      "type": "string",
+      "pattern": "^e2e/flows/[a-z0-9][a-z0-9-]*\\.spec\\.mjs$"
+    }
+  }
+}

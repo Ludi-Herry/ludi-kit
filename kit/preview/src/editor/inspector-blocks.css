@@ -1,0 +1,359 @@
+/* 右栏「设计」页：这是什么 / 能做什么 / 外观 / 更多设置。沿用 editor.css 的 --ludi-* 变量。 */
+
+.ludi-what {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 4px;
+}
+
+.ludi-what__title {
+  font-size: 15px;
+  line-height: 1.35;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.ludi-what__purpose {
+  color: var(--ludi-text-secondary);
+  font-size: 12.5px;
+  line-height: 1.55;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.ludi-what__block {
+  align-items: center;
+  background: var(--ludi-fill);
+  border: 1px solid var(--ludi-border);
+  border-radius: 999px;
+  color: var(--ludi-text);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 12px;
+  gap: 2px;
+  justify-self: start;
+  line-height: 1.4;
+  padding: 2px 8px 2px 10px;
+}
+
+.ludi-what__block:hover {
+  background: var(--ludi-fill-strong);
+}
+
+.ludi-block-actions__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ludi-block-advice {
+  background: var(--ludi-fill);
+  border: 1px solid var(--ludi-border);
+  border-radius: var(--ludi-radius);
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px 10px;
+}
+
+.ludi-block-advice__head {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ludi-block-advice__sentence,
+.ludi-block-advice__error {
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.ludi-block-advice__error {
+  color: var(--ludi-danger);
+}
+
+.ludi-block-hint {
+  color: var(--ludi-warning);
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.ludi-block-notice {
+  background: var(--ludi-fill);
+  border: 1px solid var(--ludi-border);
+  border-radius: var(--ludi-radius);
+  display: grid;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+}
+
+.ludi-block-notice[data-tone="warn"] {
+  background: #fffbeb;
+  border-color: #fcd34d;
+}
+
+.ludi-block-notice__head {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.ludi-block-notice__head strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ludi-block-notice .ludi-block-hint {
+  margin-top: 4px;
+}
+
+.ludi-block-progress {
+  background: var(--ludi-fill);
+  border: 1px solid var(--ludi-border);
+  border-radius: var(--ludi-radius);
+  display: grid;
+  gap: 8px;
+  margin: 8px 0;
+  padding: 10px;
+}
+
+.ludi-block-progress__intro {
+  display: grid;
+  gap: 2px;
+}
+
+.ludi-block-progress__intro > span {
+  color: var(--ludi-text-secondary);
+  font-size: 12px;
+}
+
+.ludi-block-progress__unavailable {
+  background: var(--ludi-surface);
+  border-left: 3px solid var(--ludi-warning);
+  color: var(--ludi-warning);
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 6px 8px;
+}
+
+.ludi-block-progress__list {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ludi-block-progress__list li {
+  align-items: start;
+  display: grid;
+  gap: 7px;
+  grid-template-columns: 10px minmax(0, 1fr);
+}
+
+.ludi-block-progress__list li > div {
+  display: grid;
+  gap: 1px;
+}
+
+.ludi-block-progress__list li span {
+  color: var(--ludi-text-secondary);
+  font-size: 11.5px;
+  overflow-wrap: anywhere;
+}
+
+.ludi-block-progress__list li[data-status="failed"] span,
+.ludi-block-progress__result[data-status="failed"] {
+  color: var(--ludi-danger);
+}
+
+.ludi-block-progress__checks {
+  border-left: 1px solid var(--ludi-border-strong);
+  display: grid;
+  gap: 5px;
+  margin-left: 4px;
+  padding-left: 12px;
+}
+
+.ludi-block-progress__checks > div {
+  align-items: center;
+  display: grid;
+  font-size: 11px;
+  gap: 6px;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+}
+
+.ludi-block-progress__checks > div > span:last-child {
+  color: var(--ludi-text-secondary);
+}
+
+.ludi-block-progress__result {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ludi-replace {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ludi-replace__criteria {
+  background: var(--ludi-fill);
+  border-radius: var(--ludi-radius);
+  font-size: 12px;
+  padding: 8px 10px;
+}
+
+.ludi-replace__criteria ul {
+  margin: 4px 0 0;
+  padding-left: 16px;
+}
+
+.ludi-replace__item {
+  display: grid;
+  gap: 6px;
+}
+
+.ludi-replace__item[data-current="true"] {
+  border-color: var(--ludi-primary);
+}
+
+.ludi-impact-line {
+  align-items: center;
+  background: var(--ludi-fill);
+  border-radius: var(--ludi-radius);
+  display: flex;
+  font-size: 12px;
+  gap: 8px;
+  justify-content: space-between;
+  margin: 8px 0 12px;
+  padding: 6px 10px;
+}
+
+.ludi-impact-line__button {
+  background: none;
+  border: 0;
+  color: var(--ludi-text);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.ludi-impact-detail {
+  border: 1px solid var(--ludi-border);
+  border-radius: var(--ludi-radius);
+  margin-bottom: 12px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.ludi-rule-summary {
+  border-radius: var(--ludi-radius);
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 8px 0 12px;
+  padding: 6px 10px;
+}
+
+.ludi-rule-summary[data-tone="fail"] {
+  background: var(--ludi-danger-soft);
+  color: var(--ludi-danger);
+}
+
+.ludi-rule-summary[data-tone="warn"] {
+  background: #fffbeb;
+  color: var(--ludi-warning);
+}
+
+.ludi-more {
+  border-top: 1px solid var(--ludi-border);
+  margin-top: 16px;
+}
+
+.ludi-more__toggle {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: var(--ludi-text);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-weight: 600;
+  gap: 6px;
+  padding: 10px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.ludi-more__summary {
+  color: var(--ludi-text-secondary);
+  font-size: 11.5px;
+  font-weight: 400;
+}
+
+.ludi-more__body {
+  padding-bottom: 8px;
+}
+
+.ludi-more__en {
+  color: var(--ludi-text-tertiary);
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+/* 右栏主区不露英文标识：中文名后面的英文名（token 名、CSS 变量名）只在「更多设置」里作为次要灰字出现。
+   控件的 aria-label 不受影响。 */
+.ludi-inspector__pane .ludi-kv__label > span + code {
+  display: none;
+}
+
+.ludi-more__body .ludi-kv__label > span + code {
+  color: var(--ludi-text-tertiary);
+  display: inline;
+  font-size: 11px;
+}
+
+/* 第二轮：区块依据一行、候选缩略图与独立滚动列表 */
+.ludi-what__basis {
+  color: var(--ludi-warning);
+  font-size: 12px;
+  margin: 0;
+}
+
+.ludi-replace__list {
+  display: grid;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.ludi-thumb {
+  background: #f6f8fb;
+  border: 1px solid var(--ludi-border);
+  border-radius: var(--ludi-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.ludi-thumb__frame {
+  border: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform-origin: 0 0;
+}

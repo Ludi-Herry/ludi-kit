@@ -1,0 +1,13 @@
+{
+  "note": "Gzip budget for total JS in each dist, measured by scripts/check-bundle.mjs (KiB, gzip level 9 — differs slightly from Vite's 1000-byte kB report). Raising a budget is an explicit decision: change it here and record why in docs/PROJECT-STATUS.md. Gate baseline 2026-07-12 (after T1 batch 4): preview 581.42 kB gzip, starter 272.64 kB gzip.",
+  "targets": {
+    "preview": {
+      "dist": "preview/dist/assets",
+      "maxGzipKb": 700
+    },
+    "starter": {
+      "dist": "starter/dist/assets",
+      "maxGzipKb": 320
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "test-registry-mismatch",
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "QcListPage",
+    "pageId": "production-testing"
+  },
+  "report": "harness/reports/test-registry-mismatch.json"
+}

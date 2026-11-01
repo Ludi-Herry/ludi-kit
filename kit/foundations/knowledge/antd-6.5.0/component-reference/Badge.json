@@ -1,0 +1,314 @@
+{
+  "version": "1.0.0",
+  "component": "Badge",
+  "queryComponent": "Badge",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Badge",
+        "nameZh": "徽标数",
+        "description": "图标右上角的圆形徽标数字。",
+        "props": [
+          {
+            "name": "color",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "count",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "dot",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "offset",
+            "type": "[number, number]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "overflowCount",
+            "type": "number",
+            "default": "99",
+            "since": ""
+          },
+          {
+            "name": "showZero",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`medium` | `small`",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "status",
+            "type": "`success` | `processing` | `default` | `error` | `warning`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "text",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "string | null | false",
+            "default": "-",
+            "since": "6.5.0"
+          }
+        ],
+        "subComponentProps": {
+          "Badge.Ribbon": [
+            {
+              "name": "classNames",
+              "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "placement",
+              "type": "`start` | `end`",
+              "default": "`end`",
+              "since": ""
+            },
+            {
+              "name": "styles",
+              "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "text",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "span"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Badge",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n一般出现在通知图标或头像的右上角，用于显示需要处理的消息条数，通过醒目视觉形式吸引用户处理。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/no-wrapper.tsx\">独立使用</code>\n<code src=\"./demo/overflow.tsx\">封顶数字</code>\n<code src=\"./demo/dot.tsx\">讨嫌的小红点</code>\n<code src=\"./demo/change.tsx\">动态</code>\n<code src=\"./demo/link.tsx\">可点击</code>\n<code src=\"./demo/offset.tsx\">自定义位置偏移</code>\n<code src=\"./demo/size.tsx\">大小</code>\n<code src=\"./demo/status.tsx\">状态点</code>\n<code src=\"./demo/colorful.tsx\">多彩徽标</code>\n<code src=\"./demo/ribbon.tsx\">缎带</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/ribbon-debug.tsx\" debug>Ribbon Debug</code>\n<code src=\"./demo/mix.tsx\" debug>各种混用的情况</code>\n<code src=\"./demo/title.tsx\" debug>自定义标题</code>\n<code src=\"./demo/colorful-with-count-debug.tsx\" debug>多彩徽标支持 count 显示 Debug</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Badge\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| color | 自定义小圆点的颜色 | string | - |  | × |\n| count | 展示的数字，大于 overflowCount 时显示为 `${overflowCount}+`，为 0 时隐藏 | ReactNode | - |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 5.7.0 |\n| dot | 不展示数字，只有一个小红点 | boolean | false |  | × |\n| offset | 设置状态点的位置偏移 | \\[number, number] | - |  | × |\n| overflowCount | 展示封顶的数字值 | number | 99 |  | × |\n| showZero | 当数值为 0 时，是否展示 Badge | boolean | false |  | × |\n| size | 在设置了 `count` 的前提下有效，设置小圆点的大小 | `medium` \\| `small` | - | - | × |\n| status | 设置 Badge 为状态点 | `success` \\| `processing` \\| `default` \\| `error` \\| `warning` | - |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.7.0 |\n| text | 在设置了 `status` 的前提下有效，设置状态点的文本 | ReactNode | - |  | × |\n| title | 设置鼠标放在状态点上时显示的文字。设置为 `null` 或 `false` 时移除原生 tooltip | string \\| null \\| false | - | 6.5.0 | × |\n\n### Badge.Ribbon\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| color | 自定义缎带的颜色 | string | - |  | × |\n| placement | 缎带的位置，`start` 和 `end` 随文字方向（RTL 或 LTR）变动 | `start` \\| `end` | `end` |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| text | 缎带中填入的内容 | ReactNode | - |  | × |\n\n## Semantic DOM\n\n### Badge\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n### Badge.Ribbon\n\n<code src=\"./demo/_semantic_ribbon.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Badge\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Badge",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Simplest Usage. Badge will be hidden when `count` is `0`, but we can use `showZero` to show it."
+          },
+          {
+            "name": "change",
+            "title": "Dynamic",
+            "description": "The count will be animated as it changes."
+          },
+          {
+            "name": "colorful",
+            "title": "Colorful Badge",
+            "description": "We preset a series of colorful Badge styles for use in different situations. You can also set it to a hex color string for custom color."
+          },
+          {
+            "name": "dot",
+            "title": "Red badge",
+            "description": "This will simply display a red badge, without a specific count. If count equals 0, it won't display the dot."
+          },
+          {
+            "name": "link",
+            "title": "Clickable",
+            "description": "The badge can be wrapped with `a` tag to make it linkable."
+          },
+          {
+            "name": "no-wrapper",
+            "title": "Standalone",
+            "description": "Used in standalone when children is empty."
+          },
+          {
+            "name": "offset",
+            "title": "Offset",
+            "description": "Set offset of the badge dot, the format is `[left, top]`, which represents the offset of the status dot from the left and top of the default position."
+          },
+          {
+            "name": "overflow",
+            "title": "Overflow Count",
+            "description": "`${overflowCount}+` is displayed when count is larger than `overflowCount`. The default value of `overflowCount` is `99`."
+          },
+          {
+            "name": "ribbon",
+            "title": "Ribbon",
+            "description": "Use ribbon badge."
+          },
+          {
+            "name": "size",
+            "title": "Size",
+            "description": "Set size of numeral Badge."
+          },
+          {
+            "name": "status",
+            "title": "Status",
+            "description": "Standalone badge with status."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Badge by passing objects/functions through `classNames` and `styles`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Badge",
+        "tokens": [
+          {
+            "name": "dotSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of dot badge",
+            "descriptionZh": "点状徽标尺寸"
+          },
+          {
+            "name": "indicatorHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of badge",
+            "descriptionZh": "徽标高度"
+          },
+          {
+            "name": "indicatorHeightSM",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of small badge",
+            "descriptionZh": "小号徽标高度"
+          },
+          {
+            "name": "indicatorZIndex",
+            "type": "string | number",
+            "default": "",
+            "description": "z-index of badge",
+            "descriptionZh": "徽标 z-index"
+          },
+          {
+            "name": "paddingInline",
+            "type": "string | number",
+            "default": "",
+            "description": "Inline padding of multiple words badge",
+            "descriptionZh": "多字符徽标水平内边距"
+          },
+          {
+            "name": "statusSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of status badge",
+            "descriptionZh": "状态徽标尺寸"
+          },
+          {
+            "name": "textFontSize",
+            "type": "number",
+            "default": "",
+            "description": "Font size of badge text",
+            "descriptionZh": "徽标文本尺寸"
+          },
+          {
+            "name": "textFontSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Font size of small badge text",
+            "descriptionZh": "小号徽标文本尺寸"
+          },
+          {
+            "name": "textFontWeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Font weight of badge text",
+            "descriptionZh": "徽标文本粗细"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Badge",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with relative positioning, inline-block display, and fit-content width for basic layout",
+            "descriptionZh": "根元素，包含相对定位、行内块布局、适应内容宽度等基础布局样式"
+          },
+          {
+            "key": "indicator",
+            "description": "Indicator element with positioning, z-index, dimensions, colors, fonts, text alignment, background, border-radius, box-shadow, and transition animations for complete badge styling",
+            "descriptionZh": "指示器元素，包含定位、层级、尺寸、颜色、字体、文本对齐、背景、圆角、阴影、过渡动画等完整的徽标样式"
+          }
+        ]
+      }
+    }
+  }
+}

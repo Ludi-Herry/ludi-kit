@@ -1,0 +1,43 @@
+{
+  "id": "build-tianshu-ad-reconciliation",
+  "prompt": "天枢 · 对账管理：T+1 口径、金额权限、只读角色、差异处理和核销确认。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "Pagination", "Drawer", "DescriptionGrid", "Upload", "RadioGroup", "ConfirmDialog", "ForbiddenState", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "Drawer", "DescriptionGrid", "RadioGroup", "Upload", "ConfirmDialog"],
+  "expectedText": ["对账管理", "T+1 定版口径", "金额已脱敏", "确认核销该批次？", "确认核销"],
+  "expectedActions": {
+    "required": ["核销", "核销此批次"]
+  },
+  "expectedConfirmations": [
+    {
+      "action": "核销",
+      "title": "确认核销该批次？",
+      "confirmLabel": "确认核销",
+      "requiredText": ["核销后不可撤回"],
+      "danger": true,
+      "state": { "variable": "closeTarget", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    },
+    {
+      "action": "核销此批次",
+      "title": "确认核销该批次？",
+      "confirmLabel": "确认核销",
+      "requiredText": ["核销后不可撤回"],
+      "danger": true,
+      "state": { "variable": "closeTarget", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/deferred-pages.tsx",
+    "symbol": "TianshuAdReconciliationPage"
+  },
+  "report": "harness/reports/build-tianshu-ad-reconciliation.json"
+}

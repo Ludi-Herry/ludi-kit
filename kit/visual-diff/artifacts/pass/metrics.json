@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "result": "pass",
+  "images": {
+    "baseline": "../images/baseline.png",
+    "candidate": "../images/pass-candidate.png",
+    "width": 80,
+    "height": 60,
+    "baselineSha256": "f4808d08b9a26a53552bbacf82a800ed9281d791bcb00386fc034fadb07b112f",
+    "candidateSha256": "e9c86ba8d083c924a95929f9d88e3f6560cfb5402e0c0019868e743f7ad2dd9d"
+  },
+  "formula": {
+    "colorComparison": "sRGB channels composited over white and normalized to [0,1]",
+    "rms": "sqrt(sum((baselineRGB-candidateRGB)^2)/(pixelCount*3))",
+    "ssim": "global luminance SSIM using BT.709 coefficients, population variance/covariance, K1=0.01, K2=0.03, L=1",
+    "changedPixel": "max absolute composited RGB channel delta strictly greater than pixelDeltaThreshold"
+  },
+  "global": {
+    "rms": 0.000392156863,
+    "ssim": 0.999999130683,
+    "changedPixels": 0,
+    "pixelCount": 4800,
+    "changedPixelRatio": 0,
+    "thresholds": {
+      "minSsim": 0.985,
+      "maxRms": 0.035,
+      "pixelDeltaThreshold": 0.06274509803921569,
+      "maxChangedPixelRatio": 0.025
+    },
+    "pass": true,
+    "failures": []
+  },
+  "regions": [
+    {
+      "name": "primary-content",
+      "bounds": {
+        "x": 16,
+        "y": 12,
+        "width": 48,
+        "height": 32
+      },
+      "rms": 0.000693241942,
+      "ssim": 0.999993664325,
+      "changedPixels": 0,
+      "pixelCount": 1536,
+      "changedPixelRatio": 0,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": true,
+      "failures": []
+    }
+  ],
+  "failures": [],
+  "artifacts": {
+    "metrics": "../../artifacts/pass/metrics.json",
+    "heatmap": "../../artifacts/pass/heatmap.png",
+    "heatmapSha256": "3b02d4fc90308c15eb297486919c815d10e35add2e7f74ed7da40cbbb06cae91"
+  }
+}

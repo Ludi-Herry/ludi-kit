@@ -1,0 +1,101 @@
+{
+  "$schema": "../../schema/project-context.schema.json",
+  "version": "0.1.0",
+  "projectId": "ludi-design-website",
+  "contextType": "real-product",
+  "decision": "Owner approved product-stage and the reference combination. The product core is AI output quality, interface order, design-to-implementation alignment and consistency across component foundations; the editor supports this story.",
+  "product": {
+    "name": "Ludi Design",
+    "category": "design-tool",
+    "audience": [
+      "设计师",
+      "产品经理",
+      "项目经理",
+      "新手"
+    ],
+    "scenario": "展示设计规则、生成与验收流程及真实页面，让访问者理解如何改善 AI 界面质量并保持设计与组件库改造一致。"
+  },
+  "sourceOfTruth": [
+    "../docs/PROJECT-STATUS.md",
+    "../docs/PLAN-产品宣传官网-2026-10-10.md",
+    "preview/website/task-contract.json",
+    "preview/src/editor/EditorShell.tsx",
+    "../docs/FRONTEND-FOUNDATION-SYSTEM.md",
+    "../docs/REFERENCES-组件库官网-2026-10-11.md"
+  ],
+  "boundaries": {
+    "doNotBuild": [
+      "新增编辑器功能",
+      "公开部署",
+      "价格与客户证言",
+      "写入当前演示项目"
+    ]
+  },
+  "frontendFoundation": {
+    "outputMode": "custom-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "local",
+      "displayName": "Ludi website project source",
+      "version": "0.1.0",
+      "packageName": "ludi-website-source"
+    },
+    "distribution": "project-source",
+    "officialSources": {
+      "principles": "../docs/PLAN-产品宣传官网-2026-10-10.md",
+      "components": "preview/website/src/main.jsx",
+      "templates": "preview/website/src/main.jsx",
+      "source": "preview/website/src/main.jsx",
+      "styles": "preview/website/src/styles.css",
+      "theme": "preview/website/src/tokens.css",
+      "variables": "preview/website/src/tokens.css"
+    },
+    "license": "project-private",
+    "reviewedAt": "2026-10-11",
+    "designPack": {
+      "path": "foundations/design-packs/ludi-website-0.1.0.json",
+      "sha256": "398efa365fae1d58b234707e46c07d05c7e4d6321dc91583166e71fc193e679a"
+    },
+    "icons": {
+      "packageName": "lucide-react",
+      "version": "1.24.0",
+      "source": "existing preview dependency"
+    },
+    "theme": {
+      "entry": "preview/website/src/tokens.css",
+      "strategy": "CSS custom properties; selected product-stage with light and dark appearance"
+    },
+    "reset": {
+      "import": "./tokens.css"
+    },
+    "imports": {
+      "root": "./src/main.jsx",
+      "allowedPackages": [
+        "react",
+        "react-dom/client",
+        "lucide-react",
+        "./tokens.css",
+        "./styles.css",
+        "./motion.js",
+        "./copy.json",
+        "react/jsx-runtime"
+      ],
+      "forbiddenPackages": [
+        "antd",
+        "@ai-readable/kit",
+        "framer-motion",
+        "gsap"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-import-boundary",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  }
+}

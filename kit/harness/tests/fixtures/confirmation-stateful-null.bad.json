@@ -1,0 +1,19 @@
+{
+  "id": "test-confirmation-stateful-null",
+  "expectedConfirmations": [
+    {
+      "action": "删除",
+      "title": "删除记录？",
+      "confirmLabel": "确认删除",
+      "requiredText": ["删除后不可恢复"],
+      "danger": true,
+      "state": { "variable": "target", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-stateful-null.bad.tsx",
+    "symbol": "ConfirmationStatefulNullPage"
+  },
+  "report": "harness/reports/test-confirmation-stateful-null.json"
+}

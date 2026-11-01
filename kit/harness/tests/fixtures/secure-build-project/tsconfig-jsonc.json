@@ -1,0 +1,9 @@
+{
+  // TypeScript accepts comments and trailing commas in tsconfig files.
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": [],
+  },
+  "files": ["plain.ts"],
+}

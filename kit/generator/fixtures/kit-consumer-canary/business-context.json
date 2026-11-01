@@ -1,0 +1,78 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "kit-consumer-canary",
+  "contextType": "validation-sandbox",
+  "decision": "explicit canary for React kit-consumer output",
+  "product": {
+    "name": "Kit Consumer Canary",
+    "realCustomer": false,
+    "audience": ["kit maintainers"],
+    "scenario": "确认 @ai-readable/kit 公共入口仍可支撑生成页。"
+  },
+  "sourceOfTruth": ["generator/fixtures/kit-consumer-canary/project-description.json"],
+  "coreFlows": ["kit barrel import smoke"],
+  "firstPages": ["Kit Consumer Canary"],
+  "criticalStates": ["公共入口缺失", "错误第三方导入"],
+  "thirdPartyBaseline": {
+    "candidate": "defer",
+    "status": "fixture"
+  },
+  "frontendFoundation": {
+    "outputMode": "kit-consumer",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "local",
+      "displayName": "Ludi Design Kit",
+      "version": "0.1.0",
+      "packageName": "@ai-readable/kit"
+    },
+    "distribution": "workspace-package",
+    "officialSources": {
+      "principles": "DESIGN.md",
+      "components": "components.manifest.json",
+      "templates": "recipes/",
+      "source": "src/index.ts",
+      "styles": "src/styles.css",
+      "theme": "src/components.tsx#AIReadableProvider",
+      "variables": "tokens.manifest.json"
+    },
+    "license": "private",
+    "reviewedAt": "2026-07-19",
+    "designPack": {
+      "path": "foundations/design-packs/local-ai-readable-kit-0.1.0.json",
+      "sha256": "f16a762bf8d310ca8e5d8306a9b58ffdc6815609c12d475b005e2ad35fdf1c53"
+    },
+    "icons": {
+      "packageName": "@ai-readable/kit",
+      "version": "0.1.0",
+      "source": "src/icons.ts"
+    },
+    "theme": {
+      "entry": "@ai-readable/kit/styles.css",
+      "strategy": "AIReadableProvider CSS variables"
+    },
+    "reset": {
+      "import": "@ai-readable/kit/styles.css"
+    },
+    "imports": {
+      "root": "@ai-readable/kit",
+      "allowedPackages": ["@ai-readable/kit", "react"],
+      "forbiddenPackages": ["antd", "antd/", "@ant-design/", "@arco-design/", "@radix-ui/", "@/components/ui/", "components/ui/", "shadcn"],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-import-boundary",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "fixture"
+  },
+  "requiredBeforeRealWork": []
+}

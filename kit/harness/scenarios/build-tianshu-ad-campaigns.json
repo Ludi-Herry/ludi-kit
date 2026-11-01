@@ -1,0 +1,36 @@
+{
+  "id": "build-tianshu-ad-campaigns",
+  "prompt": "天枢 · 投放计划：业务链、排期、定向、引擎策略和暂停确认保持完整。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "Stepper", "FilterPanel", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "Drawer", "RangePicker", "TreeSelect", "RadioGroup", "CheckboxGroup", "Switch", "ConfirmDialog", "ForbiddenState", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "DataSection", "Stepper", "FilterPanel", "DataGrid", "BulkActionBar", "Drawer", "RangePicker", "TreeSelect", "RadioGroup", "ConfirmDialog"],
+  "expectedText": ["广告业务链", "投放计划", "去标识化聚合人群标签", "批量暂停投放计划？", "确认暂停"],
+  "expectedActions": {
+    "required": ["暂停", "批量暂停"]
+  },
+  "expectedConfirmations": [
+    {
+      "action": "暂停",
+      "title": "确认暂停投放计划？",
+      "confirmLabel": "确认暂停",
+      "requiredText": ["已消耗预算不退"],
+      "danger": true,
+      "state": { "variable": "pauseTarget", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    },
+    { "action": "批量暂停", "title": "批量暂停投放计划？", "confirmLabel": "确认暂停", "requiredText": ["其余计划会被跳过"], "danger": true }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/deferred-pages.tsx",
+    "symbol": "TianshuAdCampaignsPage"
+  },
+  "report": "harness/reports/build-tianshu-ad-campaigns.json"
+}

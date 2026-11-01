@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schema/workflows.schema.json",
+  "version": "1.0.0",
+  "provenance": {
+    "status": "candidate-mapping",
+    "decision": "Intentional invalid fixture with no registered workflows.",
+    "sources": ["a", "b", "c", "d", "e", "f", "g"]
+  },
+  "workflows": []
+}

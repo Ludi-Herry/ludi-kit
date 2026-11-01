@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/image2-routing-strategy-amendment.schema.json",
+  "title": "Image2 routing strategy amendment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "kind", "decisionId", "recordedAt", "status", "authority", "routing", "restart5", "locks", "historicalEvidenceGuard"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "kind": { "const": "image2-routing-strategy-amendment" },
+    "decisionId": { "const": "image2-routing-strategy-amendment-2026-08-14" },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "status": { "const": "active" },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "supersedes", "preserves"],
+      "properties": {
+        "source": { "const": "explicit-user-strategy-review" },
+        "supersedes": {
+          "const": [
+            "general-b2b-default-image2-route",
+            "restart-5-execution-eligibility"
+          ]
+        },
+        "preserves": {
+          "const": [
+            "historical-image2-evidence",
+            "historical-no-go-verdicts",
+            "historical-receipts",
+            "historical-authorizations",
+            "historical-budgets",
+            "historical-thresholds"
+          ]
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selector", "defaultRoute", "unknownRouteDisposition", "routes"],
+      "properties": {
+        "selector": { "const": "designContext" },
+        "defaultRoute": { "const": "existing" },
+        "unknownRouteDisposition": { "const": "fail-closed" },
+        "routes": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/route" }
+        }
+      }
+    },
+    "restart5": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["roundId", "status", "executionAllowed", "requestFreshInputsNow", "budget", "progress", "historicalAuthorization", "historicalAuthorizationMutationAllowed", "historicalResultRewriteAllowed"],
+      "properties": {
+        "roundId": { "const": "image2-holdout-restart-5" },
+        "status": { "const": "paused-by-strategy-review" },
+        "executionAllowed": { "const": false },
+        "requestFreshInputsNow": { "const": false },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["unit", "consumed", "hardMaximum", "remaining"],
+          "properties": {
+            "unit": { "const": "candidate-generation-attempt" },
+            "consumed": { "const": 0 },
+            "hardMaximum": { "const": 2 },
+            "remaining": { "const": 2 }
+          }
+        },
+        "progress": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["freshIdentityReceipts", "eligibleInputReceipts", "referenceGenerationAttempts", "candidateGenerationAttempts", "reviewersStarted"],
+          "properties": {
+            "freshIdentityReceipts": { "const": 0 },
+            "eligibleInputReceipts": { "const": 0 },
+            "referenceGenerationAttempts": { "const": 0 },
+            "candidateGenerationAttempts": { "const": 0 },
+            "reviewersStarted": { "const": false }
+          }
+        },
+        "historicalAuthorization": { "const": "quality/image2-golden-pages/holdout-restart-5/new-round-authorization-2026-08-13.json" },
+        "historicalAuthorizationMutationAllowed": { "const": false },
+        "historicalResultRewriteAllowed": { "const": false }
+      }
+    },
+    "locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["figma", "image2GenerationLocked", "referenceGenerationLocked", "candidateGenerationLocked", "reviewersLocked", "freshPrivateInputReadLocked", "pushLocked"],
+      "properties": {
+        "figma": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fileKey", "targetNodeId", "locked"],
+          "properties": {
+            "fileKey": { "const": "YOUR_FIGMA_FILE_KEY" },
+            "targetNodeId": { "const": "YOUR_NODE_ID" },
+            "locked": { "const": true }
+          }
+        },
+        "image2GenerationLocked": { "const": true },
+        "referenceGenerationLocked": { "const": true },
+        "candidateGenerationLocked": { "const": true },
+        "reviewersLocked": { "const": true },
+        "freshPrivateInputReadLocked": { "const": true },
+        "pushLocked": { "const": true }
+      }
+    },
+    "historicalEvidenceGuard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baselineCommit", "algorithm", "baselineFileCount", "baselineDigest", "protectedPrefixes", "newAppendOnlyRecordsAllowedOutsideProtectedPrefixes"],
+      "properties": {
+        "baselineCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "algorithm": { "const": "sha256-sorted-git-path-null-blob-oid-v1" },
+        "baselineFileCount": { "type": "integer", "minimum": 1 },
+        "baselineDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "protectedPrefixes": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+        "newAppendOnlyRecordsAllowedOutsideProtectedPrefixes": { "const": true }
+      }
+    }
+  },
+  "$defs": {
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "defaultForGeneralB2B", "image2Allowed", "skillSequence", "pipeline", "requiredInputs", "frozenVisualBriefRequired", "allowedVisualGoals", "structuralAuthority"],
+      "properties": {
+        "id": { "enum": ["existing", "exploratory"] },
+        "defaultForGeneralB2B": { "type": "boolean" },
+        "image2Allowed": { "type": "boolean" },
+        "skillSequence": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+        "pipeline": { "type": "array", "minItems": 5, "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+        "requiredInputs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+        "frozenVisualBriefRequired": { "type": "boolean" },
+        "allowedVisualGoals": { "type": "array", "uniqueItems": true, "items": { "enum": ["composition", "atmosphere", "material", "brand", "visual-direction"] } },
+        "structuralAuthority": { "type": "array", "uniqueItems": true, "items": { "enum": ["copy", "data", "interaction", "component-states", "responsive", "accessibility"] } }
+      }
+    }
+  }
+}

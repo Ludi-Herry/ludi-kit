@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/blind-evaluator-receipt.schema.json",
+  "title": "Blind Evaluator Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "runId",
+    "evaluatorId",
+    "revision",
+    "previousRevision",
+    "frozenAt",
+    "semanticAcceptanceSha256",
+    "preRevealContract",
+    "inputReceipt",
+    "products",
+    "runner",
+    "arms",
+    "correctionPolicy",
+    "correction",
+    "evidenceRoot"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "runId": { "$ref": "#/$defs/runId" },
+    "evaluatorId": {
+      "type": "string",
+      "pattern": "^eval-blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2
+    },
+    "previousRevision": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/fileHash" }
+      ]
+    },
+    "frozenAt": { "$ref": "#/$defs/dateTime" },
+    "semanticAcceptanceSha256": { "$ref": "#/$defs/sha256" },
+    "preRevealContract": { "$ref": "#/$defs/fileHash" },
+    "inputReceipt": { "$ref": "#/$defs/fileHash" },
+    "products": { "$ref": "#/$defs/productArms" },
+    "runner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executable", "config", "productBuildInvocations"],
+      "properties": {
+        "executable": { "type": "string", "minLength": 1 },
+        "config": { "$ref": "#/$defs/fileHash" },
+        "productBuildInvocations": { "const": 0 }
+      }
+    },
+    "arms": { "$ref": "#/$defs/evaluatorArms" },
+    "correctionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxRevisions",
+        "bothArmsRequired",
+        "semanticDigestMustRemainStable",
+        "productHashesMustRemainStable",
+        "productBuildInvocationsMax"
+      ],
+      "properties": {
+        "maxRevisions": { "const": 2 },
+        "bothArmsRequired": { "const": true },
+        "semanticDigestMustRemainStable": { "const": true },
+        "productHashesMustRemainStable": { "const": true },
+        "productBuildInvocationsMax": { "const": 0 }
+      }
+    },
+    "correction": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reviewerClassification",
+            "bothArmsRefrozen",
+            "semanticDigestUnchanged",
+            "productHashesUnchanged",
+            "productBuildInvocations",
+            "priorFailureEvidence"
+          ],
+          "properties": {
+            "reviewerClassification": { "const": "evaluator-defect" },
+            "bothArmsRefrozen": { "const": true },
+            "semanticDigestUnchanged": { "const": true },
+            "productHashesUnchanged": { "const": true },
+            "productBuildInvocations": { "const": 0 },
+            "priorFailureEvidence": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "$ref": "#/$defs/fileHash" }
+            }
+          }
+        }
+      ]
+    },
+    "evidenceRoot": {
+      "type": "string",
+      "pattern": "^[A-Za-z]:/"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "revision": { "const": 1 } },
+        "required": ["revision"]
+      },
+      "then": {
+        "properties": {
+          "previousRevision": { "type": "null" },
+          "correction": { "type": "null" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "revision": { "const": 2 } },
+        "required": ["revision"]
+      },
+      "then": {
+        "properties": {
+          "previousRevision": { "$ref": "#/$defs/fileHash" },
+          "correction": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "uuidV4": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "dateTime": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "fileHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "productSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "arm",
+        "projectId",
+        "artifactId",
+        "receipt",
+        "seal",
+        "sourceSha256",
+        "buildSha256",
+        "runtimeEntry",
+        "runtimeIdentityPath"
+      ],
+      "properties": {
+        "runId": { "$ref": "#/$defs/runId" },
+        "arm": { "enum": ["consumer", "control"] },
+        "projectId": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "artifactId": { "$ref": "#/$defs/uuidV4" },
+        "receipt": { "$ref": "#/$defs/fileHash" },
+        "seal": { "$ref": "#/$defs/fileHash" },
+        "sourceSha256": { "$ref": "#/$defs/sha256" },
+        "buildSha256": { "$ref": "#/$defs/sha256" },
+        "runtimeEntry": { "type": "string", "pattern": "^/" },
+        "runtimeIdentityPath": { "const": "/artifact-meta.json" }
+      }
+    },
+    "productArms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["consumer", "control"],
+      "properties": {
+        "consumer": { "$ref": "#/$defs/productSnapshot" },
+        "control": { "$ref": "#/$defs/productSnapshot" }
+      }
+    },
+    "evaluatorArm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "flowAcceptance",
+        "spec",
+        "locatorAdapter",
+        "interactionExposureMode",
+        "runnerConfig"
+      ],
+      "properties": {
+        "flowAcceptance": { "$ref": "#/$defs/fileHash" },
+        "spec": { "$ref": "#/$defs/fileHash" },
+        "locatorAdapter": { "$ref": "#/$defs/fileHash" },
+        "interactionExposureMode": {
+          "enum": ["data-interaction-id", "frozen-adapter"]
+        },
+        "runnerConfig": { "$ref": "#/$defs/fileHash" }
+      }
+    },
+    "evaluatorArms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["consumer", "control"],
+      "properties": {
+        "consumer": { "$ref": "#/$defs/evaluatorArm" },
+        "control": { "$ref": "#/$defs/evaluatorArm" }
+      }
+    }
+  }
+}

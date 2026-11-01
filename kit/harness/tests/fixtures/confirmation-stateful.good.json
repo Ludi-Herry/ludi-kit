@@ -1,0 +1,36 @@
+{
+  "id": "test-confirmation-stateful-good",
+  "expectedComponents": ["PageLayout", "Button", "ConfirmDialog"],
+  "expectedConfirmations": [
+    {
+      "action": "返修",
+      "title": "确认进入返修链路？",
+      "confirmLabel": "确认裁决",
+      "requiredText": ["返修后进入检测"],
+      "danger": false,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "repair" }, "clearValue": null }
+    },
+    {
+      "action": "报废",
+      "title": "确认报废设备？",
+      "confirmLabel": "确认报废",
+      "requiredText": ["报废后不可恢复"],
+      "danger": true,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "scrap" }, "clearValue": null }
+    },
+    {
+      "action": "紧急下架",
+      "title": "确认紧急下架？",
+      "confirmLabel": "确认下架",
+      "requiredText": ["立即生效且不可撤销"],
+      "danger": true,
+      "state": { "variable": "emergencyRow", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-stateful.good.tsx",
+    "symbol": "ConfirmationStatefulGoodPage"
+  },
+  "report": "harness/reports/test-confirmation-stateful-good.json"
+}

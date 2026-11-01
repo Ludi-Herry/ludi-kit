@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/synthetic-cycle-preparation.schema.json",
+  "title": "Synthetic Readiness Cycle Preparation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "qualifying",
+    "scoring",
+    "profileId",
+    "seed",
+    "cycle",
+    "inputDirectory",
+    "manifest",
+    "semanticContract",
+    "packageReceipt",
+    "workspaces"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "qualifying": { "const": false },
+    "scoring": { "const": false },
+    "profileId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "seed": { "type": "string", "pattern": "^(0|[1-9][0-9]*)$" },
+    "cycle": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "inputDirectory": { "type": "string", "minLength": 1 },
+    "manifest": { "$ref": "#/$defs/file" },
+    "semanticContract": { "$ref": "#/$defs/file" },
+    "packageReceipt": { "$ref": "#/$defs/file" },
+    "workspaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["consumer", "control"],
+      "properties": {
+        "consumer": { "$ref": "#/$defs/workspace" },
+        "control": { "$ref": "#/$defs/workspace" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "artifactId", "runId", "frozenInputTreeSha256", "package"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "artifactId": { "type": "string", "format": "uuid" },
+        "runId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "frozenInputTreeSha256": { "$ref": "#/$defs/sha256" },
+        "package": { "oneOf": [{ "$ref": "#/$defs/file" }, { "type": "null" }] }
+      }
+    }
+  }
+}

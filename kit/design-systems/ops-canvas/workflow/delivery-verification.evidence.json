@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "ops-canvas-non-figma-delivery-verification",
+  "workflowIds": ["image2-to-figma-page"],
+  "status": "passed",
+  "recordedAt": "2026-07-17T09:45:30.850Z",
+  "summary": "Repository validation, executable harness scenarios, and the unchanged consumer bundle gates passed. The separate real visual-diff record remains failed; its semantic exception is approved without changing the raw verdict or thresholds.",
+  "commands": [
+    {
+      "command": "npm run validate",
+      "exitCode": 0,
+      "result": "All kit, workflow, Figma evidence, Image2 contract, visual-diff fixture, build, harness-contract, and antd lint checks passed."
+    },
+    {
+      "command": "npm run check:harness",
+      "exitCode": 0,
+      "result": "All 28 executable scenarios passed with score 100, zero errors, and zero warnings."
+    },
+    {
+      "command": "npm run run:image2:existing",
+      "exitCode": 1,
+      "result": "The valid threshold failure emitted existing-run.json with overall status failed, visual-diff failed, and both Figma stages external-blocked."
+    },
+    {
+      "command": "npm run check:bundle",
+      "exitCode": 1,
+      "result": "The gate first failed closed because preview/dist and starter/dist were absent; no size claim was made before building both consumers."
+    },
+    {
+      "command": "npm run build:preview && npm run build:starter && npm run check:bundle",
+      "exitCode": 0,
+      "result": "preview=695.11 KiB gzip <= 700 KiB; starter=278.66 KiB gzip <= 320 KiB. The budget file and threshold sources have no Git diff."
+    }
+  ],
+  "artifacts": [
+    "design-systems/ops-canvas/workflow/reference-generation.evidence.json",
+    "design-systems/ops-canvas/workflow/reconstruction.evidence.json",
+    "design-systems/ops-canvas/workflow/browser-evidence.json",
+    "design-systems/ops-canvas/workflow/visual-diff.evidence.json"
+  ],
+  "blockers": []
+}

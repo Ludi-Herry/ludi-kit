@@ -1,0 +1,12 @@
+{
+  "id": "test-schema-minitems",
+  "expectedActions": {
+    "conditions": []
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.good.tsx",
+    "symbol": "PermissionsListPage"
+  },
+  "report": "harness/reports/test-schema-minitems.json"
+}

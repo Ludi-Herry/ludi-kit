@@ -1,0 +1,477 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "pages": [
+    {
+      "id": "dashboard",
+      "route": "/dashboard",
+      "title": "工作台 · 个人首页",
+      "pattern": "dashboard-page",
+      "flowIds": ["daily-ops-review", "production-forward-chain", "rbac-setup"],
+      "flowCard": {
+        "entry": "SideNav > 工作台",
+        "previousPages": [],
+        "nextPages": ["/production/inbound", "/production/flashing", "/production/sn-cert", "/platform/rbac"],
+        "userGoal": "一屏看清各域待办与告警，选定下一步动作。",
+        "businessState": "跨域聚合门户，PRD 期 1 地基层。"
+      },
+      "intentCard": {
+        "pageGoal": "聚合生产/平台域待办卡片与告警角标，指引下钻。",
+        "firstViewport": ["生产 KPI 摘要", "待办卡片（烧录失败/SN 冲突/待质检）", "告警卡片", "快捷入口"],
+        "primaryAction": "处理最高优先级待办",
+        "secondaryActions": ["刷新指标", "进入收货入库", "进入权限配置"],
+        "successCriteria": [
+          "待办与告警首屏可见、不滚动。",
+          "每张卡片有明确下一步动作和目标页面。",
+          "卡片角标语义色符合项目 status-copy 映射。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "MetricCard", "Card", "DataSection", "Badge", "Button"],
+      "dataRequirements": ["PendingTask", "Alert", "ProductionBatch", "Role"],
+      "layoutTree": ["PageLayout", "PageHeader", "MetricCard grid", "Card grid (待办/告警)", "DataSection (快捷入口)"]
+    },
+    {
+      "id": "production-inbound",
+      "route": "/production/inbound",
+      "title": "生产 · 收货入库",
+      "pattern": "list-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 收货入库",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/production/flashing"],
+        "userGoal": "登记到货批次并推进验收入场。",
+        "businessState": "生产正向主链第一环，批次入场后才能烧录。"
+      },
+      "intentCard": {
+        "pageGoal": "按批次/供应商/状态筛选到货记录，发现待验收与异常批次。",
+        "firstViewport": ["页面标题与新建入口", "筛选区（批次/供应商/状态/到货时间）", "批次表格"],
+        "primaryAction": "新建收货登记",
+        "secondaryActions": ["导出当前筛选结果", "重置筛选"],
+        "successCriteria": [
+          "FilterPanel 出现在 DataSection 之前。",
+          "DataGrid 位于 DataSection 内并带分页。",
+          "批次状态列使用语义 Badge，文案来自项目 status-copy。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button", "Select", "Input"],
+      "dataRequirements": ["InboundBatch", "Supplier"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "production-flashing",
+      "route": "/production/flashing",
+      "title": "生产 · 烧录发证 · 新建烧录任务",
+      "pattern": "form-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "收货入库完成后进入，或 SideNav > 生产履约域 > 烧录发证",
+        "previousPages": ["/production/inbound"],
+        "nextPages": ["/production/sn-cert"],
+        "userGoal": "为已入场批次创建烧录任务并绑定固件版本。",
+        "businessState": "生产正向主链第二环；固件版本绑定是 MVP 必补项（PRD §10.1）。"
+      },
+      "intentCard": {
+        "pageGoal": "分组录入烧录任务：批次选择、固件版本与证书模板绑定、数量确认。",
+        "firstViewport": ["步骤条（选批次/绑固件/确认）", "批次与固件分组表单", "提交操作区"],
+        "primaryAction": "创建烧录任务",
+        "secondaryActions": ["存草稿", "取消返回"],
+        "successCriteria": [
+          "表单按业务语义用 FormSection 分组，不塞进单个卡片。",
+          "固件版本为必选项，未选时给出明确校验提示。",
+          "烧录失败重试/超限报废路径在页面内有说明入口（界面后置、文案先行）。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "Stepper", "FormSection", "Input", "Select", "Textarea", "Button", "Badge"],
+      "dataRequirements": ["ProductionBatch", "FirmwareVersion", "CertTemplate"],
+      "layoutTree": ["PageLayout", "PageHeader", "Stepper", "FormSection × 3", "操作区"]
+    },
+    {
+      "id": "production-firmware",
+      "route": "/production/firmware",
+      "title": "生产 · 固件版本",
+      "pattern": "list-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 固件版本，或新建烧录任务前置选择",
+        "previousPages": ["/production/inbound", "/production/flashing"],
+        "nextPages": ["/production/flashing", "/production/sn-cert"],
+        "userGoal": "维护可用于烧录任务的固件版本、签名状态与灰度发布状态。",
+        "businessState": "PRD §10.1 固件版本绑定补齐项；烧录任务只能绑定已签名且受控发布的固件。"
+      },
+      "intentCard": {
+        "pageGoal": "按版本号、机型、版本状态和签名状态筛选固件，完成新建草稿、灰度、回滚与停用确认。",
+        "firstViewport": ["页面标题与新建入口", "筛选区（版本号/机型/版本状态/签名状态）", "固件版本表格（版本状态与签名状态分列）", "分页"],
+        "primaryAction": "新建固件版本",
+        "secondaryActions": ["刷新", "导出版本列表", "回滚或停用版本"],
+        "successCriteria": [
+          "版本生命周期与签名状态分列展示，避免混用一个状态字段。",
+          "灰度比例只在灰度中版本显示进度，其他状态显示横线。",
+      "查询与重置在桌面基准视口与四项筛选保持同一行。",
+      "回滚与停用经过 ConfirmDialog，取消后焦点回到该行原始触发按钮。",
+          "新建固件版本使用 Drawer，取消后不修改列表。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Drawer", "FormSection", "ConfirmDialog", "Badge", "Button", "Input", "Select", "Textarea"],
+      "dataRequirements": ["FirmwareVersion", "FirmwareSignature", "FirmwareRelease"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination", "Drawer", "ConfirmDialog"]
+    },
+    {
+      "id": "production-sn-cert",
+      "route": "/production/sn-cert",
+      "title": "生产 · SN/证书管理",
+      "pattern": "list-page",
+      "flowIds": ["daily-ops-review", "production-forward-chain"],
+      "flowCard": {
+        "entry": "烧录完成后进入，或工作台 SN 冲突卡片下钻",
+        "previousPages": ["/dashboard", "/production/flashing"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "追踪 SN 与证书状态，处理 SN 冲突。",
+        "businessState": "PKI 信任根落地载体；SN 冲突处理是 MVP 必补项（PRD §10.1）。"
+      },
+      "intentCard": {
+        "pageGoal": "按证书状态/冲突状态筛选 SN 记录，操作按状态机条件显隐。",
+        "firstViewport": ["Tab（证书 / SN 冲突）", "筛选区", "SN 表格与状态列"],
+        "primaryAction": "处理 SN 冲突",
+        "secondaryActions": ["吊销证书（仅有效证书可见）", "导出"],
+        "successCriteria": [
+          "证书状态与 SN 冲突状态两组枚举分列、不混用。",
+          "行操作按状态机驱动条件显隐（吊销仅对有效证书出现）。",
+          "状态语义映射符合项目 status-copy（冲突=danger，已裁决=success）。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button"],
+      "dataRequirements": ["SN", "Certificate", "SnConflict"],
+      "layoutTree": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "platform-rbac",
+      "route": "/platform/rbac",
+      "title": "平台 · 账号与权限",
+      "pattern": "list-page",
+      "flowIds": ["rbac-setup"],
+      "flowCard": {
+        "entry": "SideNav > 平台共享能力 > 账号与权限",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "管理角色与权限点，保证各域最小权限。",
+        "businessState": "L0 全局地基，所有业务模块的鉴权前置。"
+      },
+      "intentCard": {
+        "pageGoal": "角色列表与权限点注册表分 Tab 管理，支持启停与分配。",
+        "firstViewport": ["Tab（角色 / 权限点）", "角色表格", "新建角色入口"],
+        "primaryAction": "新建角色",
+        "secondaryActions": ["停用角色（二次确认）", "查看权限点注册表"],
+        "successCriteria": [
+          "权限点命名遵循 域:模块[:对象]:动作 并与附录 A 对齐。",
+          "所属域 Tag 用全平台统一域色映射（生产=geekblue、广告=purple、内容=cyan、平台=default）。",
+          "无权限操作按钮置灰并带 Tooltip 说明缺失权限点。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection", "Table", "Badge", "Button"],
+      "dataRequirements": ["Role", "Permission", "AuditLog"],
+      "layoutTree": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection > Table"]
+    },
+    {
+      "id": "platform-rbac-forbidden",
+      "route": "/platform/rbac/forbidden-preview",
+      "title": "平台 · 账号与权限 · 无权限",
+      "pattern": "detail-page",
+      "flowIds": ["rbac-setup"],
+      "flowCard": {
+        "entry": "路由鉴权拦截 platform:rbac:read",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "理解当前无权访问的原因，并获得明确的申请或返回路径。",
+        "businessState": "403 页面态；没有权限时不渲染角色与权限点数据。"
+      },
+      "intentCard": {
+        "pageGoal": "展示可访问、可理解、可恢复的整页无权限状态。",
+        "firstViewport": ["403 状态码", "无权访问标题", "缺失权限点与下一步", "返回工作台"],
+        "primaryAction": "返回工作台",
+        "secondaryActions": ["联系管理员申请权限"],
+        "successCriteria": [
+          "403 数字只做视觉辅助，标题与描述提供完整语义。",
+          "描述明确缺失 platform:rbac:read 权限点。",
+          "页面不渲染任何角色、用户或权限点数据。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "ForbiddenState", "Button"],
+      "dataRequirements": ["Permission"],
+      "layoutTree": ["PageLayout", "ForbiddenState"]
+    },
+    {
+      "id": "production-testing",
+      "route": "/production/testing",
+      "title": "生产 · 测试管理",
+      "pattern": "list-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 测试管理，或烧录发证「进入测试」携 SN 跳入",
+        "previousPages": ["/production/sn-cert"],
+        "nextPages": ["/production/qc"],
+        "userGoal": "跟踪测试记录并按状态机完成判定（合格入库/不合格分流）。",
+        "businessState": "生产正向主链第四环；返修/报废分支模型预埋、界面后置。"
+      },
+      "intentCard": {
+        "pageGoal": "按 SN/机型/判定结果/设备状态筛选测试记录，行操作按设备状态条件显隐。",
+        "firstViewport": ["页面标题与录入入口", "筛选区", "测试记录表格（判定结果与设备状态两列标签）"],
+        "primaryAction": "录入测试结果",
+        "secondaryActions": ["新建测试方案", "批量导出"],
+        "successCriteria": [
+          "设备状态与测试判定结果两套枚举分列、不混用（§3.4）。",
+          "全状态常驻查看详情；testing 可判定并录入结果，test_failed 可返修/降级/报废，终态仅保留详情。",
+          "状态语义映射符合项目 status-copy（不合格=danger，已降级=warning）。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button"],
+      "dataRequirements": ["TestRecord", "TestScheme", "Station"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "production-qc",
+      "route": "/production/qc",
+      "title": "生产 · 质检管理",
+      "pattern": "list-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 质检管理，或测试管理「发起质检」携批次跳入",
+        "previousPages": ["/production/testing"],
+        "nextPages": ["/production/inventory"],
+        "userGoal": "按批次执行质检并给出判定结论（放行/让步/拒收）。",
+        "businessState": "生产正向主链第五环；判定结论是质检域自有状态机，设备状态流转由后端联动。"
+      },
+      "intentCard": {
+        "pageGoal": "按批次/检验方式/判定结论筛选质检任务，不良率超 AQL 红色示警。",
+        "firstViewport": ["页面标题与新建质检入口", "筛选区", "质检批次表格（不良率与判定结论）"],
+        "primaryAction": "新建质检任务",
+        "secondaryActions": ["导出"],
+        "successCriteria": [
+          "判定结论 5 态语义映射符合项目 status-copy（拒收=danger，让步接收降级=warning）。",
+          "质检结论与设备状态不在同一字段并列展示（§3.4 硬隔离）。",
+          "不良数 >0 与不良率超限有红色行内强调。",
+          "全状态常驻查看详情；终态提供高权限撤销判定入口。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button"],
+      "dataRequirements": ["QcBatch", "DefectCode", "InboundBatch"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "production-inventory",
+      "route": "/production/inventory",
+      "title": "生产 · 库存管理",
+      "pattern": "list-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 库存管理，或工作台「库龄预警」卡片跳入",
+        "previousPages": ["/production/qc"],
+        "nextPages": ["/production/shipping"],
+        "userGoal": "掌握在库/可用/冻结/已分配的实时口径并处理调拨与冻结。",
+        "businessState": "生产正向主链第六环；in_stock 父状态下的运营子状态由本模块管理。"
+      },
+      "intentCard": {
+        "pageGoal": "按仓库/库存状态/品质等级筛选库存记录，库龄行内色预警。",
+        "firstViewport": ["页面标题与调拨入口", "筛选区", "库存表格（四个数量列 + 库龄）", "选中库存后的批量操作浮条"],
+        "primaryAction": "新建调拨单",
+        "secondaryActions": ["批量冻结", "导出"],
+        "successCriteria": [
+          "库存子状态与品质等级语义映射符合项目 status-copy（冻结=warning，可用=success）。",
+          "库龄预警为行内文本颜色（90–180 天黄、>180 天红），禁止做成 Tag（PRD §五·库存 7.6）。",
+          "可用数量 = 在库 − 冻结 − 已分配，口径一致展示。",
+          "选择库存后显示选中数量与批量冻结/解冻；批量冻结先经 ConfirmDialog 确认。",
+          "全状态常驻查看详情与盘点调整；可用库存提供调拨、冻结及分配出货。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "ConfirmDialog", "Badge", "Button"],
+      "dataRequirements": ["StockRecord", "Warehouse", "TransferOrder"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "production-shipping",
+      "route": "/production/shipping",
+      "title": "生产 · 出货管理",
+      "pattern": "list-page",
+      "flowIds": ["production-forward-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 出货管理，或库存管理「分配出货」跳入",
+        "previousPages": ["/production/inventory"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "管理出货单从创建、拣货扫描到发运的全流程。",
+        "businessState": "生产正向主链末环；确认出库后设备状态 in_stock → shipped（geekblue 强调态）。"
+      },
+      "intentCard": {
+        "pageGoal": "按出货单号/客户/出货状态筛选出货单，扫描进度颜色示意。",
+        "firstViewport": ["页面标题与新建出货单入口", "筛选区", "出货单表格（扫描进度与出货状态）"],
+        "primaryAction": "新建出货单",
+        "secondaryActions": ["导出"],
+        "successCriteria": [
+          "出货单 5 态语义映射符合项目 status-copy（已发运=geekblue 强调态，已取消=secondary）。",
+          "已扫描数量小于出货数量时橙显、相等时绿显、已取消显示「—」。",
+          "列表全状态常驻查看详情；待出库/拣货中可出库扫描，拣货中/已发运可登记物流，未扫描的待出库/拣货中可取消。",
+          "确认出库仅在扫描工作台内且已扫描数量等于出货数量时可用；部分扫描提供部分发运。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button"],
+      "dataRequirements": ["ShippingOrder", "Customer", "LogisticsProvider"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "platform-audit",
+      "route": "/platform/audit",
+      "title": "平台 · 审计日志",
+      "pattern": "list-page",
+      "flowIds": ["audit-traceability"],
+      "flowCard": {
+        "entry": "SideNav > 平台共享能力 > 审计日志，或工作台「敏感操作告警」卡片预设高风险筛选跳入",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "对操作与登录留痕做合规检索与按 SN 追溯。",
+        "businessState": "L0 全局地基的界面补齐；日志由后端自动写入，数据只读。"
+      },
+      "intentCard": {
+        "pageGoal": "按操作人/操作类型/所属域/风险等级检索日志；只读，无任何新建入口。",
+        "firstViewport": ["页面标题与追溯/导出入口", "筛选区", "日志表格（风险等级与操作结果两列标签、域色 Tag）"],
+        "primaryAction": "按 SN 追溯",
+        "secondaryActions": ["导出日志"],
+        "successCriteria": [
+          "页面无新建/编辑/删除入口（只读系统）。",
+          "操作结果与风险等级两套标签语义映射符合项目 status-copy（高风险=danger，敏感操作=warning）。",
+          "所属域 Tag 用全平台统一域色映射（生产=geekblue、广告=purple、内容=cyan、平台=default）。",
+          "高风险行整行浅红强调，失败行整行浅橙强调；同时命中时高风险优先。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button"],
+      "dataRequirements": ["AuditLog", "Staff"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "production-rma",
+      "route": "/production/rma",
+      "title": "生产 · 退货 RMA",
+      "pattern": "list-page",
+      "flowIds": ["production-reverse-chain"],
+      "flowCard": {
+        "entry": "SideNav > 生产履约域 > 退货 RMA",
+        "previousPages": ["/production/shipping"],
+        "nextPages": ["/production/testing", "/production/inventory"],
+        "userGoal": "跟踪退货到件与检测，完成返修、二次入库或报废裁决。",
+        "businessState": "生产逆向链入口；仅灰度角色可见，裁决结果回接设备生命周期。"
+      },
+      "intentCard": {
+        "pageGoal": "按 RMA、SN、到件状态和检测结论筛选，完成检测录入与有确认的终态裁决。",
+        "firstViewport": ["灰度与权限说明", "筛选区", "RMA 列表", "批量操作浮条"],
+        "primaryAction": "新建 RMA 单",
+        "secondaryActions": ["导出当前筛选", "批量关闭"],
+        "successCriteria": ["到件、检测结论、裁决和设备状态分列展示。", "返修、二次入库、报废与批量关闭均经过 ConfirmDialog。", "无权限时展示 ForbiddenState。"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "Drawer", "DatePicker", "RadioGroup", "CheckboxGroup", "Upload", "ConfirmDialog", "ForbiddenState", "Badge", "Button"],
+      "dataRequirements": ["RmaOrder", "RmaInspection", "DeviceLifecycle"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel + RangePicker", "DataSection > DataGrid + Pagination", "BulkActionBar", "Drawer", "ConfirmDialog"]
+    },
+    {
+      "id": "ad-campaigns",
+      "route": "/ad/campaigns",
+      "title": "广告 · 投放计划",
+      "pattern": "list-page",
+      "flowIds": ["ad-monetization-chain"],
+      "flowCard": {
+        "entry": "SideNav > 广告变现域 > 投放计划",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/ad/reconciliation"],
+        "userGoal": "沿广告位、广告主、订单到投放计划配置预算、排期、定向与策略。",
+        "businessState": "广告运营主链；投放与生产设备身份数据保持隔离。"
+      },
+      "intentCard": {
+        "pageGoal": "筛选投放计划，创建本地计划并安全执行单条或批量暂停。",
+        "firstViewport": ["广告业务链 Stepper", "隐私边界", "筛选区", "计划列表"],
+        "primaryAction": "新建计划",
+        "secondaryActions": ["导出", "批量暂停"],
+        "successCriteria": ["定向仅使用去标识化聚合标签。", "日期、组织树和选择组使用公共控件。", "暂停与批量暂停均经过 ConfirmDialog。"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "Stepper", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "Drawer", "TreeSelect", "RadioGroup", "CheckboxGroup", "Switch", "ConfirmDialog", "ForbiddenState", "Badge", "Button"],
+      "dataRequirements": ["AdPlacement", "Advertiser", "AdOrder", "Campaign"],
+      "layoutTree": ["PageLayout", "PageHeader", "Stepper", "FilterPanel", "DataSection > DataGrid + Pagination", "BulkActionBar", "Drawer", "ConfirmDialog"]
+    },
+    {
+      "id": "ad-reconciliation",
+      "route": "/ad/reconciliation",
+      "title": "广告 · 对账管理",
+      "pattern": "list-page",
+      "flowIds": ["ad-monetization-chain"],
+      "flowCard": {
+        "entry": "SideNav > 广告变现域 > 对账管理",
+        "previousPages": ["/ad/campaigns"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "核对平台与合作方账单差异，按权限查看金额并完成核销。",
+        "businessState": "T+1 定版口径；只读角色保留查询与轨迹，高权限角色可处理差异。"
+      },
+      "intentCard": {
+        "pageGoal": "按批次、对象和状态筛选对账记录，显式区分金额权限与处理权限。",
+        "firstViewport": ["口径与权限说明", "筛选区", "对账列表", "差异详情"],
+        "primaryAction": "发起对账",
+        "secondaryActions": ["导出对账明细", "处理差异"],
+        "successCriteria": ["无金额权限时金额全部脱敏。", "T+1 口径与实时竞价口径分开提示。", "核销经过 ConfirmDialog，审计轨迹保持只读。"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "Pagination", "Drawer", "Upload", "RadioGroup", "ConfirmDialog", "ForbiddenState", "DescriptionGrid", "Badge", "Button"],
+      "dataRequirements": ["ReconciliationBatch", "PartnerBill", "ReconciliationAudit"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel + RangePicker", "DataSection > DataGrid + Pagination", "Drawer", "ConfirmDialog"]
+    },
+    {
+      "id": "content-schedule",
+      "route": "/content/schedule",
+      "title": "内容 · 排期与发布",
+      "pattern": "list-page",
+      "flowIds": ["content-publish-chain"],
+      "flowCard": {
+        "entry": "SideNav > 内容运营域 > 排期与发布",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "管理素材、内容位、排期、审批与上下架。",
+        "businessState": "内容运营主工作台；冲突排期和紧急下架保留独立风险反馈。"
+      },
+      "intentCard": {
+        "pageGoal": "在标签页内完成素材上传、排期编排、审批和发布控制。",
+        "firstViewport": ["素材/排期/发布标签", "排期筛选", "冲突状态", "列表与批量操作"],
+        "primaryAction": "新建排期",
+        "secondaryActions": ["上传素材", "发起上下架", "批量取消"],
+        "successCriteria": ["版权到期、排期周期和生效时间使用公共日期控件。", "冲突筛选与排期状态独立表达。", "批量取消和紧急下架均经过 ConfirmDialog。"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "RangePicker", "Switch", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "Drawer", "Upload", "DatePicker", "TreeSelect", "RadioGroup", "CheckboxGroup", "ConfirmDialog", "ForbiddenState", "Badge", "Button"],
+      "dataRequirements": ["ContentMaterial", "ContentSlot", "ContentSchedule", "PublishRequest"],
+      "layoutTree": ["PageLayout", "PageHeader", "Tabs", "FilterPanel + RangePicker + Switch", "DataSection > DataGrid + Pagination", "BulkActionBar", "Drawer", "ConfirmDialog"]
+    },
+    {
+      "id": "content-version",
+      "route": "/content/version",
+      "title": "内容 · 版本与回滚",
+      "pattern": "list-page",
+      "flowIds": ["content-publish-chain"],
+      "flowCard": {
+        "entry": "SideNav > 内容运营域 > 版本与回滚，或排期与发布页面的版本历史入口",
+        "previousPages": ["/content/schedule"],
+        "nextPages": ["/content/schedule"],
+        "userGoal": "检索内容版本，确认变更差异，并在后续阶段安全回滚到历史版本。",
+        "businessState": "内容发布后的追溯与恢复层；版本由发布、编辑和回滚动作自动生成。"
+      },
+      "intentCard": {
+        "pageGoal": "按内容位、版本号、变更类型和状态检索版本历史，进入详情与差异比较。",
+        "firstViewport": ["页面标题与数据操作", "筛选区", "版本历史表格", "分页"],
+        "primaryAction": "比较版本差异",
+        "secondaryActions": ["查看版本详情", "导出记录", "刷新"],
+        "successCriteria": [
+          "页面无手动新建版本入口。",
+          "当前、历史和已回滚状态分别使用稳定语义标签。",
+          "比较操作在选择历史版本前保持禁用。",
+          "详情与 Diff 在 Drawer 中完成，Diff 字段保持左右对齐。",
+          "回滚只接受历史版本，原因至少 10 个字符且必须确认影响范围。",
+          "回滚完成后当前版本和已回滚状态同步更新，并恢复到稳定焦点。",
+          "窄屏仅在表格内部横向滚动，页面无外层横向溢出。"
+        ]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button", "Input", "Select", "Drawer", "DescriptionGrid", "CheckboxGroup", "ConfirmDialog", "FormSection"],
+      "dataRequirements": ["ContentVersion", "ContentSnapshot", "ContentSlot", "Staff"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination", "Drawer（详情 / Diff）", "ConfirmDialog（回滚）"]
+    }
+  ]
+}

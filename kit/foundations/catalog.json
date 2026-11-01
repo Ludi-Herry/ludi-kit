@@ -1,0 +1,268 @@
+{
+  "version": "1.0.0",
+  "reviewedAt": "2026-08-13",
+  "candidates": [
+    {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "framework": "react",
+      "outputModes": [
+        "library-native"
+      ],
+      "distribution": "package-native",
+      "packageName": "antd",
+      "version": "6.5.0",
+      "iconPackage": "@ant-design/icons",
+      "iconPackageVersion": "6.3.2",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "https://ant.design/docs/spec/introduce",
+        "components": "https://ant.design/components/overview",
+        "templates": "https://procomponents.ant.design/components",
+        "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+        "styles": "https://ant.design/docs/react/introduce#style",
+        "theme": "https://ant.design/docs/react/customize-theme",
+        "variables": "https://ant.design/docs/react/css-variables"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/antd-6.5.0.json",
+        "sha256": "3259be1ca4e3be5b0982fc4515b2034a4cd6170090584e0554ee711a66e2a05b"
+      }
+    },
+    {
+      "id": "arco-react",
+      "displayName": "Arco Design React",
+      "framework": "react",
+      "outputModes": [
+        "library-native"
+      ],
+      "distribution": "package-native",
+      "packageName": "@arco-design/web-react",
+      "version": "2.66.16",
+      "iconPackage": "@arco-design/web-react/icon",
+      "iconPackageVersion": "2.66.16",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "https://arco.design/docs/spec/introduce",
+        "components": "https://arco.design/react/components/overview",
+        "templates": "https://arco.design/react/components/layout",
+        "source": "https://github.com/arco-design/arco-design",
+        "styles": "https://github.com/arco-design/arco-design/tree/main/components/style",
+        "theme": "https://arco.design/react/docs/theme",
+        "variables": "https://arco.design/react/docs/token"
+      },
+      "designPack": null
+    },
+    {
+      "id": "tdesign-react",
+      "displayName": "TDesign React",
+      "framework": "react",
+      "outputModes": [
+        "library-native"
+      ],
+      "distribution": "package-native",
+      "packageName": "tdesign-react",
+      "version": "1.18.1",
+      "iconPackage": "tdesign-icons-react",
+      "iconPackageVersion": "0.6.6",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "https://tdesign.tencent.com/design/values",
+        "components": "https://tdesign.tencent.com/react/components/button",
+        "templates": "https://tdesign.tencent.com/starter",
+        "source": "https://github.com/Tencent/tdesign-react",
+        "styles": "https://github.com/Tencent/tdesign-react/tree/develop/src",
+        "theme": "https://tdesign.tencent.com/react/custom-theme",
+        "variables": "https://tdesign.tencent.com/design/tokens"
+      },
+      "designPack": null
+    },
+    {
+      "id": "hiui-react",
+      "displayName": "HiUI React",
+      "framework": "react",
+      "outputModes": [
+        "library-native"
+      ],
+      "distribution": "package-native",
+      "packageName": "@hi-ui/hiui",
+      "version": "5.0.0",
+      "iconPackage": "@hi-ui/icons",
+      "iconPackageVersion": "5.0.0",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "https://xiaomi.github.io/hiui/",
+        "components": "https://xiaomi.github.io/hiui/components",
+        "templates": "not-published",
+        "source": "https://github.com/XiaoMi/hiui",
+        "styles": "https://xiaomi.github.io/hiui/llms/provider.md",
+        "theme": "https://xiaomi.github.io/hiui/llms/provider.md",
+        "variables": "https://xiaomi.github.io/hiui/llms/provider.md"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/hiui-5.0.0.json",
+        "sha256": "813266db4db6b64b1d6eb4a507f1073cefb7954ed1f2e578f5f68cdf5bf1d586"
+      }
+    },
+    {
+      "id": "element-plus",
+      "displayName": "Element Plus",
+      "framework": "vue3",
+      "outputModes": [
+        "library-native"
+      ],
+      "distribution": "package-native",
+      "packageName": "element-plus",
+      "version": "2.14.3",
+      "iconPackage": "@element-plus/icons-vue",
+      "iconPackageVersion": "2.3.2",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "https://element-plus.org/en-US/guide/design.html",
+        "components": "https://element-plus.org/en-US/component/button.html",
+        "templates": "https://element-plus.org/en-US/component/layout.html",
+        "source": "https://github.com/element-plus/element-plus/tree/2.14.3",
+        "styles": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk",
+        "theme": "https://element-plus.org/en-US/guide/theming.html",
+        "variables": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk/src/common/var.scss"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/element-plus-2.14.3-components-v2.json",
+        "sha256": "12ad69bc17b8246fd2e377d4cc50e24349f3ac6cdfe7713ddc52aea5d9c76def"
+      }
+    },
+    {
+      "id": "shadcn",
+      "displayName": "shadcn/ui",
+      "framework": "react",
+      "outputModes": [
+        "custom-native"
+      ],
+      "distribution": "source-registry",
+      "packageName": "shadcn",
+      "version": "4.13.1",
+      "iconPackage": "lucide-react",
+      "iconPackageVersion": "1.25.0",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "https://ui.shadcn.com/docs",
+        "components": "https://ui.shadcn.com/docs/components",
+        "templates": "https://ui.shadcn.com/blocks",
+        "source": "https://github.com/shadcn-ui/ui",
+        "styles": "https://ui.shadcn.com/docs/theming",
+        "theme": "https://ui.shadcn.com/docs/theming",
+        "variables": "https://ui.shadcn.com/docs/theming#list-of-variables"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/shadcn-4.13.1-components-v2.json",
+        "sha256": "1db35f321e2333734bfc9fa207539aa37c69a6a3b098083e86fae54beea62222"
+      }
+    },
+    {
+      "id": "cloudai",
+      "displayName": "CloudAI UI（阿里云 Data AI Studio 设计语言，Tailwind v3 + shadcn v3 平台变体底座）",
+      "framework": "react",
+      "outputModes": [
+        "custom-native"
+      ],
+      "distribution": "source-registry",
+      "packageName": "@cloudai-design/oneskill",
+      "version": "0.6.1",
+      "iconPackage": "lucide-react",
+      "iconPackageVersion": "1.52.0",
+      "license": "MIT",
+      "officialSources": {
+        "principles": "npm:@cloudai-design/oneskill 包内 CloudAI-UI/SKILL.md 与 design-system/",
+        "components": "npm:@cloudai-design/oneskill 包内 CloudAI-UI/components.md 与 components/",
+        "templates": "npm:@cloudai-design/oneskill 包内 CloudAI-UI/page-templates.md 与 page-templates/",
+        "source": "not-published（npm 包即分发物；本地只读拆解 <local-path-omitted>）",
+        "styles": "https://www.npmjs.com/package/@cloudai-design/tailwind",
+        "theme": "npm:@cloudai-design/oneskill 包内 CloudAI-UI/themes/aidbs-tokens.md",
+        "variables": "@cloudai-design/tailwind/v3/aidbs（tailwind 插件注入 80 个语义 token）"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/cloudai-0.6.1.json",
+        "sha256": "f3974989e75a2b407c884ec0f015e025d4732fa3f70f657bd42b6e0580d8f9b7"
+      }
+    },
+    {
+      "id": "figma",
+      "displayName": "Figma Component Library",
+      "framework": "any",
+      "outputModes": [
+        "custom-native"
+      ],
+      "distribution": "figma-mapped",
+      "packageName": "figma-file",
+      "version": "file-version-or-library-key-required",
+      "iconPackage": "contract-required",
+      "iconPackageVersion": "contract-required",
+      "license": "contract-required",
+      "officialSources": {
+        "principles": "https://help.figma.com/hc/en-us/articles/14563969806359-Design-systems-in-Figma",
+        "components": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma",
+        "templates": "https://www.figma.com/community",
+        "source": "figma-file-key-required",
+        "styles": "figma-styles-required",
+        "theme": "figma-variables-required",
+        "variables": "figma-variable-collection-required"
+      },
+      "designPack": null
+    },
+    {
+      "id": "local",
+      "displayName": "Local or Workspace Component Package",
+      "framework": "any",
+      "outputModes": [
+        "kit-consumer",
+        "custom-native"
+      ],
+      "distribution": "workspace-package",
+      "packageName": "@ai-readable/kit",
+      "version": "0.1.0",
+      "iconPackage": "@ai-readable/kit",
+      "iconPackageVersion": "0.1.0",
+      "license": "private",
+      "officialSources": {
+        "principles": "DESIGN.md",
+        "components": "components.manifest.json",
+        "templates": "recipes/",
+        "source": "src/index.ts",
+        "styles": "src/styles.css",
+        "theme": "src/components.tsx#AIReadableProvider",
+        "variables": "tokens.manifest.json"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/local-ai-readable-kit-0.1.0.json",
+        "sha256": "f16a762bf8d310ca8e5d8306a9b58ffdc6815609c12d475b005e2ad35fdf1c53"
+      }
+    },
+    {
+      "id": "bigscreen-dark",
+      "displayName": "Bigscreen Dark Screen Language（situation-screen 数据大屏暗色设计语言，候选底座；未选中项目不装依赖、不打进 kit 包，选中接入是后续独立裁决）",
+      "framework": "react",
+      "outputModes": [
+        "custom-native"
+      ],
+      "distribution": "workspace-package",
+      "packageName": "selection-pending（随 kit design pack 提供，无独立 npm 包）",
+      "version": "0.1.0",
+      "iconPackage": "none（示例壳层无图标库，品牌标记为纯 CSS）",
+      "iconPackageVersion": "none",
+      "license": "private（kit 内部 token 层，未发布）",
+      "officialSources": {
+        "principles": "kit/skills/figma-3d-situation-screen/SKILL.md",
+        "components": "kit/patterns.manifest.json#situation-screen 与 kit/examples/figma-3d-situation-screen/src/App.tsx",
+        "templates": "kit/recipes/situation-screen.md",
+        "source": "kit/examples/figma-3d-situation-screen/（反推来源工程，React 19 + Three.js 示例）",
+        "styles": "kit/examples/figma-3d-situation-screen/src/styles.css",
+        "theme": "kit/examples/figma-3d-situation-screen/src/styles.css:1-32（:root 令牌块）",
+        "variables": "kit/examples/figma-3d-situation-screen/src/styles.css:6-31（CSS 变量）"
+      },
+      "designPack": {
+        "path": "foundations/design-packs/bigscreen-dark-0.1.0.json",
+        "sha256": "500b229afdfa2b1dc409afd99d75e995360fceaaf6a2e64c5043abc312a14ada"
+      }
+    }
+  ]
+}

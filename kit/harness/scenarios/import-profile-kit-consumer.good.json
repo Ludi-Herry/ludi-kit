@@ -1,0 +1,14 @@
+{
+  "id": "import-profile-kit-consumer-good",
+  "prompt": "Import profile fixture: kit consumer output may import React, local files, and the @ai-readable/kit barrel.",
+  "foundationContract": {
+    "businessContext": "projects/sample-inventory-erp/business-context.json",
+    "projectId": "sample-inventory-erp",
+    "outputMode": "kit-consumer",
+    "framework": "react"
+  },
+  "output": {
+    "file": "examples/list-page.tsx"
+  },
+  "report": "harness/reports/import-profile-kit-consumer-good.json"
+}

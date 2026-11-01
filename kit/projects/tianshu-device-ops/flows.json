@@ -1,0 +1,109 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-device-ops",
+  "flows": [
+    {
+      "id": "device-inspection",
+      "title": "设备巡检",
+      "entry": "/devices",
+      "userGoal": "从全部设备收窄到目标设备，判断状态后进入告警处置或发起 RMA。",
+      "businessState": "运维每日巡检，默认视角为运行异常。",
+      "steps": [
+        { "pageId": "device-list", "route": "/devices", "role": "filter-and-locate" },
+        { "pageId": "device-detail", "route": "/devices/:sn", "role": "judge-and-act" }
+      ],
+      "successCriteria": [
+        "首屏可见阶段分布、五个常驻筛选和设备表格。",
+        "点击 SN 进入详情，异常设备顶部出现告警横幅（warning，级别写进文字），主操作为去告警处置（2026-09-29 依据复核报告）。",
+        "发起 RMA 经过二次确认，确认后设备状态与列表同步。"
+      ]
+    },
+    {
+      "id": "alert-closure",
+      "title": "告警闭环",
+      "entry": "/alerts",
+      "userGoal": "读懂三段式告警，查看受影响设备，转工单或标记已处理。",
+      "businessState": "告警由规则触发，转工单后由客户反馈模块跟进。",
+      "steps": [
+        { "pageId": "alerts", "route": "/alerts", "role": "read-and-decide" },
+        { "pageId": "device-list", "route": "/devices", "role": "inspect-affected" },
+        { "pageId": "device-detail", "route": "/devices/:sn", "role": "confirm-device" }
+      ],
+      "successCriteria": [
+        "转工单弹窗预填关联对象、类型、优先级与发生了什么/影响/建议处理三段，提交后告警进入已转工单并显示工单号；处理后留在当前分栏并自动选中下一条，提示附查看链接（2026-09-29 依据复核报告）。",
+        "查看受影响设备带筛选条件跳到全部设备；单台设备告警直达设备详情，返回回到告警处置原分栏与选中项（2026-09-29 依据复核报告）。",
+        "静默需二次确认并说明后果。",
+        "标记已处理必填结论并写入处置记录，已处理告警可重新打开（2026-09-29 依据复核报告）。"
+      ]
+    },
+    {
+      "id": "workbench-to-ticket",
+      "title": "工作台告警速办",
+      "entry": "/dashboard",
+      "userGoal": "从工作台告警卡直达告警处置，读懂三段式后转工单。",
+      "businessState": "工作台卡片计数与目标列表同源同口径；转工单后由客户反馈模块跟进。",
+      "steps": [
+        { "pageId": "dashboard", "route": "/dashboard", "role": "overview-and-drill-down" },
+        { "pageId": "alerts", "route": "/alerts", "role": "read-and-decide" }
+      ],
+      "successCriteria": [
+        "登录后默认落地 /dashboard；「离线告警」卡角标数字与 /alerts?status=open 行数一致（2026-09-29 依据批 1 页面卡）。",
+        "告警浮层单条跳 /alerts?alert=<id>，告警页落在对应分栏并选中该条。",
+        "转工单预填发生了什么/影响/建议处理三段，提交后告警进入已转工单并显示工单号（沿用 alert-closure 口径）。"
+      ]
+    },
+    {
+      "id": "device-rma-passport",
+      "title": "设备退货 RMA 与护照闭环",
+      "entry": "/devices",
+      "userGoal": "从全部设备到设备详情发起 RMA，跟踪退货 RMA 单，并在数字护照时间轴看到对应 RMA 节点。",
+      "businessState": "发起 RMA 创建 RMA 单并把设备状态流转为退货 RMA；护照时间轴自动追加 RMA 节点。",
+      "steps": [
+        { "pageId": "device-list", "route": "/devices", "role": "filter-and-locate" },
+        { "pageId": "device-detail", "route": "/devices/:sn", "role": "start-rma" },
+        { "pageId": "rma", "route": "/exceptions/rma", "role": "track-and-decide" },
+        { "pageId": "passport-detail", "route": "/lifecycle/passport/:sn", "role": "verify-lifecycle-node" }
+      ],
+      "successCriteria": [
+        "设备详情「发起 RMA」使用 PRD 6 项原因枚举，成功提示附「查看 RMA 单」链接，落 /exceptions/rma?sn=<SN> 且列表出现新行（2026-09-29 依据批 1 页面卡）。",
+        "RMA 单号格式 RMA-YYYYMMDD-NNNNNN，与设备详情折叠区展示一致。",
+        "数字护照详情时间轴出现对应 RMA 节点，节点内单号与退货 RMA 页一致（动线 2 落点）。",
+        "全部设备与设备大批量处的「查看护照」解锁并链接到护照详情，返回按 from 白名单回来源页。"
+      ]
+    },
+    {
+      "id": "alert-ticket-feedback",
+      "title": "告警转工单到客户反馈闭环",
+      "entry": "/alerts",
+      "userGoal": "告警处置转工单后，在客户反馈页按 SLA 排查先后，完成受理、回复、指派、驳回或关闭。",
+      "businessState": "转工单同步写入 FeedbackTicket 实体（工单号 FB + 14 位时间戳 + 3 位序号），告警进入已转工单且工单号链接直达工单详情抽屉。",
+      "steps": [
+        { "pageId": "alerts", "route": "/alerts", "role": "read-and-decide" },
+        { "pageId": "feedback", "route": "/exceptions/feedback", "role": "work-ticket-to-closure" }
+      ],
+      "successCriteria": [
+        "转工单后告警状态进入已转工单，工单号由文本变为链接，点击到客户反馈并直接打开对应工单详情抽屉（2026-09-29 依据批 2 页面卡）。",
+        "从工作台 SLA 卡 / 待受理卡带 ?sla=overdue / ?status=pending 预置筛选进入，计数与目标列表行数一致。",
+        "工单详情内受理 / 回复用户 / 指派 / 驳回 / 关闭按状态显隐，全部动作写入流转记录；「转退货 RMA」预填跳 /exceptions/rma 并在创建成功后回写工单关联 RMA 单号。",
+        "从工单详情「关联告警」可回跳告警页原分栏与选中项；返回键按 from 白名单回来源页。"
+      ]
+    },
+    {
+      "id": "rule-to-alert",
+      "title": "告警规则到告警闭环",
+      "entry": "/system/alert-rules",
+      "userGoal": "设定什么情况要喊人：离线率、离线超期、升级失败率三类规则配好后自动盯设备，并从最近触发的告警回看规则。",
+      "businessState": "规则只有停用没有删除；告警与规则同源（AlertRecord.ruleId），告警详情「触发规则」链接定位到规则行。",
+      "steps": [
+        { "pageId": "alert-rules", "route": "/system/alert-rules", "role": "configure-rule" },
+        { "pageId": "alerts", "route": "/alerts", "role": "review-triggered-alert" }
+      ],
+      "successCriteria": [
+        "规则列表含启用 / 停用 / 从未触发三种形态；表单按规则类型联动出现需要的字段（2026-09-29 依据批 2 页面卡）。",
+        "「指定任务」的升级失败率规则用 Select 多选，数据源为推送任务列表，存 pushTaskIds。",
+        "停用走 B 档气泡确认（写明停用期间告警不补发），启用直接生效；保存后列表出现新规则且默认启用。",
+        "告警详情「触发规则」链接到本页并定位该规则；返回告警处置回到原分栏与选中项；设备自检告警显示「无关联规则」。"
+      ]
+    }
+  ]
+}

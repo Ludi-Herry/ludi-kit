@@ -1,0 +1,30 @@
+diff --git a/src/components.tsx b/src/components.tsx
+@@ planned promotion
++ Add a page-level ForbiddenState with default recovery copy and no protected-data slot.
+diff --git a/src/index.ts b/src/index.ts
+@@ planned promotion
++ Export ForbiddenState and ForbiddenStateProps from the public barrel.
+diff --git a/src/styles.css b/src/styles.css
+@@ planned promotion
++ Add responsive, token-based 403 typography and action layout.
+diff --git a/components.manifest.json b/components.manifest.json
+@@ planned promotion
++ Document page, local-action, read-only, and empty-state boundaries.
+diff --git a/examples/feedback-states.tsx b/examples/feedback-states.tsx
+@@ planned promotion
++ Show an accessible missing-permission page through public imports.
+diff --git a/recipes/permission-state.md b/recipes/permission-state.md
+@@ planned promotion
++ Record 403 versus local disabled-action guidance.
+diff --git a/figma/component-map.json b/figma/component-map.json
+@@ planned promotion
++ Sync the code-first component mapping.
+diff --git a/figma/variants-map.json b/figma/variants-map.json
+@@ planned promotion
++ Sync the single default permission-state variant.
+diff --git a/scripts/check-dom-contract.mjs b/scripts/check-dom-contract.mjs
+@@ planned promotion
++ Assert title linkage, decorative code, description, and action group.
+diff --git a/harness/scenarios/build-tianshu-platform-rbac-forbidden.json b/harness/scenarios/build-tianshu-platform-rbac-forbidden.json
+@@ planned promotion
++ Require a real Tianshu RBAC forbidden page that omits role and permission tables.

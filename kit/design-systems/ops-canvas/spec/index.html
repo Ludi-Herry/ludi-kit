@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231769e0'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial' font-size='12' font-weight='700' fill='white'%3EOC%3C/text%3E%3C/svg%3E" />
+    <title>Ops Canvas — Design System Specification</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="spec-shell" data-component="ops-shell">
+      <aside class="rail" aria-label="Specification navigation">
+        <a class="brand" href="#overview" aria-label="Ops Canvas home">
+          <strong>Ops Canvas</strong>
+          <small>Specification 1.0</small>
+        </a>
+
+        <nav class="rail-nav">
+          <a class="active" href="#overview">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>Overview</span>
+          </a>
+          <a href="#foundations">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 8 4.5-8 4.5-8-4.5L12 3Z"/><path d="m4 12 8 4.5 8-4.5M4 16.5l8 4.5 8-4.5"/></svg>
+            <span>Foundations</span>
+          </a>
+          <a href="#base-components">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M12 9v3M6 15v-3h12v3"/></svg>
+            <span>Base components</span>
+          </a>
+          <a href="#composites">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>Composite components</span>
+          </a>
+          <a href="#page-shell">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 8h18"/></svg>
+            <span>Page shell</span>
+          </a>
+        </nav>
+
+        <div class="rail-status" aria-label="Contract status">
+          <div class="status-line ready"><span aria-hidden="true">✓</span><strong>Local contract ready</strong></div>
+          <div class="status-line blocked"><span aria-hidden="true">☁</span><small>Figma sync external-blocked</small></div>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <h1>DESIGN SYSTEM / OPS WORKSPACES</h1>
+            <p>Clear decisions at operational speed.</p>
+          </div>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" data-component="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 15.2A8 8 0 1 1 8.8 4 6.5 6.5 0 0 0 20 15.2Z"/></svg>
+            <span id="theme-label">Dark theme</span>
+            <span class="toggle-track" aria-hidden="true"><i></i></span>
+          </button>
+        </header>
+
+        <div class="content">
+          <section class="overview-panel" id="overview">
+            <div class="overview-copy">
+              <h2>One compact language for dispatch, monitoring, and review.</h2>
+              <div class="overview-actions">
+                <a class="button primary" data-component="button" data-variant="primary" href="#base-components">Browse components</a>
+                <a class="button secondary" data-component="button" data-variant="secondary" href="#page-shell">View page shell</a>
+              </div>
+            </div>
+            <dl class="coverage" aria-label="Design system coverage">
+              <div><span class="coverage-icon palette" aria-hidden="true">◌</span><dt>42</dt><dd>semantic tokens</dd></div>
+              <div><span class="coverage-icon cube" aria-hidden="true">◇</span><dt>08</dt><dd>component contracts</dd></div>
+              <div><span class="coverage-icon monitor" aria-hidden="true">▱</span><dt>02</dt><dd>theme modes</dd></div>
+            </dl>
+          </section>
+
+          <section class="spec-section foundations" id="foundations">
+            <h2>Foundations</h2>
+            <div class="foundation-grid">
+              <article class="foundation-block color-block">
+                <h3>Color</h3>
+                <div class="swatch-grid">
+                  <div class="swatch brand-swatch"><span></span><strong>Brand</strong><small>#1769E0</small></div>
+                  <div class="swatch success-swatch"><span></span><strong>Success</strong><small>#16865A</small></div>
+                  <div class="swatch warning-swatch"><span></span><strong>Warning</strong><small>#B36500</small></div>
+                  <div class="swatch danger-swatch"><span></span><strong>Danger</strong><small>#C63838</small></div>
+                </div>
+              </article>
+
+              <article class="foundation-block type-block">
+                <h3>Type ramp (Inter)</h3>
+                <dl class="type-ramp">
+                  <div><dt>Display</dt><dd>32/38&nbsp; Bold</dd></div>
+                  <div><dt>Title</dt><dd>20/26&nbsp; Semibold</dd></div>
+                  <div><dt>Body</dt><dd>14/21&nbsp; Regular</dd></div>
+                  <div><dt>Caption</dt><dd>12/16&nbsp; Regular</dd></div>
+                </dl>
+              </article>
+
+              <article class="foundation-block spacing-block">
+                <h3>Spacing (4px grid)</h3>
+                <div class="space-scale" aria-label="Spacing scale">
+                  <span style="--size:8px"><i></i><small>4</small></span>
+                  <span style="--size:12px"><i></i><small>8</small></span>
+                  <span style="--size:18px"><i></i><small>12</small></span>
+                  <span style="--size:24px"><i></i><small>16</small></span>
+                  <span style="--size:30px"><i></i><small>24</small></span>
+                  <span style="--size:36px"><i></i><small>32</small></span>
+                  <span style="--size:48px"><i></i><small>48</small></span>
+                </div>
+              </article>
+
+              <article class="foundation-block shape-block">
+                <h3>Shape</h3>
+                <div class="shape-row">
+                  <span style="--radius:6px"><i></i><small>6px</small></span>
+                  <span style="--radius:10px"><i></i><small>10px</small></span>
+                  <span style="--radius:14px"><i></i><small>14px</small></span>
+                  <span style="--radius:999px"><i></i><small>Pill</small></span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="spec-section base-components" id="base-components">
+            <h2>Base components</h2>
+            <div class="base-grid">
+              <article class="component-spec button-spec">
+                <h3>Button</h3>
+                <div>
+                  <button class="button primary" data-component="button" data-variant="primary">Create order</button>
+                  <button class="button secondary" data-component="button" data-variant="secondary">Export</button>
+                  <button class="button quiet" data-component="button" data-variant="danger">Cancel</button>
+                </div>
+              </article>
+
+              <article class="component-spec badge-spec">
+                <h3>Badge</h3>
+                <div>
+                  <span class="badge success" data-component="badge">On track</span>
+                  <span class="badge warning" data-component="badge">At risk</span>
+                  <span class="badge danger" data-component="badge">Blocked</span>
+                  <span class="badge info" data-component="badge">Review</span>
+                </div>
+              </article>
+
+              <article class="component-spec input-spec">
+                <h3>Input</h3>
+                <label class="field" data-component="input">
+                  <span>Work order owner</span>
+                  <input value="Mina Santos" aria-label="Work order owner" />
+                </label>
+              </article>
+
+              <article class="component-spec card-spec" data-component="card">
+                <h3>Card</h3>
+                <div class="person-card">
+                  <span class="avatar" aria-hidden="true">●</span>
+                  <span><strong>Mina Santos</strong><small>Work order owner</small></span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="spec-section composite-components" id="composites">
+            <h2>Composite components</h2>
+            <div class="composite-top">
+              <div class="metric-group">
+                <h3>MetricCard</h3>
+                <div class="metrics-row">
+                  <article class="metric-card" data-component="metric-card">
+                    <span class="metric-icon blue" aria-hidden="true">▦</span>
+                    <span><small>Open work orders</small><strong>128</strong><em>+12 today</em></span>
+                  </article>
+                  <article class="metric-card" data-component="metric-card">
+                    <span class="metric-icon green" aria-hidden="true">↗</span>
+                    <span><small>Within SLA</small><strong>96.4%</strong><em>+1.8%</em></span>
+                  </article>
+                  <article class="metric-card" data-component="metric-card">
+                    <span class="metric-icon amber" aria-hidden="true">!</span>
+                    <span><small>Needs review</small><strong>14</strong><em class="negative">−3 today</em></span>
+                  </article>
+                </div>
+              </div>
+
+              <form class="filter-group" data-component="filter-bar" id="filter-form">
+                <h3>FilterBar</h3>
+                <div class="filter-bar">
+                  <label class="field compact"><span>Keyword</span><span class="search-field"><i aria-hidden="true">⌕</i><input id="filter-keyword" placeholder="Search..." /></span></label>
+                  <label class="field compact"><span>Status</span><select id="filter-status"><option value="all">All statuses</option><option value="review">Needs review</option><option value="progress">In progress</option><option value="scheduled">Scheduled</option></select></label>
+                  <span class="filter-actions">
+                    <button class="button primary" type="submit" data-component="button">Apply filters</button>
+                    <button class="button secondary" type="reset" data-component="button">Reset</button>
+                  </span>
+                  <span class="filter-result" id="filter-result" role="status">4 results</span>
+                </div>
+              </form>
+            </div>
+
+            <div class="table-group">
+              <h3>WorkOrderTable</h3>
+              <div class="table-wrap" data-component="work-order-table">
+                <table>
+                  <thead><tr><th>Order</th><th>Site</th><th>Owner</th><th>Status</th><th>SLA</th></tr></thead>
+                  <tbody>
+                    <tr data-status="progress"><td><strong>WO-2048</strong><small>Cooling inspection</small></td><td>North Depot</td><td>Elena Park</td><td><span class="badge info" data-component="badge">In progress</span></td><td>2h 14m</td></tr>
+                    <tr data-status="review"><td><strong>WO-2042</strong><small>Access control fault</small></td><td>Central Hub</td><td>Owen Li</td><td><span class="badge warning" data-component="badge">Needs review</span></td><td>38m</td></tr>
+                    <tr data-status="scheduled"><td><strong>WO-2036</strong><small>Generator service</small></td><td>West Annex</td><td>Mina Santos</td><td><span class="badge success" data-component="badge">Scheduled</span></td><td>Tomorrow</td></tr>
+                    <tr data-status="progress"><td><strong>WO-2029</strong><small>Sensor calibration</small></td><td>South Plant</td><td>Jay Morgan</td><td><span class="badge info" data-component="badge">In progress</span></td><td>4h 02m</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section class="spec-section page-shell" id="page-shell">
+            <h2>Page shell contract</h2>
+            <div class="shell-diagram">
+              <div class="diagram-rail">
+                <span class="diagram-icon" aria-hidden="true">▥</span>
+                <span><strong>240</strong><small>Navigation rail</small></span>
+              </div>
+              <div class="diagram-main">
+                <div class="diagram-top"><span aria-hidden="true">⊞</span>Product header · 64</div>
+                <div class="diagram-content">Fluid content region</div>
+              </div>
+              <div class="diagram-limit"><span aria-hidden="true">⤢</span><strong>max 1440 · gutter 24</strong></div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

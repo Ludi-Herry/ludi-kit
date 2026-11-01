@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/blind-adoption-registry.schema.json",
+  "title": "Blind Adoption Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "programId",
+    "owner",
+    "updatedAt",
+    "kpi",
+    "counts",
+    "runs"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "enum": ["1.0.0", "1.1.0"] },
+    "programId": { "const": "requirement-to-final-page-blind-adoption" },
+    "owner": { "const": "quality/blind-adoption-registry.json" },
+    "updatedAt": { "$ref": "#/$defs/dateTime" },
+    "kpi": { "$ref": "#/$defs/kpi" },
+    "counts": { "type": "object" },
+    "runs": {
+      "type": "array",
+      "minItems": 1
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "version": { "const": "1.0.0" },
+        "counts": { "$ref": "#/$defs/countsV10" },
+        "runs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": { "$ref": "#/$defs/runV10" }
+        }
+      },
+      "required": ["version"]
+    },
+    {
+      "properties": {
+        "version": { "const": "1.1.0" },
+        "counts": { "$ref": "#/$defs/countsV11" },
+        "runs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/runV11" }
+        }
+      },
+      "required": ["version"]
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "dateTime": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "kpi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetRuns",
+        "kitFirstPassMin",
+        "kitWinsMin",
+        "manualAcceptanceTimeReductionMinPercent",
+        "hardContractViolationsMax"
+      ],
+      "properties": {
+        "targetRuns": { "const": 5 },
+        "kitFirstPassMin": { "const": 4 },
+        "kitWinsMin": { "const": 2 },
+        "manualAcceptanceTimeReductionMinPercent": { "const": 30 },
+        "hardContractViolationsMax": { "const": 0 }
+      }
+    },
+    "countsV10": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualifyingCompleted",
+        "preRevealFrozen",
+        "remainingToComplete",
+        "unreservedSlots"
+      ],
+      "properties": {
+        "qualifyingCompleted": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "preRevealFrozen": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "remainingToComplete": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "unreservedSlots": { "type": "integer", "minimum": 0, "maximum": 5 }
+      }
+    },
+    "countsV11": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attemptsRecorded",
+        "invalidatedAttempts",
+        "activeAttempts",
+        "qualifyingCompleted",
+        "preRevealFrozen",
+        "remainingToComplete",
+        "unreservedSlots"
+      ],
+      "properties": {
+        "attemptsRecorded": { "type": "integer", "minimum": 1 },
+        "invalidatedAttempts": { "type": "integer", "minimum": 0 },
+        "activeAttempts": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "qualifyingCompleted": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "preRevealFrozen": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "remainingToComplete": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "unreservedSlots": { "type": "integer", "minimum": 0, "maximum": 5 }
+      }
+    },
+    "runV10": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "slot",
+        "status",
+        "qualifying",
+        "kitFirstPass",
+        "winner",
+        "contractPath",
+        "contractSha256",
+        "evidencePath",
+        "inputStatus"
+      ],
+      "properties": {
+        "runId": { "$ref": "#/$defs/runId" },
+        "slot": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "status": { "$ref": "#/$defs/status" },
+        "qualifying": { "type": ["boolean", "null"] },
+        "kitFirstPass": { "type": ["string", "null"], "enum": ["passed", "failed", null] },
+        "winner": { "type": ["string", "null"], "enum": ["consumer", "control", "tie", null] },
+        "contractPath": { "type": "string", "minLength": 3 },
+        "contractSha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "evidencePath": { "type": ["string", "null"], "minLength": 3 },
+        "inputStatus": { "$ref": "#/$defs/inputStatus" }
+      }
+    },
+    "runV11": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "slot",
+        "attemptNumber",
+        "replacesRunId",
+        "status",
+        "qualifying",
+        "kitFirstPass",
+        "winner",
+        "contractPath",
+        "contractSha256",
+        "evidencePath",
+        "inputStatus"
+      ],
+      "properties": {
+        "runId": { "$ref": "#/$defs/runId" },
+        "slot": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "attemptNumber": { "type": "integer", "minimum": 1 },
+        "replacesRunId": {
+          "oneOf": [
+            { "$ref": "#/$defs/runId" },
+            { "type": "null" }
+          ]
+        },
+        "status": { "$ref": "#/$defs/status" },
+        "qualifying": { "type": ["boolean", "null"] },
+        "kitFirstPass": { "type": ["string", "null"], "enum": ["passed", "failed", null] },
+        "winner": { "type": ["string", "null"], "enum": ["consumer", "control", "tie", null] },
+        "contractPath": { "type": "string", "minLength": 3 },
+        "contractSha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "evidencePath": { "type": ["string", "null"], "minLength": 3 },
+        "inputStatus": { "$ref": "#/$defs/inputStatus" }
+      }
+    },
+    "status": {
+      "enum": [
+        "pre-reveal-frozen",
+        "input-received",
+        "running",
+        "evaluation-complete",
+        "completed",
+        "invalidated"
+      ]
+    },
+    "inputStatus": {
+      "enum": [
+        "historical-frozen",
+        "sealed-pending-delivery",
+        "received-unopened",
+        "revealed"
+      ]
+    }
+  }
+}

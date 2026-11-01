@@ -1,0 +1,36 @@
+{
+  "id": "build-tianshu-platform-audit",
+  "prompt": "天枢 · 审计日志：按操作人/操作类型/所属域/风险等级检索日志；只读系统，无任何新建入口。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["审计日志", "风险等级", "禁止手工新增/编辑/删除", "批量导出选中条目"],
+  "expectedClassTokens": ["generated-audit-row--high", "generated-audit-row--failed"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "auditResult": { "sourceGroup": "审计·操作结果", "statuses": ["success", "failed"] },
+      "auditSensitivity": { "sourceGroup": "审计·敏感标记", "statuses": ["sensitive"] },
+      "auditRisk": { "sourceGroup": "审计·风险等级", "statuses": ["low", "medium", "high"] }
+    }
+  },
+  "expectedActions": {
+    "required": ["导出日志", "按 SN 追溯", "批量导出选中条目", "详情"],
+    "forbidden": ["新建", "编辑", "删除"]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "AuditListPage",
+    "pageId": "platform-audit"
+  },
+  "report": "harness/reports/build-tianshu-platform-audit.json"
+}

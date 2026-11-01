@@ -1,0 +1,43 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "generatedAt": "2026-07-07",
+  "itemId": "fb-20260707-002",
+  "title": "DataGrid needs first-class pagination display",
+  "mode": "dry-run",
+  "status": "ready",
+  "sourceDraft": "projects/sample-inventory-erp/feedback/promotions/fb-20260707-002.md",
+  "planFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-002.json",
+  "patchFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-002.diff",
+  "action": "update-component",
+  "target": "component",
+  "destination": "components.manifest.json",
+  "allowedDestinations": [
+    "src/",
+    "components.manifest.json",
+    "examples/"
+  ],
+  "willChangeFiles": [
+    "components.manifest.json",
+    "src/components.tsx",
+    "src/index.ts",
+    "src/styles.css",
+    "examples/list-page.tsx"
+  ],
+  "guardrails": [
+    "Dry-run mode writes only application plan artifacts.",
+    "Every planned source file must match promotion gate allowed destinations.",
+    "Only accepted or promoted feedback items can produce application plans.",
+    "Run validation and build commands before marking the feedback item promoted."
+  ],
+  "validationCommands": [
+    "npm run validate:feedback",
+    "npm run validate",
+    "npm run check:harness",
+    "npm run build:preview",
+    "npm run build:starter"
+  ],
+  "command": "npm run apply:promotion -- fb-20260707-002 --dry-run --write-plan",
+  "sourceDraftIndex": "projects/sample-inventory-erp/feedback/promotions/index.json",
+  "patchPreview": "diff --git a/components.manifest.json b/components.manifest.json\n@@ components\n+ Add Pagination as a public component with page, pageSize, total, disabled, and onPageChange props.\n+ Link Pagination to DataGrid examples and list-page recipes.\ndiff --git a/src/components.tsx b/src/components.tsx\n@@ exports\n+ export type PaginationProps = BaseProps & { page?: number; pageSize?: number; total?: number; disabled?: boolean; onPageChange?: (page: number) => void; };\n+ export function Pagination(...) { render previous/next buttons, current range, and page count. }\ndiff --git a/src/index.ts b/src/index.ts\n@@ public API\n+ export { Pagination } from \"./components\";\n+ export type { PaginationProps } from \"./components\";\ndiff --git a/src/styles.css b/src/styles.css\n@@ pagination styles\n+ Add .rd-pagination, .rd-pagination__summary, and .rd-pagination__actions token-based styles.\ndiff --git a/examples/list-page.tsx b/examples/list-page.tsx\n@@ DataGrid usage\n+ Import Pagination from @radesign/kit.\n+ Pass <Pagination page={1} pageSize={20} total={124} /> to DataGrid pagination."
+}

@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/image2-quality-pivot.schema.json",
+  "title": "Image2 quality pivot decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "decisionId",
+    "recordedAtUtc",
+    "status",
+    "supersedes",
+    "calibrationStudy",
+    "currentQualityGate",
+    "authorization",
+    "boundaries"
+  ],
+  "properties": {
+    "$schema": { "const": "../../schema/image2-quality-pivot.schema.json" },
+    "version": { "const": "1.0.0" },
+    "decisionId": { "const": "image2-quality-pivot-2026-08-09" },
+    "recordedAtUtc": { "type": "string", "format": "date-time" },
+    "status": { "const": "active" },
+    "supersedes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forCurrentCompletionGate", "preserveHistoricalFigures"],
+      "properties": {
+        "forCurrentCompletionGate": {
+          "const": "design-systems/ops-canvas/workflow/visual-calibration-proposal.md"
+        },
+        "preserveHistoricalFigures": { "const": true }
+      }
+    },
+    "calibrationStudy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "historicalTarget",
+        "qualified",
+        "accepted",
+        "rejected",
+        "disputed",
+        "remainingPlannedPairs",
+        "remainingExpansion",
+        "preservedEvidence"
+      ],
+      "properties": {
+        "status": { "const": "frozen" },
+        "historicalTarget": { "const": 24 },
+        "qualified": { "const": 5 },
+        "accepted": { "const": 4 },
+        "rejected": { "const": 1 },
+        "disputed": { "const": 1 },
+        "remainingPlannedPairs": { "const": 19 },
+        "remainingExpansion": { "const": "paused" },
+        "preservedEvidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rawDiff", "reviewerRecords", "thresholds", "mutationAuthorized"],
+          "properties": {
+            "rawDiff": { "const": true },
+            "reviewerRecords": { "const": true },
+            "thresholds": { "const": true },
+            "mutationAuthorized": { "const": false }
+          }
+        }
+      }
+    },
+    "currentQualityGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["programId", "status", "goldenPages", "holdouts", "maxTotalIterations"],
+      "properties": {
+        "programId": { "const": "image2-golden-pages-v1" },
+        "status": { "const": "in-progress" },
+        "goldenPages": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "firstPage", "reviewPolicy"],
+          "properties": {
+            "required": { "const": 3 },
+            "firstPage": { "const": "content-schedule-antd-v6-20260809" },
+            "reviewPolicy": { "const": "single-design-review-per-iteration" }
+          }
+        },
+        "holdouts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "selection", "usedForIteration"],
+          "properties": {
+            "required": { "const": 2 },
+            "selection": { "const": "freeze-before-evaluation" },
+            "usedForIteration": { "const": false }
+          }
+        },
+        "maxTotalIterations": { "const": 13 }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "newCalibrationBatchRequiresExplicitUserAuthorization",
+        "activeNewBatchAuthorization",
+        "authorizedExistingBatches"
+      ],
+      "properties": {
+        "newCalibrationBatchRequiresExplicitUserAuthorization": { "const": true },
+        "activeNewBatchAuthorization": { "type": "null" },
+        "authorizedExistingBatches": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "batchId", "contract"],
+            "properties": {
+              "path": { "const": "quality/image2-calibration/batch-01" },
+              "batchId": { "const": "image2-calibration-batch-01-20260809" },
+              "contract": { "$ref": "#/$defs/fileReceipt" }
+            }
+          }
+        }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rawThresholdChangeAuthorized",
+        "rawGateOverride",
+        "frozenEvidenceMutationAuthorized",
+        "protectedFinalEligiblePrdRead",
+        "protectedFinalEligiblePrdRegistered"
+      ],
+      "properties": {
+        "rawThresholdChangeAuthorized": { "const": false },
+        "rawGateOverride": { "const": false },
+        "frozenEvidenceMutationAuthorized": { "const": false },
+        "protectedFinalEligiblePrdRead": { "const": false },
+        "protectedFinalEligiblePrdRegistered": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "fileReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^(?![A-Za-z]:|/|\\\\).+" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
+  }
+}

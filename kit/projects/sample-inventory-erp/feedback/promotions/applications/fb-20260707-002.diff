@@ -1,0 +1,19 @@
+diff --git a/components.manifest.json b/components.manifest.json
+@@ components
++ Add Pagination as a public component with page, pageSize, total, disabled, and onPageChange props.
++ Link Pagination to DataGrid examples and list-page recipes.
+diff --git a/src/components.tsx b/src/components.tsx
+@@ exports
++ export type PaginationProps = BaseProps & { page?: number; pageSize?: number; total?: number; disabled?: boolean; onPageChange?: (page: number) => void; };
++ export function Pagination(...) { render previous/next buttons, current range, and page count. }
+diff --git a/src/index.ts b/src/index.ts
+@@ public API
++ export { Pagination } from "./components";
++ export type { PaginationProps } from "./components";
+diff --git a/src/styles.css b/src/styles.css
+@@ pagination styles
++ Add .rd-pagination, .rd-pagination__summary, and .rd-pagination__actions token-based styles.
+diff --git a/examples/list-page.tsx b/examples/list-page.tsx
+@@ DataGrid usage
++ Import Pagination from @radesign/kit.
++ Pass <Pagination page={1} pageSize={20} total={124} /> to DataGrid pagination.

@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-07-16T11:11:28.046Z",
+  "repository": "https://github.com/nvkelso/natural-earth-vector",
+  "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+  "tag": "v5.1.2",
+  "license": "Public domain",
+  "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "outputs": {
+    "usa-mainland.geojson": {
+      "featureCount": 1,
+      "sha256": "276511531aa94f02fb1a0fde6713e76a02cabae73d73f4672992ea9ea7ab1ef9"
+    },
+    "usa-states.geojson": {
+      "featureCount": 49,
+      "sha256": "0fc4e4220d354b33958e4090dd92bf6064fd492c6f77f49654e77a9de79dd55a"
+    }
+  }
+}

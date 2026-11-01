@@ -1,0 +1,551 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "status": "passed",
+  "foundation": {
+    "outputMode": "library-native",
+    "framework": "react",
+    "packageName": "antd",
+    "packageVersion": "6.5.0",
+    "iconPackage": "@ant-design/icons"
+  },
+  "pages": [
+    {
+      "pageId": "dashboard",
+      "route": "/dashboard",
+      "fullRoute": "/tianshu/dashboard",
+      "title": "工作台 · 个人首页",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Statistic",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-inbound",
+      "route": "/production/inbound",
+      "fullRoute": "/tianshu/production/inbound",
+      "title": "生产 · 收货入库",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-flashing",
+      "route": "/production/flashing",
+      "fullRoute": "/tianshu/production/flashing",
+      "title": "生产 · 烧录发证 · 新建烧录任务",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Input.TextArea",
+        "antd:Select",
+        "antd:Steps",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-firmware",
+      "route": "/production/firmware",
+      "fullRoute": "/tianshu/production/firmware",
+      "title": "生产 · 固件版本",
+      "acceptanceStatus": "passed",
+      "source": "generated/firmware-page.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Drawer",
+        "antd:Input",
+        "antd:Input.TextArea",
+        "antd:Modal",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/firmware-styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-sn-cert",
+      "route": "/production/sn-cert",
+      "fullRoute": "/tianshu/production/sn-cert",
+      "title": "生产 · SN/证书管理",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tabs",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "platform-rbac",
+      "route": "/platform/rbac",
+      "fullRoute": "/tianshu/platform/rbac",
+      "title": "平台 · 账号与权限",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tabs",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "platform-rbac-forbidden",
+      "route": "/platform/rbac/forbidden-preview",
+      "fullRoute": "/tianshu/platform/rbac/forbidden-preview",
+      "title": "平台 · 账号与权限 · 无权限",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button"
+      ],
+      "businessComposites": [
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-testing",
+      "route": "/production/testing",
+      "fullRoute": "/tianshu/production/testing",
+      "title": "生产 · 测试管理",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-qc",
+      "route": "/production/qc",
+      "fullRoute": "/tianshu/production/qc",
+      "title": "生产 · 质检管理",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-inventory",
+      "route": "/production/inventory",
+      "fullRoute": "/tianshu/production/inventory",
+      "title": "生产 · 库存管理",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Modal",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuBulkActionBar",
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-shipping",
+      "route": "/production/shipping",
+      "fullRoute": "/tianshu/production/shipping",
+      "title": "生产 · 出货管理",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "platform-audit",
+      "route": "/platform/audit",
+      "fullRoute": "/tianshu/platform/audit",
+      "title": "平台 · 审计日志",
+      "acceptanceStatus": "passed",
+      "source": "generated/pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Input",
+        "antd:Pagination",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "production-rma",
+      "route": "/production/rma",
+      "fullRoute": "/tianshu/production/rma",
+      "title": "生产 · 退货 RMA",
+      "acceptanceStatus": "passed",
+      "source": "generated/deferred-pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Checkbox.Group",
+        "antd:DatePicker",
+        "antd:DatePicker.RangePicker",
+        "antd:Drawer",
+        "antd:Input",
+        "antd:Modal",
+        "antd:Pagination",
+        "antd:Radio.Group",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag",
+        "antd:Upload"
+      ],
+      "businessComposites": [
+        "TianshuBulkActionBar",
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/deferred-styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "ad-campaigns",
+      "route": "/ad/campaigns",
+      "fullRoute": "/tianshu/ad/campaigns",
+      "title": "广告 · 投放计划",
+      "acceptanceStatus": "passed",
+      "source": "generated/deferred-pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Checkbox.Group",
+        "antd:DatePicker.RangePicker",
+        "antd:Drawer",
+        "antd:Input",
+        "antd:Modal",
+        "antd:Pagination",
+        "antd:Radio.Group",
+        "antd:Select",
+        "antd:Steps",
+        "antd:Switch",
+        "antd:Table",
+        "antd:Tag",
+        "antd:TreeSelect"
+      ],
+      "businessComposites": [
+        "TianshuBulkActionBar",
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/deferred-styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "ad-reconciliation",
+      "route": "/ad/reconciliation",
+      "fullRoute": "/tianshu/ad/reconciliation",
+      "title": "广告 · 对账管理",
+      "acceptanceStatus": "passed",
+      "source": "generated/deferred-pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:DatePicker.RangePicker",
+        "antd:Descriptions",
+        "antd:Drawer",
+        "antd:Input",
+        "antd:Modal",
+        "antd:Pagination",
+        "antd:Radio.Group",
+        "antd:Select",
+        "antd:Table",
+        "antd:Tag",
+        "antd:Upload"
+      ],
+      "businessComposites": [
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/deferred-styles.css"
+        }
+      ]
+    },
+    {
+      "pageId": "content-schedule",
+      "route": "/content/schedule",
+      "fullRoute": "/tianshu/content/schedule",
+      "title": "内容 · 排期与发布",
+      "acceptanceStatus": "passed",
+      "source": "generated/deferred-pages.tsx",
+      "thirdPartyComponents": [
+        "antd:Button",
+        "antd:Card",
+        "antd:Checkbox.Group",
+        "antd:DatePicker",
+        "antd:DatePicker.RangePicker",
+        "antd:Drawer",
+        "antd:Input",
+        "antd:Modal",
+        "antd:Pagination",
+        "antd:Radio.Group",
+        "antd:Select",
+        "antd:Switch",
+        "antd:Table",
+        "antd:Tabs",
+        "antd:Tag",
+        "antd:TreeSelect",
+        "antd:Upload"
+      ],
+      "businessComposites": [
+        "TianshuBulkActionBar",
+        "TianshuPageHeader",
+        "TianshuPageLayout"
+      ],
+      "customOverrides": [
+        {
+          "selector": ".tianshu-ui-*",
+          "source": "native-ui.tsx"
+        },
+        {
+          "selector": ".generated-page",
+          "source": "generated/deferred-styles.css"
+        }
+      ]
+    }
+  ],
+  "evidence": {
+    "technical": "evidence/page-acceptance.technical.json",
+    "visual": "evidence/page-acceptance.visual.json"
+  },
+  "routeBase": "/tianshu",
+  "sourceFiles": {
+    "pages": "generated/pages.tsx",
+    "firmware": "generated/firmware-page.tsx",
+    "deferred": "generated/deferred-pages.tsx",
+    "nativeAdapter": "native-ui.tsx"
+  }
+}

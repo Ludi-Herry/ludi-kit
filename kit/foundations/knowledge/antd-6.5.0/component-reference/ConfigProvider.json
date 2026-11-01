@@ -1,0 +1,220 @@
+{
+  "version": "1.0.0",
+  "component": "ConfigProvider",
+  "queryComponent": "ConfigProvider",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "ConfigProvider",
+        "nameZh": "全局化配置",
+        "description": "为组件提供统一的全局化配置。",
+        "props": [
+          {
+            "name": "componentDisabled",
+            "type": "boolean",
+            "default": "-",
+            "since": "4.21.0"
+          },
+          {
+            "name": "componentSize",
+            "type": "`small` | `medium` | `large`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "csp",
+            "type": "{ nonce: string }",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "direction",
+            "type": "`ltr` | `rtl`",
+            "default": "`ltr`",
+            "since": ""
+          },
+          {
+            "name": "getPopupContainer",
+            "type": "`(trigger?: HTMLElement) => HTMLElement | ShadowRoot`",
+            "default": "() => document.body",
+            "since": ""
+          },
+          {
+            "name": "getTargetContainer",
+            "type": "`() => HTMLElement | Window | ShadowRoot`",
+            "default": "() => window",
+            "since": "4.2.0"
+          },
+          {
+            "name": "iconPrefixCls",
+            "type": "string",
+            "default": "`anticon`",
+            "since": "4.11.0"
+          },
+          {
+            "name": "locale",
+            "type": "object",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "popupMatchSelectWidth",
+            "type": "boolean | number",
+            "default": "-",
+            "since": "5.5.0"
+          },
+          {
+            "name": "popupOverflow",
+            "type": "'viewport' | 'scroll' <InlinePopover previewURL=\"https://user-images.githubusercontent.com/5378891/230344474-5b9f7e09-0a5d-49e8-bae8-7d2abed6c837.png\"></InlinePopover>",
+            "default": "'viewport'",
+            "since": "5.5.0"
+          },
+          {
+            "name": "prefixCls",
+            "type": "string",
+            "default": "`ant`",
+            "since": ""
+          },
+          {
+            "name": "renderEmpty",
+            "type": "function(componentName: string): ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "theme",
+            "type": "[Theme](/docs/react/customize-theme#theme)",
+            "default": "-",
+            "since": "5.0.0"
+          },
+          {
+            "name": "variant",
+            "type": "`outlined` | `filled` | `borderless`",
+            "default": "-",
+            "since": "5.19.0"
+          },
+          {
+            "name": "virtual",
+            "type": "boolean",
+            "default": "-",
+            "since": "4.3.0"
+          },
+          {
+            "name": "warning",
+            "type": "{ strict: boolean }",
+            "default": "-",
+            "since": "5.10.0"
+          },
+          {
+            "name": "autoInsertSpaceInButton",
+            "type": "boolean",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "dropdownMatchSelectWidth",
+            "type": "boolean",
+            "default": "-",
+            "since": "-"
+          }
+        ],
+        "subComponentProps": {
+          "ConfigProvider.useConfig()": [
+            {
+              "name": "componentDisabled",
+              "type": "boolean",
+              "default": "-",
+              "since": "5.3.0"
+            },
+            {
+              "name": "componentSize",
+              "type": "`small` | `medium` | `large`",
+              "default": "-",
+              "since": "5.3.0"
+            }
+          ],
+          "ConfigProvider.WaveConfig": [
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "showEffect",
+              "type": "(node: HTMLElement, info: { className, token, component }) => void",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "triggerType",
+              "type": "`click` | `pointerdown` | `pointerup` | `mousedown` | `mouseup`",
+              "default": "`click`",
+              "since": "6.4.0"
+            }
+          ]
+        }
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "ConfigProvider",
+        "doc": "\n## 使用 {#usage}\n\nConfigProvider 使用 React 的 [context](https://zh-hans.react.dev/learn/passing-data-deeply-with-context) 特性，只需在应用外围包裹一次即可全局生效。\n\n```tsx\nimport React from 'react';\nimport { ConfigProvider } from 'antd';\n\n// ...\nconst Demo: React.FC = () => (\n  <ConfigProvider direction=\"rtl\">\n    <App />\n  </ConfigProvider>\n);\n\nexport default Demo;\n```\n\n### 内容安全策略（CSP）{#csp}\n\n部分组件为了支持波纹效果，使用了动态样式。如果开启了 Content Security Policy (CSP)，你可以通过 `csp` 属性来进行配置：\n\n```tsx\n<ConfigProvider csp={{ nonce: 'YourNonceCode' }}>\n  <Button>My Button</Button>\n</ConfigProvider>\n```\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/locale.tsx\">国际化</code>\n<code src=\"./demo/direction.tsx\">方向</code>\n<code src=\"./demo/size.tsx\">组件尺寸</code>\n<code src=\"./demo/theme.tsx\">主题</code>\n<code src=\"./demo/wave.tsx\">自定义波纹</code>\n<code src=\"./demo/holderRender.tsx\">静态方法</code>\n<code src=\"./demo/prefixCls.tsx\" debug>前缀</code>\n<code src=\"./demo/useConfig.tsx\" debug>获取配置</code>\n<code src=\"./demo/warning.tsx\" debug>警告</code>\n\n## API\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| componentDisabled | 设置 antd 组件禁用状态 | boolean | - | 4.21.0 |\n| componentSize | 设置 antd 组件大小 | `small` \\| `medium` \\| `large` | - |  |\n| csp | 设置 [Content Security Policy](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP) 配置 | { nonce: string } | - |  |\n| direction | 设置文本展示方向。 [示例](#config-provider-demo-direction) | `ltr` \\| `rtl` | `ltr` |  |\n| getPopupContainer | 弹出框（Select, Tooltip, Menu 等等）渲染父节点，默认渲染到 body 上。 | `(trigger?: HTMLElement) => HTMLElement \\| ShadowRoot` | () => document.body |  |\n| getTargetContainer | 配置 Affix、Anchor 滚动监听容器。 | `() => HTMLElement \\| Window \\| ShadowRoot` | () => window | 4.2.0 |\n| iconPrefixCls | 设置图标统一样式前缀 | string | `anticon` | 4.11.0 |\n| locale | 语言包配置，语言包可到 [antd/locale](https://unpkg.com/antd/locale/) 目录下寻找 | object | - |  |\n| popupMatchSelectWidth | 下拉菜单和选择器同宽。默认将设置 `min-width`，当值小于选择框宽度时会被忽略。`false` 时会关闭虚拟滚动 | boolean \\| number | - | 5.5.0 |\n| popupOverflow | Select 类组件弹层展示逻辑，默认为可视区域滚动，可配置成滚动区域滚动 | 'viewport' \\| 'scroll' <InlinePopover previewURL=\"https://user-images.githubusercontent.com/5378891/230344474-5b9f7e09-0a5d-49e8-bae8-7d2abed6c837.png\"></InlinePopover> | 'viewport' | 5.5.0 |\n| prefixCls | 设置统一样式前缀 | string | `ant` |  |\n| renderEmpty | 自定义组件空状态。参考 [空状态](/components/empty-cn) | function(componentName: string): ReactNode | - |  |\n| theme | 设置主题，参考 [定制主题](/docs/react/customize-theme-cn) | [Theme](/docs/react/customize-theme-cn#theme) | - | 5.0.0 |\n| variant | 设置全局输入组件形态变体 | `outlined` \\| `filled` \\| `borderless` | - | 5.19.0 |\n| virtual | 设置 `false` 时关闭虚拟滚动 | boolean | - | 4.3.0 |\n| warning | 设置警告等级，`strict` 为 `false` 时会将废弃相关信息聚合为单条信息 | { strict: boolean } | - | 5.10.0 |\n| ~~autoInsertSpaceInButton~~ | Button 自动空格配置，请使用 `button={{ autoInsertSpace: boolean }}` 替代 | boolean | - | - |\n| ~~dropdownMatchSelectWidth~~ | 下拉菜单和选择器是否同宽，请使用 `popupMatchSelectWidth` 替代 | boolean | - | - |\n\n### ConfigProvider.config() {#config}\n\n设置 `Modal`、`Message`、`Notification` 静态方法配置，只会对非 hooks 的静态方法调用生效。\n\n```tsx\nConfigProvider.config({\n  // 5.13.0+\n  holderRender: (children) => (\n    <ConfigProvider\n      prefixCls=\"ant\"\n      iconPrefixCls=\"anticon\"\n      theme={{ token: { colorPrimary: 'red' } }}\n    >\n      {children}\n    </ConfigProvider>\n  ),\n});\n```\n\n### ConfigProvider.useConfig() <Badge>5.3.0+</Badge> {#useconfig}\n\n获取父级 `Provider` 的值，如 `DisabledContextProvider`、`SizeContextProvider`。\n\n```jsx\nconst {\n  componentDisabled, // 5.3.0+\n  componentSize, // 5.3.0+\n} = ConfigProvider.useConfig();\n```\n\n<!-- prettier-ignore -->\n| 返回值 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| componentDisabled | antd 组件禁用状态 | boolean | - | 5.3.0 |\n| componentSize | antd 组件大小状态 | `small` \\| `medium` \\| `large` | - | 5.3.0 |\n\n### 组件配置 {#component-config}\n\n以下配置项用于设置对应组件的通用属性或全局效果配置，具体 API 见链接：\n\n- `affix`：[Affix](/components/affix-cn#api)（自 6.0.0 起支持）\n- `alert`：[Alert](/components/alert-cn#api)（自 5.7.0 起支持）\n- `anchor`：[Anchor](/components/anchor-cn#api)（自 6.0.0 起支持）\n- `app`：[App](/components/app-cn#api)（自 6.3.0 起支持）\n- `avatar`：[Avatar](/components/avatar-cn#api)（自 5.7.0 起支持）\n- `badge`：[Badge](/components/badge-cn#api)（自 5.7.0 起支持）\n- `borderBeam`：[BorderBeam](/components/border-beam-cn#api)（自 6.4.0 起支持）\n- `breadcrumb`：[Breadcrumb](/components/breadcrumb-cn#api)（自 5.7.0 起支持）\n- `button`：[Button](/components/button-cn#api)（自 5.6.0 起支持）\n- `calendar`：[Calendar](/components/calendar-cn#api)（自 6.0.0 起支持）\n- `card`：[Card](/components/card-cn#api)（自 5.14.0 起支持）\n- `cardMeta`：[Card.Meta](/components/card-cn#cardmeta)（自 6.0.0 起支持）\n- `carousel`：[Carousel](/components/carousel-cn#api)（自 5.7.0 起支持）\n- `cascader`：[Cascader](/components/cascader-cn#api)（自 5.13.0 起支持）\n- `checkbox`：[Checkbox](/components/checkbox-cn#api)（自 6.0.0 起支持）\n- `collapse`：[Collapse](/components/collapse-cn#api)（自 5.15.0 起支持）\n- `colorPicker`：[ColorPicker](/components/color-picker-cn#api)（自 6.3.0 起支持）\n- `datePicker`：[DatePicker](/components/date-picker-cn#api)（自 5.7.0 起支持）\n- `rangePicker`：[RangePicker](/components/date-picker-cn#rangepicker)（自 5.11.0 起支持）\n- `descriptions`：[Descriptions](/components/descriptions-cn#api)（自 5.23.0 起支持）\n- `divider`：[Divider](/components/divider-cn#api)（自 5.10.0 起支持）\n- `drawer`：[Drawer](/components/drawer-cn#api)（自 5.10.0 起支持）\n- `dropdown`：[Dropdown](/components/dropdown-cn#api)（自 5.11.0 起支持）\n- `empty`：[Empty](/components/empty-cn#api)（自 5.23.0 起支持）\n- `flex`：[Flex](/components/flex-cn#api)（自 5.10.0 起支持）\n- `floatButton`：[FloatButton](/components/float-button-cn#api)（自 6.0.0 起支持）\n- `floatButtonGroup`：[FloatButton.Group](/components/float-button-cn#floatbuttongroup)（自 5.16.0 起支持）\n- `form`：[Form](/components/form-cn#api)（自 4.8.0 起支持）\n- `image`：[Image](/components/image-cn#api)（自 5.14.0 起支持）\n- `input`：[Input](/components/input-cn#input)（自 4.2.0 起支持）\n- `inputNumber`：[InputNumber](/components/input-number-cn#api)（自 5.19.0 起支持）\n- `otp`：[Input.OTP](/components/input-cn#inputotp)（自 6.0.0 起支持）\n- `inputPassword`：[Input.Password](/components/input-cn#inputpassword)（自 6.4.0 起支持）\n- `inputSearch`：[Input.Search](/components/input-cn#inputsearch)（自 6.4.0 起支持）\n- `textArea`：[Input.TextArea](/components/input-cn#inputtextarea)（自 5.15.0 起支持）\n- `layout`：[Layout](/components/layout-cn#api)（自 5.7.0 起支持）\n- `list`：[List](/components/list-cn#api)（自 5.7.0 起支持）\n- `masonry`：[Masonry](/components/masonry-cn#api)（自 6.0.0 起支持）\n- `menu`：[Menu](/components/menu-cn#api)（自 5.15.0 起支持）\n- `mentions`：[Mentions](/components/mentions-cn#api)（自 5.13.0 起支持）\n- `message`：[Message](/components/message-cn#api)（自 5.7.0 起支持）\n- `modal`：[Modal](/components/modal-cn#api)（自 5.10.0 起支持）\n- `notification`：[Notification](/components/notification-cn#api)（自 5.14.0 起支持）\n- `pagination`：[Pagination](/components/pagination-cn#api)（自 6.0.0 起支持）\n- `progress`：[Progress](/components/progress-cn#api)（自 5.7.0 起支持）\n- `radio`：[Radio](/components/radio-cn#api)（自 6.0.0 起支持）\n- `rate`：[Rate](/components/rate-cn#api)（自 5.7.0 起支持）\n- `result`：[Result](/components/result-cn#api)（自 6.0.0 起支持）\n- `ribbon`：[Badge.Ribbon](/components/badge-cn#badgeribbon)（自 6.0.0 起支持）\n- `skeleton`：[Skeleton](/components/skeleton-cn#api)（自 6.0.0 起支持）\n- `segmented`：[Segmented](/components/segmented-cn#api)（自 6.0.0 起支持）\n- `select`：[Select](/components/select-cn#api)（自 5.13.0 起支持）\n- `slider`：[Slider](/components/slider-cn#api)（自 5.23.0 起支持）\n- `switch`：[Switch](/components/switch-cn#api)（自 6.0.0 起支持）\n- `space`：[Space](/components/space-cn#api)（自 5.6.0 起支持）\n- `splitter`：[Splitter](/components/splitter-cn#api)（自 5.21.0 起支持）\n- `spin`：[Spin](/components/spin-cn#api)（自 5.20.0 起支持）\n- `statistic`：[Statistic](/components/statistic-cn#api)（自 6.0.0 起支持）\n- `steps`：[Steps](/components/steps-cn#api)（自 5.10.0 起支持）\n- `table`：[Table](/components/table-cn#api)（自 6.2.0 起支持）\n- `tabs`：[Tabs](/components/tabs-cn#api)（自 5.14.0 起支持）\n- `tag`：[Tag](/components/tag-cn#api)（自 5.14.0 起支持）\n- `timeline`：[Timeline](/components/timeline-cn#api)（自 6.0.0 起支持）\n- `timePicker`：[TimePicker](/components/time-picker-cn#api)（自 5.13.0 起支持）\n- `tour`：[Tour](/components/tour-cn#api)（自 5.14.0 起支持）\n- `tooltip`：[Tooltip](/components/tooltip-cn#api)（自 6.1.0 起支持）\n- `popover`：[Popover](/components/popover-cn#api)（自 5.23.0 起支持）\n- `popconfirm`：[Popconfirm](/components/popconfirm-cn#api)（自 5.23.0 起支持）\n- `qrcode`：[QRCode](/components/qr-code-cn#api)（自 6.0.0 起支持）\n- `transfer`：[Transfer](/components/transfer-cn#api)（自 5.7.0 起支持）\n- `tree`：[Tree](/components/tree-cn#api)（自 6.0.0 起支持）\n- `treeSelect`：[TreeSelect](/components/tree-select-cn#api)（自 5.19.0 起支持）\n- `typography`：[Typography](/components/typography-cn#api)（自 6.4.0 起支持）\n- `upload`：[Upload](/components/upload-cn#api)（自 5.27.0 起支持）\n- `watermark`：[Watermark](/components/watermark-cn#api)（自 6.0.0 起支持）\n- `wave`：[WaveConfig](#waveconfig)（自 5.8.0 起支持）\n\n### WaveConfig\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| disabled | 是否禁用水波纹效果 | boolean | false |  |\n| showEffect | 自定义水波纹效果 | (node: HTMLElement, info: { className, token, component }) => void | - |  |\n| triggerType | 触发水波纹效果的事件 | `click` \\| `pointerdown` \\| `pointerup` \\| `mousedown` \\| `mouseup` | `click` | 6.4.0 |\n\n## FAQ\n\n### 如何增加一个新的语言包？ {#faq-add-locale}\n\n参考[《增加语言包》](/docs/react/i18n#%E5%A2%9E%E5%8A%A0%E8%AF%AD%E8%A8%80%E5%8C%85)。\n\n### 为什么时间类组件的国际化 locale 设置不生效？ {#faq-locale-not-work}\n\n参考 FAQ [为什么时间类组件的国际化 locale 设置不生效？](/docs/react/faq#为什么时间类组件的国际化-locale-设置不生效)。\n\n### 配置 `getPopupContainer` 导致 Modal 报错？ {#faq-get-popup-container}\n\n相关 issue：<https://github.com/ant-design/ant-design/issues/19974>\n\n当如下全局设置 `getPopupContainer` 为触发节点的 parentNode 时，由于 Modal 的用法不存在 `triggerNode`，这样会导致 `triggerNode is undefined` 的报错，需要增加一个[判断条件](https://github.com/afc163/feedback-antd/commit/3e4d1ad1bc1a38460dc3bf3c56517f737fe7d44a)。\n\n```diff\n <ConfigProvider\n-  getPopupContainer={triggerNode => triggerNode.parentNode}\n+  getPopupContainer={node => {\n+    if (node) {\n+      return node.parentNode;\n+    }\n+    return document.body;\n+  }}\n >\n   <App />\n </ConfigProvider>\n```\n\n### 为什么 message.info、notification.open 或 Modal.confirm 等方法内的 ReactNode 无法继承 ConfigProvider 的属性？比如 `prefixCls` 和 `theme`。 {#faq-message-inherit}\n\n静态方法是使用 ReactDOM.render 重新渲染一个 React 根节点上，和主应用的 React 节点是脱离的。我们建议使用 useMessage、useNotification 和 useModal 来使用相关方法。原先的静态方法在 5.0 中已被废弃。\n\n### Vite 生产模式打包后国际化 locale 设置不生效？ {#faq-vite-locale-not-work}\n\n相关 issue：[#39045](https://github.com/ant-design/ant-design/issues/39045)\n\n由于 Vite 生产模式下打包与开发模式不同，cjs 格式的文件会多一层，需要 `zhCN.default` 来获取。推荐 Vite 用户直接从 `antd/es/locale` 目录下引入 esm 格式的 locale 文件。\n\n### prefixCls 优先级(前者被后者覆盖) {#faq-prefixcls-priority}\n\n1. `ConfigProvider.config({ prefixCls: 'prefix-1' })`\n2. `ConfigProvider.config({ holderRender: (children) => <ConfigProvider prefixCls=\"prefix-2\">{children}</ConfigProvider> })`\n3. `message.config({ prefixCls: 'prefix-3' })`\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "ConfigProvider",
+        "demos": [
+          {
+            "name": "direction",
+            "title": "Direction",
+            "description": "Components which support rtl direction are listed here, you can toggle the direction in the demo."
+          },
+          {
+            "name": "holderRender",
+            "title": "Static function",
+            "description": "Use `holderRender` to set the `Provider` for the static methods `message`,`modal`,`notification`."
+          },
+          {
+            "name": "locale",
+            "title": "Locale",
+            "description": "Components which need localization support are listed here, you can toggle the language in the demo."
+          },
+          {
+            "name": "size",
+            "title": "Component size",
+            "description": "Config component default size."
+          },
+          {
+            "name": "theme",
+            "title": "Theme",
+            "description": "Modify theme by `theme` prop."
+          },
+          {
+            "name": "wave",
+            "title": "Custom Wave",
+            "description": "Wave effect brings dynamic. Use `component` to determine which component use it. You can also use HappyProvider from [`@ant-design/happy-work-theme`](https://github.com/ant-design/happy-work-theme) to implement dynamic wave effect."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "ConfigProvider",
+        "tokens": []
+      }
+    },
+    "semantic": {
+      "status": "unsupported",
+      "error": "CLI returned no JSON"
+    }
+  }
+}

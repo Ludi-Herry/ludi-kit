@@ -1,0 +1,10 @@
+{
+  "id": "test-const-alias-tdz-dead",
+  "expectedComponents": ["PageLayout"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/const-alias-tdz.bad.tsx",
+    "symbol": "DeadConstAliasTdzPage"
+  },
+  "report": "harness/reports/test-const-alias-tdz-dead.json"
+}

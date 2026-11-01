@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "recordedAt": "2026-07-17T11:50:35.383Z",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "tianshu-firmware-exploratory",
+  "generator": {
+    "mode": "host-native",
+    "tool": "imagegen",
+    "modelIntent": "gpt-image-2",
+    "variants": 1
+  },
+  "prompt": {
+    "path": "generator/fixtures/tianshu-firmware/image2/reference-prompt.proposed.md",
+    "sha256": "5e4aa44f92491dbe6ec3176aabb3952713a1e6adaac3f914ea38157effeff87c",
+    "confirmedPromptScope": "fenced-text-block-under-prompt-heading",
+    "confirmed": true
+  },
+  "frozenContractSha256": "82c4990d66eb7525613e6354213bf64247ab6b29992582e6fe12d19afa19a8bf",
+  "source": {
+    "path": "generator/fixtures/tianshu-firmware/image2/reference-image.original.png",
+    "width": 1435,
+    "height": 1096,
+    "sha256": "282a78b5d639946d031ce83f57050ee1a646850024e33abb54f5e65db01ab623",
+    "bytes": 1114040
+  },
+  "reference": {
+    "path": "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+    "width": 1440,
+    "height": 1100,
+    "sha256": "9b91bc7ae84ee94b370d69b4fa6693f280d82ea67ebd062fee30d24c455e5deb",
+    "bytes": 1296050
+  },
+  "normalization": {
+    "operation": "high-quality-bicubic-resize",
+    "sourceWidth": 1435,
+    "sourceHeight": 1096,
+    "targetWidth": 1440,
+    "targetHeight": 1100,
+    "scaleX": 1.0034843206,
+    "scaleY": 1.003649635
+  }
+}

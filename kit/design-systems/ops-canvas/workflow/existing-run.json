@@ -1,0 +1,139 @@
+{
+  "$schema": "../../../schema/image2-workflow-run.schema.json",
+  "version": "1.0.0",
+  "runId": "ops-canvas-existing-run",
+  "requestId": "ops-canvas-existing",
+  "designContext": "existing",
+  "status": "failed",
+  "recordedAt": "2026-07-17T09:50:35.712Z",
+  "frozenContext": {
+    "kind": "existing-design-system",
+    "contractSha256": "fc6ce9c1c45d4b2c15609a37af29a9679cec4ab8a35cc42598a050d8927895fd",
+    "sources": [
+      {
+        "path": "design-systems/ops-canvas/Design.md",
+        "sha256": "08fedc81f5a44336c473d4ca01a293bfb2603a4d752803b9395323fd19c66a31"
+      },
+      {
+        "path": "design-systems/ops-canvas/tokens.json",
+        "sha256": "d02f5525fd92f2451ff4a485e5291d06479a9e20dd97c85d19ae26ab6df11940"
+      },
+      {
+        "path": "design-systems/ops-canvas/component-index.json",
+        "sha256": "afbdbc3b77c159c4a86116918361d7f7d0760f7a2104affbc07af1f5ee877a39"
+      },
+      {
+        "path": "design-systems/ops-canvas/figma/sync.contract.json",
+        "sha256": "33c3774c0ef6a0321df42abf949794046b1a7ddf79f5cfb24bd01f055962f054"
+      }
+    ],
+    "selectedDirectionId": null
+  },
+  "stages": [
+    {
+      "id": "context-freeze",
+      "status": "passed",
+      "summary": "Frozen the existing design contract before page work.",
+      "evidence": [
+        "design-systems/ops-canvas/Design.md",
+        "design-systems/ops-canvas/tokens.json",
+        "design-systems/ops-canvas/component-index.json",
+        "design-systems/ops-canvas/figma/sync.contract.json"
+      ]
+    },
+    {
+      "id": "gpt-image-2",
+      "status": "passed",
+      "summary": "The confirmed prompt produced a real reference image with matching dimensions and SHA-256 evidence.",
+      "evidence": [
+        "design-systems/ops-canvas/workflow/reference-prompt.md",
+        "design-systems/ops-canvas/workflow/reference-image.png",
+        "design-systems/ops-canvas/workflow/reference-image.metadata.json",
+        "design-systems/ops-canvas/workflow/reference-generation.evidence.json"
+      ]
+    },
+    {
+      "id": "image-to-html",
+      "status": "passed",
+      "summary": "Image-to-html reconstruction evidence matches the generated reference, measured reconstruction details, and implemented page entry.",
+      "evidence": [
+        "design-systems/ops-canvas/workflow/reconstruction.evidence.json",
+        "design-systems/ops-canvas/workflow/reconstruction-details.json"
+      ]
+    },
+    {
+      "id": "page-implementation",
+      "status": "passed",
+      "summary": "The local page entry and complete Ops Canvas specification are present.",
+      "evidence": [
+        "design-systems/ops-canvas/spec/index.html",
+        "design-systems/ops-canvas/spec/styles.css",
+        "design-systems/ops-canvas/spec/app.js",
+        "design-systems/ops-canvas/workflow/delivery-verification.evidence.json"
+      ]
+    },
+    {
+      "id": "browser-playwright",
+      "status": "passed",
+      "summary": "Validated Browser and Playwright evidence for the unique local URL, screenshots, interaction gate, and clean console.",
+      "evidence": [
+        "design-systems/ops-canvas/workflow/browser-evidence.json"
+      ]
+    },
+    {
+      "id": "visual-diff",
+      "status": "failed",
+      "summary": "The real full-image and critical-region comparison failed the immutable thresholds. The semantic exception is approved, while the raw visual verdict remains failed and the calibration study is still incomplete.",
+      "evidence": [
+        "design-systems/ops-canvas/workflow/visual-diff.evidence.json",
+        "design-systems/ops-canvas/workflow/reference-image.png",
+        "design-systems/ops-canvas/workflow/visual-diff.config.json",
+        "design-systems/ops-canvas/workflow/visual-diff-artifacts/metrics.json",
+        "design-systems/ops-canvas/workflow/visual-diff-artifacts/heatmap.png",
+        "design-systems/ops-canvas/workflow/visual-calibration-proposal.md",
+        "design-systems/ops-canvas/workflow/visual-calibration-decision.json"
+      ]
+    },
+    {
+      "id": "figma-generate-design",
+      "status": "external-blocked",
+      "summary": "Figma capture stopped at the authorized-target boundary.",
+      "evidence": [
+        "figma/evidence/ops-canvas.external-blocked.json"
+      ]
+    },
+    {
+      "id": "figma-component-rebuild",
+      "status": "external-blocked",
+      "summary": "Variable binding, Auto Layout, and component reconstruction require the authorized Figma target.",
+      "evidence": [
+        "design-systems/ops-canvas/figma/sync.contract.json",
+        "figma/evidence/ops-canvas.external-blocked.json"
+      ]
+    }
+  ],
+  "artifacts": {
+    "pageEntry": "design-systems/ops-canvas/spec/index.html",
+    "visualMetrics": "design-systems/ops-canvas/workflow/visual-diff-artifacts/metrics.json",
+    "visualHeatmap": "design-systems/ops-canvas/workflow/visual-diff-artifacts/heatmap.png",
+    "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json"
+  },
+  "blockers": [
+    {
+      "dependency": "visual-diff-thresholds",
+      "reason": "The immutable pixel gate rejects the real pair. The approved semantic exception records product acceptance without overriding the raw failed gate.",
+      "resumeRequirements": [
+        "Complete the authorized 24-pair calibration study and obtain a separate gate decision, or iterate pixel fidelity"
+      ]
+    },
+    {
+      "dependency": "figma-authorized-target",
+      "reason": "No real authorized Figma fileKey and target page node were supplied for capture and component reconstruction.",
+      "resumeRequirements": [
+        "Provide a real Figma fileKey",
+        "Grant read and write scope",
+        "Provide or approve the target page node"
+      ]
+    }
+  ]
+}

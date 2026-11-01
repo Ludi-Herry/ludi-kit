@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "targetVersion": "6.5.0",
+  "items": [
+    {
+      "id": "runtime-or-cli-version-change",
+      "sourceArticles": ["historical-debt", "css-tricks"],
+      "trigger": "antd or @ant-design/cli version changes",
+      "action": "Refresh CLI design, docs, demos, tokens, semantics, lint output, Blog applicability, and every affected decision card before generation resumes."
+    },
+    {
+      "id": "official-blog-commit-change",
+      "sourceArticles": [],
+      "trigger": "docs/blog tree commit differs from the frozen commit",
+      "action": "Create a new exact-commit snapshot, review new and changed articles, then rebuild all hashes."
+    },
+    {
+      "id": "semantic-dom-contract-change",
+      "sourceArticles": ["semantic-beauty"],
+      "trigger": "a selected component changes semantic keys or adds CLI semantic support",
+      "action": "Replace structural CSS with semantic classNames, styles, or component tokens and add a visual case."
+    },
+    {
+      "id": "overlay-container-or-context-change",
+      "sourceArticles": ["getContainer", "why-not-static", "modal-hook-order"],
+      "trigger": "React concurrency, App context, portal, Modal, Drawer, Message, or Notification lifecycle changes",
+      "action": "Rerun overlay placement, hook lifecycle, focus, theme, locale, and static-API lint checks."
+    },
+    {
+      "id": "table-scroll-or-virtualization-change",
+      "sourceArticles": ["table-scroll-ghost", "virtual-table"],
+      "trigger": "Table scroll, sticky, fixed, virtual, expand, or span behavior changes",
+      "action": "Rerun scroll-edge and virtual-table cases at all required viewports and tested zoom levels."
+    },
+    {
+      "id": "unsupported-major-version",
+      "sourceArticles": ["v4-ood"],
+      "trigger": "a project contract declares AntD v4 or another unmaintained major",
+      "action": "Block the library-native contract and require a migration plan or an explicitly isolated legacy foundation."
+    },
+    {
+      "id": "new-component-without-curated-evidence",
+      "sourceArticles": [],
+      "trigger": "generation selects an AntD component without a frozen CLI reference or without reviewed Blog links",
+      "action": "Freeze the current component reference, review matching Blog articles, and add a decision card when the component affects page-level judgment."
+    }
+  ]
+}

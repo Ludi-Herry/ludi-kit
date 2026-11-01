@@ -1,0 +1,13 @@
+{
+  "id": "test-static-value-entry",
+  "expectedStaticValues": [
+    { "object": "domainCopy", "path": ["ad", "label"], "value": "广告" },
+    { "object": "domainCopy", "path": ["ad", "variant"], "value": "purple" }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/static-value-entry.bad.tsx",
+    "symbol": "StaticValueEntryPage"
+  },
+  "report": "harness/reports/test-static-value-entry.json"
+}

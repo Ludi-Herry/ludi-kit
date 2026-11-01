@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "recordedAt": "2026-07-17T08:44:02.161Z",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "ops-canvas-existing",
+  "generator": {
+    "mode": "host-native",
+    "tool": "imagegen",
+    "modelIntent": "gpt-image-2",
+    "variants": 1
+  },
+  "prompt": {
+    "path": "design-systems/ops-canvas/workflow/reference-prompt.md",
+    "sha256": "bf307ccc4479089c7b676e81cc09b39b04f2f46c64e155716b300230cb6e1878",
+    "confirmedPromptScope": "fenced-text-block-under-prompt-heading",
+    "confirmed": true
+  },
+  "frozenContractSha256": "fc6ce9c1c45d4b2c15609a37af29a9679cec4ab8a35cc42598a050d8927895fd",
+  "source": {
+    "path": "design-systems/ops-canvas/workflow/reference-image.original.png",
+    "width": 1435,
+    "height": 1096,
+    "sha256": "9f2399076e2313707949a27f2d0a01c938825fa972f2fcf4dbd5104aa03c9c11",
+    "bytes": 1127762
+  },
+  "reference": {
+    "path": "design-systems/ops-canvas/workflow/reference-image.png",
+    "width": 1440,
+    "height": 1100,
+    "sha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d",
+    "bytes": 1324993
+  },
+  "normalization": {
+    "operation": "high-quality-bicubic-resize",
+    "sourceWidth": 1435,
+    "sourceHeight": 1096,
+    "targetWidth": 1440,
+    "targetHeight": 1100,
+    "scaleX": 1.0034843206,
+    "scaleY": 1.003649635
+  }
+}

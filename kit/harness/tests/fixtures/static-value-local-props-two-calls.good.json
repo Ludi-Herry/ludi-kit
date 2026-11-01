@@ -1,0 +1,13 @@
+{
+  "id": "test-static-value-local-props-two-calls",
+  "expectedStaticValues": [
+    { "object": "domainCopy", "path": ["ad", "label"], "value": "广告" },
+    { "object": "domainCopy", "path": ["ad", "variant"], "value": "purple" }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/static-value-local-props.tsx",
+    "symbol": "StaticValueTwoCallsPage"
+  },
+  "report": "harness/reports/test-static-value-local-props-two-calls.json"
+}

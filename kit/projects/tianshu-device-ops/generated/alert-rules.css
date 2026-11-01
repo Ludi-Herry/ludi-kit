@@ -1,0 +1,57 @@
+/* 告警规则页（alert-rules）局部样式。
+   只引用 device-ops 面板变量与 antd 语义 token，不硬编码颜色。 */
+
+.alert-rules-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alert-rules-subtitle {
+  margin: 0;
+}
+
+.alert-rules-type-filter {
+  width: 200px;
+}
+
+.alert-rules-switch {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.alert-rules-trigger {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* 1200px 以下「通知对象」收成「N 人」，其余列保持（页面卡响应式口径）。 */
+.alert-rules-notify__short {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .alert-rules-notify__full {
+    display: none;
+  }
+
+  .alert-rules-notify__short {
+    display: inline;
+  }
+}
+
+/* 从告警处置「触发规则」深链进入时，定位并高亮该规则行。 */
+.alert-rules-row--focus > .ant-table-cell {
+  background: var(--ant-color-primary-bg) !important;
+}
+
+.alert-rules-empty-action {
+  margin-top: var(--do-space-sm);
+}
+
+.alert-rules-save-error {
+  margin-bottom: var(--do-space-md);
+}

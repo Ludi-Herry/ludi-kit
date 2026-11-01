@@ -1,0 +1,131 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "generatedAt": "2026-07-15",
+  "sourceDrafts": "projects/tianshu-ops/feedback/promotions/index.json",
+  "plans": [
+    {
+      "itemId": "fb-20260715-002",
+      "title": "Selected table rows need a reusable batch action bar",
+      "mode": "recorded",
+      "status": "implemented",
+      "action": "update-component",
+      "target": "component",
+      "destination": "components.manifest.json",
+      "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-002.json",
+      "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-002.diff",
+      "willChangeFiles": [
+        "src/components.tsx",
+        "src/index.ts",
+        "src/styles.css",
+        "components.manifest.json",
+        "examples/list-page.tsx",
+        "recipes/list-page.md",
+        "figma/component-map.json",
+        "figma/variants-map.json",
+        "scripts/check-dom-contract.mjs",
+        "harness/scenarios/build-tianshu-production-inventory.json"
+      ],
+      "validationCommands": [
+        "npm run validate:feedback",
+        "npm run validate",
+        "npm run check:dom",
+        "npm run check:harness",
+        "npm run build:preview",
+        "npm run build:starter",
+        "npm run check:package"
+      ],
+      "command": "npm run validate:feedback -- fb-20260715-002 --recorded"
+    },
+    {
+      "itemId": "fb-20260715-004",
+      "title": "Page-level authorization failures need a clear 403 state",
+      "mode": "recorded",
+      "status": "implemented",
+      "action": "update-component",
+      "target": "component",
+      "destination": "components.manifest.json",
+      "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-004.json",
+      "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-004.diff",
+      "willChangeFiles": [
+        "src/components.tsx",
+        "src/index.ts",
+        "src/styles.css",
+        "components.manifest.json",
+        "examples/feedback-states.tsx",
+        "recipes/permission-state.md",
+        "figma/component-map.json",
+        "figma/variants-map.json",
+        "scripts/check-dom-contract.mjs",
+        "harness/scenarios/build-tianshu-platform-rbac-forbidden.json"
+      ],
+      "validationCommands": [
+        "npm run validate:feedback",
+        "npm run validate",
+        "npm run check:dom",
+        "npm run check:harness",
+        "npm run build:preview",
+        "npm run build:starter",
+        "npm run check:package"
+      ],
+      "command": "npm run validate:feedback -- fb-20260715-004 --recorded"
+    },
+    {
+      "itemId": "fb-20260715-006",
+      "title": "Deferred business flows need one public interaction foundation",
+      "mode": "recorded",
+      "status": "implemented",
+      "action": "update-component",
+      "target": "component",
+      "destination": "components.manifest.json",
+      "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-006.json",
+      "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-006.diff",
+      "willChangeFiles": [
+        "src/interaction.tsx",
+        "src/interaction.css",
+        "src/index.ts",
+        "components.manifest.json",
+        "examples/interaction-foundation.tsx",
+        "recipes/interaction-controls.md",
+        "figma/component-map.json",
+        "figma/variants-map.json",
+        "harness/tests/interaction-components.test.mjs",
+        "projects/tianshu-ops/generated/deferred-pages.tsx"
+      ],
+      "validationCommands": [
+        "npm run validate:feedback",
+        "npm run validate",
+        "npm run check:dom",
+        "npm run check:harness",
+        "npm run build:preview",
+        "npm run build:starter",
+        "npm run check:package"
+      ],
+      "command": "npm run validate:feedback -- fb-20260715-006 --recorded"
+    },
+    {
+      "itemId": "fb-20260717-001",
+      "title": "Firmware danger confirmation must restore the exact row trigger",
+      "mode": "recorded",
+      "status": "implemented",
+      "action": "update-page-plan",
+      "target": "page",
+      "destination": "projects/tianshu-ops/pages.json",
+      "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260717-001.json",
+      "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260717-001.diff",
+      "willChangeFiles": [
+        "projects/tianshu-ops/pages.json"
+      ],
+      "validationCommands": [
+        "npm run validate:feedback",
+        "npm run validate",
+        "npm run check:dom",
+        "npm run check:harness",
+        "npm run build:preview",
+        "npm run build:starter",
+        "npm run check:package"
+      ],
+      "command": "npm run validate:feedback -- fb-20260717-001 --recorded"
+    }
+  ]
+}

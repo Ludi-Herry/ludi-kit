@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/image2-workflow-request.schema.json",
+  "version": "1.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "ops-canvas-existing",
+  "designContext": "existing",
+  "project": {
+    "name": "Ops Canvas",
+    "page": "Design system specification",
+    "objective": "Prove the existing-context route with a complete local design system and fail-closed Figma boundary.",
+    "audience": "Operations product designers and frontend engineers"
+  },
+  "viewport": { "width": 1440, "height": 1100, "deviceScaleFactor": 1 },
+  "pageEntry": "design-systems/ops-canvas/spec/index.html",
+  "referencePrompt": "design-systems/ops-canvas/workflow/reference-prompt.md",
+  "referenceImage": "design-systems/ops-canvas/workflow/reference-image.png",
+  "visualDiffConfig": "design-systems/ops-canvas/workflow/visual-diff.config.json",
+  "browserEvidence": "design-systems/ops-canvas/workflow/browser-evidence.json",
+  "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json",
+  "figmaTarget": { "fileKey": null, "pageNodeId": null },
+  "existingContext": {
+    "designDoc": "design-systems/ops-canvas/Design.md",
+    "tokens": "design-systems/ops-canvas/tokens.json",
+    "componentIndex": "design-systems/ops-canvas/component-index.json",
+    "figmaSyncContract": "design-systems/ops-canvas/figma/sync.contract.json"
+  }
+}

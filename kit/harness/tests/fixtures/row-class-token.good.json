@@ -1,0 +1,10 @@
+{
+  "id": "test-row-class-token-good",
+  "expectedClassTokens": ["generated-row--high", "generated-row--normal", "generated-table-row"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/row-class-token.tsx",
+    "symbol": "RowClassTokenPage"
+  },
+  "report": "harness/reports/test-row-class-token-good.json"
+}

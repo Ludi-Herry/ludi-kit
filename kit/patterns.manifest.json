@@ -1,0 +1,277 @@
+{
+  "version": "0.1.0",
+  "note": "页面模式：先按 archetype 选模式，再按 Layout→Module→Details 生成。regions 声明区域归属：owner 为 pattern 且 locked 的区域结构按合同锁定，owner 为 page 的槽位承载业务内容。regions 在 id/owner/locked 基础上支持可选声明字段：name（中文名）、purpose、layoutTreeItem、requiredComponent（仅可引用本 pattern 的 requiredComponents）、successCriteria、doNotOnDelete、source（合同出处）；未知字段一律按 schema fail-closed 拒绝。老条目（仅 id/owner/locked）保持向后兼容，现有读取方照常工作。",
+  "patterns": {
+    "list-page": {
+      "useWhen": ["后台列表页", "需要筛选", "需要表格", "需要分页"],
+      "layout": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"],
+      "regions": [
+        {
+          "id": "shell",
+          "owner": "pattern",
+          "locked": true,
+          "name": "页头与壳层",
+          "purpose": "页面标题与全局操作的壳层结构",
+          "layoutTreeItem": "PageHeader",
+          "requiredComponent": "PageHeader",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "list-page.layout[1] PageHeader；page-blocks.ts 各列表页 header 区块 region=shell（locked，页头归入壳层）"
+        },
+        {
+          "id": "filter",
+          "owner": "pattern",
+          "locked": true,
+          "name": "筛选区",
+          "purpose": "按状态与条件收窄记录集合",
+          "layoutTreeItem": "筛选区",
+          "requiredComponent": "FilterPanel",
+          "successCriteria": [],
+          "doNotOnDelete": ["表格页没有筛选区"],
+          "source": "list-page.layout[2] FilterPanel；doNotOnDelete 照抄 page-blocks.ts 各列表页 filter 区块共有项（list-page.doNot[0] 原文；alerts、binding 页按页级登记为空）"
+        },
+        {
+          "id": "data",
+          "owner": "page",
+          "locked": false,
+          "name": "数据区",
+          "purpose": "工具栏与表格等承载业务内容的槽位",
+          "layoutTreeItem": "DataSection > DataGrid + Pagination",
+          "requiredComponent": "DataGrid",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "list-page.layout[3] 'DataSection > DataGrid + Pagination'；page-blocks.ts 各列表页 table/result 区块 region=data（page 槽位）"
+        }
+      ],
+      "requiredComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+      "optionalComponents": ["Badge", "Button", "Select", "Pagination"],
+      "relatedRecipe": "recipes/list-page.md",
+      "example": "examples/list-page.tsx",
+      "doNot": ["表格页没有筛选区", "DataGrid 直接挂页面根容器"]
+    },
+    "dashboard-page": {
+      "useWhen": ["工作台", "数据看板", "运营驾驶舱", "KPI 概览"],
+      "layout": ["PageLayout", "PageHeader", "MetricCard 行", "ChartFrame / 内容网格"],
+      "regions": [
+        {
+          "id": "shell",
+          "owner": "pattern",
+          "locked": true,
+          "name": "页头与全局操作",
+          "purpose": "页面标题与全局操作行（时间范围 / 刷新 / 编辑布局）",
+          "layoutTreeItem": "页面标题",
+          "requiredComponent": "PageHeader",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "dashboard-page.layout[1] PageHeader；page-blocks.ts dashboard header 区块 region=shell（locked；全局操作行源码嵌在页头内部）"
+        },
+        {
+          "id": "metrics",
+          "owner": "pattern",
+          "locked": true,
+          "name": "指标行",
+          "purpose": "KPI 指标行，对齐显示",
+          "layoutTreeItem": "MetricCard 行",
+          "requiredComponent": "MetricCard",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "dashboard-page.layout[2] 'MetricCard 行'；page-blocks.ts 当前 14 页尚无区块映射到本区域，按布局条目声明"
+        },
+        {
+          "id": "content",
+          "owner": "page",
+          "locked": false,
+          "name": "内容区",
+          "purpose": "图表与卡片等承载业务内容的网格槽位",
+          "layoutTreeItem": "ChartFrame / 内容网格",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "dashboard-page.layout[3] 'ChartFrame / 内容网格'；page-blocks.ts dashboard grid 区块 region=content（page 槽位）"
+        }
+      ],
+      "requiredComponents": ["PageLayout", "PageHeader", "MetricCard"],
+      "optionalComponents": ["ChartFrame", "TrendChart", "BarChart", "DonutChart", "GaugeChart", "Card", "DataSection", "Badge", "ThemeToggle"],
+      "relatedRecipe": "recipes/dashboard-page.md",
+      "example": "examples/dashboard-page.tsx",
+      "doNot": ["KPI 行不对齐", "图表未支持业务数据传入"]
+    },
+    "detail-page": {
+      "useWhen": ["实体详情页", "设备/客户/单据详情", "Hero + 属性 + 分区"],
+      "layout": ["PageLayout", "DetailHeader", "DescriptionGrid", "Tabs > 分区内容"],
+      "regions": [
+        {
+          "id": "shell",
+          "owner": "pattern",
+          "locked": true,
+          "name": "页头",
+          "purpose": "实体标题与状态区",
+          "layoutTreeItem": "DetailHeader",
+          "requiredComponent": "DetailHeader",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "detail-page.layout[1] DetailHeader；page-blocks.ts 各详情页 header 区块 region=shell（locked）"
+        },
+        {
+          "id": "hero",
+          "owner": "pattern",
+          "locked": true,
+          "name": "核心字段区",
+          "purpose": "首屏核心字段，支撑日常判断",
+          "layoutTreeItem": "DescriptionGrid",
+          "requiredComponent": "DescriptionGrid",
+          "successCriteria": [],
+          "doNotOnDelete": ["键值信息用 DataGrid 硬凑"],
+          "source": "detail-page.layout[2] DescriptionGrid；doNotOnDelete 照抄 page-blocks.ts 各详情页 hero 区块（detail-page.doNot[1] 原文）"
+        },
+        {
+          "id": "sections",
+          "owner": "page",
+          "locked": false,
+          "name": "分区内容",
+          "purpose": "折叠区 / Tabs 等承载分区业务内容的槽位",
+          "layoutTreeItem": "Tabs > 分区内容",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "detail-page.layout[3] 'Tabs > 分区内容'；page-blocks.ts 各详情页 more/timeline/public 区块 region=sections（page 槽位）"
+        }
+      ],
+      "requiredComponents": ["PageLayout", "DetailHeader", "DescriptionGrid"],
+      "optionalComponents": ["Tabs", "Table", "DataSection", "Badge"],
+      "relatedRecipe": "recipes/detail-page.md",
+      "example": "examples/detail-page.tsx",
+      "doNot": ["详情页套用列表页结构", "键值信息用 DataGrid 硬凑"]
+    },
+    "form-page": {
+      "useWhen": ["新建/编辑表单", "配置页", "分组字段录入"],
+      "layout": ["PageLayout", "PageHeader", "FormSection 分组", "底部操作区"],
+      "regions": [
+        {
+          "id": "shell",
+          "owner": "pattern",
+          "locked": true,
+          "name": "页面标题",
+          "purpose": "表单页标题与说明",
+          "layoutTreeItem": "PageHeader",
+          "requiredComponent": "PageHeader",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "form-page.layout[1] PageHeader；page-blocks.ts 各表单页 header 区块 region=shell（locked）"
+        },
+        {
+          "id": "sections",
+          "owner": "pattern",
+          "locked": true,
+          "name": "表单分区",
+          "purpose": "分组字段录入区（FormSection 分组）",
+          "layoutTreeItem": "FormSection 分组",
+          "requiredComponent": "FormSection",
+          "successCriteria": [],
+          "doNotOnDelete": ["字段无分组一长条"],
+          "source": "form-page.layout[2] 'FormSection 分组'；doNotOnDelete 照抄 page-blocks.ts 各表单页 form 区块（form-page.doNot[0] 原文）"
+        },
+        {
+          "id": "actions",
+          "owner": "page",
+          "locked": false,
+          "name": "底部操作区",
+          "purpose": "提交 / 取消等主辅操作",
+          "layoutTreeItem": "底部操作区",
+          "requiredComponent": "Button",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "form-page.layout[3] 底部操作区；page-blocks.ts 各表单页 actions 区块 region=actions（page 槽位）"
+        }
+      ],
+      "requiredComponents": ["PageLayout", "PageHeader", "FormSection", "Input", "Button"],
+      "optionalComponents": ["Select", "Textarea", "Stepper", "Tabs"],
+      "relatedRecipe": "recipes/form-page.md",
+      "example": "examples/form-page.tsx",
+      "doNot": ["字段无分组一长条", "主/取消操作层级不清"]
+    },
+    "analytics-dashboard": {
+      "useWhen": ["两张以上图表共享时间口径", "报表或趋势分析", "需要指标、趋势、分类与组成联合解读"],
+      "layout": ["PageLayout", "PageHeader", "MetricCard 行", "ChartFrame 网格", "可选 DataSection"],
+      "regions": [
+        { "id": "shell", "owner": "pattern", "locked": true },
+        { "id": "charts", "owner": "pattern", "locked": true },
+        { "id": "extras", "owner": "page", "locked": false }
+      ],
+      "requiredComponents": ["PageLayout", "PageHeader", "ChartFrame"],
+      "optionalComponents": ["MetricCard", "TrendChart", "BarChart", "DonutChart", "GaugeChart", "DataSection"],
+      "relatedRecipe": "recipes/analytics-dashboard.md",
+      "example": "examples/analytics-dashboard.tsx",
+      "doNot": ["只有一张趋势图时重复创建分析看板", "图表缺少 summary、口径或更新时间"]
+    },
+    "situation-screen": {
+      "useWhen": ["全屏值守", "实时态势", "深色高密度汇报屏", "固定大屏或会议墙"],
+      "layout": ["screen theme", "全局指标与时间", "12 列动态面板", "实时行动列表"],
+      "regions": [
+        {
+          "id": "theme",
+          "owner": "pattern",
+          "locked": true,
+          "name": "大屏主题壳层",
+          "purpose": "screen 主题与整屏壳层结构（hdr/面板网格/页脚指标条的骨架），不得套用后台壳层",
+          "layoutTreeItem": "screen theme",
+          "successCriteria": ["文字对比度至少 4.5:1，图形和控件至少 3:1", "支持 1920×1080、1366×768、1024×768 摘要模式", "prefers-reduced-motion 下关闭持续动画"],
+          "doNotOnDelete": ["套用后台 AppShell 或 PageLayout", "整体 transform scale", "缺少目标屏分辨率时宣称像素级对齐"],
+          "source": "situation-screen.layout[0] 'screen theme'；recipes/situation-screen.md 结构行、:12-14（对比度/摘要模式/reduced-motion）与 :22-24（doNot 原文，即 situation-screen.doNot[0-2]）；示例壳层槽位 kit/examples/figma-3d-situation-screen/src/App.tsx:194-216（.situation-screen + .screen-header）与 styles.css:46-58"
+        },
+        {
+          "id": "metrics",
+          "owner": "pattern",
+          "locked": true,
+          "name": "全局指标与时间",
+          "purpose": "屏级标题、全局时钟/数据时点与全局指标条，承载整屏口径",
+          "layoutTreeItem": "全局指标与时间",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "situation-screen.layout[1] '全局指标与时间'；recipes/situation-screen.md 结构行；examples/situation-screen.tsx:7（header h1 + time）；示例壳层槽位 kit/examples/figma-3d-situation-screen/src/App.tsx:212-215（时钟与在线状态）与 :321-327（.screen-footer 全局指标条）"
+        },
+        {
+          "id": "panels",
+          "owner": "page",
+          "locked": false,
+          "name": "动态面板区",
+          "purpose": "12 列栅格槽位，承载指标/图表/地图面板与中央主视觉舞台的业务内容",
+          "layoutTreeItem": "12 列动态面板",
+          "successCriteria": ["Geo/3D、攻击飞线和拓扑必须有授权素材、坐标、时间、级别及聚合规则；缺少输入时保留明确占位说明"],
+          "doNotOnDelete": [],
+          "source": "situation-screen.layout[2] '12 列动态面板'；recipes/situation-screen.md 结构行与 :17-18（外部数据合同）；examples/situation-screen.tsx:8-13（ChartFrame 槽位实例）；示例壳层槽位 kit/examples/figma-3d-situation-screen/src/App.tsx:218-244、246-289、291-318（.side-column 面板与 .center-stage 中央舞台）",
+          "requiredComponent": "ChartFrame"
+        },
+        {
+          "id": "live",
+          "owner": "page",
+          "locked": false,
+          "name": "实时行动列表",
+          "purpose": "实时事件/行动流的滚动列表槽位",
+          "layoutTreeItem": "实时行动列表",
+          "successCriteria": [],
+          "doNotOnDelete": [],
+          "source": "situation-screen.layout[3] '实时行动列表'；recipes/situation-screen.md 结构行；示例壳层槽位 kit/examples/figma-3d-situation-screen/src/App.tsx:292-302（.event-list 实时安全事件面板）"
+        }
+      ],
+      "requiredComponents": ["ChartFrame"],
+      "optionalComponents": ["TrendChart", "BarChart", "DonutChart", "GaugeChart", "Badge"],
+      "relatedRecipe": "recipes/situation-screen.md",
+      "example": "examples/situation-screen.tsx",
+      "doNot": ["套用后台 AppShell 或 PageLayout", "整体 transform scale", "缺少目标屏分辨率时宣称像素级对齐"]
+    },
+    "screen-publish-flow": {
+      "useWhen": ["大屏模板选择与配置", "投放前检查", "三步以内的发布流程"],
+      "layout": ["PageLayout", "PageHeader", "Stepper", "模板 Card 网格或 FormSection", "检查与投放结果"],
+      "regions": [
+        { "id": "shell", "owner": "pattern", "locked": true },
+        { "id": "steps", "owner": "pattern", "locked": true },
+        { "id": "content", "owner": "page", "locked": false },
+        { "id": "result", "owner": "page", "locked": false }
+      ],
+      "requiredComponents": ["PageLayout", "PageHeader", "Stepper"],
+      "optionalComponents": ["Card", "FormSection", "Input", "Select", "Button", "Badge"],
+      "relatedRecipe": "recipes/screen-publish-flow.md",
+      "example": "examples/screen-publish-flow.tsx",
+      "doNot": ["步骤超过三步仍塞在单页", "远端设备与投放 API 未接时展示虚假成功"]
+    }
+  }
+}

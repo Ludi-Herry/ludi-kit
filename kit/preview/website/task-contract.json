@@ -1,0 +1,12 @@
+{
+  "id": "ludi-website-directions-2026-10-10",
+  "authority": "Owner selected product-stage, corrected the focus to AI interface quality and design consistency, and approved the reference combination and implementation on 2026-10-11",
+  "phase": "formal-product-stage",
+  "allowedWrites": ["kit/preview/website/**", "kit/foundations/design-packs/ludi-website-0.1.0.json", "docs/PLAN-产品宣传官网-2026-10-10.md", "docs/ANALYSIS-产品宣传官网研究-2026-10-10.md"],
+  "sourceOwnership": "human-maintained-by-current-task",
+  "deliverable": { "kind": "browser-page", "route": "/", "presentationRequired": true },
+  "recording": { "source": "http://127.0.0.1:5393/editor", "context": "fresh-isolated", "allowed": ["navigation", "in-memory-preview", "undo-preview"], "forbidden": ["write-project", "revert-project-patch", "network-identity-inspection"] },
+  "adapters": { "lint": "lint.react-import-boundary", "build": "build.vite-react", "browser": "browser.playwright-react", "visual": "visual.playwright-screenshot" },
+  "visualAcceptance": "pending-owner-review",
+  "publicDeployment": "not-authorized"
+}

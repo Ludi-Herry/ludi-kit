@@ -1,0 +1,15 @@
+{
+  "id": "import-profile-custom-native-bad",
+  "prompt": "Import profile fixture: custom native output rejects package imports outside the contract entry list.",
+  "foundationContract": {
+    "businessContext": "quality/frontend-foundation.custom-native.context.json",
+    "projectId": "fixture-custom-native",
+    "outputMode": "custom-native",
+    "framework": "react"
+  },
+  "forbiddenPatterns": ["direct-third-party-import"],
+  "output": {
+    "file": "src/foundation/antd-theme.ts"
+  },
+  "report": "harness/reports/import-profile-custom-native-bad.json"
+}

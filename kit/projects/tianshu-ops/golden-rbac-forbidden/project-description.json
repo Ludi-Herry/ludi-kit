@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "tianshu-ops",
+  "contextType": "real-product",
+  "product": {
+    "name": "天枢运营管理平台 · 账号与权限",
+    "description": "供无访问权限的运营人员理解拦截原因，并安全返回工作台或联系管理员申请权限。"
+  },
+  "pages": [
+    {
+      "id": "platform-rbac-forbidden",
+      "route": "/platform/rbac/forbidden-preview",
+      "title": "平台 · 账号与权限 · 无权限",
+      "pattern": "detail-page",
+      "intent": {
+        "goal": "展示可访问、可理解、可恢复的整页无权限状态。",
+        "primaryAction": "返回工作台",
+        "secondaryActions": ["联系管理员申请权限"],
+        "successCriteria": [
+          "403 数字只做视觉辅助，标题与描述提供完整语义",
+          "描述明确缺失 platform:rbac:read 权限点",
+          "页面不渲染任何角色、用户或权限点数据",
+          "联系管理员操作只打开包含安全申请说明的小型面板",
+          "390px 页面无横向溢出，操作按钮保持清晰可用"
+        ],
+        "prdAnchor": "账号与权限无访问权限时使用 403 整页占位，并提供恢复路径",
+        "referenceImplementations": [
+          "quality/image2-calibration/batch-01/rbac-forbidden/reference-image.png",
+          "projects/tianshu-ops/pages.json#platform-rbac-forbidden"
+        ],
+        "antiPatterns": [
+          "在 403 状态背后加载或模糊展示受保护数据",
+          "用纯装饰数字替代可读标题与原因说明",
+          "把权限申请扩展成长表单或多步骤流程"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "DetailHeader",
+        "DescriptionGrid",
+        "ForbiddenState",
+        "Drawer",
+        "Card",
+        "Button"
+      ],
+      "content": {
+        "permissionState": {
+          "statusCode": 403,
+          "title": "无权访问账号与权限",
+          "description": "当前账号缺少 platform:rbac:read 权限，角色、用户与权限点数据未加载。请联系平台管理员申请权限，或返回工作台。",
+          "permissionLabel": "所需权限",
+          "permissionIdentifier": "platform:rbac:read",
+          "primaryAction": {
+            "label": "返回工作台",
+            "targetRoute": "/dashboard"
+          },
+          "secondaryAction": {
+            "label": "联系管理员申请权限"
+          },
+          "requestPanel": {
+            "title": "申请账号与权限访问",
+            "description": "请将所需权限标识发送给平台管理员，并说明访问账号与权限模块的业务需要。",
+            "safetyNote": "此面板仅显示缺失权限标识和申请说明，不加载角色、用户或权限点数据。",
+            "closeLabel": "我知道了"
+          },
+          "privacyMode": "no-protected-data"
+        }
+      }
+    }
+  ]
+}

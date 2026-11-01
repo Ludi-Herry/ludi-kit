@@ -1,0 +1,55 @@
+{
+  "id": "build-tianshu-production-qc",
+  "prompt": "天枢 · 质检管理：按批次/检验方式/判定结论筛选质检任务，不良率超 AQL 红色示警。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["质检批次", "不良率", "判定结论", "查看详情", "开始质检", "撤销判定"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "qcConclusion": { "sourceGroup": "质检结论", "statuses": ["qc_pending", "qc_inspecting", "qc_qualified", "qc_concession", "qc_rejected"] },
+      "inspectionMethod": { "sourceGroup": "检验方式", "statuses": ["sampling", "full_inspection"] }
+    }
+  },
+  "expectedActions": {
+    "required": ["新建质检任务", "导出", "查看详情", "开始质检", "录入不良", "判定结论", "撤销判定"],
+    "danger": ["撤销判定"],
+    "conditions": [
+      {
+        "when": "record.conclusion === \"qc_pending\"",
+        "branch": "then",
+        "required": ["开始质检"],
+        "forbidden": ["录入不良", "判定结论", "撤销判定"]
+      },
+      {
+        "when": "record.conclusion === \"qc_inspecting\"",
+        "branch": "then",
+        "required": ["录入不良", "判定结论"],
+        "forbidden": ["开始质检", "撤销判定"]
+      },
+      {
+        "when": "record.conclusion === \"qc_qualified\" ||\n                    record.conclusion === \"qc_concession\" ||\n                    record.conclusion === \"qc_rejected\"",
+        "branch": "then",
+        "required": ["撤销判定"],
+        "danger": ["撤销判定"],
+        "forbidden": ["开始质检", "录入不良", "判定结论"]
+      }
+    ]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "QcListPage",
+    "pageId": "production-qc"
+  },
+  "report": "harness/reports/build-tianshu-production-qc.json"
+}

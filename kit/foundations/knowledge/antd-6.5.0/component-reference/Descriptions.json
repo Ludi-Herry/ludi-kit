@@ -1,0 +1,315 @@
+{
+  "version": "1.0.0",
+  "component": "Descriptions",
+  "queryComponent": "Descriptions",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Descriptions",
+        "nameZh": "描述列表",
+        "description": "展示多个只读字段的组合。",
+        "props": [
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "colon",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "column",
+            "type": "number | [Record<Breakpoint, number>](https://github.com/ant-design/ant-design/blob/84ca0d23ae52e4f0940f20b0e22eabe743f90dca/components/descriptions/index.tsx#L111C21-L111C56)",
+            "default": "3",
+            "since": ""
+          },
+          {
+            "name": "contentStyle",
+            "type": "CSSProperties",
+            "default": "-",
+            "since": "4.10.0"
+          },
+          {
+            "name": "extra",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "4.5.0"
+          },
+          {
+            "name": "items",
+            "type": "[DescriptionsItem](#descriptionitem)[]",
+            "default": "-",
+            "since": "5.8.0"
+          },
+          {
+            "name": "labelStyle",
+            "type": "CSSProperties",
+            "default": "-",
+            "since": "4.10.0"
+          },
+          {
+            "name": "layout",
+            "type": "`horizontal` | `vertical`",
+            "default": "`horizontal`",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`large` | `medium` | `small`",
+            "default": "`large`",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Descriptions.DescriptionItem": [
+            {
+              "name": "contentStyle",
+              "type": "CSSProperties",
+              "default": "-",
+              "since": "4.9.0"
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "labelStyle",
+              "type": "CSSProperties",
+              "default": "-",
+              "since": "4.9.0"
+            },
+            {
+              "name": "span",
+              "type": "number | `filled` | [Screens](/components/grid#col)",
+              "default": "1",
+              "since": "`screens: 5.9.0`, `filled: 5.22.0`"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Descriptions",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n常见于详情页的信息展示。\n\n```tsx | pure\n// >= 5.8.0 可用，推荐的写法 ✅\n\nconst items: DescriptionsProps['items'] = [\n  {\n    key: '1',\n    label: 'UserName',\n    children: <p>Zhou Maomao</p>,\n  },\n  {\n    key: '2',\n    label: 'Telephone',\n    children: <p>1810000000</p>,\n  },\n  {\n    key: '3',\n    label: 'Live',\n    children: <p>Hangzhou, Zhejiang</p>,\n  },\n  {\n    key: '4',\n    label: 'Remark',\n    children: <p>empty</p>,\n  },\n  {\n    key: '5',\n    label: 'Address',\n    children: <p>No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China</p>,\n  },\n];\n\n<Descriptions title=\"User Info\" items={items} />;\n\n// <5.8.0 可用，>=5.8.0 时不推荐 🙅🏻‍♀️\n\n<Descriptions title=\"User Info\">\n  <Descriptions.Item label=\"UserName\">Zhou Maomao</Descriptions.Item>\n  <Descriptions.Item label=\"Telephone\">1810000000</Descriptions.Item>\n  <Descriptions.Item label=\"Live\">Hangzhou, Zhejiang</Descriptions.Item>\n  <Descriptions.Item label=\"Remark\">empty</Descriptions.Item>\n  <Descriptions.Item label=\"Address\">\n    No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China\n  </Descriptions.Item>\n</Descriptions>;\n```\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/border.tsx\">带边框的</code>\n<code src=\"./demo/text.tsx\" debug>复杂文本的情况</code>\n<code src=\"./demo/padding.tsx\" debug>间距</code>\n<code src=\"./demo/size.tsx\">自定义尺寸</code>\n<code src=\"./demo/responsive.tsx\">响应式</code>\n<code src=\"./demo/vertical.tsx\">垂直</code>\n<code src=\"./demo/vertical-border.tsx\">垂直带边框的</code>\n<code src=\"./demo/style.tsx\" debug>自定义 label & wrapper 样式</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/jsx.tsx\" debug>JSX demo</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/block.tsx\">整行</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Descriptions\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| bordered | 是否展示边框 | boolean | false |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 5.23.0 |\n| colon | 配置 `Descriptions.Item` 的 `colon` 的默认值。表示是否显示 label 后面的冒号 | boolean | true |  | × |\n| column | 一行的 `DescriptionItems` 数量，可以写成像素值或支持响应式的对象写法 `{ xs: 8, sm: 16, md: 24}` | number \\| [Record<Breakpoint, number>](https://github.com/ant-design/ant-design/blob/84ca0d23ae52e4f0940f20b0e22eabe743f90dca/components/descriptions/index.tsx#L111C21-L111C56) | 3 |  | × |\n| ~~contentStyle~~ | 自定义内容样式，请使用 `styles.content` 替换 | CSSProperties | - | 4.10.0 | × |\n| extra | 描述列表的操作区域，显示在右上方 | ReactNode | - | 4.5.0 | × |\n| items | 描述列表项内容 | [DescriptionsItem](#descriptionitem)[] | - | 5.8.0 | × |\n| ~~labelStyle~~ | 自定义标签样式，请使用 `styles.label` 替换 | CSSProperties | - | 4.10.0 | × |\n| layout | 描述布局 | `horizontal` \\| `vertical` | `horizontal` |  | × |\n| size | 设置列表的大小。可以设置为 `medium` 、`small`, 或不填 | `large` \\| `medium` \\| `small` | `large` |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.23.0 |\n| title | 描述列表的标题，显示在最顶部 | ReactNode | - |  | × |\n\n### DescriptionItem\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| ~~contentStyle~~ | 自定义内容样式，请使用 `styles.content` 替换 | CSSProperties | - | 4.9.0 |\n| label | 内容的描述 | ReactNode | - |  |\n| ~~labelStyle~~ | 自定义标签样式，请使用 `styles.label` 替换 | CSSProperties | - | 4.9.0 |\n| span | 包含列的数量（`filled` 铺满当前行剩余部分） | number\\| `filled` \\| [Screens](/components/grid-cn#col) | 1 | `screens: 5.9.0`，`filled: 5.22.0` |\n\n> span 是 Description.Item 的数量。 span={2} 会占用两个 DescriptionItem 的宽度。当同时配置 `style` 和 `labelStyle`（或 `contentStyle`）时，两者会同时作用。样式冲突时，后者会覆盖前者。\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Descriptions\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Descriptions",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Simplest Usage."
+          },
+          {
+            "name": "block",
+            "title": "row",
+            "description": "Display of the entire line."
+          },
+          {
+            "name": "border",
+            "title": "border",
+            "description": "Descriptions with border and background color."
+          },
+          {
+            "name": "responsive",
+            "title": "responsive",
+            "description": "Responsive configuration enables perfect presentation on small screen devices."
+          },
+          {
+            "name": "size",
+            "title": "Custom size",
+            "description": "Custom sizes to fit in a variety of containers."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Descriptions by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "vertical-border",
+            "title": "Vertical border",
+            "description": "Descriptions with border and background color."
+          },
+          {
+            "name": "vertical",
+            "title": "Vertical",
+            "description": "Simplest Usage."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Descriptions",
+        "tokens": [
+          {
+            "name": "colonMarginLeft",
+            "type": "number",
+            "default": "",
+            "description": "Left margin of colon",
+            "descriptionZh": "冒号左间距"
+          },
+          {
+            "name": "colonMarginRight",
+            "type": "number",
+            "default": "",
+            "description": "Right margin of colon",
+            "descriptionZh": "冒号右间距"
+          },
+          {
+            "name": "contentColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of content",
+            "descriptionZh": "内容区域文字颜色"
+          },
+          {
+            "name": "extraColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of extra area",
+            "descriptionZh": "额外区域文字颜色"
+          },
+          {
+            "name": "itemPaddingBottom",
+            "type": "number",
+            "default": "",
+            "description": "Bottom padding of item",
+            "descriptionZh": "子项下间距"
+          },
+          {
+            "name": "itemPaddingEnd",
+            "type": "number",
+            "default": "",
+            "description": "End padding of item",
+            "descriptionZh": "子项结束间距"
+          },
+          {
+            "name": "labelBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of label",
+            "descriptionZh": "标签背景色"
+          },
+          {
+            "name": "labelColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of label",
+            "descriptionZh": "标签文字颜色"
+          },
+          {
+            "name": "titleColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of title",
+            "descriptionZh": "标题文字颜色"
+          },
+          {
+            "name": "titleMarginBottom",
+            "type": "number",
+            "default": "",
+            "description": "Bottom margin of title",
+            "descriptionZh": "标题下间距"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Descriptions",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with basic styles, reset styles, border styles, layout direction and other overall styles for description list container",
+            "descriptionZh": "根元素，包含描述列表容器的基础样式、重置样式、边框样式、布局方向等整体样式"
+          },
+          {
+            "key": "header",
+            "description": "Header element with flex layout, alignment, bottom margin and other layout and style controls for header area",
+            "descriptionZh": "头部元素，包含flex布局、对齐方式、下边距等头部区域的布局和样式控制"
+          },
+          {
+            "key": "title",
+            "description": "Title element with text ellipsis, flex ratio, color, font weight, font size, line height and other title text styles",
+            "descriptionZh": "标题元素，包含文本省略、flex占比、颜色、字体权重、字体大小、行高等标题文字样式"
+          },
+          {
+            "key": "extra",
+            "description": "Extra content element with left margin, color, font size and other styles for additional operation area",
+            "descriptionZh": "额外内容元素，包含左边距、颜色、字体大小等额外操作区域的样式"
+          },
+          {
+            "key": "label",
+            "description": "Label element with color, font weight, font size, line height, text align, colon styles and other label text styles",
+            "descriptionZh": "标签元素，包含颜色、字体权重、字体大小、行高、文本对齐、冒号样式等标签文字的样式"
+          },
+          {
+            "key": "content",
+            "description": "Content element with table cell layout, color, font size, line height, word break and other content display styles",
+            "descriptionZh": "内容元素，包含表格单元格布局、颜色、字体大小、行高、文字换行等内容展示样式"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "version": "1.0.0",
+  "targetVersion": "6.5.0",
+  "rules": [
+    {
+      "id": "antd-v6-deprecated-api",
+      "severity": "error",
+      "enforcement": "@ant-design/cli lint through scripts/check-antd-projects.mjs",
+      "sourceArticles": ["historical-debt", "css-tricks"],
+      "requirement": "Every library-native + antd project has zero deprecated API findings for the frozen runtime version."
+    },
+    {
+      "id": "controlled-upload-onchange",
+      "severity": "error",
+      "enforcement": "@ant-design/cli lint through scripts/check-antd-projects.mjs",
+      "sourceArticles": ["button-loading-animation"],
+      "requirement": "A controlled Upload fileList declares onChange and preserves a stable per-file lifecycle."
+    },
+    {
+      "id": "stable-overlay-container",
+      "severity": "error",
+      "enforcement": "AST check in scripts/check-antd-projects.mjs",
+      "sourceArticles": ["getContainer"],
+      "requirement": "getContainer must not create a new DOM node during render or on each callback invocation."
+    },
+    {
+      "id": "prefer-context-aware-feedback-api",
+      "severity": "error",
+      "enforcement": "AST check in scripts/check-antd-projects.mjs",
+      "sourceArticles": ["why-not-static", "modal-hook-order"],
+      "requirement": "Direct imports of message and notification static APIs, and Modal static methods, are rejected in favor of App or hook context."
+    },
+    {
+      "id": "prefer-semantic-dom-over-structural-css",
+      "severity": "review",
+      "enforcement": "Design audit until all selected components expose a frozen semantic map",
+      "sourceArticles": ["semantic-beauty"],
+      "requirement": "Use semantic classNames and styles or component tokens before selectors coupled to AntD internal DOM structure."
+    }
+  ]
+}

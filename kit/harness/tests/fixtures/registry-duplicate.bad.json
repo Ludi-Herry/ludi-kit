@@ -1,0 +1,10 @@
+{
+  "id": "test-registry-duplicate",
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/registry/generated/pages.tsx",
+    "symbol": "FixturePage",
+    "pageId": "fixture"
+  },
+  "report": "harness/reports/test-registry-duplicate.json"
+}

@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "result": "fail",
+  "images": {
+    "baseline": "reference-image.png",
+    "candidate": "../../../output/playwright/ops-canvas-image2-full.png",
+    "width": 1440,
+    "height": 1100,
+    "baselineSha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d",
+    "candidateSha256": "fa316c351bc844db8d7cfa23f572bb68e64fc7af99b280b93440222b89ebae86"
+  },
+  "formula": {
+    "colorComparison": "sRGB channels composited over white and normalized to [0,1]",
+    "rms": "sqrt(sum((baselineRGB-candidateRGB)^2)/(pixelCount*3))",
+    "ssim": "global luminance SSIM using BT.709 coefficients, population variance/covariance, K1=0.01, K2=0.03, L=1",
+    "changedPixel": "max absolute composited RGB channel delta strictly greater than pixelDeltaThreshold"
+  },
+  "global": {
+    "rms": 0.118726213747,
+    "ssim": 0.44287147997,
+    "changedPixels": 187514,
+    "pixelCount": 1584000,
+    "changedPixelRatio": 0.118380050505,
+    "thresholds": {
+      "minSsim": 0.985,
+      "maxRms": 0.035,
+      "pixelDeltaThreshold": 0.06274509803921569,
+      "maxChangedPixelRatio": 0.025
+    },
+    "pass": false,
+    "failures": [
+      "normalized RMS 0.11872621374667926 exceeds 0.035",
+      "SSIM 0.44287147996998966 is below 0.985",
+      "changed pixel ratio 0.1183800505050505 exceeds 0.025"
+    ]
+  },
+  "regions": [
+    {
+      "name": "rail",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 240,
+        "height": 1100
+      },
+      "rms": 0.087554641187,
+      "ssim": 0.401191331006,
+      "changedPixels": 18371,
+      "pixelCount": 264000,
+      "changedPixelRatio": 0.069587121212,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.08755464118708634 exceeds 0.025",
+        "SSIM 0.40119133100631466 is below 0.99",
+        "changed pixel ratio 0.06958712121212121 exceeds 0.025"
+      ]
+    },
+    {
+      "name": "header",
+      "bounds": {
+        "x": 240,
+        "y": 0,
+        "width": 1200,
+        "height": 80
+      },
+      "rms": 0.126308367745,
+      "ssim": 0.415809506676,
+      "changedPixels": 8552,
+      "pixelCount": 96000,
+      "changedPixelRatio": 0.089083333333,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.12630836774470186 exceeds 0.025",
+        "SSIM 0.4158095066757236 is below 0.99",
+        "changed pixel ratio 0.08908333333333333 exceeds 0.025"
+      ]
+    },
+    {
+      "name": "overview",
+      "bounds": {
+        "x": 260,
+        "y": 99,
+        "width": 1160,
+        "height": 128
+      },
+      "rms": 0.166799968794,
+      "ssim": 0.560272724091,
+      "changedPixels": 23290,
+      "pixelCount": 148480,
+      "changedPixelRatio": 0.156856142241,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.16679996879431078 exceeds 0.025",
+        "SSIM 0.5602727240911808 is below 0.99",
+        "changed pixel ratio 0.1568561422413793 exceeds 0.025"
+      ]
+    },
+    {
+      "name": "foundations",
+      "bounds": {
+        "x": 260,
+        "y": 242,
+        "width": 1160,
+        "height": 172
+      },
+      "rms": 0.128909208094,
+      "ssim": 0.451870115658,
+      "changedPixels": 34200,
+      "pixelCount": 199520,
+      "changedPixelRatio": 0.17141138733,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.12890920809434925 exceeds 0.025",
+        "SSIM 0.4518701156582828 is below 0.99",
+        "changed pixel ratio 0.17141138732959102 exceeds 0.025"
+      ]
+    },
+    {
+      "name": "base-components",
+      "bounds": {
+        "x": 260,
+        "y": 429,
+        "width": 1160,
+        "height": 173
+      },
+      "rms": 0.116852642631,
+      "ssim": 0.514805446837,
+      "changedPixels": 22129,
+      "pixelCount": 200680,
+      "changedPixelRatio": 0.110270081722,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.11685264263059275 exceeds 0.025",
+        "SSIM 0.5148054468365122 is below 0.99",
+        "changed pixel ratio 0.11027008172214471 exceeds 0.025"
+      ]
+    },
+    {
+      "name": "composite-components",
+      "bounds": {
+        "x": 260,
+        "y": 617,
+        "width": 1160,
+        "height": 300
+      },
+      "rms": 0.127941696219,
+      "ssim": 0.33002536126,
+      "changedPixels": 58848,
+      "pixelCount": 348000,
+      "changedPixelRatio": 0.169103448276,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.12794169621931253 exceeds 0.025",
+        "SSIM 0.3300253612598191 is below 0.99",
+        "changed pixel ratio 0.16910344827586207 exceeds 0.025"
+      ]
+    },
+    {
+      "name": "page-shell",
+      "bounds": {
+        "x": 260,
+        "y": 932,
+        "width": 1160,
+        "height": 137
+      },
+      "rms": 0.131526270945,
+      "ssim": 0.334928142536,
+      "changedPixels": 19595,
+      "pixelCount": 158920,
+      "changedPixelRatio": 0.123301031966,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.13152627094472763 exceeds 0.025",
+        "SSIM 0.33492814253622744 is below 0.99",
+        "changed pixel ratio 0.12330103196576894 exceeds 0.025"
+      ]
+    }
+  ],
+  "failures": [
+    "global: normalized RMS 0.11872621374667926 exceeds 0.035",
+    "global: SSIM 0.44287147996998966 is below 0.985",
+    "global: changed pixel ratio 0.1183800505050505 exceeds 0.025",
+    "region \"rail\": normalized RMS 0.08755464118708634 exceeds 0.025",
+    "region \"rail\": SSIM 0.40119133100631466 is below 0.99",
+    "region \"rail\": changed pixel ratio 0.06958712121212121 exceeds 0.025",
+    "region \"header\": normalized RMS 0.12630836774470186 exceeds 0.025",
+    "region \"header\": SSIM 0.4158095066757236 is below 0.99",
+    "region \"header\": changed pixel ratio 0.08908333333333333 exceeds 0.025",
+    "region \"overview\": normalized RMS 0.16679996879431078 exceeds 0.025",
+    "region \"overview\": SSIM 0.5602727240911808 is below 0.99",
+    "region \"overview\": changed pixel ratio 0.1568561422413793 exceeds 0.025",
+    "region \"foundations\": normalized RMS 0.12890920809434925 exceeds 0.025",
+    "region \"foundations\": SSIM 0.4518701156582828 is below 0.99",
+    "region \"foundations\": changed pixel ratio 0.17141138732959102 exceeds 0.025",
+    "region \"base-components\": normalized RMS 0.11685264263059275 exceeds 0.025",
+    "region \"base-components\": SSIM 0.5148054468365122 is below 0.99",
+    "region \"base-components\": changed pixel ratio 0.11027008172214471 exceeds 0.025",
+    "region \"composite-components\": normalized RMS 0.12794169621931253 exceeds 0.025",
+    "region \"composite-components\": SSIM 0.3300253612598191 is below 0.99",
+    "region \"composite-components\": changed pixel ratio 0.16910344827586207 exceeds 0.025",
+    "region \"page-shell\": normalized RMS 0.13152627094472763 exceeds 0.025",
+    "region \"page-shell\": SSIM 0.33492814253622744 is below 0.99",
+    "region \"page-shell\": changed pixel ratio 0.12330103196576894 exceeds 0.025"
+  ],
+  "artifacts": {
+    "metrics": "calibration-diagnostics/metrics.json",
+    "heatmap": "calibration-diagnostics/heatmap.png",
+    "heatmapSha256": "48ac5252e92c1ae89c1d1e95fd86fb695bcfe1d117e293f8d98a0dc51d03f470"
+  }
+}

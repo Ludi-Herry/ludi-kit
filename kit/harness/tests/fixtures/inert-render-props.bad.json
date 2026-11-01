@@ -1,0 +1,14 @@
+{
+  "id": "test-inert-render-props",
+  "expectedComponents": ["PageLayout", "FilterPanel"],
+  "expectedText": ["INERT_RENDER_COPY"],
+  "expectedActions": {
+    "danger": ["惰性删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/inert-render-props.bad.tsx",
+    "symbol": "InertRenderPropsPage"
+  },
+  "report": "harness/reports/test-inert-render-props.json"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "test-nullish-dead-render",
+  "expectedComponents": ["PageLayout", "FilterPanel"],
+  "expectedText": ["NULLISH_DEAD_COPY"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "inbound": {
+        "sourceGroup": "收货入库",
+        "statuses": ["pending-inspection"]
+      }
+    }
+  },
+  "expectedActions": {
+    "danger": ["空值删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/nullish-dead-render.bad.tsx",
+    "symbol": "NullishDeadRenderPage"
+  },
+  "report": "harness/reports/test-nullish-dead-render.json"
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/project-context.schema.json",
+  "title": "AI-readable Project Business Context",
+  "type": "object",
+  "required": ["version", "projectId", "contextType", "decision", "product", "sourceOfTruth", "frontendFoundation"],
+  "properties": {
+    "version": { "type": "string" },
+    "projectId": { "type": "string" },
+    "contextType": { "enum": ["validation-sandbox", "real-product"] },
+    "decision": { "type": "string", "minLength": 3 },
+    "product": {
+      "type": "object",
+      "required": ["name", "audience", "scenario"],
+      "properties": {
+        "name": { "type": "string", "minLength": 2 },
+        "realCustomer": { "type": "boolean" },
+        "audience": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "scenario": { "type": "string", "minLength": 8 }
+      },
+      "additionalProperties": true
+    },
+    "sourceOfTruth": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "coreFlows": { "type": "array", "items": { "type": "string" } },
+    "firstPages": { "type": "array", "items": { "type": "string" } },
+    "criticalStates": { "type": "array", "items": { "type": "string" } },
+    "boundaries": { "type": "object", "additionalProperties": true },
+    "samplePack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "version"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^projects/[a-z0-9][a-z0-9-]*/sample-pack\\.json$"
+        },
+        "version": { "const": "1.0.0" }
+      }
+    },
+    "thirdPartyBaseline": {
+      "deprecated": true,
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "candidate": { "enum": ["antd", "arco-react", "tdesign-react", "element-plus", "shadcn", "figma", "local", "defer"] },
+        "version": { "type": "string", "minLength": 1 },
+        "proComponents": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 },
+        "decidedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "rationale": { "type": "string", "minLength": 1 },
+        "preferredDirection": { "type": "string", "minLength": 1 },
+        "alternatives": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "frontendFoundation": { "$ref": "#/$defs/frontendFoundation" },
+    "businessComponentPolicy": { "type": "object", "additionalProperties": true },
+    "requiredBeforeRealWork": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "foundationSources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["principles", "components", "templates", "source", "styles", "theme", "variables"],
+      "properties": {
+        "principles": { "type": "string", "minLength": 1 },
+        "components": { "type": "string", "minLength": 1 },
+        "templates": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "styles": { "type": "string", "minLength": 1 },
+        "theme": { "type": "string", "minLength": 1 },
+        "variables": { "type": "string", "minLength": 1 }
+      }
+    },
+    "designPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^foundations/design-packs/.+\\.json$" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "imports": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "allowedPackages", "forbiddenPackages", "namedImportsOnly"],
+      "properties": {
+        "root": { "type": "string", "minLength": 1 },
+        "allowedPackages": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "forbiddenPackages": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "namedImportsOnly": { "type": "boolean" }
+      }
+    },
+    "adapters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lint", "build", "browser", "visual"],
+      "properties": {
+        "lint": { "type": "string", "minLength": 1 },
+        "build": { "type": "string", "minLength": 1 },
+        "browser": { "type": "string", "minLength": 1 },
+        "visual": { "type": "string", "minLength": 1 }
+      }
+    },
+    "frontendFoundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outputMode",
+        "framework",
+        "foundation",
+        "distribution",
+        "officialSources",
+        "license",
+        "reviewedAt",
+        "designPack",
+        "icons",
+        "theme",
+        "reset",
+        "imports",
+        "adapters"
+      ],
+      "properties": {
+        "outputMode": { "enum": ["kit-consumer", "library-native", "custom-native"] },
+        "framework": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "version"],
+          "properties": {
+            "name": { "enum": ["react", "vue3"] },
+            "version": { "type": "string", "minLength": 1 }
+          }
+        },
+        "foundation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "displayName", "version", "packageName"],
+          "properties": {
+            "id": { "enum": ["antd", "arco-react", "tdesign-react", "element-plus", "shadcn", "figma", "local"] },
+            "displayName": { "type": "string", "minLength": 1 },
+            "version": { "type": "string", "minLength": 1 },
+            "packageName": { "type": "string", "minLength": 1 }
+          }
+        },
+        "distribution": { "enum": ["package-native", "source-registry", "figma-mapped", "workspace-package", "local-package", "project-source"] },
+        "officialSources": { "$ref": "#/$defs/foundationSources" },
+        "license": { "type": "string", "minLength": 1 },
+        "reviewedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "designPack": { "$ref": "#/$defs/designPack" },
+        "icons": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["packageName", "version", "source"],
+          "properties": {
+            "packageName": { "type": "string", "minLength": 1 },
+            "version": { "type": "string", "minLength": 1 },
+            "source": { "type": "string", "minLength": 1 }
+          }
+        },
+        "theme": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["entry", "strategy"],
+          "properties": {
+            "entry": { "type": "string", "minLength": 1 },
+            "strategy": { "type": "string", "minLength": 1 }
+          }
+        },
+        "reset": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["import"],
+          "properties": {
+            "import": { "type": "string", "minLength": 1 }
+          }
+        },
+        "imports": { "$ref": "#/$defs/imports" },
+        "adapters": { "$ref": "#/$defs/adapters" }
+      }
+    }
+  }
+}

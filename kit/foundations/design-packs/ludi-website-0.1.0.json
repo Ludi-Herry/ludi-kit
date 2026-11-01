@@ -1,0 +1,39 @@
+{
+  "id": "ludi-design-website-directions-0.1.0",
+  "foundationId": "local",
+  "reviewedAt": "2026-10-11",
+  "status": "selected-product-stage",
+  "selectedDirection": "stage",
+  "contentFocus": ["AI output quality", "interface order", "design implementation alignment", "cross-foundation consistency"],
+  "source": {
+    "principles": "../docs/PLAN-产品宣传官网-2026-10-10.md",
+    "components": "preview/website/src/main.jsx",
+    "templates": "preview/website/src/main.jsx",
+    "source": "preview/website/src/main.jsx",
+    "styles": "preview/website/src/tokens.css",
+    "theme": "preview/website/src/tokens.css",
+    "variables": "preview/website/src/tokens.css",
+    "publicEntry": "./src/main.jsx"
+  },
+  "package": { "name": "ludi-website-source", "version": "0.1.0", "license": "project-private" },
+  "distribution": "project-source",
+  "framework": { "name": "react", "version": "19.2.7" },
+  "imports": {
+    "runtime": "./src/main.jsx",
+    "icons": "lucide-react",
+    "resetCss": "./src/tokens.css",
+    "namedImportsOnly": true
+  },
+  "theme": { "entry": "./src/tokens.css", "cssVariables": true },
+  "directions": {
+    "stage": { "label": "产品舞台", "layout": "wide-product-stage", "theme": "light", "accent": "#087c62" },
+    "theater": { "label": "操作剧场", "layout": "perspective-step-theater", "theme": "dark", "accent": "#adf3c8" },
+    "playground": { "label": "组件游乐场", "layout": "interactive-specimen-workspace", "theme": "light", "accent": "#087c62" }
+  },
+  "motion": {
+    "spring": { "stiffness": 170, "damping": 19, "mass": 1 },
+    "jelly": { "maxSquash": 0.035, "maxTiltDegrees": 3 },
+    "reveal": { "durationMs": 650, "staggerMs": 60 },
+    "reducedMotion": "instant-static-content-with-interactions"
+  }
+}

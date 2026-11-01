@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "custom-ops-workbench",
+  "contextType": "real-product",
+  "product": {
+    "name": "自定义运维工作台",
+    "description": "验证项目源码组件的 custom-native 输出。"
+  },
+  "pages": [
+    {
+      "id": "overview",
+      "route": "/overview",
+      "title": "运维概览",
+      "pattern": "dashboard-page",
+      "intent": {
+        "goal": "判断当日作业负载和待处理风险。",
+        "primaryAction": "查看风险",
+        "secondaryActions": ["刷新"],
+        "successCriteria": ["使用本地源码组件导入", "不导入第三方 UI 库"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "MetricCard", "Card", "Button"],
+      "content": {
+        "metrics": [
+          { "label": "待处理", "value": 12, "delta": "+2", "trend": "up" },
+          { "label": "已完成", "value": 36, "delta": "稳定", "trend": "flat" }
+        ]
+      }
+    }
+  ]
+}

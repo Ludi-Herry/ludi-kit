@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "6.0.8",
+    "vite": "8.1.5",
+    "vue": "3.5.40",
+    "element-plus": "2.14.3",
+    "@element-plus/icons-vue": "2.3.2"
+  },
+  "devDependencies": {}
+}

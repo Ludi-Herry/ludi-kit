@@ -1,0 +1,305 @@
+{
+  "version": "1.0.0",
+  "component": "Switch",
+  "queryComponent": "Switch",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Switch",
+        "nameZh": "开关",
+        "description": "使用开关切换两种状态之间。",
+        "props": [
+          {
+            "name": "checked",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "checkedChildren",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultChecked",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "defaultValue",
+            "type": "boolean",
+            "default": "-",
+            "since": "5.12.0"
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`'medium'` | `'small'`",
+            "default": "`medium`",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "unCheckedChildren",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "value",
+            "type": "boolean",
+            "default": "-",
+            "since": "5.12.0"
+          },
+          {
+            "name": "onChange",
+            "type": "function(checked: boolean, event: Event)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onClick",
+            "type": "function(checked: boolean, event: Event)",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Switch.Methods": [
+            {
+              "name": "blur()",
+              "type": "",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "focus()",
+              "type": "",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "button"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Switch",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 需要表示开关状态/两种状态之间的切换时；\n- 和 `checkbox` 的区别是，切换 `switch` 会直接触发状态改变，而 `checkbox` 一般用于状态标记，需要和提交操作配合。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/disabled.tsx\">不可用</code>\n<code src=\"./demo/text.tsx\">文字和图标</code>\n<code src=\"./demo/size.tsx\">两种大小</code>\n<code src=\"./demo/loading.tsx\">加载中</code>\n<code src=\"./demo/component-token.tsx\" debug>自定义组件 Token</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| checked | 指定当前是否选中 | boolean | false |  | × |\n| checkedChildren | 选中时的内容 | ReactNode | - |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| defaultChecked | 初始是否选中 | boolean | false |  | × |\n| defaultValue | `defaultChecked` 的别名 | boolean | - | 5.12.0 | × |\n| disabled | 是否禁用 | boolean | false |  | × |\n| loading | 加载中的开关 | boolean | false |  | × |\n| size | 开关大小，可选值：`medium` `small` | `'medium'` \\| `'small'` | `medium` |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| unCheckedChildren | 非选中时的内容 | ReactNode | - |  | × |\n| value | `checked` 的别名 | boolean | - | 5.12.0 | × |\n| onChange | 变化时的回调函数 | function(checked: boolean, event: Event) | - |  | × |\n| onClick | 点击时的回调函数 | function(checked: boolean, event: Event) | - |  | × |\n\n## 方法\n\n| 名称    | 描述     |\n| ------- | -------- |\n| blur()  | 移除焦点 |\n| focus() | 获取焦点 |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Switch\"></ComponentTokenTable>\n\n## FAQ\n\n### 为什么在 Form.Item 下不能绑定数据？ {#faq-binding-data}\n\nForm.Item 默认绑定值属性到 `value` 上，而 Switch 的值属性为 `checked`。你可以通过 `valuePropName` 来修改绑定的值属性。\n\n```tsx | pure\n<Form.Item name=\"fieldA\" valuePropName=\"checked\">\n  <Switch />\n</Form.Item>\n```\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Switch",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "The most basic usage."
+          },
+          {
+            "name": "disabled",
+            "title": "Disabled",
+            "description": "Disabled state of `Switch`."
+          },
+          {
+            "name": "loading",
+            "title": "Loading",
+            "description": "Mark a pending state of switch."
+          },
+          {
+            "name": "size",
+            "title": "Two sizes",
+            "description": "`size=\"small\"` represents a small sized switch."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Switch by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "text",
+            "title": "Text & icon",
+            "description": "With text and icon."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Switch",
+        "tokens": [
+          {
+            "name": "handleBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of Switch handle",
+            "descriptionZh": "开关把手背景色"
+          },
+          {
+            "name": "handleShadow",
+            "type": "string",
+            "default": "",
+            "description": "Shadow of Switch handle",
+            "descriptionZh": "开关把手阴影"
+          },
+          {
+            "name": "handleSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of Switch handle",
+            "descriptionZh": "开关把手大小"
+          },
+          {
+            "name": "handleSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Size of small Switch handle",
+            "descriptionZh": "小号开关把手大小"
+          },
+          {
+            "name": "innerMaxMargin",
+            "type": "number",
+            "default": "",
+            "description": "Maximum margin of content area",
+            "descriptionZh": "内容区域最大边距"
+          },
+          {
+            "name": "innerMaxMarginSM",
+            "type": "number",
+            "default": "",
+            "description": "Maximum margin of content area of small Switch",
+            "descriptionZh": "小号开关内容区域最大边距"
+          },
+          {
+            "name": "innerMinMargin",
+            "type": "number",
+            "default": "",
+            "description": "Minimum margin of content area",
+            "descriptionZh": "内容区域最小边距"
+          },
+          {
+            "name": "innerMinMarginSM",
+            "type": "number",
+            "default": "",
+            "description": "Minimum margin of content area of small Switch",
+            "descriptionZh": "小号开关内容区域最小边距"
+          },
+          {
+            "name": "trackHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of Switch",
+            "descriptionZh": "开关高度"
+          },
+          {
+            "name": "trackHeightSM",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of small Switch",
+            "descriptionZh": "小号开关高度"
+          },
+          {
+            "name": "trackMinWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Minimum width of Switch",
+            "descriptionZh": "开关最小宽度"
+          },
+          {
+            "name": "trackMinWidthSM",
+            "type": "string | number",
+            "default": "",
+            "description": "Minimum width of small Switch",
+            "descriptionZh": "小号开关最小宽度"
+          },
+          {
+            "name": "trackPadding",
+            "type": "number",
+            "default": "",
+            "description": "Padding of Switch",
+            "descriptionZh": "开关内边距"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Switch",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with min-width, height, line-height, vertical alignment, background color, border, border radius, cursor style, transition animations, user selection and other basic switch container styles",
+            "descriptionZh": "根元素，包含最小宽度、高度、行高、垂直对齐、背景色、边框、圆角、光标样式、过渡动画、用户选择等开关容器的基础样式"
+          },
+          {
+            "key": "content",
+            "description": "Content element with block display, overflow hidden, border radius, height, padding, transition animations and other switch content area layout and styles",
+            "descriptionZh": "内容元素，包含块级显示、溢出隐藏、圆角、高度、内边距、过渡动画等开关内容区域的布局和样式"
+          },
+          {
+            "key": "indicator",
+            "description": "Indicator element with absolute positioning, width, height, background color, border radius, shadow, transition animations and other switch handle styles and interactive effects",
+            "descriptionZh": "指示器元素,包含绝对定位、宽度、高度、背景色、圆角、阴影、过渡动画等开关把手的样式和交互效果"
+          }
+        ]
+      }
+    }
+  }
+}

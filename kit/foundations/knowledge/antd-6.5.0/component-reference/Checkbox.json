@@ -1,0 +1,242 @@
+{
+  "version": "1.0.0",
+  "component": "Checkbox",
+  "queryComponent": "Checkbox",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-09-28",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Checkbox",
+        "nameZh": "多选框",
+        "description": "收集用户的多项选择。",
+        "props": [
+          {
+            "name": "checked",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultChecked",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "indeterminate",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "onChange",
+            "type": "(e: CheckboxChangeEvent) => void",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onBlur",
+            "type": "function()",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onFocus",
+            "type": "function()",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultValue",
+            "type": "(string | number)[]",
+            "default": "[]",
+            "since": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "options",
+            "type": "string[] | number[] | Option[]",
+            "default": "[]",
+            "since": ""
+          },
+          {
+            "name": "value",
+            "type": "(string | number | boolean)[]",
+            "default": "[]",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "`string`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "className",
+            "type": "`string`",
+            "default": "-",
+            "since": "5.25.0"
+          },
+          {
+            "name": "style",
+            "type": "`React.CSSProperties`",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Checkbox.Methods": [
+            {
+              "name": "blur()",
+              "type": "",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "focus()",
+              "type": "",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "nativeElement",
+              "type": "",
+              "default": "-",
+              "since": "5.17.3"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "input"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Checkbox",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 在一组可选项中进行多项选择时；\n- 单独使用可以表示两种状态之间的切换，和 `switch` 类似。区别在于切换 `switch` 会直接触发状态改变，而 `checkbox` 一般用于状态标记，需要和提交操作配合。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本用法</code>\n<code src=\"./demo/disabled.tsx\">不可用</code>\n<code src=\"./demo/controller.tsx\">受控的 Checkbox</code>\n<code src=\"./demo/group.tsx\">Checkbox 组</code>\n<code src=\"./demo/check-all.tsx\">全选</code>\n<code src=\"./demo/layout.tsx\">布局</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/debug-line.tsx\" debug>同行布局</code>\n<code src=\"./demo/debug-disable-popover.tsx\" debug>禁用下的 Tooltip</code>\n<code src=\"./demo/debug-group-width.tsx\" debug>Group 内勾选框等宽</code>\n<code src=\"./demo/custom-line-width.tsx\" debug>自定义 lineWidth</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n#### Checkbox\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| checked | 指定当前是否选中 | boolean | false |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| defaultChecked | 初始是否选中 | boolean | false |  | × |\n| disabled | 失效状态 | boolean | false |  | × |\n| indeterminate | 设置 indeterminate 状态，只负责样式控制 | boolean | false |  | × |\n| onChange | 变化时的回调函数 | (e: CheckboxChangeEvent) => void | - |  | × |\n| onBlur | 失去焦点时的回调 | function() | - |  | × |\n| onFocus | 获得焦点时的回调 | function() | - |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n\n#### Checkbox.Group\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| defaultValue | 默认选中的选项 | (string \\| number)\\[] | \\[] |  |\n| disabled | 整组失效 | boolean | false |  |\n| name | CheckboxGroup 下所有 `input[type=\"checkbox\"]` 的 `name` 属性 | string | - |  |\n| options | 指定可选项 | string\\[] \\| number\\[] \\| Option\\[] | \\[] |  |\n| value | 指定选中的选项 | (string \\| number \\| boolean)\\[] | \\[] |  |\n| title | 选项的 title | `string` | - |  |\n| className | 选项的类名 | `string` | - | 5.25.0 |\n| style | 选项的样式 | `React.CSSProperties` | - |  |\n| onChange | 变化时的回调函数 | (checkedValue: T[]) => void | - |  |\n\n##### Option\n\n```typescript\ninterface Option {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n```\n\n### 方法 {#methods}\n\n#### Checkbox\n\n| 名称          | 描述                      | 版本   |\n| ------------- | ------------------------- | ------ |\n| blur()        | 移除焦点                  |        |\n| focus()       | 获取焦点                  |        |\n| nativeElement | 返回 Checkbox 的 DOM 节点 | 5.17.3 |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Checkbox\"></ComponentTokenTable>\n\n## FAQ\n\n### 为什么在 Form.Item 下不能绑定数据？ {#faq-form-item-limitations}\n\nForm.Item 默认绑定值属性到 `value` 上，而 Checkbox 的值属性为 `checked`。你可以通过 `valuePropName` 来修改绑定的值属性。\n\n```tsx | pure\n<Form.Item name=\"fieldA\" valuePropName=\"checked\">\n  <Checkbox />\n</Form.Item>\n```\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Checkbox",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Basic usage of checkbox."
+          },
+          {
+            "name": "check-all",
+            "title": "Check all",
+            "description": "The `indeterminate` property can help you to achieve a 'check all' effect."
+          },
+          {
+            "name": "controller",
+            "title": "Controlled Checkbox",
+            "description": "Communicated with other components."
+          },
+          {
+            "name": "disabled",
+            "title": "Disabled",
+            "description": "Disabled checkbox."
+          },
+          {
+            "name": "group",
+            "title": "Checkbox Group",
+            "description": "Generate a group of checkboxes from an array."
+          },
+          {
+            "name": "layout",
+            "title": "Use with Grid",
+            "description": "We can use Checkbox and Grid in Checkbox.Group, to implement complex layout."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Checkbox by passing objects/functions through `classNames` and `styles`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Checkbox",
+        "tokens": []
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Checkbox",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with inline-flex layout, baseline alignment, cursor style, reset styles and other basic checkbox container styles",
+            "descriptionZh": "根元素，包含行内 flex 布局、基线对齐、光标样式、重置样式等复选框容器的基础样式"
+          },
+          {
+            "key": "icon",
+            "description": "Checkbox icon element with size, direction, background, border, border-radius, transitions, and checked state checkmark styles",
+            "descriptionZh": "选中框元素，包含尺寸、方向、背景色、边框、圆角、过渡动画，以及选中状态的勾选标记样式"
+          },
+          {
+            "key": "label",
+            "description": "Label text element with padding and spacing styles relative to the checkbox",
+            "descriptionZh": "文本元素，包含文本的内边距和与复选框的间距样式"
+          }
+        ]
+      }
+    }
+  }
+}

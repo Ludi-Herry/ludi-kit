@@ -1,0 +1,7 @@
+.ludi-instance-editor .ludi-select,.ludi-instance-editor .ludi-input{width:100%}
+.ludi-instance-row{display:grid;grid-template-columns:minmax(68px,1fr) 72px 42px;gap:6px;align-items:center;margin:8px 0;font-size:12px}
+.ludi-instance-row .ludi-input-number{width:72px}
+.ludi-instance-field{display:flex;flex-direction:column;gap:6px;margin:12px 0;font-size:12px}
+.ludi-instance-field code{color:var(--ludi-text-muted)}
+.ludi-instance-editor details{margin-top:12px;font-size:12px}
+.ludi-instance-editor details label{display:block;margin:8px 0}

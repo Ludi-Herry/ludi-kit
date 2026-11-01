@@ -1,0 +1,50 @@
+{
+  "id": "build-tianshu-production-firmware",
+  "prompt": "天枢 · 固件版本：区分版本生命周期、签名状态和灰度风险，并通过受控交互新建、回滚或停用版本。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": [
+    "AppShell",
+    "SideNav",
+    "PageLayout",
+    "PageHeader",
+    "FilterPanel",
+    "DataSection",
+    "DataGrid",
+    "Pagination",
+    "Drawer",
+    "FormSection",
+    "Upload",
+    "ConfirmDialog",
+    "Badge",
+    "Button",
+    "Input",
+    "Select"
+  ],
+  "expectedOrder": ["AppShell", "PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": [
+    "固件版本管理",
+    "固件版本号",
+    "版本状态",
+    "签名状态",
+    "新建固件版本"
+  ],
+  "forbiddenPatterns": [
+    "custom-button-style",
+    "hardcoded-brand-color",
+    "card-inside-card",
+    "direct-third-party-import"
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/firmware-page.tsx",
+    "symbol": "TianshuFirmwarePage"
+  },
+  "report": "harness/reports/build-tianshu-production-firmware.json"
+}

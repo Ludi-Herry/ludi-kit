@@ -1,0 +1,8 @@
+{
+  "source": "workflows.manifest.json",
+  "mutation": {
+    "workflowId": "requirement-to-final-page",
+    "remove": "handoff"
+  },
+  "expectValid": false
+}

@@ -1,0 +1,126 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "pages": [
+    {
+      "id": "dashboard",
+      "route": "/dashboard",
+      "title": "运营工作台",
+      "pattern": "dashboard-page",
+      "flowIds": ["daily-operations-review", "purchase-order-creation", "permission-review"],
+      "flowCard": {
+        "entry": "SideNav > 工作台",
+        "previousPages": [],
+        "nextPages": ["/inventory", "/inventory/:skuId", "/settings/permissions"],
+        "userGoal": "掌握运营健康度并选定下一步动作。",
+        "businessState": "每日运营例会前的巡检。"
+      },
+      "intentCard": {
+        "pageGoal": "一屏扫清库存、采购、财务与权限风险。",
+        "firstViewport": ["KPI 摘要", "临期风险", "待审批", "结算差异"],
+        "primaryAction": "查看风险库存",
+        "secondaryActions": ["刷新指标", "打开权限复核", "新建采购单"],
+        "successCriteria": ["风险首屏可见、不滚动", "每张卡片有明确下一步", "指标统一时间窗口"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "MetricCard", "Card", "DataSection", "Badge", "Button"],
+      "dataRequirements": ["InventoryBalance", "ApprovalTask", "PurchaseOrder", "Role"],
+      "layoutTree": ["PageLayout", "PageHeader", "MetricCard grid", "Card grid", "DataSection"]
+    },
+    {
+      "id": "inventory-list",
+      "route": "/inventory",
+      "title": "库存列表",
+      "pattern": "list-page",
+      "flowIds": ["daily-operations-review", "purchase-order-creation"],
+      "flowCard": {
+        "entry": "SideNav > 库存，或工作台风险卡下钻",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/inventory/:skuId", "/purchase-orders/new"],
+        "userGoal": "按仓库/SKU/状态/临期风险定位库存问题。",
+        "businessState": "仓库与采购联合review。"
+      },
+      "intentCard": {
+        "pageGoal": "筛选库存记录，识别需要处理的行。",
+        "firstViewport": ["页面标题", "仓库筛选", "状态筛选", "数据表格"],
+        "primaryAction": "新建采购单",
+        "secondaryActions": ["导出", "打开 SKU 详情", "重置筛选"],
+        "successCriteria": ["FilterPanel 出现在 DataSection 之前", "DataGrid 位于 DataSection 内", "状态使用 Badge 语义色"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button", "Select", "Input"],
+      "dataRequirements": ["SKU", "Warehouse", "InventoryBalance"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    },
+    {
+      "id": "sku-detail",
+      "route": "/inventory/:skuId",
+      "title": "SKU 详情",
+      "pattern": "detail-page",
+      "flowIds": ["daily-operations-review"],
+      "flowCard": {
+        "entry": "库存列表行，或工作台风险卡下钻",
+        "previousPages": ["/dashboard", "/inventory"],
+        "nextPages": ["/purchase-orders/new"],
+        "userGoal": "看清单个 SKU 的库存、批次与流水风险。",
+        "businessState": "实体级风险处置。"
+      },
+      "intentCard": {
+        "pageGoal": "展示 SKU 身份、稳定属性与活动历史。",
+        "firstViewport": ["DetailHeader", "DescriptionGrid", "Tabs"],
+        "primaryAction": "新建采购单",
+        "secondaryActions": ["查看日志", "导出流水"],
+        "successCriteria": ["DetailHeader 携带状态", "键值信息用 DescriptionGrid", "Tabs 分隔动态与设置"]
+      },
+      "componentPlan": ["PageLayout", "DetailHeader", "DescriptionGrid", "Tabs", "Table", "Badge", "Button", "Card"],
+      "dataRequirements": ["SKU", "InventoryBalance", "PurchaseOrder"],
+      "layoutTree": ["PageLayout", "DetailHeader", "DescriptionGrid", "Tabs > Table"]
+    },
+    {
+      "id": "purchase-order-form",
+      "route": "/purchase-orders/new",
+      "title": "新建采购单",
+      "pattern": "form-page",
+      "flowIds": ["purchase-order-creation"],
+      "flowCard": {
+        "entry": "库存列表操作，或采购导航",
+        "previousPages": ["/inventory"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "从低库存需求创建采购单。",
+        "businessState": "采购补货流程。"
+      },
+      "intentCard": {
+        "pageGoal": "录入供应商、订单行、交付与复核备注。",
+        "firstViewport": ["PageHeader", "Stepper", "供应商 FormSection", "订单行 FormSection"],
+        "primaryAction": "提交采购单",
+        "secondaryActions": ["存草稿", "取消"],
+        "successCriteria": ["字段按业务语义分组", "主操作只出现一次", "长文本用 Textarea"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "Stepper", "FormSection", "Input", "Select", "Textarea", "Button"],
+      "dataRequirements": ["Supplier", "SKU", "PurchaseOrder"],
+      "layoutTree": ["PageLayout", "PageHeader", "Stepper", "FormSection", "Actions"]
+    },
+    {
+      "id": "permissions",
+      "route": "/settings/permissions",
+      "title": "权限管理",
+      "pattern": "list-page",
+      "flowIds": ["permission-review"],
+      "flowCard": {
+        "entry": "SideNav > 系统 > 权限管理",
+        "previousPages": ["/dashboard"],
+        "nextPages": ["/dashboard"],
+        "userGoal": "复核访问风险与角色分配。",
+        "businessState": "月度权限复核。"
+      },
+      "intentCard": {
+        "pageGoal": "筛选角色并在表格中检视权限状态。",
+      "firstViewport": ["PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination"],
+        "primaryAction": "新建角色",
+        "secondaryActions": ["导出审计日志", "打开角色详情"],
+        "successCriteria": ["角色可筛选", "风险状态使用 Badge", "可从选中行发起批量复核"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Badge", "Button"],
+      "dataRequirements": ["Role"],
+      "layoutTree": ["PageLayout", "PageHeader", "FilterPanel", "DataSection > DataGrid + Pagination"]
+    }
+  ]
+}

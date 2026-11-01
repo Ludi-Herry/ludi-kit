@@ -1,0 +1,30 @@
+diff --git a/src/components.tsx b/src/components.tsx
+@@ planned promotion
++ Add BulkActionBar and controlled DataGrid selection without exposing antd RowSelection.
+diff --git a/src/index.ts b/src/index.ts
+@@ planned promotion
++ Export BulkActionBar, BulkActionBarProps, and updated DataGrid types from the barrel.
+diff --git a/src/styles.css b/src/styles.css
+@@ planned promotion
++ Add sticky, responsive, token-based batch action styles below the selected data region.
+diff --git a/components.manifest.json b/components.manifest.json
+@@ planned promotion
++ Document the batch action component and DataGrid selection props.
+diff --git a/examples/list-page.tsx b/examples/list-page.tsx
+@@ planned promotion
++ Show selected count, clear selection, and dangerous confirmation composition.
+diff --git a/recipes/list-page.md b/recipes/list-page.md
+@@ planned promotion
++ Move selected-record actions from the static toolbar into BulkActionBar guidance.
+diff --git a/figma/component-map.json b/figma/component-map.json
+@@ planned promotion
++ Sync the code-first component mapping.
+diff --git a/figma/variants-map.json b/figma/variants-map.json
+@@ planned promotion
++ Sync the visible/hidden state mapping.
+diff --git a/scripts/check-dom-contract.mjs b/scripts/check-dom-contract.mjs
+@@ planned promotion
++ Assert hidden state, live selected count, action grouping, and controlled row keys.
+diff --git a/harness/scenarios/build-tianshu-production-inventory.json b/harness/scenarios/build-tianshu-production-inventory.json
+@@ planned promotion
++ Require the inventory page to wire selection, BulkActionBar, and ConfirmDialog.

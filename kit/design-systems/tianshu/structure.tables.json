@@ -1,0 +1,555 @@
+{
+  "version": "0.1.0",
+  "status": "signed",
+  "signoff": {
+    "date": "2026-10-13",
+    "by": "Owner",
+    "ref": "docs/PLAN-四底座第5阶段-转正与收口-2026-10-13.md"
+  },
+  "note": "天枢结构合同（表格）。初稿取自 antd 天枢现版的列定义，Owner 签字后才是权威；签字前 antd 页面不读本文件，由 check-structure-contract.mjs 拿 antd 实测比对。格式见 structure.README.md。列宽取 antd 在参考视口 1440×900 下的实测值：antd 的滚动表格用自动布局，内容会把声明宽度撑大（如固件页各列、rma 单号），实测与声明不一致时以实测为准。",
+  "referenceViewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "breakpoints": {
+    "xl": 1200,
+    "xxl": 1600,
+    "lg": 1100,
+    "md": 1024
+  },
+  "tables": {
+    "devices": {
+      "source": "projects/tianshu-device-ops/generated/DeviceListPage.tsx",
+      "selection": true,
+      "selectionWidth": 48,
+      "columns": [
+        {
+          "header": "SN",
+          "key": "sn",
+          "width": 156,
+          "fixed": "left"
+        },
+        {
+          "header": "机型",
+          "key": "model",
+          "width": 96,
+          "responsive": "xl"
+        },
+        {
+          "header": "批次",
+          "key": "batch",
+          "width": 72,
+          "responsive": "xl"
+        },
+        {
+          "header": "生命周期状态",
+          "key": "lifecycle",
+          "width": 116
+        },
+        {
+          "header": "在网状态",
+          "key": "online",
+          "width": 96
+        },
+        {
+          "header": "固件版本",
+          "key": "firmware",
+          "width": 92,
+          "responsive": "xl"
+        },
+        {
+          "header": "最后心跳",
+          "key": "heartbeat",
+          "width": 112,
+          "responsive": "xl"
+        },
+        {
+          "header": "未处理告警",
+          "key": "alerts",
+          "width": 124,
+          "align": "right"
+        },
+        {
+          "header": "出厂日期",
+          "key": "shippedAt",
+          "width": 112,
+          "responsive": "xxl"
+        },
+        {
+          "header": "操作",
+          "key": "actions",
+          "width": 198,
+          "fixed": "right"
+        }
+      ],
+      "pagination": {
+        "totalPlacement": "beforeItems"
+      }
+    },
+    "rma": {
+      "source": "projects/tianshu-device-ops/generated/RmaPage.tsx",
+      "selection": true,
+      "selectionWidth": 48,
+      "columns": [
+        {
+          "header": "RMA 单号",
+          "key": "id",
+          "width": 194.8,
+          "fixed": "left"
+        },
+        {
+          "header": "SN",
+          "key": "sn",
+          "width": 128
+        },
+        {
+          "header": "机型",
+          "key": "model",
+          "width": 96,
+          "responsive": "xl"
+        },
+        {
+          "header": "退货原因",
+          "key": "reasonCode",
+          "width": 108
+        },
+        {
+          "header": "退货来源",
+          "key": "source",
+          "width": 108,
+          "responsive": "xl"
+        },
+        {
+          "header": "到件状态",
+          "key": "arrivalStatus",
+          "width": 118
+        },
+        {
+          "header": "检测结论",
+          "key": "conclusion",
+          "width": 108
+        },
+        {
+          "header": "处理方式",
+          "key": "decisionMethod",
+          "width": 96
+        },
+        {
+          "header": "当前设备状态",
+          "key": "deviceLifecycle",
+          "width": 112
+        },
+        {
+          "header": "发起时间",
+          "key": "createdAt",
+          "width": 152
+        },
+        {
+          "header": "关闭时间",
+          "key": "closedAt",
+          "width": 152,
+          "responsive": "xl"
+        },
+        {
+          "header": "操作",
+          "key": "actions",
+          "width": 158,
+          "fixed": "right"
+        }
+      ],
+      "pagination": {
+        "totalPlacement": "beforeItems"
+      }
+    },
+    "flashing": {
+      "source": "projects/tianshu-device-ops/generated/FlashingPage.tsx",
+      "selection": true,
+      "selectionWidth": 48,
+      "columns": [
+        {
+          "header": "SN",
+          "key": "sn",
+          "width": 150,
+          "fixed": "left"
+        },
+        {
+          "header": "机型",
+          "key": "model",
+          "width": 100,
+          "responsive": "xl"
+        },
+        {
+          "header": "固件版本",
+          "key": "firmware",
+          "width": 116
+        },
+        {
+          "header": "烧录工位",
+          "key": "station",
+          "width": 96,
+          "responsive": "xl"
+        },
+        {
+          "header": "证书状态",
+          "key": "certState",
+          "width": 96
+        },
+        {
+          "header": "烧录结果",
+          "key": "result",
+          "width": 88
+        },
+        {
+          "header": "设备状态",
+          "key": "lifecycle",
+          "width": 112
+        },
+        {
+          "header": "重试次数",
+          "key": "retry",
+          "width": 84,
+          "align": "right"
+        },
+        {
+          "header": "烧录耗时（秒）",
+          "key": "duration",
+          "width": 112,
+          "align": "right",
+          "responsive": "xl"
+        },
+        {
+          "header": "操作人",
+          "key": "operator",
+          "width": 112,
+          "responsive": "xl"
+        },
+        {
+          "header": "烧录时间",
+          "key": "startedAt",
+          "width": 168
+        },
+        {
+          "header": "操作",
+          "key": "actions",
+          "width": 236,
+          "fixed": "right"
+        }
+      ],
+      "pagination": {
+        "totalPlacement": "beforeItems"
+      }
+    },
+    "alert-rules": {
+      "source": "projects/tianshu-device-ops/generated/AlertRulesPage.tsx",
+      "columns": [
+        {
+          "header": "规则名称",
+          "key": "name",
+          "width": 200
+        },
+        {
+          "header": "规则类型",
+          "key": "type",
+          "width": 140
+        },
+        {
+          "header": "触发条件摘要",
+          "key": "condition",
+          "width": 200
+        },
+        {
+          "header": "通知对象",
+          "key": "notifyUsers",
+          "width": 170
+        },
+        {
+          "header": "启用状态",
+          "key": "enabled",
+          "width": 120
+        },
+        {
+          "header": "最近触发时间",
+          "key": "lastTriggeredAt",
+          "width": 170
+        },
+        {
+          "header": "操作",
+          "key": "actions",
+          "width": 110
+        }
+      ],
+      "note": "antd 分页 hideOnSinglePage，规则数不超过一页时不渲染分页，暂不写 pagination。"
+    },
+    "passport-list": {
+      "source": "projects/tianshu-device-ops/generated/PassportListPage.tsx",
+      "selection": true,
+      "selectionWidth": 48,
+      "columns": [
+        {
+          "header": "SN",
+          "key": "sn",
+          "width": 140,
+          "fixed": "left"
+        },
+        {
+          "header": "机型",
+          "key": "model",
+          "width": 110
+        },
+        {
+          "header": "固件版本",
+          "key": "firmware",
+          "width": 100
+        },
+        {
+          "header": "生命周期状态",
+          "key": "lifecycle",
+          "width": 150
+        },
+        {
+          "header": "质检结论",
+          "key": "qc",
+          "width": 100
+        },
+        {
+          "header": "出厂日期",
+          "key": "shippedAt",
+          "width": 120
+        },
+        {
+          "header": "最近事件",
+          "key": "latestEvent",
+          "width": 240,
+          "responsive": "xl"
+        },
+        {
+          "header": "是否对外公开",
+          "key": "publishStatus",
+          "width": 120
+        },
+        {
+          "header": "RMA 次数",
+          "key": "rmaCount",
+          "width": 100
+        },
+        {
+          "header": "操作",
+          "key": "actions",
+          "width": 340,
+          "fixed": "right"
+        }
+      ],
+      "pagination": {
+        "totalPlacement": "beforeItems"
+      }
+    },
+    "firmware": {
+      "source": "projects/tianshu-device-ops/generated/FirmwarePage.tsx",
+      "selection": true,
+      "selectionWidth": 49.8,
+      "columns": [
+        {
+          "header": "固件版本号",
+          "key": "version",
+          "width": 145.2,
+          "fixed": "left"
+        },
+        {
+          "header": "机型",
+          "key": "models",
+          "width": 124.5
+        },
+        {
+          "header": "版本状态",
+          "key": "status",
+          "width": 99.6
+        },
+        {
+          "header": "签名状态",
+          "key": "sign",
+          "width": 99.6,
+          "responsive": "xl"
+        },
+        {
+          "header": "灰度比例",
+          "key": "ratio",
+          "width": 145.2
+        },
+        {
+          "header": "绑定设备数",
+          "key": "bound",
+          "width": 105.8,
+          "align": "right"
+        },
+        {
+          "header": "发布人",
+          "key": "publisher",
+          "width": 150,
+          "responsive": "xl",
+          "defaultHidden": true
+        },
+        {
+          "header": "发布时间",
+          "key": "releasedAt",
+          "width": 136.9,
+          "responsive": "xl"
+        },
+        {
+          "header": "变更摘要",
+          "key": "changelog",
+          "responsive": "xl",
+          "defaultHidden": true
+        },
+        {
+          "header": "操作",
+          "key": "actions",
+          "width": 203.4,
+          "fixed": "right"
+        }
+      ],
+      "pagination": {
+        "totalPlacement": "beforeItems"
+      },
+      "note": "首屏是「固件版本列表」；「推送任务」页签的另一张表（taskColumns）未入合同，后续扩展。发布人与变更摘要默认在列设置里隐藏。多选框列宽 49.8 与其余列宽同为 antd 1440 宽实测（声明 48，表格按比例放大）。"
+    },
+    "feedback": {
+      "source": "projects/tianshu-device-ops/generated/FeedbackPage.tsx",
+      "selection": true,
+      "selectionWidth": 48,
+      "columns": [
+        {
+          "header": "反馈编号",
+          "key": "id",
+          "width": 190
+        },
+        {
+          "header": "类型",
+          "key": "type",
+          "width": 90
+        },
+        {
+          "header": "优先级",
+          "key": "priority",
+          "width": 85
+        },
+        {
+          "header": "状态",
+          "key": "status",
+          "width": 105
+        },
+        {
+          "header": "SLA 剩余时间",
+          "key": "sla",
+          "width": 140
+        },
+        {
+          "header": "处理人",
+          "key": "assignee",
+          "width": 115
+        },
+        {
+          "header": "关联 SN",
+          "key": "sn",
+          "width": 155
+        },
+        {
+          "header": "App 版本",
+          "key": "appVersion",
+          "width": 95
+        },
+        {
+          "header": "固件版本",
+          "key": "firmware",
+          "width": 95
+        },
+        {
+          "header": "联系方式",
+          "key": "contact",
+          "width": 120
+        },
+        {
+          "header": "提交时间",
+          "key": "submittedAt",
+          "width": 155
+        },
+        {
+          "header": "操作",
+          "key": "action",
+          "width": 140,
+          "fixed": "right"
+        }
+      ],
+      "pagination": {
+        "totalPlacement": "beforeItems"
+      }
+    }
+  },
+  "filters": {
+    "devices": {
+      "region": "筛选",
+      "columns": 5,
+      "gap": 16,
+      "below": { "xl": 3 },
+      "moreColumns": 3
+    },
+    "rma": {
+      "region": "筛选",
+      "columns": 5,
+      "gap": 16,
+      "below": { "xl": 3 },
+      "moreColumns": 3
+    },
+    "flashing": {
+      "region": "筛选",
+      "columns": 5,
+      "gap": 16,
+      "below": { "xl": 3 },
+      "moreColumns": 3
+    },
+    "firmware": {
+      "region": "固件版本筛选",
+      "columns": 4,
+      "gap": 16,
+      "below": { "xl": 3 },
+      "moreColumns": 3
+    },
+    "passport-list": {
+      "region": "护照查询筛选区",
+      "columns": 4,
+      "gap": 16,
+      "moreColumns": 4
+    },
+    "feedback": {
+      "region": "筛选",
+      "template": "repeat(auto-fit, minmax(200px, 1fr))",
+      "gap": 16,
+      "note": "antd 常驻行与「更多筛选」行同用 feedback-filter-row：每项最小 200、按可用宽度自动排列（1440 下 5 列、1200 下 4 列），没有媒体查询回落。"
+    },
+    "alerts": {
+      "region": "告警筛选",
+      "template": "180px 140px minmax(0, 320px)",
+      "gap": 12,
+      "below": { "lg": 3 }
+    },
+    "binding": {
+      "region": "检索表单",
+      "template": "279px 275.6px 271.2px",
+      "gap": 16,
+      "below": { "md": 2 },
+      "note": "antd 是行内标签（标签在左、输入框在右）的 flex 行：三项各 flex 1 1 240px、查询按钮自然宽，视口 ≤ 1024 时改为两列 grid。轨道记的是 1440 下三个输入框的实测宽，只作校验护栏；合同格式还描述不了行内标签，shadcn 不读 filterGrid，按 antd 同款 flex 行内排布。"
+    }
+  },
+  "filterInline": {
+    "binding": {
+      "region": "检索表单",
+      "gap": 16,
+      "fields": [
+        { "label": "手机号", "probe": "ph:请输入11位手机号", "labelWidth": 55 },
+        { "label": "用户ID", "probe": "ph:请输入用户 ID", "labelWidth": 58.4 },
+        { "label": "设备SN", "probe": "ph:请输入设备 SN", "labelWidth": 62.8 }
+      ],
+      "button": { "text": "查询", "gap": 16 },
+      "note": "2026-10-13 试运行，同日转正（不一致判失败）。数值取 antd 1440 实测：标签是内容自适应宽，labelWidth 只作护栏；三项 flex 1 1 240px 等分剩余宽度后组合同为 334 宽。输入框宽护栏仍在 filters.binding 的 template，窄屏回落看 filters.binding 的 below。"
+    }
+  }
+}

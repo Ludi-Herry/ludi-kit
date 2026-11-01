@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "ops-canvas-reference-generation",
+  "workflowIds": ["image2-to-figma-page"],
+  "status": "passed",
+  "recordedAt": "2026-07-17T08:44:02.161Z",
+  "summary": "The confirmed Ops Canvas prompt produced a real reference image, and the original plus normalized 1440x1100 artifacts have recorded dimensions and SHA-256 hashes.",
+  "commands": [
+    {
+      "command": "host-native imagegen using confirmed prompt SHA-256 bf307ccc4479089c7b676e81cc09b39b04f2f46c64e155716b300230cb6e1878",
+      "exitCode": 0,
+      "result": "Generated one opaque PNG at 1435x1096 and preserved the original artifact."
+    },
+    {
+      "command": "System.Drawing high-quality bicubic resize 1435x1096 to 1440x1100",
+      "exitCode": 0,
+      "result": "Created the exact-size reference artifact while retaining the original generation for provenance."
+    }
+  ],
+  "artifacts": [
+    "design-systems/ops-canvas/workflow/reference-prompt.md",
+    "design-systems/ops-canvas/workflow/reference-image.original.png",
+    "design-systems/ops-canvas/workflow/reference-image.png",
+    "design-systems/ops-canvas/workflow/reference-image.metadata.json"
+  ],
+  "blockers": []
+}

@@ -1,0 +1,19 @@
+{
+  "id": "test-status-group",
+  "expectedStatusCopy": {
+    "source": "projects/sample-platform/status-copy.md",
+    "groups": {
+      "todo": {
+        "sourceGroup": "告警处置",
+        "statuses": ["resolved-alert"]
+      }
+    }
+  },
+  "output": {
+    "type": "tsx",
+    "file": "projects/sample-platform/generated/pages.tsx",
+    "symbol": "AlertsRealtimePage",
+    "pageId": "alerts-realtime"
+  },
+  "report": "harness/reports/test-status-group.json"
+}

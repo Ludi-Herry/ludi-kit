@@ -1,0 +1,19 @@
+{
+  "id": "test-dynamic-render-evidence",
+  "expectedComponents": ["PageLayout", "Button"],
+  "expectedActions": {
+    "conditions": [
+      {
+        "when": "record.active",
+        "branch": "then",
+        "danger": ["删除"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/dynamic-render-evidence.good.tsx",
+    "symbol": "DynamicRenderEvidencePage"
+  },
+  "report": "harness/reports/test-dynamic-render-evidence.json"
+}

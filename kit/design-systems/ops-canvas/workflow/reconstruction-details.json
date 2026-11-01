@@ -1,0 +1,126 @@
+{
+  "version": "1.0.0",
+  "requestId": "ops-canvas-existing",
+  "recordedAt": "2026-07-17T09:12:42.230Z",
+  "sourcePriority": [
+    "frozen Ops Canvas contract",
+    "confirmed generated reference image",
+    "current runnable page evidence"
+  ],
+  "reference": {
+    "path": "design-systems/ops-canvas/workflow/reference-image.png",
+    "sha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d",
+    "width": 1440,
+    "height": 1100
+  },
+  "measurements": {
+    "reference": {
+      "rail": { "x": 0, "y": 0, "width": 229, "height": 1100 },
+      "header": { "x": 229, "y": 0, "width": 1211, "height": 80 },
+      "overview": { "x": 249, "y": 99, "width": 1170, "height": 128 },
+      "foundations": { "x": 249, "y": 243, "width": 1170, "height": 172 },
+      "baseComponents": { "x": 249, "y": 429, "width": 1170, "height": 173 },
+      "compositeComponents": { "x": 249, "y": 617, "width": 1170, "height": 300 },
+      "pageShell": { "x": 249, "y": 932, "width": 1170, "height": 137 }
+    },
+    "implementation": {
+      "rail": { "x": 0, "y": 0, "width": 240, "height": 1100 },
+      "header": { "x": 240, "y": 0, "width": 1200, "height": 80 },
+      "overview": { "x": 260, "y": 99, "width": 1160, "height": 128 },
+      "foundations": { "x": 260, "y": 242, "width": 1160, "height": 172 },
+      "baseComponents": { "x": 260, "y": 429, "width": 1160, "height": 173 },
+      "compositeComponents": { "x": 260, "y": 617, "width": 1160, "height": 300 },
+      "pageShell": { "x": 260, "y": 932, "width": 1160, "height": 137 }
+    }
+  },
+  "responsiveAssumptions": [
+    "The deterministic desktop canvas is exactly 1440x1100 with no page overflow.",
+    "Below 1000px the rail becomes a horizontal navigation row and the fixed canvas becomes document flow.",
+    "Below 720px foundations, base components, metrics, and filters stack into one column.",
+    "Tables retain horizontal overflow instead of collapsing operational columns."
+  ],
+  "componentMappings": [
+    {
+      "region": "shell, rail, header, content frame",
+      "component": "OpsShell",
+      "selector": "[data-component=ops-shell]",
+      "tokens": ["color.bg.page", "layout.nav.width", "layout.content.maxWidth", "layout.page.gutter"]
+    },
+    {
+      "region": "overview and form actions",
+      "component": "Button",
+      "selector": "[data-component=button]",
+      "tokens": ["color.brand.primary", "color.brand.onPrimary", "radius.control", "layout.control.height"]
+    },
+    {
+      "region": "component examples and work-order states",
+      "component": "Badge",
+      "selector": "[data-component=badge]",
+      "tokens": ["color.status.success", "color.status.warning", "color.status.danger", "color.status.info", "radius.pill"]
+    },
+    {
+      "region": "work-order owner field",
+      "component": "Input",
+      "selector": "[data-component=input]",
+      "tokens": ["color.bg.surface", "color.border.default", "shadow.focus", "radius.control", "layout.control.height"]
+    },
+    {
+      "region": "owner specimen",
+      "component": "Card",
+      "selector": "[data-component=card]",
+      "tokens": ["color.bg.surface", "color.border.default", "radius.card", "shadow.card"]
+    },
+    {
+      "region": "operational metrics",
+      "component": "MetricCard",
+      "selector": "[data-component=metric-card]",
+      "tokens": ["color.bg.surface", "typography.display.size", "spacing.4", "radius.card"]
+    },
+    {
+      "region": "keyword and status controls",
+      "component": "FilterBar",
+      "selector": "[data-component=filter-bar]",
+      "tokens": ["color.bg.elevated", "spacing.3", "spacing.4", "radius.card"]
+    },
+    {
+      "region": "work-order records",
+      "component": "WorkOrderTable",
+      "selector": "[data-component=work-order-table]",
+      "tokens": ["color.bg.surface", "color.border.default", "typography.body.size", "spacing.3"]
+    }
+  ],
+  "referenceContractConflicts": [
+    {
+      "detail": "The generated rail measures about 229px while the frozen layout.nav.width token is 240px.",
+      "resolution": "The implementation uses the frozen 240px rail."
+    },
+    {
+      "detail": "The generated specification chrome is 80px tall while the frozen product header contract is 64px.",
+      "resolution": "The specification chrome stays 80px to preserve composition; the Page shell contract renders the 64px product header explicitly."
+    },
+    {
+      "detail": "The generated outer canvas margin is about 20px while the product shell token defines a 24px gutter.",
+      "resolution": "The specification canvas keeps the 20px optical margin and the product shell diagram preserves the 24px contract."
+    },
+    {
+      "detail": "The generated spacing and shape specimens include 64px and 4px values absent from the frozen token set.",
+      "resolution": "The implementation displays the frozen 48px spacing maximum and 6px, 10px, 14px, and pill radii."
+    },
+    {
+      "detail": "The generated type specimen uses 24px and 16px roles that differ from the frozen title and body tokens.",
+      "resolution": "The implementation labels and uses the frozen Display 32, Title 20, Body 14, and Caption 12 roles."
+    }
+  ],
+  "interactionStates": [
+    "Theme toggle persists the selected light or dark mode.",
+    "Keyword and status filters combine and announce the result count.",
+    "The verified interaction access plus Needs review leaves only WO-2042 visible.",
+    "Buttons, links, inputs, and selects expose visible focus styles."
+  ],
+  "motion": {
+    "quickMs": 150,
+    "fastMs": 250,
+    "easing": [0.22, 1, 0.36, 1],
+    "reducedMotion": true
+  }
+}

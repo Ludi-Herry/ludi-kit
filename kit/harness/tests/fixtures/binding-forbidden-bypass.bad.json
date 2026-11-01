@@ -1,0 +1,19 @@
+{
+  "id": "test-binding-forbidden-bypass",
+  "expectedComponents": ["PageLayout", "Button", "Card", "DataSection", "DataGrid"],
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "forbiddenPatterns": [
+    "custom-button-style",
+    "hardcoded-brand-color",
+    "card-inside-card",
+    "direct-third-party-import"
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/binding-forbidden-bypass.bad.tsx",
+    "symbol": "BindingForbiddenBypassPage"
+  },
+  "report": "harness/reports/test-binding-forbidden-bypass.json"
+}

@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "status": "external-blocked",
+  "target": { "fileKey": null, "pageNodeId": null },
+  "page": {
+    "name": "Ops Canvas / Specification",
+    "width": 1440,
+    "layoutMode": "VERTICAL",
+    "autoLayoutRequired": true,
+    "sections": ["Foundations", "Base Components", "Composite Components", "Page Shell"]
+  },
+  "variableCollections": [
+    { "name": "Ops Canvas / Color", "modes": ["Light", "Dark"], "source": "tokens.json#tokens.color" },
+    { "name": "Ops Canvas / Dimensions", "modes": ["Default"], "source": "tokens.json#tokens.spacing,tokens.radius,tokens.layout" },
+    { "name": "Ops Canvas / Typography", "modes": ["Default"], "source": "tokens.json#tokens.typography" }
+  ],
+  "componentSets": [
+    { "name": "Components/Button", "sourceId": "button", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Components/Badge", "sourceId": "badge", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Components/Input", "sourceId": "input", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Components/Card", "sourceId": "card", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Components/Metric Card", "sourceId": "metric-card", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Components/Filter Bar", "sourceId": "filter-bar", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Components/Work Order Table", "sourceId": "work-order-table", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null },
+    { "name": "Shell/Ops", "sourceId": "ops-shell", "autoLayoutRequired": true, "textStyleRequired": true, "nodeId": null }
+  ],
+  "readback": {
+    "required": ["fileKey", "pageNodeId", "component nodeIds", "variable bindings", "text styles", "Auto Layout", "screenshots"],
+    "evidenceSchema": "../../../schema/figma-evidence.schema.json"
+  },
+  "blocker": "A real authorized Figma fileKey and scope have not been supplied. All live identifiers remain null."
+}

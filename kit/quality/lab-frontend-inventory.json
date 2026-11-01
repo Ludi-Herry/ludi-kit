@@ -1,0 +1,67 @@
+{
+  "version": "0.1.0",
+  "projectId": "radesign-lab",
+  "status": "passed",
+  "pages": [
+    {
+      "id": "projects",
+      "pageId": "projects",
+      "route": "/",
+      "title": "项目成品",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "components",
+      "pageId": "components",
+      "route": "/?view=components",
+      "title": "组件库",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "patterns",
+      "pageId": "patterns",
+      "route": "/?view=patterns",
+      "title": "页面模式",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "examples",
+      "pageId": "examples",
+      "route": "/?view=examples",
+      "title": "页面样例",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "generated",
+      "pageId": "generated",
+      "route": "/?view=generated",
+      "title": "页面清单",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "project",
+      "pageId": "project",
+      "route": "/?view=project",
+      "title": "项目上下文",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "figma",
+      "pageId": "figma",
+      "route": "/?view=figma",
+      "title": "Figma 映射",
+      "acceptanceStatus": "passed"
+    },
+    {
+      "id": "feedback",
+      "pageId": "feedback",
+      "route": "/?view=feedback",
+      "title": "反馈回流",
+      "acceptanceStatus": "passed"
+    }
+  ],
+  "evidence": {
+    "technical": "lab-page-acceptance.technical.json",
+    "visual": "lab-page-acceptance.visual.json"
+  }
+}

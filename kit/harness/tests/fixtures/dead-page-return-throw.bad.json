@@ -1,0 +1,11 @@
+{
+  "id": "test-dead-page-return-throw",
+  "expectedComponents": ["FilterPanel"],
+  "expectedText": ["THROWN_DEAD_COPY"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/dead-page-return.bad.tsx",
+    "symbol": "ThrownDeadReturnPage"
+  },
+  "report": "harness/reports/test-dead-page-return-throw.json"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "test-data-assertions-bad",
+  "dataAssertions": [
+    {
+      "array": "alertRows",
+      "field": "handling",
+      "forbiddenValues": ["resolved-alert"]
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/data-assertions.bad.tsx"
+  },
+  "report": "harness/reports/test-data-assertions-bad.json"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "test-report-redaction",
+  "buildRuntime": {
+    "command": "npx",
+    "args": ["tsc", "--noEmit", "-p", "harness/tests/fixtures/token=supersecret.json"],
+    "cwd": "."
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.good.tsx"
+  },
+  "report": "harness/reports/test-report-redaction.json"
+}

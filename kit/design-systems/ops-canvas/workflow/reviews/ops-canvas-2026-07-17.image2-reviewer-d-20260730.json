@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "pairId": "ops-canvas-2026-07-17",
+  "reviewerId": "image2-reviewer-d-20260730",
+  "reviewedAt": "2026-07-30T02:17:47.9601487-07:00",
+  "independence": {
+    "participatedInImplementationOrEvidence": false,
+    "sawOtherReviewerDecisionBeforeSubmission": false,
+    "sawMachineMetricsBeforeFreezingLabel": false,
+    "statement": "I reviewed the frozen reference and candidate independently."
+  },
+  "inputs": {
+    "referenceSha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d",
+    "candidateSha256": "fa316c351bc844db8d7cfa23f572bb68e64fc7af99b280b93440222b89ebae86"
+  },
+  "calibrationLabel": "rejected",
+  "semanticVerdict": "rejected",
+  "pixelFidelityVerdict": "rejected",
+  "interactionEvidenceSupportsTask": "yes",
+  "blockingFindings": [
+    "Foundation contract labels and values diverge: H1/H2/Small rows change to Display/Title, the 64 spacing sample changes to 48, and the 4px radius sample changes to Pill.",
+    "The work-order owner control loses the reference selector disclosure affordance and reads as a plain text input."
+  ],
+  "reasonCodes": [
+    "foundation-contract-divergence",
+    "control-semantics-divergence",
+    "pixel-geometry-divergence"
+  ],
+  "rationale": "The candidate preserves the shell, major sections, CTA and 42/08/02 statistics, metric cards, filter/table workflow, and 240/64/1440-gutter-24 shell values; interaction evidence also confirms the work-order filter task. However, it changes substantive foundation specifications and the owner-control semantics, which can mislead users of this design-system contract. Broad layout, typography, icon, and component-geometry displacement also prevents pixel-fidelity acceptance.",
+  "confidence": "high",
+  "machineResultMatchedExpectation": "yes"
+}

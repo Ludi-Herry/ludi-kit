@@ -1,0 +1,56 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "flows": [
+    {
+      "id": "daily-operations-review",
+      "title": "日常运营巡检",
+      "entry": "/dashboard",
+      "userGoal": "发现运营风险并跳到能解决它的页面。",
+      "businessState": "仓储与采购晨会前的每日巡检。",
+      "steps": [
+        { "pageId": "dashboard", "route": "/dashboard", "role": "overview" },
+        { "pageId": "inventory-list", "route": "/inventory", "role": "risk-drilldown" },
+        { "pageId": "sku-detail", "route": "/inventory/:skuId", "role": "entity-resolution" }
+      ],
+      "successCriteria": [
+        "负责人首屏可见风险库存。",
+        "风险卡片链接到带筛选的列表或详情页。",
+        "每次下钻保留所选 SKU 或风险上下文。"
+      ]
+    },
+    {
+      "id": "purchase-order-creation",
+      "title": "采购单创建",
+      "entry": "/purchase-orders/new",
+      "userGoal": "创建含供应商、SKU 行与预计到货的采购单。",
+      "businessState": "库存巡检后采购员补货。",
+      "steps": [
+        { "pageId": "inventory-list", "route": "/inventory", "role": "demand-source" },
+        { "pageId": "purchase-order-form", "route": "/purchase-orders/new", "role": "create" },
+        { "pageId": "dashboard", "route": "/dashboard", "role": "post-submit-monitoring" }
+      ],
+      "successCriteria": [
+        "创建采购单前可识别低库存 SKU。",
+        "表单按供应商/订单行/交付/复核分组。",
+        "已提交订单进入工作台待办。"
+      ]
+    },
+    {
+      "id": "permission-review",
+      "title": "权限复核",
+      "entry": "/settings/permissions",
+      "userGoal": "复核角色权限，发现有风险的授权。",
+      "businessState": "管理员执行月度权限复核。",
+      "steps": [
+        { "pageId": "permissions", "route": "/settings/permissions", "role": "review" },
+        { "pageId": "dashboard", "route": "/dashboard", "role": "audit-signal" }
+      ],
+      "successCriteria": [
+        "管理员可按状态与归属筛选角色。",
+        "风险角色在表格状态列可见。",
+        "权限复核作为审计信号呈现。"
+      ]
+    }
+  ]
+}

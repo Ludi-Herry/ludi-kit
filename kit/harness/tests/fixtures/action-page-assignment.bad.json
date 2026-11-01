@@ -1,0 +1,19 @@
+{
+  "id": "test-action-page-assignment",
+  "expectedActions": {
+    "conditions": [
+      {
+        "when": "record.status === \"active\"",
+        "branch": "then",
+        "required": ["停用"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/action-page-shadow/generated/pages.tsx",
+    "symbol": "AssignmentPageActionPage",
+    "pageId": "assignment"
+  },
+  "report": "harness/reports/test-action-page-assignment.json"
+}

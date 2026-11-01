@@ -1,0 +1,32 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-device-ops",
+  "workflow": [
+    "queued",
+    "accepted",
+    "promoted",
+    "rejected"
+  ],
+  "gates": [
+    {
+      "target": "rule",
+      "allowedActions": [
+        "update-rule"
+      ],
+      "allowedDestinations": [
+        "rules/",
+        "recipes/"
+      ],
+      "requiredEvidence": [
+        "generatedFile",
+        "finding",
+        "acceptance"
+      ],
+      "reviewChecklist": [
+        "The issue appears in more than one generated context or can plausibly repeat.",
+        "The proposed rule is short, testable, and points to an existing component or pattern.",
+        "Harness or preview can verify the behavior after the rule lands."
+      ]
+    }
+  ]
+}

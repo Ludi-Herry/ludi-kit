@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "vue-service-desk",
+  "contextType": "real-product",
+  "decision": "generator fixture for Vue 3 Element Plus library-native output",
+  "product": {
+    "name": "Vue 服务台",
+    "realCustomer": true,
+    "audience": [
+      "客服主管"
+    ],
+    "scenario": "验证 Vue 3 与 Element Plus 原生输出骨架。"
+  },
+  "sourceOfTruth": [
+    "generator/fixtures/vue-element-plus/project-description.json"
+  ],
+  "coreFlows": [
+    "服务单筛选"
+  ],
+  "firstPages": [
+    "服务单"
+  ],
+  "criticalStates": [
+    "待处理",
+    "负责人缺失"
+  ],
+  "thirdPartyBaseline": {
+    "candidate": "element-plus",
+    "status": "fixture"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "vue3",
+      "version": "3.5.40"
+    },
+    "foundation": {
+      "id": "element-plus",
+      "displayName": "Element Plus",
+      "version": "2.14.3",
+      "packageName": "element-plus"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://element-plus.org/en-US/guide/design.html",
+      "components": "https://element-plus.org/en-US/component/button.html",
+      "templates": "https://element-plus.org/en-US/component/layout.html",
+      "source": "https://github.com/element-plus/element-plus/tree/2.14.3",
+      "styles": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk",
+      "theme": "https://element-plus.org/en-US/guide/theming.html",
+      "variables": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk/src/common/var.scss"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-07-19",
+    "designPack": {
+      "path": "foundations/design-packs/element-plus-2.14.3-components-v2.json",
+      "sha256": "12ad69bc17b8246fd2e377d4cc50e24349f3ac6cdfe7713ddc52aea5d9c76def"
+    },
+    "icons": {
+      "packageName": "@element-plus/icons-vue",
+      "version": "2.3.2",
+      "source": "https://github.com/element-plus/element-plus-icons"
+    },
+    "theme": {
+      "entry": "src/main.ts",
+      "strategy": "Element Plus CSS variables"
+    },
+    "reset": {
+      "import": "element-plus/dist/index.css"
+    },
+    "imports": {
+      "root": "element-plus",
+      "allowedPackages": [
+        "element-plus",
+        "vue"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "antd",
+        "@ant-design/",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.vue-import-boundary",
+      "build": "build.vite-vue3",
+      "browser": "browser.playwright-vue3",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "fixture"
+  },
+  "requiredBeforeRealWork": []
+}

@@ -1,0 +1,20 @@
+export {
+  AppstoreOutlined,
+  AuditOutlined,
+  CheckSquareOutlined,
+  CloseOutlined,
+  CloudServerOutlined,
+  DatabaseOutlined,
+  DeploymentUnitOutlined,
+  DownloadOutlined,
+  DownOutlined,
+  EnvironmentOutlined,
+  InboxOutlined,
+  ReloadOutlined,
+  RollbackOutlined,
+  SafetyCertificateOutlined,
+  SendOutlined,
+  ThunderboltOutlined,
+  UploadOutlined,
+  UserOutlined
+} from "@ant-design/icons";

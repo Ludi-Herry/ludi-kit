@@ -1,0 +1,29 @@
+{
+  "id": "build-permissions-list",
+  "prompt": "做一个权限管理后台列表页，含角色筛选、状态筛选、表格、分页、排序、批量操作。",
+  "foundationContract": {
+    "businessContext": "projects/sample-inventory-erp/business-context.json",
+    "projectId": "sample-inventory-erp",
+    "outputMode": "kit-consumer",
+    "framework": "react"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["Active", "Review"],
+  "expectedStaticValues": [
+    { "object": "permissionStatusCopy", "path": ["active", "label"], "value": "Active" },
+    { "object": "permissionStatusCopy", "path": ["active", "variant"], "value": "success" },
+    { "object": "permissionStatusCopy", "path": ["review", "label"], "value": "Review" },
+    { "object": "permissionStatusCopy", "path": ["review", "variant"], "value": "warning" },
+    { "object": "permissionStatusCopy", "path": ["risk", "label"], "value": "Risk" },
+    { "object": "permissionStatusCopy", "path": ["risk", "variant"], "value": "danger" }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.good.tsx",
+    "symbol": "PermissionsListPage"
+  },
+  "report": "harness/reports/build-permissions-list.json"
+}

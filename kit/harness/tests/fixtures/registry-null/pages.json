@@ -1,0 +1,10 @@
+{
+  "pages": [
+    {
+      "id": "fixture",
+      "route": "/fixture",
+      "title": "Fixture",
+      "pattern": "detail-page"
+    }
+  ]
+}

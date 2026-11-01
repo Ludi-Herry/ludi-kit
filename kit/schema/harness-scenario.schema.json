@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/harness-scenario.schema.json",
+  "title": "AI-readable harness scenario",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "output"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "prompt": { "type": "string", "minLength": 1 },
+    "expectedPattern": {
+      "enum": ["dashboard-page", "list-page", "detail-page", "form-page", "analytics-dashboard", "situation-screen", "screen-publish-flow"]
+    },
+    "expectedComponents": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+    "expectedOrder": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+    "expectedText": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+    "expectedClassTokens": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+    "expectedStaticValues": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/staticValueAssertion" }
+    },
+    "dataAssertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/dataAssertion" }
+    },
+    "forbiddenPatterns": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "custom-button-style",
+          "hardcoded-brand-color",
+          "card-inside-card",
+          "direct-third-party-import"
+        ]
+      }
+    },
+    "expectedStatusCopy": { "$ref": "#/$defs/statusCopy" },
+    "expectedActions": { "$ref": "#/$defs/actions" },
+    "expectedConfirmations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/confirmation" }
+    },
+    "foundationContract": { "$ref": "#/$defs/foundationContract" },
+    "buildRuntime": { "$ref": "#/$defs/buildRuntime" },
+    "output": { "$ref": "#/$defs/output" },
+    "report": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "nonEmptyUniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file"],
+      "properties": {
+        "type": { "const": "tsx" },
+        "file": { "type": "string", "minLength": 1 },
+        "symbol": { "type": "string", "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$" },
+        "pageId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }
+      },
+      "dependentRequired": {
+        "pageId": ["symbol"]
+      }
+    },
+    "dataAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["array", "field", "forbiddenValues"],
+      "properties": {
+        "array": { "type": "string", "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$" },
+        "field": { "type": "string", "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$" },
+        "forbiddenValues": { "$ref": "#/$defs/nonEmptyUniqueStrings" }
+      }
+    },
+    "staticValueAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["object", "path", "value"],
+      "properties": {
+        "object": { "type": "string", "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$" },
+        "path": { "$ref": "#/$defs/pathSegments" },
+        "value": { "type": "string" }
+      }
+    },
+    "pathSegments": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "statusCopy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source"],
+      "properties": {
+        "source": { "type": "string", "minLength": 1 },
+        "statuses": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+        "groups": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$" },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sourceGroup", "statuses"],
+            "properties": {
+              "sourceGroup": { "type": "string", "minLength": 1 },
+              "statuses": { "$ref": "#/$defs/nonEmptyUniqueStrings" }
+            }
+          }
+        }
+      },
+      "anyOf": [
+        { "required": ["statuses"] },
+        { "required": ["groups"] }
+      ]
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+        "forbidden": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+        "danger": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+        "conditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["when", "branch"],
+            "properties": {
+              "when": { "type": "string", "minLength": 1 },
+              "branch": { "enum": ["then", "else"] },
+              "required": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+              "forbidden": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+              "danger": { "$ref": "#/$defs/nonEmptyUniqueStrings" }
+            },
+            "anyOf": [
+              { "required": ["required"] },
+              { "required": ["forbidden"] },
+              { "required": ["danger"] }
+            ]
+          }
+        }
+      },
+      "anyOf": [
+        { "required": ["required"] },
+        { "required": ["forbidden"] },
+        { "required": ["danger"] },
+        { "required": ["conditions"] }
+      ]
+    },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "title", "confirmLabel", "requiredText", "danger"],
+      "properties": {
+        "action": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "confirmLabel": { "type": "string", "minLength": 1 },
+        "requiredText": { "$ref": "#/$defs/nonEmptyUniqueStrings" },
+        "danger": { "type": "boolean" },
+        "state": { "$ref": "#/$defs/confirmationState" }
+      }
+    },
+    "confirmationState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["variable", "openMode", "triggerValue", "clearValue"],
+      "properties": {
+        "variable": { "type": "string", "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*$" },
+        "openMode": { "enum": ["direct", "truthy"] },
+        "triggerValue": {
+          "oneOf": [
+            { "const": "non-null" },
+            {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "anyOf": [
+                  { "type": "string" },
+                  { "type": "number" },
+                  { "type": "boolean" },
+                  { "type": "null" }
+                ]
+              }
+            }
+          ]
+        },
+        "clearValue": { "enum": [false, null] }
+      }
+    },
+    "foundationContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["businessContext", "outputMode"],
+      "properties": {
+        "businessContext": { "type": "string", "minLength": 1 },
+        "projectId": { "type": "string", "minLength": 1 },
+        "outputMode": { "enum": ["kit-consumer", "library-native", "custom-native"] },
+        "framework": { "type": "string", "minLength": 1 },
+        "foundation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "buildRuntime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "args"],
+      "properties": {
+        "command": { "const": "npx" },
+        "args": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            { "const": "tsc" },
+            { "const": "--noEmit" },
+            { "const": "-p" },
+            { "type": "string", "minLength": 1 }
+          ]
+        },
+        "cwd": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

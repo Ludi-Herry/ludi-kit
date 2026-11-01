@@ -1,0 +1,40 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "generatedAt": "2026-07-17",
+  "itemId": "fb-20260717-001",
+  "title": "Firmware danger confirmation must restore the exact row trigger",
+  "mode": "recorded",
+  "status": "implemented",
+  "sourceDraft": "projects/tianshu-ops/feedback/promotions/fb-20260717-001.md",
+  "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260717-001.json",
+  "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260717-001.diff",
+  "action": "update-page-plan",
+  "target": "page",
+  "destination": "projects/tianshu-ops/pages.json",
+  "allowedDestinations": [
+    "projects/tianshu-ops/pages.json",
+    "projects/tianshu-ops/flows.json"
+  ],
+  "willChangeFiles": [
+    "projects/tianshu-ops/pages.json"
+  ],
+  "guardrails": [
+    "Recorded mode documents files that already match the reviewed page-plan change.",
+    "Dangerous actions keep their business mutation behind ConfirmDialog.",
+    "The visual raw verdict and fixed thresholds remain unchanged.",
+    "Figma work stays external-blocked with null external identifiers."
+  ],
+  "validationCommands": [
+    "npm run validate:feedback",
+    "npm run validate",
+    "npm run check:dom",
+    "npm run check:harness",
+    "npm run build:preview",
+    "npm run build:starter",
+    "npm run check:package"
+  ],
+  "command": "npm run validate:feedback -- fb-20260717-001 --recorded",
+  "sourceDraftIndex": "projects/tianshu-ops/feedback/promotions/index.json",
+  "patchPreview": "diff --git a/projects/tianshu-ops/pages.json b/projects/tianshu-ops/pages.json\n@@ planned promotion\n+ Require one-row desktop filters and exact row-trigger focus restoration."
+}

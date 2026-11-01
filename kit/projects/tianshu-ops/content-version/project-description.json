@@ -1,0 +1,178 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "tianshu-ops",
+  "contextType": "real-product",
+  "product": {
+    "name": "天枢 · 运营管理平台",
+    "description": "供内容运营人员检索内容版本、判断当前状态，并在后续阶段比较差异和执行受控回滚。"
+  },
+  "pages": [
+    {
+      "id": "content-version",
+      "route": "/content/version",
+      "title": "内容 · 版本与回滚",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "快速找到目标内容的历史版本，识别当前、历史与已回滚状态，并进入版本详情或差异比较。",
+        "primaryAction": "比较版本差异",
+        "secondaryActions": ["查看版本详情", "导出记录", "刷新"],
+        "successCriteria": [
+          "筛选、重置、刷新和导出均给出明确结果反馈",
+          "选择历史版本后可与同一内容位的当前版本逐字段比较",
+          "详情与 Diff 使用 Drawer，移动端差异字段改为纵向阅读",
+          "回滚仅允许历史版本，必须填写至少 10 个字符的原因并确认影响范围",
+          "页面不提供手动新建版本入口",
+          "移动端页面不产生外层横向溢出，危险操作关闭后焦点回到稳定入口"
+        ],
+        "prdAnchor": "<local-path-omitted>#内容运营域版本与回滚",
+        "referenceImplementations": [
+          "https://www.contentful.com/help/content-and-entries/versions/",
+          "https://www.sanity.io/docs/studio/compare-document-versions",
+          "https://help.webflow.com/hc/en-us/articles/33961244069395-Save-and-restore-backups"
+        ],
+        "antiPatterns": [
+          "把版本记录做成同构卡片网格",
+          "在列表页提供手动新建版本入口",
+          "在布局阶段伪造已完成的回滚结果"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Input",
+        "Select",
+        "Drawer",
+        "DescriptionGrid",
+        "CheckboxGroup",
+        "ConfirmDialog",
+        "FormSection"
+      ],
+      "content": {
+        "filters": [
+          {
+            "name": "contentSlot",
+            "label": "关联内容位/活动",
+            "type": "select",
+            "options": [
+              { "label": "首页 Banner A", "value": "home-banner-a" },
+              { "label": "会员日主题", "value": "member-day-theme" },
+              { "label": "新品首发活动位", "value": "launch-slot" }
+            ]
+          },
+          { "name": "version", "label": "版本号", "type": "text", "placeholder": "如 v1.2.0" },
+          {
+            "name": "changeType",
+            "label": "变更类型",
+            "type": "select",
+            "options": [
+              { "label": "初始发布", "value": "publish" },
+              { "label": "内容编辑", "value": "edit" },
+              { "label": "回滚操作", "value": "rollback" },
+              { "label": "定时上架", "value": "scheduled-on" },
+              { "label": "定时下架", "value": "scheduled-off" }
+            ]
+          },
+          {
+            "name": "versionStatus",
+            "label": "版本状态",
+            "type": "select",
+            "options": [
+              { "label": "当前版本", "value": "current" },
+              { "label": "历史版本", "value": "historical" },
+              { "label": "已回滚", "value": "rolled-back" }
+            ]
+          }
+        ],
+        "table": {
+          "title": "版本历史",
+          "rowKey": "versionId",
+          "columns": [
+            { "key": "version", "title": "版本号", "width": 120 },
+            { "key": "contentName", "title": "关联内容位/活动", "width": 184, "ellipsis": true },
+            { "key": "changeSummary", "title": "变更摘要", "width": 220, "ellipsis": true },
+            { "key": "changedBy", "title": "变更人", "width": 104 },
+            {
+              "key": "changeType",
+              "title": "变更类型",
+              "display": "tag",
+              "width": 112,
+              "tagColors": {
+                "初始发布": "default",
+                "内容编辑": "default",
+                "回滚操作": "default",
+                "定时上架": "default",
+                "定时下架": "default"
+              }
+            },
+            {
+              "key": "versionStatus",
+              "title": "版本状态",
+              "display": "tag",
+              "width": 112,
+              "tagColors": {
+                "当前版本": "success",
+                "历史版本": "default",
+                "已回滚": "warning"
+              }
+            },
+            { "key": "publishedAt", "title": "发布时间", "width": 168 },
+            { "key": "actions", "title": "操作", "display": "actions", "width": 152, "actions": ["查看详情", "Diff 对比"] }
+          ],
+          "rows": [
+            {
+              "versionId": "home-banner-a-v1-4-0",
+              "version": "v1.4.0",
+              "contentName": "首页 Banner A",
+              "changeSummary": "替换主图并调整跳转链接",
+              "changedBy": "陈思远",
+              "changeType": "内容编辑",
+              "versionStatus": "当前版本",
+              "publishedAt": "2026-08-18 16:42:09",
+              "actions": ""
+            },
+            {
+              "versionId": "home-banner-a-v1-3-2",
+              "version": "v1.3.2",
+              "contentName": "首页 Banner A",
+              "changeSummary": "更新活动文案与生效时间",
+              "changedBy": "林晓雨",
+              "changeType": "定时上架",
+              "versionStatus": "历史版本",
+              "publishedAt": "2026-08-15 10:15:30",
+              "actions": ""
+            },
+            {
+              "versionId": "member-day-v2-1-1",
+              "version": "v2.1.1",
+              "contentName": "会员日主题",
+              "changeSummary": "恢复主题页稳定版本",
+              "changedBy": "周启明",
+              "changeType": "回滚操作",
+              "versionStatus": "当前版本",
+              "publishedAt": "2026-08-14 19:08:12",
+              "actions": ""
+            },
+            {
+              "versionId": "member-day-v2-2-0",
+              "version": "v2.2.0",
+              "contentName": "会员日主题",
+              "changeSummary": "修改优惠说明与按钮文案",
+              "changedBy": "周启明",
+              "changeType": "内容编辑",
+              "versionStatus": "已回滚",
+              "publishedAt": "2026-08-14 17:36:54",
+              "actions": ""
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

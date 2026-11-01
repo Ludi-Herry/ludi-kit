@@ -1,0 +1,114 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "contextType": "validation-sandbox",
+  "decision": "pipeline-only",
+  "product": {
+    "name": "Sample Inventory ERP",
+    "realCustomer": false,
+    "audience": [
+      "AI generation pipeline maintainers"
+    ],
+    "scenario": "Validate project context, generated pages, harness, preview, feedback, and promotion rules."
+  },
+  "sourceOfTruth": [
+    "projects/sample-inventory-erp/prd.mdx",
+    "projects/sample-inventory-erp/flows.json",
+    "projects/sample-inventory-erp/pages.json"
+  ],
+  "boundaries": {
+    "mayUseFor": [
+      "pipeline regression",
+      "harness scenario coverage",
+      "preview acceptance",
+      "feedback loop validation"
+    ],
+    "doNotUseFor": [
+      "business component roadmap",
+      "third-party UI baseline decision",
+      "real product information architecture"
+    ]
+  },
+  "thirdPartyBaseline": {
+    "status": "blocked-until-real-brief",
+    "preferredDirection": "shadcn-first behind @ai-readable/kit public API",
+    "alternatives": [
+      "antd for complex enterprise tables and forms"
+    ]
+  },
+  "frontendFoundation": {
+    "outputMode": "kit-consumer",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "local",
+      "displayName": "AI-readable Kit",
+      "version": "0.1.0",
+      "packageName": "@ai-readable/kit"
+    },
+    "distribution": "workspace-package",
+    "officialSources": {
+      "principles": "DESIGN.md",
+      "components": "components.manifest.json",
+      "templates": "recipes/",
+      "source": "src/index.ts",
+      "styles": "src/styles.css",
+      "theme": "src/components.tsx#AIReadableProvider",
+      "variables": "tokens.manifest.json"
+    },
+    "license": "private",
+    "reviewedAt": "2026-07-19",
+    "designPack": {
+      "path": "foundations/design-packs/local-ai-readable-kit-0.1.0.json",
+      "sha256": "f16a762bf8d310ca8e5d8306a9b58ffdc6815609c12d475b005e2ad35fdf1c53"
+    },
+    "icons": {
+      "packageName": "@ai-readable/kit",
+      "version": "0.1.0",
+      "source": "src/icons.ts"
+    },
+    "theme": {
+      "entry": "@ai-readable/kit/styles.css",
+      "strategy": "AIReadableProvider CSS variables"
+    },
+    "reset": {
+      "import": "@ai-readable/kit/styles.css"
+    },
+    "imports": {
+      "root": "@ai-readable/kit",
+      "allowedPackages": [
+        "@ai-readable/kit",
+        "react"
+      ],
+      "forbiddenPackages": [
+        "antd",
+        "antd/",
+        "@ant-design/",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-import-boundary",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "blocked-until-real-brief",
+    "rule": "Do not add domain components from this sample. Use it only to test the generation loop."
+  },
+  "requiredBeforeRealWork": [
+    "Define the real product and audience.",
+    "Name the first core workflows.",
+    "List first-page scope and critical business states.",
+    "Decide whether shadcn, antd, or a temporary internal implementation should back @ai-readable/kit."
+  ]
+}

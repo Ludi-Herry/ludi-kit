@@ -1,0 +1,270 @@
+{
+  "id": "cloudai-0.6.1",
+  "foundationId": "cloudai",
+  "reviewedAt": "2026-10-06",
+  "source": {
+    "cli": "npm view @cloudai-design/oneskill version license --json（0.6.1，MIT）；npm view @cloudai-design/tailwind version license --json（0.2.3，MIT）；npm view shadcn@3 version --json（3.8.5）",
+    "registry": "https://o.alicdn.com/cloudai/cloudai/v3/r/default/{name}.json（CloudAI 官方 registry，@cloudai 命名空间，GET 可达）",
+    "officialShadcnRegistry": "shadcn 官方 v3 registry（components.json 默认来源，基础原语）",
+    "referencePackage": "<local-path-omitted> pack @cloudai-design/oneskill@0.6.1 内容与其 CloudAI-UI 目录 diff -rq 逐文件一致）",
+    "report": "<local-path-omitted>",
+    "principles": "包内 CloudAI-UI/SKILL.md 与 design-system/*.md（color/states/hierarchy/layout/motion）",
+    "components": "包内 CloudAI-UI/components.md（场景→组件选型表）与 components/component-index.md（35 项 registry item）",
+    "templates": "包内 CloudAI-UI/page-templates.md 与 7 份模板契约（只借结构，不抄 TSX）",
+    "variables": "包内 CloudAI-UI/themes/aidbs-tokens.md（80 个 token 实际取值）",
+    "homepage": "https://www.npmjs.com/package/@cloudai-design/oneskill",
+    "repository": "not-published",
+    "source": "npm tarball @cloudai-design/oneskill@0.6.1（npm pack 即源码分发，无公开 Git 仓库；与参考源包 <local-path-omitted> diff -rq 逐文件一致）",
+    "styles": "@cloudai-design/tailwind@0.2.3 v3/aidbs 主题插件（tailwindcss v3 preset，注入 CSS 变量；cloudai 红线：工程 index.css 只留三行 @tailwind，不手写 :root 变量）",
+    "theme": "@cloudai-design/tailwind@0.2.3（entry @cloudai-design/tailwind/v3/aidbs，MIT，主题 token 与组件类同源）"
+  },
+  "package": {
+    "name": "@cloudai-design/oneskill",
+    "version": "0.6.1",
+    "license": "MIT"
+  },
+  "themePackage": {
+    "name": "@cloudai-design/tailwind",
+    "version": "0.2.3",
+    "license": "MIT",
+    "entry": "@cloudai-design/tailwind/v3/aidbs"
+  },
+  "iconPackage": {
+    "name": "lucide-react",
+    "version": "1.52.0",
+    "license": "ISC"
+  },
+  "distribution": "source-registry（shadcn v3 source-owned：组件经 npx shadcn@3 add 写入工程源码；主题经 tailwind 插件注入）",
+  "framework": {
+    "name": "react",
+    "version": "18.3.1"
+  },
+  "imports": {
+    "runtime": "@/components/ui（CLI 写入的项目源码，source-owned）",
+    "icons": "lucide-react",
+    "themeProvider": null,
+    "resetCss": "src/index.css（tailwindcss v3 preflight；只留三行 @tailwind，不手写 :root 变量——cloudai 红线，变量由主题插件注入）",
+    "namedImportsOnly": true
+  },
+  "registry": {
+    "cli": "shadcn@3.8.5（devDependency 钉版；裸 npx shadcn 会拉到面向 Tailwind v4 的 CLI，装出的组件在 v3 下不生成样式，禁用）",
+    "style": "new-york",
+    "baseColor": "zinc",
+    "cssVariables": true,
+    "writeDir": "src/components/ui",
+    "aliases": {
+      "components": "@/components",
+      "ui": "@/components/ui",
+      "utils": "@/lib/utils",
+      "lib": "@/lib",
+      "hooks": "@/hooks"
+    },
+    "sources": {
+      "official": "shadcn 官方 v3 registry（components.json 默认）",
+      "@cloudai": "https://o.alicdn.com/cloudai/cloudai/v3/r/default/{name}.json"
+    }
+  },
+  "theme": {
+    "brand": "aidbs",
+    "entry": "tailwind.config.js（import cloudaiTheme from '@cloudai-design/tailwind/v3/aidbs'，plugins 注册；换主题只改 subpath）",
+    "exportName": null,
+    "cssVariables": true,
+    "tokenMapping": "与 shadcn 路线的根本差异：不把天枢合同色值改写进底座——CloudAI 自带 80 个语义 token（shadcn 标准 31 + 状态扩展 21：success/normal/unknown/warning-low|medium|high 各三层 + 品牌 brand/brand-1~12/brand-accent + 图表 chart-1~12 + 渐变 6）。天枢 data.ts 沿用 antd 预设色名，经 src/project/ui.tsx 映射到 CloudAI 六档状态语义：processing（antd 蓝，进行中）→ normal；success → success；warning（antd 金）→ warning-medium；error（antd 红）→ warning-high；geekblue（出货等深蓝）→ normal（CloudAI 无第六档蓝，语义同为正常运行，有意合并）；default → unknown。状态 pill 用 @cloudai/status-badge（iconVariant=dot，normal 默认旋转 loader 字形与静态业务状态不符）。链接 text-brand-foreground（primary 在近黑中性色，不作链接色）；侧栏走 sidebar-* 系列 token；品牌渐变 bg-brand-gradient 仅用于外壳品牌标识（Brand=装饰/品牌调性，不作控件主色）。"
+  },
+  "components": [
+    "breadcrumb",
+    "button",
+    "calendar",
+    "card",
+    "checkbox",
+    "command",
+    "dialog",
+    "drawer",
+    "dropdown-menu",
+    "input",
+    "input-group",
+    "label",
+    "popover",
+    "radio-group",
+    "scroll-area",
+    "select",
+    "separator",
+    "skeleton",
+    "sonner",
+    "switch",
+    "table",
+    "tabs",
+    "textarea",
+    "toggle",
+    "toggle-group",
+    "tooltip",
+    "status-badge",
+    "simple-tooltip",
+    "metric-card",
+    "message-bar",
+    "data-table-pro",
+    "filter-group-v2",
+    "select-pro-v2",
+    "pagination-pro",
+    "view-switch",
+    "refresh-button",
+    "loading-overlay",
+    "command-card",
+    "data-table",
+    "alert-dialog",
+    "progress"
+  ],
+  "cloudaiComponents": [
+    {
+      "name": "status-badge",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "六档状态语义 pill（success/normal/unknown/warning-low|medium|high）；项目全部状态 Tag 经 src/project/ui.tsx 统一映射"
+    },
+    {
+      "name": "simple-tooltip",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "零样板 hover 提示（自含 TooltipProvider）"
+    },
+    {
+      "name": "metric-card",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "单指标卡（工作台统计卡）"
+    },
+    {
+      "name": "message-bar",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "整行风险/提示条（告警横幅、错误态、只读提示），四档状态色覆盖 Alert 缺口"
+    },
+    {
+      "name": "data-table-pro",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "列表页一体编排（搜索/筛选/列设置/分页/多选/视图切换），附带 data-table/pagination-pro/view-switch/refresh-button/loading-overlay/command-card/input-group；TanStack v8 锁 ^8.21.3"
+    },
+    {
+      "name": "filter-group-v2",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "多条件筛选条（select/date/dateRange）；时间范围筛选用 type=dateRange（覆盖 RangePicker 缺口）"
+    },
+    {
+      "name": "select-pro-v2",
+      "registry": "@cloudai",
+      "license": "MIT",
+      "reason": "增强下拉（多选 tag 形态；烧录工位/批次号多选）"
+    }
+  ],
+  "sourceOwnedForks": [
+    {
+      "file": "src/components/ui/data-table/selection-bar.tsx",
+      "change": "absolute 浮层 → 文档流内 sticky 底条（mx-auto w-fit）；文案中文化（已选 N 项/取消选择）",
+      "reason": "天枢 Owner 裁决口径：勾选后滚到底部末行完整露出且不重叠、SN 一次直达；DEC-021 本地化（组件无文案 props）"
+    },
+    {
+      "file": "src/components/ui/pagination-pro.tsx",
+      "change": "英文默认文案中文化（每页/上一页/下一页/第 N 页/跳至/确定/共 N 条）",
+      "reason": "DEC-021 本地化（组件无文案 props）"
+    },
+    {
+      "file": "src/components/ui/data-table/selection-column.tsx",
+      "change": "移除未使用的 React import",
+      "reason": "脚手架 tsconfig 开 noUnusedLocals/noUnusedParameters（较 shadcn 工程严格），TSC=0 需要"
+    },
+    {
+      "file": "src/project/store.ts",
+      "change": "find 回调未用参数 id → _id（一行，唯一与天枢合同源文件的差异）",
+      "reason": "同上；data.ts/store.ts 自天枢原样复制，零 antd 依赖"
+    }
+  ],
+  "communityComponents": [
+    {
+      "name": "qrcode.react",
+      "version": "4.2.0",
+      "source": "https://www.npmjs.com/package/qrcode.react",
+      "license": "ISC",
+      "reason": "@cloudai registry 无 QRCode（数字护照二维码展示需要）；step2（10-06）实装兑现。安装 --ignore-scripts，无 lifecycle scripts；具名 QRCodeSVG"
+    }
+  ],
+  "knownGaps": [
+    {
+      "component": "Steps / Stepper 分步条",
+      "status": "CloudAI 契约明确「仓里没有步骤条组件，照骨架抄，别去装第三方 stepper」（page-templates/quick-start.md）；按该契约页面级 StepProgressBar（序号胶囊+标签+分隔箭头）实现，完成步 ✓ 高亮为自补态"
+    },
+    {
+      "component": "Alert",
+      "status": "registry 无；@cloudai/message-bar 四档状态覆盖（告警横幅/错误态/只读提示/关证书警告）"
+    },
+    {
+      "component": "Field / FieldError / FieldDescription（shadcn v3 无 field 原语）",
+      "status": "页面级 Label + p[role=alert] + text-destructive 组合兜底（详情 RMA 表单、烧录表单）"
+    },
+    {
+      "component": "ColumnSettings 内置英文文案无 props",
+      "status": "DEC-021 未覆盖；设备列表 showColumnSettings=false，列设置改自绘 DropdownMenu（文案照天枢）"
+    },
+    {
+      "component": "Timeline / 时间轴",
+      "status": "registry 无；本批 4 页未用到"
+    },
+    {
+      "component": "QRCode / 二维码",
+      "status": "registry 无；本批 4 页未用到"
+    },
+    {
+      "component": "Descriptions",
+      "status": "registry 无；设备详情按页面级 dl/grid 实现（与 shadcn 相同）"
+    },
+    {
+      "component": "Segmented",
+      "status": "ToggleGroup(type=single) 等价（基础视图/时间范围），选中态 data-[state=on] 变体类"
+    },
+    {
+      "component": "RangePicker",
+      "status": "FilterGroupV2 type=dateRange 覆盖（设备列表激活时间/出厂日期）"
+    },
+    {
+      "component": "Empty / Result",
+      "status": "空态与未开放页按页面级文案 + Card/DataTablePro emptyState 实现"
+    },
+    {
+      "component": "Upload",
+      "status": "registry 无；本批 4 页未用到"
+    },
+    {
+      "component": "RMA 发起时间单次范围 ≤366 天的日历内约束（FilterGroupV2 dateRange 无锚点回传）",
+      "status": "step2 登记：disabledDate 只能表达静态边界，超范围仍可正常过滤，仅少选择期约束"
+    },
+    {
+      "component": "FilterGroupV2 无文本/数字区间型",
+      "status": "step2 登记：flashing 批次号/重试次数（0–999 钳制）、固件灰度比例 min/max 入搜索槽常驻，功能等价"
+    },
+    {
+      "component": "FilterGroupV2 常驻 dateRange 无 pill 清除钮",
+      "status": "step2 登记：清回「全部时间」走页面「重置」"
+    },
+    {
+      "component": "DataTablePro 无行级 className 逃生舱",
+      "status": "step2 登记：行标底用页面级 OverdueCell（语义 token 全幅单元格包裹）"
+    },
+    {
+      "component": "ui.tsx 未提供退货原因/退货来源 Tag",
+      "status": "step2 登记：页面级 MetaTag（与 ui.tsx 同一 antd 色名→六档映射），建议后续补进共享层"
+    },
+    {
+      "component": "SelectProV2 无 onOpenChange 契约",
+      "status": "step2 登记：机型必选校验改为提交时首次出现（与 FlashingFormPage 同一口径）"
+    },
+    {
+      "component": "AlertDialogAction 无 variant 口子",
+      "status": "step2 登记：确认按钮走组件默认主色实心（shadcn 为 outline），文案不变"
+    },
+    {
+      "component": "Timeline / 竖向时间轴（registry 无）",
+      "status": "step2 登记：护照详情、告警处置记录、反馈回复历史三处页面级实现（同 shadcn step2 先例）"
+    }
+  ]
+}

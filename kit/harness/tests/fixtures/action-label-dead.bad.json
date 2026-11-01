@@ -1,0 +1,12 @@
+{
+  "id": "test-action-label-dead",
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/action-label-dead.bad.tsx",
+    "symbol": "DeadActionLabelPage"
+  },
+  "report": "harness/reports/test-action-label-dead.json"
+}

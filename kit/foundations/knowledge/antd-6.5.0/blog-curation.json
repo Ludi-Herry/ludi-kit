@@ -1,0 +1,379 @@
+{
+  "version": "1.0.0",
+  "targetVersion": "6.5.0",
+  "classification": [
+    "component-decision",
+    "interaction-detail",
+    "visual-regression",
+    "engineering-risk",
+    "version-migration",
+    "maintenance-process"
+  ],
+  "applicabilityStatuses": ["direct", "conditional", "historical"],
+  "selectionModes": ["component", "page-pattern", "maintenance-only"],
+  "outputKinds": ["decision-card", "lint-rule", "visual-regression-case", "upgrade-watch"],
+  "articles": [
+    {
+      "id": "build-ghost",
+      "categories": ["engineering-risk"],
+      "components": [],
+      "topics": ["dependency-resolution", "build-diagnostics"],
+      "applicability": { "status": "conditional", "basis": "Build diagnosis remains useful; dependency details must be checked against the frozen 6.5.0 graph." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "dependency-and-build-behavior" }]
+    },
+    {
+      "id": "button-loading-animation",
+      "categories": ["component-decision", "interaction-detail", "visual-regression"],
+      "components": ["Button", "Form", "Slider", "Upload"],
+      "topics": ["loading", "motion", "layout-stability", "wave"],
+      "applicability": { "status": "direct", "basis": "Published for the v6 code line immediately before this frozen snapshot." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Button" },
+        { "kind": "visual-regression-case", "target": "button-loading-layout-stability" }
+      ]
+    },
+    {
+      "id": "check-conduct",
+      "categories": ["component-decision", "interaction-detail"],
+      "components": ["Tree", "TreeSelect", "Cascader"],
+      "topics": ["checked-conduction", "disabled-node", "checkStrictly"],
+      "applicability": { "status": "conditional", "basis": "The interaction principle remains relevant; current prop details come from the 6.5.0 CLI references." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Tree" },
+        { "kind": "decision-card", "target": "TreeSelect" },
+        { "kind": "visual-regression-case", "target": "tree-disabled-conduction" }
+      ]
+    },
+    {
+      "id": "color-picker",
+      "categories": ["component-decision", "interaction-detail"],
+      "components": ["ColorPicker"],
+      "topics": ["color-model", "format", "precision"],
+      "applicability": { "status": "conditional", "basis": "Color-model guidance is stable; the 6.5.0 component API remains authoritative." },
+      "selection": { "mode": "component" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "ColorPicker-format-and-precision" }]
+    },
+    {
+      "id": "config-provider-style",
+      "categories": ["component-decision", "engineering-risk"],
+      "components": ["ConfigProvider"],
+      "topics": ["theme-extension", "component-token", "context"],
+      "applicability": { "status": "conditional", "basis": "Theme-extension intent applies; token and provider APIs are resolved from 6.5.0." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "decision-card", "target": "ConfigProvider" }]
+    },
+    {
+      "id": "contributor-development-maintenance-guide",
+      "categories": ["maintenance-process"],
+      "components": [],
+      "topics": ["contribution", "maintenance", "repository-workflow"],
+      "applicability": { "status": "conditional", "basis": "Repository process guidance may drift independently of runtime 6.5.0." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "upstream-maintenance-process" }]
+    },
+    {
+      "id": "css-in-js",
+      "categories": ["engineering-risk"],
+      "components": ["ConfigProvider"],
+      "topics": ["css-in-js", "style-isolation", "dynamic-theme"],
+      "applicability": { "status": "conditional", "basis": "Architecture background predates v6 and must be reconciled with v6 CSS variables and current tokens." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "style-engine-evolution" }]
+    },
+    {
+      "id": "css-tricks",
+      "categories": ["component-decision", "engineering-risk", "version-migration"],
+      "components": ["Button", "Card", "Input", "Select"],
+      "topics": ["v6", "css-variables", "variant", "logical-properties"],
+      "applicability": { "status": "direct", "basis": "The article explicitly documents v6 CSS behavior." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [
+        { "kind": "lint-rule", "target": "antd-v6-deprecated-api" },
+        { "kind": "upgrade-watch", "target": "v6-css-behavior" }
+      ]
+    },
+    {
+      "id": "css-var-plan",
+      "categories": ["engineering-risk", "version-migration"],
+      "components": ["ConfigProvider"],
+      "topics": ["css-variables", "theme", "ssr", "migration"],
+      "applicability": { "status": "conditional", "basis": "The plan explains the path to v6; implementation details are checked against the frozen v6 design language." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "css-variable-runtime" }]
+    },
+    {
+      "id": "extract-ssr",
+      "categories": ["engineering-risk"],
+      "components": ["ConfigProvider"],
+      "topics": ["ssr", "static-style", "hydration"],
+      "applicability": { "status": "conditional", "basis": "SSR mechanics can drift with the style engine and require project-runtime verification." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "ssr-style-extraction" }]
+    },
+    {
+      "id": "form-names",
+      "categories": ["component-decision", "interaction-detail"],
+      "components": ["Form"],
+      "topics": ["field-name", "data-shape", "wrapper-component"],
+      "applicability": { "status": "conditional", "basis": "Data-shape guidance applies when current Form name-path behavior is confirmed in 6.5.0." },
+      "selection": { "mode": "component" },
+      "outputs": [{ "kind": "decision-card", "target": "Form" }]
+    },
+    {
+      "id": "getContainer",
+      "categories": ["component-decision", "engineering-risk", "version-migration"],
+      "components": ["Modal", "Drawer", "Tooltip", "Dropdown"],
+      "topics": ["portal", "getContainer", "concurrent-rendering"],
+      "applicability": { "status": "conditional", "basis": "Portal ownership remains relevant; current 6.5.0 props and React behavior control implementation." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "lint-rule", "target": "stable-overlay-container" },
+        { "kind": "visual-regression-case", "target": "overlay-container-placement" }
+      ]
+    },
+    {
+      "id": "github-actions-workflow",
+      "categories": ["maintenance-process", "engineering-risk"],
+      "components": [],
+      "topics": ["github-actions", "ci", "release-workflow"],
+      "applicability": { "status": "conditional", "basis": "CI workflow guidance is independent of the component runtime and may drift." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "upstream-ci-workflow" }]
+    },
+    {
+      "id": "happy-work",
+      "categories": ["maintenance-process"],
+      "components": [],
+      "topics": ["team-culture", "developer-experience"],
+      "applicability": { "status": "conditional", "basis": "Team-process material has no direct runtime dependency." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "upstream-team-practice" }]
+    },
+    {
+      "id": "historical-debt",
+      "categories": ["engineering-risk", "version-migration"],
+      "components": [],
+      "topics": ["api-deprecation", "compatibility", "maintenance"],
+      "applicability": { "status": "conditional", "basis": "The API-debt lesson applies directly; concrete deprecated props come from CLI 6.5.1 lint." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "lint-rule", "target": "antd-v6-deprecated-api" }]
+    },
+    {
+      "id": "hydrate-cssinjs",
+      "categories": ["engineering-risk"],
+      "components": ["ConfigProvider"],
+      "topics": ["hydration", "dynamic-style", "cache"],
+      "applicability": { "status": "conditional", "basis": "Hydration risks remain; implementation details require the current style engine." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "hydration-style-cache" }]
+    },
+    {
+      "id": "issue-helper",
+      "categories": ["maintenance-process"],
+      "components": [],
+      "topics": ["issue-report", "reproduction", "debugging"],
+      "applicability": { "status": "conditional", "basis": "Debugging-process guidance has no direct runtime dependency." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "upstream-debugging-practice" }]
+    },
+    {
+      "id": "line-ellipsis",
+      "categories": ["component-decision", "interaction-detail", "visual-regression"],
+      "components": ["Typography"],
+      "topics": ["ellipsis", "measurement", "responsive-text"],
+      "applicability": { "status": "conditional", "basis": "Text-measurement principles apply; current Typography behavior comes from 6.5.0." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Typography" },
+        { "kind": "visual-regression-case", "target": "typography-multiline-ellipsis" }
+      ]
+    },
+    {
+      "id": "mock-project-build",
+      "categories": ["engineering-risk"],
+      "components": [],
+      "topics": ["dependency-debugging", "minimal-reproduction", "build"],
+      "applicability": { "status": "conditional", "basis": "The diagnostic method applies while package-specific details can drift." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "dependency-reproduction" }]
+    },
+    {
+      "id": "modal-hook-order",
+      "categories": ["component-decision", "interaction-detail", "engineering-risk"],
+      "components": ["Modal"],
+      "topics": ["hook-api", "context", "destroy-order"],
+      "applicability": { "status": "conditional", "basis": "Lifecycle ordering remains relevant; 6.5.0 hook behavior must be used." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Modal" },
+        { "kind": "visual-regression-case", "target": "modal-hook-lifecycle" }
+      ]
+    },
+    {
+      "id": "notification-stack",
+      "categories": ["component-decision", "interaction-detail", "visual-regression"],
+      "components": ["Notification"],
+      "topics": ["stack", "maxCount", "feedback-lifecycle"],
+      "applicability": { "status": "conditional", "basis": "Stacking behavior is relevant; current Notification props come from 6.5.0." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Notification" },
+        { "kind": "visual-regression-case", "target": "notification-stack-density" }
+      ]
+    },
+    {
+      "id": "picker",
+      "categories": ["component-decision", "interaction-detail"],
+      "components": ["DatePicker", "TimePicker"],
+      "topics": ["disabledDate", "disabledTime", "range", "performance"],
+      "applicability": { "status": "conditional", "basis": "Constraint-model guidance applies; current picker callback signatures come from 6.5.0." },
+      "selection": { "mode": "component" },
+      "outputs": [{ "kind": "decision-card", "target": "DatePicker" }]
+    },
+    {
+      "id": "render-times",
+      "categories": ["engineering-risk"],
+      "components": ["Table", "Form"],
+      "topics": ["render-performance", "memoization", "context"],
+      "applicability": { "status": "conditional", "basis": "Rendering diagnostics apply; component internals can differ in v6." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "component-render-performance" }]
+    },
+    {
+      "id": "semantic-beauty",
+      "categories": ["component-decision", "engineering-risk", "version-migration"],
+      "components": ["ConfigProvider"],
+      "topics": ["v6", "semantic-dom", "classNames", "styles"],
+      "applicability": { "status": "direct", "basis": "The article documents v6 semantic styling and aligns with frozen CLI semantic output." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [
+        { "kind": "lint-rule", "target": "prefer-semantic-dom-over-structural-css" },
+        { "kind": "upgrade-watch", "target": "semantic-dom-contract" }
+      ]
+    },
+    {
+      "id": "suspense",
+      "categories": ["engineering-risk"],
+      "components": ["ConfigProvider"],
+      "topics": ["suspense", "style-loss", "concurrent-rendering"],
+      "applicability": { "status": "conditional", "basis": "Concurrent rendering risk remains; reproduce against the current React and v6 style engine." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "suspense-style-lifecycle" }]
+    },
+    {
+      "id": "table-scroll-ghost",
+      "categories": ["component-decision", "interaction-detail", "visual-regression"],
+      "components": ["Table"],
+      "topics": ["scroll", "sticky", "rounding", "fixed-column"],
+      "applicability": { "status": "direct", "basis": "Published for the v6 code line immediately before this frozen snapshot." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Table" },
+        { "kind": "visual-regression-case", "target": "table-horizontal-scroll-alignment" }
+      ]
+    },
+    {
+      "id": "testing-migrate",
+      "categories": ["engineering-risk", "version-migration", "maintenance-process"],
+      "components": [],
+      "topics": ["testing-library", "migration", "interaction-test"],
+      "applicability": { "status": "historical", "basis": "The migration record is historical; retain it for test-infrastructure upgrades." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "test-library-migration" }]
+    },
+    {
+      "id": "to-be-collaborator",
+      "categories": ["maintenance-process"],
+      "components": [],
+      "topics": ["contribution", "collaboration"],
+      "applicability": { "status": "conditional", "basis": "Community process is independent of component runtime and can drift." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "upstream-collaboration-process" }]
+    },
+    {
+      "id": "to-be-what-you-see",
+      "categories": ["engineering-risk", "maintenance-process"],
+      "components": [],
+      "topics": ["documentation", "demo", "source-of-truth"],
+      "applicability": { "status": "conditional", "basis": "Documentation-generation principles apply while upstream tooling can drift." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "documentation-source-alignment" }]
+    },
+    {
+      "id": "tooltip-align",
+      "categories": ["component-decision", "interaction-detail", "visual-regression"],
+      "components": ["Tooltip", "Popover", "Dropdown"],
+      "topics": ["popup-align", "viewport", "arrow", "placement"],
+      "applicability": { "status": "conditional", "basis": "Alignment intent applies; current popup engine and props come from 6.5.0." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Tooltip" },
+        { "kind": "visual-regression-case", "target": "tooltip-edge-alignment" }
+      ]
+    },
+    {
+      "id": "tree-shaking",
+      "categories": ["engineering-risk"],
+      "components": [],
+      "topics": ["bundle-size", "tree-shaking", "module-side-effects"],
+      "applicability": { "status": "conditional", "basis": "Bundling principles apply; verify with the current v6 package and consumer bundler." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "bundle-tree-shaking" }]
+    },
+    {
+      "id": "type-util",
+      "categories": ["engineering-risk"],
+      "components": [],
+      "topics": ["typescript", "type-utility", "api-design"],
+      "applicability": { "status": "conditional", "basis": "Type patterns are reusable; exported utilities must be checked in 6.5.0." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "typescript-utility-surface" }]
+    },
+    {
+      "id": "v4-ood",
+      "categories": ["version-migration"],
+      "components": [],
+      "topics": ["v4", "end-of-maintenance", "migration"],
+      "applicability": { "status": "historical", "basis": "The article records the completed v4 maintenance transition and is retained as migration history." },
+      "selection": { "mode": "maintenance-only" },
+      "outputs": [{ "kind": "upgrade-watch", "target": "unsupported-major-version" }]
+    },
+    {
+      "id": "virtual-table",
+      "categories": ["component-decision", "interaction-detail", "engineering-risk"],
+      "components": ["Table"],
+      "topics": ["virtualization", "large-data", "fixed-column", "rowspan"],
+      "applicability": { "status": "conditional", "basis": "Virtualization decisions apply; current Table virtual API comes from 6.5.0." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Table" },
+        { "kind": "visual-regression-case", "target": "table-virtual-scroll" }
+      ]
+    },
+    {
+      "id": "visual-regression",
+      "categories": ["visual-regression", "maintenance-process"],
+      "components": [],
+      "topics": ["baseline-screenshot", "pixel-diff", "flaky-test", "threshold"],
+      "applicability": { "status": "direct", "basis": "The quality method is runtime-independent and is adopted by this pack's visual cases." },
+      "selection": { "mode": "page-pattern", "pagePatterns": ["dashboard-page", "list-page", "detail-page", "form-page", "step-flow", "audit-log"] },
+      "outputs": [{ "kind": "visual-regression-case", "target": "golden-page-baseline" }]
+    },
+    {
+      "id": "why-not-static",
+      "categories": ["component-decision", "engineering-risk", "version-migration"],
+      "components": ["Message", "Notification", "Modal"],
+      "topics": ["static-method", "context", "theme", "locale"],
+      "applicability": { "status": "conditional", "basis": "Context loss remains relevant; current v6 hook and App APIs are authoritative." },
+      "selection": { "mode": "component" },
+      "outputs": [
+        { "kind": "decision-card", "target": "Message" },
+        { "kind": "decision-card", "target": "Notification" },
+        { "kind": "lint-rule", "target": "prefer-context-aware-feedback-api" }
+      ]
+    }
+  ]
+}

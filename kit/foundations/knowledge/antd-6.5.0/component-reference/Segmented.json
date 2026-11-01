@@ -1,0 +1,334 @@
+{
+  "version": "1.0.0",
+  "component": "Segmented",
+  "queryComponent": "Segmented",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-09-28",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Segmented",
+        "nameZh": "分段控制器",
+        "description": "用于展示多个选项并允许用户选择其中单个选项。",
+        "props": [
+          {
+            "name": "block",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultValue",
+            "type": "string | number",
+            "default": "Value of first item in `options`",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "onChange",
+            "type": "function(value: string | number)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "options",
+            "type": "string[] | number[] | SegmentedItemType[]",
+            "default": "[]",
+            "since": ""
+          },
+          {
+            "name": "orientation",
+            "type": "`horizontal` | `vertical`",
+            "default": "`horizontal`",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`large` | `medium` | `small`",
+            "default": "`medium`",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "vertical",
+            "type": "boolean",
+            "default": "`false`",
+            "since": "5.21.0"
+          },
+          {
+            "name": "value",
+            "type": "string | number",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "shape",
+            "type": "`default` | `round`",
+            "default": "`default`",
+            "since": "5.24.0"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "default": "-",
+            "since": "5.23.0"
+          }
+        ],
+        "subComponentProps": {
+          "Segmented.SegmentedItemType": [
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "className",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "tooltip",
+              "type": "string | [TooltipProps](../tooltip/index.en-US.md#api)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "value",
+              "type": "string | number",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Segmented",
+        "doc": "\n自 `antd@4.20.0` 版本开始提供该组件。\n\n## 何时使用 {#when-to-use}\n\n- 用于展示多个选项并允许用户选择其中单个选项；\n- 当切换选中选项时，关联区域的内容会发生变化。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/vertical.tsx\" version=\"5.21.0\">垂直方向</code>\n<code src=\"./demo/block.tsx\">Block 分段选择器</code>\n<code src=\"./demo/shape.tsx\" version=\"5.24.0\">胶囊形状</code>\n<code src=\"./demo/disabled.tsx\">不可用</code>\n<code src=\"./demo/controlled.tsx\">受控模式</code>\n<code src=\"./demo/custom.tsx\">自定义渲染</code>\n<code src=\"./demo/dynamic.tsx\">动态数据</code>\n<code src=\"./demo/size.tsx\">三种大小</code>\n<code src=\"./demo/with-icon.tsx\">设置图标</code>\n<code src=\"./demo/icon-only.tsx\">只设置图标</code>\n<code src=\"./demo/with-name.tsx\" version=\"5.23.0\">配合 name 使用</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/controlled-two.tsx\" debug>受控同步模式</code>\n<code src=\"./demo/size-consistent.tsx\" debug>统一高度</code>\n<code src=\"./demo/componentToken.tsx\" debug>自定义组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n> 自 `antd@4.20.0` 版本开始提供该组件。\n\n### Segmented\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| block | 将宽度调整为父元素宽度的选项 | boolean | false |  | × |\n| classNames | 用于自定义 Segmented 组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| defaultValue | 默认选中的值 | string \\| number | `options` 首项的值 |  | × |\n| disabled | 是否禁用 | boolean | false |  | × |\n| onChange | 选项变化时的回调函数 | function(value: string \\| number) |  |  | × |\n| options | 数据化配置选项内容 | string\\[] \\| number\\[] \\| SegmentedItemType\\[] | [] |  | × |\n| orientation | 排列方向 | `horizontal` \\| `vertical` | `horizontal` |  | × |\n| size | 控件尺寸 | `large` \\| `medium` \\| `small` | `medium` |  | × |\n| styles | 用于自定义 Segmented 组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom) , CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom) , CSSProperties> | - |  | 6.0.0 |\n| vertical | 排列方向，与 `orientation` 同时存在，以 `orientation` 优先 | boolean | `false` | 5.21.0 | × |\n| value | 当前选中的值 | string \\| number |  |  | × |\n| shape | 形状 | `default` \\| `round` | `default` | 5.24.0 | × |\n| name | Segmented 下所有 `input[type=\"radio\"]` 的 `name` 属性。若未设置，则将回退到随机生成的名称 | string |  | 5.23.0 | × |\n\n### SegmentedItemType\n\n| 属性 | 描述 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| className | 自定义类名 | string | - |  |\n| disabled | 分段项的禁用状态 | boolean | false |  |\n| icon | 分段项的显示图标 | ReactNode | - |  |\n| label | 分段项的显示文本 | ReactNode | - |  |\n| tooltip | 分段项的工具提示 | string \\| [TooltipProps](../tooltip/index.zh-CN.md#api) | - |  |\n| value | 分段项的值 | string \\| number | - |  |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Segmented\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Segmented",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "The most basic usage."
+          },
+          {
+            "name": "block",
+            "title": "Block Segmented",
+            "description": "`block` property will make the `Segmented` fit to its parent width."
+          },
+          {
+            "name": "controlled",
+            "title": "Controlled mode",
+            "description": "Controlled Segmented."
+          },
+          {
+            "name": "custom",
+            "title": "Custom Render",
+            "description": "Custom each Segmented Item."
+          },
+          {
+            "name": "disabled",
+            "title": "Disabled",
+            "description": "Disabled Segmented."
+          },
+          {
+            "name": "dynamic",
+            "title": "Dynamic",
+            "description": "Load `options` dynamically."
+          },
+          {
+            "name": "icon-only",
+            "title": "With Icon only",
+            "description": "Set `icon` without `label` for Segmented Item."
+          },
+          {
+            "name": "shape",
+            "title": "Round shape",
+            "description": "Round shape of Segmented."
+          },
+          {
+            "name": "size",
+            "title": "Three sizes of Segmented",
+            "description": "There are three sizes of a Segmented component: `large` (40px), `medium` (32px), and `small` (24px)."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of the Segmented by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "vertical",
+            "title": "Vertical Direction",
+            "description": "Make it vertical."
+          },
+          {
+            "name": "with-icon",
+            "title": "With Icon",
+            "description": "Set `icon` for Segmented Item."
+          },
+          {
+            "name": "with-name",
+            "title": "With name",
+            "description": "Passing the `name` property to all `input[type=\"radio\"]` that are in the same Segmented. It is usually used to let the browser see your Segmented as a real \"group\" and keep the default behavior. For example, using left/right keyboard arrow to change your selection that in the same Segmented."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Segmented",
+        "tokens": [
+          {
+            "name": "itemActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of item when active",
+            "descriptionZh": "选项激活态背景颜色"
+          },
+          {
+            "name": "itemColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of item",
+            "descriptionZh": "选项文本颜色"
+          },
+          {
+            "name": "itemHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of item when hover",
+            "descriptionZh": "选项悬浮态背景颜色"
+          },
+          {
+            "name": "itemHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of item when hover",
+            "descriptionZh": "选项悬浮态文本颜色"
+          },
+          {
+            "name": "itemSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of item when selected",
+            "descriptionZh": "选项选中时背景颜色"
+          },
+          {
+            "name": "itemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of item when selected",
+            "descriptionZh": "选项选中时文字颜色"
+          },
+          {
+            "name": "trackBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of Segmented container",
+            "descriptionZh": "Segmented 控件容器背景色"
+          },
+          {
+            "name": "trackPadding",
+            "type": "string | number",
+            "default": "",
+            "description": "Padding of Segmented container",
+            "descriptionZh": "Segmented 控件容器的 padding"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Segmented",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with inline-block layout, padding, background, border radius, transition and container styles",
+            "descriptionZh": "根元素，设置行内块布局、内边距、背景色、圆角、过渡动画和容器样式"
+          },
+          {
+            "key": "item",
+            "description": "Option element with relative positioning, text alignment, cursor style, transition, selected state background and hover styles",
+            "descriptionZh": "选项元素，设置相对定位、文本对齐、光标样式、过渡动画、选中态背景色和悬停态样式"
+          },
+          {
+            "key": "label",
+            "description": "Label content element with min height, line height, padding, text ellipsis and content layout styles",
+            "descriptionZh": "标签内容元素，设置最小高度、行高、内边距、文本省略和内容布局样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element with icon size, color and text spacing styles",
+            "descriptionZh": "图标元素，设置图标的尺寸、颜色和与文本的间距样式"
+          }
+        ]
+      }
+    }
+  }
+}

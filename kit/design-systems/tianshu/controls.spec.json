@@ -1,0 +1,2800 @@
+{
+  "version": "0.1.0",
+  "name": "tianshu",
+  "status": "signed",
+  "signoff": {
+    "date": "2026-10-13",
+    "by": "Owner",
+    "ref": "docs/PLAN-四底座第5阶段-转正与收口-2026-10-13.md"
+  },
+  "tokens": "tokens.neutral.json",
+  "note": "天枢控件规格：每种控件怎么用中立 token。格式见 controls.README.md；校验：node scripts/check-control-spec.mjs。数值取自 antd 天枢现版 14 路由实测（workflows/evidence/foundation-parity-2026-10-10/phase2-routes）。button.primary 为主线程填写的样板，其余部位按实测补齐；antd 自身不一致项见填写任务报告，Owner 签字后生效。",
+  "controls": {
+    "button": {
+      "purpose": "页面与工具栏的操作按钮：primary 主操作，default 白底描边，text 透明无描边（重置、刷新），link 表格行内文字链接",
+      "parts": {
+        "primary": {
+          "props": {
+            "height": 34,
+            "paddingX": 15,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.brand.base",
+            "shadow": "rgba(5, 145, 255, 0.1) 0px 2px 0px 0px",
+            "textColor": "token:color.text.inverse",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "states": {
+            "hover": {
+              "background": "token:color.brand.hover"
+            },
+            "active": {
+              "background": "token:color.brand.active"
+            },
+            "disabled": {
+              "borderColor": "#d1d2d3"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "btn:查询"
+            }
+          ],
+          "note": "禁用态描边 #d1d2d3 为 antd colorBorderDisabled 实测（用户与绑定「查询」），底色、文字色走 bg.disabled / text.disabled。"
+        },
+        "default": {
+          "props": {
+            "height": 34,
+            "paddingX": 15,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "rgba(0, 0, 0, 0.02) 0px 2px 0px 0px",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "btn:列设置"
+            },
+            {
+              "route": "alerts",
+              "anchor": "btn:指派"
+            },
+            {
+              "route": "feedback",
+              "anchor": "btn:导出"
+            },
+            {
+              "route": "rma",
+              "anchor": "btn:导出"
+            }
+          ],
+          "states": {
+            "disabled": {
+              "borderColor": "#d1d2d3"
+            }
+          }
+        },
+        "text": {
+          "props": {
+            "height": 34,
+            "paddingX": 15,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "states": {
+            "hover": {
+              "background": "token:color.bg.fillTertiary"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "btn:重置"
+            },
+            {
+              "route": "alert-rules",
+              "anchor": "btn:刷新"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "btn:刷新全部"
+            },
+            {
+              "route": "firmware",
+              "anchor": "btn:重置"
+            },
+            {
+              "route": "rma",
+              "anchor": "btn:重置"
+            },
+            {
+              "route": "feedback",
+              "anchor": "btn:重置"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "btn:重置"
+            }
+          ]
+        },
+        "link": {
+          "props": {
+            "height": 24,
+            "paddingX": 4,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.text.link",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "states": {
+            "danger": {
+              "textColor": "token:color.status.error.solid"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "btn:编辑"
+            },
+            {
+              "route": "devices",
+              "anchor": "btn:查看"
+            },
+            {
+              "route": "firmware",
+              "anchor": "btn:详情"
+            },
+            {
+              "route": "rma",
+              "anchor": "btn:编辑"
+            },
+            {
+              "route": "feedback",
+              "anchor": "btn:查看"
+            },
+            {
+              "route": "feedback",
+              "anchor": "btn:回复用户"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "btn:Top5"
+            }
+          ],
+          "unmeasured": "danger 态：危险链接（antd Button link + danger，如烧录任务操作列「超限报废」）文字 #ff4d4f，2026-10-19 Owner 验收轮实测"
+        },
+        "linkAction": {
+          "props": {
+            "height": 34,
+            "paddingX": 15,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.text.link",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "feedback",
+              "anchor": "btn:更多筛选"
+            },
+            {
+              "route": "devices",
+              "anchor": "btn:更多筛选"
+            },
+            {
+              "route": "rma",
+              "anchor": "btn:更多筛选"
+            },
+            {
+              "route": "firmware",
+              "anchor": "btn:更多筛选"
+            }
+          ],
+          "note": "筛选区「更多筛选」：标准尺寸的链接按钮（antd type=link 默认尺寸），图标在文字前，图标与文字间距同 default 按钮。护照列表「展开更多筛选」在 antd 是无内边距的文字链接，不属于本部位，不列为测点。"
+        },
+        "linkStandalone": {
+          "props": {
+            "paddingX": 7
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-list",
+              "anchor": "btn:设置公开范围"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "btn:生成二维码"
+            },
+            {
+              "route": "rma",
+              "anchor": "tag:RMA单号"
+            }
+          ],
+          "note": "不在操作列（table.actionsCell）里的小号链接按钮：antd size=small type=link 的原生左右内边距 7（操作列里由页面收成 4，即 button.link）。用于 RMA 单号列、护照列表操作列。其余属性同 button.link。"
+        },
+        "iconOnly": {
+          "props": {
+            "height": 34,
+            "width": 34,
+            "paddingX": 0,
+            "paddingY": 0,
+            "radius": "token:radius.base"
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail「更多操作」、列表工具栏「刷新」），探针按文字定位，量不到无文字按钮",
+          "note": "只有图标的按钮：34×34 方形，描边、底色随所属类型（default 白底描边，text 透明）。"
+        }
+      }
+    },
+    "table": {
+      "purpose": "列表页数据表格",
+      "parts": {
+        "headerCorner": {
+          "props": {
+            "radius": "token:radius.lg"
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "th:规则名称"
+            }
+          ],
+          "note": "表头第一行的首格左上、末格右上圆角（antd borderRadiusLG）；只挂首列是文字列的锚点，首列为复选框的页面探针取不到首格"
+        },
+        "countWarning": {
+          "props": {
+            "textColor": "#d46b08",
+            "fontWeight": 600
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-list",
+              "anchor": "cell:RMA次数"
+            }
+          ],
+          "note": "需要留意的计数（护照列表 RMA 次数 ≥1）；色值取自天枢 generated/passport.css 的 .passport-rma-count，antd 主题无同值 token；计数为 0 时走 hintText 弱提示色"
+        },
+        "sortIcon": {
+          "props": {
+            "gapX": 4,
+            "fontSize": 12,
+            "textColor": "rgba(0,0,0,0.294)"
+          },
+          "states": {
+            "active": {
+              "textColor": "token:color.brand.base"
+            }
+          },
+          "unmeasured": "表头排序图标（上下两个 Caret 叠放）；探针不测图标。2026-10-19 实测 antd 反馈页「提交时间」：图标 12×12、靠表头右侧（标题与图标两端对齐，右对齐列则图标紧跟标题），与标题间距 4，未激活色 rgba(0,0,0,0.294)（antd 表头图标色，无同值 token），激活为主色。gapX 为与标题的间距"
+        },
+        "headerSplit": {
+          "props": {
+            "width": 1,
+            "height": "1.6em",
+            "background": "token:color.border.secondary"
+          },
+          "unmeasured": "antd 用 th::before 伪元素画列间竖线，探针不测伪元素；2026-10-19 实测告警规则：宽 1、高 1.6em（22.39px）、色 rgb(233,233,234)、垂直居中、末列与复选框列不画"
+        },
+        "fixedShadow": {
+          "props": {
+            "width": 30,
+            "shadow": "inset -10px 0px 8px -8px rgba(11, 11, 22, 0.09)"
+          },
+          "unmeasured": "antd 用固定列首格 ::after 画左侧投影（宽 30、内阴影 -10 0 8 -8，色同 color.border.split），只在表格横向可滚且未滚到最右时显示；探针不测伪元素。2026-10-19 实测反馈页"
+        },
+        "headerCell": {
+          "props": {
+            "paddingX": 16,
+            "paddingY": 16,
+            "background": "token:color.bg.tableHeader",
+            "borderBottomWidth": 1,
+            "borderBottomColor": "token:color.border.default",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.strong",
+            "lineHeight": 22
+          },
+          "states": {
+            "sorted": {
+              "background": "token:color.bg.tableHeaderSorted"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "th:SN"
+            },
+            {
+              "route": "alert-rules",
+              "anchor": "th:规则名称"
+            },
+            {
+              "route": "firmware",
+              "anchor": "th:固件版本号"
+            }
+          ]
+        },
+        "bodyCell": {
+          "props": {
+            "paddingX": 16,
+            "paddingY": 16,
+            "background": "transparent",
+            "borderBottomWidth": 1,
+            "borderBottomColor": "token:color.border.default",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "states": {
+            "sorted": {
+              "background": "token:color.bg.tableBodySorted"
+            },
+            "error": {
+              "background": "token:color.bg.tableBodyError"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "cell:机型"
+            },
+            {
+              "route": "flashing",
+              "anchor": "cell:机型"
+            },
+            {
+              "route": "rma",
+              "anchor": "cell:机型"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "cell:机型"
+            }
+          ]
+        },
+        "actionsCell": {
+          "props": {
+            "paddingX": 8
+          },
+          "baselineAnchors": [],
+          "unmeasured": "探针按列标题文字定位（tag:操作），量不到单元格内边距；值取自天枢 generated/styles.css 的 .device-ops-col-actions（padding-inline 8），2026-10-18 实测",
+          "note": "行内操作列（表头与单元格）：左右内边距 8，上下同 headerCell / bodyCell。护照列表、用户绑定的操作列不用这一档。"
+        }
+      }
+    },
+    "progress": {
+      "purpose": "表格内进度条（固件页灰度比例，antd Progress size=small）",
+      "parts": {
+        "rail": {
+          "props": {
+            "height": 6,
+            "radius": 100,
+            "background": "rgba(0, 0, 0, 0.06)"
+          },
+          "note": "2026-10-19 实测固件页：轨道高 6、全圆角、色 rgba(0,0,0,0.06)；轨道宽随列宽伸缩（列宽 − 文字 − 间距）"
+        },
+        "track": {
+          "props": {
+            "radius": 100,
+            "background": "token:color.brand.base"
+          }
+        },
+        "text": {
+          "props": {
+            "fontSize": "token:font.size.sm",
+            "lineHeight": 12,
+            "textColor": "token:color.text.primary",
+            "gapX": 8
+          },
+          "note": "百分比文字 12px、行高 12，与轨道间距 8"
+        }
+      }
+    },
+    "input": {
+      "purpose": "单行文本输入框（筛选区、表单）",
+      "parts": {
+        "default": {
+          "props": {
+            "height": 32,
+            "paddingX": 11,
+            "paddingY": 4,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "ph:输入完整或部分 SN"
+            },
+            {
+              "route": "binding",
+              "anchor": "ph:请输入11位手机号"
+            },
+            {
+              "route": "firmware",
+              "anchor": "ph:输入完整或部分版本号"
+            },
+            {
+              "route": "rma",
+              "anchor": "ph:输入完整或部分单号，4 位起生效"
+            }
+          ]
+        },
+        "placeholder": {
+          "props": {
+            "textColor": "token:color.text.placeholder"
+          },
+          "unmeasured": "探针不量 ::placeholder 伪元素；值为 2026-10-13 对 antd 设备页筛选框的实测 rgba(0,0,0,0.25)"
+        },
+        "rangeSeparator": {
+          "props": {
+            "paddingX": 8,
+            "fontSize": 16,
+            "textColor": "token:color.text.quaternary"
+          },
+          "unmeasured": "日期范围框（外框沿用 input.default）中间的 SwapRight 箭头；探针只量两段输入。2026-10-19 实测 antd 反馈页：分隔区宽 32（图标 16 + 左右 8）、色 rgba(0,0,0,0.25)"
+        },
+        "rangeSuffix": {
+          "props": {
+            "gapX": 4,
+            "fontSize": 14,
+            "textColor": "token:color.text.quaternary"
+          },
+          "unmeasured": "日期范围框末尾的日历图标，gapX 为与前面结束日期输入的间距；清除按钮悬停时叠在同一位置。2026-10-19 实测 antd：14×14、左距 4、色 rgba(0,0,0,0.25)"
+        },
+        "clearSlot": {
+          "props": {
+            "width": 16
+          },
+          "unmeasured": "筛选区与顶栏搜索的输入框（antd allowClear）右侧为清除图标预留 16（间距 4 + 图标 12），空值时也占位，所以文字区 = 框宽 − 左右内边距 − 16；表单页输入框没有。2026-10-19 Owner 验收轮对 antd 全部设备 / 烧录发证 / 客户反馈 / 退货 RMA 筛选区与顶栏搜索的实测（1440×900）"
+        }
+      }
+    },
+    "select": {
+      "purpose": "下拉选择框（筛选区、表单、分页条数）：trigger 是未选时的占位态，filled 是已有值；内边距因 antd 单选/多选实现不同（11/4 与 3/1）不写进规格",
+      "parts": {
+        "trigger": {
+          "props": {
+            "height": 32,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.placeholder",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "select:全部类型"
+            },
+            {
+              "route": "alerts",
+              "anchor": "select:全部类型"
+            },
+            {
+              "route": "alerts",
+              "anchor": "select:全部级别"
+            },
+            {
+              "route": "devices",
+              "anchor": "select:全部"
+            },
+            {
+              "route": "devices",
+              "anchor": "select:全部批次"
+            },
+            {
+              "route": "devices",
+              "anchor": "select:全部机型"
+            },
+            {
+              "route": "devices",
+              "anchor": "select:全部状态"
+            },
+            {
+              "route": "devices",
+              "anchor": "select:我的视图（暂无）"
+            },
+            {
+              "route": "feedback",
+              "anchor": "select:全选/任意"
+            },
+            {
+              "route": "firmware",
+              "anchor": "select:全部"
+            },
+            {
+              "route": "firmware",
+              "anchor": "select:全部机型"
+            },
+            {
+              "route": "firmware",
+              "anchor": "select:全部状态"
+            },
+            {
+              "route": "flashing",
+              "anchor": "select:全部状态"
+            },
+            {
+              "route": "flashing",
+              "anchor": "select:全部结果"
+            },
+            {
+              "route": "flashing-form",
+              "anchor": "select:选择在线烧录工位"
+            },
+            {
+              "route": "flashing-form",
+              "anchor": "select:选择机型"
+            },
+            {
+              "route": "flashing-form",
+              "anchor": "select:选择证书模板"
+            },
+            {
+              "route": "firmware-form",
+              "anchor": "select:选择适用机型"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "select:全选或指定状态"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "select:全选或指定结论"
+            },
+            {
+              "route": "rma",
+              "anchor": "select:全部状态"
+            },
+            {
+              "route": "rma",
+              "anchor": "select:全部结论"
+            }
+          ]
+        },
+        "filled": {
+          "props": {
+            "height": 32,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "feedback",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "feedback",
+              "anchor": "select:全部"
+            },
+            {
+              "route": "flashing",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "select:全部机型"
+            },
+            {
+              "route": "rma",
+              "anchor": "select:20条/页"
+            }
+          ]
+        },
+        "viewsTrigger": {
+          "props": {
+            "width": 180
+          },
+          "unmeasured": "antd 写的是最小宽度（.device-ops-views__mine min-width:180px），探针按实际宽度量，文字更长时会撑宽；值为 2026-10-13 对 antd 设备页「我的视图（暂无）」的实测"
+        },
+        "arrow": {
+          "props": {
+            "fontSize": 12,
+            "textColor": "token:color.text.quaternary"
+          },
+          "unmeasured": "下拉箭头 DownOutlined 12px，0.25 黑实色（不再叠透明度）。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        }
+      }
+    },
+    "tag": {
+      "purpose": "状态标签；颜色按中立 token 的状态族取值，每个出现过的状态族一个部位",
+      "parts": {
+        "neutral": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.neutral.bg",
+            "textColor": "token:color.status.neutral.text",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "tag:规则类型"
+            },
+            {
+              "route": "feedback",
+              "anchor": "tag:类型"
+            },
+            {
+              "route": "firmware",
+              "anchor": "tag:机型"
+            },
+            {
+              "route": "rma",
+              "anchor": "tag:退货原因"
+            }
+          ]
+        },
+        "processing": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.processing.bg",
+            "textColor": "token:color.status.processing.solid",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "baselineAnchors": [
+            {
+              "route": "feedback",
+              "anchor": "tag:状态"
+            },
+            {
+              "route": "firmware",
+              "anchor": "tag:版本状态"
+            },
+            {
+              "route": "flashing",
+              "anchor": "tag:烧录结果"
+            },
+            {
+              "route": "rma",
+              "anchor": "tag:到件状态"
+            }
+          ]
+        },
+        "success": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.success.bg",
+            "textColor": "token:color.status.success.solid",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "baselineAnchors": [
+            {
+              "route": "firmware",
+              "anchor": "tag:签名状态"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "tag:质检结论"
+            }
+          ]
+        },
+        "warning": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.warning.bg",
+            "textColor": "token:color.status.warning.solid",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "tag:在网状态"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "tag:生命周期状态"
+            },
+            {
+              "route": "rma",
+              "anchor": "tag:当前设备状态"
+            }
+          ]
+        },
+        "shipped": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.shipped.bg",
+            "textColor": "token:color.status.shipped.text",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "tag:生命周期状态"
+            }
+          ]
+        },
+        "error": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.error.fill",
+            "textColor": "token:color.status.error.solid",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "unmeasured": "探针按列取首行标签，首行不是该状态族；值为 2026-10-13 对 antd 固件页「已回滚」「灰度中」的实测（phase4-6-visual-r2）"
+        },
+        "purple": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.status.purple.bg",
+            "textColor": "token:color.status.purple.text",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "unmeasured": "探针按列取首行标签，首行不是该状态族；值为 2026-10-13 对 antd 固件页「已回滚」「灰度中」的实测（phase4-6-visual-r2）"
+        },
+        "cyan": {
+          "props": {
+            "height": 22,
+            "paddingX": 7,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "#e6fffb",
+            "textColor": "#08979c",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "unmeasured": "antd 预设色 cyan 的 filled 标签（中立 token 没有青色族，按 antd 渲染取字面量）。2026-10-19 Owner 验收轮对 antd 退货 RMA「当前设备状态 = 二次入库」的实测（1440×900）"
+        }
+      }
+    },
+    "checkbox": {
+      "purpose": "表格勾选与表单多选的方框",
+      "parts": {
+        "box": {
+          "props": {
+            "height": 16,
+            "width": 16,
+            "radius": "token:radius.sm",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none"
+          },
+          "states": {
+            "disabled": {
+              "background": "token:color.bg.disabled"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "cb:0"
+            },
+            {
+              "route": "feedback",
+              "anchor": "cb:1"
+            },
+            {
+              "route": "flashing",
+              "anchor": "cb:0"
+            },
+            {
+              "route": "rma",
+              "anchor": "cb:0"
+            }
+          ]
+        },
+        "check": {
+          "props": {
+            "width": 5.7143,
+            "height": 9.1429,
+            "borderWidth": 2,
+            "borderColor": "token:color.bg.container",
+            "insetX": "21.5%",
+            "insetY": "50%"
+          },
+          "states": {
+            "disabled": {
+              "borderColor": "token:color.text.placeholder"
+            }
+          },
+          "unmeasured": "勾号是方框内的右下直角描边：宽 5.71、高 9.14、描边 2，旋转 45° 后以自身中心落在方框内容区 (21.5%, 50%)；禁用态勾号 0.25 黑，禁用方框底 0.04 黑、边框不变、无整体透明度。2026-10-19 Owner 验收轮对 antd 护照详情事件过滤（已勾选）与客户反馈表格（禁用行）的实测（1440×900）"
+        },
+        "groupItem": {
+          "props": {
+            "gapX": 8,
+            "paddingX": 8
+          },
+          "unmeasured": "复选组（antd Checkbox.Group）项间距 8，文字左右内边距各 8；勾选后文字仍为正文色 400 字重。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        }
+      }
+    },
+    "radio": {
+      "purpose": "单选项的小圆圈（固件表单签名方式等单选组）；文字样式取标签",
+      "parts": {
+        "circle": {
+          "props": {
+            "height": 16,
+            "width": 16,
+            "radius": "50%",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "firmware-form",
+              "anchor": "radio:手动上传签名文件"
+            }
+          ]
+        },
+        "circleChecked": {
+          "props": {
+            "height": 16,
+            "width": 16,
+            "radius": "50%",
+            "borderWidth": 1,
+            "borderColor": "token:color.brand.base",
+            "background": "token:color.brand.base",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "firmware-form",
+              "anchor": "radio:KMS自动签名"
+            }
+          ]
+        },
+        "item": {
+          "props": {
+            "gapX": 8,
+            "paddingX": 8
+          },
+          "unmeasured": "单选项之间 8（antd radio-wrapper margin-inline-end），文字左右内边距各 8。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "dot": {
+          "props": {
+            "width": 6,
+            "height": 6,
+            "background": "token:color.bg.container"
+          },
+          "unmeasured": "选中态中心白点 6×6。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        }
+      }
+    },
+    "segmented": {
+      "purpose": "视图切换、时间范围切换等分段选择",
+      "parts": {
+        "item": {
+          "props": {
+            "height": 28,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": "none",
+            "background": "token:color.bg.elevated",
+            "shadow": "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px, rgba(0, 0, 0, 0.03) 0px 1px 6px -1px, rgba(0, 0, 0, 0.03) 0px 2px 4px 0px",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 28,
+            "insetX": 11
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "choice:全部（5）"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "choice:今日"
+            },
+            {
+              "route": "devices",
+              "anchor": "choice:运行异常默认"
+            }
+          ],
+          "note": "antd 的左右留白写在选项内层文字元素上，外层选项 padding 为 0；用 insetX（文字距可见边框）表达留白，不写 paddingX（10-10 主线程更正）。"
+        },
+        "itemIdle": {
+          "props": {
+            "height": 28,
+            "paddingY": 0,
+            "radius": "token:radius.sm",
+            "borderWidth": "none",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.text.secondary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 28,
+            "insetX": 11
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "choice:启用中（4）"
+            },
+            {
+              "route": "alert-rules",
+              "anchor": "choice:已停用（1）"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "choice:本周"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "choice:本月"
+            },
+            {
+              "route": "devices",
+              "anchor": "choice:售后中"
+            },
+            {
+              "route": "devices",
+              "anchor": "choice:待出货"
+            }
+          ]
+        },
+        "track": {
+          "props": {
+            "height": 32,
+            "paddingX": 2,
+            "paddingY": 2,
+            "radius": "token:radius.base",
+            "borderWidth": "none",
+            "background": "token:color.bg.track",
+            "shadow": "none",
+            "textColor": "token:color.text.secondary"
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "choicegroup:全部设备"
+            },
+            {
+              "route": "alert-rules",
+              "anchor": "choicegroup:全部（5）"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "choicegroup:今日"
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "purpose": "状态分栏（告警、设备详情、固件、反馈页的 tab 行）；item 未选中，itemActive 选中，仅文字颜色不同",
+      "parts": {
+        "item": {
+          "props": {
+            "height": 22,
+            "paddingX": 0,
+            "paddingY": 0,
+            "radius": 0,
+            "borderWidth": "none",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22,
+            "gapX": 32
+          },
+          "baselineAnchors": [
+            {
+              "route": "alerts",
+              "anchor": "btn:处理中（2）"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "btn:出货物流"
+            },
+            {
+              "route": "feedback",
+              "anchor": "btn:处理中(3)"
+            }
+          ],
+          "note": "gapX 是同组下一项页签的水平间距（antd Tabs margin-inline-start 32）量不到同组末项，锚点只留非末项页签；被移除的末项锚点（alerts 已处理、device-detail 售后、firmware 推送任务、feedback 已关闭）其余属性与本部位相同。"
+        },
+        "itemActive": {
+          "props": {
+            "height": 22,
+            "paddingX": 0,
+            "paddingY": 0,
+            "radius": 0,
+            "borderWidth": "none",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.brand.base",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "alerts",
+              "anchor": "btn:待处理（4）"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "btn:生产记录"
+            },
+            {
+              "route": "firmware",
+              "anchor": "btn:固件版本"
+            },
+            {
+              "route": "feedback",
+              "anchor": "btn:全部(11)"
+            }
+          ]
+        },
+        "nav": {
+          "props": {
+            "height": 46,
+            "paddingY": 12,
+            "borderBottomWidth": 1,
+            "borderBottomColor": "token:color.border.secondary",
+            "gapY": 16
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（feedback / firmware 页签行），探针暂无此测点",
+          "note": "页签导航条：通栏，上下内边距 12、底部 1px 分隔线，与下方内容间距 16（antd Tabs nav margin-bottom）。"
+        },
+        "ink": {
+          "props": {
+            "height": 2,
+            "background": "token:color.brand.base"
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（feedback / firmware 页签行），探针暂无此测点",
+          "note": "选中页签下划线，宽度随选中页签文字，贴导航条底边。"
+        }
+      }
+    },
+    "pageTitle": {
+      "purpose": "页面主标题 h1",
+      "parts": {
+        "default": {
+          "props": {
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.pageTitle",
+            "fontWeight": "token:font.weight.pageTitle",
+            "lineHeight": 28.6
+          },
+          "baselineAnchors": [
+            {
+              "route": "dashboard",
+              "anchor": "h1"
+            },
+            {
+              "route": "devices",
+              "anchor": "h1"
+            },
+            {
+              "route": "alerts",
+              "anchor": "h1"
+            },
+            {
+              "route": "firmware-form",
+              "anchor": "h1"
+            }
+          ]
+        }
+      }
+    },
+    "detailHeader": {
+      "purpose": "详情页 / 表单页页头：左列返回链接、主标题（含复制按钮，护照页同行带型号与标签）、副标题或信息行、标签行，右侧操作区",
+      "parts": {
+        "head": {
+          "props": {
+            "gapX": 16
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "stack": {
+          "props": {
+            "gapY": 6
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "back": {
+          "props": {
+            "textColor": "token:color.brand.base",
+            "fontSize": 13,
+            "lineHeight": 20.4286,
+            "gapX": 6
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "titleCopy": {
+          "props": {
+            "textColor": "token:color.brand.base",
+            "gapX": 4
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "titleRow": {
+          "props": {
+            "gapX": 16
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "titleMeta": {
+          "props": {
+            "textColor": "token:color.text.primary",
+            "fontSize": 16,
+            "lineHeight": 25.1429,
+            "fontWeight": 600
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "sub": {
+          "props": {
+            "textColor": "token:color.text.secondary",
+            "fontSize": 14,
+            "lineHeight": 22
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "meta": {
+          "props": {
+            "textColor": "token:color.text.secondary",
+            "fontSize": 13,
+            "lineHeight": 20.4286,
+            "gapX": 16,
+            "insetY": 4
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        },
+        "tags": {
+          "props": {
+            "gapX": 8
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail / passport-detail / firmware-form / flashing-form 页头），探针暂无此测点"
+        }
+      }
+    },
+    "detailGroup": {
+      "purpose": "详情页字段分组：组与组之间的间距、第 2 组起的上分隔线与留白、组标题到字段的间距",
+      "parts": {
+        "stack": {
+          "props": {
+            "gapY": 24
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail 核心信息分组），探针暂无此测点"
+        },
+        "divided": {
+          "props": {
+            "paddingTop": 24,
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default"
+          },
+          "baselineAnchors": [
+            {
+              "route": "device-detail",
+              "anchor": "title:运行"
+            }
+          ]
+        },
+        "title": {
+          "props": {
+            "gapY": 12
+          },
+          "baselineAnchors": [],
+          "unmeasured": "antd 2026-10-18 实测（device-detail 核心信息分组），探针暂无此测点"
+        }
+      }
+    },
+    "formLabel": {
+      "purpose": "筛选区与表单的字段标签",
+      "parts": {
+        "default": {
+          "props": {
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "label:SN"
+            },
+            {
+              "route": "firmware",
+              "anchor": "label:固件版本号"
+            },
+            {
+              "route": "flashing-form",
+              "anchor": "label:任务名称"
+            },
+            {
+              "route": "rma",
+              "anchor": "label:SN"
+            },
+            {
+              "route": "feedback",
+              "anchor": "label:反馈编号"
+            },
+            {
+              "route": "feedback",
+              "anchor": "label:SLA状态"
+            },
+            {
+              "route": "feedback",
+              "anchor": "label:优先级"
+            },
+            {
+              "route": "feedback",
+              "anchor": "label:类型"
+            },
+            {
+              "route": "feedback",
+              "anchor": "label:提交时间"
+            }
+          ]
+        }
+      }
+    },
+    "sectionTitle": {
+      "purpose": "卡片标题、详情分组标题",
+      "parts": {
+        "default": {
+          "props": {
+            "textColor": "token:color.text.primary",
+            "fontSize": 15,
+            "fontWeight": "token:font.weight.strong",
+            "lineHeight": 23.57
+          },
+          "baselineAnchors": [
+            {
+              "route": "alerts",
+              "anchor": "title:发生了什么"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "title:身份与生产"
+            },
+            {
+              "route": "firmware-form",
+              "anchor": "title:基本信息"
+            }
+          ]
+        },
+        "large": {
+          "props": {
+            "textColor": "token:color.text.primary",
+            "fontSize": 20,
+            "fontWeight": "token:font.weight.strong",
+            "lineHeight": 28
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-detail",
+              "anchor": "title:生命周期时间轴"
+            }
+          ]
+        }
+      }
+    },
+    "cardTitle": {
+      "purpose": "工作台卡片头部：标题文字加头部的高度、左右内边距、上圆角与通栏下分隔线（宽度随布局不写）",
+      "parts": {
+        "default": {
+          "props": {
+            "height": 56,
+            "paddingX": 24,
+            "paddingRight": 24,
+            "radius": "token:radius.lg",
+            "borderBottomWidth": 1,
+            "borderBottomColor": "token:color.border.secondary",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.lg",
+            "fontWeight": "token:font.weight.strong",
+            "lineHeight": 25.14
+          },
+          "baselineAnchors": [
+            {
+              "route": "dashboard",
+              "anchor": "title:今日新激活"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "title:待烧录发证"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "title:待受理反馈"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "title:待处理RMA"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "title:推送任务已熔断"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "title:离线告警"
+            }
+          ]
+        }
+      }
+    },
+    "card": {
+      "purpose": "工作台卡片外框与正文（头部见 cardTitle）",
+      "parts": {
+        "container": {
+          "props": {
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.secondary",
+            "shadow": "none",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [],
+          "unmeasured": "探针没有单张卡片外框测点；数值取自 2026-10-18 antd 工作台 .ant-card 实测，由 cardTitle 测点位置与整屏像素差间接验证"
+        },
+        "body": {
+          "props": {
+            "paddingX": 24,
+            "paddingY": 24
+          },
+          "baselineAnchors": [],
+          "unmeasured": "同上，取自 antd .ant-card-body 实测 padding 24px"
+        }
+      }
+    },
+    "descriptions": {
+      "purpose": "详情描述列表的标签与值。antd 现版有两种样式：设备详情是竖排（标签一行 13px、值一行），护照详情是带边框横排（标签浅底 14px，左右排，外框与单元格分隔线见 borderedFrame）。两种按页如实记录，页间差异保留（Owner 10-13 授权按建议裁决）",
+      "parts": {
+        "verticalLabel": {
+          "props": {
+            "textColor": "token:color.text.secondary",
+            "fontSize": 13,
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20.43,
+            "paddingX": 1,
+            "paddingTop": 1,
+            "paddingRight": 16,
+            "paddingBottom": 8
+          },
+          "baselineAnchors": [
+            {
+              "route": "device-detail",
+              "anchor": "desc:SN"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:机型"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:批次"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:出厂日期"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:推送中目标版本"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:最后心跳"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:离线时长"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:在网状态"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "desc:质检结论"
+            }
+          ],
+          "note": "单元格内边距（antd 6 竖排 small 实测）：上 1、左 1（paddingX 记左侧）、右 16、下 8；一行的末项右内边距为 0、并占满该行剩余列。列间距 0，4 列等分；末行值单元格下内边距 0。行末项与末行单元格的内边距随位置归零，这些单元格不列为测点。"
+        },
+        "verticalValue": {
+          "props": {
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22,
+            "paddingX": 1,
+            "paddingTop": 1,
+            "paddingRight": 16,
+            "paddingBottom": 8
+          },
+          "baselineAnchors": [
+            {
+              "route": "device-detail",
+              "anchor": "descval:SN"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "descval:机型"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "descval:批次"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "descval:最后心跳"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "descval:离线时长"
+            }
+          ],
+          "note": "单元格内边距（antd 6 竖排 small 实测）：上 1、左 1（paddingX 记左侧）、右 16、下 8；一行的末项右内边距为 0、并占满该行剩余列。列间距 0，4 列等分；末行值单元格下内边距 0。行末项与末行单元格的内边距随位置归零，这些单元格不列为测点。"
+        },
+        "borderedLabel": {
+          "props": {
+            "paddingX": 24,
+            "paddingY": 12,
+            "background": "token:color.bg.fillQuaternary",
+            "textColor": "token:color.text.secondary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-detail",
+              "anchor": "desc:SN"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:机型"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:出厂日期"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:固件版本"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:质检结论"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:证书指纹"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:是否对外公开"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:公开二维码链接"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "desc:RMA次数"
+            }
+          ]
+        },
+        "borderedValue": {
+          "props": {
+            "paddingX": 24,
+            "paddingY": 12,
+            "background": "transparent",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-detail",
+              "anchor": "descval:SN"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "descval:机型"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "descval:出厂日期"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "descval:固件版本"
+            }
+          ]
+        },
+        "borderedFrame": {
+          "props": {
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.split"
+          },
+          "unmeasured": "探针只量标签与值单元格，不量外框与分隔线；值为 2026-10-13 对 antd 护照详情「档案基本信息」.ant-descriptions-view 的实测（外框 1px rgba(11,11,22,0.09)、圆角 8，单元格右侧与行间分隔同色）"
+        },
+        "borderedTitle": {
+          "props": {
+            "textColor": "token:color.text.heading",
+            "fontSize": 16,
+            "fontWeight": "token:font.weight.strong",
+            "lineHeight": 24,
+            "gapY": 20
+          },
+          "baselineAnchors": [],
+          "unmeasured": "探针的 title:档案基本信息 量的是整个区块；值为 antd Descriptions title 2026-10-18 实测（护照详情）：16 / 24 / 600，标题行到表格 20",
+          "note": "带边框描述列表自带的标题行（如「档案基本信息」）。"
+        }
+      }
+    },
+    "hintText": {
+      "purpose": "弱提示文字，如工作台卡片的说明行",
+      "parts": {
+        "default": {
+          "props": {
+            "textColor": "token:color.text.hint",
+            "fontSize": 12,
+            "lineHeight": 18.857
+          },
+          "unmeasured": "探针暂无工作台卡片说明的测点；颜色取自天枢 generated/styles.css 的 --do-text-tertiary；字号 12、行高 18.857（antd 继承 1.5714 倍行高）为 2026-10-18 实测"
+        }
+      }
+    },
+    "listCount": {
+      "purpose": "工具栏里的列表计数（「共 N 台设备」「共 N 条」），不是分页总数，也不是护照详情的事件列表说明",
+      "parts": {
+        "default": {
+          "props": {
+            "height": 22,
+            "textColor": "token:color.text.secondary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "count:list"
+            },
+            {
+              "route": "feedback",
+              "anchor": "count:list"
+            },
+            {
+              "route": "firmware",
+              "anchor": "count:list"
+            },
+            {
+              "route": "flashing",
+              "anchor": "count:list"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "count:list"
+            },
+            {
+              "route": "rma",
+              "anchor": "count:list"
+            }
+          ]
+        }
+      }
+    },
+    "pagination": {
+      "purpose": "列表底部分页",
+      "parts": {
+        "total": {
+          "props": {
+            "height": 32,
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 30
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "pager:total"
+            },
+            {
+              "route": "feedback",
+              "anchor": "pager:total"
+            },
+            {
+              "route": "firmware",
+              "anchor": "pager:total"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "pager:total"
+            },
+            {
+              "route": "rma",
+              "anchor": "pager:total"
+            }
+          ]
+        },
+        "item": {
+          "props": {
+            "height": 32,
+            "width": 32,
+            "paddingX": 0,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.brand.base",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.brand.base",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.strong",
+            "lineHeight": 30
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "pager:1"
+            },
+            {
+              "route": "feedback",
+              "anchor": "pager:1"
+            },
+            {
+              "route": "firmware",
+              "anchor": "pager:1"
+            },
+            {
+              "route": "flashing",
+              "anchor": "pager:1"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "pager:1"
+            },
+            {
+              "route": "rma",
+              "anchor": "pager:1"
+            }
+          ]
+        },
+        "page": {
+          "props": {
+            "height": 32,
+            "width": 32,
+            "paddingX": 0,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 30
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-list",
+              "anchor": "pager:2"
+            }
+          ],
+          "note": "非当前页的页码按钮（item 是当前页）"
+        },
+        "nav": {
+          "props": {
+            "height": 32,
+            "width": 32,
+            "paddingX": 0,
+            "paddingY": 0,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "transparent",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.sm",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 12
+          },
+          "states": {
+            "disabled": {
+              "textColor": "token:color.text.disabled"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "passport-list",
+              "anchor": "pager:next"
+            }
+          ]
+        },
+        "sizeChanger": {
+          "props": {
+            "height": 32,
+            "width": 94.4,
+            "paddingX": 11,
+            "paddingY": 4,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22,
+            "insetX": 12
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "feedback",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "flashing",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "select:20条/页"
+            },
+            {
+              "route": "rma",
+              "anchor": "select:20条/页"
+            }
+          ]
+        },
+        "layout": {
+          "props": {
+            "gapX": 8
+          },
+          "unmeasured": "探针只给页签、分段、单选量同组间距，分页各项之间没有测点；值取自 antd Pagination 2026-10-18 实测：「共 N 条」、上一页、页码、下一页各自 margin-right 8；每页条数下拉 margin-left 16，即两倍项间距",
+          "baselineAnchors": []
+        }
+      }
+    },
+    "panel": {
+      "purpose": "页面区块（筛选区、列表区、表单与详情卡）：白卡外框 + 内留白。留白用 insetX / insetY（首段文字距可见边框的距离）表达；实现用内边距 paddingX / paddingY（上 / 左）与不对称时的 paddingRight / paddingBottom 也如实记录，套件直接读内边距。antd 区块默认 border 1px #d8dee8、radius 8、padding 16/24，列表区 padding-top 12、tabsFlush 上 4（2026-10-11 统一留白裁决后）。",
+      "parts": {
+        "filter": {
+          "props": {
+            "insetX": 25,
+            "insetY": 18,
+            "paddingX": 24,
+            "paddingY": 16,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "region:筛选"
+            },
+            {
+              "route": "rma",
+              "anchor": "region:筛选"
+            },
+            {
+              "route": "flashing",
+              "anchor": "region:筛选"
+            },
+            {
+              "route": "firmware",
+              "anchor": "region:固件版本筛选"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "region:护照查询筛选区"
+            }
+          ]
+        },
+        "list": {
+          "props": {
+            "insetX": 25,
+            "insetY": 20,
+            "paddingX": 24,
+            "paddingY": 12,
+            "paddingBottom": 16,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "region:设备列表"
+            },
+            {
+              "route": "rma",
+              "anchor": "region:RMA单列表"
+            },
+            {
+              "route": "flashing",
+              "anchor": "region:烧录记录"
+            },
+            {
+              "route": "firmware",
+              "anchor": "region:固件版本列表"
+            },
+            {
+              "route": "passport-list",
+              "anchor": "region:数字护照列表"
+            }
+          ]
+        },
+        "listSegmentedToolbar": {
+          "props": {
+            "insetX": 38,
+            "insetY": 20,
+            "paddingX": 24,
+            "paddingY": 12,
+            "paddingBottom": 16,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "alert-rules",
+              "anchor": "region:告警规则列表"
+            }
+          ],
+          "note": "列表区的变体：工具栏以分段控制器开头，分段件自身的内边距把首段文字再内缩 13px。"
+        },
+        "detail": {
+          "props": {
+            "insetX": 25,
+            "insetY": 18,
+            "paddingX": 24,
+            "paddingY": 16,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "firmware-form",
+              "anchor": "region:基本信息"
+            },
+            {
+              "route": "firmware-form",
+              "anchor": "region:固件包与签名"
+            },
+            {
+              "route": "firmware-form",
+              "anchor": "region:变更记录"
+            },
+            {
+              "route": "flashing-form",
+              "anchor": "region:基础配置"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "region:核心信息"
+            },
+            {
+              "route": "device-detail",
+              "anchor": "region:更多信息"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "region:护照基本信息"
+            },
+            {
+              "route": "passport-detail",
+              "anchor": "region:生命周期时间轴"
+            }
+          ]
+        },
+        "tabsFlush": {
+          "props": {
+            "insetX": 25,
+            "insetY": 18,
+            "paddingX": 24,
+            "paddingY": 4,
+            "paddingBottom": 12,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "alerts",
+              "anchor": "region:告警筛选"
+            }
+          ],
+          "note": "页签贴顶区块（告警处置筛选）：区块 padding-top 4，页签行即首行内容。2026-10-11 Owner 裁决筛选区上方留白统一 18，原 padding-top 0、页签文字量在 14。"
+        },
+        "searchInline": {
+          "props": {
+            "insetX": 25,
+            "insetY": 18,
+            "paddingX": 24,
+            "paddingY": 9,
+            "paddingBottom": 16,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "binding",
+              "anchor": "region:检索表单"
+            }
+          ],
+          "note": "用户绑定页检索表单：行内表单、标签横排，行高把首段文字再压 9；上内边距 9 换得用户看到的留白与标准筛选区一致（2026-10-11 裁决统一 18，原 25）。内边距与 filter 不同，保留独立部位。"
+        },
+        "steps": {
+          "props": {
+            "insetX": 33.2,
+            "insetY": 19,
+            "paddingX": 24,
+            "paddingY": 16,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "flashing-form",
+              "anchor": "region:分步进度"
+            }
+          ],
+          "note": "分步进度区块（烧录表单）：首段文字是步骤条里的步名，比标准区块再内缩。"
+        }
+      }
+    },
+    "splitList": {
+      "purpose": "左右分栏列表（告警页左列告警卡片）：左列定宽，卡片默认透明、选中时品牌浅底加品牌浅描边。选中态承载「当前看的是哪条」的含义（Owner 10-13 授权按建议统一）",
+      "parts": {
+        "list": {
+          "props": {
+            "width": 420
+          },
+          "unmeasured": "探针不量分栏列宽；值为 2026-10-13 对 antd 告警页 .device-ops-alert-layout 左列的实测"
+        },
+        "item": {
+          "props": {
+            "paddingX": 12,
+            "paddingY": 10,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "transparent"
+          },
+          "unmeasured": "探针不量分栏列表项；值为 2026-10-13 对 antd .device-ops-alert-item 的实测"
+        },
+        "itemSelected": {
+          "props": {
+            "background": "token:color.brand.bg",
+            "borderColor": "token:color.brand.border"
+          },
+          "unmeasured": "探针不量分栏列表项；值为 2026-10-13 对 antd 选中项（aria-current=true）的实测 #e6f4ff / #91caff"
+        }
+      }
+    },
+    "statCard": {
+      "purpose": "全部设备页顶部的生命周期阶段统计卡（全部 / 生产阶段 / 运行阶段 / 售后阶段）：点击切换阶段，下沿有阶段占比条；计数为 0 的阶段禁用。",
+      "parts": {
+        "default": {
+          "props": {
+            "height": 54,
+            "insetX": 17,
+            "insetY": 12,
+            "paddingX": 16,
+            "paddingY": 10,
+            "paddingBottom": 12,
+            "radius": "token:radius.lg",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container"
+          },
+          "states": {
+            "selected": {
+              "background": "token:color.brand.bg",
+              "borderColor": "token:color.brand.base"
+            },
+            "disabled": {
+              "background": "token:color.bg.disabled"
+            }
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "btn:生产阶段1"
+            },
+            {
+              "route": "devices",
+              "anchor": "btn:运行阶段10"
+            }
+          ]
+        },
+        "count": {
+          "props": {
+            "fontSize": 20,
+            "lineHeight": 24
+          },
+          "unmeasured": "探针只量卡片外框；值取自天枢 generated/styles.css 的 .device-ops-phase__count / __bar，2026-10-13 实测条高 4、距卡片下沿 13"
+        },
+        "bar": {
+          "props": {
+            "height": 4,
+            "radius": 2,
+            "background": "token:color.bg.progressTrack"
+          },
+          "unmeasured": "探针只量卡片外框；值取自天枢 generated/styles.css 的 .device-ops-phase__count / __bar，2026-10-13 实测条高 4、距卡片下沿 13"
+        },
+        "barFill": {
+          "props": {
+            "background": "token:color.bg.progressFill"
+          },
+          "unmeasured": "探针只量卡片外框；值取自天枢 generated/styles.css 的 .device-ops-phase__count / __bar，2026-10-13 实测条高 4、距卡片下沿 13"
+        }
+      }
+    },
+    "shell": {
+      "purpose": "页面壳层：左侧导航侧栏与顶部工具栏的外框",
+      "parts": {
+        "sider": {
+          "props": {
+            "width": 232,
+            "background": "token:color.bg.container"
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "shell:sider"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "shell:sider"
+            }
+          ],
+          "note": "右描边 1px #d8dee8 不在属性词表（只有上/下描边），套件按主题描边变量实现；高度随页面内容不写。"
+        },
+        "header": {
+          "props": {
+            "height": 56,
+            "paddingX": 24,
+            "paddingY": 0,
+            "borderBottomWidth": 1,
+            "borderBottomColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "lineHeight": 64
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "shell:header"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "shell:header"
+            }
+          ],
+          "note": "宽度随视口不写；内部间距（gap 16）与搜索分组总宽 240 无锚点，套件按实测注释实现。"
+        },
+        "brand": {
+          "props": {
+            "height": 66,
+            "paddingTop": 18,
+            "paddingBottom": 14,
+            "paddingX": 20,
+            "gapX": 10
+          },
+          "unmeasured": "侧栏顶部品牌区：卡标与双行文字横排、间距 10，上 18 下 14 左 20，无下描边。2026-10-19 Owner 验收轮对 antd 全部页面侧栏的实测（1440×900）；品牌区不在探针 inMain 量程内，没有锚点"
+        },
+        "brandMark": {
+          "props": {
+            "width": 34,
+            "height": 34,
+            "radius": "token:radius.lg",
+            "fontSize": 18,
+            "background": "token:color.brand.base",
+            "textColor": "token:color.bg.container"
+          },
+          "unmeasured": "品牌卡标 34×34、圆角 8、图标 18。2026-10-19 Owner 验收轮对 antd 全部页面侧栏的实测（1440×900）；品牌区不在探针 inMain 量程内，没有锚点"
+        },
+        "brandTitle": {
+          "props": {
+            "fontSize": "token:font.size.base",
+            "fontWeight": 700,
+            "lineHeight": 17.5,
+            "textColor": "token:color.text.primary"
+          },
+          "unmeasured": "品牌名「天枢」14 / 700，行高 17.5（1.25 倍）。2026-10-19 Owner 验收轮对 antd 全部页面侧栏的实测（1440×900）；品牌区不在探针 inMain 量程内，没有锚点"
+        },
+        "brandSubtitle": {
+          "props": {
+            "fontSize": "token:font.size.sm",
+            "lineHeight": 15,
+            "textColor": "token:color.text.secondary"
+          },
+          "unmeasured": "品牌副名「运营管理平台」12，行高 15（1.25 倍）。2026-10-19 Owner 验收轮对 antd 全部页面侧栏的实测（1440×900）；品牌区不在探针 inMain 量程内，没有锚点"
+        },
+        "menu": {
+          "props": {
+            "borderWidth": 1,
+            "borderColor": "token:color.border.split"
+          },
+          "unmeasured": "侧栏菜单（品牌区以下）右缘 1px 分割线，落在侧栏右描边内侧一列（antd Menu 自带 border-inline-end）。2026-10-19 Owner 验收轮对 antd 全部页面侧栏的实测（1440×900）；品牌区不在探针 inMain 量程内，没有锚点"
+        }
+      }
+    },
+    "nav": {
+      "purpose": "侧栏导航：分组标题、导航项（普通 / 当前 / 锁定）",
+      "parts": {
+        "group": {
+          "props": {
+            "height": 38,
+            "width": 214,
+            "paddingX": 16,
+            "paddingY": 8,
+            "insetX": 16,
+            "insetY": 9,
+            "background": "transparent",
+            "textColor": "token:color.text.tertiary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "navgroup:工作台"
+            },
+            {
+              "route": "devices",
+              "anchor": "navgroup:设备生命周期"
+            },
+            {
+              "route": "devices",
+              "anchor": "navgroup:异常处置"
+            },
+            {
+              "route": "devices",
+              "anchor": "navgroup:系统配置"
+            }
+          ]
+        },
+        "item": {
+          "props": {
+            "height": 38,
+            "width": 206,
+            "paddingX": 24,
+            "paddingY": 0,
+            "paddingRight": 16,
+            "insetX": 24,
+            "radius": "token:radius.base",
+            "background": "transparent",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 38
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "nav:烧录发证"
+            },
+            {
+              "route": "devices",
+              "anchor": "nav:数字护照"
+            },
+            {
+              "route": "devices",
+              "anchor": "nav:客户反馈"
+            },
+            {
+              "route": "devices",
+              "anchor": "nav:告警规则"
+            }
+          ],
+          "note": "antd 口径：菜单元件内边距左右 8、导航项外边距左右 4；行与行之间还有 4px 纵向间距（容器内间距无量测点，不在规格）。"
+        },
+        "itemActive": {
+          "props": {
+            "height": 38,
+            "width": 206,
+            "paddingX": 24,
+            "paddingY": 0,
+            "paddingRight": 16,
+            "insetX": 24,
+            "radius": "token:radius.base",
+            "background": "token:color.brand.bg",
+            "textColor": "token:color.brand.base",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 38
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "nav:全部设备"
+            },
+            {
+              "route": "alerts",
+              "anchor": "nav:告警处置"
+            },
+            {
+              "route": "rma",
+              "anchor": "nav:退货RMA"
+            }
+          ],
+          "note": "antd v6 菜单选中项没有 aria-selected，state 不参与比对；按当前页选中项量取。"
+        },
+        "itemLocked": {
+          "props": {
+            "height": 38,
+            "width": 206,
+            "paddingX": 24,
+            "paddingY": 0,
+            "paddingRight": 16,
+            "insetX": 24,
+            "radius": "token:radius.base",
+            "background": "transparent",
+            "textColor": "token:color.text.disabled",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 38
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "nav:收货入库"
+            },
+            {
+              "route": "devices",
+              "anchor": "nav:测试质检"
+            },
+            {
+              "route": "devices",
+              "anchor": "nav:账号与权限"
+            }
+          ],
+          "note": "未开通的导航项（state.disabled 为真）：置灰文字 + 锁图标；锁图标无量测点。"
+        }
+      }
+    },
+    "topbar": {
+      "purpose": "顶栏内部：全局搜索框与面包屑",
+      "parts": {
+        "search": {
+          "props": {
+            "height": 32,
+            "width": 209,
+            "paddingX": 11,
+            "paddingY": 4,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "none",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "topbar:search"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "topbar:search"
+            }
+          ],
+          "note": "antd Input.Search 的可见框是内部 affix wrapper（209），右侧紧贴图标按钮；搜索控件分组总宽 240 不由锚点量，套件按实测实现。"
+        },
+        "breadcrumb": {
+          "props": {
+            "height": 22,
+            "textColor": "token:color.text.tertiary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22
+          },
+          "baselineAnchors": [
+            {
+              "route": "devices",
+              "anchor": "topbar:breadcrumb"
+            },
+            {
+              "route": "dashboard",
+              "anchor": "topbar:breadcrumb"
+            }
+          ],
+          "note": "文字取自面包屑第一项（分组名，描述色）；当前页项为主要文字色。宽度随路径文字不写。"
+        },
+        "breadcrumbSeparator": {
+          "props": {
+            "gapX": 8
+          },
+          "baselineAnchors": [],
+          "unmeasured": "探针只量面包屑整体；取自 antd Breadcrumb 实测：分隔符为文字「/」，左右各 8px"
+        },
+        "searchButton": {
+          "props": {
+            "width": 32,
+            "height": 32,
+            "radius": "token:radius.base",
+            "borderWidth": 1,
+            "borderColor": "token:color.border.default",
+            "background": "token:color.bg.container",
+            "shadow": "rgba(0, 0, 0, 0.02) 0px 2px 0px 0px",
+            "textColor": "token:color.text.primary",
+            "fontSize": "token:font.size.base"
+          },
+          "baselineAnchors": [],
+          "unmeasured": "探针没有搜索按钮测点；取自 2026-10-18 antd Input.Search 按钮实测：与输入框紧凑拼接，左两角为 0、向左叠 1px 共用描边，图标大小 = fontSize"
+        },
+        "account": {
+          "props": {
+            "textColor": "token:color.text.secondary",
+            "fontSize": 13,
+            "gapX": 6
+          },
+          "baselineAnchors": [],
+          "unmeasured": "探针没有用户区测点；取自 antd .device-ops-account 实测：图标随字号（13px），gapX 为图标与文字的间距"
+        }
+      }
+    },
+    "countBadge": {
+      "purpose": "卡片标题右侧的待办计数角标（工作台卡片）：圆形实心，数字居中；告警卡按严重度红 / 橙，其余蓝。",
+      "parts": {
+        "default": {
+          "props": {
+            "height": 20,
+            "paddingX": 6,
+            "radius": 10,
+            "borderWidth": "none",
+            "background": "token:color.palette.blue.6",
+            "shadow": "0 0 0 1px #fff",
+            "textColor": "token:color.text.inverse",
+            "fontSize": 12,
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 20
+          },
+          "states": {
+            "high": {
+              "background": "token:color.palette.red.6"
+            },
+            "mid": {
+              "background": "#fa8c16"
+            }
+          },
+          "unmeasured": "探针未给角标设测点；值取自 antd Badge（count 模式）2026-10-18 实测：高 20、最小宽 20、圆角 10、左右内边距 6、外描 1px 白，preset 色 red/orange/blue 取 6 号色；tokens 无 orange 色板，中档直接写 antd orange-6 实测值 #fa8c16",
+          "baselineAnchors": []
+        }
+      }
+    },
+    "formField": {
+      "purpose": "表单页（竖排 Form）的字段节奏：表单项、标签块、必填星号、冒号占位、控件区、说明文字、分组补充说明、多行输入字数；标签文字样式取 formLabel",
+      "parts": {
+        "item": {
+          "props": {
+            "gapY": 24
+          },
+          "states": {
+            "invalid": {
+              "gapY": 2
+            }
+          },
+          "unmeasured": "表单项之间 24（antd Form.Item margin-bottom）；出错时错误文字（行高 22）顶替间距，只剩 2。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "label": {
+          "props": {
+            "height": 22,
+            "gapY": 8
+          },
+          "unmeasured": "标签块高 22，到控件 8。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "requiredMark": {
+          "props": {
+            "gapX": 4,
+            "fontSize": "token:font.size.base",
+            "textColor": "token:color.status.error.solid"
+          },
+          "unmeasured": "必填星号在标签前，与文字间隔 4；antd 计算字体为 sans-serif、行高 1，属实现细节不进规格。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "colonSlot": {
+          "props": {
+            "insetX": 2,
+            "gapX": 8
+          },
+          "unmeasured": "竖排表单里 antd 仍给标签留一个不可见冒号位：左距 2（insetX）、右距 8（gapX），标签实际宽度含它。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "control": {
+          "props": {
+            "height": 32,
+            "lineHeight": 22
+          },
+          "unmeasured": "控件区最小高 32（antd control-input min-height）、行高 22。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "extra": {
+          "props": {
+            "height": 24,
+            "fontSize": "token:font.size.base",
+            "lineHeight": 22,
+            "textColor": "token:color.text.tertiary"
+          },
+          "unmeasured": "说明文字（antd extra）最小高 24，紧贴控件下沿。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "groupHelper": {
+          "props": {
+            "insetY": -6,
+            "gapY": 12,
+            "fontSize": 13,
+            "textColor": "token:color.text.secondary"
+          },
+          "unmeasured": "分组标题下的补充说明（antd device-ops-group__helper）：上提 6（insetY）、下距 12、13px；行高随 1.5714 倍。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "textareaCount": {
+          "props": {
+            "fontSize": "token:font.size.base",
+            "lineHeight": 22,
+            "textColor": "token:color.text.tertiary"
+          },
+          "unmeasured": "多行输入的字数统计挂在框下沿右侧（antd showCount）；多行输入外框沿用 input.default，描边画在外层。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        }
+      }
+    },
+    "steps": {
+      "purpose": "表单页顶部分步进度（antd Steps size=small，水平）",
+      "parts": {
+        "item": {
+          "props": {
+            "gapX": 12,
+            "insetX": 8
+          },
+          "unmeasured": "两步之间 12（gapX）；圆点到标题 8（insetX）。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "icon": {
+          "props": {
+            "width": 24,
+            "height": 24,
+            "radius": "50%",
+            "borderWidth": 1,
+            "borderColor": "transparent",
+            "background": "token:color.bg.fillTertiary",
+            "textColor": "token:color.text.secondary",
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 24
+          },
+          "states": {
+            "process": {
+              "background": "token:color.brand.base",
+              "textColor": "token:color.text.inverse"
+            },
+            "finish": {
+              "background": "token:color.brand.bg",
+              "textColor": "token:color.brand.base"
+            }
+          },
+          "unmeasured": "步骤圆点 24，等待步 0.04 灰底、当前步主色底白字、已完成浅蓝底主色对勾。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "title": {
+          "props": {
+            "fontSize": "token:font.size.base",
+            "fontWeight": "token:font.weight.regular",
+            "lineHeight": 22,
+            "textColor": "token:color.text.primary"
+          },
+          "states": {
+            "wait": {
+              "textColor": "token:color.text.tertiary"
+            }
+          },
+          "unmeasured": "步骤标题；等待步 0.45 灰。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "connector": {
+          "props": {
+            "height": 1,
+            "gapX": 8,
+            "background": "token:color.text.quaternary"
+          },
+          "unmeasured": "连接线 1px、0.25 黑，从标题后 8（gapX）起占满本步剩余宽度，竖直居中于圆点。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        }
+      }
+    },
+    "switch": {
+      "purpose": "开关（表单页与表格启用列）",
+      "parts": {
+        "track": {
+          "props": {
+            "width": 44,
+            "height": 22,
+            "paddingX": 2,
+            "background": "token:color.text.quaternary"
+          },
+          "states": {
+            "checked": {
+              "background": "token:color.brand.base"
+            }
+          },
+          "unmeasured": "开关轨道 44×22，滑块距边 2，关闭态 0.25 黑底。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        },
+        "thumb": {
+          "props": {
+            "width": 18,
+            "height": 18,
+            "background": "token:color.bg.container",
+            "shadow": "0 2px 4px 0 rgba(0,35,11,0.2)"
+          },
+          "unmeasured": "滑块 18×18 白色带投影。2026-10-19 批 2 对 antd 固件版本 / 烧录任务表单页的实测（1440×900）；两张表单页的几何已由探针 firmware-form / flashing-form 覆盖，该部位的属性未单列测点"
+        }
+      }
+    },
+    "timeline": {
+      "purpose": "护照详情的生命周期时间轴（antd Timeline）与其上方的事件类型过滤行",
+      "parts": {
+        "item": {
+          "props": {
+            "gapY": 12,
+            "insetX": 26,
+            "insetY": 1
+          },
+          "unmeasured": "条目之间 12（末条 0）；内容区距圆点左缘 26、比条目顶低 1；区块总高由 region:生命周期时间轴 覆盖。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "dot": {
+          "props": {
+            "width": 10,
+            "height": 10,
+            "radius": "50%",
+            "borderWidth": 2,
+            "borderColor": "token:color.brand.base",
+            "background": "transparent",
+            "insetY": 7
+          },
+          "states": {
+            "green": {
+              "borderColor": "token:color.status.success.solid"
+            },
+            "red": {
+              "borderColor": "token:color.status.error.solid"
+            },
+            "orange": {
+              "borderColor": "#ffa500"
+            },
+            "gray": {
+              "borderColor": "token:color.text.quaternary"
+            },
+            "geekblue": {
+              "borderColor": "token:color.text.primary"
+            }
+          },
+          "unmeasured": "空心描边圆点，距条目顶 7（insetY）；默认 blue 为主色。orange 不是 antd 预设色，按 CSS 具名色 orange（#ffa500）画；geekblue 不是合法色值，回落正文色；探针不量圆点。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "tail": {
+          "props": {
+            "width": 2,
+            "background": "token:color.border.split"
+          },
+          "unmeasured": "连接线 2px，从圆点下沿画到下一圆点上沿，末条无线。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "head": {
+          "props": {
+            "gapX": 8
+          },
+          "unmeasured": "条目首行：事件标签、时间、操作人、工位同一行，间距 8。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "summary": {
+          "props": {
+            "fontSize": "token:font.size.base",
+            "lineHeight": 21
+          },
+          "unmeasured": "事件说明 14px、行高 21（1.5 倍）。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "toggle": {
+          "props": {
+            "height": 22,
+            "insetY": 2,
+            "fontSize": 12,
+            "lineHeight": 18.857
+          },
+          "unmeasured": "「展开详情」行盒高 22，12px 文字距行盒顶 2、行高 18.857（1.5714 倍）。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "filterRow": {
+          "props": {
+            "gapX": 12,
+            "paddingBottom": 16,
+            "gapY": 24,
+            "borderBottomWidth": 1,
+            "borderBottomColor": "token:color.border.default"
+          },
+          "unmeasured": "过滤行：说明文字、复选组、重置按钮间距 12；下内边距 16、底部分隔线，距时间轴 24；复选框位置由 cb:0 / cb:1 覆盖。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "filterLabel": {
+          "props": {
+            "fontSize": 13,
+            "textColor": "token:color.text.secondary"
+          },
+          "unmeasured": "「事件类型过滤：」13px 次要色，行高随 1.5714 倍。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        }
+      }
+    },
+    "emptyState": {
+      "purpose": "区块级空态（antd Empty simple 图），如绑定页「未检索」「无结果」",
+      "parts": {
+        "panel": {
+          "props": {
+            "height": 168,
+            "paddingX": 24,
+            "paddingY": 16
+          },
+          "baselineAnchors": [
+            {
+              "route": "binding",
+              "anchor": "region:未检索"
+            }
+          ]
+        },
+        "image": {
+          "props": {
+            "width": 64,
+            "height": 40,
+            "insetY": 32,
+            "gapY": 8
+          },
+          "unmeasured": "简版插图 64×40，Empty 上下外边距 32（insetY），插图到文字 8（gapY）；插图画法取 antd PRESENTED_IMAGE_SIMPLE。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        },
+        "description": {
+          "props": {
+            "fontSize": "token:font.size.base",
+            "lineHeight": 22,
+            "textColor": "token:color.text.tertiary"
+          },
+          "unmeasured": "空态文字 0.45 黑；region 测点的文字色取自面板外层（正文色），不代表这行文字。2026-10-19 批 3 对 antd 护照详情（TS24080192、TS24070143、TS24070178、TS24100381）与绑定页的实测（1440×900）"
+        }
+      }
+    }
+  }
+}

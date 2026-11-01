@@ -1,0 +1,125 @@
+/* 烧录发证页（flashing / flashing-form）局部样式。
+   只引用 device-ops 面板变量与 antd 语义 token，不硬编码颜色。 */
+
+/* 固件版本列：当前最新版本的蓝点标记（PRD ④ 列内渲染）。 */
+.flashing-latest-dot {
+  background: var(--ant-color-primary);
+  border-radius: 50%;
+  display: inline-block;
+  height: 6px;
+  margin-left: 6px;
+  vertical-align: middle;
+  width: 6px;
+}
+
+/* 表头单位右对齐：耗时单位「秒」放表头，不在单元格重复。 */
+.flashing-duration-head {
+  display: block;
+  text-align: right;
+}
+
+/* 数值区间筛选 / SN 起止：两个输入框中间一个连接符，行内对齐。 */
+.flashing-range {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.flashing-range .ant-input-number {
+  width: 100%;
+}
+
+/* 抽屉内的分区与键值对（与退货 RMA 页同一版式，类名随页前缀独立）。 */
+.flashing-section + .flashing-section {
+  border-top: 1px solid var(--ant-color-border-secondary);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.flashing-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.flashing-kv {
+  display: grid;
+  gap: 10px 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.flashing-kv > div {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.flashing-kv .flashing-kv-wide {
+  grid-column: 1 / -1;
+}
+
+.flashing-kv dt {
+  color: var(--ant-color-text-secondary);
+  flex: none;
+  white-space: nowrap;
+}
+
+.flashing-kv dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* 强确认对话框里的信息摘要与正文之间留一层间距。 */
+.flashing-modal-kv {
+  margin: 16px 0;
+}
+
+/* 批量确认对话框的 SN 清单：限量高、可滚动。 */
+.flashing-sn-list {
+  border: 1px solid var(--ant-color-border-secondary);
+  border-radius: 6px;
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 16px;
+  max-height: 180px;
+  overflow: auto;
+  padding: 10px 12px;
+}
+
+.flashing-sn-list li {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* 分步表单的步骤条面板收紧纵向留白。 */
+.flashing-steps {
+  padding-bottom: var(--do-space-sm);
+  padding-top: var(--do-space-sm);
+}
+
+/* 第二步的设备数预览：跟在范围字段后面，语气中性。 */
+.flashing-scope-preview {
+  color: var(--ant-color-text-secondary);
+  margin: 0 0 var(--do-space-sm);
+}
+
+.flashing-scope-preview strong {
+  color: var(--ant-color-text);
+}
+
+.flashing-form-actions {
+  position: sticky;
+  bottom: var(--do-space-md);
+}
+
+/* 分步表单两个步骤都保持挂载（antd 卸载字段后 validateFields / getFieldsValue 取不到），
+   非当前步用 class 隐藏，切换步骤值不丢、校验始终覆盖全部字段。 */
+.flashing-form-hidden {
+  display: none;
+}

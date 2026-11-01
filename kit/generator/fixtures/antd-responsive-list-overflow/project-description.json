@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "antd-responsive-list-overflow-canary",
+  "contextType": "real-product",
+  "product": {
+    "name": "响应式列表校验台",
+    "description": "用于验证多列表格、筛选栏和卡片操作在 390px 视口保持页面级零横向溢出的独立非 Holdout fixture。"
+  },
+  "pages": [
+    {
+      "id": "responsive-list-canary",
+      "route": "/fixtures/responsive-list-overflow",
+      "title": "设备事件队列",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "按设备编号和等级筛选模拟事件，并在桌面与移动视口安全浏览完整列表。",
+        "primaryAction": "登记事件",
+        "secondaryActions": ["返回接入配置"],
+        "successCriteria": [
+          "390px 视口页面级横向溢出为 0",
+          "宽表只在表格容器内横向滚动",
+          "筛选、计数和返回操作保持可见"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Button",
+        "Input",
+        "Select"
+      ],
+      "content": {
+        "filters": [
+          { "name": "keyword", "label": "设备编号", "type": "text", "placeholder": "输入模拟设备编号" },
+          {
+            "name": "severity",
+            "label": "事件等级",
+            "type": "select",
+            "options": [
+              { "label": "高", "value": "high" },
+              { "label": "中", "value": "medium" }
+            ]
+          }
+        ],
+        "simpleListFiltering": {
+          "mappings": [
+            { "name": "keyword", "rowKeys": ["deviceId"], "match": "contains" },
+            {
+              "name": "severity",
+              "rowKeys": ["severity"],
+              "match": "equals",
+              "valueMap": { "high": "高", "medium": "中" }
+            }
+          ]
+        },
+        "table": {
+          "title": "模拟事件列表",
+          "rowKey": "deviceId",
+          "columns": [
+            { "key": "deviceId", "title": "设备编号" },
+            { "key": "source", "title": "接入来源" },
+            { "key": "zone", "title": "所属区域" },
+            { "key": "severity", "title": "事件等级" },
+            { "key": "detectedAt", "title": "发现时间" },
+            { "key": "owner", "title": "当前负责人" },
+            { "key": "status", "title": "处置状态" }
+          ],
+          "rows": [
+            {
+              "deviceId": "SIM-DEVICE-20260813-000001",
+              "source": "东区边缘接入节点-17",
+              "zone": "模拟一区",
+              "severity": "高",
+              "detectedAt": "2026-08-13 10:24:36",
+              "owner": "值班工程师甲",
+              "status": "待确认"
+            },
+            {
+              "deviceId": "SIM-DEVICE-20260813-000002",
+              "source": "西区边缘接入节点-08",
+              "zone": "模拟二区",
+              "severity": "中",
+              "detectedAt": "2026-08-13 10:18:02",
+              "owner": "值班工程师乙",
+              "status": "处理中"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

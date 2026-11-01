@@ -1,0 +1,193 @@
+{
+  "id": "hiui-5.0.0",
+  "foundationId": "hiui-react",
+  "reviewedAt": "2026-10-06",
+  "source": {
+    "cli": "npm view @hi-ui/hiui@5.0.0 version license peerDependencies --json（5.0.0，MIT）",
+    "components": "https://xiaomi.github.io/hiui/components",
+    "llmsDocs": "https://xiaomi.github.io/hiui/llms/<component>.md（provider.md/table.md/form.md/stepper.md/date-picker.md 等，逐组件官方 API 文档）",
+    "principles": "https://xiaomi.github.io/hiui/",
+    "styles": "包内 ESM 产物运行时注入（styles/index.scss.js 随组件 import 自动装 style 标签，无独立 CSS 入口）",
+    "theme": "https://xiaomi.github.io/hiui/llms/provider.md（Provider theme: ThemeDataProps token/components 注入 CSS 变量）",
+    "variables": "node_modules/@hi-ui/core-css/lib/tokens/*.scss（默认刻度值）",
+    "homepage": "https://xiaomi.github.io/hiui/",
+    "repository": "https://github.com/XiaoMi/hiui",
+    "templates": "https://xiaomi.github.io/hiui/templates（官方站页面模板集入口；本站以 components 组件文档与 llmsDocs 逐组件文档为主要参考）",
+    "source": "https://github.com/XiaoMi/hiui"
+  },
+  "package": {
+    "name": "@hi-ui/hiui",
+    "version": "5.0.0",
+    "license": "MIT"
+  },
+  "iconPackage": {
+    "name": "@hi-ui/icons",
+    "version": "5.0.0",
+    "license": "MIT"
+  },
+  "peerPackages": [
+    {
+      "name": "@hi-ui/patch-for-react",
+      "version": "5.0.0",
+      "license": "MIT",
+      "reason": "React 19 下官方兼容补丁（静态/命令式 API 经 createRoot 落地）；main.tsx 首行副作用 import。不装则运行时打 2 条 console error.createMessage/Message.open 失效"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "reason": "@hi-ui/* 5.0.0 ESM 产物 `import { __rest } from 'tslib'` 但包未注册该依赖（上游打包疏漏）；不装则 Vite resolve 报错，工程需直依赖补齐"
+    },
+    {
+      "name": "qrcode.react",
+      "version": "4.2.0",
+      "license": "ISC",
+      "reason": "HiUI 无 QRCode 组件（step1 缺口 #3「届时评估社区组件」）；数字护照二维码展示，step2（10-06）实装兑现，具名 QRCodeSVG。--ignore-scripts 安装，无 lifecycle scripts"
+    }
+  ],
+  "react19Compatibility": [
+    {
+      "issue": "@hi-ui 5.0.0 静态/命令式 API 在 React 19 失效（@hi-ui/react-compat bridged：ReactDOM.render 不存在）",
+      "solution": "官方 @hi-ui/patch-for-react@5.0.0 副作用 import（src/main.tsx 首行，领先于 App 加载）"
+    },
+    {
+      "issue": "@hi-ui/tag-input、@hi-ui/textarea 内嵌 react-resize-detector 6.x/7.x，挂载时调 React 19 已删除的 ReactDOM.findDOMNode(classInstance)，CheckSelect/TagInput/Textarea autoSize 一开即抛错",
+      "solution": "vite.config.ts resolve.alias 把裸导入 react-resize-detector 指向 src/compat/react-resize-detector.tsx（原生 ResizeObserver 等价实现，零依赖，仅覆盖 HiUI 实际调用面：单 host 子元素 + onResize(width,height)）"
+    },
+    {
+      "issue": "@hi-ui/tooltip/popover/pop-confirm 与内嵌 rc-resize-observer（table/virtual-list/check-cascader 3 份捆包）共 4 处读 React 19 已删的 element.ref 废弃 getter（每次读一条 console.error）",
+      "solution": "vite.config.ts hiuiReact19CompatPlugin（rollup transform + optimizeDeps esbuild onLoad 双链）将 element.ref 同值改为 element.props.ref（React 19 起 ref 是普通 prop）；同一文件同类片段 >1 次即抛错停机防误改"
+    }
+  ],
+  "distribution": "package-native",
+  "framework": {
+    "name": "react",
+    "version": "19.2.7"
+  },
+  "imports": {
+    "runtime": "@hi-ui/hiui（namespace 全量组件，必须具名导入）",
+    "icons": "@hi-ui/icons（具名：SearchOutlined/CheckOutlined 等 <语义名>Outlined|Filled|Colorful，466 个全量见 icon-summation.d.ts）",
+    "themeProvider": "Provider（@hi-ui/hiui 顶层导出；locale + theme inject CSS 变量）",
+    "resetCss": "无；组件样式随 ESM 运行时注入，页面级布局走工程 styles.css",
+    "namedImportsOnly": true
+  },
+  "theme": {
+    "entry": "src/theme.ts",
+    "exportName": "tianshuHiuiTheme",
+    "cssVariables": true,
+    "tokenMapping": "天枢合同 token → ThemeDataProps token：colorPrimary #1677ff → color.primary 刻度（antd blue-1..10 顺位对应 HiUI 50..900，500 槽为主色）；borderRadius 6 → border.radius.md（HiUI 默认 md 4px，按合同移位为 6px）；antd 状态色族（green/gold/red）→ color.success/warning/danger 刻度；colorText #1f2937 ≈ gray.800 #1e293b、colorTextSecondary #6b7280 ≈ gray.500 #64748b、colorBorder #d8dee8 ≈ gray.200/300、colorBgBase #f6f8fb ≈ core-css static bgColor #f5f8fc——灰阶刻度与 HiUI 默认语义一致，未覆盖；antd 预设状态色名（processing/success/warning/error/geekblue/default）→ Tag type 映射（processing→primary、geekblue→ultramarine，其余同名），组件自含主题刻度消费，业务代码不写颜色。"
+  },
+  "components": [
+    "Alert",
+    "Badge",
+    "Breadcrumb",
+    "Button",
+    "Card",
+    "CheckSelect",
+    "Checkbox",
+    "DatePicker",
+    "Descriptions",
+    "Drawer",
+    "EmptyState",
+    "Form",
+    "FormItem",
+    "FormSubmit",
+    "IconButton",
+    "Input",
+    "Loading",
+    "Menu",
+    "Message",
+    "Modal",
+    "NumberInput",
+    "Pagination",
+    "PopConfirm",
+    "Popover",
+    "Provider",
+    "RadioGroup",
+    "Result",
+    "Select",
+    "Skeleton",
+    "Space",
+    "Stepper",
+    "Switch",
+    "Table",
+    "Tabs",
+    "TabPane",
+    "Tag",
+    "Textarea",
+    "Timeline",
+    "Tooltip",
+    "Upload"
+  ],
+  "componentsNote": "package-native：@hi-ui/hiui 顶层导出全部组件均可具名导入（完整清单见 lib/types/index.d.ts，本批 4 页实测子集在上列）；GroupMenu/SideMenu/Sidebar/Search/QueryFilter/Transfer/Collapse/Counter/Slider/Progress/Avatar/List/Watermark/Cascader/Tree 等存在但本批未用。",
+  "knownGaps": [
+    {
+      "component": "Segmented（选项卡直选）",
+      "status": "HiUI 无独立组件；用 RadioGroup type=\"button\" 等价（选中态组件自含，与 antd Segmented 选中语义一致；表单单选也已走同组件）"
+    },
+    {
+      "component": "Statistic（统计大数字）",
+      "status": "无；工作台/阶段统计按页面级排版实现（ts-stat-num/ts-count-num/ts-phase-card），与 shadcn 底座同处理"
+    },
+    {
+      "component": "QRCode（二维码）",
+      "status": "无；本批 4 页未用到（数字护照详情在补齐阶段需要，届时评估社区组件或登记缺口）"
+    },
+    {
+      "component": "Message 动作位（撤销按钮）",
+      "status": "@hi-ui/message options 无 action 位（antd message 可塞按钮）；降级：提示文案内说明恢复路径（如「可从添加卡片重新加回」）；不伪造动作"
+    },
+    {
+      "component": "Tag geekblue 暗蓝族",
+      "status": "HiUI Tag 无同义 type；映射到深蓝系 ultramarine（外观 filled 与 antd Tag 色板语义一致，色族略有差，属观感差异非功能降级）"
+    },
+    {
+      "component": "Menu 静态分组标题（antd ItemGroup）",
+      "status": "Menu 数据项仅支持 children 嵌套子菜单，无不可点击的分组标题槽（GroupMenu 组件面向另一交互）；降级：分组渲染为可折叠子菜单、defaultExpandAll 全展开，观感差记入差异"
+    },
+    {
+      "component": "Stepper 跳步 gating（只许回退禁向前跳）",
+      "status": "Stepper 项默认可点击跳任意步，无业务约束位；按纪律在 onChange 业务层 gating（表单页如需）"
+    },
+    {
+      "component": "Descriptions 响应式 column 对象（antd { xs:2, md:3 }）",
+      "status": "@hi-ui/descriptions column 仅固定列数；详情页用 useState+matchMedia 按断点收列（≥1280→4、768–1279→2、更窄→1），差异记入"
+    },
+    {
+      "component": "Table 列宽响应式隐藏机制（antd 版按断点隐藏次要列）",
+      "status": "HiUI Table 无；用固定列宽 + Table 自带横向滚承载，行为差异非功能降级"
+    },
+    {
+      "component": "Button 原生 form submit 语义（antd htmlType=submit）",
+      "status": "HiUI Button 的 type 是语义色非原生 submit；查询/提交经 form onSubmit(preventDefault) + Button onClick 承载，Enter 行为等价"
+    },
+    {
+      "component": "Form validate() 契约（antd 失败 reject，HiUI async-validator 亦 reject Validation Error）",
+      "status": "非缺口，注意点：分步表单如 HiUI 官方只有挂载中的 FormItem 注册校验器；reject 须在页面 try/catch 吞掉，否则未捕获 promise 进 console"
+    },
+    {
+      "component": "Shell 全局搜索（antd AutoComplete 类）",
+      "status": "用 Input + suffix 搜索按钮与 Enter 承载（Search 组件存在但不匹配壳层直连路由交互）"
+    },
+    {
+      "component": "Table rowClassName 取数面（d.ts 无提示的坑点）",
+      "status": "step2 登记：回调收到扁平化节点 {id,depth,parent,raw} 而非原始行（单元格 render、getCheckboxConfig 收 raw——三回调取数面不一致）；按 .raw 取回并在页面注释。直接使用 (record)=> 签名会运行时 undefined.split 整页白屏"
+    },
+    {
+      "component": "Timeline 空 time 槽不可省略",
+      "status": "step2 登记：右置型 Timeline 恒渲染 time div（一个空格文本），页面 CSS 隐藏；纯结构冗余"
+    },
+    {
+      "component": "PopConfirm 无法锚定 Drawer 遮罩/X 关闭",
+      "status": "step2 登记：公开范围抽屉设 maskClosable=false closeable=false，关闭只走「取消」（带脏检查气泡）与「保存」；遮罩点击不再关闭（antd 版可关）"
+    },
+    {
+      "component": "Upload 本地解析语义",
+      "status": "step2 登记：RMA 附件/固件 SN 清单保留「隐藏原生 file input + HiUI Button」工艺；firmware-form 固件包上传用 Upload customUpload 原生承载。行为与文案逐字一致，仅非 Upload 组件"
+    },
+    {
+      "component": "QRCode 二维码（step1 缺口 #3 兑现）",
+      "status": "step2 实装：qrcode.react@4.2.0（ISC，无 lifecycle scripts）具名 QRCodeSVG，同 shadcn step2 先例；无降级"
+    }
+  ]
+}

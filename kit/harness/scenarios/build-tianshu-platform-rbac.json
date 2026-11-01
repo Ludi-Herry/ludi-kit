@@ -1,0 +1,55 @@
+{
+  "id": "build-tianshu-platform-rbac",
+  "prompt": "天枢 · 账号与权限：角色列表与权限点注册表分 Tab 管理，支持启停与分配。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection", "Table", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection", "Table"],
+  "expectedText": ["角色列表", "权限点注册表", "所属域"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "role": { "sourceGroup": "角色", "statuses": ["enabled", "disabled"] }
+    }
+  },
+  "expectedActions": {
+    "danger": ["停用"],
+    "conditions": [
+      {
+        "when": "record.status === \"enabled\"",
+        "branch": "then",
+        "required": ["停用"],
+        "danger": ["停用"]
+      }
+    ]
+  },
+  "expectedConfirmations": [
+    {
+      "action": "停用",
+      "title": "停用角色？",
+      "confirmLabel": "确认停用",
+      "requiredText": ["停用后"],
+      "danger": true,
+      "state": {
+        "variable": "disableRole",
+        "openMode": "truthy",
+        "triggerValue": "non-null",
+        "clearValue": null
+      }
+    }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "RbacListPage",
+    "pageId": "platform-rbac"
+  },
+  "report": "harness/reports/build-tianshu-platform-rbac.json"
+}

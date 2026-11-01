@@ -1,0 +1,10 @@
+{
+  "id": "test-nested-card-children",
+  "forbiddenPatterns": ["card-inside-card"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/nested-card-helper.bad.tsx",
+    "symbol": "NestedCardChildrenPage"
+  },
+  "report": "harness/reports/test-nested-card-children.json"
+}

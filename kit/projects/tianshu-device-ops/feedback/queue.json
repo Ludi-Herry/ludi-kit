@@ -1,0 +1,54 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-device-ops",
+  "items": [
+    {
+      "id": "fb-20260928-001",
+      "source": "qa",
+      "target": "rule",
+      "status": "queued",
+      "severity": "medium",
+      "pageId": "device-list",
+      "generatedFile": "projects/tianshu-device-ops/generated/DeviceListPage.tsx",
+      "title": "AntD 知识包缺少 App、Checkbox、Popover、Segmented、Result 的冻结 CLI 参考",
+      "finding": "三页实际使用的 antd 组件中有 5 个在 foundations/knowledge/antd-6.5.0 里没有冻结参考与决策卡，生成时只能凭默认经验使用：视图切换用 Segmented、列设置用 Popover + Checkbox、未开放页与查无设备用 Result、全局提示用 App。",
+      "proposedChange": "在知识包补齐这 5 个组件的 CLI 参考；Segmented 与 Result 补决策卡（Segmented 与 Tabs 的分工、Result 与 Empty 的分工）。",
+      "evidence": [
+        "projects/tianshu-device-ops/generated/generation-knowledge.json 的 uncoveredComponents 字段"
+      ],
+      "acceptance": [
+        "重新生成 generation-knowledge.json 后三页 uncoveredComponents 为空"
+      ],
+      "createdAt": "2026-09-28",
+      "promotion": {
+        "action": "update-rule",
+        "destination": "recipes/view-switch-and-result.md",
+        "requiresReview": true
+      }
+    },
+    {
+      "id": "fb-20260928-003",
+      "source": "engineer",
+      "target": "rule",
+      "status": "queued",
+      "severity": "medium",
+      "pageId": "device-list",
+      "generatedFile": "projects/tianshu-device-ops/generated/pages.tsx",
+      "title": "生成知识清单是实现后补编的，未在生成前冻结",
+      "finding": "kit AGENTS.md 要求 library-native + antd 生成前产出 generation-knowledge.json。本批页面按页面卡直接编码，知识清单在实现完成后从源码导入反推生成；kit 的 resolveAntdGenerationInput 只接受带 content 描述的页面，手写页面没有生成前取得知识清单的入口。",
+      "proposedChange": "为按页面卡手写的页面提供生成前的知识清单命令（输入 pages.json 的 componentPlan 或计划组件表），并在 validate-projects 中检查清单早于页面源码。",
+      "evidence": [
+        "projects/tianshu-device-ops/generated/generation-knowledge.json 的 note 字段"
+      ],
+      "acceptance": [
+        "下一批页面在写代码前即可生成知识清单"
+      ],
+      "createdAt": "2026-09-28",
+      "promotion": {
+        "action": "update-rule",
+        "destination": "recipes/prd-to-pages.md",
+        "requiresReview": true
+      }
+    }
+  ]
+}

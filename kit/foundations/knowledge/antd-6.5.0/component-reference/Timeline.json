@@ -1,0 +1,341 @@
+{
+  "version": "1.0.0",
+  "component": "Timeline",
+  "queryComponent": "Timeline",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-09-29",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Timeline",
+        "nameZh": "时间轴",
+        "description": "垂直展示的时间流信息。",
+        "props": [
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "items",
+            "type": "[Items](#items)[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "mode",
+            "type": "`start` | `alternate` | `end`",
+            "default": "`start`",
+            "since": ""
+          },
+          {
+            "name": "orientation",
+            "type": "`vertical` | `horizontal`",
+            "default": "`vertical`",
+            "since": ""
+          },
+          {
+            "name": "pending",
+            "type": "ReactNode",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "pendingDot",
+            "type": "ReactNode",
+            "default": "<LoadingOutlined />",
+            "since": ""
+          },
+          {
+            "name": "reverse",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "titleSpan",
+            "type": "number | string",
+            "default": "12",
+            "since": ""
+          },
+          {
+            "name": "variant",
+            "type": "`filled` | `outlined`",
+            "default": "`outlined`",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Timeline.Items": [
+            {
+              "name": "color",
+              "type": "string",
+              "default": "`blue`",
+              "since": ""
+            },
+            {
+              "name": "content",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "dot",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "loading",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "placement",
+              "type": "`start` | `end`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "position",
+              "type": "`start` | `end`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "title",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Timeline",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 当有一系列信息需按时间排列时，可正序和倒序。\n- 需要有一条时间轴进行视觉上的串联时。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本用法</code>\n<code src=\"./demo/variant.tsx\">变体样式</code>\n<code src=\"./demo/pending.tsx\">等待及排序</code>\n<code src=\"./demo/pending-legacy.tsx\" debug>最后一个及排序</code>\n<code src=\"./demo/alternate.tsx\">交替展现</code>\n<code src=\"./demo/horizontal.tsx\">水平布局</code>\n<code src=\"./demo/horizontal-debug.tsx\" debug>水平布局</code>\n<code src=\"./demo/custom.tsx\">自定义时间轴点</code>\n<code src=\"./demo/end.tsx\">另一侧时间轴点</code>\n<code src=\"./demo/title.tsx\">标题</code>\n<code src=\"./demo/title-span.tsx\">标题占比</code>\n<code src=\"./demo/semantic.tsx\">语义化自定义</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Timeline\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| items | 选项配置 | [Items](#items)[] | - |  | × |\n| mode | 通过设置 `mode` 可以改变时间轴和内容的相对位置 | `start` \\| `alternate` \\| `end` | `start` |  | × |\n| orientation | 设置时间轴的方向 | `vertical` \\| `horizontal` | `vertical` |  | × |\n| ~~pending~~ | 指定最后一个幽灵节点是否存在或内容，请使用 `item.loading` 代替 | ReactNode | false |  | × |\n| ~~pendingDot~~ | 当最后一个幽灵节点存在時，指定其时间图点，请使用 `item.icon` 代替 | ReactNode | &lt;LoadingOutlined /&gt; |  | × |\n| reverse | 节点排序 | boolean | false |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| titleSpan | 设置标题占比空间，为到 dot 中心点距离 <InlinePopover previewURL=\"https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*1NJISa7bpqgAAAAAR5AAAAgAerJ8AQ/original\"></InlinePopover> | number \\| string | 12 |  | × |\n| variant | 设置样式变体 | `filled` \\| `outlined` | `outlined` |  | × |\n\n### Items\n\n时间轴的每一个节点。\n\n| 参数 | 说明 | 类型 | 默认值 |\n| --- | --- | --- | --- |\n| color | 指定圆圈颜色 `blue`、`red`、`green`、`gray`，或自定义的色值 | string | `blue` |\n| content | 设置内容 | ReactNode | - |\n| ~~children~~ | 设置内容，请使用 `content` 替换 | ReactNode | - |\n| ~~dot~~ | 自定义时间轴点，请使用 `icon` 替换 | ReactNode | - |\n| icon | 自定义节点图标 | ReactNode | - |\n| ~~label~~ | 设置标签，请使用 `title` 替换 | ReactNode | - |\n| loading | 设置加载状态 | boolean | false |\n| placement | 自定义节点位置 | `start` \\| `end` | - |\n| ~~position~~ | 自定义节点位置，请使用 `placement` 替换 | `start` \\| `end` | - |\n| title | 设置标题 | ReactNode | - |\n\n## Semantic DOM\n\n### Timeline\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n### Timeline Items\n\n<code src=\"./demo/_semantic_items.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Timeline\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Timeline",
+        "demos": [
+          {
+            "name": "alternate",
+            "title": "Alternate",
+            "description": "Alternate timeline."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Basic timeline."
+          },
+          {
+            "name": "custom",
+            "title": "Custom",
+            "description": "Set a node as an icon or other custom element."
+          },
+          {
+            "name": "end",
+            "title": "End alternate",
+            "description": "End alternate timeline."
+          },
+          {
+            "name": "horizontal",
+            "title": "Horizontal",
+            "description": "Horizontal layout."
+          },
+          {
+            "name": "pending",
+            "title": "Loading and Reversing",
+            "description": "Node supports `loading` to indicate loading, and `reverse` property to control the order of nodes."
+          },
+          {
+            "name": "semantic",
+            "title": "Semantic Sample",
+            "description": "Achieve richer custom styles by using semantic structure."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Timeline by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "title-span",
+            "title": "Title Offset",
+            "description": "Use `titleSpan` to set the title span space."
+          },
+          {
+            "name": "title",
+            "title": "Title",
+            "description": "Use `title` show time alone."
+          },
+          {
+            "name": "variant",
+            "title": "Variant",
+            "description": "Use the `variant` to set the style of the timeline."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Timeline",
+        "tokens": [
+          {
+            "name": "dotBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of node",
+            "descriptionZh": "节点背景色"
+          },
+          {
+            "name": "dotBorderWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Border width of node",
+            "descriptionZh": "节点边框宽度"
+          },
+          {
+            "name": "dotSize",
+            "type": "string | number",
+            "default": "",
+            "description": "Node size",
+            "descriptionZh": "节点大小"
+          },
+          {
+            "name": "itemPaddingBottom",
+            "type": "number",
+            "default": "",
+            "description": "Bottom padding of item",
+            "descriptionZh": "时间项下间距"
+          },
+          {
+            "name": "tailColor",
+            "type": "string",
+            "default": "",
+            "description": "Line color",
+            "descriptionZh": "轨迹颜色"
+          },
+          {
+            "name": "tailWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Line width",
+            "descriptionZh": "轨迹宽度"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Timeline",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with timeline container list style reset, vertical layout, dot icon, outlined style, alternate layout and other basic container styles",
+            "descriptionZh": "根元素，设置时间轴容器的列表样式重置、垂直布局、点状图标、轮廓样式、交替布局等基础容器样式"
+          },
+          {
+            "key": "item",
+            "description": "Item element with single timeline node relative positioning, margin, padding, font size, finish state, color theme, layout direction and other node basic styles",
+            "descriptionZh": "节点元素，设置单个时间节点的相对定位、外边距、内边距、字体大小、完成状态、颜色主题、布局方向等节点基础样式"
+          },
+          {
+            "key": "itemWrapper",
+            "description": "Item wrapper element with timeline node content wrapping container styles",
+            "descriptionZh": "节点包装元素，设置时间节点内容的包装容器样式"
+          },
+          {
+            "key": "itemIcon",
+            "description": "Item icon element with node head icon absolute positioning, width/height size, background color, border, border radius, wave animation and other icon styles",
+            "descriptionZh": "节点图标元素，设置节点头部图标的绝对定位、宽高尺寸、背景色、边框、圆角、波纹动画等图标样式"
+          },
+          {
+            "key": "itemSection",
+            "description": "Item section element with section container containing header and content flex layout, wrap, gap and other layout styles",
+            "descriptionZh": "节点区域元素，设置包含头部和内容的区域容器的Flex布局、换行、间距等布局样式"
+          },
+          {
+            "key": "itemHeader",
+            "description": "Item header element with header area layout containing title and rail, alignment, text direction and other styles",
+            "descriptionZh": "节点头部元素，设置包含标题和连接线的头部区域布局、对齐方式、文本方向等样式"
+          },
+          {
+            "key": "itemTitle",
+            "description": "Item title element with node title text font size, line height, color and other text styles",
+            "descriptionZh": "节点标题元素，设置节点标题文字的字体大小、行高、颜色等文本样式"
+          },
+          {
+            "key": "itemContent",
+            "description": "Item content element with node detail content relative positioning, top offset, left margin, text color, word break and other content styles",
+            "descriptionZh": "节点内容元素，设置节点详细内容的相对定位、顶部偏移、左侧外边距、文字颜色、词汇换行等内容样式"
+          },
+          {
+            "key": "itemRail",
+            "description": "Item rail element with timeline node connection track line absolute positioning, top offset, left offset, height, border color, width, style and other connection line styles",
+            "descriptionZh": "节点连接线元素，设置连接时间节点的轨道线条的绝对定位、顶部偏移、左侧偏移、高度、边框颜色、宽度、样式等连接线样式"
+          }
+        ]
+      }
+    }
+  }
+}

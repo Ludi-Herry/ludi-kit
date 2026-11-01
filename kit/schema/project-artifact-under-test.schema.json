@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/project-artifact-under-test.schema.json",
+  "title": "Radesign Project Artifact Under Test",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "artifactKind",
+    "runId",
+    "arm",
+    "projectId",
+    "artifactId",
+    "contracts",
+    "source",
+    "build",
+    "runtime"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "enum": ["1.0.0", "1.1.0"] },
+    "artifactKind": { "const": "generated-product" },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "arm": { "enum": ["consumer", "control"] },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "contracts": { "type": "object" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "entry", "algorithm", "excluded", "sha256"],
+      "properties": {
+        "root": { "const": "." },
+        "entry": { "const": "index.html" },
+        "algorithm": { "const": "sha256-tree-v1" },
+        "excluded": {
+          "const": [
+            ".git/",
+            "node_modules/",
+            "dist/",
+            "evidence/",
+            "test-results/"
+          ]
+        },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "outputPath", "exitCode", "sha256"],
+      "properties": {
+        "script": { "const": "build" },
+        "outputPath": { "const": "dist" },
+        "exitCode": { "const": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "entryRoute", "identityPath"],
+      "properties": {
+        "script": { "const": "preview" },
+        "entryRoute": {
+          "type": "string",
+          "pattern": "^/(?!/)[^\\s]*$"
+        },
+        "identityPath": { "const": "/artifact-meta.json" }
+      }
+    },
+    "seal": { "$ref": "#/$defs/sealPointer" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "version": { "const": "1.0.0" } },
+        "required": ["version"]
+      },
+      "then": {
+        "properties": {
+          "contracts": { "$ref": "#/$defs/contractsV10" },
+          "seal": false
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "version": { "const": "1.1.0" } },
+        "required": ["version"]
+      },
+      "then": {
+        "required": ["seal"],
+        "properties": {
+          "contracts": { "$ref": "#/$defs/contractsV11" },
+          "seal": { "$ref": "#/$defs/sealPointer" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "uuidV4": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "relativeJsonPath": {
+      "type": "string",
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._\\-/]+\\.json$"
+    },
+    "fileHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativeJsonPath" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "contractsV10": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blindRun",
+        "productDescription",
+        "businessContext",
+        "pages",
+        "flows",
+        "samplePack",
+        "flowAcceptance"
+      ],
+      "properties": {
+        "blindRun": { "$ref": "#/$defs/fileHash" },
+        "productDescription": { "$ref": "#/$defs/fileHash" },
+        "businessContext": { "$ref": "#/$defs/fileHash" },
+        "pages": { "$ref": "#/$defs/fileHash" },
+        "flows": { "$ref": "#/$defs/fileHash" },
+        "samplePack": { "$ref": "#/$defs/fileHash" },
+        "flowAcceptance": { "$ref": "#/$defs/fileHash" }
+      }
+    },
+    "contractsV11": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blindRun",
+        "productDescription",
+        "businessContext",
+        "pages",
+        "flows",
+        "samplePack"
+      ],
+      "properties": {
+        "blindRun": { "$ref": "#/$defs/fileHash" },
+        "productDescription": { "$ref": "#/$defs/fileHash" },
+        "businessContext": { "$ref": "#/$defs/fileHash" },
+        "pages": { "$ref": "#/$defs/fileHash" },
+        "flows": { "$ref": "#/$defs/fileHash" },
+        "samplePack": { "$ref": "#/$defs/fileHash" }
+      }
+    },
+    "sealPointer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "rootId", "key"],
+      "properties": {
+        "version": { "const": "1.0.0" },
+        "rootId": { "const": "blind-protocol-v1.2" },
+        "key": { "$ref": "#/$defs/uuidV4" }
+      }
+    }
+  }
+}

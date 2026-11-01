@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "skill": "image2-to-figma-page",
+  "cases": [
+    {
+      "id": "existing-direct-freeze-and-block",
+      "request": "skills/image2-to-figma-page/fixtures/existing-direct.request.json",
+      "expect": {
+        "valid": true,
+        "designContext": "existing",
+        "frozenSourceCount": 7,
+        "visualDiffExit": 0,
+        "overallStatusWithoutFigma": "external-blocked"
+      }
+    },
+    {
+      "id": "exploratory-selection-freeze",
+      "request": "skills/image2-to-figma-page/fixtures/exploratory.request.json",
+      "expect": {
+        "valid": true,
+        "designContext": "exploratory",
+        "directionCount": 3,
+        "selectedDirectionId": "calm-command",
+        "overallStatusWithoutFigma": "external-blocked"
+      }
+    },
+    {
+      "id": "missing-existing-context-fails-closed",
+      "request": "skills/image2-to-figma-page/fixtures/invalid-missing-existing-context.json",
+      "expect": {
+        "valid": false,
+        "writeArtifacts": false,
+        "rejectPlaceholderFigmaIds": true
+      }
+    },
+    {
+      "id": "existing-forced-image2-fails-closed",
+      "request": "skills/image2-to-figma-page/fixtures/invalid-existing-forces-image2.json",
+      "expect": {
+        "valid": false,
+        "writeArtifacts": false
+      }
+    },
+    {
+      "id": "exploratory-missing-visual-brief-fails-closed",
+      "request": "skills/image2-to-figma-page/fixtures/invalid-exploratory-missing-brief.json",
+      "expect": {
+        "valid": false,
+        "writeArtifacts": false
+      }
+    }
+  ]
+}

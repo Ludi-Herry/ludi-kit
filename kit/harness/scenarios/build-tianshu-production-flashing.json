@@ -1,0 +1,29 @@
+{
+  "id": "build-tianshu-production-flashing",
+  "prompt": "天枢 · 新建烧录任务：分组录入批次选择、固件版本与证书模板绑定、数量确认。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "form-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "Stepper", "FormSection", "Input", "Select", "Textarea", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "Stepper", "FormSection"],
+  "expectedText": ["批次选择", "收货批次", "本次烧录数量（台）", "固件与证书", "固件版本", "请选择固件版本后再创建烧录任务。", "证书模板", "备注与异常路径", "任务备注", "存草稿"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "flashing": { "sourceGroup": "烧录任务", "statuses": ["flash-failed"] }
+    }
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "FlashingFormPage",
+    "pageId": "production-flashing"
+  },
+  "report": "harness/reports/build-tianshu-production-flashing.json"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "import-profile-kit-consumer-bad",
+  "prompt": "Import profile fixture: kit consumer output rejects direct third-party foundation imports.",
+  "foundationContract": {
+    "businessContext": "projects/sample-inventory-erp/business-context.json",
+    "projectId": "sample-inventory-erp",
+    "outputMode": "kit-consumer",
+    "framework": "react"
+  },
+  "forbiddenPatterns": ["direct-third-party-import"],
+  "output": {
+    "file": "src/foundation/antd-theme.ts"
+  },
+  "report": "harness/reports/import-profile-kit-consumer-bad.json"
+}

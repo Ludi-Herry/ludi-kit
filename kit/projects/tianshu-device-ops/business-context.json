@@ -1,0 +1,146 @@
+{
+  "$schema": "../../schema/project-context.schema.json",
+  "version": "0.1.0",
+  "projectId": "tianshu-device-ops",
+  "contextType": "real-product",
+  "decision": "小豆盒设备运营：以设备为信息锚点、按四个任务中心组织的运营后台；第一批三页（全部设备、设备详情、告警处置），页面卡 docs/PLAN-天枢设备运营三页-页面卡-2026-09-28.md 已由 Owner 冻结（2026-09-28）",
+  "product": {
+    "name": "小豆盒 · 运营管理平台",
+    "realCustomer": true,
+    "audience": [
+      "运维",
+      "客服",
+      "生产管理",
+      "平台管理员"
+    ],
+    "scenario": "私有云存储硬件的内部运营后台：一台设备从生产、出货、激活、在网运行到告警与售后，所有角色围绕同一个 SN 协作。信息密度优先，中性调性。"
+  },
+  "sourceOfTruth": [
+    "projects/tianshu-device-ops/prd.mdx"
+  ],
+  "coreFlows": [
+    "设备巡检：全部设备按视图与筛选收窄 → 设备详情判断 → 告警处置或发起 RMA",
+    "告警闭环：告警处置读三段式说明 → 查看受影响设备 → 转工单或标记已处理"
+  ],
+  "firstPages": [
+    "设备生命周期·全部设备（list-page）",
+    "设备详情（detail-page）",
+    "异常处置·告警处置（list-page，左表右详情）"
+  ],
+  "criticalStates": [
+    "设备生命周期状态机（PRD §四）：收货入场/烧录·发证/烧录失败/测试中/测试不合格/合格入库/出货/退货 RMA/报废，归为生产、运行、售后三个阶段",
+    "在网状态（PRD 在网设备监控 ⑦）：在线/离线/从未上线，只对已出货设备有意义，与生命周期状态分开显示",
+    "告警状态：待处理/处理中/已转工单/已处理/已静默；告警级别 P1/P2/P3 用中性灰度，不占状态色（PRD §3.1.1）",
+    "无权限态（PRD §3.3）：按钮置灰 + 提示 / 未开放功能页"
+  ],
+  "boundaries": {
+    "doNotBuild": [
+      "真实心跳、推送、工单系统接口调用（页面在本地状态内完成操作闭环）",
+      "消费端 App、广告与内容运营模块",
+      "页面卡未列出的菜单项页面（进入未开放页）"
+    ]
+  },
+  "thirdPartyBaseline": {
+    "candidate": "antd",
+    "version": "6.5.0",
+    "status": "decided",
+    "decidedAt": "2026-09-28",
+    "rationale": "与 tianshu-ops 同一前端合同；PRD 按 Ant Design Pro 词汇写成，直接使用 antd 原生组件与 @ant-design/icons。"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "version": "6.5.0",
+      "packageName": "antd"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://ant.design/docs/spec/introduce",
+      "components": "https://ant.design/components/overview",
+      "templates": "https://procomponents.ant.design/components",
+      "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+      "styles": "https://ant.design/docs/react/introduce#style",
+      "theme": "https://ant.design/docs/react/customize-theme",
+      "variables": "https://ant.design/docs/react/css-variables"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-09-28",
+    "designPack": {
+      "path": "foundations/design-packs/antd-6.5.0-ui-coverage-batch2.json",
+      "sha256": "352b149e0b1fa35ad6796d62247c202de3ab4d3ccc3fc6fb0b7c943b56941d21"
+    },
+    "icons": {
+      "packageName": "@ant-design/icons",
+      "version": "6.3.2",
+      "source": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react"
+    },
+    "theme": {
+      "entry": "projects/tianshu-device-ops/theme.ts#deviceOpsTheme",
+      "strategy": "ConfigProvider cssVar theme"
+    },
+    "reset": {
+      "import": "antd/dist/reset.css"
+    },
+    "imports": {
+      "root": "antd",
+      "allowedPackages": [
+        "antd",
+        "@ant-design/icons",
+        "dayjs",
+        "react",
+        "./ui",
+        "./store",
+        "./data",
+        "../ui",
+        "../store",
+        "../data",
+        "../core/alertRules",
+        "../core/alerts",
+        "../core/binding",
+        "../core/dashboard",
+        "../core/deviceDetail",
+        "../core/deviceList",
+        "../core/feedback",
+        "../core/firmware",
+        "../core/firmwareForm",
+        "../core/flashingForm",
+        "../core/flashingList",
+        "../core/passportDetail",
+        "../core/passportList",
+        "../core/rmaList",
+        "../core/storage"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn",
+        "../tianshu-ops/"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-antd-project",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "brief-driven",
+    "candidates": [
+      "生命周期状态 Tag、在网状态 Tag、告警级别文字（项目层 ui.tsx）",
+      "SN 链接（可复制，跳设备详情）",
+      "业务组合只留在项目层，不回流为 @ai-readable/kit 公共 wrapper"
+    ]
+  },
+  "requiredBeforeRealWork": []
+}

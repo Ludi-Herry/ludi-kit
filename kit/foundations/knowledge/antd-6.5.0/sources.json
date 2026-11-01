@@ -1,0 +1,131 @@
+{
+  "version": "1.0.0",
+  "foundation": "antd",
+  "foundationVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "refreshPolicy": [
+    "Refresh on an AntD runtime upgrade.",
+    "Refresh when the CLI design-language or component dataset changes.",
+    "Refresh the complete official Blog snapshot when its reviewed commit changes.",
+    "Review the affected decision card when an official design pattern changes.",
+    "Add a frozen component reference before a new component enters a generated page."
+  ],
+  "offlineQueries": {
+    "designLanguage": "npm exec --offline -- antd design.md --version 6.5.0 --format json",
+    "componentInfo": "npm exec --offline -- antd info <Component> --version 6.5.0 --lang zh --format json",
+    "componentDoc": "npm exec --offline -- antd doc <Component> --version 6.5.0 --lang zh --format json",
+    "componentDemo": "npm exec --offline -- antd demo <Component> --version 6.5.0 --lang zh --format json",
+    "componentToken": "npm exec --offline -- antd token <Component> --version 6.5.0 --format json",
+    "componentSemantic": "npm exec --offline -- antd semantic <Component> --version 6.5.0 --format json"
+  },
+  "versionedSnapshots": {
+    "officialBlog": {
+      "repository": "https://github.com/ant-design/ant-design",
+      "directory": "docs/blog",
+      "commit": "f06ce22f89c04c120b59a275411f41873a212525",
+      "index": "blog/index.json",
+      "refresh": "npm run refresh:antd-blog -- --commit <exact-commit>",
+      "role": "Complete first-class Blog source for component decisions, interaction details, visual regression, engineering risks, and version migration."
+    }
+  },
+  "officialSources": [
+    {
+      "id": "antd-design-language-cli",
+      "url": "https://ant.design/design.md",
+      "role": "Canonical v6 color, typography, spacing, radius, surface, shadow, motion, component-archetype, and theming language.",
+      "frozenBy": "offlineQueries.designLanguage"
+    },
+    {
+      "id": "antd-official-blog",
+      "url": "https://github.com/ant-design/ant-design/tree/f06ce22f89c04c120b59a275411f41873a212525/docs/blog",
+      "role": "Exact-commit recursive snapshot of every official Blog source file, with a localized article index and page-level selection metadata.",
+      "frozenBy": "versionedSnapshots.officialBlog"
+    },
+    {
+      "id": "design-values",
+      "url": "https://ant.design/docs/spec/values/",
+      "role": "Evaluation values for enterprise-product decisions: natural, certain, meaningful, and growing."
+    },
+    {
+      "id": "proximity",
+      "url": "https://ant.design/docs/spec/proximity/",
+      "role": "Information grouping and the 8/16/24 px hierarchy."
+    },
+    {
+      "id": "alignment",
+      "url": "https://ant.design/docs/spec/alignment/",
+      "role": "Shared visual starts, form alignment, and right-aligned comparable numbers."
+    },
+    {
+      "id": "contrast",
+      "url": "https://ant.design/docs/spec/contrast/",
+      "role": "Primary-secondary action hierarchy and neutral treatment for prudent decisions."
+    },
+    {
+      "id": "pattern-overview",
+      "url": "https://ant.design/docs/spec/overview/",
+      "role": "Separation of templates, base components, business modules, and general concepts."
+    },
+    {
+      "id": "layout",
+      "url": "https://ant.design/docs/spec/layout/",
+      "role": "Adaptive canvas, 24-column grid, gutters, and common page scales."
+    },
+    {
+      "id": "font",
+      "url": "https://ant.design/docs/spec/font/",
+      "role": "Typography scale, 14/22 base text, restrained weights, and readable contrast."
+    },
+    {
+      "id": "list-page",
+      "url": "https://ant.design/docs/spec/research-list/",
+      "role": "List-page goals, filter placement, table/list selection, drill-down, and batch operations."
+    },
+    {
+      "id": "detail-page",
+      "url": "https://ant.design/docs/spec/detail-page/",
+      "role": "Information complexity, grouping, tabs, cards, steps, and progressive disclosure."
+    },
+    {
+      "id": "procomponents-overview",
+      "url": "https://procomponents.ant.design/components/",
+      "role": "Back-office composition patterns for layout, query tables, forms, descriptions, and page skeletons."
+    },
+    {
+      "id": "procomponents-query-filter",
+      "url": "https://procomponents.ant.design/components/query-filter/",
+      "role": "Query-form collapse and light-filter composition patterns."
+    },
+    {
+      "id": "procomponents-modal-drawer-form",
+      "url": "https://procomponents.ant.design/components/modal-form/",
+      "role": "ModalForm and DrawerForm lifecycle, controlled opening, submission, and reset patterns."
+    },
+    {
+      "id": "antd-table",
+      "url": "https://ant.design/components/table/",
+      "role": "Structured-data behavior, column API, scrolling, fixed columns, pagination, and virtual-list constraints."
+    },
+    {
+      "id": "antd-form",
+      "url": "https://ant.design/components/form/",
+      "role": "Field collection, validation, dependencies, layout, and submission behavior."
+    },
+    {
+      "id": "antd-modal",
+      "url": "https://ant.design/components/modal/",
+      "role": "Focused decisions, async confirmation, context, width, and close behavior."
+    },
+    {
+      "id": "antd-drawer",
+      "url": "https://ant.design/components/drawer/",
+      "role": "Context-preserving side tasks, size, nesting, mask, and teardown behavior."
+    },
+    {
+      "id": "antd-upload",
+      "url": "https://ant.design/components/upload/",
+      "role": "File selection, controlled file lifecycle, validation, progress, retry, and removal."
+    }
+  ]
+}

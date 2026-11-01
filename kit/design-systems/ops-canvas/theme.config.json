@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "selector": "html[data-theme]",
+  "defaultMode": "light",
+  "modes": {
+    "light": { "attribute": "light", "colorScheme": "light" },
+    "dark": { "attribute": "dark", "colorScheme": "dark" }
+  },
+  "storageKey": "ops-canvas-theme"
+}

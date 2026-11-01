@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "antd-dashboard-content-fidelity-canary",
+  "contextType": "validation-sandbox",
+  "decision": "Independent non-Holdout generator fixture for required business-copy preservation and acceptance-scaffolding isolation.",
+  "product": {
+    "name": "设备状态校验台",
+    "realCustomer": false,
+    "audience": ["生成器维护者"],
+    "scenario": "在独立验证环境生成普通 AntD dashboard，核对指标变化文案和次操作可见，同时确认验收脚手架不进入用户界面。"
+  },
+  "sourceOfTruth": ["generator/fixtures/antd-dashboard-content-fidelity/project-description.json"],
+  "coreFlows": ["查看设备状态 → 同步状态 → 进入异常设备"],
+  "firstPages": ["设备健康概览（/fixtures/dashboard-content-fidelity）"],
+  "criticalStates": ["指标变化文案完整", "同步状态可见", "验收脚手架不可见"],
+  "boundaries": {
+    "holdout": "This validation fixture is infrastructure-only and cannot be assigned to any Golden or Holdout evaluation.",
+    "data": "All labels and values are synthetic fixture data.",
+    "iteration": "Fixture development consumes no user-visible iteration and cannot modify any prior Holdout output."
+  },
+  "thirdPartyBaseline": {
+    "candidate": "antd",
+    "status": "fixture"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "version": "6.5.0",
+      "packageName": "antd"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://ant.design/docs/spec/introduce",
+      "components": "https://ant.design/components/overview",
+      "templates": "https://procomponents.ant.design/components",
+      "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+      "styles": "https://ant.design/docs/react/introduce#style",
+      "theme": "https://ant.design/docs/react/customize-theme",
+      "variables": "https://ant.design/docs/react/css-variables"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-08-12",
+    "designPack": {
+      "path": "foundations/design-packs/antd-6.5.0.json",
+      "sha256": "3259be1ca4e3be5b0982fc4515b2034a4cd6170090584e0554ee711a66e2a05b"
+    },
+    "icons": {
+      "packageName": "@ant-design/icons",
+      "version": "6.3.2",
+      "source": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react"
+    },
+    "theme": {
+      "entry": "src/foundation/antd-theme.ts#aiReadableAntdTheme",
+      "strategy": "ConfigProvider cssVar theme"
+    },
+    "reset": {
+      "import": "antd/dist/reset.css"
+    },
+    "imports": {
+      "root": "antd",
+      "allowedPackages": ["antd", "@ant-design/icons", "react"],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-antd-project",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "fixture"
+  },
+  "requiredBeforeRealWork": []
+}

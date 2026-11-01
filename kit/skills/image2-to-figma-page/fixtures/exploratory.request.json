@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../schema/image2-workflow-request.schema.json",
+  "version": "2.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "dispatch-overview-exploratory",
+  "designContext": "exploratory",
+  "routing": {
+    "strategyDecisionId": "image2-routing-strategy-amendment-2026-08-14",
+    "selectedRoute": "exploratory",
+    "selectionReason": "The task explicitly needs a materially distinct composition and visual direction."
+  },
+  "project": {
+    "name": "Regional Dispatch",
+    "page": "Dispatch overview",
+    "objective": "Help regional leads find the next operational exception and assign it with minimal delay.",
+    "audience": "Regional operations leads"
+  },
+  "viewport": { "width": 1440, "height": 1000, "deviceScaleFactor": 1 },
+  "pageEntry": "design-systems/ops-canvas/spec/index.html",
+  "referencePrompt": "skills/image2-to-figma-page/fixtures/exploratory-reference-prompt.md",
+  "visualDiffConfig": "visual-diff/fixtures/pass/config.json",
+  "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json",
+  "figmaTarget": { "fileKey": null, "pageNodeId": null },
+  "exploratoryContext": {
+    "directions": [
+      { "id": "calm-command", "name": "Calm Command", "hypothesis": "A low-noise neutral workspace will reduce scanning time during long shifts." },
+      { "id": "exception-first", "name": "Exception First", "hypothesis": "A stronger exception rail will shorten the path from alert to assignment." },
+      { "id": "regional-pulse", "name": "Regional Pulse", "hypothesis": "Spatial grouping by region will improve cross-site workload comparison." }
+    ],
+    "selectedDirectionId": "calm-command",
+    "miniDesignBrief": {
+      "principles": ["Fast scanning", "Explicit status", "Stable density"],
+      "colorIntent": "Neutral layered surfaces with one calm blue action color",
+      "typeIntent": "Compact system typography with tabular operational values",
+      "density": "compact"
+    },
+    "image2Scope": {
+      "visualGoals": ["composition", "visual-direction"],
+      "authority": "visual-exploration-only"
+    },
+    "structuredContract": "design-systems/ops-canvas/Design.md",
+    "componentFoundation": "design-systems/ops-canvas/component-index.json",
+    "structuralAuthority": {
+      "copy": "structured-contract",
+      "data": "structured-contract",
+      "interaction": "structured-contract",
+      "componentStates": "real-components",
+      "responsive": "structured-contract",
+      "accessibility": "structured-contract"
+    }
+  }
+}

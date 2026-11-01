@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "requestId": "tianshu-firmware-exploratory",
+  "selectedDirectionId": "release-ledger",
+  "miniDesignBrief": {
+    "principles": [
+      "Fast firmware scanning",
+      "Separate lifecycle and signature states",
+      "Conditional actions stay explicit",
+      "Operational risk remains visible"
+    ],
+    "colorIntent": "Ops Canvas neutral layered surfaces with one blue primary action and semantic success, warning, and danger states paired with text",
+    "typeIntent": "Compact Inter or Segoe UI system typography with tabular version, device-count, percentage, and timestamp values",
+    "density": "compact"
+  },
+  "approvedAt": "2026-07-17T11:42:40.125Z",
+  "approvalEvidence": "User replied 确认 after the full direction and prompt review gate.",
+  "contractSha256": "82c4990d66eb7525613e6354213bf64247ab6b29992582e6fe12d19afa19a8bf"
+}

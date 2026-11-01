@@ -1,0 +1,235 @@
+{
+  "version": "1.0.0",
+  "component": "Popconfirm",
+  "queryComponent": "Popconfirm",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Popconfirm",
+        "nameZh": "气泡确认框",
+        "description": "点击元素，弹出气泡式的确认框。",
+        "props": [
+          {
+            "name": "cancelButtonProps",
+            "type": "[ButtonProps](/components/button/#api)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "cancelText",
+            "type": "string",
+            "default": "`Cancel`",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "icon",
+            "type": "ReactNode",
+            "default": "<ExclamationCircleFilled />",
+            "since": ""
+          },
+          {
+            "name": "okButtonProps",
+            "type": "[ButtonProps](/components/button/#api)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "okText",
+            "type": "string",
+            "default": "`OK`",
+            "since": ""
+          },
+          {
+            "name": "okType",
+            "type": "string",
+            "default": "`primary`",
+            "since": ""
+          },
+          {
+            "name": "showCancel",
+            "type": "boolean",
+            "default": "true",
+            "since": "4.18.0"
+          },
+          {
+            "name": "title",
+            "type": "ReactNode | () => ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "description",
+            "type": "ReactNode | () => ReactNode",
+            "default": "-",
+            "since": "5.1.0"
+          },
+          {
+            "name": "onCancel",
+            "type": "function(e)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onConfirm",
+            "type": "function(e)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onPopupClick",
+            "type": "function(e)",
+            "default": "-",
+            "since": "5.5.0"
+          }
+        ],
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Popconfirm",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n目标元素的操作需要用户进一步的确认时，在目标元素附近弹出浮层提示，询问用户。\n\n和 `confirm` 弹出的全屏居中模态对话框相比，交互形式更轻量。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/locale.tsx\">国际化</code>\n<code src=\"./demo/placement.tsx\">位置</code>\n<code src=\"./demo/shift.tsx\" iframe=\"300\">贴边偏移</code>\n<code src=\"./demo/dynamic-trigger.tsx\">条件触发</code>\n<code src=\"./demo/icon.tsx\">自定义 Icon 图标</code>\n<code src=\"./demo/async.tsx\">异步关闭</code>\n<code src=\"./demo/promise.tsx\">基于 Promise 的异步关闭</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/render-panel.tsx\" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>\n<code src=\"./demo/wireframe.tsx\" debug>线框风格</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| cancelButtonProps | cancel 按钮 props | [ButtonProps](/components/button-cn#api) | - |  | × |\n| cancelText | 取消按钮文字 | string | `取消` |  | × |\n| disabled | 阻止点击 Popconfirm 子元素时弹出确认框 | boolean | false |  | × |\n| icon | 自定义弹出气泡 Icon 图标 | ReactNode | &lt;ExclamationCircleFilled /> |  | × |\n| okButtonProps | ok 按钮 props | [ButtonProps](/components/button-cn#api) | - |  | × |\n| okText | 确认按钮文字 | string | `确定` |  | × |\n| okType | 确认按钮类型 | string | `primary` |  | × |\n| showCancel | 是否显示取消按钮 | boolean | true | 4.18.0 | × |\n| title | 确认框标题 | ReactNode \\| () => ReactNode | - |  | × |\n| description | 确认内容的详细描述 | ReactNode \\| () => ReactNode | - | 5.1.0 | × |\n| onCancel | 点击取消的回调 | function(e) | - |  | × |\n| onConfirm | 点击确认的回调 | function(e) | - |  | × |\n| onPopupClick | 弹出气泡点击事件 | function(e) | - | 5.5.0 | × |\n\n<!-- 共同的 API -->\n\n<embed src=\"../tooltip/shared/sharedProps.zh-CN.md\"></embed>\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Popconfirm\"></ComponentTokenTable>\n\n## FAQ\n\n<embed src=\"../tooltip/shared/sharedFAQ.zh-CN.md\"></embed>\n\n更多问题，请参考 [Tooltip FAQ](/components/tooltip-cn#faq)。\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Popconfirm",
+        "demos": [
+          {
+            "name": "async",
+            "title": "Asynchronously close",
+            "description": "Asynchronously close a popconfirm when a the OK button is pressed. For example, you can use this pattern when you submit a form."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "The basic example supports the title and description props of confirmation."
+          },
+          {
+            "name": "dynamic-trigger",
+            "title": "Conditional trigger",
+            "description": "Make it pop up under some conditions."
+          },
+          {
+            "name": "icon",
+            "title": "Customize icon",
+            "description": "Set `icon` props to customize the icon."
+          },
+          {
+            "name": "locale",
+            "title": "Locale text",
+            "description": "Set `okText` and `cancelText` props to customize the button's labels."
+          },
+          {
+            "name": "placement",
+            "title": "Placement",
+            "description": "There are 12 `placement` options available. Use `arrow: { pointAtCenter: true }` if you want the arrow to point at the center of target."
+          },
+          {
+            "name": "promise",
+            "title": "Asynchronously close on Promise",
+            "description": "Asynchronously close a popconfirm when the OK button is pressed. For example, you can use this pattern when you submit a form."
+          },
+          {
+            "name": "shift",
+            "title": "Auto Shift",
+            "description": "Auto adjust Popup and arrow position when Popconfirm is close to the edge of the screen. Will be out of screen when exceed limitation."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Popconfirm by passing objects/functions through `classNames` and `styles`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Popconfirm",
+        "tokens": [
+          {
+            "name": "zIndexPopup",
+            "type": "number",
+            "default": "",
+            "description": "z-index of Popconfirm",
+            "descriptionZh": "确认框 z-index"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Popconfirm",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element, set absolute positioning, z-index, transform origin, arrow direction and popover container styles",
+            "descriptionZh": "根元素，设置绝对定位、层级、变换原点、箭头指向和弹层容器样式"
+          },
+          {
+            "key": "container",
+            "description": "Container element, set background color, padding, border radius, shadow, border and content display styles",
+            "descriptionZh": "容器元素，设置背景色、内边距、圆角、阴影、边框和内容展示样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element, set the confirmation icon size, color and layout styles",
+            "descriptionZh": "图标元素，设置确认图标的尺寸、颜色和布局样式"
+          },
+          {
+            "key": "title",
+            "description": "Title element, set title text styles and spacing",
+            "descriptionZh": "标题元素，设置标题文本样式和间距"
+          },
+          {
+            "key": "content",
+            "description": "Description element, set content text styles and layout",
+            "descriptionZh": "描述元素，设置描述文本样式和布局"
+          },
+          {
+            "key": "arrow",
+            "description": "Arrow element with width, height, position, color and border styles",
+            "descriptionZh": "箭头元素，设置宽高、位置、颜色和边框样式"
+          }
+        ]
+      }
+    }
+  }
+}

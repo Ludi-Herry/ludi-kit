@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/synthetic-command-evidence.schema.json",
+  "title": "Synthetic Readiness Command Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "stage",
+    "command",
+    "args",
+    "cwd",
+    "startedAtUtc",
+    "stoppedAtUtc",
+    "exitCode",
+    "status",
+    "termination",
+    "timedOut",
+    "terminationSignal",
+    "spawnError",
+    "stdout",
+    "stderr"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "stage": { "enum": ["typecheck", "build", "preview", "flow-smoke"] },
+    "command": { "type": "string", "minLength": 1 },
+    "args": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cwd": { "type": "string", "minLength": 1 },
+    "startedAtUtc": { "type": "string", "format": "date-time" },
+    "stoppedAtUtc": { "type": "string", "format": "date-time" },
+    "exitCode": { "type": ["integer", "null"] },
+    "status": { "enum": ["passed", "failed"] },
+    "termination": { "enum": ["completed", "requested-shutdown", "timeout", "spawn-error"] },
+    "timedOut": { "type": "boolean" },
+    "terminationSignal": { "type": ["string", "null"] },
+    "spawnError": { "type": ["string", "null"] },
+    "stdout": { "$ref": "#/$defs/stream" },
+    "stderr": { "$ref": "#/$defs/stream" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "stream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "enum": ["stdout.log", "stderr.log"] },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  }
+}

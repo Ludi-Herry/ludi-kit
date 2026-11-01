@@ -1,0 +1,275 @@
+{
+  "version": "1.0.0",
+  "kind": "frozen-antd-generation-input",
+  "projectId": "tianshu-ops",
+  "foundation": {
+    "id": "antd",
+    "version": "6.5.0",
+    "knowledgeId": "antd-6.5.0-designer-knowledge",
+    "manifest": {
+      "path": "foundations/knowledge/antd-6.5.0/manifest.json",
+      "sha256": "fe6af8448e665d6f4828b50f7ba27ef8d137ee513b80c515d839883f5904fe5a"
+    }
+  },
+  "requiredReadOrder": [
+    "design-language",
+    "page-template",
+    "decision-cards",
+    "component-references",
+    "blog-articles",
+    "visual-regression-cases"
+  ],
+  "pages": [
+    {
+      "pageId": "platform-rbac-forbidden",
+      "pattern": "detail-page",
+      "pageTemplate": {
+        "path": "foundations/knowledge/antd-6.5.0/page-templates/detail.md",
+        "sha256": "ebb0b0837e62b6612d3584cde7b0745b195d394d56790ec04509c1636e46e5e0"
+      },
+      "actualComponents": [
+        "Alert",
+        "Button",
+        "Card",
+        "ConfigProvider",
+        "Drawer",
+        "Space",
+        "Typography"
+      ],
+      "recommendedComponents": [
+        "Alert",
+        "Badge",
+        "Button",
+        "Card",
+        "Descriptions",
+        "Drawer",
+        "Dropdown",
+        "Empty",
+        "Modal",
+        "Notification",
+        "Popconfirm",
+        "Skeleton",
+        "Spin",
+        "Steps",
+        "Table",
+        "Tabs",
+        "Tag",
+        "Tooltip",
+        "Tree",
+        "ConfigProvider",
+        "Typography",
+        "Space"
+      ],
+      "selectedDecisionCards": [
+        "Alert",
+        "Button",
+        "Card",
+        "ConfigProvider",
+        "Drawer",
+        "Typography"
+      ],
+      "decisionCards": {
+        "path": "foundations/knowledge/antd-6.5.0/decision-cards.json",
+        "sha256": "71385a38edaefa91bc0e5efff999eadead0bfc5e9e52345f9b3c8e017441ac6f"
+      },
+      "componentReferences": [
+        {
+          "component": "Alert",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/Alert.json",
+          "sha256": "41da9673a4e57a60e0c5248b842aa1d9c70c9a17aaeabf51625916e5641d5a92"
+        },
+        {
+          "component": "Button",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/Button.json",
+          "sha256": "3a87e6b0b1fe0dc9ad0fa00c9c1f807aa7b58df9a1dfe1c1ca1350f014ae2414"
+        },
+        {
+          "component": "Card",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/Card.json",
+          "sha256": "63551bace3dbe242a098520e6b3ee520f620a03f7df6f413f0acd328ba0b296b"
+        },
+        {
+          "component": "ConfigProvider",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/ConfigProvider.json",
+          "sha256": "1e3b6ddaf41566f50ba36fbe2be8236b283acc4a913ec17c4bbea10e0599f94c"
+        },
+        {
+          "component": "Drawer",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/Drawer.json",
+          "sha256": "21eb1e0f446f1fd845fc45cd5929fbb8c79979c6a4f1cba254505861b4b8580f"
+        },
+        {
+          "component": "Space",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/Space.json",
+          "sha256": "f3d34e1abf5cbe014ea9f706dba40fff4e4abf2a0fac54afbbabd4c0379961ed"
+        },
+        {
+          "component": "Typography",
+          "path": "foundations/knowledge/antd-6.5.0/component-reference/Typography.json",
+          "sha256": "6678b7bf4cfd9227df99dc25061201abbdd94fd6458ec5e4243fa4e325c12f3f"
+        }
+      ],
+      "blogArticles": [
+        {
+          "id": "button-loading-animation",
+          "title": "一个重构引发的疑问",
+          "publishedAt": "2026-07-14",
+          "categories": [
+            "component-decision",
+            "interaction-detail",
+            "visual-regression"
+          ],
+          "components": [
+            "Button",
+            "Form",
+            "Slider",
+            "Upload"
+          ],
+          "topics": [
+            "loading",
+            "motion",
+            "layout-stability",
+            "wave"
+          ],
+          "applicability": {
+            "status": "direct",
+            "basis": "Published for the v6 code line immediately before this frozen snapshot."
+          },
+          "outputs": [
+            {
+              "kind": "decision-card",
+              "target": "Button"
+            },
+            {
+              "kind": "visual-regression-case",
+              "target": "button-loading-layout-stability"
+            }
+          ],
+          "source": {
+            "path": "foundations/knowledge/antd-6.5.0/blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.zh-CN.md",
+            "sha256": "b354a18b585a5ed0f5c7aa59877b3dd6534f052f1f48fd991e197ae632067ab5",
+            "repositoryPath": "docs/blog/button-loading-animation.zh-CN.md"
+          }
+        },
+        {
+          "id": "getContainer",
+          "title": "getContainer 的一些变化",
+          "publishedAt": "2022-12-08",
+          "categories": [
+            "component-decision",
+            "engineering-risk",
+            "version-migration"
+          ],
+          "components": [
+            "Modal",
+            "Drawer",
+            "Tooltip",
+            "Dropdown"
+          ],
+          "topics": [
+            "portal",
+            "getContainer",
+            "concurrent-rendering"
+          ],
+          "applicability": {
+            "status": "conditional",
+            "basis": "Portal ownership remains relevant; current 6.5.0 props and React behavior control implementation."
+          },
+          "outputs": [
+            {
+              "kind": "lint-rule",
+              "target": "stable-overlay-container"
+            },
+            {
+              "kind": "visual-regression-case",
+              "target": "overlay-container-placement"
+            }
+          ],
+          "source": {
+            "path": "foundations/knowledge/antd-6.5.0/blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.zh-CN.md",
+            "sha256": "7ba8ce323e78272c6e7187e821463377fbf10bede1bf584f160aac7c2217748f",
+            "repositoryPath": "docs/blog/getContainer.zh-CN.md"
+          }
+        },
+        {
+          "id": "line-ellipsis",
+          "title": "行省略计算",
+          "publishedAt": "2024-03-01",
+          "categories": [
+            "component-decision",
+            "interaction-detail",
+            "visual-regression"
+          ],
+          "components": [
+            "Typography"
+          ],
+          "topics": [
+            "ellipsis",
+            "measurement",
+            "responsive-text"
+          ],
+          "applicability": {
+            "status": "conditional",
+            "basis": "Text-measurement principles apply; current Typography behavior comes from 6.5.0."
+          },
+          "outputs": [
+            {
+              "kind": "decision-card",
+              "target": "Typography"
+            },
+            {
+              "kind": "visual-regression-case",
+              "target": "typography-multiline-ellipsis"
+            }
+          ],
+          "source": {
+            "path": "foundations/knowledge/antd-6.5.0/blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.zh-CN.md",
+            "sha256": "1f1f82eca1faa165c223b8399e5b768fb5443662fcd52031ff2fef533223599e",
+            "repositoryPath": "docs/blog/line-ellipsis.zh-CN.md"
+          }
+        },
+        {
+          "id": "visual-regression",
+          "title": "👀 视觉回归测试",
+          "publishedAt": "2025-01-05",
+          "categories": [
+            "visual-regression",
+            "maintenance-process"
+          ],
+          "components": [],
+          "topics": [
+            "baseline-screenshot",
+            "pixel-diff",
+            "flaky-test",
+            "threshold"
+          ],
+          "applicability": {
+            "status": "direct",
+            "basis": "The quality method is runtime-independent and is adopted by this pack's visual cases."
+          },
+          "outputs": [
+            {
+              "kind": "visual-regression-case",
+              "target": "golden-page-baseline"
+            }
+          ],
+          "source": {
+            "path": "foundations/knowledge/antd-6.5.0/blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.zh-CN.md",
+            "sha256": "ff628a76477f142528b59b1c35ff0e680a6923b55ffaa246a1588a5b37f4a2ea",
+            "repositoryPath": "docs/blog/visual-regression.zh-CN.md"
+          }
+        }
+      ],
+      "visualRegressionCases": {
+        "path": "foundations/knowledge/antd-6.5.0/visual-regression-cases.json",
+        "sha256": "d0b2f70f03547ea7c337a866b5d273ea07e5e1f84872d4e61aecc0ae6280703c",
+        "selected": [
+          "golden-page-baseline",
+          "button-loading-layout-stability",
+          "overlay-container-placement",
+          "typography-multiline-ellipsis"
+        ]
+      }
+    }
+  ]
+}

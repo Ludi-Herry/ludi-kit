@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../schema/image2-workflow-request.schema.json",
+  "version": "2.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "invalid-exploratory-missing-brief",
+  "designContext": "exploratory",
+  "routing": {
+    "strategyDecisionId": "image2-routing-strategy-amendment-2026-08-14",
+    "selectedRoute": "exploratory",
+    "selectionReason": "This invalid case attempts visual generation before freezing the visual brief."
+  },
+  "project": {
+    "name": "Invalid exploration",
+    "page": "Unfrozen direction",
+    "objective": "This request must fail before any visual reference can be generated.",
+    "audience": "Validator"
+  },
+  "viewport": { "width": 1440, "height": 1100, "deviceScaleFactor": 1 },
+  "pageEntry": "design-systems/ops-canvas/spec/index.html",
+  "referencePrompt": "skills/image2-to-figma-page/fixtures/exploratory-reference-prompt.md",
+  "visualDiffConfig": "visual-diff/fixtures/pass/config.json",
+  "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json",
+  "figmaTarget": { "fileKey": null, "pageNodeId": null },
+  "exploratoryContext": {
+    "directions": [
+      { "id": "direction-a", "name": "Direction A", "hypothesis": "A materially different composition may improve task scanning." },
+      { "id": "direction-b", "name": "Direction B", "hypothesis": "A stronger brand treatment may improve product recognition." }
+    ],
+    "selectedDirectionId": "direction-a",
+    "image2Scope": {
+      "visualGoals": ["composition"],
+      "authority": "visual-exploration-only"
+    },
+    "structuredContract": "design-systems/ops-canvas/Design.md",
+    "componentFoundation": "design-systems/ops-canvas/component-index.json",
+    "structuralAuthority": {
+      "copy": "structured-contract",
+      "data": "structured-contract",
+      "interaction": "structured-contract",
+      "componentStates": "real-components",
+      "responsive": "structured-contract",
+      "accessibility": "structured-contract"
+    }
+  }
+}

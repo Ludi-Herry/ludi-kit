@@ -1,0 +1,20 @@
+{
+  "id": "test-action-condition",
+  "expectedActions": {
+    "conditions": [
+      {
+        "when": "record.handling !== \"resolved-alert\"",
+        "branch": "then",
+        "required": ["查看"],
+        "forbidden": ["邮件", "短信", "处理"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "projects/sample-platform/generated/pages.tsx",
+    "symbol": "AlertsRealtimePage",
+    "pageId": "alerts-realtime"
+  },
+  "report": "harness/reports/test-action-condition.json"
+}

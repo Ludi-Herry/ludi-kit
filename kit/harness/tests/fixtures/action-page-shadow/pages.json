@@ -1,0 +1,22 @@
+{
+  "pages": [
+    {
+      "id": "fixture",
+      "route": "/fixture",
+      "title": "Fixture",
+      "pattern": "detail-page"
+    },
+    {
+      "id": "global",
+      "route": "/global",
+      "title": "Global",
+      "pattern": "detail-page"
+    },
+    {
+      "id": "assignment",
+      "route": "/assignment",
+      "title": "Assignment",
+      "pattern": "detail-page"
+    }
+  ]
+}

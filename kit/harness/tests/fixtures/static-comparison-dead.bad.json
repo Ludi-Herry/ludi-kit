@@ -1,0 +1,14 @@
+{
+  "id": "test-static-comparison-dead",
+  "expectedComponents": ["FilterPanel"],
+  "expectedText": ["STATIC_COMPARISON_DEAD_COPY", "ZERO_DEAD_COPY"],
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/static-comparison-dead.bad.tsx",
+    "symbol": "StaticComparisonDeadPage"
+  },
+  "report": "harness/reports/test-static-comparison-dead.json"
+}

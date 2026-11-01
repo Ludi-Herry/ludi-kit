@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/image2-workflow-request.schema.json",
+  "title": "image2-to-figma-page request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "workflowId", "requestId", "designContext", "routing", "project", "viewport", "pageEntry", "visualDiffConfig", "figmaEvidence", "figmaTarget"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "2.0.0" },
+    "workflowId": { "const": "image2-to-figma-page" },
+    "requestId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "designContext": { "enum": ["existing", "exploratory"] },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategyDecisionId", "selectedRoute", "selectionReason"],
+      "properties": {
+        "strategyDecisionId": { "const": "image2-routing-strategy-amendment-2026-08-14" },
+        "selectedRoute": { "enum": ["existing", "exploratory"] },
+        "selectionReason": { "type": "string", "minLength": 12 }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "page", "objective", "audience"],
+      "properties": {
+        "name": { "type": "string", "minLength": 3 },
+        "page": { "type": "string", "minLength": 3 },
+        "objective": { "type": "string", "minLength": 12 },
+        "audience": { "type": "string", "minLength": 4 }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "deviceScaleFactor"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 320, "maximum": 7680 },
+        "height": { "type": "integer", "minimum": 320, "maximum": 4320 },
+        "deviceScaleFactor": { "type": "number", "exclusiveMinimum": 0, "maximum": 4 }
+      }
+    },
+    "pageEntry": { "$ref": "#/$defs/path" },
+    "referencePrompt": { "$ref": "#/$defs/path" },
+    "referenceImage": { "$ref": "#/$defs/path" },
+    "visualDiffConfig": { "$ref": "#/$defs/path" },
+    "browserEvidence": { "$ref": "#/$defs/path" },
+    "figmaEvidence": { "$ref": "#/$defs/path" },
+    "figmaTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileKey", "pageNodeId"],
+      "properties": {
+        "fileKey": { "type": ["string", "null"] },
+        "pageNodeId": { "type": ["string", "null"] }
+      }
+    },
+    "existingContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["designDoc", "tokens", "componentIndex", "figmaSyncContract", "patternManifest", "recipe", "rules"],
+      "properties": {
+        "designDoc": { "$ref": "#/$defs/path" },
+        "tokens": { "$ref": "#/$defs/path" },
+        "componentIndex": { "$ref": "#/$defs/path" },
+        "figmaSyncContract": { "$ref": "#/$defs/path" },
+        "patternManifest": { "$ref": "#/$defs/path" },
+        "recipe": { "$ref": "#/$defs/path" },
+        "rules": { "$ref": "#/$defs/path" }
+      }
+    },
+    "exploratoryContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directions", "selectedDirectionId", "miniDesignBrief", "image2Scope", "structuredContract", "componentFoundation", "structuralAuthority"],
+      "properties": {
+        "directions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "hypothesis"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+              "name": { "type": "string", "minLength": 3 },
+              "hypothesis": { "type": "string", "minLength": 12 }
+            }
+          }
+        },
+        "selectedDirectionId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "miniDesignBrief": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["principles", "colorIntent", "typeIntent", "density"],
+          "properties": {
+            "principles": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "minLength": 4 } },
+            "colorIntent": { "type": "string", "minLength": 8 },
+            "typeIntent": { "type": "string", "minLength": 8 },
+            "density": { "enum": ["compact", "comfortable", "spacious"] }
+          }
+        },
+        "image2Scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["visualGoals", "authority"],
+          "properties": {
+            "visualGoals": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "enum": ["composition", "atmosphere", "material", "brand", "visual-direction"] }
+            },
+            "authority": { "const": "visual-exploration-only" }
+          }
+        },
+        "structuredContract": { "$ref": "#/$defs/path" },
+        "componentFoundation": { "$ref": "#/$defs/path" },
+        "structuralAuthority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["copy", "data", "interaction", "componentStates", "responsive", "accessibility"],
+          "properties": {
+            "copy": { "const": "structured-contract" },
+            "data": { "const": "structured-contract" },
+            "interaction": { "const": "structured-contract" },
+            "componentStates": { "const": "real-components" },
+            "responsive": { "const": "structured-contract" },
+            "accessibility": { "const": "structured-contract" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "path": { "type": "string", "minLength": 3, "pattern": "^(?![A-Za-z]:|/|\\\\).+" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "designContext": { "const": "existing" } }, "required": ["designContext"] },
+      "then": {
+        "type": "object",
+        "properties": {
+          "routing": { "type": "object", "properties": { "selectedRoute": { "const": "existing" } }, "required": ["selectedRoute"] },
+          "existingContext": { "$ref": "#/properties/existingContext" },
+          "exploratoryContext": false,
+          "referencePrompt": false,
+          "referenceImage": false
+        },
+        "required": ["existingContext"]
+      }
+    },
+    {
+      "if": { "properties": { "designContext": { "const": "exploratory" } }, "required": ["designContext"] },
+      "then": {
+        "type": "object",
+        "properties": {
+          "routing": { "type": "object", "properties": { "selectedRoute": { "const": "exploratory" } }, "required": ["selectedRoute"] },
+          "exploratoryContext": { "$ref": "#/properties/exploratoryContext" },
+          "existingContext": false
+        },
+        "required": ["exploratoryContext", "referencePrompt"]
+      }
+    }
+  ]
+}

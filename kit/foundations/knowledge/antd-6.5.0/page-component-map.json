@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "foundation": "antd@6.5.0",
+  "templates": {
+    "dashboard-page": {
+      "path": "page-templates/dashboard.md",
+      "components": ["Alert", "Badge", "Button", "Card", "Dropdown", "Notification", "Skeleton", "Spin", "Table", "Tag", "Tooltip", "ConfigProvider", "Typography", "Space", "Row", "Col", "Statistic"]
+    },
+    "list-page": {
+      "path": "page-templates/list.md",
+      "components": ["Alert", "Badge", "Button", "Card", "DatePicker", "Drawer", "Dropdown", "Empty", "Form", "Input", "Modal", "Notification", "Pagination", "Popconfirm", "Select", "Skeleton", "Spin", "Table", "Tag", "Tooltip", "Tree", "TreeSelect", "ConfigProvider", "Typography", "Space"]
+    },
+    "detail-page": {
+      "path": "page-templates/detail.md",
+      "components": ["Alert", "Badge", "Button", "Card", "Descriptions", "Drawer", "Dropdown", "Empty", "Modal", "Notification", "Popconfirm", "Skeleton", "Spin", "Steps", "Table", "Tabs", "Tag", "Tooltip", "Tree", "ConfigProvider", "Typography", "Space"]
+    },
+    "form-page": {
+      "path": "page-templates/form.md",
+      "components": ["Alert", "Button", "Card", "DatePicker", "Drawer", "Form", "Input", "Modal", "Notification", "Select", "Spin", "Switch", "Tooltip", "Tree", "TreeSelect", "Upload", "ConfigProvider", "Typography", "Space"]
+    },
+    "step-flow": {
+      "path": "page-templates/step-flow.md",
+      "components": ["Alert", "Button", "Descriptions", "Drawer", "Form", "Modal", "Notification", "Spin", "Steps", "Table", "Tag", "Tooltip", "Upload", "ConfigProvider", "Typography", "Space"]
+    },
+    "audit-log": {
+      "path": "page-templates/audit-log.md",
+      "components": ["Alert", "Badge", "Button", "DatePicker", "Descriptions", "Drawer", "Dropdown", "Empty", "Form", "Input", "Notification", "Pagination", "Select", "Skeleton", "Spin", "Table", "Tag", "Tooltip", "ConfigProvider", "Typography", "Space"]
+    }
+  },
+  "semanticAliases": {
+    "DataGrid": ["Table"],
+    "DataSection": ["Card", "Empty", "Skeleton", "Spin"],
+    "DescriptionGrid": ["Descriptions"],
+    "DetailHeader": ["Button", "Dropdown", "Tag", "Typography"],
+    "FilterPanel": ["Form", "Input", "Select", "DatePicker", "TreeSelect", "Button"],
+    "FormSection": ["Form", "Input", "Select", "DatePicker", "TreeSelect", "Switch", "Upload", "Button"],
+    "MetricCard": ["Card", "Statistic"],
+    "PageHeader": ["Button", "Dropdown", "Typography"],
+    "PageLayout": ["ConfigProvider", "Space"],
+    "Pagination": ["Pagination"],
+    "Stepper": ["Steps"]
+  }
+}

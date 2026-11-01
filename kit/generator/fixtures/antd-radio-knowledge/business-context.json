@@ -1,0 +1,105 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "antd-radio-knowledge-canary",
+  "contextType": "validation-sandbox",
+  "decision": "Independent non-Holdout generator fixture for frozen AntD Radio.Group knowledge coverage.",
+  "product": {
+    "name": "发布策略校验台",
+    "realCustomer": false,
+    "audience": [
+      "生成器维护者"
+    ],
+    "scenario": "在独立验证环境选择单一发布模式，确认 Radio.Group 的正式 AntD 生成路径具备冻结知识引用。"
+  },
+  "sourceOfTruth": [
+    "generator/fixtures/antd-radio-knowledge/project-description.json"
+  ],
+  "coreFlows": [
+    "选择发布模式 → 提交校验"
+  ],
+  "firstPages": [
+    "发布策略校验（/fixtures/radio-coverage）"
+  ],
+  "criticalStates": [
+    "发布模式只能单选",
+    "生成知识必须冻结 Radio 组件引用"
+  ],
+  "boundaries": {
+    "holdout": "This validation fixture is infrastructure-only and cannot be assigned to any Golden or Holdout evaluation.",
+    "data": "All labels and values are synthetic fixture data.",
+    "iteration": "Fixture development does not inspect or incorporate any Holdout implementation result."
+  },
+  "thirdPartyBaseline": {
+    "candidate": "antd",
+    "status": "fixture"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "version": "6.5.0",
+      "packageName": "antd"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://ant.design/docs/spec/introduce",
+      "components": "https://ant.design/components/overview",
+      "templates": "https://procomponents.ant.design/components",
+      "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+      "styles": "https://ant.design/docs/react/introduce#style",
+      "theme": "https://ant.design/docs/react/customize-theme",
+      "variables": "https://ant.design/docs/react/css-variables"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-08-11",
+    "designPack": {
+      "path": "foundations/design-packs/antd-6.5.0-radio-coverage.json",
+      "sha256": "bfa84aabb9918f389cad6374d9cf51e3a05de8fbac80a84e5bf621ee042ba5c5"
+    },
+    "icons": {
+      "packageName": "@ant-design/icons",
+      "version": "6.3.2",
+      "source": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react"
+    },
+    "theme": {
+      "entry": "src/foundation/antd-theme.ts#aiReadableAntdTheme",
+      "strategy": "ConfigProvider cssVar theme"
+    },
+    "reset": {
+      "import": "antd/dist/reset.css"
+    },
+    "imports": {
+      "root": "antd",
+      "allowedPackages": [
+        "antd",
+        "@ant-design/icons",
+        "react"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-antd-project",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "fixture"
+  },
+  "requiredBeforeRealWork": []
+}

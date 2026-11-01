@@ -1,0 +1,10 @@
+{
+  "id": "test-registry-null",
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/registry-null/generated/pages.tsx",
+    "symbol": "FixturePage",
+    "pageId": "fixture"
+  },
+  "report": "harness/reports/test-registry-null.json"
+}

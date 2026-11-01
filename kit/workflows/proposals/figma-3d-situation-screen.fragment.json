@@ -1,0 +1,34 @@
+{
+  "id": "figma-3d-situation-screen",
+  "version": "1.0.0",
+  "status": "active",
+  "skillPath": "kit/skills/figma-3d-situation-screen/SKILL.md",
+  "inputs": [
+    "business brief and target viewports",
+    "Figma fileKey/nodeId or external-blocked record",
+    "licensed GeoJSON or official map API",
+    "renderer and device constraints"
+  ],
+  "routes": {
+    "renderer": "one admitted main renderer; Three.js default for offline administrative extrusion",
+    "motion": "transitions-dev for local state; GSAP for interruptible cross-scope timelines",
+    "figma": "figma-use plus figma-design-to-code evidence chain",
+    "cutout": "read-only classify/export/self-check substage"
+  },
+  "outputs": [
+    "versioned Skill and source audit",
+    "lazy React WebGL sample",
+    "responsive screenshots and interaction evidence",
+    "performance and reduced-motion evidence",
+    "Figma comparison or external-blocked record"
+  ],
+  "gates": [
+    "single main WebGL renderer",
+    "licensed data and renderer lifecycle",
+    "1920x1080 median FPS >=45 and p95 <=33ms",
+    "4K DPR <=1.5 median FPS >=30 and p95 <=50ms",
+    "console errors=0 warnings=0",
+    "preview <=700 KiB gzip and starter <=320 KiB gzip"
+  ],
+  "ownerNote": "Integrated into the central workflows.manifest on 2026-07-16; retained as the large-screen ownership and translation record."
+}

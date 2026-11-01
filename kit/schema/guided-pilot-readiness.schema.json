@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/guided-pilot-readiness.schema.json",
+  "title": "Guided Pilot Readiness Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "harnessMode",
+    "runId",
+    "artifactId",
+    "projectId",
+    "workspace",
+    "inputs",
+    "metrics",
+    "stages",
+    "status",
+    "failure",
+    "startedAtUtc",
+    "stoppedAtUtc"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "harnessMode": { "const": "guided-pilot-readiness" },
+    "runId": {
+      "type": "string",
+      "pattern": "^guided-pilot-[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactId": { "$ref": "#/$defs/artifactId" },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sourceManifest", "distManifest"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sourceManifest": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "distManifest": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flowContract", "flowRunner"],
+      "properties": {
+        "flowContract": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "flowRunner": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["typecheckPass", "buildPass", "flowSmokePass", "previewIdentityPass"],
+      "properties": {
+        "typecheckPass": { "type": "boolean" },
+        "buildPass": { "type": "boolean" },
+        "flowSmokePass": { "type": "boolean" },
+        "previewIdentityPass": { "type": "boolean" }
+      }
+    },
+    "stages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["typecheck", "build", "preview", "flowSmoke"],
+      "properties": {
+        "typecheck": { "$ref": "#/$defs/commandStage" },
+        "build": { "$ref": "#/$defs/commandStage" },
+        "preview": { "$ref": "#/$defs/previewStage" },
+        "flowSmoke": { "$ref": "#/$defs/flowStage" }
+      }
+    },
+    "status": { "enum": ["passed", "failed"] },
+    "failure": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["category", "firstFailureStage", "message"],
+          "properties": {
+            "category": {
+              "enum": [
+                "workspace-validation",
+                "flow-contract",
+                "product-owned-assertion",
+                "typecheck",
+                "build",
+                "source-drift",
+                "dist-snapshot",
+                "preview-start",
+                "preview-identity",
+                "preview-entry",
+                "flow-smoke",
+                "preview-shutdown",
+                "internal"
+              ]
+            },
+            "firstFailureStage": {
+              "enum": ["preflight", "typecheck", "build", "preview", "flowSmoke", "shutdown"]
+            },
+            "message": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "startedAtUtc": { "type": "string", "format": "date-time" },
+    "stoppedAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$"
+        },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "stageStatus": { "enum": ["passed", "failed", "not-run"] },
+    "commandStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "commandEvidence", "reason"],
+      "properties": {
+        "status": { "$ref": "#/$defs/stageStatus" },
+        "commandEvidence": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "reason": { "type": ["string", "null"] }
+      }
+    },
+    "flowStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "runner", "contract", "result", "reason"],
+      "properties": {
+        "status": { "$ref": "#/$defs/stageStatus" },
+        "runner": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "contract": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "result": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "reason": { "type": ["string", "null"] }
+      }
+    },
+    "previewStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "commandEvidence", "baseUrl", "identity", "entry", "shutdown", "reason"],
+      "properties": {
+        "status": { "$ref": "#/$defs/stageStatus" },
+        "commandEvidence": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "baseUrl": { "type": ["string", "null"] },
+        "identity": { "$ref": "#/$defs/check" },
+        "entry": { "$ref": "#/$defs/check" },
+        "shutdown": { "$ref": "#/$defs/shutdownCheck" },
+        "reason": { "type": ["string", "null"] }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "httpStatus", "response", "reason"],
+      "properties": {
+        "status": { "$ref": "#/$defs/stageStatus" },
+        "httpStatus": { "type": ["integer", "null"], "minimum": 100, "maximum": 599 },
+        "response": {
+          "oneOf": [{ "$ref": "#/$defs/receipt" }, { "type": "null" }]
+        },
+        "reason": { "type": ["string", "null"] }
+      }
+    },
+    "shutdownCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "requestedAtUtc", "observedAtUtc", "processExited", "endpointUnavailable", "reason"],
+      "properties": {
+        "status": { "$ref": "#/$defs/stageStatus" },
+        "requestedAtUtc": { "type": ["string", "null"], "format": "date-time" },
+        "observedAtUtc": { "type": ["string", "null"], "format": "date-time" },
+        "processExited": { "type": ["boolean", "null"] },
+        "endpointUnavailable": { "type": ["boolean", "null"] },
+        "reason": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "generated-sample-project",
+  "prompt": "根据 sample inventory ERP 的 pages.json 生成第一版可运行页面骨架。",
+  "foundationContract": {
+    "businessContext": "projects/sample-inventory-erp/business-context.json",
+    "projectId": "sample-inventory-erp",
+    "outputMode": "kit-consumer",
+    "framework": "react"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": [
+    "PageLayout",
+    "PageHeader",
+    "FilterPanel",
+    "DataSection",
+    "DataGrid",
+    "Pagination",
+    "DetailHeader",
+    "DescriptionGrid",
+    "FormSection",
+    "Stepper",
+    "Tabs"
+  ],
+  "expectedText": ["复核中", "风险"],
+  "expectedStaticValues": [
+    { "object": "statusCopyByDomain", "path": ["permission", "active", "label"], "value": "启用" },
+    { "object": "statusCopyByDomain", "path": ["permission", "active", "variant"], "value": "success" },
+    { "object": "statusCopyByDomain", "path": ["permission", "review", "label"], "value": "复核中" },
+    { "object": "statusCopyByDomain", "path": ["permission", "review", "variant"], "value": "warning" },
+    { "object": "statusCopyByDomain", "path": ["permission", "risk", "label"], "value": "风险" },
+    { "object": "statusCopyByDomain", "path": ["permission", "risk", "variant"], "value": "danger" }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/sample-inventory-erp/generated/pages.tsx"
+  },
+  "report": "harness/reports/generated-sample-project.json"
+}

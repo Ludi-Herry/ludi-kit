@@ -1,0 +1,8 @@
+{
+  "id": "test-report-escape",
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.good.tsx"
+  },
+  "report": "../outside.json"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "test-confirmation-empty-text",
+  "expectedConfirmations": [
+    {
+      "action": "删除",
+      "title": "删除解析规则？",
+      "confirmLabel": "删除",
+      "requiredText": [],
+      "danger": true
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-state.good.tsx",
+    "symbol": "ConfirmationStateGoodPage"
+  },
+  "report": "harness/reports/test-confirmation-empty-text.json"
+}

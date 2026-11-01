@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "requestId": "tianshu-firmware-exploratory",
+  "status": "selected",
+  "designContext": "exploratory",
+  "productObjective": "让固件管理员快速区分版本生命周期、签名状态和灰度风险，并进入受权限控制的下一步操作。",
+  "audience": ["固件管理员", "研发管理员", "生产履约运营"],
+  "primaryTask": "查找目标固件版本，判断其可用性与发布风险，再执行新建、签名、灰度、回滚或停用。",
+  "inheritedDesignContract": {
+    "kind": "ops-canvas-existing",
+    "contractSha256": "fc6ce9c1c45d4b2c15609a37af29a9679cec4ab8a35cc42598a050d8927895fd",
+    "viewport": { "width": 1440, "height": 1100, "deviceScaleFactor": 1 },
+    "sources": [
+      "design-systems/ops-canvas/Design.md",
+      "design-systems/ops-canvas/tokens.json",
+      "design-systems/ops-canvas/component-index.json",
+      "design-systems/ops-canvas/figma/sync.contract.json"
+    ]
+  },
+  "directions": [
+    {
+      "id": "release-ledger",
+      "name": "Release Ledger",
+      "hypothesis": "以高密度版本台账为核心，可让操作者在首屏快速区分版本状态、签名状态和下一步条件操作。",
+      "tradeoff": "发布风险通过状态、进度和操作表达，分析图表保持克制。"
+    },
+    {
+      "id": "canary-command",
+      "name": "Canary Command",
+      "hypothesis": "将灰度进度和回滚风险提升到首屏，可缩短灰度中版本的判断与处置时间。",
+      "tradeoff": "风险表达更强，普通版本检索的首屏空间会减少。"
+    },
+    {
+      "id": "fleet-continuity",
+      "name": "Fleet Continuity",
+      "hypothesis": "以绑定设备和机型覆盖为主要层级，可帮助运营先判断影响范围，再决定版本动作。",
+      "tradeoff": "设备影响更直观，固件台账扫描效率相对下降。"
+    }
+  ],
+  "recommendedDirectionId": "release-ledger",
+  "selectedDirectionId": "release-ledger",
+  "selectedContractSha256": "82c4990d66eb7525613e6354213bf64247ab6b29992582e6fe12d19afa19a8bf",
+  "confirmedPromptSha256": "5e4aa44f92491dbe6ec3176aabb3952713a1e6adaac3f914ea38157effeff87c",
+  "selectedAt": "2026-07-17T11:42:40.125Z",
+  "selectionEvidence": "User replied 确认 after the complete Release Ledger prompt was presented.",
+  "referencePrompt": "generator/fixtures/tianshu-firmware/image2/reference-prompt.proposed.md",
+  "referenceImage": "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+  "selectionRequirement": null
+}

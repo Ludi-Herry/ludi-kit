@@ -1,0 +1,8 @@
+{
+  "source": "workflows.manifest.json",
+  "mutation": {
+    "workflowId": "image2-to-figma-page",
+    "remove": "evidence"
+  },
+  "expectValid": false
+}

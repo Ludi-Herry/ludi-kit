@@ -1,0 +1,1513 @@
+{
+  "version": "1.0.0",
+  "foundation": {
+    "id": "antd",
+    "version": "6.5.0"
+  },
+  "reviewedAt": "2026-09-28",
+  "pageDefaults": {
+    "spacing": {
+      "baseGrid": 4,
+      "relatedGap": 8,
+      "groupGap": 16,
+      "sectionGap": 24,
+      "desktopPagePadding": 24,
+      "compactPagePadding": 16,
+      "rule": "Use 8 px inside a control group, 16 px between related groups, and 24 px between page sections. Increase by 8 px steps when hierarchy still reads as one group."
+    },
+    "breakpoints": {
+      "xs": 0,
+      "sm": 576,
+      "md": 768,
+      "lg": 992,
+      "xl": 1200,
+      "xxl": 1600
+    },
+    "density": {
+      "defaultControlSize": "medium",
+      "defaultTableSize": "medium",
+      "compactUse": "Use small controls only inside dense toolbars, secondary filters, or expert tables with at least 12 visible rows.",
+      "largeUse": "Use large controls for login, onboarding, or a single high-focus form."
+    },
+    "surfaceHierarchy": [
+      "The page canvas is level 0; a section surface or Card is level 1; Drawer and Modal are level 2.",
+      "Use one visual surface per topic. Keep related filter and result regions adjacent without adding decorative nested cards.",
+      "A page title belongs to the page header. Card titles name local sections."
+    ],
+    "stateLifecycle": [
+      "initial: render the stable shell and a layout-matched skeleton when data is unavailable",
+      "loading: preserve context for refreshes and show bounded progress on the affected region",
+      "success: replace progress, announce completion, and refresh only the changed data",
+      "empty: distinguish first-use, no-data, and filtered-no-result states",
+      "error: keep entered values and the previous safe view; explain recovery and offer retry",
+      "permission: hide impossible navigation and explain disabled in-context actions",
+      "submitting: lock duplicate submission while keeping cancel behavior explicit",
+      "stale: show the last updated time and a refresh path when freshness affects decisions"
+    ],
+    "content": [
+      "Use concrete verb-object labels for actions, such as 新建版本, 导出记录, and 提交审核.",
+      "Use field labels as stable nouns. Place format examples and constraints in help text.",
+      "State messages contain current state, cause when known, and the next available action.",
+      "Keep technical IDs copyable and preserve their full value through ellipsis tooltips or a detail view."
+    ]
+  },
+  "cards": [
+    {
+      "component": "Alert",
+      "displayName": "警告提示",
+      "role": "Persistent, in-context feedback that must remain visible while the user acts.",
+      "useWhen": [
+        "A page or section has a blocking condition, degraded mode, policy notice, or recoverable error.",
+        "The message affects several controls and needs a stable reading position."
+      ],
+      "avoidWhen": [
+        "Use Message for a brief confirmation after a completed action.",
+        "Use field validation for one invalid field.",
+        "Use Result for a full-page terminal state."
+      ],
+      "defaults": [
+        "Place above the affected section and below the page header.",
+        "Use `showIcon`; write a one-line message and optional actionable description.",
+        "Reserve closable alerts for optional or already-understood notices."
+      ],
+      "states": [
+        "info for neutral guidance",
+        "success for a completed page-level condition",
+        "warning for risk that still allows progress",
+        "error for blocked or failed work"
+      ],
+      "composition": [
+        "Keep at most one dominant alert per section.",
+        "Link or button actions must describe recovery, such as 重新加载 or 查看失败记录."
+      ],
+      "responsive": [
+        "Allow the description and action to wrap; never reduce the icon or message below readable size."
+      ],
+      "a11y": [
+        "Do not rely on tint alone; keep icon and explicit status copy.",
+        "Move focus only when the alert blocks the submitted task."
+      ],
+      "antiPatterns": [
+        "Decorative success alerts on every normal page",
+        "Several stacked alerts with equal priority",
+        "Error text with no recovery path"
+      ]
+    },
+    {
+      "component": "Badge",
+      "displayName": "徽标数",
+      "role": "Compact count or presence signal attached to another label or object.",
+      "useWhen": [
+        "A navigation item, tab, avatar, or icon needs a small unread count or dot status.",
+        "The count is secondary to the attached object."
+      ],
+      "avoidWhen": [
+        "Use Tag for a row status that users must scan and compare.",
+        "Use Statistic for a primary metric.",
+        "Avoid a dot when the meaning is unavailable in text."
+      ],
+      "defaults": [
+        "Cap large counts with `overflowCount`, usually 99.",
+        "Use status dots only for the fixed success, processing, warning, error, and default meanings."
+      ],
+      "states": [
+        "zero hides when absence has no meaning",
+        "show zero when zero is a meaningful operational state",
+        "processing indicates ongoing work, not generic emphasis"
+      ],
+      "composition": [
+        "Attach the badge to one stable label or icon.",
+        "Keep the source label visible when the badge affects navigation."
+      ],
+      "responsive": [
+        "Do not hide the parent label solely to save width; collapse the surrounding navigation with an accessible tooltip."
+      ],
+      "a11y": [
+        "Expose the count and meaning in the accessible name.",
+        "Give dot badges a visible or screen-reader label."
+      ],
+      "antiPatterns": [
+        "Using arbitrary colors for business status",
+        "Badge as a standalone table-cell status",
+        "Multiple badges on one label"
+      ]
+    },
+    {
+      "component": "Button",
+      "displayName": "按钮",
+      "role": "Trigger an immediate action or advance the current task.",
+      "blogArticles": [
+        "button-loading-animation",
+        "css-tricks"
+      ],
+      "useWhen": [
+        "The user can execute a clear verb now.",
+        "The action changes state, opens a task surface, or submits data."
+      ],
+      "avoidWhen": [
+        "Use a link for navigation to another content location.",
+        "Use Switch for an immediate binary setting.",
+        "Use Dropdown when more than two peer secondary actions compete for space."
+      ],
+      "defaults": [
+        "Allow one primary button per task group and usually one in the first viewport.",
+        "Use medium size in back-office pages; keep a 8 px action gap.",
+        "Set `htmlType` explicitly inside Form.",
+        "Use `danger` only for destructive impact and pair irreversible actions with confirmation.",
+        "Loading preserves the button's label and stable outer width; delayed loading must not introduce a one-frame icon or gap jump."
+      ],
+      "states": [
+        "loading locks duplicate submission, preserves the action label, and keeps layout stable",
+        "disabled includes an in-context explanation when permission or prerequisites block the action",
+        "success returns focus to the updated object or stable trigger"
+      ],
+      "composition": [
+        "Order low-risk actions before the primary action in page and form footers.",
+        "Expose at most two row actions; move the rest into Dropdown.",
+        "Icon-only buttons require a familiar symbol, Tooltip, and accessible name."
+      ],
+      "responsive": [
+        "Keep the primary action visible; collapse secondary actions into Dropdown below 768 px.",
+        "Avoid full-width buttons in dense desktop toolbars; use full width for narrow form footers when it improves reachability."
+      ],
+      "a11y": [
+        "Maintain a visible focus state and a 32 px minimum target, with 40 px preferred for touch.",
+        "Disabled controls do not receive hover events; wrap only when a Tooltip explanation is required."
+      ],
+      "antiPatterns": [
+        "Several primary buttons in one group",
+        "Generic labels such as 确定 when the outcome can be named",
+        "Color-only custom button variants",
+        "Submitting again while loading"
+      ]
+    },
+    {
+      "component": "Card",
+      "displayName": "卡片",
+      "role": "Group one topic on a distinct surface when the boundary improves scanning.",
+      "useWhen": [
+        "A dashboard module or detail section needs a stable topic boundary.",
+        "The module can move, load, or fail independently."
+      ],
+      "avoidWhen": [
+        "Use spacing and a divider for closely related content.",
+        "Avoid wrapping every table, form, or metric solely to add a border.",
+        "Avoid Card inside Card."
+      ],
+      "defaults": [
+        "Use 24 px internal rhythm on desktop and 16 px on compact layouts through tokens.",
+        "Card title names the local module; the page title stays outside.",
+        "Use `bordered` or a subtle surface distinction consistently across the page."
+      ],
+      "states": [
+        "loading uses a layout-matched skeleton",
+        "empty keeps the same module height only when layout stability matters",
+        "error stays inside the card when the rest of the page remains usable"
+      ],
+      "composition": [
+        "Place actions in `extra` only when they affect the entire card.",
+        "Keep one primary reading order from title to summary to details to actions."
+      ],
+      "responsive": [
+        "Cards stack to one column; internal grids reflow before horizontal scrolling."
+      ],
+      "a11y": [
+        "Use a semantic heading level that follows the page outline.",
+        "Clickable cards need a single clear interactive target and keyboard behavior."
+      ],
+      "antiPatterns": [
+        "Card nesting",
+        "Page title inside a content card",
+        "Equal visual weight for every page block",
+        "Whole-card click plus conflicting inner actions"
+      ]
+    },
+    {
+      "component": "ConfigProvider",
+      "displayName": "全局配置",
+      "role": "Provide one governed theme, locale, direction, component defaults, and popup policy to an application scope.",
+      "blogArticles": [
+        "config-provider-style",
+        "css-var-plan",
+        "semantic-beauty"
+      ],
+      "useWhen": [
+        "The application needs shared AntD tokens, locale, component defaults, or popup behavior.",
+        "A product theme must remain consistent across pages and overlays."
+      ],
+      "avoidWhen": [
+        "Avoid nesting providers for one-off visual exceptions.",
+        "Use component props or semantic styles for local variants.",
+        "Do not replace project business semantics with raw component-token overrides."
+      ],
+      "defaults": [
+        "Keep one root provider and add scoped providers only for a documented product boundary.",
+        "Define brand values through tokens and component tokens before custom CSS.",
+        "Use the frozen semantic structure when styling internal parts."
+      ],
+      "states": [
+        "theme and locale changes preserve readable content",
+        "popup containers remain inside the intended theme scope",
+        "provider updates avoid remounting page state"
+      ],
+      "composition": [
+        "Wrap the application shell so feedback APIs and overlays receive context.",
+        "Record every global token override in the project theme contract."
+      ],
+      "responsive": [
+        "Use breakpoint-aware layout decisions in page composition; avoid switching provider themes by viewport."
+      ],
+      "a11y": [
+        "Theme overrides maintain contrast and visible focus.",
+        "Locale and direction changes preserve control order and accessible names."
+      ],
+      "antiPatterns": [
+        "Provider nested around individual controls",
+        "Structural `.ant-*` selectors used where semantic styles exist",
+        "Theme values duplicated in page CSS",
+        "Static feedback APIs outside provider context"
+      ]
+    },
+    {
+      "component": "DatePicker",
+      "displayName": "日期选择",
+      "role": "Select a date, time, or bounded range with calendar semantics.",
+      "blogArticles": [
+        "picker"
+      ],
+      "useWhen": [
+        "A date must be valid and comparable.",
+        "Users benefit from calendar context or a preset range."
+      ],
+      "avoidWhen": [
+        "Use Input for partial dates or domain-specific codes.",
+        "Avoid time selection when the business only stores a date.",
+        "Avoid a range picker when start and end have different meanings or rules."
+      ],
+      "defaults": [
+        "Use medium size and an explicit display format shared with table output.",
+        "Show common presets only when the product has stable meanings such as 今天, 近7天, and 本月.",
+        "Declare timezone and inclusive range behavior in help text when it affects results.",
+        "Model date and time constraints together; test range boundaries and avoid expensive work inside every disabled-cell callback."
+      ],
+      "states": [
+        "allowClear restores the unset state when optional",
+        "invalid ranges explain the exact boundary",
+        "loading of disabled dates keeps the field stable"
+      ],
+      "composition": [
+        "Use RangePicker for one continuous interval.",
+        "Place quick ranges before advanced filters and preserve the selected range in the query summary."
+      ],
+      "responsive": [
+        "Use a responsive popup container and allow the two range inputs to fit without truncating the date.",
+        "On narrow screens, open a full-width overlay or stack separate start/end fields when domain rules differ."
+      ],
+      "a11y": [
+        "Keep labels explicit; placeholders do not replace labels.",
+        "Keyboard users must reach calendar cells, presets, and confirm actions in a stable order."
+      ],
+      "antiPatterns": [
+        "Ambiguous 07/08 date formats",
+        "Hidden timezone conversion",
+        "Defaulting to a range that changes business results without explanation"
+      ]
+    },
+    {
+      "component": "Descriptions",
+      "displayName": "描述列表",
+      "role": "Read-only key-value facts for one object.",
+      "useWhen": [
+        "A detail view contains stable labels and short values.",
+        "Users need to compare several facts about the same object."
+      ],
+      "avoidWhen": [
+        "Use Table for several objects.",
+        "Use Form for editable fields.",
+        "Use prose or a code block for long unstructured content."
+      ],
+      "defaults": [
+        "Use one column below 576 px, two columns from 768 px, and up to three columns at 1200 px when values remain readable.",
+        "Keep labels concise and visually quieter than values.",
+        "Use bordered style for dense administrative records; use unbordered grouped sections for narrative details."
+      ],
+      "states": [
+        "missing optional values display —",
+        "unknown or failed values state the cause",
+        "copyable IDs remain full and selectable"
+      ],
+      "composition": [
+        "Group 6–12 related items per section.",
+        "Move long remarks, logs, and nested tables into their own section.",
+        "Place status and identity facts first."
+      ],
+      "responsive": [
+        "Let long values span columns or occupy a dedicated row.",
+        "Never force labels into unreadable narrow columns."
+      ],
+      "a11y": [
+        "Preserve label-value association through `items` semantics.",
+        "Links and copy actions include the value purpose in their accessible name."
+      ],
+      "antiPatterns": [
+        "Using Descriptions as a layout grid",
+        "More than three columns of dense text",
+        "Hiding important facts behind collapsed panels by default"
+      ]
+    },
+    {
+      "component": "Drawer",
+      "displayName": "抽屉",
+      "role": "Complete a contextual side task while preserving the underlying page.",
+      "useWhen": [
+        "Editing or inspecting one row benefits from seeing the list context.",
+        "The task is longer than a quick decision and shorter than a full page.",
+        "The content follows a vertical reading flow."
+      ],
+      "avoidWhen": [
+        "Use Modal for a short, focused decision.",
+        "Use a full page for multi-section tasks, broad tables, or work expected to exceed roughly five minutes.",
+        "Avoid nested drawers beyond one additional level."
+      ],
+      "defaults": [
+        "Use 378 px for a short inspection, 520–600 px for a form, and 720 px for a complex record; choose a full page when 720 px still feels constrained.",
+        "Use `destroyOnHidden` when stale local state must be cleared.",
+        "Use `mask={{ closable: false }}` for dirty forms, destructive operations, or tasks that cannot tolerate accidental dismissal."
+      ],
+      "states": [
+        "opening preserves the trigger and selected record",
+        "submitting disables duplicate close and submit paths",
+        "success closes only after persistence and returns focus to the trigger",
+        "cancel with dirty data asks whether to discard"
+      ],
+      "composition": [
+        "Header contains the object and task; body scrolls; footer actions stay visible.",
+        "Keep the primary action at the footer end and Cancel adjacent.",
+        "Use sections and dividers before adding inner cards."
+      ],
+      "responsive": [
+        "Use width `100%` below 576 px and keep a visible close or back affordance.",
+        "Avoid fixed inner widths; form fields fill the available content column."
+      ],
+      "a11y": [
+        "Set an explicit title and restore focus on close.",
+        "Keep keyboard focus within the drawer and announce async errors near the affected section."
+      ],
+      "antiPatterns": [
+        "Deprecated `destroyOnClose` or `maskClosable` props",
+        "Table with many columns inside a narrow drawer",
+        "Dismissal that silently loses edits",
+        "Drawer used as permanent navigation"
+      ]
+    },
+    {
+      "component": "Dropdown",
+      "displayName": "下拉菜单",
+      "role": "Reveal secondary commands or choices from a compact trigger.",
+      "useWhen": [
+        "Three or more secondary actions share the same object or scope.",
+        "A toolbar must preserve the primary action while compressing lower-priority commands."
+      ],
+      "avoidWhen": [
+        "Keep the main action visible as a Button.",
+        "Use Select when choosing a form value.",
+        "Use context menus only when users can also reach the same commands visibly."
+      ],
+      "defaults": [
+        "Use verb-object menu labels and stable ordering.",
+        "Separate destructive commands and style them as danger.",
+        "Use a text label plus chevron for ambiguous triggers; an ellipsis icon is acceptable in row actions."
+      ],
+      "states": [
+        "disabled items explain prerequisites when the reason is actionable",
+        "loading belongs to the chosen command after the menu closes",
+        "selection updates the owning object and announces the result"
+      ],
+      "composition": [
+        "Limit the first level to roughly 7 items before grouping or moving to a dedicated surface.",
+        "Avoid submenus for frequently used operations."
+      ],
+      "responsive": [
+        "Keep the popup inside the viewport and prefer vertical single-column menus."
+      ],
+      "a11y": [
+        "Trigger exposes expanded state and menu purpose.",
+        "Keyboard navigation covers trigger, items, Escape, and focus restoration."
+      ],
+      "antiPatterns": [
+        "Primary action hidden in the menu",
+        "Unlabeled ellipsis used outside an obvious row-action column",
+        "Mixing navigation, form values, and destructive commands without grouping"
+      ]
+    },
+    {
+      "component": "Empty",
+      "displayName": "空状态",
+      "role": "Explain why expected content is absent and what the user can do next.",
+      "useWhen": [
+        "A list, table, card, or page has no renderable business content after loading.",
+        "The absence has a distinct first-use, filtered, or permission meaning."
+      ],
+      "avoidWhen": [
+        "Use Skeleton or Spin while loading.",
+        "Use Result for a terminal page outcome.",
+        "Avoid a decorative empty illustration when one concise line is enough."
+      ],
+      "defaults": [
+        "First-use empty: explain value and offer the creation or import action.",
+        "Filtered empty: state that no results match and offer 清空筛选.",
+        "Data empty: state that no records exist without implying an error.",
+        "Permission empty: explain access and provide a request or return path."
+      ],
+      "states": [
+        "keep filters and page context visible for filtered empty",
+        "do not show zero rows before the first request resolves",
+        "retry only when a request failed"
+      ],
+      "composition": [
+        "Use one short description and at most one primary recovery action.",
+        "Keep table column headers when they help users understand expected data."
+      ],
+      "responsive": [
+        "Center within the available region without forcing an excessive minimum height."
+      ],
+      "a11y": [
+        "Expose the empty reason as text.",
+        "Place focus on the recovery action only after an explicit failed submit or route transition."
+      ],
+      "antiPatterns": [
+        "Same copy for all empty causes",
+        "No-results state that removes the filters",
+        "Empty shown during loading",
+        "Cheerful illustration for permission or error states"
+      ]
+    },
+    {
+      "component": "Form",
+      "displayName": "表单",
+      "role": "Collect, validate, and submit a coherent set of user inputs.",
+      "blogArticles": [
+        "form-names"
+      ],
+      "useWhen": [
+        "The task creates or edits an object.",
+        "Several fields share validation and one submission lifecycle."
+      ],
+      "avoidWhen": [
+        "Use filters as a query form with explicit query/reset behavior.",
+        "Use Switch for an immediate standalone setting.",
+        "Use editable Table only when repeated row editing is the core task."
+      ],
+      "defaults": [
+        "Use vertical layout for task forms, drawers, and modals; use horizontal layout for dense read-edit forms with short stable labels.",
+        "Keep the primary content column at 640–720 px; use two columns only for short, independent fields.",
+        "Group 4–8 related fields under a clear section heading.",
+        "Use medium controls and token spacing."
+      ],
+      "states": [
+        "validate required and structural rules on blur or submit; validate dependent business rules after the dependency changes",
+        "preserve valid input after a failed submit",
+        "disable duplicate submit while `onFinish` is pending",
+        "reset only after confirmed success or explicit discard"
+      ],
+      "composition": [
+        "Order identity and prerequisites first, configuration second, optional remarks last.",
+        "Keep Cancel and Submit in a stable footer; name Submit by outcome.",
+        "Show field help before failure when the format is unfamiliar."
+      ],
+      "responsive": [
+        "Collapse two-column fields to one column below 768 px.",
+        "Sticky footers must not cover the last field or validation message."
+      ],
+      "a11y": [
+        "Every control has a persistent label.",
+        "Error messages identify the field and recovery.",
+        "On failed submit, focus the first invalid field and retain the error summary for complex forms."
+      ],
+      "antiPatterns": [
+        "Placeholder used as the only label",
+        "More than two form columns",
+        "Clearing all values after a server error",
+        "Submit button separated from the end of the reading path"
+      ]
+    },
+    {
+      "component": "Input",
+      "displayName": "输入框",
+      "role": "Enter short free text or search text.",
+      "useWhen": [
+        "The value cannot be selected from a stable finite set.",
+        "The user knows the identifier, name, or keyword to enter."
+      ],
+      "avoidWhen": [
+        "Use InputNumber for quantitative values.",
+        "Use Select, Radio, or TreeSelect for known choices.",
+        "Use TextArea for content expected to exceed one line."
+      ],
+      "defaults": [
+        "Use medium size and a width that reflects the expected value, usually 200–320 px in filters and full column width in forms.",
+        "Write format examples as help or a concrete placeholder, such as SN202607220001.",
+        "Use prefix/suffix only for stable units or recognizable affordances."
+      ],
+      "states": [
+        "allow clear in filters and optional fields",
+        "preserve the entered value on validation and request errors",
+        "show character count only when a real limit exists"
+      ],
+      "composition": [
+        "Pair search input with an explicit query action when requests are costly.",
+        "Debounce live search and show request progress when results update asynchronously."
+      ],
+      "responsive": [
+        "Allow filter inputs to fill their grid cell; avoid hard-coded widths wider than the viewport."
+      ],
+      "a11y": [
+        "Label remains visible while typing.",
+        "Prefix and suffix icons have accessible names when interactive."
+      ],
+      "antiPatterns": [
+        "Placeholder 请输入 with no format clue",
+        "Text input used for dates, booleans, or fixed statuses",
+        "Immediate request on every keystroke without debounce or progress"
+      ]
+    },
+    {
+      "component": "Menu",
+      "displayName": "导航菜单",
+      "role": "Represent stable application information architecture and current location.",
+      "useWhen": [
+        "A product has persistent sections and one selected route.",
+        "A collapsed or hierarchical navigation model is required."
+      ],
+      "avoidWhen": [
+        "Use Tabs for peer views within one object or page.",
+        "Use Dropdown for commands.",
+        "Avoid deep hierarchy when a flatter information architecture can carry the product."
+      ],
+      "defaults": [
+        "Keep labels short nouns and use one icon family.",
+        "Control `selectedKeys` from the route and `openKeys` from explicit user state.",
+        "Limit routine navigation to two visible levels; add a landing page before a third level."
+      ],
+      "states": [
+        "selected reflects the current route",
+        "open reveals hierarchy without changing route",
+        "disabled navigation appears only when users benefit from seeing unavailable scope"
+      ],
+      "composition": [
+        "Group by user task and domain, not by database or team ownership.",
+        "Keep settings and account actions outside primary domain navigation."
+      ],
+      "responsive": [
+        "Collapse the side navigation below the product breakpoint and retain labels through Tooltip or a temporary drawer.",
+        "Never expose a permanently horizontal-scrolling menu."
+      ],
+      "a11y": [
+        "Current route is announced through selected state.",
+        "Keyboard users can traverse groups, submenus, and the collapse control."
+      ],
+      "antiPatterns": [
+        "Menu used for row actions",
+        "More than two routine hierarchy levels",
+        "Selected state maintained separately from the route",
+        "Several unrelated icon styles"
+      ]
+    },
+    {
+      "component": "Message",
+      "displayName": "全局提示",
+      "role": "Briefly confirm an action or report a transient global event.",
+      "blogArticles": [
+        "why-not-static"
+      ],
+      "useWhen": [
+        "A completed action needs a short acknowledgement and the updated UI already shows the result.",
+        "A lightweight error can be retried from the unchanged context."
+      ],
+      "avoidWhen": [
+        "Use Alert for persistent or actionable section feedback.",
+        "Use field validation for input errors.",
+        "Use Notification for longer background events that need title, details, or actions."
+      ],
+      "defaults": [
+        "Use hook-based APIs through `App` or the relevant context holder so theme and locale apply.",
+        "Keep success copy to one outcome sentence.",
+        "Keep error messages visible long enough to read and repeat the recovery in the page when needed."
+      ],
+      "states": [
+        "loading may transition in place to success or error for one async action",
+        "deduplicate repeated events with a stable key",
+        "close when the owning route is gone"
+      ],
+      "composition": [
+        "Do not stack more than three messages.",
+        "The page remains the durable source of truth after the toast disappears."
+      ],
+      "responsive": [
+        "Allow long failure copy to wrap; move detailed diagnostics to an expandable or persistent surface."
+      ],
+      "a11y": [
+        "Announce politely for success/info and assertively for a blocking error.",
+        "Avoid moving keyboard focus to a transient toast."
+      ],
+      "antiPatterns": [
+        "Static API that misses ConfigProvider context",
+        "Toast as the only record of a failed operation",
+        "Technical exception text shown directly to users"
+      ]
+    },
+    {
+      "component": "Modal",
+      "displayName": "对话框",
+      "role": "Focus attention on a short decision or compact task that blocks the current flow.",
+      "blogArticles": [
+        "getContainer",
+        "modal-hook-order",
+        "why-not-static"
+      ],
+      "useWhen": [
+        "A decision needs immediate resolution before continuing.",
+        "A compact form or preview can finish without broad page context.",
+        "The task is expected to take less than roughly one minute."
+      ],
+      "avoidWhen": [
+        "Use Popconfirm for one simple row action.",
+        "Use Drawer when underlying context must remain visible.",
+        "Use a page for multi-section, large-table, or long-running work."
+      ],
+      "defaults": [
+        "Use the 520 px default for confirmation and short forms; use 640–720 px for richer content; move wider tasks to Drawer or page.",
+        "Use `destroyOnHidden` when stale form state must be cleared.",
+        "Use `mask={{ closable: false }}` for destructive decisions and dirty forms.",
+        "Keep a specific title and concise consequence text."
+      ],
+      "states": [
+        "confirm loading prevents duplicate submit and accidental close",
+        "validation stays in the modal",
+        "success closes after persistence and restores focus",
+        "failure keeps values and displays recovery"
+      ],
+      "composition": [
+        "Keep actions in the footer; Cancel precedes the outcome action.",
+        "Use neutral emphasis for decisions where the system must not steer the choice.",
+        "Avoid more than one scroll region and avoid nested modals."
+      ],
+      "responsive": [
+        "Use responsive width with 16 px viewport margins below 576 px.",
+        "If the content requires persistent scrolling and a sticky footer, reevaluate Drawer or page."
+      ],
+      "a11y": [
+        "Title labels the dialog.",
+        "Initial focus goes to the safest useful control; destructive confirmation does not pre-focus the destructive action.",
+        "Restore focus to the trigger."
+      ],
+      "antiPatterns": [
+        "Deprecated `destroyOnClose` or `maskClosable` props",
+        "Modal used for a full CRUD page",
+        "Generic title 提示",
+        "Close that silently loses edits"
+      ]
+    },
+    {
+      "component": "Notification",
+      "displayName": "通知提醒框",
+      "role": "Keep a titled background-event result visible long enough to understand or act on it.",
+      "blogArticles": [
+        "notification-stack",
+        "why-not-static"
+      ],
+      "useWhen": [
+        "A background task, cross-page event, or durable warning needs a title and supporting detail.",
+        "The user may need an action or enough time to read the result."
+      ],
+      "avoidWhen": [
+        "Use Message for a short acknowledgement already reflected in the page.",
+        "Use Alert for feedback that belongs to a stable page section.",
+        "Use Modal only when progress must stop for a decision."
+      ],
+      "defaults": [
+        "Use hook-based APIs through `App` or a context holder.",
+        "Use a stable key to update one event instead of adding duplicates.",
+        "Cap and stack notifications so the viewport remains readable; keep the newest outcome discoverable."
+      ],
+      "states": [
+        "pending can update in place to success or failure",
+        "repeated events aggregate by stable key",
+        "actionable errors remain until dismissed or resolved"
+      ],
+      "composition": [
+        "Write a specific outcome title and one concise detail block.",
+        "Include at most one primary recovery action and one dismiss path.",
+        "Keep the page or task history as the durable record."
+      ],
+      "responsive": [
+        "Keep 16 px viewport margins and a readable maximum width.",
+        "On narrow screens, avoid covering navigation and primary actions with a deep stack."
+      ],
+      "a11y": [
+        "Announce urgency according to severity without moving focus.",
+        "Actions are keyboard reachable and retain context after dismissal."
+      ],
+      "antiPatterns": [
+        "Static API that loses theme or locale",
+        "Unlimited notification pile",
+        "Same event repeated as separate cards",
+        "Critical recovery available only in a disappearing notification"
+      ]
+    },
+    {
+      "component": "Pagination",
+      "displayName": "分页",
+      "role": "Navigate a bounded collection while preserving query context.",
+      "useWhen": [
+        "The dataset cannot be shown or fetched as one manageable view.",
+        "Users need stable position, totals, or direct page access."
+      ],
+      "avoidWhen": [
+        "Use virtual scrolling for continuous scanning where page position has no business meaning.",
+        "Hide pagination for a single page when the total is already visible."
+      ],
+      "defaults": [
+        "Use page size 20 for standard tables, with 50 and 100 options for expert dense work.",
+        "Show the size changer when total exceeds 50.",
+        "Show total and current range for operational lists.",
+        "Use medium size with the table; use small only in compact secondary modules."
+      ],
+      "states": [
+        "filter and sort normally return to page 1",
+        "preserve page only when remote behavior and user expectation are explicit",
+        "after deleting the last row on a page, move to the previous valid page"
+      ],
+      "composition": [
+        "Place at the table bottom end; place total/range at the opposite side when space allows.",
+        "Keep pagination state in the URL for shareable operational views."
+      ],
+      "responsive": [
+        "Use simple mode or fewer visible page numbers below 576 px while preserving previous/next and current position."
+      ],
+      "a11y": [
+        "Announce current page, total pages, and disabled previous/next states.",
+        "Page-size control has a visible or accessible label."
+      ],
+      "antiPatterns": [
+        "Pagination with unknown meaning and no total",
+        "Resetting filters when page changes",
+        "Showing a size changer for tiny datasets",
+        "Infinite scroll for audit or selection-heavy tables"
+      ]
+    },
+    {
+      "component": "Popconfirm",
+      "displayName": "气泡确认框",
+      "role": "Confirm one compact, local action close to its trigger.",
+      "useWhen": [
+        "A row or item action has a clear short consequence.",
+        "The user needs a brief safety check without entering more information."
+      ],
+      "avoidWhen": [
+        "Use Modal when consequences, policy, or input require more than two short sentences.",
+        "Skip confirmation for easy-to-undo low-risk actions and offer Undo instead.",
+        "Avoid for bulk operations with broad impact."
+      ],
+      "defaults": [
+        "Name the object and consequence in the title.",
+        "Use an optional description for one key constraint.",
+        "Use `okButtonProps={{ danger: true }}` for destructive actions and name the confirm button by outcome."
+      ],
+      "states": [
+        "async confirm shows loading and prevents repetition",
+        "failure keeps the popover or surfaces a persistent row error",
+        "success returns focus to a stable neighboring action when the row disappears"
+      ],
+      "composition": [
+        "Keep Cancel and the outcome action only.",
+        "Position within the viewport and away from table clipping containers."
+      ],
+      "responsive": [
+        "Use Modal on narrow touch screens when the popover cannot remain readable or reachable."
+      ],
+      "a11y": [
+        "Trigger, dialog text, and buttons are keyboard reachable.",
+        "Initial focus favors Cancel for irreversible operations."
+      ],
+      "antiPatterns": [
+        "Generic 确定删除吗 without object context",
+        "Form fields inside Popconfirm",
+        "Confirmation added to every harmless action"
+      ]
+    },
+    {
+      "component": "Select",
+      "displayName": "选择器",
+      "role": "Choose one or several values from a known option set.",
+      "useWhen": [
+        "The option set is known and usually contains 6–50 values.",
+        "The field needs search, clear, remote options, or compact form layout."
+      ],
+      "avoidWhen": [
+        "Use Radio for 2–5 frequent mutually exclusive choices.",
+        "Use TreeSelect for hierarchical choices.",
+        "Use AutoComplete when free text remains valid.",
+        "Use Input when the option set is open-ended."
+      ],
+      "defaults": [
+        "Use medium size and at least 160 px width; 200–240 px is the standard filter width.",
+        "Enable search for more than 10 options and define whether search is local or remote.",
+        "Use `allowClear` for optional filters and optional fields.",
+        "For multi-select, cap visible tags with responsive `maxTagCount` and preserve full selection access."
+      ],
+      "states": [
+        "loading keeps the selected value and shows option progress",
+        "no options distinguishes unavailable source from no search match",
+        "remote errors offer retry",
+        "disabled explains permission or prerequisite when actionable"
+      ],
+      "composition": [
+        "Options use concise labels and stable values.",
+        "Group options only when groups help recognition.",
+        "Avoid custom option layouts that obscure keyboard selection."
+      ],
+      "responsive": [
+        "Fill the grid cell on narrow layouts and keep popup width sufficient for the longest meaningful label."
+      ],
+      "a11y": [
+        "Persistent label remains visible.",
+        "Search, active option, selected values, and clear action are announced."
+      ],
+      "antiPatterns": [
+        "Hundreds of options loaded without search or virtualization",
+        "Multiple selection used as a substitute for a filter builder",
+        "Placeholder used as label",
+        "Option labels that expose internal enum keys"
+      ]
+    },
+    {
+      "component": "Skeleton",
+      "displayName": "骨架屏",
+      "role": "Preserve layout and communicate first-load structure before content is available.",
+      "useWhen": [
+        "Initial data is expected to take longer than roughly 300 ms.",
+        "The final layout is predictable and visual stability matters."
+      ],
+      "avoidWhen": [
+        "Use Spin for a small refresh while existing content remains useful.",
+        "Use Progress when real completion can be measured.",
+        "Avoid skeletons for instant local transitions."
+      ],
+      "defaults": [
+        "Match the count, shape, and hierarchy of the final modules.",
+        "Delay briefly to prevent flash on fast responses.",
+        "Use active animation only while work is progressing."
+      ],
+      "states": [
+        "initial shell plus skeleton",
+        "success swaps the region without large layout shift",
+        "error replaces skeleton with a clear recovery state",
+        "timeout stops the illusion of progress and exposes status"
+      ],
+      "composition": [
+        "Use table-row skeletons for table first load and card skeletons for dashboard modules.",
+        "Keep stable page header and navigation visible."
+      ],
+      "responsive": [
+        "Match the responsive layout that will replace it; do not keep desktop columns on a narrow viewport."
+      ],
+      "a11y": [
+        "Mark the region busy and provide a concise loading label.",
+        "Skeleton shapes remain hidden from the accessibility tree."
+      ],
+      "antiPatterns": [
+        "Generic paragraph skeleton for every page",
+        "Skeleton shown over existing useful data during refresh",
+        "Indefinite skeleton after request failure"
+      ]
+    },
+    {
+      "component": "Spin",
+      "displayName": "加载中",
+      "role": "Indicate bounded asynchronous work inside an existing region.",
+      "useWhen": [
+        "Refreshing a table, card, form dependency, or action region while layout remains stable.",
+        "The result duration is unknown and no numeric progress exists."
+      ],
+      "avoidWhen": [
+        "Use Skeleton for page first load.",
+        "Use Progress for upload, import, or processing with measurable completion.",
+        "Avoid blocking the whole page for one local request."
+      ],
+      "defaults": [
+        "Delay the indicator for fast work.",
+        "Keep prior content visible with reduced interaction when it remains trustworthy.",
+        "Add a short tip for waits that exceed routine feedback."
+      ],
+      "states": [
+        "busy marks the smallest affected region",
+        "success removes progress and updates content",
+        "error ends progress and exposes retry",
+        "cancellation restores the last safe state"
+      ],
+      "composition": [
+        "Pair button loading with the triggering action; use Spin for the content region.",
+        "Avoid several simultaneous spinners without a clear owning scope."
+      ],
+      "responsive": [
+        "Center within the affected container, not the viewport, unless the entire route is loading."
+      ],
+      "a11y": [
+        "Set `aria-busy` and announce the loading purpose.",
+        "Do not trap focus in a non-modal loading region."
+      ],
+      "antiPatterns": [
+        "Full-screen spinner for a row request",
+        "Spinner that survives a failed request",
+        "Loading text with no owned region"
+      ]
+    },
+    {
+      "component": "Steps",
+      "displayName": "步骤条",
+      "role": "Show progress through an ordered task with meaningful stages.",
+      "useWhen": [
+        "A task has 3–7 dependent stages and users need orientation or resumability.",
+        "Each stage has its own validation or completion state."
+      ],
+      "avoidWhen": [
+        "Use Tabs for peer views with no required order.",
+        "Use Timeline for historical events.",
+        "Avoid Steps for a short form that fits one page."
+      ],
+      "defaults": [
+        "Use short noun or verb-object titles and optional concise descriptions.",
+        "Keep current, completed, waiting, and error states derived from workflow truth.",
+        "Persist completed data before advancing when recovery matters."
+      ],
+      "states": [
+        "current step owns validation",
+        "error marks the affected step and keeps values",
+        "completed steps can be reviewed when policy allows",
+        "submitting the final step has a distinct processing state"
+      ],
+      "composition": [
+        "Place step content below the indicator with one clear title.",
+        "Footer order stays Previous, Save draft when relevant, Next or Submit.",
+        "Summarize irreversible choices before final submission."
+      ],
+      "responsive": [
+        "Use vertical or compact label placement below 768 px.",
+        "Keep long descriptions in the content area instead of the step label."
+      ],
+      "a11y": [
+        "Announce current step and total count.",
+        "Changing steps updates the page heading and focus."
+      ],
+      "antiPatterns": [
+        "Clickable future steps that bypass validation",
+        "Steps used as decorative status dots",
+        "More than seven stages with full labels",
+        "No recovery after a failed step"
+      ]
+    },
+    {
+      "component": "Switch",
+      "displayName": "开关",
+      "role": "Immediately toggle one binary setting.",
+      "useWhen": [
+        "The change takes effect immediately and the two states are unambiguous.",
+        "The setting can safely show a pending state."
+      ],
+      "avoidWhen": [
+        "Use Checkbox when the value is submitted with a form.",
+        "Use Radio when users need to compare labeled alternatives.",
+        "Avoid Switch for destructive or multi-consequence changes without confirmation."
+      ],
+      "defaults": [
+        "Use a stable noun label and explain both states in nearby copy when the effect is unfamiliar.",
+        "Use loading while persistence is pending.",
+        "Revert to the last confirmed state on failure and explain recovery."
+      ],
+      "states": [
+        "checked and unchecked map to explicit business values",
+        "loading blocks repeat toggles",
+        "disabled explains policy when useful"
+      ],
+      "composition": [
+        "Place the label before the switch in forms and settings rows.",
+        "Confirmation appears before committing high-impact toggles."
+      ],
+      "responsive": [
+        "Keep label and switch on the same row when readable; wrap help text below."
+      ],
+      "a11y": [
+        "Accessible name describes the setting, and checked state communicates the value.",
+        "Color is supplemented by position and label."
+      ],
+      "antiPatterns": [
+        "Save button required after an apparently immediate switch",
+        "On/off meaning hidden in a vague label",
+        "Optimistic state left incorrect after request failure"
+      ]
+    },
+    {
+      "component": "Table",
+      "displayName": "表格",
+      "role": "Scan, compare, sort, filter, select, and operate on structured records.",
+      "blogArticles": [
+        "table-scroll-ghost",
+        "virtual-table"
+      ],
+      "useWhen": [
+        "Rows share a stable schema and users compare values across columns.",
+        "Sorting, filtering, pagination, selection, or row operations are core tasks."
+      ],
+      "avoidWhen": [
+        "Use List or cards for heterogeneous narrative objects.",
+        "Use Descriptions for one record.",
+        "Use a data-grid product only when cell editing, spreadsheet navigation, or very large virtualization is the primary workflow."
+      ],
+      "defaults": [
+        "Use `size=medium` for standard back-office pages; use small for expert dense views with at least 12 visible rows.",
+        "Keep the first meaningful identity column visible and allow it to flex from 160 px.",
+        "Use widths: selection 48, index 64, status 96–120, short ID 120–160, date/time 160–184, numeric 96–120 right-aligned, action 120–200.",
+        "Expose at most two row actions; move additional actions into Dropdown.",
+        "Use horizontal scroll with `x=max-content` when required and fix only identity and action columns when the viewport still preserves useful data.",
+        "At both scroll edges, header, body, sticky bar, and fixed-column boundaries must stay aligned within one CSS pixel at tested zoom levels."
+      ],
+      "states": [
+        "first load uses row-matched skeleton",
+        "refresh preserves rows and selection only when keys remain valid",
+        "filtered empty keeps filters and headers",
+        "request error preserves the last safe rows with a stale indicator",
+        "bulk selection clears after a completed destructive mutation"
+      ],
+      "composition": [
+        "Place a query form above, page and batch actions in a toolbar, the table next, and pagination at the bottom.",
+        "Keep 3–4 high-frequency filters visible at 1200 px and collapse the rest under 更多筛选.",
+        "Summaries belong above or below the table based on whether they guide filtering or reconcile results.",
+        "Render status through one project-level semantic mapping."
+      ],
+      "responsive": [
+        "Assign column priority and hide low-priority columns by breakpoint before forcing scroll.",
+        "At narrow widths, keep identity, status, and one action; offer a detail view for the rest.",
+        "Never shrink text until identifiers, dates, or actions become ambiguous."
+      ],
+      "a11y": [
+        "Provide stable `rowKey`, row headers where appropriate, sortable labels, and selection names.",
+        "Keyboard and screen-reader users receive selected count, sort direction, and update announcements."
+      ],
+      "antiPatterns": [
+        "All columns auto-sized with no priority",
+        "Centered numbers or dates",
+        "Five or more visible row actions",
+        "Color-only statuses",
+        "Pagination and filter state disconnected",
+        "Fixed columns covering overlays"
+      ]
+    },
+    {
+      "component": "Tabs",
+      "displayName": "标签页",
+      "role": "Switch between peer views of the same object or task scope.",
+      "useWhen": [
+        "Two to seven views share one page identity and users switch frequently.",
+        "Each tab can load and fail independently without changing the main object."
+      ],
+      "avoidWhen": [
+        "Use Menu for product navigation.",
+        "Use Steps for ordered progress.",
+        "Use segmented controls for a small display mode that changes the same data view."
+      ],
+      "defaults": [
+        "Use concise parallel labels and keep the default tab aligned to the primary user goal.",
+        "Persist the active key in the URL when direct links and back navigation matter.",
+        "Use counts only when they aid prioritization and remain fresh."
+      ],
+      "states": [
+        "lazy load heavy panels",
+        "preserve safe panel state when switching",
+        "show errors inside the owning panel",
+        "remove or disable inaccessible tabs according to whether awareness helps the user"
+      ],
+      "composition": [
+        "Place tabs below the page or object header.",
+        "Keep page-wide actions outside; tab-specific actions live inside the panel.",
+        "Avoid a second tab row unless the hierarchy is explicit and rare."
+      ],
+      "responsive": [
+        "Allow tab-bar overflow scrolling with clear edge affordances; avoid truncating every label.",
+        "Consider Dropdown only for low-frequency overflow tabs."
+      ],
+      "a11y": [
+        "Use proper tab/tabpanel association and keyboard arrow navigation.",
+        "Focus remains predictable when panels load asynchronously."
+      ],
+      "antiPatterns": [
+        "Tabs used as primary application navigation",
+        "Tabs mixed with workflow steps",
+        "All panels mounted with expensive requests",
+        "Page actions changing as an unexplained side effect of tab switch"
+      ]
+    },
+    {
+      "component": "Tag",
+      "displayName": "标签",
+      "role": "Show a compact category, state, property, or removable selection.",
+      "useWhen": [
+        "A short label must be scanned inside a table, description, or filter summary.",
+        "A category or lifecycle state benefits from shape plus text."
+      ],
+      "avoidWhen": [
+        "Use Badge for an attached count or dot.",
+        "Use Button for actions.",
+        "Use plain text for low-priority metadata that does not need a chip shape."
+      ],
+      "defaults": [
+        "Use `variant=filled` for standard semantic status, `solid` for rare high-emphasis states, and `outlined` for neutral categories.",
+        "Use functional colors for success, warning, error, and processing; use preset colors for stable categories.",
+        "Keep one status-to-visual mapping across the project."
+      ],
+      "states": [
+        "loading and unknown receive explicit labels",
+        "closable tags remove a user-selected value",
+        "checkable tags behave as controls and expose selection"
+      ],
+      "composition": [
+        "Keep text to roughly 2–8 Chinese characters.",
+        "Show at most three tags in a table cell; summarize overflow with +N and full access."
+      ],
+      "responsive": [
+        "Wrap category groups deliberately; keep primary row height stable in dense tables."
+      ],
+      "a11y": [
+        "Text carries the meaning; color supplements it.",
+        "Interactive tags have control semantics and keyboard focus."
+      ],
+      "antiPatterns": [
+        "Deprecated `bordered` prop",
+        "Random colors per page",
+        "Every metadata value rendered as a tag",
+        "Tag styled to look like a button"
+      ]
+    },
+    {
+      "component": "Tooltip",
+      "displayName": "文字提示",
+      "role": "Reveal concise supplementary meaning for a compact visible target.",
+      "blogArticles": [
+        "tooltip-align"
+      ],
+      "useWhen": [
+        "An icon-only control needs a name.",
+        "Truncated content needs its full value.",
+        "A disabled action needs a short reason and another visible path explains resolution."
+      ],
+      "avoidWhen": [
+        "Keep essential instructions, errors, and policy visible.",
+        "Avoid tooltips for long content, forms, or touch-only discovery.",
+        "Do not attach to every familiar labeled control."
+      ],
+      "defaults": [
+        "Keep content to one or two short lines.",
+        "Use a small open delay for dense table icons and avoid flicker between adjacent targets.",
+        "Wrap disabled controls only when event delivery requires it."
+      ],
+      "states": [
+        "open follows hover and focus",
+        "close on Escape and when the target disappears",
+        "updated content remains stable while open"
+      ],
+      "composition": [
+        "Name icon actions with a verb.",
+        "For truncated IDs, include a separate copy action when copying is common."
+      ],
+      "responsive": [
+        "Ensure popup placement, arrow, and target alignment stay inside the viewport at every edge; provide a visible alternative on touch."
+      ],
+      "a11y": [
+        "Tooltip content associates with the target and appears on keyboard focus.",
+        "Target already has an accessible name; Tooltip adds visible support."
+      ],
+      "antiPatterns": [
+        "Required field rule available only on hover",
+        "Tooltip containing several paragraphs or buttons",
+        "Tooltip used to hide ambiguous icon design"
+      ]
+    },
+    {
+      "component": "Tree",
+      "displayName": "树形控件",
+      "role": "Browse, inspect, and select items whose hierarchy is central to understanding the data.",
+      "blogArticles": [
+        "check-conduct"
+      ],
+      "useWhen": [
+        "Users need to explore or operate on a visible hierarchy.",
+        "Expanded ancestry and sibling context affect the decision."
+      ],
+      "avoidWhen": [
+        "Use TreeSelect when hierarchy is only an input field.",
+        "Use a flat Table or List when nesting adds no decision value.",
+        "Avoid rendering a large remote hierarchy without lazy loading and search."
+      ],
+      "defaults": [
+        "Define checked conduction for parent, child, disabled, and partially checked nodes before implementation.",
+        "Use `checkStrictly` when the product requires independent selection.",
+        "Preserve expanded and selected state by stable keys."
+      ],
+      "states": [
+        "loading is local to the expanding node",
+        "disabled nodes retain an explicit meaning",
+        "half-checked state reflects the chosen conduction rule",
+        "remote failure preserves visible ancestors"
+      ],
+      "composition": [
+        "Place search above large trees and keep the matched path visible.",
+        "For permission changes, summarize the effective scope before submission."
+      ],
+      "responsive": [
+        "Use a Drawer or full-width surface on narrow screens so labels and depth remain readable."
+      ],
+      "a11y": [
+        "Expose level, expanded, selected, checked, half-checked, and disabled state.",
+        "Keyboard navigation supports parent, child, sibling, expand, and selection movement."
+      ],
+      "antiPatterns": [
+        "Default cascade accepted without product decision",
+        "Disabled-node behavior left ambiguous",
+        "Deep tree without search",
+        "Color-only checked or disabled meaning"
+      ]
+    },
+    {
+      "component": "TreeSelect",
+      "displayName": "树选择",
+      "role": "Choose values from a hierarchy while preserving parent-child context.",
+      "blogArticles": [
+        "check-conduct"
+      ],
+      "useWhen": [
+        "Departments, locations, categories, or permissions have meaningful hierarchy.",
+        "Users need search plus tree context in one field."
+      ],
+      "avoidWhen": [
+        "Use Select for a flat option set.",
+        "Use Tree when browsing or managing hierarchy is the main task.",
+        "Avoid for more than a few thousand remote nodes without lazy loading and search strategy."
+      ],
+      "defaults": [
+        "Use medium size and a 240–320 px field in filters.",
+        "Choose parent, child, disabled-node, and half-checked behavior explicitly; do not rely on default cascade semantics.",
+        "Enable search and define whether results preserve ancestors.",
+        "Use responsive tag limits for multiple selection."
+      ],
+      "states": [
+        "lazy nodes show local loading",
+        "selected paths remain readable",
+        "missing permissions explain why a branch is unavailable",
+        "remote failure preserves prior selections"
+      ],
+      "composition": [
+        "Labels use domain names; add full path only when duplicate labels exist.",
+        "For high-risk permission trees, add a review summary before submission."
+      ],
+      "responsive": [
+        "Use a wide popup or full-width mobile surface so hierarchy labels remain readable."
+      ],
+      "a11y": [
+        "Expose expanded, selected, checked, and level state.",
+        "Keyboard navigation covers tree movement and search results."
+      ],
+      "antiPatterns": [
+        "Flat choices forced into a tree",
+        "Unclear parent selection cascade",
+        "Thousands of nodes rendered at once",
+        "Selected tag overflow hiding the scope of a permission change"
+      ]
+    },
+    {
+      "component": "Typography",
+      "displayName": "排版",
+      "role": "Express page hierarchy, readable content, identifiers, and constrained text with the AntD type system.",
+      "blogArticles": [
+        "line-ellipsis"
+      ],
+      "useWhen": [
+        "Text needs AntD hierarchy, copyability, editability, or ellipsis behavior.",
+        "A page needs consistent titles, secondary text, code values, and paragraphs."
+      ],
+      "avoidWhen": [
+        "Avoid using heading styles only to change font size.",
+        "Keep data tables on their native cell semantics.",
+        "Do not hide critical instructions behind ellipsis."
+      ],
+      "defaults": [
+        "Follow the page heading outline and the 14/22 base text rhythm.",
+        "Use subdued text for metadata while preserving readable contrast.",
+        "For multiline ellipsis, test actual fonts, width changes, mixed scripts, and expandable recovery."
+      ],
+      "states": [
+        "copy and edit actions provide progress and outcome",
+        "truncated content offers full access",
+        "loading text reserves stable space"
+      ],
+      "composition": [
+        "Pair one page title with concise context and keep section headings parallel.",
+        "Use code styling for identifiers only when it aids scanning or copying."
+      ],
+      "responsive": [
+        "Allow text to wrap before reducing font size.",
+        "Recalculate ellipsis after container and font changes without layout oscillation."
+      ],
+      "a11y": [
+        "Heading levels follow document structure.",
+        "Truncated text remains available to keyboard and assistive technology users."
+      ],
+      "antiPatterns": [
+        "Heading level chosen by appearance",
+        "Low-contrast secondary text",
+        "Ellipsis with no full-value access",
+        "Several unrelated font scales on one page"
+      ]
+    },
+    {
+      "component": "Upload",
+      "displayName": "上传",
+      "role": "Select files and manage validation, transfer, processing, retry, and removal as one lifecycle.",
+      "useWhen": [
+        "A task requires local files, images, documents, firmware, or import data.",
+        "Users need visible per-file state and recovery."
+      ],
+      "avoidWhen": [
+        "Use an import workflow when upload is only the first stage of parsing, mapping, validation, and commit.",
+        "Avoid drag-and-drop when exact file selection is safer or space is limited.",
+        "Avoid hiding security and format constraints until failure."
+      ],
+      "defaults": [
+        "Declare accepted types, maximum size, maximum count, and naming rules next to the trigger.",
+        "Controlled `fileList` always includes `onChange` and a stable UID strategy.",
+        "Validate client-side with `beforeUpload`; repeat authoritative validation on the server.",
+        "Show file name, size when relevant, progress, outcome, retry, and remove."
+      ],
+      "states": [
+        "selected",
+        "validating",
+        "uploading with progress",
+        "uploaded",
+        "server-processing",
+        "success",
+        "failed with reason and retry",
+        "removed or cancelled"
+      ],
+      "composition": [
+        "Use `maxCount=1` for replacement assets.",
+        "For batch import, hand off successful uploads to a separate preview/validation/commit stage.",
+        "Dangerous file replacement names the target and keeps version history when possible."
+      ],
+      "responsive": [
+        "File rows wrap metadata and keep retry/remove actions reachable.",
+        "Drop zones become compact selectors on narrow screens when drag precision is poor."
+      ],
+      "a11y": [
+        "Trigger names accepted content.",
+        "Progress and per-file result are announced.",
+        "Keyboard users can select, retry, preview, and remove files."
+      ],
+      "antiPatterns": [
+        "Controlled `fileList` without `onChange`",
+        "Success shown before server processing finishes",
+        "Only file extension checked",
+        "Failure that clears the file and reason",
+        "Real upload triggered in a demo-only project"
+      ]
+    },
+    {
+      "component": "Segmented",
+      "displayName": "分段控制器",
+      "role": "Switch a small display mode or filter of the same content in place.",
+      "useWhen": [
+        "Two to five mutually exclusive options change how one region is viewed or filtered, such as 全部 / 告警 / 离线 or 列表 / 卡片.",
+        "The associated region updates in place without changing page identity or route."
+      ],
+      "avoidWhen": [
+        "Use Tabs when each option owns a peer content panel or section with its own actions and loading state.",
+        "Use Radio for a form field that is submitted with the form.",
+        "Use Select when there are many options or the labels are long.",
+        "Use Menu for product navigation."
+      ],
+      "defaults": [
+        "Keep exactly one option selected; the first option is the default unless a stored preference exists.",
+        "Use short parallel labels; add an icon only with a text label or an accessible name.",
+        "Use the controlled value and onChange when the choice is synced to the URL or a table query.",
+        "Use the medium size, and block width when the control sits alone in a narrow toolbar."
+      ],
+      "states": [
+        "selected option is visually distinct without relying on color alone",
+        "disabled option explains why in nearby help text",
+        "the controlled region shows its own loading state while switching",
+        "keep filters and scroll position when the switch does not change the data scope"
+      ],
+      "composition": [
+        "Place it directly above or beside the region it controls, usually in the toolbar next to filters.",
+        "Keep page-wide actions outside the control and do not mix action buttons into the options."
+      ],
+      "responsive": [
+        "Use block width on narrow screens; switch to Select when the labels no longer fit on one line.",
+        "Use vertical orientation only in a narrow side region."
+      ],
+      "a11y": [
+        "The options behave as a radio group; keep arrow-key navigation and a visible focus ring.",
+        "Give icon-only options an accessible name, and set name when several groups share one page."
+      ],
+      "antiPatterns": [
+        "Segmented used as page navigation",
+        "More than five options or long labels forced into one row",
+        "Segmented used for a value submitted with a form",
+        "Segmented switching unrelated content sections that need Tabs",
+        "No option selected"
+      ]
+    },
+    {
+      "component": "Result",
+      "displayName": "结果页",
+      "role": "Report the outcome of an important operation or a whole page and offer the next action.",
+      "useWhen": [
+        "An important operation or route has finished and the feedback is complex: success, failure, warning, 403, 404, or 500.",
+        "The whole page or flow step has nothing else to show except the outcome and what to do next."
+      ],
+      "avoidWhen": [
+        "Use Empty when a list, table, or card region simply has no data.",
+        "Use Message or Notification for transient feedback that does not replace the page.",
+        "Use Alert for an inline banner while the surrounding content stays usable.",
+        "Use Skeleton or Spin while loading."
+      ],
+      "defaults": [
+        "Set status to match the outcome: success, error, info, warning, 403, 404, or 500.",
+        "Title states the outcome; subTitle states the cause when known and the next step.",
+        "Put at most one primary and one secondary action in extra, such as 返回列表 and 重试.",
+        "Permission 403: explain the access rule and offer a request or return path."
+      ],
+      "states": [
+        "show only after the request or route has settled, never during loading",
+        "on failure keep entered values reachable through the retry path",
+        "on success offer the follow-up action and a way to continue"
+      ],
+      "composition": [
+        "Center it in the page content area under the application shell.",
+        "Use a custom icon only when the built-in status icon does not convey the outcome."
+      ],
+      "responsive": [
+        "Keep icon, title, subTitle, and extra stacked and centered; let actions wrap under narrow width."
+      ],
+      "a11y": [
+        "Expose the outcome as text; do not rely on the status icon alone.",
+        "Move focus to the title or the primary action after a submit result or route transition."
+      ],
+      "antiPatterns": [
+        "Result used for an empty table or filtered-no-result state",
+        "Success result without a next action",
+        "Generic 出错了 copy with no cause or recovery",
+        "Result used for transient confirmation that a Message would cover",
+        "Result nested inside a card that still shows other content"
+      ]
+    }
+  ]
+}

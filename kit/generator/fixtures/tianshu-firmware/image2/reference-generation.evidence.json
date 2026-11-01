@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "tianshu-firmware-reference-generation",
+  "workflowIds": ["image2-to-figma-page"],
+  "status": "passed",
+  "recordedAt": "2026-07-17T11:50:35.383Z",
+  "summary": "The user-confirmed Release Ledger prompt produced one real reference image; the original and normalized 1440x1100 artifacts have recorded dimensions and SHA-256 hashes.",
+  "commands": [
+    {
+      "command": "host-native imagegen using confirmed prompt SHA-256 5e4aa44f92491dbe6ec3176aabb3952713a1e6adaac3f914ea38157effeff87c",
+      "exitCode": 0,
+      "result": "Generated one opaque PNG at 1435x1096 and preserved a workspace copy of the original artifact."
+    },
+    {
+      "command": "System.Drawing high-quality bicubic resize 1435x1096 to 1440x1100",
+      "exitCode": 0,
+      "result": "Created the exact-size reference artifact while retaining the original generation for provenance."
+    }
+  ],
+  "artifacts": [
+    "generator/fixtures/tianshu-firmware/image2/reference-prompt.proposed.md",
+    "generator/fixtures/tianshu-firmware/image2/reference-image.original.png",
+    "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+    "generator/fixtures/tianshu-firmware/image2/reference-image.metadata.json"
+  ],
+  "blockers": []
+}

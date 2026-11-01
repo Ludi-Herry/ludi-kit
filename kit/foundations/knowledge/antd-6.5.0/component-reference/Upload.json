@@ -1,0 +1,536 @@
+{
+  "version": "1.0.0",
+  "component": "Upload",
+  "queryComponent": "Upload",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Upload",
+        "nameZh": "上传",
+        "description": "文件选择上传和拖拽上传控件。",
+        "props": [
+          {
+            "name": "accept",
+            "type": "string | [AcceptObject](#acceptobject)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "action",
+            "type": "string | (file) => Promise<string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "beforeUpload",
+            "type": "(file: [RcFile](#rcfile), fileList: [RcFile[]](#rcfile)) => boolean | Promise<File> | `Upload.LIST_IGNORE`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "customRequest",
+            "type": "( options: [RequestOptions](#request-options), info: { defaultRequest: (option: [RequestOptions](#request-options)) => void; } ) => void",
+            "default": "-",
+            "since": "defaultRequest: 5.28.0"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "data",
+            "type": "object | (file) => object | Promise<object>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultFileList",
+            "type": "object[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "directory",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "fileList",
+            "type": "[UploadFile](#uploadfile)[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "headers",
+            "type": "object",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "iconRender",
+            "type": "(file: UploadFile, listType?: UploadListType) => ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "isImageUrl",
+            "type": "(file: UploadFile) => boolean",
+            "default": "[(inside implementation)](https://github.com/ant-design/ant-design/blob/4ad5830eecfb87471cd8ac588c5d992862b70770/components/upload/utils.tsx#L47-L68)",
+            "since": ""
+          },
+          {
+            "name": "itemRender",
+            "type": "(originNode: ReactElement, file: UploadFile, fileList: object[], actions: { download: function, preview: function, remove: function }) => React.ReactNode",
+            "default": "-",
+            "since": "4.16.0"
+          },
+          {
+            "name": "listType",
+            "type": "string",
+            "default": "`text`",
+            "since": "`picture-circle`(5.2.0+)"
+          },
+          {
+            "name": "maxCount",
+            "type": "number",
+            "default": "-",
+            "since": "4.10.0"
+          },
+          {
+            "name": "method",
+            "type": "string",
+            "default": "`post`",
+            "since": ""
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "default": "`file`",
+            "since": ""
+          },
+          {
+            "name": "openFileDialogOnClick",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "pastable",
+            "type": "boolean",
+            "default": "false",
+            "since": "5.25.0"
+          },
+          {
+            "name": "previewFile",
+            "type": "(file: File | Blob) => Promise<dataURL: string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "progress",
+            "type": "[ProgressProps](/components/progress/#api) (support `type=\"line\"` only)",
+            "default": "{ strokeWidth: 2, showInfo: false }",
+            "since": "4.3.0"
+          },
+          {
+            "name": "showUploadList",
+            "type": "boolean | { extra?: ReactNode | (file: UploadFile) => ReactNode, showPreviewIcon?: boolean | (file: UploadFile) => boolean, showDownloadIcon?: boolean | (file: UploadFile) => boolean, showRemoveIcon?: boolean | (file: UploadFile) => boolean, previewIcon?: ReactNode | (file: UploadFile) => ReactNode, removeIcon?: ReactNode | (file: UploadFile) => ReactNode, downloadIcon?: ReactNode | (file: UploadFile) => ReactNode }",
+            "default": "true",
+            "since": "`extra`: 5.20.0, `showPreviewIcon` function: 5.21.0, `showRemoveIcon` function: 5.21.0, `showDownloadIcon` function: 5.21.0"
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "withCredentials",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "onChange",
+            "type": "function",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onDrop",
+            "type": "(event: React.DragEvent) => void",
+            "default": "-",
+            "since": "4.16.0"
+          },
+          {
+            "name": "onDownload",
+            "type": "function(file): void",
+            "default": "(Jump to new TAB)",
+            "since": ""
+          },
+          {
+            "name": "onPreview",
+            "type": "function(file)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onRemove",
+            "type": "function(file): boolean | Promise",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Upload.RcFile": [
+            {
+              "name": "uid",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "lastModifiedDate",
+              "type": "date",
+              "default": "-",
+              "since": "-"
+            }
+          ],
+          "Upload.UploadFile": [
+            {
+              "name": "crossOrigin",
+              "type": "`'anonymous'` | `'use-credentials'` | `''`",
+              "default": "-",
+              "since": "4.20.0"
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "percent",
+              "type": "number",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "status",
+              "type": "`error` | `done` | `uploading` | `removed`",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "thumbUrl",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "uid",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "url",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            }
+          ],
+          "Upload.RequestOptions": [
+            {
+              "name": "action",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "data",
+              "type": "Record<string, unknown>",
+              "default": "-",
+              "since": "4.20.0"
+            },
+            {
+              "name": "filename",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "file",
+              "type": "[UploadFile](#uploadfile)",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "withCredentials",
+              "type": "boolean",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "headers",
+              "type": "Record<string, string>",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "method",
+              "type": "string",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "onProgress",
+              "type": "(event: object, file: UploadFile) => void",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "onError",
+              "type": "(event: object, body?: object) => void",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "onSuccess",
+              "type": "(body: object, fileOrXhr?: UploadFile | XMLHttpRequest) => void",
+              "default": "-",
+              "since": "-"
+            }
+          ],
+          "Upload.AcceptObject": [
+            {
+              "name": "format",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "filter",
+              "type": "`'native'` | `(file: RcFile) => boolean`",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "span"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Upload",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n上传是将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程。\n\n- 当需要上传一个或一些文件时。\n- 当需要展现上传的进度时。\n- 当需要使用拖拽交互时。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">点击上传</code>\n<code src=\"./demo/avatar.tsx\">用户头像</code>\n<code src=\"./demo/defaultFileList.tsx\">已上传的文件列表</code>\n<code src=\"./demo/picture-card.tsx\">照片墙</code>\n<code src=\"./demo/picture-circle.tsx\">圆形照片墙</code>\n<code src=\"./demo/fileList.tsx\">完全控制的上传列表</code>\n<code src=\"./demo/drag.tsx\">拖拽上传</code>\n<code src=\"./demo/paste.tsx\" version=\"5.25.0\">粘贴上传</code>\n<code src=\"./demo/directory.tsx\">文件夹上传</code>\n<code src=\"./demo/upload-manually.tsx\">手动上传</code>\n<code src=\"./demo/upload-png-only.tsx\">只上传 png 图片</code>\n<code src=\"./demo/picture-style.tsx\">图片列表样式</code>\n<code src=\"./demo/preview-file.tsx\">自定义预览</code>\n<code src=\"./demo/max-count.tsx\">限制数量</code>\n<code src=\"./demo/transform-file.tsx\">上传前转换文件</code>\n<code src=\"./demo/upload-with-aliyun-oss.tsx\">阿里云 OSS</code>\n<code src=\"./demo/file-type.tsx\" debug>自定义显示 icon</code>\n<code src=\"./demo/upload-custom-action-icon.tsx\">自定义交互图标和文件信息</code>\n<code src=\"./demo/drag-sorting.tsx\">上传列表拖拽排序</code>\n<code src=\"./demo/crop-image.tsx\">上传前裁切图片</code>\n<code src=\"./demo/customize-progress-bar.tsx\">自定义进度条样式</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/debug-disabled.tsx\" debug>Debug Disabled Styles</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| accept | 接受上传的文件类型，详见 [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | string \\| [AcceptObject](#acceptobject) | - |  | 6.4.0 |\n| action | 上传的地址 | string \\| (file) => Promise&lt;string> | - |  | × |\n| beforeUpload | 上传文件之前的钩子，参数为上传的文件，若返回 `false` 则停止上传。支持返回一个 Promise 对象，Promise 对象 reject 时则停止上传，resolve 时开始上传（ resolve 传入 `File` 或 `Blob` 对象则上传 resolve 传入对象）；也可以返回 `Upload.LIST_IGNORE`，此时列表中将不展示此文件。 **注意：IE9 不支持该方法** | (file: [RcFile](#rcfile), fileList: [RcFile[]](#rcfile)) => boolean \\| Promise&lt;File> \\| `Upload.LIST_IGNORE` | - |  | × |\n| customRequest | 通过覆盖默认的上传行为，可以自定义自己的上传实现 | ( options: [RequestOptions](#request-options), info: { defaultRequest: (option: [RequestOptions](#request-options)) => void; } ) => void | - | defaultRequest: 5.28.0 | 5.27.0 |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| data | 上传所需额外参数或返回上传额外参数的方法 | object\\|(file) => object \\| Promise&lt;object> | - |  | × |\n| defaultFileList | 默认已经上传的文件列表 | object\\[] | - |  | × |\n| directory | 支持上传文件夹（[caniuse](https://caniuse.com/#feat=input-file-directory)） | boolean | false |  | × |\n| disabled | 是否禁用。对于自定义 Upload children 时，请同时将 `disabled` 属性传给 child node，以确保禁用状态的渲染效果保持一致 | boolean | false |  | × |\n| fileList | 已经上传的文件列表（受控），使用此参数时，如果遇到 `onChange` 只调用一次的问题，请参考 [#2423](https://github.com/ant-design/ant-design/issues/2423) | [UploadFile](#uploadfile)\\[] | - |  | × |\n| headers | 设置上传的请求头部，IE10 以上有效 | object | - |  | × |\n| iconRender | 自定义显示 icon | (file: UploadFile, listType?: UploadListType) => ReactNode | - |  | × |\n| isImageUrl | 自定义缩略图是否使用 &lt;img /> 标签进行显示 | (file: UploadFile) => boolean | [(内部实现)](https://github.com/ant-design/ant-design/blob/4ad5830eecfb87471cd8ac588c5d992862b70770/components/upload/utils.tsx#L47-L68) |  | × |\n| itemRender | 自定义上传列表项 | (originNode: ReactElement, file: UploadFile, fileList: object\\[], actions: { download: function, preview: function, remove: function }) => React.ReactNode | - | 4.16.0 | × |\n| listType | 上传列表的内建样式，支持四种基本样式 `text`, `picture`, `picture-card` 和 `picture-circle` | string | `text` | `picture-circle`(5.2.0+) | × |\n| maxCount | 限制上传数量。当为 1 时，始终用最新上传的文件代替当前文件 | number | - | 4.10.0 | × |\n| method | 上传请求的 http method | string | `post` |  | × |\n| multiple | 是否支持多选文件，`ie10+` 支持。开启后按住 ctrl 可选择多个文件 | boolean | false |  | × |\n| name | 发到后台的文件参数名 | string | `file` |  | × |\n| openFileDialogOnClick | 点击打开文件对话框 | boolean | true |  | × |\n| pastable | 是否支持粘贴文件 | boolean | false | 5.25.0 | × |\n| previewFile | 自定义文件预览逻辑 | (file: File \\| Blob) => Promise&lt;dataURL: string> | - |  | × |\n| progress | 自定义进度条样式 | [ProgressProps](/components/progress-cn#api)（仅支持 `type=\"line\"`） | { strokeWidth: 2, showInfo: false } | 4.3.0 | 6.4.0 |\n| showUploadList | 是否展示文件列表, 可设为一个对象，用于单独设定 `extra`(5.20.0+), `showPreviewIcon`, `showRemoveIcon`, `showDownloadIcon`, `removeIcon` 和 `downloadIcon` | boolean \\| { extra?: ReactNode \\| (file: UploadFile) => ReactNode, showPreviewIcon?: boolean \\| (file: UploadFile) => boolean, showDownloadIcon?: boolean \\| (file: UploadFile) => boolean, showRemoveIcon?: boolean \\| (file: UploadFile) => boolean, previewIcon?: ReactNode \\| (file: UploadFile) => ReactNode, removeIcon?: ReactNode \\| (file: UploadFile) => ReactNode, downloadIcon?: ReactNode \\| (file: UploadFile) => ReactNode } | true | `extra`: 5.20.0, `showPreviewIcon` function: 5.21.0, `showRemoveIcon` function: 5.21.0, `showDownloadIcon` function: 5.21.0 | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| withCredentials | 上传请求时是否携带 cookie | boolean | false |  | × |\n| onChange | 上传文件改变时的回调，上传每个阶段都会触发该事件。详见 [onChange](#onchange) | function | - |  | × |\n| onDrop | 当文件被拖入上传区域时执行的回调功能 | (event: React.DragEvent) => void | - | 4.16.0 | × |\n| onDownload | 点击下载文件时的回调，如果没有指定，则默认跳转到文件 url 对应的标签页 | function(file): void | (跳转新标签页) |  | × |\n| onPreview | 点击文件链接或预览图标时的回调 | function(file) | - |  | × |\n| onRemove | 点击移除文件时的回调，返回值为 false 时不移除。支持返回一个 Promise 对象，Promise 对象 resolve(false) 或 reject 时不移除 | function(file): boolean \\| Promise | - |  | × |\n\n## Interface\n\n### RcFile\n\n继承自 [File](https://developer.mozilla.org/zh-CN/docs/Web/API/File)。\n\n| 参数             | 说明                           | 类型   | 默认值 | 版本 |\n| ---------------- | ------------------------------ | ------ | ------ | ---- |\n| uid              | 唯一标识符，不设置时会自动生成 | string | -      | -    |\n| lastModifiedDate | 上次修改文件的日期和时间       | date   | -      | -    |\n\n### UploadFile\n\n继承自 [File](https://developer.mozilla.org/zh-CN/docs/Web/API/File)，附带额外属性用于渲染。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| crossOrigin | CORS 属性设置 | `'anonymous'` \\| `'use-credentials'` \\| `''` | - | 4.20.0 |\n| name | 文件名 | string | - | - |\n| percent | 上传进度 | number | - | - |\n| status | 上传状态，不同状态展示颜色也会有所不同 | `error` \\| `done` \\| `uploading` \\| `removed` | - | - |\n| thumbUrl | 缩略图地址 | string | - | - |\n| uid | 唯一标识符，不设置时会自动生成 | string | - | - |\n| url | 下载地址 | string | - | - |\n\n### RequestOptions {#request-options}\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| action | 上传的地址 | string | - | - |\n| data | 上传所需额外参数或返回上传额外参数的方法 | Record<string, unknown> | - | - |\n| filename | 文件名 | string | - | - |\n| file | 文件信息 | [UploadFile](#uploadfile) | - | - |\n| withCredentials | 上传请求时是否携带 cookie | boolean | - | - |\n| headers | 上传的请求头部 | Record<string, string> | - | - |\n| method | 上传请求的 http method | string | - | - |\n| onProgress | 上传进度回调 | (event: object, file: UploadFile) => void | - | - |\n| onError | 上传失败回调 | (event: object, body?: object) => void | - | - |\n| onSuccess | 上传成功回调 | (body: object, fileOrXhr?: UploadFile \\| XMLHttpRequest) => void | - | - |\n\n### onChange\n\n> 💡 上传中、完成、失败都会调用这个函数。\n\n文件状态改变的回调，返回为：\n\n```jsx\n{\n  file: { /* ... */ },\n  fileList: [ /* ... */ ],\n  event: { /* ... */ },\n}\n```\n\n1. `file` 当前操作的文件对象。\n\n   ```jsx\n   {\n      uid: 'uid',      // 文件唯一标识，建议设置为负数，防止和内部产生的 id 冲突\n      name: 'xx.png',   // 文件名\n      status: 'done' | 'uploading' | 'error' | 'removed' , //  beforeUpload 拦截的文件没有 status 状态属性\n      response: '{\"status\": \"success\"}', // 服务端响应内容\n      linkProps: '{\"download\": \"image\"}', // 下载链接额外的 HTML 属性\n   }\n   ```\n\n2. `fileList` 当前的文件列表。\n\n3. `event` 上传中的服务端响应内容，包含了上传进度等信息，高级浏览器支持。\n\n### AcceptObject\n\n```typescript\n{\n  format: string;\n  filter?: 'native' | ((file: RcFile) => boolean);\n}\n```\n\n用于配置文件类型接受的规则对象。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| format | 接受的文件类型，与原生 input accept 属性相同，支持 MIME 类型、文件扩展名等格式。详见 [input accept Attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | string | - |  |\n| filter | 文件过滤规则。设置为 `'native'` 时使用浏览器原生过滤行为；设置为函数时可以自定义过滤逻辑，函数返回 `true` 表示接受该文件，返回 `false` 表示拒绝 | `'native'` \\| `(file: RcFile) => boolean` | - |  |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Upload\"></ComponentTokenTable>\n\n## FAQ\n\n### 服务端如何实现？ {#faq-server-implement}\n\n- 服务端上传接口实现可以参考 [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload/wiki#server-side)。\n- 如果要做本地 mock 可以参考这个 [express 的例子](https://github.com/react-component/upload/blob/211979fdaa2c7896b6496df7061a0cfc0fc5434e/server.js)。\n\n### 如何显示下载链接？ {#faq-show-download-link}\n\n请使用 `fileList` 属性设置数组项的 `url` 属性进行展示控制。\n\n### `customRequest` 怎么使用？ {#faq-custom-request}\n\n请参考 <https://github.com/react-component/upload#customrequest>。\n\n### 为何 `fileList` 受控时，上传不在列表中的文件不会触发 `onChange` 后续的 `status` 更新事件？ {#faq-filelist-controlled-status}\n\n`onChange` 事件仅会作用于在列表中的文件，因而 `fileList` 不存在对应文件时后续事件会被忽略。请注意，在 `4.13.0` 版本之前受控状态存在 bug 导致不在列表中的文件也会触发。\n\n### `onChange` 为什么有时候返回 File 有时候返回 { originFileObj: File }？ {#faq-on-change-return-type}\n\n历史原因，在 `beforeUpload` 返回 `false` 时，会返回 `File` 对象。在下个大版本我们会统一返回 `{ originFileObj: File }` 对象。当前版本已经兼容所有场景下 `info.file.originFileObj` 获取原 `File` 写法。你可以提前切换。\n\n### 为何有时 Chrome 点击 Upload 无法弹出文件选择框？ {#faq-chrome-file-picker}\n\n与 `antd` 无关，原生上传也会失败。请重启 `Chrome` 浏览器，让其完成升级工作。\n\n<img alt=\"点击 Chrome 重启启动按钮\" src=\"https://github.com/ant-design/ant-design/assets/507615/1509b25f-4cd3-41b2-9415-90394ad08273\" width=\"800\" />\n\n相关 `issue`：\n\n- [#48007](https://github.com/ant-design/ant-design/issues/48007)\n- [#32672](https://github.com/ant-design/ant-design/issues/32672)\n- [#32913](https://github.com/ant-design/ant-design/issues/32913)\n- [#33988](https://github.com/ant-design/ant-design/issues/33988)\n\n### 文件夹上传在 Safari 仍然可以选中文件? {#faq-safari-folder-upload}\n\n组件内部是以 `directory`、`webkitdirectory` 属性控制 input 来实现文件夹选择的, 但似乎在 Safari 的实现中，[并不会阻止用户选择文件](https://stackoverflow.com/q/55649945/3040605)。可以通过 `accept` 配置来解决此问题，例如：\n\n```tsx\naccept = {\n  // 不允许选择任何文件\n  format: `.${'n'.repeat(100)}`,\n  // 当选择文件夹后，接受所有文件夹内的文件\n  filter: () => true,\n};\n```\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Upload",
+        "demos": [
+          {
+            "name": "avatar",
+            "title": "Avatar",
+            "description": "Click to upload user's avatar, and validate size and format of picture with `beforeUpload`."
+          },
+          {
+            "name": "basic",
+            "title": "Upload by clicking",
+            "description": "Classic mode. File selection dialog pops up when upload button is clicked."
+          },
+          {
+            "name": "crop-image",
+            "title": "Crop image before uploading",
+            "description": "Use [antd-img-crop](https://github.com/nanxiaobei/antd-img-crop) to crop image before uploading."
+          },
+          {
+            "name": "customize-progress-bar",
+            "title": "Customize Progress Bar",
+            "description": "Use `progress` for customize progress bar."
+          },
+          {
+            "name": "defaultFileList",
+            "title": "Default Files",
+            "description": "Use `defaultFileList` for uploaded files when page init."
+          },
+          {
+            "name": "directory",
+            "title": "Upload directory",
+            "description": "You can select and upload a whole directory. [Can still select files when uploading a folder in Safari?](#faq-safari-folder-upload)"
+          },
+          {
+            "name": "drag-sorting",
+            "title": "Drag sorting of uploadList",
+            "description": "By using `itemRender`, we can integrate upload with [dnd-kit](https://github.com/clauderic/dnd-kit) to implement drag sorting of uploadList."
+          },
+          {
+            "name": "drag",
+            "title": "Drag and Drop",
+            "description": "You can drag files to a specific area, to upload. Alternatively, you can also upload by selecting."
+          },
+          {
+            "name": "fileList",
+            "title": "Complete control over file list",
+            "description": "You can gain full control over filelist by configuring `fileList`. You can accomplish all kinds of customized functions. The following shows two circumstances:"
+          },
+          {
+            "name": "max-count",
+            "title": "Max Count",
+            "description": "Limit files with `maxCount`. Will replace current one when `maxCount` is `1`."
+          },
+          {
+            "name": "paste",
+            "title": "Paste",
+            "description": "Copy the file and paste it anywhere on the page to upload."
+          },
+          {
+            "name": "picture-card",
+            "title": "Pictures Wall",
+            "description": "After users upload picture, the thumbnail will be shown in list. The upload button will disappear when count meets limitation."
+          },
+          {
+            "name": "picture-circle",
+            "title": "Pictures with picture-circle type",
+            "description": "Alternative display for picture-card."
+          },
+          {
+            "name": "picture-style",
+            "title": "Pictures with list style",
+            "description": "If uploaded file is a picture, the thumbnail can be shown. `IE8/9` do not support local thumbnail show. Please use `thumbUrl` instead."
+          },
+          {
+            "name": "preview-file",
+            "title": "Customize preview file",
+            "description": "Customize local preview. Can handle with non-image format files such as video."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-upload) style of Upload components by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "transform-file",
+            "title": "Transform file before request",
+            "description": "Use `beforeUpload` for transform file before request such as add a watermark."
+          },
+          {
+            "name": "upload-custom-action-icon",
+            "title": "Custom action icon and extra info",
+            "description": "Use `showUploadList` for custom action icons and extra information of files."
+          },
+          {
+            "name": "upload-manually",
+            "title": "Upload manually",
+            "description": "Upload files manually after `beforeUpload` returns `false`."
+          },
+          {
+            "name": "upload-png-only",
+            "title": "Upload png file only",
+            "description": "`beforeUpload` only prevent upload behavior when return false or reject promise, the prevented file would still show in file list. Here is the example you can keep prevented files out of list by return `UPLOAD.LIST_IGNORE`."
+          },
+          {
+            "name": "upload-with-aliyun-oss",
+            "title": "Aliyun OSS",
+            "description": "Use Aliyun OSS upload example."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Upload",
+        "tokens": [
+          {
+            "name": "actionsColor",
+            "type": "string",
+            "default": "",
+            "description": "Action button color",
+            "descriptionZh": "操作按扭颜色"
+          },
+          {
+            "name": "pictureCardSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of list items in card type (affects both picture-card and picture-circle)",
+            "descriptionZh": "卡片类型文件列表项的尺寸（对 picture-card 和 picture-circle 生效）"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Upload",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root container element with layout styles, disabled text color, user-select control, cursor styles and other basic styles",
+            "descriptionZh": "根元素容器，包含布局样式、禁用状态文字颜色、用户选择控制、鼠标样式等基础样式"
+          },
+          {
+            "key": "list",
+            "description": "File list container with layout arrangement, transition animations, spacing control and other styles",
+            "descriptionZh": "文件列表容器，包含布局排列、过渡动画、间距控制等样式"
+          },
+          {
+            "key": "item",
+            "description": "File item element with padding, background color, border styles, hover effects, status colors, transition animations and other styles",
+            "descriptionZh": "文件项元素，包含内边距、背景色、边框样式、悬停效果、状态颜色、过渡动画等样式"
+          },
+          {
+            "key": "trigger",
+            "description": "Upload button container with button styles, disabled state, visibility control and other styles",
+            "descriptionZh": "上传按钮容器，包含按钮样式、禁用状态、隐藏控制等样式"
+          }
+        ]
+      }
+    }
+  }
+}

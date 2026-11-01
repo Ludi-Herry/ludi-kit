@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/semantic-contract.schema.json",
+  "title": "Harness-owned Semantic Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "contractId",
+    "owner",
+    "projectId",
+    "source",
+    "compiler",
+    "entry",
+    "requiredTestIds",
+    "flows"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "contractId": { "type": "string", "pattern": "^synthetic-[a-z0-9][a-z0-9-]*$" },
+    "owner": { "const": "blind-readiness-harness" },
+    "projectId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "profileId",
+        "profileSha256",
+        "seed",
+        "prdSha256",
+        "manifestSha256",
+        "oracleSha256"
+      ],
+      "properties": {
+        "kind": { "const": "synthetic-prd" },
+        "profileId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "profileSha256": { "$ref": "#/$defs/sha256" },
+        "seed": { "type": "string", "pattern": "^(0|[1-9][0-9]{0,19})$" },
+        "prdSha256": { "$ref": "#/$defs/sha256" },
+        "manifestSha256": { "$ref": "#/$defs/sha256" },
+        "oracleSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "compiler": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "version"],
+      "properties": {
+        "path": { "const": "scripts/compile-synthetic-semantic-contract.mjs" },
+        "version": { "const": "1.0.0" }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route", "identityPath"],
+      "properties": {
+        "route": { "$ref": "#/$defs/route" },
+        "identityPath": { "const": "/artifact-meta.json" }
+      }
+    },
+    "requiredTestIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/testId" }
+    },
+    "flows": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/flow" }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^/[a-z0-9/?=&._-]*$"
+    },
+    "testId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flowId", "steps"],
+      "properties": {
+        "flowId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "steps": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/step" }
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stepId", "pageId", "action", "assertions"],
+      "properties": {
+        "stepId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "pageId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "action": { "$ref": "#/$defs/action" },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/assertion" }
+        }
+      }
+    },
+    "action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId"],
+          "properties": {
+            "type": { "const": "click" },
+            "testId": { "$ref": "#/$defs/testId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId", "value"],
+          "properties": {
+            "type": { "const": "fill" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId", "optionTestId", "value"],
+          "properties": {
+            "type": { "const": "select" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "optionTestId": { "$ref": "#/$defs/testId" },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId", "key"],
+          "properties": {
+            "type": { "const": "press" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "key": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "route"],
+          "properties": {
+            "type": { "const": "navigate" },
+            "route": { "$ref": "#/$defs/route" }
+          }
+        }
+      ]
+    },
+    "assertion": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "value"],
+          "properties": {
+            "kind": { "const": "route" },
+            "value": { "$ref": "#/$defs/route" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "name", "value"],
+          "properties": {
+            "kind": { "const": "searchParam" },
+            "name": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$" },
+            "value": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId"],
+          "properties": {
+            "kind": { "const": "visibleTestId" },
+            "testId": { "$ref": "#/$defs/testId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId"],
+          "properties": {
+            "kind": { "const": "absentTestId" },
+            "testId": { "$ref": "#/$defs/testId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId", "count"],
+          "properties": {
+            "kind": { "const": "testIdCount" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "count": { "type": "integer", "minimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId", "value"],
+          "properties": {
+            "kind": { "const": "value" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "value": { "type": ["string", "number", "boolean"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId", "name", "value"],
+          "properties": {
+            "kind": { "const": "ariaState" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "name": { "enum": ["checked", "selected", "expanded", "pressed"] },
+            "value": { "enum": ["true", "false", "mixed"] }
+          }
+        }
+      ]
+    }
+  }
+}

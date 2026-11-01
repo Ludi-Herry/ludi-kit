@@ -1,0 +1,46 @@
+{
+  "$schema": "../../schema/figma-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "ops-canvas-live-figma-blocked",
+  "workflowId": "image2-to-figma-page",
+  "status": "external-blocked",
+  "recordedAt": "2026-08-09T14:01:53Z",
+  "target": {
+    "fileKey": null,
+    "nodeId": null,
+    "captureId": null
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 1100,
+    "deviceScaleFactor": 1
+  },
+  "screenshots": [],
+  "diffs": [],
+  "componentBindings": {
+    "status": "external-blocked",
+    "indexPath": "design-systems/ops-canvas/component-index.json",
+    "bound": [],
+    "missing": [
+      "native reconstruction readback from an authorized Figma target"
+    ]
+  },
+  "variableBindings": {
+    "status": "external-blocked",
+    "indexPath": "design-systems/ops-canvas/tokens.json",
+    "bound": [],
+    "missing": [
+      "native variable readback from an authorized Figma target"
+    ]
+  },
+  "externalBlockers": [
+    {
+      "dependency": "authorized Figma target and capture",
+      "reason": "This public example names no Figma file. The raw visual gate for the Ops Canvas pair also remains failed.",
+      "resumeRequirements": [
+        "Provide an authorized Figma file and target node",
+        "Run capture and native reconstruction with your own Figma tool access"
+      ]
+    }
+  ]
+}

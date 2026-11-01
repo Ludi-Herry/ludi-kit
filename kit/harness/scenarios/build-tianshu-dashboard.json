@@ -1,0 +1,33 @@
+{
+  "id": "build-tianshu-dashboard",
+  "prompt": "天枢 · 工作台个人首页：聚合生产/平台域待办卡片与告警角标，指引下钻。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "dashboard-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "MetricCard", "Card", "DataSection", "Badge", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "MetricCard", "Card", "DataSection"],
+  "expectedText": ["生产待办", "平台状态", "快捷入口"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "inbound": { "sourceGroup": "收货入库", "statuses": ["pending-inspection"] },
+      "flashing": { "sourceGroup": "烧录任务", "statuses": ["flash-failed", "completed"] },
+      "cert": { "sourceGroup": "证书", "statuses": ["valid"] },
+      "snConflict": { "sourceGroup": "SN 冲突", "statuses": ["quarantined"] },
+      "role": { "sourceGroup": "角色", "statuses": ["disabled"] }
+    }
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "TianshuDashboard",
+    "pageId": "dashboard"
+  },
+  "report": "harness/reports/build-tianshu-dashboard.json"
+}

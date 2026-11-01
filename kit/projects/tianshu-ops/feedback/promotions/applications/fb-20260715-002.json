@@ -1,0 +1,58 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "generatedAt": "2026-07-15",
+  "itemId": "fb-20260715-002",
+  "title": "Selected table rows need a reusable batch action bar",
+  "mode": "recorded",
+  "status": "implemented",
+  "sourceDraft": "projects/tianshu-ops/feedback/promotions/fb-20260715-002.md",
+  "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-002.json",
+  "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-002.diff",
+  "action": "update-component",
+  "target": "component",
+  "destination": "components.manifest.json",
+  "allowedDestinations": [
+    "src/",
+    "components.manifest.json",
+    "patterns.manifest.json",
+    "package.json",
+    "package-lock.json",
+    "projects/tianshu-ops/generated/",
+    "examples/",
+    "recipes/",
+    "figma/",
+    "harness/",
+    "scripts/check-dom-contract.mjs"
+  ],
+  "willChangeFiles": [
+    "src/components.tsx",
+    "src/index.ts",
+    "src/styles.css",
+    "components.manifest.json",
+    "examples/list-page.tsx",
+    "recipes/list-page.md",
+    "figma/component-map.json",
+    "figma/variants-map.json",
+    "scripts/check-dom-contract.mjs",
+    "harness/scenarios/build-tianshu-production-inventory.json"
+  ],
+  "guardrails": [
+    "Recorded mode documents already implemented files and keeps patch artifacts as semantic plans.",
+    "Every planned source file must match promotion gate allowed destinations.",
+    "Only accepted or promoted feedback items can produce application plans.",
+    "Run validation and build commands before marking the feedback item promoted."
+  ],
+  "validationCommands": [
+    "npm run validate:feedback",
+    "npm run validate",
+    "npm run check:dom",
+    "npm run check:harness",
+    "npm run build:preview",
+    "npm run build:starter",
+    "npm run check:package"
+  ],
+  "command": "npm run validate:feedback -- fb-20260715-002 --recorded",
+  "sourceDraftIndex": "projects/tianshu-ops/feedback/promotions/index.json",
+  "patchPreview": "diff --git a/src/components.tsx b/src/components.tsx\n@@ planned promotion\n+ Add BulkActionBar and controlled DataGrid selection without exposing antd RowSelection.\ndiff --git a/src/index.ts b/src/index.ts\n@@ planned promotion\n+ Export BulkActionBar, BulkActionBarProps, and updated DataGrid types from the barrel.\ndiff --git a/src/styles.css b/src/styles.css\n@@ planned promotion\n+ Add sticky, responsive, token-based batch action styles below the selected data region.\ndiff --git a/components.manifest.json b/components.manifest.json\n@@ planned promotion\n+ Document the batch action component and DataGrid selection props.\ndiff --git a/examples/list-page.tsx b/examples/list-page.tsx\n@@ planned promotion\n+ Show selected count, clear selection, and dangerous confirmation composition.\ndiff --git a/recipes/list-page.md b/recipes/list-page.md\n@@ planned promotion\n+ Move selected-record actions from the static toolbar into BulkActionBar guidance.\ndiff --git a/figma/component-map.json b/figma/component-map.json\n@@ planned promotion\n+ Sync the code-first component mapping.\ndiff --git a/figma/variants-map.json b/figma/variants-map.json\n@@ planned promotion\n+ Sync the visible/hidden state mapping.\ndiff --git a/scripts/check-dom-contract.mjs b/scripts/check-dom-contract.mjs\n@@ planned promotion\n+ Assert hidden state, live selected count, action grouping, and controlled row keys.\ndiff --git a/harness/scenarios/build-tianshu-production-inventory.json b/harness/scenarios/build-tianshu-production-inventory.json\n@@ planned promotion\n+ Require the inventory page to wire selection, BulkActionBar, and ConfirmDialog."
+}

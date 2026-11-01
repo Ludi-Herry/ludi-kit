@@ -1,0 +1,92 @@
+.firmware-page {
+  --firmware-duration-fast: 250ms;
+  --firmware-ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --firmware-panel-gap: var(--spacing-md);
+}
+
+.firmware-page__header-actions,
+.firmware-row-actions,
+.firmware-drawer-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+.firmware-muted {
+  color: var(--color-text-secondary);
+}
+
+.firmware-gray-ratio {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--spacing-xs);
+  min-width: 92px;
+}
+
+.firmware-gray-ratio__bar {
+  background: color-mix(in srgb, var(--color-border) 72%, var(--color-bg-surface));
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  height: 8px;
+  overflow: hidden;
+  width: 78px;
+}
+
+.firmware-gray-ratio__value {
+  background: var(--color-status-warning);
+  border-radius: inherit;
+  width: 25%;
+}
+
+.firmware-row-actions {
+  flex-wrap: nowrap;
+  gap: var(--spacing-xs);
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.firmware-row-actions > span {
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  outline: none;
+}
+
+.firmware-row-actions > span:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-primary) 18%, transparent);
+}
+
+.firmware-drawer-body {
+  display: grid;
+  gap: var(--firmware-panel-gap);
+}
+
+.firmware-drawer-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.firmware-drawer-grid > :last-child {
+  grid-column: 1 / -1;
+}
+
+.firmware-drawer-actions {
+  justify-content: flex-end;
+}
+
+@media (max-width: 720px) {
+  .firmware-drawer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firmware-page,
+  .firmware-filter,
+  .firmware-row-actions > span {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

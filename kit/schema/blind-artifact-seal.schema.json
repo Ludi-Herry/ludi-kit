@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://radesign.local/schema/blind-artifact-seal.schema.json",
+  "title": "Blind Protocol Artifact Seal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "rootId",
+    "runId",
+    "arm",
+    "projectId",
+    "artifactId",
+    "sealedAt",
+    "receipt",
+    "source",
+    "build"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "rootId": { "const": "blind-protocol-v1.2" },
+    "runId": { "$ref": "#/$defs/runId" },
+    "arm": { "enum": ["consumer", "control"] },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactId": { "$ref": "#/$defs/uuidV4" },
+    "sealedAt": { "$ref": "#/$defs/dateTime" },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectRelativePath", "sha256"],
+      "properties": {
+        "projectRelativePath": { "const": "evidence/artifact-under-test.json" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "sha256"],
+      "properties": {
+        "algorithm": { "const": "sha256-tree-v1" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": "dist" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "uuidV4": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^blind-prd-(0[1-5])(?:-[a-z0-9][a-z0-9-]*)?$"
+    },
+    "dateTime": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    }
+  }
+}

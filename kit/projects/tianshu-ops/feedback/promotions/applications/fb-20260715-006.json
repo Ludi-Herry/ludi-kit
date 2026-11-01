@@ -1,0 +1,58 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "generatedAt": "2026-07-15",
+  "itemId": "fb-20260715-006",
+  "title": "Deferred business flows need one public interaction foundation",
+  "mode": "recorded",
+  "status": "implemented",
+  "sourceDraft": "projects/tianshu-ops/feedback/promotions/fb-20260715-006.md",
+  "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-006.json",
+  "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-006.diff",
+  "action": "update-component",
+  "target": "component",
+  "destination": "components.manifest.json",
+  "allowedDestinations": [
+    "src/",
+    "components.manifest.json",
+    "patterns.manifest.json",
+    "package.json",
+    "package-lock.json",
+    "projects/tianshu-ops/generated/",
+    "examples/",
+    "recipes/",
+    "figma/",
+    "harness/",
+    "scripts/check-dom-contract.mjs"
+  ],
+  "willChangeFiles": [
+    "src/interaction.tsx",
+    "src/interaction.css",
+    "src/index.ts",
+    "components.manifest.json",
+    "examples/interaction-foundation.tsx",
+    "recipes/interaction-controls.md",
+    "figma/component-map.json",
+    "figma/variants-map.json",
+    "harness/tests/interaction-components.test.mjs",
+    "projects/tianshu-ops/generated/deferred-pages.tsx"
+  ],
+  "guardrails": [
+    "Recorded mode documents already implemented files and keeps patch artifacts as semantic plans.",
+    "Every planned source file must match promotion gate allowed destinations.",
+    "Only accepted or promoted feedback items can produce application plans.",
+    "Run validation and build commands before marking the feedback item promoted."
+  ],
+  "validationCommands": [
+    "npm run validate:feedback",
+    "npm run validate",
+    "npm run check:dom",
+    "npm run check:harness",
+    "npm run build:preview",
+    "npm run build:starter",
+    "npm run check:package"
+  ],
+  "command": "npm run validate:feedback -- fb-20260715-006 --recorded",
+  "sourceDraftIndex": "projects/tianshu-ops/feedback/promotions/index.json",
+  "patchPreview": "diff --git a/src/interaction.tsx b/src/interaction.tsx\n@@ planned promotion\n+ Add the eight domain-focused interaction APIs.\ndiff --git a/src/interaction.css b/src/interaction.css\n@@ planned promotion\n+ Keep date values as browser-native strings without a date adapter runtime.\ndiff --git a/src/index.ts b/src/index.ts\n@@ planned promotion\n+ Contain Drawer and TreeSelect portals inside the provider root.\ndiff --git a/components.manifest.json b/components.manifest.json\n@@ planned promotion\n+ Keep Upload request-free and report rejection reasons.\ndiff --git a/examples/interaction-foundation.tsx b/examples/interaction-foundation.tsx\n@@ planned promotion\n+ Use the controls in RMA, advertising, reconciliation, and content flows.\ndiff --git a/recipes/interaction-controls.md b/recipes/interaction-controls.md\n@@ planned promotion\n+ Sync manifests, mappings, tests, package checks, and browser coverage.\ndiff --git a/figma/component-map.json b/figma/component-map.json\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.\ndiff --git a/figma/variants-map.json b/figma/variants-map.json\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.\ndiff --git a/harness/tests/interaction-components.test.mjs b/harness/tests/interaction-components.test.mjs\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.\ndiff --git a/projects/tianshu-ops/generated/deferred-pages.tsx b/projects/tianshu-ops/generated/deferred-pages.tsx\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation."
+}

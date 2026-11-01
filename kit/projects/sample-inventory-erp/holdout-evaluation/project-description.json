@@ -1,0 +1,122 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "sample-inventory-erp",
+  "contextType": "real-product",
+  "product": {
+    "name": "云仓 ERP 库存终评",
+    "description": "供仓库与采购人员识别库存风险并进入采购补货操作的冻结 Holdout 页面。"
+  },
+  "pages": [
+    {
+      "id": "inventory-list",
+      "route": "/inventory",
+      "title": "库存列表",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "筛选库存记录，识别需要处理的行。",
+        "primaryAction": "新建采购单",
+        "secondaryActions": ["导出"],
+        "successCriteria": [
+          "共 124 条 · 数据更新时间 2026-08-09 10:32",
+          "低库存、临期风险与充足状态分别使用可见文字和语义色",
+          "关键字、仓库、状态与仅看需处理筛选可操作",
+          "新建采购单从主操作打开且保留触发页面上下文"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Input",
+        "Select",
+        "Stepper",
+        "Tabs",
+        "Card",
+        "FormSection"
+      ],
+      "content": {
+        "filters": [
+          { "name": "keyword", "label": "关键字", "type": "text", "dataKey": "searchText", "placeholder": "SKU 或仓库" },
+          {
+            "name": "warehouse",
+            "label": "仓库",
+            "type": "select",
+            "dataKey": "warehouse",
+            "placeholder": "全部仓库",
+            "options": [
+              { "label": "华西仓", "value": "华西仓" },
+              { "label": "华北仓", "value": "华北仓" },
+              { "label": "华东仓", "value": "华东仓" }
+            ]
+          },
+          {
+            "name": "status",
+            "label": "状态",
+            "type": "select",
+            "dataKey": "status",
+            "placeholder": "全部状态",
+            "options": [
+              { "label": "充足", "value": "充足" },
+              { "label": "低库存", "value": "低库存" },
+              { "label": "临期风险", "value": "临期风险" }
+            ]
+          },
+          { "name": "needsActionOnly", "label": "仅看需处理", "type": "switch", "dataKey": "needsAction" }
+        ],
+        "table": {
+          "title": "库存结余",
+          "rowKey": "sku",
+          "columns": [
+            { "key": "sku", "title": "SKU", "width": 112 },
+            { "key": "name", "title": "名称", "width": 146, "ellipsis": true },
+            { "key": "warehouse", "title": "仓库", "width": 86 },
+            { "key": "available", "title": "可用量", "width": 76 },
+            { "key": "status", "title": "状态", "display": "tag", "width": 94, "tagColors": { "低库存": "gold", "临期风险": "red", "充足": "green" } },
+            { "key": "expiryDate", "title": "临期日", "width": 108 },
+            { "key": "operations", "title": "操作", "width": 164 }
+          ],
+          "rows": [
+            { "sku": "SKU-1042", "name": "有机燕麦奶", "warehouse": "华西仓", "available": 148, "status": "低库存", "expiryDate": "2026-08-18", "needsAction": true, "operations": "查看 · 新建采购单", "searchText": "SKU-1042 有机燕麦奶 华西仓" },
+            { "sku": "SKU-2188", "name": "冷萃咖啡组合装", "warehouse": "华北仓", "available": 560, "status": "充足", "expiryDate": "2026-10-02", "needsAction": false, "operations": "查看", "searchText": "SKU-2188 冷萃咖啡组合装 华北仓" },
+            { "sku": "SKU-3307", "name": "蛋白棒礼盒", "warehouse": "华东仓", "available": 32, "status": "临期风险", "expiryDate": "2026-08-12", "needsAction": true, "operations": "查看 · 新建采购单", "searchText": "SKU-3307 蛋白棒礼盒 华东仓" },
+            { "sku": "SKU-4421", "name": "无糖椰子水", "warehouse": "华西仓", "available": 84, "status": "低库存", "expiryDate": "2026-09-05", "needsAction": true, "operations": "查看 · 新建采购单", "searchText": "SKU-4421 无糖椰子水 华西仓" },
+            { "sku": "SKU-5096", "name": "每日坚果组合", "warehouse": "华北仓", "available": 726, "status": "充足", "expiryDate": "2026-12-20", "needsAction": false, "operations": "查看", "searchText": "SKU-5096 每日坚果组合 华北仓" },
+            { "sku": "SKU-6180", "name": "儿童酸奶杯", "warehouse": "华东仓", "available": 46, "status": "临期风险", "expiryDate": "2026-08-15", "needsAction": true, "operations": "查看 · 新建采购单", "searchText": "SKU-6180 儿童酸奶杯 华东仓" }
+          ]
+        },
+        "operationalList": {
+          "notice": "库存风险数据为冻结演示样本；新建采购单只验证交互，不会提交真实业务数据。",
+          "process": {
+            "title": "库存补货处理链",
+            "description": "识别风险库存后创建采购单，并跟踪供应商确认与到货入库。",
+            "current": 1,
+            "steps": ["识别风险", "创建采购单", "供应商确认", "到货入库"]
+          },
+          "defaultTab": "inventory",
+          "tabs": [
+            { "key": "inventory", "label": "库存结余" },
+            { "key": "purchase-tasks", "label": "采购待办", "emptyDescription": "当前没有待处理的采购任务" }
+          ],
+          "primaryDrawer": {
+            "title": "新建采购单",
+            "description": "从库存风险上下文创建补货需求；提交只关闭当前演示面板。",
+            "submitLabel": "保存采购单草稿",
+            "fields": [
+              { "name": "supplier", "label": "供应商", "control": "select", "required": true, "options": [{ "label": "川西食品供应链", "value": "west-food" }, { "label": "华北冷链供应", "value": "north-cold" }] },
+              { "name": "sku", "label": "SKU", "control": "input", "required": true, "placeholder": "输入需要补货的 SKU" },
+              { "name": "quantity", "label": "采购数量", "control": "input", "required": true, "placeholder": "输入采购数量" },
+              { "name": "arrival", "label": "预计到货周期", "control": "date-range", "required": true },
+              { "name": "remark", "label": "采购说明", "control": "textarea", "required": false, "placeholder": "补充库存风险与采购说明" }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

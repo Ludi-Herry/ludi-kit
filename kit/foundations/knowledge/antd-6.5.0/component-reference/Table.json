@@ -1,0 +1,1255 @@
+{
+  "version": "1.0.0",
+  "component": "Table",
+  "queryComponent": "Table",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Table",
+        "nameZh": "表格",
+        "description": "展示行列数据。",
+        "props": [
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "column",
+            "type": "Partial<[ColumnType](#column)>",
+            "default": "-",
+            "since": "6.4.0"
+          },
+          {
+            "name": "columns",
+            "type": "[ColumnsType](#column)[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "components",
+            "type": "[TableComponents](https://github.com/react-component/table/blob/75ee0064e54a4b3215694505870c9d6c817e9e4a/src/interface.ts#L129)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "dataSource",
+            "type": "object[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "expandable",
+            "type": "[expandable](#expandable)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "footer",
+            "type": "function(currentPageData)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "getPopupContainer",
+            "type": "(triggerNode) => HTMLElement",
+            "default": "() => TableHtmlElement",
+            "since": ""
+          },
+          {
+            "name": "loading",
+            "type": "boolean | [Spin Props](/components/spin/#api)",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "locale",
+            "type": "object",
+            "default": "[Default Value](https://github.com/ant-design/ant-design/blob/6dae4a7e18ad1ba193aedd5ab6867e1d823e2aa4/components/locale/en_US.tsx#L19-L37)",
+            "since": ""
+          },
+          {
+            "name": "pagination",
+            "type": "object | `false`",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "rowClassName",
+            "type": "function(record, index): string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "rowKey",
+            "type": "string | function(record): string",
+            "default": "`key`",
+            "since": ""
+          },
+          {
+            "name": "rowSelection",
+            "type": "object",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "rowHoverable",
+            "type": "boolean",
+            "default": "true",
+            "since": "5.16.0"
+          },
+          {
+            "name": "scroll",
+            "type": "object",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "showHeader",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "showSorterTooltip",
+            "type": "boolean | [Tooltip props](/components/tooltip/#api) & `{target?: 'full-header' | 'sorter-icon' }`",
+            "default": "{ target: 'full-header' }",
+            "since": "5.16.0"
+          },
+          {
+            "name": "size",
+            "type": "`large` | `medium` | `small`",
+            "default": "`large`",
+            "since": ""
+          },
+          {
+            "name": "sortDirections",
+            "type": "Array",
+            "default": "[`ascend`, `descend`]",
+            "since": ""
+          },
+          {
+            "name": "sticky",
+            "type": "boolean | `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}`",
+            "default": "-",
+            "since": "4.6.0 (getContainer: 4.7.0)"
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "summary",
+            "type": "(currentData) => ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "tableLayout",
+            "type": "- | `auto` | `fixed`",
+            "default": "-<hr />`fixed` when header/columns are fixed, or using `column.ellipsis`",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "function(currentPageData)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "virtual",
+            "type": "boolean",
+            "default": "-",
+            "since": "5.9.0"
+          },
+          {
+            "name": "onChange",
+            "type": "function(pagination, filters, sorter, extra: { currentDataSource: [], action: `paginate` | `sort` | `filter` })",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onHeaderRow",
+            "type": "function(columns, index)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onRow",
+            "type": "function(record, index)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onScroll",
+            "type": "function(event)",
+            "default": "-",
+            "since": "5.16.0"
+          },
+          {
+            "name": "nativeElement",
+            "type": "HTMLDivElement",
+            "default": "-",
+            "since": "5.11.0"
+          },
+          {
+            "name": "scrollTo",
+            "type": "(config: { index?: number, key?: React.Key, top?: number, offset?: number, align?: 'start' | 'center' | 'end' | 'nearest' }) => void",
+            "default": "-",
+            "since": "5.11.0"
+          }
+        ],
+        "subComponentProps": {
+          "Table.Column": [
+            {
+              "name": "align",
+              "type": "`left` | `right` | `center`",
+              "default": "`left`",
+              "since": ""
+            },
+            {
+              "name": "className",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "colSpan",
+              "type": "number",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "dataIndex",
+              "type": "string | string[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "defaultFilteredValue",
+              "type": "string[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "filterResetToDefaultFilteredValue",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "defaultSortOrder",
+              "type": "`ascend` | `descend`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "ellipsis",
+              "type": "boolean | {showTitle?: boolean }",
+              "default": "false",
+              "since": "showTitle: 4.3.0"
+            },
+            {
+              "name": "filterDropdown",
+              "type": "ReactNode | (props: [FilterDropdownProps](https://github.com/ant-design/ant-design/blob/ecc54dda839619e921c0ace530408871f0281c2a/components/table/interface.tsx#L79)) => ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "filtered",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "filteredValue",
+              "type": "string[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "filterIcon",
+              "type": "ReactNode | (filtered: boolean) => ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "filterOnClose",
+              "type": "boolean",
+              "default": "true",
+              "since": "5.15.0"
+            },
+            {
+              "name": "filterMultiple",
+              "type": "boolean",
+              "default": "true",
+              "since": ""
+            },
+            {
+              "name": "filterMode",
+              "type": "'menu' | 'tree'",
+              "default": "'menu'",
+              "since": "4.17.0"
+            },
+            {
+              "name": "filterSearch",
+              "type": "boolean | function(input, record):boolean",
+              "default": "false",
+              "since": "boolean:4.17.0 function:4.19.0"
+            },
+            {
+              "name": "filters",
+              "type": "object[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "filterDropdownProps",
+              "type": "[DropdownProps](/components/dropdown#api)",
+              "default": "-",
+              "since": "5.22.0"
+            },
+            {
+              "name": "fixed",
+              "type": "boolean | string",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "key",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "render",
+              "type": "(value: V, record: T, index: number): ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "responsive",
+              "type": "[Breakpoint](https://github.com/ant-design/ant-design/blob/015109b42b85c63146371b4e32b883cf97b088e8/components/_util/responsiveObserve.ts#L1)[]",
+              "default": "-",
+              "since": "4.2.0"
+            },
+            {
+              "name": "rowScope",
+              "type": "`row` | `rowgroup`",
+              "default": "-",
+              "since": "5.1.0"
+            },
+            {
+              "name": "shouldCellUpdate",
+              "type": "(record, prevRecord) => boolean",
+              "default": "-",
+              "since": "4.3.0"
+            },
+            {
+              "name": "showSorterTooltip",
+              "type": "boolean | [Tooltip props](/components/tooltip/) & `{target?: 'full-header' | 'sorter-icon' }`",
+              "default": "{ target: 'full-header' }",
+              "since": "5.16.0"
+            },
+            {
+              "name": "sortDirections",
+              "type": "Array",
+              "default": "[`ascend`, `descend`]",
+              "since": ""
+            },
+            {
+              "name": "sorter",
+              "type": "function | boolean | { compare: function, multiple: number }",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "sortOrder",
+              "type": "`ascend` | `descend` | null",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "sortIcon",
+              "type": "(props: { sortOrder }) => ReactNode",
+              "default": "-",
+              "since": "5.6.0"
+            },
+            {
+              "name": "title",
+              "type": "ReactNode | ({ sortColumns, filters }) => ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "width",
+              "type": "string | number",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "minWidth",
+              "type": "number",
+              "default": "-",
+              "since": "5.21.0"
+            },
+            {
+              "name": "hidden",
+              "type": "boolean",
+              "default": "false",
+              "since": "5.13.0"
+            },
+            {
+              "name": "onCell",
+              "type": "function(record, rowIndex)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onFilter",
+              "type": "function(value, record) => boolean",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onHeaderCell",
+              "type": "function(column)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Table.ColumnGroup": [
+            {
+              "name": "title",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Table.pagination": [
+            {
+              "name": "placement",
+              "type": "Array",
+              "default": "[`bottomEnd`]",
+              "since": ""
+            },
+            {
+              "name": "position",
+              "type": "Array",
+              "default": "[`bottomRight`]",
+              "since": ""
+            }
+          ],
+          "Table.expandable": [
+            {
+              "name": "childrenColumnName",
+              "type": "string",
+              "default": "children",
+              "since": ""
+            },
+            {
+              "name": "columnTitle",
+              "type": "ReactNode",
+              "default": "-",
+              "since": "4.23.0"
+            },
+            {
+              "name": "columnWidth",
+              "type": "string | number",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "defaultExpandAllRows",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "defaultExpandedRowKeys",
+              "type": "string[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "expandedRowClassName",
+              "type": "string | (record, index, indent) => string",
+              "default": "-",
+              "since": "string: 5.22.0"
+            },
+            {
+              "name": "expandedRowKeys",
+              "type": "string[]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "expandedRowRender",
+              "type": "function(record, index, indent, expanded): ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "expandIcon",
+              "type": "function(props): ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "expandRowByClick",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "fixed",
+              "type": "boolean | string",
+              "default": "false",
+              "since": "4.16.0"
+            },
+            {
+              "name": "indentSize",
+              "type": "number",
+              "default": "15",
+              "since": ""
+            },
+            {
+              "name": "rowExpandable",
+              "type": "(record) => boolean",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "showExpandColumn",
+              "type": "boolean",
+              "default": "true",
+              "since": "4.18.0"
+            },
+            {
+              "name": "onExpand",
+              "type": "function(expanded, record)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onExpandedRowsChange",
+              "type": "function(expandedRows)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "expandedRowOffset",
+              "type": "number",
+              "default": "-",
+              "since": "5.26.0"
+            }
+          ],
+          "Table.rowSelection": [
+            {
+              "name": "align",
+              "type": "`left` | `right` | `center`",
+              "default": "`left`",
+              "since": "5.25.0"
+            },
+            {
+              "name": "checkStrictly",
+              "type": "boolean",
+              "default": "true",
+              "since": "4.4.0"
+            },
+            {
+              "name": "columnTitle",
+              "type": "ReactNode | (originalNode: ReactNode) => ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "columnWidth",
+              "type": "string | number",
+              "default": "`32px`",
+              "since": ""
+            },
+            {
+              "name": "fixed",
+              "type": "boolean",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "getCheckboxProps",
+              "type": "function(record)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "getTitleCheckboxProps",
+              "type": "function()",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "hideSelectAll",
+              "type": "boolean",
+              "default": "false",
+              "since": "4.3.0"
+            },
+            {
+              "name": "preserveSelectedRowKeys",
+              "type": "boolean",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "renderCell",
+              "type": "(checked: boolean, record: T, index: number, originNode: ReactNode): ReactNode",
+              "default": "-",
+              "since": "4.1.0"
+            },
+            {
+              "name": "selectedRowKeys",
+              "type": "string[] | number[]",
+              "default": "[]",
+              "since": ""
+            },
+            {
+              "name": "defaultSelectedRowKeys",
+              "type": "string[] | number[]",
+              "default": "[]",
+              "since": ""
+            },
+            {
+              "name": "selections",
+              "type": "object[] | boolean",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "type",
+              "type": "`checkbox` | `radio`",
+              "default": "`checkbox`",
+              "since": ""
+            },
+            {
+              "name": "onCell",
+              "type": "function(record, rowIndex)",
+              "default": "-",
+              "since": "5.5.0"
+            },
+            {
+              "name": "onChange",
+              "type": "function(selectedRowKeys, selectedRows, info: { type })",
+              "default": "-",
+              "since": "`info.type`: 4.21.0"
+            },
+            {
+              "name": "onSelect",
+              "type": "function(record, selected, selectedRows, nativeEvent)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Table.scroll": [
+            {
+              "name": "scrollToFirstRowOnChange",
+              "type": "boolean",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "x",
+              "type": "string | number | true",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "y",
+              "type": "string | number",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Table.selection": [
+            {
+              "name": "key",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "text",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onSelect",
+              "type": "function(changeableRowKeys)",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Table",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 当有大量结构化的数据需要展现时；\n- 当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时。\n\n## 如何使用 {#how-to-use}\n\n指定表格的数据源 `dataSource` 为一个数组。\n\n```jsx\nconst dataSource = [\n  {\n    key: '1',\n    name: '胡彦斌',\n    age: 32,\n    address: '西湖区湖底公园1号',\n  },\n  {\n    key: '2',\n    name: '胡彦祖',\n    age: 42,\n    address: '西湖区湖底公园1号',\n  },\n];\n\nconst columns = [\n  {\n    title: '姓名',\n    dataIndex: 'name',\n    key: 'name',\n  },\n  {\n    title: '年龄',\n    dataIndex: 'age',\n    key: 'age',\n  },\n  {\n    title: '住址',\n    dataIndex: 'address',\n    key: 'address',\n  },\n];\n\n<Table dataSource={dataSource} columns={columns} />;\n```\n\n## 相关推荐 {#promotion}\n\n- [Kitchen Sketch 插件 💎](https://kitchen.alipay.com/)：设计师神器，两步自动生成 Ant Design 表格组件。\n- [ProTable](https://procomponents.ant.design/components/table) 高级表格：在 `antd` Table 之上扩展了更多便捷易用的功能，内置搜索、筛选、刷新等常用表格行为，并为多种类型数据展示提供了内置格式化。\n- [S2](https://s2.antv.vision/zh) 多维交叉分析表格：[AntV S2 和 Antd Table 有什么区别？](https://zhuanlan.zhihu.com/p/494995642)\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本用法</code>\n<code src=\"./demo/jsx.tsx\">JSX 风格的 API</code>\n<code src=\"./demo/row-selection.tsx\">可选择</code>\n<code src=\"./demo/row-selection-and-operation.tsx\">选择和操作</code>\n<code src=\"./demo/row-selection-custom.tsx\">自定义选择项</code>\n<code src=\"./demo/row-selection-debug.tsx\" debug>选择性能</code>\n<code src=\"./demo/head.tsx\">筛选和排序</code>\n<code src=\"./demo/filter-in-tree.tsx\">树型筛选菜单</code>\n<code src=\"./demo/filter-search.tsx\">自定义筛选的搜索</code>\n<code src=\"./demo/multiple-sorter.tsx\">多列排序</code>\n<code src=\"./demo/reset-filter.tsx\">可控的筛选和排序</code>\n<code src=\"./demo/custom-filter-panel.tsx\">自定义筛选菜单</code>\n<code src=\"./demo/ajax.tsx\">远程加载数据</code>\n<code src=\"./demo/size.tsx\">紧凑型</code>\n<code src=\"./demo/narrow.tsx\" debug>紧凑型</code>\n<code src=\"./demo/bordered.tsx\">带边框</code>\n<code src=\"./demo/expand.tsx\">可展开</code>\n<code src=\"./demo/expand-sticky.tsx\" debug>可自定义展开位置</code>\n<code src=\"./demo/order-column.tsx\">特殊列排序</code>\n<code src=\"./demo/colspan-rowspan.tsx\">表格行/列合并</code>\n<code src=\"./demo/tree-data.tsx\">树形数据展示</code>\n<code src=\"./demo/tree-table-ellipsis.tsx\" debug>树形数据省略情况测试</code>\n<code src=\"./demo/tree-table-preserveSelectedRowKeys.tsx\" debug>树形数据保留key测试</code>\n<code src=\"./demo/fixed-header.tsx\">固定表头</code>\n<code src=\"./demo/auto-height.tsx\">自动高度</code>\n<code src=\"./demo/fixed-columns.tsx\">固定列</code>\n<code src=\"./demo/fixed-gapped-columns.tsx\" version=\"5.14.0\">堆叠固定列</code>\n<code src=\"./demo/fixed-columns-header.tsx\">固定头和列</code>\n<code src=\"./demo/hidden-columns.tsx\" version=\"5.13.0\">隐藏列</code>\n<code src=\"./demo/grouping-columns.tsx\">表头分组</code>\n<code src=\"./demo/edit-cell.tsx\">可编辑单元格</code>\n<code src=\"./demo/edit-row.tsx\">可编辑行</code>\n<code src=\"./demo/nested-table.tsx\">嵌套子表格</code>\n<code src=\"./demo/drag-sorting.tsx\">拖拽排序</code>\n<code src=\"./demo/drag-column-sorting.tsx\">列拖拽排序</code>\n<code src=\"./demo/drag-sorting-handler.tsx\">拖拽手柄列</code>\n<code src=\"./demo/ellipsis.tsx\">单元格自动省略</code>\n<code src=\"./demo/column-defaults.tsx\" version=\"6.4.0\">统一列配置</code>\n<code src=\"./demo/ellipsis-custom-tooltip.tsx\">自定义单元格省略提示</code>\n<code src=\"./demo/custom-empty.tsx\">自定义空状态</code>\n<code src=\"./demo/summary.tsx\">总结栏</code>\n<code src=\"./demo/virtual-list.tsx\" version=\"5.9.0\">虚拟列表</code>\n<code src=\"./demo/responsive.tsx\">响应式</code>\n<code src=\"./demo/nest-table-border-debug.tsx\" debug>嵌套带边框的表格 Debug</code>\n<code src=\"./demo/pagination.tsx\">分页设置</code>\n<code src=\"./demo/row-selection-custom-debug.tsx\" debug>自定义选择项组</code>\n<code src=\"./demo/sticky.tsx\">随页面滚动的固定表头和滚动条</code>\n<code src=\"./demo/dynamic-settings.tsx\">动态控制表格属性</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/selections-debug.tsx\" debug>带下拉箭头的表头</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/measure-row-render.tsx\" debug>measureRowRender</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Table\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| bordered | 是否展示外边框和列边框 | boolean | false |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.1 |\n| column | 统一列配置，仅在单列未声明同名属性时生效 | Partial<[ColumnType](#column)> | - | 6.4.0 | × |\n| columns | 表格列的配置描述，具体项见下表 | [ColumnsType](#column)\\[] | - |  | × |\n| components | 覆盖默认的 table 元素 | [TableComponents](https://github.com/react-component/table/blob/75ee0064e54a4b3215694505870c9d6c817e9e4a/src/interface.ts#L129) | - |  | × |\n| dataSource | 数据数组 | object\\[] | - |  | × |\n| expandable | 配置展开属性 | [expandable](#expandable) | - |  | `expandable.expandIcon`: 5.14.0 |\n| footer | 表格尾部 | function(currentPageData) | - |  | × |\n| getPopupContainer | 设置表格内各类浮层的渲染节点，如筛选菜单 | (triggerNode) => HTMLElement | () => TableHtmlElement |  | × |\n| loading | 页面是否加载中 | boolean \\| [Spin Props](/components/spin-cn#api) | false |  | × |\n| locale | 默认文案设置，目前包括排序、过滤、空数据文案 | object | [默认值](https://github.com/ant-design/ant-design/blob/6dae4a7e18ad1ba193aedd5ab6867e1d823e2aa4/components/locale/zh_CN.tsx#L20-L37) |  | × |\n| pagination | 分页器，参考[配置项](#pagination)或 [pagination](/components/pagination-cn) 文档，设为 false 时不展示和进行分页 | object \\| `false` | - |  | × |\n| rowClassName | 表格行的类名 | function(record, index): string | - |  | × |\n| rowKey | 表格行 key 的取值，可以是字符串或一个函数 | string \\| function(record): string | `key` |  | `string`: 6.0.0，`function`: 6.1.0 |\n| rowSelection | 表格行是否可选择，[配置项](#rowselection) | object | - |  | × |\n| rowHoverable | 表格行是否开启 hover 交互 | boolean | true | 5.16.0 | × |\n| scroll | 表格是否可滚动，也可以指定滚动区域的宽、高，[配置项](#scroll) | object | - |  | 6.3.0 |\n| showHeader | 是否显示表头 | boolean | true |  | × |\n| showSorterTooltip | 表头是否显示下一次排序的 tooltip 提示。当参数类型为对象时，将被设置为 Tooltip 的属性 | boolean \\| [Tooltip props](/components/tooltip-cn) & `{target?: 'full-header' \\| 'sorter-icon' }` | { target: 'full-header' } | 5.16.0 | × |\n| size | 表格大小 | `large` \\| `medium` \\| `small` | `large` |  | × |\n| sortDirections | 支持的排序方式，取值为 `ascend` `descend` | Array | \\[`ascend`, `descend`] |  | × |\n| sticky | 设置粘性头部和滚动条 | boolean \\| `{offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}` | - | 4.6.0 (getContainer: 4.7.0) | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.1 |\n| summary | 总结栏 | (currentData) => ReactNode | - |  | × |\n| tableLayout | 表格元素的 [table-layout](https://developer.mozilla.org/zh-CN/docs/Web/CSS/table-layout) 属性，设为 `fixed` 表示内容不会影响列的布局 | - \\| `auto` \\| `fixed` | 无<hr />固定表头/列或使用了 `column.ellipsis` 时，默认值为 `fixed` |  | × |\n| title | 表格标题 | function(currentPageData) | - |  | × |\n| virtual | 支持虚拟列表 | boolean | - | 5.9.0 | × |\n| onChange | 分页、排序、筛选变化时触发 | function(pagination, filters, sorter, extra: { currentDataSource: \\[], action: `paginate` \\| `sort` \\| `filter` }) | - |  | × |\n| onHeaderRow | 设置头部行属性 | function(columns, index) | - |  | × |\n| onRow | 设置行属性 | function(record, index) | - |  | × |\n| onScroll | 表单内容滚动时触发（虚拟滚动下只有垂直滚动会触发事件） | function(event) | - | 5.16.0 | × |\n\n### Table ref\n\n| 参数 | 说明 | 类型 | 版本 |\n| --- | --- | --- | --- |\n| nativeElement | 最外层 div 元素 | HTMLDivElement | 5.11.0 |\n| scrollTo | 滚动到目标位置（设置 `key` 时为 Record 对应的 `rowKey`）。当指定 `offset` 时，表格会滚动至目标行顶部对齐并应用指定的偏移量。`offset` 对 `top` 无效。可选 `align` 参数控制对齐方式：`start` 顶部对齐、`center` 中间对齐、`end` 底部对齐、`nearest` 智能对齐（默认）。虚拟滚动模式下不支持 `center` 对齐 | (config: { index?: number, key?: React.Key, top?: number, offset?: number, align?: 'start' \\| 'center' \\| 'end' \\| 'nearest' }) => void | 5.11.0 |\n\n#### onRow 用法\n\n适用于 `onRow` `onHeaderRow` `onCell` `onHeaderCell`。\n\n```jsx\n<Table\n  onRow={(record) => {\n    return {\n      onClick: (event) => {}, // 点击行\n      onDoubleClick: (event) => {},\n      onContextMenu: (event) => {},\n      onMouseEnter: (event) => {}, // 鼠标移入行\n      onMouseLeave: (event) => {},\n    };\n  }}\n  onHeaderRow={(columns, index) => {\n    return {\n      onClick: () => {}, // 点击表头行\n    };\n  }}\n/>\n```\n\n### Column\n\n列描述数据对象，是 columns 中的一项，Column 使用相同的 API。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| align | 设置列的对齐方式 | `left` \\| `right` \\| `center` | `left` |  |\n| className | 列样式类名 | string | - |  |\n| colSpan | 表头列合并，设置为 0 时，不渲染 | number | - |  |\n| dataIndex | 列数据在数据项中对应的路径，支持通过数组查询嵌套路径 | string \\| string\\[] | - |  |\n| defaultFilteredValue | 默认筛选值 | string\\[] | - |  |\n| filterResetToDefaultFilteredValue | 点击重置按钮的时候，是否恢复默认筛选值 | boolean | false |  |\n| defaultSortOrder | 默认排序顺序 | `ascend` \\| `descend` | - |  |\n| ellipsis | 超过宽度将自动省略，暂不支持和排序筛选一起使用。<br />设置为 `true` 或 `{ showTitle?: boolean }` 时，表格布局将变成 `tableLayout=\"fixed\"`。 | boolean \\| { showTitle?: boolean } | false | showTitle: 4.3.0 |\n| filterDropdown | 可以自定义筛选菜单，此函数只负责渲染图层，需要自行编写各种交互 | ReactNode \\| (props: [FilterDropdownProps](https://github.com/ant-design/ant-design/blob/ecc54dda839619e921c0ace530408871f0281c2a/components/table/interface.tsx#L79)) => ReactNode | - |  |\n| filtered | 标识数据是否经过过滤，筛选图标会高亮 | boolean | false |  |\n| filteredValue | 筛选的受控属性，外界可用此控制列的筛选状态，值为已筛选的 value 数组 | string\\[] | - |  |\n| filterIcon | 自定义 filter 图标。 | ReactNode \\| (filtered: boolean) => ReactNode | false |  |\n| filterOnClose | 是否在筛选菜单关闭时触发筛选 | boolean | true | 5.15.0 |\n| filterMultiple | 是否多选 | boolean | true |  |\n| filterMode | 指定筛选菜单的用户界面 | 'menu' \\| 'tree' | 'menu' | 4.17.0 |\n| filterSearch | 筛选菜单项是否可搜索 | boolean \\| function(input, record):boolean | false | boolean:4.17.0 function:4.19.0 |\n| filters | 表头的筛选菜单项 | object\\[] | - |  |\n| filterDropdownProps | 自定义下拉属性，在 `<5.22.0` 之前可用 `filterDropdownOpen` 和 `onFilterDropdownOpenChange` | [DropdownProps](/components/dropdown#api) | - | 5.22.0 |\n| fixed | （IE 下无效）列是否固定，可选 `true` (等效于 `'start'`) `'start'` `'end'` | boolean \\| string | false |  |\n| key | React 需要的 key，如果已经设置了唯一的 `dataIndex`，可以忽略这个属性 | string | - |  |\n| render | 生成复杂数据的渲染函数，参数分别为当前单元格的值，当前行数据，行索引 | (value: V, record: T, index: number): ReactNode | - |  |\n| responsive | 响应式 breakpoint 配置列表。未设置则始终可见。 | [Breakpoint](https://github.com/ant-design/ant-design/blob/015109b42b85c63146371b4e32b883cf97b088e8/components/_util/responsiveObserve.ts#L1)\\[] | - | 4.2.0 |\n| rowScope | 设置列范围 | `row` \\| `rowgroup` | - | 5.1.0 |\n| shouldCellUpdate | 自定义单元格渲染时机 | (record, prevRecord) => boolean | - | 4.3.0 |\n| showSorterTooltip | 表头显示下一次排序的 tooltip 提示, 覆盖 table 中 `showSorterTooltip` | boolean \\| [Tooltip props](/components/tooltip-cn/#api) & `{target?: 'full-header' \\| 'sorter-icon' }` | { target: 'full-header' } | 5.16.0 |\n| sortDirections | 支持的排序方式，覆盖 `Table` 中 `sortDirections`， 取值为 `ascend` `descend` | Array | \\[`ascend`, `descend`] |  |\n| sorter | 排序函数，本地排序使用一个函数(参考 [Array.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) 的 compareFunction)。需要服务端排序可设为 `true`（单列排序） 或 `{ multiple: number }`（多列排序） | function \\| boolean \\| { compare: function, multiple: number } | - |  |\n| sortOrder | 排序的受控属性，外界可用此控制列的排序，可设置为 `ascend` `descend` `null` | `ascend` \\| `descend` \\| null | - |  |\n| sortIcon | 自定义 sort 图标 | (props: { sortOrder }) => ReactNode | - | 5.6.0 |\n| title | 列头显示文字（函数用法 `3.10.0` 后支持） | ReactNode \\| ({ sortColumns, filters }) => ReactNode | - |  |\n| width | 列宽度（[指定了也不生效？](https://github.com/ant-design/ant-design/issues/13825#issuecomment-449889241)） | string \\| number | - |  |\n| minWidth | 最小列宽度，只在 `tableLayout=\"auto\"` 时有效 | number | - | 5.21.0 |\n| hidden | 隐藏列 | boolean | false | 5.13.0 |\n| onCell | 设置单元格属性 | function(record, rowIndex) | - |  |\n| onFilter | 本地模式下，确定筛选的运行函数 | function | - |  |\n| onHeaderCell | 设置头部单元格属性 | function(column) | - |  |\n\n### ColumnGroup\n\n| 参数  | 说明         | 类型      | 默认值 |\n| ----- | ------------ | --------- | ------ |\n| title | 列头显示文字 | ReactNode | -      |\n\n### pagination\n\n分页的配置项。\n\n| 参数 | 说明 | 类型 | 默认值 |\n| --- | --- | --- | --- |\n| placement | 指定分页显示的位置， 取值为`topStart` \\| `topCenter` \\| `topEnd` \\|`bottomStart` \\| `bottomCenter` \\| `bottomEnd`\\| `none` | Array | \\[`bottomEnd`] |\n| ~~position~~ | 指定分页显示的位置， 取值为`topLeft` \\| `topCenter` \\| `topRight` \\|`bottomLeft` \\| `bottomCenter` \\| `bottomRight` \\| `none`，请使用 `placement` 替换 | Array | \\[`bottomRight`] |\n\n更多配置项，请查看 [`Pagination`](/components/pagination-cn)。\n\n### expandable\n\n展开功能的配置。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| childrenColumnName | 指定树形结构的列名 | string | children |  |\n| columnTitle | 自定义展开列表头 | ReactNode | - | 4.23.0 |\n| columnWidth | 自定义展开列宽度 | string \\| number | - |  |\n| defaultExpandAllRows | 初始时，是否展开所有行 | boolean | false |  |\n| defaultExpandedRowKeys | 默认展开的行 | string\\[] | - |  |\n| expandedRowClassName | 展开行的 className | string \\| (record, index, indent) => string | - | string: 5.22.0 |\n| expandedRowKeys | 展开的行，控制属性 | string\\[] | - |  |\n| expandedRowRender | 额外的展开行 | function(record, index, indent, expanded): ReactNode | - |  |\n| expandIcon | 自定义展开图标，参考[示例](https://codesandbox.io/s/fervent-bird-nuzpr) | function(props): ReactNode | - |  |\n| expandRowByClick | 通过点击行来展开子行 | boolean | false |  |\n| fixed | 控制展开图标是否固定，可选 `true` `'left'` `'right'` | boolean \\| string | false | 4.16.0 |\n| indentSize | 展示树形数据时，每层缩进的宽度，以 px 为单位 | number | 15 |  |\n| rowExpandable | 设置是否允许行展开（`dataSource` 若存在 `children` 字段将不生效） | (record) => boolean | - |  |\n| showExpandColumn | 是否显示展开图标列 | boolean | true | 4.18.0 |\n| onExpand | 点击展开图标时触发 | function(expanded, record) | - |  |\n| onExpandedRowsChange | 展开的行变化时触发 | function(expandedRows) | - |  |\n| ~~expandedRowOffset~~ | 废弃：展开行的偏移列数，设置后会强制将其前面的列设为固定列。请改用 `Table.EXPAND_COLUMN` 并通过列顺序控制位置 | number | - | 5.26.0 |\n\n### rowSelection\n\n选择功能的配置。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| align | 设置选择列的对齐方式 | `left` \\| `right` \\| `center` | `left` | 5.25.0 |\n| checkStrictly | checkable 状态下节点选择完全受控（父子数据选中状态不再关联） | boolean | true | 4.4.0 |\n| columnTitle | 自定义列表选择框标题 | ReactNode \\| (originalNode: ReactNode) => ReactNode | - |  |\n| columnWidth | 自定义列表选择框宽度 | string \\| number | `32px` |  |\n| fixed | 把选择框列固定在左边 | boolean | - |  |\n| getCheckboxProps | 选择框的默认属性配置 | function(record) | - |  |\n| getTitleCheckboxProps | 标题选择框的默认属性配置 | function() | - |  |\n| hideSelectAll | 隐藏全选勾选框与自定义选择项 | boolean | false | 4.3.0 |\n| preserveSelectedRowKeys | 当数据被删除时仍然保留选项的 `key` | boolean | - | 4.4.0 |\n| renderCell | 渲染勾选框，用法与 Column 的 `render` 相同 | (checked: boolean, record: T, index: number, originNode: ReactNode): ReactNode | - | 4.1.0 |\n| selectedRowKeys | 指定选中项的 key 数组，需要和 onChange 进行配合 | string\\[] \\| number\\[] | \\[] |  |\n| defaultSelectedRowKeys | 默认选中项的 key 数组 | string\\[] \\| number\\[] | \\[] |  |\n| selections | 自定义选择项 [配置项](#selection), 设为 `true` 时使用默认选择项 | object\\[] \\| boolean | true |  |\n| type | 多选/单选 | `checkbox` \\| `radio` | `checkbox` |  |\n| onCell | 设置单元格属性，用法与 Column 的 `onCell` 相同 | function(record, rowIndex) | - | 5.5.0 |\n| onChange | 选中项发生变化时的回调 | function(selectedRowKeys, selectedRows, info: { type }) | - | `info.type`: 4.21.0 |\n| onSelect | 用户手动选择/取消选择某行的回调 | function(record, selected, selectedRows, nativeEvent) | - |  |\n\n### scroll\n\n| 参数 | 说明 | 类型 | 默认值 |\n| --- | --- | --- | --- |\n| scrollToFirstRowOnChange | 当分页、排序、筛选变化后是否滚动到表格顶部 | boolean | - |\n| x | 设置横向滚动，也可用于指定滚动区域的宽，可以设置为像素值，百分比，`true` 和 ['max-content'](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width#max-content) | string \\| number \\| true | - |\n| y | 设置纵向滚动，也可用于指定滚动区域的高，可以设置为像素值 | string \\| number | - |\n\n### selection\n\n| 参数     | 说明                       | 类型                        | 默认值 |\n| -------- | -------------------------- | --------------------------- | ------ |\n| key      | React 需要的 key，建议设置 | string                      | -      |\n| text     | 选择项显示的文字           | ReactNode                   | -      |\n| onSelect | 选择项点击回调             | function(changeableRowKeys) | -      |\n\n## 在 TypeScript 中使用 {#using-in-typescript}\n\n```tsx\nimport React from 'react';\nimport { Table } from 'antd';\nimport type { TableColumnsType } from 'antd';\n\ninterface User {\n  key: number;\n  name: string;\n}\n\nconst columns: TableColumnsType<User> = [\n  {\n    key: 'name',\n    title: 'Name',\n    dataIndex: 'name',\n  },\n];\n\nconst data: User[] = [\n  {\n    key: 0,\n    name: 'Jack',\n  },\n];\n\nconst Demo: React.FC = () => (\n  <>\n    <Table<User> columns={columns} dataSource={data} />\n    {/* 使用 JSX 风格的 API */}\n    <Table<User> dataSource={data}>\n      <Table.Column<User> key=\"name\" title=\"Name\" dataIndex=\"name\" />\n    </Table>\n  </>\n);\n\nexport default Demo;\n```\n\nTypeScript 里使用 Table 的 [CodeSandbox 实例](https://codesandbox.io/s/serene-platform-0jo5t)。\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Table\"></ComponentTokenTable>\n\n## 注意 {#note}\n\n按照 [React 的规范](https://zh-hans.react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key)，所有的列表必须绑定 `key`。在 Table 中，`dataSource` 和 `columns` 里的数据值都需要指定 `key` 值。对于 `dataSource` 默认将每列数据的 `key` 属性作为唯一的标识。\n\n![控制台警告](https://os.alipayobjects.com/rmsportal/luLdLvhPOiRpyss.png)\n\n如果 `dataSource[i].key` 没有提供，你应该使用 `rowKey` 来指定 `dataSource` 的主键，如下所示。若没有指定，控制台会出现以上的提示，表格组件也会出现各类奇怪的错误。\n\n```jsx\n// 比如你的数据主键是 uid\nreturn <Table rowKey=\"uid\" />;\n// 或\nreturn <Table rowKey={(record) => record.uid} />;\n```\n\n## FAQ\n\n### 如何在没有数据或只有一页数据时隐藏分页栏 {#faq-hide-pagination}\n\n你可以设置 `pagination` 的 `hideOnSinglePage` 属性为 `true`。\n\n### 表格过滤时会回到第一页？ {#faq-filter-to-first-page}\n\n前端过滤时通常条目总数会减少，从而导致总页数小于筛选前的当前页数，为了防止当前页面没有数据，我们默认会返回第一页。\n\n如果你在使用远程分页，很可能需要保持当前页面，你可以参照这个 [受控例子](https://codesandbox.io/s/yuanchengjiazaishuju-ant-design-demo-7y2uf) 控制当前页面不变。\n\n### 表格分页为何会出现 size 切换器？ {#faq-size-changer}\n\n自 `4.1.0` 起，Pagination 在 `total` 大于 50 条时会默认显示 size 切换器以提升用户交互体验。如果你不需要该功能，可以通过设置 `showSizeChanger` 为 `false` 来关闭。\n\n### 为什么 更新 state 会导致全表渲染？ {#faq-state-update-rerender}\n\n由于 `columns` 支持 `render` 方法，因而 Table 无法知道哪些单元会受到影响。你可以通过 `column.shouldCellUpdate` 来控制单元格的渲染。\n\n### 如何排查 Table 性能问题？ {#faq-table-performance}\n\nReact DevTools 在分析复杂表格时可能带来额外开销，尤其是行列数量较多的场景。若你遇到明显卡顿，建议先关闭 React DevTools，或在干净的浏览器环境中重新测试。如果在正常运行环境下仍能稳定复现性能问题，欢迎提供最小复现以便我们继续排查。\n\n### 固定列穿透到最上层该怎么办？ {#faq-fixed-column-zindex}\n\n固定列通过 `z-index` 属性将其悬浮于非固定列之上，这使得有时候你会发现在 Table 上放置遮罩层时固定列会被透过的情况。为遮罩层设置更高的 `z-index` 覆盖住固定列即可。\n\n### 如何自定义渲染可选列的勾选框（比如增加 Tooltip）？ {#faq-custom-checkbox-render}\n\n自 `4.1.0` 起，可以通过 [rowSelection](https://ant.design/components/table-cn/#rowselection) 的 `renderCell` 属性控制，可以参考此处 [Demo](https://codesandbox.io/s/table-row-tooltip-v79j2v) 实现展示 Tooltip 需求或其他自定义的需求。\n\n### 为什么 components.body.wrapper 或 components.body.row 在 virtual 开启时会报错？ {#faq-virtual-wrapper-ref}\n\n因为虚拟表格需要获取其 ref 做一些计算，所以你需要使用 `React.forwardRef` 包裹并传递 ref 到 dom。如以下代码：\n\n```tsx\nconst EditableRow = React.forwardRef<HTMLTableRowElement, EditableRowProps>(\n  ({ index, ...props }, ref) => {\n    const [form] = Form.useForm();\n    return (\n      <Form form={form} component={false}>\n        <EditableContext.Provider value={form}>\n          <tr {...props} ref={ref} />\n        </EditableContext.Provider>\n      </Form>\n    );\n  },\n);\n```\n\n对于固定行高纵向滚动的场景，可以使用以下方法：\n\n```tsx\n<Table\n  //@ts-ignore // 这个属性未导出，但能透传给内部的虚拟滚动组件\n  listItemHeight={36} // 帮助虚拟滚动正确计算高度，每行固定高度36px\n/>\n```\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Table",
+        "demos": [
+          {
+            "name": "ajax",
+            "title": "Ajax",
+            "description": "This example shows how to fetch and present data from a remote server, and how to implement filtering and sorting in server side by sending related parameters to server."
+          },
+          {
+            "name": "auto-height",
+            "title": "Auto height",
+            "description": "Wrap Table to make it always fill the container height automatically."
+          },
+          {
+            "name": "basic",
+            "title": "Basic Usage",
+            "description": "Simple table with actions."
+          },
+          {
+            "name": "bordered",
+            "title": "border, title and footer",
+            "description": "Add border, title and footer for table."
+          },
+          {
+            "name": "colspan-rowspan",
+            "title": "colSpan and rowSpan",
+            "description": "Table column title supports `colSpan` that set in `column`."
+          },
+          {
+            "name": "column-defaults",
+            "title": "Shared column props",
+            "description": "Use `column` to set shared column props on the table and override them per column when needed."
+          },
+          {
+            "name": "custom-empty",
+            "title": "Custom empty",
+            "description": "Custom empty status."
+          },
+          {
+            "name": "custom-filter-panel",
+            "title": "Customized filter panel",
+            "description": "Implement a customized column search example via `filterDropdown`."
+          },
+          {
+            "name": "drag-column-sorting",
+            "title": "Drag Column sorting",
+            "description": "By using `components`, we can integrate table with [dnd-kit](https://github.com/clauderic/dnd-kit) to implement column drag sorting function."
+          },
+          {
+            "name": "drag-sorting-handler",
+            "title": "Drag sorting with handler",
+            "description": "Alternatively you can implement drag sorting with handler using [dnd-kit](https://github.com/clauderic/dnd-kit)."
+          },
+          {
+            "name": "drag-sorting",
+            "title": "Drag sorting",
+            "description": "By using `components`, we can integrate table with [dnd-kit](https://github.com/clauderic/dnd-kit) to implement drag sorting function."
+          },
+          {
+            "name": "dynamic-settings",
+            "title": "Dynamic Settings",
+            "description": "Select different settings to see the result."
+          },
+          {
+            "name": "edit-cell",
+            "title": "Editable Cells",
+            "description": "Table with editable cells. When work with `shouldCellUpdate`, please take care of [closure](https://github.com/ant-design/ant-design/issues/29243)."
+          },
+          {
+            "name": "edit-row",
+            "title": "Editable Rows",
+            "description": "Table with editable rows."
+          },
+          {
+            "name": "ellipsis-custom-tooltip",
+            "title": "ellipsis column custom tooltip",
+            "description": "Ellipsis cell content via setting `column.ellipsis.showTitle`, use `Tooltip` instead of the html title attribute."
+          },
+          {
+            "name": "ellipsis",
+            "title": "ellipsis column",
+            "description": "Ellipsis cell content via setting `column.ellipsis`."
+          },
+          {
+            "name": "expand",
+            "title": "Expandable Row",
+            "description": "When there's too much information to show and the table can't display all at once."
+          },
+          {
+            "name": "filter-in-tree",
+            "title": "Filter in Tree",
+            "description": "You can use `filterMode` to change default filter interface, options: `menu`(default) and `tree`."
+          },
+          {
+            "name": "filter-search",
+            "title": "Filter search",
+            "description": "`filterSearch` is used to enable search of filter items, and you can set a custom filter method through `filterSearch:(input, record) => boolean`."
+          },
+          {
+            "name": "fixed-columns-header",
+            "title": "Fixed Columns and Header",
+            "description": "A Solution for displaying large amounts of data with long columns."
+          },
+          {
+            "name": "fixed-columns",
+            "title": "Fixed Columns",
+            "description": "To fix some columns and scroll inside other columns, and you must set `scroll.x` meanwhile."
+          },
+          {
+            "name": "fixed-gapped-columns",
+            "title": "Stack Fixed Columns",
+            "description": "Fixed column only when scroll some distance, and scroll to stack other columns. Recommend use with `bordered`."
+          },
+          {
+            "name": "fixed-header",
+            "title": "Fixed Header",
+            "description": "Display large amounts of data in scrollable view."
+          },
+          {
+            "name": "grouping-columns",
+            "title": "Grouping table head",
+            "description": "Group table head with `columns[n].children`."
+          },
+          {
+            "name": "head",
+            "title": "Filter and sorter",
+            "description": "Use `filters` to generate filter menu in columns, `onFilter` to determine filtered result, and `filterMultiple` to indicate whether it's multiple or single selection, `filterOnClose` to specify whether to trigger filter when the filter menu closes."
+          },
+          {
+            "name": "hidden-columns",
+            "title": "Hidden Columns",
+            "description": "Hide columns with `hidden`."
+          },
+          {
+            "name": "jsx",
+            "title": "JSX style API",
+            "description": "Using JSX style API (introduced in 2.5.0)"
+          },
+          {
+            "name": "multiple-sorter",
+            "title": "Multiple sorter",
+            "description": "`column.sorter` support `multiple` to config the priority of sort columns. Though `sorter.compare` to customize compare function. You can also leave it empty to use the interactive only."
+          },
+          {
+            "name": "nested-table",
+            "title": "Nested tables",
+            "description": "Showing more detailed info of every row."
+          },
+          {
+            "name": "order-column",
+            "title": "Order Specific Column",
+            "description": "You can control the order of the expand and select columns by using `Table.EXPAND_COLUMN` and `Table.SELECTION_COLUMN`."
+          },
+          {
+            "name": "pagination",
+            "title": "Pagination Settings",
+            "description": "Table pagination settings."
+          },
+          {
+            "name": "reset-filter",
+            "title": "Reset filters and sorters",
+            "description": "Control filters and sorters by `filteredValue` and `sortOrder`."
+          },
+          {
+            "name": "responsive",
+            "title": "Responsive",
+            "description": "Responsive columns."
+          },
+          {
+            "name": "row-selection-and-operation",
+            "title": "Selection and operation",
+            "description": "To perform operations and clear selections after selecting some rows, use `rowSelection.selectedRowKeys` to control selected rows."
+          },
+          {
+            "name": "row-selection-custom",
+            "title": "Custom selection",
+            "description": "Use `rowSelection.selections` custom selections, default no select dropdown, show default selections via setting to `true`."
+          },
+          {
+            "name": "row-selection",
+            "title": "selection",
+            "description": "Rows can be selectable by making first column as a selectable column. You can use `rowSelection.type` to set selection type. Default is `checkbox`."
+          },
+          {
+            "name": "size",
+            "title": "size",
+            "description": "There are two compacted table sizes: `medium` and `small`. The `small` size is used in Modals only."
+          },
+          {
+            "name": "sticky",
+            "title": "Fixed header and scroll bar with the page",
+            "description": "For long table，need to scroll to view the header and scroll bar，then you can now set the fixed header and scroll bar to follow the page."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Table by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "summary",
+            "title": "Summary",
+            "description": "Set summary content by `summary` prop. Sync column fixed status with `Table.Summary.Cell`. You can fixed it by set `Table.Summary` `fixed` prop(since `4.16.0`)."
+          },
+          {
+            "name": "tree-data",
+            "title": "Tree data",
+            "description": "Display tree structure data in Table when there is field key `children` in dataSource, try to customize `childrenColumnName` property to avoid tree table structure."
+          },
+          {
+            "name": "virtual-list",
+            "title": "Virtual list",
+            "description": "Set `virtual` to enable virtual scroll, and `scroll.x` and `scroll.y` must be set at the same time with `number` type."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Table",
+        "tokens": [
+          {
+            "name": "bodySortBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table sorted column",
+            "descriptionZh": "表格排序列背景色"
+          },
+          {
+            "name": "borderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of table",
+            "descriptionZh": "表格边框/分割线颜色"
+          },
+          {
+            "name": "cellFontSize",
+            "type": "number",
+            "default": "",
+            "description": "Font size of table cell (large size by default)",
+            "descriptionZh": "单元格文字大小（默认大尺寸）"
+          },
+          {
+            "name": "cellFontSizeMD",
+            "type": "number",
+            "default": "",
+            "description": "Font size of table cell (middle size)",
+            "descriptionZh": "单元格文字大小（中等尺寸）"
+          },
+          {
+            "name": "cellFontSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Font size of table cell (small size)",
+            "descriptionZh": "单元格文字大小（小尺寸）"
+          },
+          {
+            "name": "cellPaddingBlock",
+            "type": "number",
+            "default": "",
+            "description": "Vertical padding of table cell",
+            "descriptionZh": "单元格纵向内间距"
+          },
+          {
+            "name": "cellPaddingBlockMD",
+            "type": "number",
+            "default": "",
+            "description": "Vertical padding of table cell (middle size)",
+            "descriptionZh": "单元格纵向内间距（中等尺寸）"
+          },
+          {
+            "name": "cellPaddingBlockSM",
+            "type": "number",
+            "default": "",
+            "description": "Vertical padding of table cell (small size)",
+            "descriptionZh": "单元格纵向内间距（小尺寸）"
+          },
+          {
+            "name": "cellPaddingInline",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of table cell (large size by default)",
+            "descriptionZh": "单元格横向内间距（默认大尺寸）"
+          },
+          {
+            "name": "cellPaddingInlineMD",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of table cell (middle size)",
+            "descriptionZh": "单元格横向内间距（中等尺寸）"
+          },
+          {
+            "name": "cellPaddingInlineSM",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of table cell (small size)",
+            "descriptionZh": "单元格横向内间距（小尺寸）"
+          },
+          {
+            "name": "expandIconBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of expand button",
+            "descriptionZh": "展开按钮背景色"
+          },
+          {
+            "name": "filterDropdownBg",
+            "type": "string",
+            "default": "",
+            "description": "Color of filter dropdown",
+            "descriptionZh": "过滤下拉菜单颜色"
+          },
+          {
+            "name": "filterDropdownMenuBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of filter dropdown menu item",
+            "descriptionZh": "过滤下拉菜单选项背景"
+          },
+          {
+            "name": "fixedHeaderSortActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of fixed table header when sorted",
+            "descriptionZh": "固定表头排序激活态背景色"
+          },
+          {
+            "name": "footerBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of footer",
+            "descriptionZh": "表格底部背景色"
+          },
+          {
+            "name": "footerColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of footer text",
+            "descriptionZh": "表格底部文字颜色"
+          },
+          {
+            "name": "headerBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of table header",
+            "descriptionZh": "表头背景"
+          },
+          {
+            "name": "headerBorderRadius",
+            "type": "number",
+            "default": "",
+            "description": "Border radius of table header",
+            "descriptionZh": "表头圆角"
+          },
+          {
+            "name": "headerColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of table header text",
+            "descriptionZh": "表头文字颜色"
+          },
+          {
+            "name": "headerFilterHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table header filter button when hovered",
+            "descriptionZh": "表头过滤按钮悬浮背景色"
+          },
+          {
+            "name": "headerSortActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table header when sorted",
+            "descriptionZh": "表头排序激活态背景色"
+          },
+          {
+            "name": "headerSortHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table header when sorted and hovered",
+            "descriptionZh": "表头排序激活态悬浮背景色"
+          },
+          {
+            "name": "headerSplitColor",
+            "type": "string",
+            "default": "",
+            "description": "Split border color of table header",
+            "descriptionZh": "表头分割线颜色"
+          },
+          {
+            "name": "rowExpandedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table expanded row",
+            "descriptionZh": "表格行展开背景色"
+          },
+          {
+            "name": "rowHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table hovered row",
+            "descriptionZh": "表格行悬浮背景色"
+          },
+          {
+            "name": "rowSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table selected row",
+            "descriptionZh": "表格行选中背景色"
+          },
+          {
+            "name": "rowSelectedHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of table selected row when hovered",
+            "descriptionZh": "表格行选中悬浮背景色"
+          },
+          {
+            "name": "selectionColumnWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Width of selection column",
+            "descriptionZh": "选择列宽度"
+          },
+          {
+            "name": "stickyScrollBarBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of sticky scrollbar",
+            "descriptionZh": "Sticky 模式下滚动条背景色"
+          },
+          {
+            "name": "stickyScrollBarBorderRadius",
+            "type": "number",
+            "default": "",
+            "description": "Border radius of sticky scrollbar",
+            "descriptionZh": "Sticky 模式下滚动条圆角"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Table",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with font-size, background, border-radius, scrollbar-color and other basic table container styles",
+            "descriptionZh": "根元素，包含字体大小、背景色、圆角、滚动条颜色等表格容器的基础样式"
+          },
+          {
+            "key": "title",
+            "description": "Title element with table title styling and layout",
+            "descriptionZh": "标题元素，包含表格标题的样式和布局"
+          },
+          {
+            "key": "content",
+            "description": "Content element with table content area styling and layout",
+            "descriptionZh": "内容元素，包含表格内容区域的样式和布局"
+          },
+          {
+            "key": "header.wrapper",
+            "description": "Header wrapper element with table header layout and container styles",
+            "descriptionZh": "头部容器元素，包含表头的布局和容器样式"
+          },
+          {
+            "key": "header.row",
+            "description": "Header row element with table header row layout and styling",
+            "descriptionZh": "头部行元素，包含表头行的布局和样式"
+          },
+          {
+            "key": "header.cell",
+            "description": "Header cell element with relative positioning, padding, word-wrap, background, text color, font-weight and other header cell styles",
+            "descriptionZh": "头部单元格元素，包含相对定位、内边距、文字换行、背景色、文字颜色、字体权重等表头单元格样式"
+          },
+          {
+            "key": "section",
+            "description": "Container element with clear-fix, max-width, scrollbar background and other table wrapper styles",
+            "descriptionZh": "容器元素，包含清除浮动、最大宽度、滚动条背景等表格包装容器样式"
+          },
+          {
+            "key": "body.wrapper",
+            "description": "Body wrapper element with table body layout and container styles",
+            "descriptionZh": "主体容器元素，包含表格主体的布局和容器样式"
+          },
+          {
+            "key": "body.row",
+            "description": "Body row element with hover effects, selected states, expanded states and other interactive row styles",
+            "descriptionZh": "主体行元素，包含数据行的悬浮效果、选中状态、展开状态等交互样式"
+          },
+          {
+            "key": "body.cell",
+            "description": "Body cell element with relative positioning, padding, word-wrap and other basic data cell styles",
+            "descriptionZh": "主体单元格元素，包含相对定位、内边距、文字换行等数据单元格的基础样式"
+          },
+          {
+            "key": "footer",
+            "description": "Footer element with table footer background color, text color and other footer styles",
+            "descriptionZh": "底部元素，包含表格底部的背景色、文字颜色等样式"
+          },
+          {
+            "key": "pagination.root",
+            "description": "Pagination root element with pagination component basic styles and layout",
+            "descriptionZh": "分页根元素，包含分页组件的基础样式和布局"
+          },
+          {
+            "key": "pagination.item",
+            "description": "Pagination item element with pagination item styling and interactive effects",
+            "descriptionZh": "分页单项元素，包含分页项的样式和交互效果"
+          }
+        ]
+      }
+    }
+  }
+}

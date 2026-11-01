@@ -1,0 +1,10 @@
+{
+  "id": "test-text-local-prop",
+  "expectedText": ["LOCAL_PROP_COPY"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/text-local-prop.bad.tsx",
+    "symbol": "TextLocalPropPage"
+  },
+  "report": "harness/reports/test-text-local-prop.json"
+}

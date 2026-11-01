@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/figma-workflow-target-scopes.schema.json",
+  "title": "AI-readable Figma Workflow Target Scopes",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "contractId", "recordedAtUtc", "authorization", "file", "targetPage", "globalBoundary", "readback", "workflows"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "contractId": { "const": "figma-workflow-targets-2026-08-09" },
+    "recordedAtUtc": { "type": "string", "format": "date-time" },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "recordedFrom", "sourceUrl"],
+      "properties": {
+        "kind": { "const": "explicit-user-supplied-target" },
+        "recordedFrom": { "const": "conversation-2026-08-09" },
+        "sourceUrl": { "const": "<your-figma-file-url>" }
+      }
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileKey", "entryNodeId", "entryNodeRole"],
+      "properties": {
+        "fileKey": { "const": "YOUR_FIGMA_FILE_KEY" },
+        "entryNodeId": { "const": "3150:7163" },
+        "entryNodeRole": { "const": "navigation-only" }
+      }
+    },
+    "targetPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nodeId", "name", "creationMode"],
+      "properties": {
+        "nodeId": { "const": "19249:401" },
+        "name": { "const": "AI-readable Kit / Workflow Targets" },
+        "creationMode": { "const": "new-isolated-page" }
+      }
+    },
+    "globalBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["existingContent", "allowCreateDedicatedTargets", "allowMutateExistingNodes", "allowDeleteExistingNodes", "allowRenameExistingNodes", "allowMutateExistingVariablesStylesComponents", "allowCreateFileLocalAssetsByDefault", "workflowScopedLocalAssetException", "allowPublishSharedLibrary", "allowChangeLibrarySettings"],
+      "properties": {
+        "existingContent": { "const": "read-only" },
+        "allowCreateDedicatedTargets": { "const": true },
+        "allowMutateExistingNodes": { "const": false },
+        "allowDeleteExistingNodes": { "const": false },
+        "allowRenameExistingNodes": { "const": false },
+        "allowMutateExistingVariablesStylesComponents": { "const": false },
+        "allowCreateFileLocalAssetsByDefault": { "const": false },
+        "workflowScopedLocalAssetException": { "$ref": "#/$defs/allowedAssetCreation" },
+        "allowPublishSharedLibrary": { "const": false },
+        "allowChangeLibrarySettings": { "const": false }
+      }
+    },
+    "readback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pageScreenshot", "localVariableCollections", "localVariableCount", "componentsOnTargetPage", "newVariablesCreated", "newComponentsCreated", "sharedLibraryPublished"],
+      "properties": {
+        "pageScreenshot": { "$ref": "#/$defs/pngReceipt" },
+        "localVariableCollections": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "variableCount"],
+            "properties": {
+              "id": { "type": "string", "minLength": 3 },
+              "name": { "type": "string", "minLength": 1 },
+              "variableCount": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "localVariableCount": { "type": "integer", "minimum": 0 },
+        "componentsOnTargetPage": { "type": "integer", "minimum": 0 },
+        "newVariablesCreated": { "const": 0 },
+        "newComponentsCreated": { "const": 0 },
+        "sharedLibraryPublished": { "const": false }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/workflowTarget" }
+    }
+  },
+  "$defs": {
+    "nodeId": { "type": "string", "pattern": "^[0-9]+:[0-9]+$" },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "deviceScaleFactor"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "deviceScaleFactor": { "const": 1 }
+      }
+    },
+    "pngReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "width", "height"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^figma/evidence/[A-Za-z0-9._/-]+\\.png$" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["read", "write", "denied", "assetCreation"],
+      "properties": {
+        "read": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 3 } },
+        "write": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 3 } },
+        "denied": { "type": "array", "minItems": 5, "items": { "type": "string", "minLength": 3 } },
+        "assetCreation": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["allowed"],
+              "properties": { "allowed": { "const": false } }
+            },
+            { "$ref": "#/$defs/allowedAssetCreation" }
+          ]
+        }
+      }
+    },
+    "allowedAssetCreation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "workflowId", "targetNodeId", "prefix", "allowedKinds", "fileLocalOnly", "allowModifyExisting", "allowPublish"],
+      "properties": {
+        "allowed": { "const": true },
+        "workflowId": { "const": "design-system-zero-to-one" },
+        "targetNodeId": { "$ref": "#/$defs/nodeId" },
+        "prefix": { "const": "AK/OPS" },
+        "allowedKinds": {
+          "type": "array",
+          "prefixItems": [{ "const": "variables" }, { "const": "styles" }, { "const": "components" }],
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "fileLocalOnly": { "const": true },
+        "allowModifyExisting": { "const": false },
+        "allowPublish": { "const": false }
+      }
+    },
+    "workflowTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workflowId", "mode", "status", "pageNodeId", "groupNodeId", "scopeNodeId", "targetNodeId", "targetUrl", "viewport", "permissions", "screenshot"],
+      "properties": {
+        "workflowId": { "enum": ["image2-to-figma-page", "prd-antd-to-figma-calibrated-page", "design-system-zero-to-one", "figma-3d-situation-screen"] },
+        "mode": { "enum": ["capture-and-native-rebuild", "capture-and-page-readback", "scoped-native-build", "write-output-then-readback"] },
+        "status": { "const": "authorized-target-ready" },
+        "pageNodeId": { "$ref": "#/$defs/nodeId" },
+        "groupNodeId": { "$ref": "#/$defs/nodeId" },
+        "scopeNodeId": { "$ref": "#/$defs/nodeId" },
+        "targetNodeId": { "$ref": "#/$defs/nodeId" },
+        "targetUrl": { "type": "string", "pattern": "^https://www\\.figma\\.com/design/" },
+        "viewport": { "$ref": "#/$defs/viewport" },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "screenshot": { "$ref": "#/$defs/pngReceipt" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "workflowId": { "const": "image2-to-figma-page" } }, "required": ["workflowId"] },
+          "then": { "properties": { "pageNodeId": { "const": "19249:401" }, "groupNodeId": { "const": "19249:402" }, "scopeNodeId": { "const": "19249:403" }, "targetNodeId": { "const": "YOUR_NODE_ID" } } }
+        },
+        {
+          "if": { "properties": { "workflowId": { "const": "prd-antd-to-figma-calibrated-page" } }, "required": ["workflowId"] },
+          "then": { "properties": { "pageNodeId": { "const": "19249:401" }, "groupNodeId": { "const": "19249:411" }, "scopeNodeId": { "const": "19249:412" }, "targetNodeId": { "const": "19249:417" } } }
+        },
+        {
+          "if": { "properties": { "workflowId": { "const": "design-system-zero-to-one" } }, "required": ["workflowId"] },
+          "then": { "properties": { "pageNodeId": { "const": "19249:401" }, "groupNodeId": { "const": "19249:420" }, "scopeNodeId": { "const": "19249:421" }, "targetNodeId": { "const": "19249:426" } } }
+        },
+        {
+          "if": { "properties": { "workflowId": { "const": "figma-3d-situation-screen" } }, "required": ["workflowId"] },
+          "then": { "properties": { "pageNodeId": { "const": "19249:401" }, "groupNodeId": { "const": "19249:429" }, "scopeNodeId": { "const": "19249:430" }, "targetNodeId": { "const": "19249:435" } } }
+        }
+      ]
+    }
+  }
+}

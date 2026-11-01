@@ -1,0 +1,98 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* 画布与卡片底色跟随小豆盒草稿主题（页面底色 / 容器底色），其余边框与文字用中性灰阶。 */
+body {
+  background: var(--device-ops-color-bg-base, #f5f5f5);
+}
+
+.ludi-matrix {
+  --matrix-border: rgba(0, 0, 0, 0.08);
+  --matrix-muted: #737373;
+  --matrix-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  display: grid;
+  gap: 28px;
+  padding: 24px;
+}
+
+.ludi-matrix__group > h2 {
+  color: var(--matrix-muted);
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0 10px 4px;
+}
+
+.ludi-matrix__card {
+  background: var(--device-ops-color-bg-container, #ffffff);
+  border: 1px solid var(--matrix-border);
+  border-radius: 12px;
+  display: grid;
+  gap: 24px;
+  padding: 20px 24px 24px;
+}
+
+.ludi-matrix__section > h3 {
+  color: var(--device-ops-color-text, #171717);
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.ludi-matrix__cells {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+}
+
+.ludi-matrix__cell {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  min-width: 0;
+}
+
+.ludi-matrix__sample {
+  align-items: center;
+  display: flex;
+  min-height: 40px;
+}
+
+.ludi-matrix__cell > label {
+  color: var(--matrix-muted);
+  font-family: var(--matrix-mono);
+  font-size: 11px;
+}
+
+/* Modal / Drawer 内嵌在格子里：transform 让 fixed 定位以格子为包含块，遮罩只盖住格子。 */
+.ludi-matrix__sample[data-stage="overlay"] {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--matrix-border);
+  border-radius: 10px;
+  height: 252px;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+  width: 340px;
+}
+
+/* Popconfirm 的气泡渲染在格子内：触发按钮靠上，底部留白由 StageSample 按气泡实际高度补足。 */
+.ludi-matrix__sample[data-stage="popup"] {
+  align-items: flex-start;
+  position: relative;
+  width: 300px;
+}
+
+.ludi-matrix__unknown {
+  background: var(--device-ops-color-bg-container, #ffffff);
+  border: 1px solid var(--matrix-border, rgba(0, 0, 0, 0.08));
+  border-radius: 12px;
+  color: var(--device-ops-color-text, #171717);
+  margin: 24px;
+  padding: 24px;
+}

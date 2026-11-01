@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/guided-pilot-generation-evidence.schema.json",
+  "title": "Guided Pilot Generation Agent Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "stage",
+    "runId",
+    "artifactId",
+    "arm",
+    "outputMode",
+    "qualifying",
+    "scoring",
+    "consumerPackage",
+    "provider",
+    "model",
+    "reasoningEffort",
+    "command",
+    "args",
+    "cwd",
+    "runner",
+    "prompt",
+    "startedAtUtc",
+    "stoppedAtUtc",
+    "exitCode",
+    "status",
+    "failure",
+    "timedOut",
+    "terminationSignal",
+    "spawnError",
+    "stdout",
+    "stderr",
+    "immutableBeforeSha256",
+    "immutableAfterSha256"
+  ],
+  "properties": {
+    "$schema": { "const": "https://ai-readable.local/schema/guided-pilot-generation-evidence.schema.json" },
+    "version": { "enum": ["1.0.0", "1.1.0"] },
+    "stage": { "const": "guided-pilot-generation" },
+    "runId": { "type": "string", "pattern": "^guided-pilot-[a-z0-9][a-z0-9-]*$" },
+    "artifactId": { "$ref": "#/$defs/artifactId" },
+    "arm": { "const": "consumer" },
+    "outputMode": { "const": "kit-consumer" },
+    "qualifying": { "const": false },
+    "scoring": { "const": false },
+    "consumerPackage": { "$ref": "#/$defs/consumerPackage" },
+    "provider": { "enum": ["claude", "codex"] },
+    "model": { "type": "string", "minLength": 1 },
+    "reasoningEffort": { "enum": ["low", "medium", "high", "xhigh", "max"] },
+    "command": { "type": "string", "minLength": 1 },
+    "args": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cwd": { "type": "string", "minLength": 1 },
+    "execution": { "$ref": "#/$defs/execution" },
+    "runner": { "$ref": "#/$defs/runnerReceipt" },
+    "prompt": {
+      "allOf": [
+        { "$ref": "#/$defs/evidenceFile" },
+        { "type": "object", "properties": { "path": { "const": "prompt.md" } } }
+      ]
+    },
+    "startedAtUtc": { "type": "string", "format": "date-time" },
+    "stoppedAtUtc": { "type": "string", "format": "date-time" },
+    "exitCode": { "type": ["integer", "null"] },
+    "status": { "enum": ["passed", "failed"] },
+    "failure": { "type": ["string", "null"] },
+    "failureCategory": {
+      "enum": [
+        null,
+        "immutable-input-drift",
+        "spawn-error",
+        "command-timeout",
+        "command-exit-nonzero",
+        "required-output-missing"
+      ]
+    },
+    "requiredOutputVerification": { "$ref": "#/$defs/requiredOutputVerification" },
+    "timedOut": { "type": "boolean" },
+    "terminationSignal": { "type": ["string", "null"] },
+    "spawnError": { "type": ["string", "null"] },
+    "stdout": {
+      "allOf": [
+        { "$ref": "#/$defs/evidenceFile" },
+        { "type": "object", "properties": { "path": { "const": "stdout.log" } } }
+      ]
+    },
+    "stderr": {
+      "allOf": [
+        { "$ref": "#/$defs/evidenceFile" },
+        { "type": "object", "properties": { "path": { "const": "stderr.log" } } }
+      ]
+    },
+    "immutableBeforeSha256": { "$ref": "#/$defs/sha256" },
+    "immutableAfterSha256": { "$ref": "#/$defs/sha256" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": { "version": { "const": "1.1.0" } },
+        "required": ["version"]
+      },
+      "then": {
+        "properties": {
+          "execution": {},
+          "failureCategory": {},
+          "requiredOutputVerification": {}
+        },
+        "required": ["execution", "failureCategory", "requiredOutputVerification"]
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "evidenceFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "runnerReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "const": "scripts/run-guided-pilot-generation-agent.mjs" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "sandboxMode", "workspace"],
+      "properties": {
+        "provider": { "enum": ["claude", "codex"] },
+        "sandboxMode": {
+          "enum": [
+            "claude-safe-mode",
+            "codex-dangerously-bypass-approvals-and-sandbox",
+            "command-override"
+          ]
+        },
+        "workspace": { "type": "string", "minLength": 1 }
+      }
+    },
+    "requiredOutputVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredOutputs", "missingOutputs"],
+      "properties": {
+        "requiredOutputs": {
+          "const": ["package.json", "index.html", "src", "public/artifact-meta.json"]
+        },
+        "missingOutputs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "consumerPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "tarball", "receipt"],
+      "properties": {
+        "name": { "const": "@ai-readable/kit" },
+        "version": { "type": "string", "minLength": 1 },
+        "tarball": {
+          "allOf": [
+            { "$ref": "#/$defs/evidenceFile" },
+            { "type": "object", "properties": { "path": { "type": "string", "pattern": "^vendor/[a-zA-Z0-9][a-zA-Z0-9._-]*$" } } }
+          ]
+        },
+        "receipt": {
+          "allOf": [
+            { "$ref": "#/$defs/evidenceFile" },
+            { "type": "object", "properties": { "path": { "const": "consumer-package-receipt.json" } } }
+          ]
+        }
+      }
+    }
+  }
+}

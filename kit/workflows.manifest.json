@@ -1,0 +1,3249 @@
+{
+  "$schema": "schema/workflows.schema.json",
+  "version": "1.0.0",
+  "provenance": {
+    "status": "confirmed",
+    "decision": "Confirmed by the user on 2026-07-16 as the canonical seven-workflow set. Repository tutorials provide implementation sources and do not define the top-level registry membership.",
+    "sources": [
+      "../docs/AI 工作流从组件架构到 Skills 沉淀.md",
+      "../docs/01_基于现有组件规范.md",
+      "../docs/02_基于Image2.md",
+      "../docs/03_基于开源UI库.md",
+      "../docs/01_Figma_规范转Token与组件.md",
+      "../docs/01_颜色搭建.md",
+      "../docs/02_数据大屏还原篇.md"
+    ]
+  },
+  "workflows": [
+    {
+      "id": "requirement-to-final-page",
+      "title": "Requirement to final page",
+      "source": "../docs/AI 工作流从组件架构到 Skills 沉淀.md",
+      "inputs": [
+        {
+          "name": "requirements",
+          "type": "file",
+          "required": true,
+          "description": "Requirements, users, tasks, states, and acceptance criteria"
+        },
+        {
+          "name": "projectContext",
+          "type": "file",
+          "required": true,
+          "description": "Real-product business context, source-of-truth boundary, and frozen frontendFoundation contract"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A requirement must become a tested runnable page",
+          "The target maps to registered kit patterns and components"
+        ],
+        "stopWhen": [
+          "Business context or acceptance criteria are incomplete",
+          "Input validation, build, interaction, visual, or bundle gates fail"
+        ]
+      },
+      "tools": {
+        "skills": [
+          "playwright",
+          "orchestration-patterns"
+        ],
+        "scripts": [
+          "scripts/generate-project-pages.mjs",
+          "scripts/test-project-generator.mjs",
+          "scripts/validate-projects.mjs",
+          "scripts/validate-sample-pack.mjs",
+          "scripts/validate-flow-acceptance.mjs",
+          "scripts/freeze-artifact-under-test.mjs",
+          "scripts/freeze-artifact-v1.2.1.mjs",
+          "scripts/verify-artifact-under-test.mjs",
+          "scripts/run-flow-acceptance.mjs",
+          "scripts/validate-blind-evaluator.mjs",
+          "scripts/validate-blind-evidence.mjs",
+          "scripts/create-blind-assignment.mjs",
+          "scripts/freeze-consumer-package-receipt.mjs",
+          "scripts/test-same-artifact-acceptance.mjs",
+          "scripts/test-blind-protocol-v1.2.mjs",
+          "scripts/test-blind-freeze-preflight-v1.2.1.mjs",
+          "scripts/validate-blind-adoption.mjs",
+          "scripts/run-guided-pilot-generation-agent.mjs",
+          "scripts/run-guided-pilot-readiness.mjs",
+          "scripts/run-guided-pilot-flow-smoke.mjs",
+          "scripts/validate-guided-pilot.mjs",
+          "harness/runner/run-scenario.mjs",
+          "scripts/visual-diff.mjs"
+        ],
+        "external": [
+          "Browser",
+          "TypeScript"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "project-schema",
+          "type": "manifest",
+          "path": "schema/project-description.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "foundation-contract-schema",
+          "type": "manifest",
+          "path": "schema/project-context.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "project-sample-pack-schema",
+          "type": "manifest",
+          "path": "schema/project-sample-pack.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "project-flow-acceptance-schema",
+          "type": "manifest",
+          "path": "schema/project-flow-acceptance.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "project-artifact-receipt-schema",
+          "type": "manifest",
+          "path": "schema/project-artifact-under-test.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "project-flow-evidence-schema",
+          "type": "manifest",
+          "path": "schema/project-flow-acceptance-evidence.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-artifact-seal-schema",
+          "type": "manifest",
+          "path": "schema/blind-artifact-seal.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-evaluator-receipt-schema",
+          "type": "manifest",
+          "path": "schema/blind-evaluator-receipt.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-consumer-package-receipt-schema",
+          "type": "manifest",
+          "path": "schema/blind-consumer-package-receipt.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-pre-reveal-schema",
+          "type": "manifest",
+          "path": "schema/blind-prd-pre-reveal-contract.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-input-receipt-schema",
+          "type": "manifest",
+          "path": "schema/blind-prd-input-receipt.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-adoption-registry-schema",
+          "type": "manifest",
+          "path": "schema/blind-adoption-registry.schema.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "same-artifact-acceptance-plan",
+          "type": "document",
+          "path": "../docs/PLAN-same-artifact-blind-acceptance.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-protocol-v12-plan",
+          "type": "document",
+          "path": "../docs/PLAN-blind-protocol-v1.2.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-protocol-v121-preflight-plan",
+          "type": "document",
+          "path": "../docs/PLAN-blind-protocol-v1.2.1-preflight.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-protocol-v122-runtime-evidence-plan",
+          "type": "document",
+          "path": "../docs/PLAN-blind-protocol-v1.2.2-runtime-evidence.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-adoption-registry",
+          "type": "manifest",
+          "path": "quality/blind-adoption-registry.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-02-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-02/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-02-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-02/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-02-replacement-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/consumer-package-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-rejected-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/consumer-package-receipt.pre-review-rejected.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-package-review-rejection",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/package-review-rejection.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-02-replacement-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-02-replacement-evaluator-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/evaluator/revision-01/evaluator-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-visual-evaluation",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/visual-evaluator/visual-evaluation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-anonymous-evaluation",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/anonymous-evaluation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-result",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/result.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-02-replacement-post-score-observation",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-02-replacement-01/post-score-observation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03/consumer-package-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-03/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-03-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-03/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-03-freeze-failure",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03/freeze-failure.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-result",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03/result.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/consumer-package-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-03-replacement-rejected-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/consumer-package-receipt.validator-p1-rejected.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-rejected-pre-reveal-contract",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/pre-reveal-contract.validator-p1-rejected.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-pre-reveal-review-rejection",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/pre-reveal-review-rejection.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-03-replacement-product-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/product-contract/manifest.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-03-replacement-evaluator-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/evaluator/revision-01/evaluator-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-visual-evaluation",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/visual-evaluator/visual-evaluation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-post-score-observation",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/post-score-observation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-anonymous-evaluation",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/anonymous-evaluation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-03-replacement-result",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-03-replacement-01/result.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04/consumer-package-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-product-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04/product-contract/manifest.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-evaluator-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04/evaluator/revision-01/evaluator-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-protocol-review",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04/protocol-review.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-result",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04/result.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/consumer-package-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-replacement-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-replacement-product-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/product-contract/manifest.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-replacement-generation-readiness-failure",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/generation-readiness-failure.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-protocol-review",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/protocol-review.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-result",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-01/result.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-package-receipt",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/consumer-package-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-pre-reveal-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/pre-reveal-contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-input-receipt",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/input-receipt.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-product-contract",
+          "type": "manifest",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/product-contract/manifest.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-generation-readiness-failure",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/generation-readiness-failure.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-protocol-review",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/protocol-review.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-04-replacement-02-result",
+          "type": "evidence",
+          "path": "quality/blind-runs/blind-prd-04-replacement-02/result.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "foundation-catalog",
+          "type": "manifest",
+          "path": "foundations/catalog.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "antd-design-pack",
+          "type": "manifest",
+          "path": "foundations/design-packs/antd-6.5.0.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "generated-fixture",
+          "type": "code",
+          "path": "generator/fixtures/field-service/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "tianshu-firmware-canary",
+          "type": "code",
+          "path": "generator/fixtures/tianshu-firmware/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "kit-consumer-canary",
+          "type": "code",
+          "path": "generator/fixtures/kit-consumer-canary/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "tianshu-product-app",
+          "type": "code",
+          "path": "projects/tianshu-ops/app.tsx",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "tianshu-technical-ledger",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/evidence/page-acceptance.technical.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-visual-ledger",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/evidence/page-acceptance.visual.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "lab-technical-ledger",
+          "type": "evidence",
+          "path": "quality/lab-page-acceptance.technical.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "lab-visual-ledger",
+          "type": "evidence",
+          "path": "quality/lab-page-acceptance.visual.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "component-status-matrix",
+          "type": "manifest",
+          "path": "quality/component-status-matrix.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "foundation-browser-run",
+          "type": "evidence",
+          "path": "output/playwright/foundation-audit-2026-07-19/browser-run.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "generator-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/generator.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "package-third-consumer-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/delivery.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-vulnerability-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/blind-prd-vulnerability-platform.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "project-layer-contract-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/project-layer-contracts-20260724.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "browser-page",
+          "label": "TianShu operations workspace",
+          "description": "Runnable 16-page Ant Design product workspace generated and accepted from the canonical requirement-to-final-page path."
+        },
+        "primaryArtifactId": "tianshu-product-app",
+        "presentationRequired": true,
+        "open": {
+          "mode": "browser",
+          "cwd": "preview",
+          "command": "npm run dev",
+          "target": "http://127.0.0.1:5188/tianshu/dashboard"
+        },
+        "supportingArtifactIds": [
+          "project-schema",
+          "foundation-contract-schema",
+          "project-sample-pack-schema",
+          "project-flow-acceptance-schema",
+          "project-artifact-receipt-schema",
+          "project-flow-evidence-schema",
+          "blind-artifact-seal-schema",
+          "blind-evaluator-receipt-schema",
+          "blind-consumer-package-receipt-schema",
+          "blind-pre-reveal-schema",
+          "blind-input-receipt-schema",
+          "blind-adoption-registry-schema",
+          "same-artifact-acceptance-plan",
+          "blind-protocol-v12-plan",
+          "blind-protocol-v121-preflight-plan",
+          "blind-protocol-v122-runtime-evidence-plan",
+          "blind-adoption-registry",
+          "blind-prd-02-pre-reveal-contract",
+          "blind-prd-02-input-receipt",
+          "blind-prd-02-replacement-package-receipt",
+          "blind-prd-02-replacement-rejected-package-receipt",
+          "blind-prd-02-replacement-package-review-rejection",
+          "blind-prd-02-replacement-pre-reveal-contract",
+          "blind-prd-02-replacement-input-receipt",
+          "blind-prd-02-replacement-evaluator-receipt",
+          "blind-prd-02-replacement-visual-evaluation",
+          "blind-prd-02-replacement-anonymous-evaluation",
+          "blind-prd-02-replacement-result",
+          "blind-prd-02-replacement-post-score-observation",
+          "blind-prd-03-package-receipt",
+          "blind-prd-03-pre-reveal-contract",
+          "blind-prd-03-input-receipt",
+          "blind-prd-03-freeze-failure",
+          "blind-prd-03-result",
+          "blind-prd-03-replacement-package-receipt",
+          "blind-prd-03-replacement-pre-reveal-contract",
+          "blind-prd-03-replacement-rejected-package-receipt",
+          "blind-prd-03-replacement-rejected-pre-reveal-contract",
+          "blind-prd-03-replacement-pre-reveal-review-rejection",
+          "blind-prd-03-replacement-input-receipt",
+          "blind-prd-03-replacement-product-contract",
+          "blind-prd-03-replacement-evaluator-receipt",
+          "blind-prd-03-replacement-visual-evaluation",
+          "blind-prd-03-replacement-post-score-observation",
+          "blind-prd-03-replacement-anonymous-evaluation",
+          "blind-prd-03-replacement-result",
+          "blind-prd-04-package-receipt",
+          "blind-prd-04-pre-reveal-contract",
+          "blind-prd-04-input-receipt",
+          "blind-prd-04-product-contract",
+          "blind-prd-04-evaluator-receipt",
+          "blind-prd-04-protocol-review",
+          "blind-prd-04-result",
+          "blind-prd-04-replacement-package-receipt",
+          "blind-prd-04-replacement-pre-reveal-contract",
+          "blind-prd-04-replacement-input-receipt",
+          "blind-prd-04-replacement-02-package-receipt",
+          "blind-prd-04-replacement-02-pre-reveal-contract",
+          "blind-prd-04-replacement-02-input-receipt",
+          "blind-prd-04-replacement-02-product-contract",
+          "foundation-catalog",
+          "antd-design-pack",
+          "generated-fixture",
+          "tianshu-firmware-canary",
+          "kit-consumer-canary",
+          "tianshu-technical-ledger",
+          "tianshu-visual-ledger",
+          "lab-technical-ledger",
+          "lab-visual-ledger",
+          "component-status-matrix",
+          "foundation-browser-run",
+          "generator-evidence",
+          "package-third-consumer-evidence",
+          "blind-prd-vulnerability-evidence",
+          "project-layer-contract-evidence"
+        ],
+        "blockedDelivery": null
+      },
+      "acceptanceGates": [
+        {
+          "id": "foundation-contract",
+          "criteria": "Generation validates the selected output mode, framework, exact foundation package and version, design pack hash, import roots, and acceptance adapters before writing",
+          "command": "npm run validate:foundations && npm run test:project-generator && npm run check:harness:import-profiles",
+          "evidence": [
+            "foundations/catalog.json",
+            "foundations/design-packs/antd-6.5.0.json"
+          ]
+        },
+        {
+          "id": "generator-contract",
+          "criteria": "Explicit valid input generates deterministic code and invalid input writes nothing",
+          "command": "npm run test:project-generator",
+          "evidence": [
+            "workflows/evidence/generator.json"
+          ]
+        },
+        {
+          "id": "sample-data-continuity",
+          "criteria": "New projects bind stable demonstration objects through sample-pack, resolve every page data requirement, and generate pages from one read-only sample-data module",
+          "command": "npm run validate:sample-pack && npm run test:project-generator",
+          "evidence": [
+            "projects/sample-flow-project/evidence/sample-pack-freeze.json",
+            "projects/sample-flow-project/generated/sample-data.ts"
+          ]
+        },
+        {
+          "id": "cross-page-flow-acceptance",
+          "criteria": "Only approved flow contracts run; a real browser preserves stable object IDs across at least two pages and proves an observable state change, result destination, and recovery path",
+          "command": "npm run check:flow-acceptance -- --project projects/sample-flow-project",
+          "evidence": [
+            "projects/sample-flow-project/evidence/flow-acceptance.json",
+            "projects/sample-flow-project/evidence/flow-asset-drawer.png"
+          ]
+        },
+        {
+          "id": "same-artifact-blind-acceptance",
+          "criteria": "Qualifying blind candidates bind canonical run identity, product-only receipts, permanent external seals, evaluator revisions, raw execution output, stable step and interaction IDs, runner-owned runtime observations, screenshots, and final evidence; missing preview and preview readiness failures also preserve canonical failed evidence while all 16 negative categories fail closed",
+          "command": "npm run test:blind-protocol-v1.2",
+          "evidence": [
+            "schema/project-artifact-under-test.schema.json",
+            "schema/blind-artifact-seal.schema.json",
+            "schema/blind-evaluator-receipt.schema.json",
+            "schema/project-flow-acceptance-evidence.schema.json",
+            "scripts/test-same-artifact-acceptance.mjs",
+            "scripts/test-blind-protocol-v1.2.mjs",
+            "../docs/PLAN-blind-protocol-v1.2.md",
+            "../docs/PLAN-blind-protocol-v1.2.2-runtime-evidence.md"
+          ]
+        },
+        {
+          "id": "blind-freeze-preclaim",
+          "criteria": "Fresh v1.2.2 attempts bind committed pre-reveal and immutable input receipt bytes to the active registry record; replacement identities, input, assignment, workspace, source, and dist stay fresh; the initial-freeze command validates its implementation closure, all six explicit contract paths, non-empty build and preview scripts, route, receipt absence, and claim availability before synchronously rechecking the snapshot and reserving a permanent claim",
+          "command": "npm run test:blind-freeze-preflight-v1.2.1",
+          "evidence": [
+            "scripts/freeze-artifact-under-test.mjs",
+            "scripts/freeze-artifact-v1.2.1.mjs",
+            "scripts/test-blind-freeze-preflight-v1.2.1.mjs",
+            "../docs/PLAN-blind-protocol-v1.2.1-preflight.md",
+            "../docs/PLAN-blind-protocol-v1.2.2-runtime-evidence.md"
+          ]
+        },
+        {
+          "id": "blind-adoption-registration",
+          "criteria": "The independent 5-run KPI has one registry owner; every future slot freezes commits, protocol hashes, package bytes, arm isolation, anonymous assignment, metrics, and an unopened input receipt before PRD disclosure",
+          "command": "npm run validate:blind-adoption",
+          "evidence": [
+            "quality/blind-adoption-registry.json",
+            "quality/blind-runs/blind-prd-02/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-02/input-receipt.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/consumer-package-receipt.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/consumer-package-receipt.pre-review-rejected.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/package-review-rejection.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/input-receipt.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/evaluator/revision-01/evaluator-receipt.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/visual-evaluator/visual-evaluation.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/anonymous-evaluation.json",
+            "quality/blind-runs/blind-prd-02-replacement-01/result.json",
+            "quality/blind-runs/blind-prd-03/consumer-package-receipt.json",
+            "quality/blind-runs/blind-prd-03/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-03/input-receipt.json",
+            "quality/blind-runs/blind-prd-03/freeze-failure.json",
+            "quality/blind-runs/blind-prd-03/result.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/consumer-package-receipt.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/consumer-package-receipt.validator-p1-rejected.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/pre-reveal-contract.validator-p1-rejected.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/pre-reveal-review-rejection.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/input-receipt.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/product-contract/manifest.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/evaluator/revision-01/evaluator-receipt.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/visual-evaluator/visual-evaluation.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/post-score-observation.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/anonymous-evaluation.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/result.json",
+            "quality/blind-runs/blind-prd-04/consumer-package-receipt.json",
+            "quality/blind-runs/blind-prd-04/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-04/input-receipt.json",
+            "quality/blind-runs/blind-prd-04/product-contract/manifest.json",
+            "quality/blind-runs/blind-prd-04/evaluator/revision-01/evaluator-receipt.json",
+            "quality/blind-runs/blind-prd-04/protocol-review.json",
+            "quality/blind-runs/blind-prd-04/result.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/consumer-package-receipt.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/input-receipt.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/product-contract/manifest.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/generation-readiness-failure.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/protocol-review.json",
+            "quality/blind-runs/blind-prd-04-replacement-01/result.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/consumer-package-receipt.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/pre-reveal-contract.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/input-receipt.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/product-contract/manifest.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/generation-readiness-failure.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/protocol-review.json",
+            "quality/blind-runs/blind-prd-04-replacement-02/result.json",
+            "schema/blind-prd-input-receipt.schema.json"
+          ]
+        },
+        {
+          "id": "intent-card-view-decision",
+          "criteria": "A post-score drift observation may add only the optional intentCard.viewDecision primary, supporting, and rationale fields; malformed or self-conflicting decisions fail closed without migrating existing pages",
+          "command": "npm run validate:projects",
+          "evidence": [
+            "quality/blind-runs/blind-prd-02-replacement-01/post-score-observation.json",
+            "quality/blind-runs/blind-prd-03-replacement-01/post-score-observation.json",
+            "scripts/validate-projects.mjs",
+            "scripts/generate-project-pages.mjs"
+          ]
+        },
+        {
+          "id": "page-technical-visual-split",
+          "criteria": "Lab and TianShu pages each execute a key interaction while technical and visual verdicts remain independently recorded",
+          "command": "npm run validate:page-acceptance && npm run validate:page-acceptance:lab",
+          "evidence": [
+            "projects/tianshu-ops/evidence/page-acceptance.technical.json",
+            "projects/tianshu-ops/evidence/page-acceptance.visual.json",
+            "quality/lab-page-acceptance.technical.json",
+            "quality/lab-page-acceptance.visual.json",
+            "output/playwright/foundation-audit-2026-07-19/browser-run.json"
+          ]
+        },
+        {
+          "id": "repository-regression",
+          "criteria": "Existing projects, harness contracts, DOM contracts, and bundles stay within their fixed gates",
+          "command": "npm run validate",
+          "evidence": [
+            "workflows/evidence/baseline.json"
+          ]
+        },
+        {
+          "id": "package-third-consumer",
+          "criteria": "A deterministic tarball installs into an isolated strict NodeNext consumer, exposes the public API, excludes private runtime-control files, and runs the packaged harness and generator across working directories",
+          "command": "npm run check:package",
+          "evidence": [
+            "workflows/evidence/delivery.json",
+            "workflows/evidence/blind-prd-vulnerability-platform.json"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/workflow-evidence.schema.json",
+        "records": [
+          "workflows/evidence/generator.json",
+          "workflows/evidence/baseline.json",
+          "workflows/evidence/delivery.json",
+          "workflows/evidence/blind-prd-vulnerability-platform.json",
+          "workflows/evidence/project-layer-contracts-20260724.json"
+        ]
+      },
+      "examples": [
+        "generator/fixtures/field-service/project-description.json",
+        "generator/fixtures/tianshu-firmware/project-description.json",
+        "projects/tianshu-ops/pages.json",
+        "projects/sample-flow-project/project-description.json"
+      ],
+      "externalDependencies": [
+        {
+          "id": "kit-component-registry",
+          "required": true,
+          "availability": "available",
+          "fallback": "Fail before writing when a pattern or component is not registered"
+        }
+      ],
+      "completion": {
+        "status": "implemented",
+        "summary": "The three-mode foundation contract, deterministic multi-framework generator, mode-aware import policy, split technical and visual ledgers, sample-pack continuity, approved cross-page flow acceptance, and blind protocol v1.2/v1.2.1/v1.2.2 gates are implemented. The registry preserves eight historical attempts: three qualifying and five invalidated. Their raw kitFirstPass values remain frozen. Stage diagnostics classify the current KPI assessment as indeterminate-current-harness. The 18-cell non-scoring synthetic readiness matrix and C5 independent review are complete. One authorized guided pilot with a consumed historical PRD produced honest typecheck, build, preview, flow, shutdown, source, and dist evidence; it remains NO-GO because its generation attempt lacked a system-enforced workspace read boundary.",
+        "remaining": [
+          "Close the guided-pilot generation workspace-read isolation P1, then rerun with fresh run, artifact, workspace, source, dist, and evidence identities while keeping the final eligible PRD untouched",
+          "Preserve frozen protocol thresholds and historical raw evidence while keeping attribution at indeterminate-current-harness",
+          "Apply the frozen viewDecision only when a new page has a real priority decision and retain its runtime negative examples",
+          "Keep generation-trace.json, page-context, the 39 component-field rewrite, full Block IDs, and the existing 32-page migration deferred until their triggers occur"
+        ]
+      }
+    },
+    {
+      "id": "existing-figma-library-to-page",
+      "title": "Existing Figma library to page",
+      "source": "../docs/01_基于现有组件规范.md",
+      "inputs": [
+        {
+          "name": "fileKey",
+          "type": "string",
+          "required": true,
+          "description": "Real target Figma file key"
+        },
+        {
+          "name": "auditScope",
+          "type": "array",
+          "required": true,
+          "description": "Authorized pages and components for audit"
+        },
+        {
+          "name": "pageBrief",
+          "type": "file",
+          "required": true,
+          "description": "Page requirements and acceptance criteria"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A real Figma library must drive component selection",
+          "Published variables and components must remain linked"
+        ],
+        "stopWhen": [
+          "fileKey, scope, permission, or MCP access is missing",
+          "The component tree or variable choice needs product confirmation"
+        ]
+      },
+      "tools": {
+        "skills": [
+          "figma:figma-use",
+          "figma:figma-generate-design",
+          "figma-component-builder",
+          "playwright"
+        ],
+        "scripts": [
+          "scripts/build-figma-component-index.mjs",
+          "scripts/validate-figma-evidence.mjs",
+          "scripts/visual-diff.mjs"
+        ],
+        "external": [
+          "Figma MCP",
+          "Browser"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "component-index",
+          "type": "manifest",
+          "path": "design-systems/ops-canvas/component-index.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "figma-evidence",
+          "type": "evidence",
+          "path": "figma/evidence/existing-figma-library.external-blocked.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-audit",
+          "type": "manifest",
+          "path": "figma/business-components-v3.audit.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "business-components-readback",
+          "type": "manifest",
+          "path": "figma/business-components-v3.readback-2026-07-29.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "business-components-page-templates-node",
+          "type": "figma-node",
+          "path": "figma/evidence/business-components-v3-post-publish-recapture-2026-07-30.png",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "business-components-evidence",
+          "type": "evidence",
+          "path": "figma/evidence/business-components-v3-vulnerability.verified.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-publish-capture",
+          "type": "image",
+          "path": "figma/evidence/business-components-v3-post-publish-2026-07-29.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-recapture",
+          "type": "image",
+          "path": "figma/evidence/business-components-v3-post-publish-recapture-2026-07-30.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-browser-reference",
+          "type": "image",
+          "path": "figma/evidence/business-components-v3-vulnerability-browser-2026-07-30.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-capture-node",
+          "type": "image",
+          "path": "figma/evidence/business-components-v3-vulnerability-capture-2026-07-30.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-capture-diagnostic-metrics",
+          "type": "metrics",
+          "path": "figma/evidence/business-components-v3-vulnerability-capture-diff-2026-07-30/metrics.json",
+          "required": false,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-capture-diagnostic-heatmap",
+          "type": "image",
+          "path": "figma/evidence/business-components-v3-vulnerability-capture-diff-2026-07-30/heatmap.png",
+          "required": false,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-visual-metrics",
+          "type": "metrics",
+          "path": "figma/evidence/business-components-v3-post-publish-visual-diff-2026-07-30/metrics.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "business-components-visual-heatmap",
+          "type": "image",
+          "path": "figma/evidence/business-components-v3-post-publish-visual-diff-2026-07-30/heatmap.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-vulnerability-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/blind-prd-vulnerability-platform.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "figma-node",
+          "label": "Business Component Library V3.0 page templates",
+          "description": "Published component-bound page templates at node 19154:402, with CURRENT component and variable readback, a passing node-stability diff, and stable vulnerability-platform capture registration."
+        },
+        "primaryArtifactId": "business-components-page-templates-node",
+        "presentationRequired": true,
+        "open": {
+          "mode": "figma",
+          "cwd": null,
+          "command": null,
+          "target": "<your-figma-file-url>"
+        },
+        "supportingArtifactIds": [
+          "component-index",
+          "figma-evidence",
+          "business-components-audit",
+          "business-components-readback",
+          "business-components-evidence",
+          "business-components-publish-capture",
+          "business-components-recapture",
+          "business-components-browser-reference",
+          "business-components-capture-node",
+          "business-components-capture-diagnostic-metrics",
+          "business-components-capture-diagnostic-heatmap",
+          "business-components-visual-metrics",
+          "business-components-visual-heatmap",
+          "blind-prd-vulnerability-evidence"
+        ],
+        "blockedDelivery": null
+      },
+      "acceptanceGates": [
+        {
+          "id": "audit-boundary",
+          "criteria": "Component and variable facts come from a real file or an explicit external-blocked record",
+          "command": "npm run validate:figma:evidence",
+          "evidence": [
+            "figma/evidence/existing-figma-library.external-blocked.json",
+            "figma/evidence/business-components-v3-vulnerability.verified.json",
+            "figma/evidence/business-components-v3-post-publish-2026-07-29.png",
+            "figma/evidence/business-components-v3-post-publish-recapture-2026-07-30.png",
+            "figma/evidence/business-components-v3-vulnerability-browser-2026-07-30.png",
+            "figma/evidence/business-components-v3-vulnerability-capture-2026-07-30.png"
+          ]
+        },
+        {
+          "id": "visual-calibration",
+          "criteria": "The fixed full-image and critical-region thresholds are enforced and the post-publish root-node stability diff passes",
+          "command": "npm run test:visual-diff",
+          "evidence": [
+            "visual-diff/artifacts/pass/metrics.json",
+            "figma/evidence/business-components-v3-post-publish-visual-diff-2026-07-30/metrics.json",
+            "figma/evidence/business-components-v3-post-publish-visual-diff-2026-07-30/heatmap.png"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/figma-evidence.schema.json",
+        "records": [
+          "figma/evidence/existing-figma-library.external-blocked.json",
+          "figma/evidence/business-components-v3-vulnerability.verified.json"
+        ]
+      },
+      "examples": [
+        "design-systems/ops-canvas/workflow/existing.request.json",
+        "figma/business-components-v3.audit.json",
+        "figma/business-components-v3.readback-2026-07-29.json"
+      ],
+      "externalDependencies": [
+        {
+          "id": "figma-target-file",
+          "required": true,
+          "availability": "available",
+          "fallback": "Stop at the validated audit adapter and record external-blocked"
+        },
+        {
+          "id": "figma-write-readback",
+          "required": true,
+          "availability": "available",
+          "fallback": "Deliver the last validated readback without creating duplicate Figma objects"
+        },
+        {
+          "id": "figma-durable-capture-diff",
+          "required": true,
+          "availability": "available",
+          "fallback": "Preserve the last validated component target, capture registration, screenshots, and fixed-threshold diff if a later readback becomes unavailable"
+        }
+      ],
+      "completion": {
+        "status": "implemented",
+        "summary": "Business Component Library V3.0 is published. Post-publish readback verified 66 CURRENT variables, 11 valid semantic aliases, 23 bound Paint Styles, seven CURRENT component objects with preserved keys and eight page-template frames. Root node 19154:402 remains byte-identical across two saved captures and passes the fixed-threshold stability diff. Stable capture ID 91041828-759e-45b9-b322-607109106a3a registered the accepted vulnerability-platform browser page and produced reference node 19215:401. The separate browser-to-raw-capture diagnostic remains a recorded non-gating failure; the authoritative component target and its acceptance diff are unchanged.",
+        "remaining": []
+      }
+    },
+    {
+      "id": "image2-to-figma-page",
+      "title": "Routed page with optional exploratory Image2",
+      "source": "../docs/02_基于Image2.md",
+      "inputs": [
+        {
+          "name": "designContext",
+          "type": "enum",
+          "required": true,
+          "description": "Route selector",
+          "allowedValues": [
+            "existing",
+            "exploratory"
+          ]
+        },
+        {
+          "name": "requirements",
+          "type": "file",
+          "required": true,
+          "description": "Product requirements and exact UI content"
+        },
+        {
+          "name": "fileKey",
+          "type": "string",
+          "required": false,
+          "description": "Real Figma destination for live stages"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A page request explicitly selects a strategy-bound existing or exploratory route",
+          "General B2B work defaults to the existing direct route; high-variance visual exploration requires explicit opt-in"
+        ],
+        "stopWhen": [
+          "designContext or its strategy-bound route decision is missing, unknown, or inconsistent",
+          "Existing work contains Image2 inputs, or exploratory work lacks a frozen visual brief, structured contract, or real component foundation"
+        ]
+      },
+      "routePolicy": {
+        "decision": "quality/image2-strategy/image2-routing-strategy-amendment-2026-08-14.json",
+        "selector": "designContext",
+        "defaultRoute": "existing",
+        "unknownRouteDisposition": "fail-closed",
+        "routes": [
+          {
+            "id": "existing",
+            "defaultForGeneralB2B": true,
+            "image2Allowed": false,
+            "skillSequence": [
+              "figma:figma-use",
+              "playwright"
+            ],
+            "pipeline": [
+              "design-contract",
+              "figma-or-component-foundation",
+              "pattern-recipe",
+              "implementation",
+              "verification"
+            ],
+            "requiredInputs": [
+              "design-contract",
+              "component-foundation",
+              "pattern-manifest",
+              "recipe",
+              "rules"
+            ],
+            "frozenVisualBriefRequired": false,
+            "allowedVisualGoals": [],
+            "structuralAuthority": [
+              "copy",
+              "data",
+              "interaction",
+              "component-states",
+              "responsive",
+              "accessibility"
+            ]
+          },
+          {
+            "id": "exploratory",
+            "defaultForGeneralB2B": false,
+            "image2Allowed": true,
+            "skillSequence": [
+              "gpt-image-2",
+              "Image-to-html",
+              "playwright"
+            ],
+            "pipeline": [
+              "frozen-visual-brief",
+              "gpt-image-2",
+              "image-to-html",
+              "implementation",
+              "verification"
+            ],
+            "requiredInputs": [
+              "selected-visual-direction",
+              "frozen-mini-design-brief",
+              "structured-contract",
+              "real-component-foundation"
+            ],
+            "frozenVisualBriefRequired": true,
+            "allowedVisualGoals": [
+              "composition",
+              "atmosphere",
+              "material",
+              "brand",
+              "visual-direction"
+            ],
+            "structuralAuthority": [
+              "copy",
+              "data",
+              "interaction",
+              "component-states",
+              "responsive",
+              "accessibility"
+            ]
+          }
+        ]
+      },
+      "tools": {
+        "skills": [
+          "playwright",
+          "figma:figma-generate-design",
+          "figma:figma-use",
+          "figma-component-builder"
+        ],
+        "scripts": [
+          "skills/image2-to-figma-page/scripts/validate-skill.mjs",
+          "scripts/run-image2-workflow.mjs",
+          "scripts/visual-diff.mjs",
+          "scripts/validate-image2-routing-policy.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-quality-pivot.mjs",
+          "scripts/archive/image2-closed-rounds/test-image2-quality-pivot.mjs",
+          "scripts/validate-image2-golden-holdout-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/test-image2-golden-holdout-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-holdout-restart.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-fresh-holdout-preimplementation-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-fresh-holdout-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-fresh-holdout-derived-input-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-fresh-holdout-generated-output-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-fresh-holdout-final-evaluation.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-holdout-authorization.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-filter-remediation.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-reference-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-derived-input-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-holdout-generation.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-generated-output-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-holdout-technical.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-final-evaluation.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-final-full-validate.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-final-full-validate-attempt-2.mjs",
+          "scripts/run-vite-readonly-build.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-readonly-replay-technical.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-readonly-replay-browser.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-second-fresh-readonly-replay-full-validate.mjs",
+          "scripts/archive/image2-closed-rounds/freeze-image2-second-fresh-readonly-replay-final.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-readonly-replay-authorization.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-second-fresh-readonly-replay-final.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-final-fresh-holdout-preimplementation-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-final-fresh-holdout-reference-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-final-fresh-holdout-preflight.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-final-fresh-holdout-preflight.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-final-fresh-holdout-candidate-a-generation.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-final-fresh-holdout-candidate-a-generation-authorization.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-final-fresh-holdout-candidate-a-output-freeze.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-final-fresh-holdout-candidate-a-technical.mjs",
+          "scripts/archive/image2-closed-rounds/run-image2-final-fresh-holdout-full-validate.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-final-fresh-holdout-final.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-foundation-catalog-receipt-revision.mjs",
+          "scripts/archive/image2-closed-rounds/validate-image2-foundation-catalog-adjudication.mjs",
+          "scripts/validate-image2-calibration.mjs",
+          "scripts/test-image2-calibration.mjs",
+          "scripts/generate-project-pages.mjs",
+          "scripts/test-project-generator.mjs"
+        ],
+        "external": [
+          "Host image generation",
+          "Browser",
+          "Playwright CLI",
+          "Figma MCP"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "skill-source",
+          "type": "code",
+          "path": "skills/image2-to-figma-page/SKILL.md",
+          "required": true,
+          "role": "internal"
+        },
+        {
+          "id": "routing-strategy-amendment",
+          "type": "evidence",
+          "path": "quality/image2-strategy/image2-routing-strategy-amendment-2026-08-14.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "existing-run",
+          "type": "evidence",
+          "path": "design-systems/ops-canvas/workflow/existing-run.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "visual-metrics",
+          "type": "metrics",
+          "path": "design-systems/ops-canvas/workflow/visual-diff-artifacts/metrics.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "ops-visual-decision",
+          "type": "evidence",
+          "path": "design-systems/ops-canvas/workflow/visual-calibration-decision.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "ops-independent-review-packet",
+          "type": "document",
+          "path": "design-systems/ops-canvas/workflow/independent-review-packet-2026-07-30.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "ops-independent-review-c",
+          "type": "evidence",
+          "path": "design-systems/ops-canvas/workflow/reviews/ops-canvas-2026-07-17.image2-reviewer-c-20260730.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "ops-independent-review-d",
+          "type": "evidence",
+          "path": "design-systems/ops-canvas/workflow/reviews/ops-canvas-2026-07-17.image2-reviewer-d-20260730.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-direction-proposal",
+          "type": "document",
+          "path": "generator/fixtures/tianshu-firmware/image2/direction-proposal.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "tianshu-prompt-proposal",
+          "type": "document",
+          "path": "generator/fixtures/tianshu-firmware/image2/reference-prompt.proposed.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "tianshu-firmware-page",
+          "type": "code",
+          "path": "projects/tianshu-ops/generated/firmware-page.tsx",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "tianshu-exploratory-run",
+          "type": "evidence",
+          "path": "generator/fixtures/tianshu-firmware/image2/exploratory-run.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-browser-evidence",
+          "type": "evidence",
+          "path": "generator/fixtures/tianshu-firmware/image2/browser-evidence.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-visual-metrics",
+          "type": "metrics",
+          "path": "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/metrics.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-visual-decision",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/workflow/firmware-image2/visual-calibration-decision.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-independent-review-packet",
+          "type": "document",
+          "path": "projects/tianshu-ops/workflow/firmware-image2/independent-review-packet-2026-07-29.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "tianshu-independent-review-a",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/workflow/firmware-image2/reviews/tianshu-firmware-2026-07-17.image2-reviewer-a-20260729.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "tianshu-independent-review-b",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/workflow/firmware-image2/reviews/tianshu-firmware-2026-07-17.image2-reviewer-b-20260729.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "calibration-batch-01-contract",
+          "type": "evidence",
+          "path": "quality/image2-calibration/batch-01/batch-contract.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "calibration-batch-01-review-packet",
+          "type": "document",
+          "path": "quality/image2-calibration/batch-01/independent-review-packet.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "calibration-batch-01-inventory-decision",
+          "type": "evidence",
+          "path": "quality/image2-calibration/batch-01/inventory-list/workflow/visual-calibration-decision.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "calibration-batch-01-rbac-decision",
+          "type": "evidence",
+          "path": "quality/image2-calibration/batch-01/rbac-forbidden/workflow/visual-calibration-decision.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "calibration-batch-01-reports-decision",
+          "type": "evidence",
+          "path": "quality/image2-calibration/batch-01/reports-logs/workflow/visual-calibration-decision.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "calibration-batch-01-content-decision",
+          "type": "evidence",
+          "path": "quality/image2-calibration/batch-01/content-schedule/workflow/visual-calibration-decision.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "image2-quality-pivot",
+          "type": "evidence",
+          "path": "quality/image2-calibration/image2-quality-pivot-2026-08-09.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "image2-golden-holdout-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/allocation-and-holdout-freeze-2026-08-09.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "golden-1-v0-page",
+          "type": "code",
+          "path": "projects/tianshu-ops/generated/golden-content-schedule/pages.tsx",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "golden-1-v0-evidence",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/golden-content-schedule/evidence/golden-1-v0.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "golden-3-v1-page",
+          "type": "code",
+          "path": "projects/tianshu-ops/generated/golden-rbac-forbidden/pages.tsx",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "golden-3-v0-failure",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/golden-rbac-forbidden/evidence/golden-3-v0.failed.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "golden-3-v1-evidence",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/golden-rbac-forbidden/evidence/golden-3-v1.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "golden-3-browser-v1",
+          "type": "evidence",
+          "path": "projects/tianshu-ops/golden-rbac-forbidden/evidence/browser-v1.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "holdout-final-evaluation",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-final-evaluation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "holdout-inventory-output",
+          "type": "code",
+          "path": "projects/sample-inventory-erp/holdout-evaluation/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "holdout-inventory-incomplete",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-evaluation/evidence/inventory-list-v0.incomplete.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "holdout-firmware-failure",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-evaluation/evidence/tianshu-firmware-v0.failed.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "holdout-restart-authorization",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/authorization-and-radio-remediation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-identity-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/fresh-holdout-identities-and-prompts-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-input-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/fresh-holdout-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-derived-input-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/fresh-holdout-derived-input-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-output-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/fresh-holdout-generated-output-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-final-evaluation",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/fresh-holdout-final-evaluation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-work-orders-browser-failure",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart/evaluation/work-orders/evidence/browser-v3.failed.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "fresh-holdout-work-orders-filter-screenshot",
+          "type": "image",
+          "path": "quality/image2-golden-pages/holdout-restart/evaluation/work-orders/evidence/screenshots/work-orders-v3-filter-attempt.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-holdout-authorization",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/authorization-and-filter-remediation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-filter-remediation",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/filter-remediation-completion-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-filter-remediation-full-validate-failure",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-worktree.failed.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-reference-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/second-fresh-reference-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-overview-reference",
+          "type": "image",
+          "path": "quality/image2-golden-pages/holdout-restart-2/fresh-inputs/overview/reference-image.png",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "second-fresh-detail-reference",
+          "type": "image",
+          "path": "quality/image2-golden-pages/holdout-restart-2/fresh-inputs/work-order-detail/reference-image.png",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "second-fresh-derived-input-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/second-fresh-derived-input-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-generated-output-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/second-fresh-generated-output-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-generation-raw",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/second-fresh-generation.raw.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-overview-output",
+          "type": "code",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "second-fresh-detail-output",
+          "type": "code",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evaluation/work-order-detail/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "second-fresh-final-evaluation",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/second-fresh-final-evaluation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-technical-failure",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/second-fresh-technical.raw.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-final-full-validation-attempt-1",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-final-full-validation-attempt-2",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final-attempt-2.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-final-full-validation-stdout",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final-attempt-2.stdout.log",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-final-full-validation-stderr",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final-attempt-2.stderr.log",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-authorization",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/second-fresh-readonly-replay-authorization-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-technical",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/second-fresh-readonly-replay-technical.raw.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-browser",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/evidence/readonly-replay-browser.raw.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-browser-screenshot",
+          "type": "image",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/evidence/playwright-1440x1100-failure.png",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-final",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/second-fresh-readonly-replay-final-evaluation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-full-validation",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-readonly-replay.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-full-validation-stdout",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-readonly-replay.stdout.log",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "second-fresh-readonly-replay-full-validation-stderr",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-readonly-replay.stderr.log",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-preimplementation-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/final-fresh-preimplementation-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-reference-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/final-fresh-reference-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-preflight",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-preflight.raw.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-candidate-a-output-freeze",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/final-fresh-candidate-a-output-freeze-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-candidate-a-output",
+          "type": "code",
+          "path": "quality/image2-golden-pages/holdout-restart-3/evaluation/security-devices/generated/pages.tsx",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "final-fresh-candidate-a-technical-failure",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-candidate-a-technical.raw.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-holdout-final",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/final-fresh-holdout-final-evaluation-2026-08-11.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-full-validation",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-full-validate.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-full-validation-stdout",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-full-validate.stdout.log",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "final-fresh-full-validation-stderr",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-full-validate.stderr.log",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "iteration-13-browser-result",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-4/iteration-13-browser-result-2026-08-13.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "iteration-13-program-closeout",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-4/iteration-13-program-closeout-2026-08-13.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "foundation-catalog-receipt-revision",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-4/foundation-catalog-receipt-revision-01-2026-08-13.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "foundation-catalog-adjudication",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-4/foundation-catalog-adjudication-resolution-01-2026-08-13.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "responsive-overflow-canary-reproduction",
+          "type": "evidence",
+          "path": "generator/fixtures/antd-responsive-list-overflow/evidence/pre-fix/reproduction.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "responsive-overflow-canary-remediation",
+          "type": "evidence",
+          "path": "generator/fixtures/antd-responsive-list-overflow/evidence/post-fix/remediation.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "responsive-overflow-canary-receipt-revision",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-4/responsive-list-overflow-remediation-receipt-revision-01-2026-08-13.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "responsive-overflow-canary-full-validation",
+          "type": "evidence",
+          "path": "generator/fixtures/antd-responsive-list-overflow/evidence/post-fix/full-validate-after-receipt.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "new-holdout-round-authorization",
+          "type": "evidence",
+          "path": "quality/image2-golden-pages/holdout-restart-5/new-round-authorization-2026-08-13.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-evidence",
+          "type": "evidence",
+          "path": "figma/evidence/ops-canvas.external-blocked.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-target-scopes",
+          "type": "evidence",
+          "path": "figma/workflow-target-scopes-2026-08-09.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "blind-prd-vulnerability-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/blind-prd-vulnerability-platform.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "browser-page",
+          "label": "Image2 Golden 3 RBAC forbidden page",
+          "description": "Golden 3 v1 remains the last accepted runnable Image2 page. General B2B generation now defaults to the existing direct route without Image2. Exploratory Image2 requires explicit high-variance visual goals and a frozen visual brief. Restart-5 is paused-by-strategy-review at 0/2; historical candidates and verdicts remain sealed, and Figma YOUR_NODE_ID remains locked."
+        },
+        "primaryArtifactId": "golden-3-v1-page",
+        "presentationRequired": true,
+        "open": {
+          "mode": "browser",
+          "cwd": "preview",
+          "command": "npm run dev",
+          "target": "http://127.0.0.1:5188/tianshu/platform/rbac/forbidden-preview"
+        },
+        "supportingArtifactIds": [
+          "skill-source",
+          "routing-strategy-amendment",
+          "existing-run",
+          "visual-metrics",
+          "ops-visual-decision",
+          "ops-independent-review-packet",
+          "ops-independent-review-c",
+          "ops-independent-review-d",
+          "tianshu-direction-proposal",
+          "tianshu-prompt-proposal",
+          "tianshu-exploratory-run",
+          "tianshu-browser-evidence",
+          "tianshu-visual-metrics",
+          "tianshu-visual-decision",
+          "tianshu-independent-review-packet",
+          "tianshu-independent-review-a",
+          "tianshu-independent-review-b",
+          "calibration-batch-01-contract",
+          "calibration-batch-01-review-packet",
+          "calibration-batch-01-inventory-decision",
+          "calibration-batch-01-rbac-decision",
+          "calibration-batch-01-reports-decision",
+          "calibration-batch-01-content-decision",
+          "image2-quality-pivot",
+          "image2-golden-holdout-freeze",
+          "golden-1-v0-evidence",
+          "golden-3-v0-failure",
+          "golden-3-v1-evidence",
+          "golden-3-browser-v1",
+          "holdout-final-evaluation",
+          "holdout-inventory-output",
+          "holdout-inventory-incomplete",
+          "holdout-firmware-failure",
+          "holdout-restart-authorization",
+          "fresh-holdout-identity-freeze",
+          "fresh-holdout-input-freeze",
+          "fresh-holdout-derived-input-freeze",
+          "fresh-holdout-output-freeze",
+          "fresh-holdout-final-evaluation",
+          "fresh-holdout-work-orders-browser-failure",
+          "fresh-holdout-work-orders-filter-screenshot",
+          "second-fresh-holdout-authorization",
+          "second-fresh-reference-freeze",
+          "second-fresh-overview-reference",
+          "second-fresh-detail-reference",
+          "second-fresh-derived-input-freeze",
+          "second-fresh-generated-output-freeze",
+          "second-fresh-generation-raw",
+          "second-fresh-overview-output",
+          "second-fresh-detail-output",
+          "second-fresh-final-evaluation",
+          "second-fresh-technical-failure",
+          "second-fresh-final-full-validation-attempt-1",
+          "second-fresh-final-full-validation-attempt-2",
+          "second-fresh-final-full-validation-stdout",
+          "second-fresh-final-full-validation-stderr",
+          "second-fresh-readonly-replay-authorization",
+          "second-fresh-readonly-replay-technical",
+          "second-fresh-readonly-replay-browser",
+          "second-fresh-readonly-replay-browser-screenshot",
+          "second-fresh-readonly-replay-final",
+          "second-fresh-readonly-replay-full-validation",
+          "second-fresh-readonly-replay-full-validation-stdout",
+          "second-fresh-readonly-replay-full-validation-stderr",
+          "final-fresh-preimplementation-freeze",
+          "final-fresh-reference-freeze",
+          "final-fresh-preflight",
+          "final-fresh-candidate-a-output-freeze",
+          "final-fresh-candidate-a-output",
+          "final-fresh-candidate-a-technical-failure",
+          "final-fresh-holdout-final",
+          "final-fresh-full-validation",
+          "final-fresh-full-validation-stdout",
+          "final-fresh-full-validation-stderr",
+          "iteration-13-browser-result",
+          "iteration-13-program-closeout",
+          "foundation-catalog-receipt-revision",
+          "foundation-catalog-adjudication",
+          "new-holdout-round-authorization",
+          "figma-evidence",
+          "figma-target-scopes",
+          "blind-prd-vulnerability-evidence"
+        ],
+        "blockedDelivery": {
+          "deliverNow": [
+            "routing-strategy-amendment",
+            "ops-visual-decision",
+            "ops-independent-review-c",
+            "ops-independent-review-d",
+            "tianshu-firmware-page",
+            "tianshu-exploratory-run",
+            "tianshu-browser-evidence",
+            "tianshu-visual-metrics",
+            "tianshu-visual-decision",
+            "tianshu-independent-review-a",
+            "tianshu-independent-review-b",
+            "calibration-batch-01-contract",
+            "calibration-batch-01-review-packet",
+            "calibration-batch-01-inventory-decision",
+            "calibration-batch-01-rbac-decision",
+            "calibration-batch-01-reports-decision",
+            "calibration-batch-01-content-decision",
+            "image2-quality-pivot",
+            "image2-golden-holdout-freeze",
+            "golden-1-v0-page",
+            "golden-1-v0-evidence",
+            "golden-3-v1-page",
+            "golden-3-v0-failure",
+            "golden-3-v1-evidence",
+            "golden-3-browser-v1",
+            "holdout-final-evaluation",
+            "holdout-inventory-output",
+            "holdout-inventory-incomplete",
+            "holdout-firmware-failure",
+            "holdout-restart-authorization",
+            "fresh-holdout-identity-freeze",
+            "fresh-holdout-input-freeze",
+            "fresh-holdout-derived-input-freeze",
+            "fresh-holdout-output-freeze",
+            "fresh-holdout-final-evaluation",
+            "fresh-holdout-work-orders-browser-failure",
+            "fresh-holdout-work-orders-filter-screenshot",
+            "second-fresh-holdout-authorization",
+            "second-fresh-reference-freeze",
+            "second-fresh-overview-reference",
+            "second-fresh-detail-reference",
+            "second-fresh-derived-input-freeze",
+            "second-fresh-generated-output-freeze",
+            "second-fresh-generation-raw",
+            "second-fresh-overview-output",
+            "second-fresh-detail-output",
+            "second-fresh-final-evaluation",
+            "second-fresh-technical-failure",
+            "second-fresh-final-full-validation-attempt-1",
+            "second-fresh-final-full-validation-attempt-2",
+            "second-fresh-final-full-validation-stdout",
+            "second-fresh-final-full-validation-stderr",
+            "second-fresh-readonly-replay-authorization",
+            "second-fresh-readonly-replay-technical",
+            "second-fresh-readonly-replay-browser",
+            "second-fresh-readonly-replay-browser-screenshot",
+            "second-fresh-readonly-replay-final",
+            "second-fresh-readonly-replay-full-validation",
+            "second-fresh-readonly-replay-full-validation-stdout",
+            "second-fresh-readonly-replay-full-validation-stderr",
+            "final-fresh-preimplementation-freeze",
+            "final-fresh-reference-freeze",
+            "final-fresh-preflight",
+            "final-fresh-candidate-a-output-freeze",
+            "final-fresh-candidate-a-output",
+            "final-fresh-candidate-a-technical-failure",
+            "final-fresh-holdout-final",
+            "final-fresh-full-validation",
+            "final-fresh-full-validation-stdout",
+            "final-fresh-full-validation-stderr",
+            "iteration-13-browser-result",
+            "iteration-13-program-closeout",
+            "foundation-catalog-receipt-revision",
+            "foundation-catalog-adjudication",
+            "new-holdout-round-authorization",
+            "figma-evidence",
+            "figma-target-scopes"
+          ],
+          "reason": "The strategy amendment pauses restart-5 execution while preserving its 0/2 budget and all historical authorization, receipt, evidence, and verdict bytes. No fresh input is requested. Image2 generation, reference generation, candidate generation, reviewers, fresh private input reads, Figma YOUR_NODE_ID, and push remain locked.",
+          "resumeRequirements": [
+            "Use the existing direct route for general B2B pages",
+            "Select exploratory only for explicit composition, atmosphere, material, brand, or visual-direction work with a frozen visual brief",
+            "Require a new append-only strategy decision before restart-5 execution or any locked Image2 stage resumes",
+            "Keep Figma target node YOUR_NODE_ID untouched until a separate authorization explicitly releases it"
+          ]
+        }
+      },
+      "acceptanceGates": [
+        {
+          "id": "skill-contract",
+          "criteria": "Both routes, freeze gates, shared stages, and stop conditions validate and package",
+          "command": "npm run validate:image2-skill",
+          "evidence": [
+            "skills/image2-to-figma-page/evals/evals.json"
+          ]
+        },
+        {
+          "id": "visual-diff",
+          "criteria": "The runner fixtures prove fixed global and critical-region RMS, SSIM, changed-pixel, and dimension gates; each real pair keeps its raw verdict while any semantic exception and independent calibration label are recorded separately",
+          "command": "npm run test:visual-diff",
+          "evidence": [
+            "visual-diff/artifacts/pass/metrics.json",
+            "visual-diff/artifacts/pass/heatmap.png",
+            "design-systems/ops-canvas/workflow/visual-diff.evidence.json",
+            "design-systems/ops-canvas/workflow/visual-diff-artifacts/metrics.json",
+            "design-systems/ops-canvas/workflow/visual-diff-artifacts/heatmap.png",
+            "design-systems/ops-canvas/workflow/visual-calibration-decision.json",
+            "design-systems/ops-canvas/workflow/reviews/ops-canvas-2026-07-17.image2-reviewer-c-20260730.json",
+            "design-systems/ops-canvas/workflow/reviews/ops-canvas-2026-07-17.image2-reviewer-d-20260730.json",
+            "generator/fixtures/tianshu-firmware/image2/visual-diff.evidence.json",
+            "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/metrics.json",
+            "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/heatmap.png",
+            "projects/tianshu-ops/workflow/firmware-image2/visual-calibration-decision.json",
+            "projects/tianshu-ops/workflow/firmware-image2/reviews/tianshu-firmware-2026-07-17.image2-reviewer-a-20260729.json",
+            "projects/tianshu-ops/workflow/firmware-image2/reviews/tianshu-firmware-2026-07-17.image2-reviewer-b-20260729.json"
+          ]
+        },
+        {
+          "id": "calibration-batch-integrity",
+          "criteria": "Every batch pair binds exact images, fixed raw thresholds, clean Browser and Playwright evidence, two isolated reviews, a fail-closed qualified/disputed decision, and non-inflated study accounting",
+          "command": "npm run test:image2-calibration && npm run validate:image2-calibration",
+          "evidence": [
+            "quality/image2-calibration/batch-01/batch-contract.json",
+            "quality/image2-calibration/batch-01/independent-review-packet.json",
+            "quality/image2-calibration/batch-01/inventory-list/workflow/visual-calibration-decision.json",
+            "quality/image2-calibration/batch-01/rbac-forbidden/workflow/visual-calibration-decision.json",
+            "quality/image2-calibration/batch-01/reports-logs/workflow/visual-calibration-decision.json",
+            "quality/image2-calibration/batch-01/content-schedule/workflow/visual-calibration-decision.json"
+          ]
+        },
+        {
+          "id": "quality-pivot-authorization",
+          "criteria": "The 5/24 plus one disputed study remains frozen, the remaining 19-pair expansion stays paused, the active gate is three Golden Pages plus two holdouts within 13 iterations, and any new batch fails without a new explicit authorization record",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-calibration/image2-quality-pivot-2026-08-09.json",
+            "quality/image2-calibration/batch-01/batch-contract.json"
+          ]
+        },
+        {
+          "id": "golden-holdout-pre-freeze",
+          "criteria": "The six-candidate pool, mutually exclusive Golden and Holdout assignments, exact input receipts, sealed implementation roots, one-shot Holdout policy, two-reviewer unanimity, and 13-iteration budget fail closed before Golden 2 starts",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/allocation-and-holdout-freeze-2026-08-09.json"
+          ]
+        },
+        {
+          "id": "golden-1-v0-technical",
+          "criteria": "The formal AntD generator emits the content-schedule Golden Page deterministically, rejects invalid operational contracts, typechecks, builds, preserves existing fixture hashes, and passes responsive plus interaction acceptance without console errors",
+          "command": "npm run test:project-generator && npm run typecheck && npm run antd:lint:projects && npm run build --prefix preview",
+          "evidence": [
+            "projects/tianshu-ops/golden-content-schedule/evidence/golden-1-v0.json",
+            "output/playwright/golden-1-content-schedule-v0.png",
+            "output/playwright/golden-1-content-schedule-v0-1024.png",
+            "output/playwright/golden-1-content-schedule-v0-390.png"
+          ]
+        },
+        {
+          "id": "golden-2-v0-technical-review",
+          "criteria": "The formal AntD generator emits the reports-logs Golden Page deterministically, rejects invalid analytics contracts, preserves existing fixture hashes, typechecks, builds, passes three responsive viewports and refresh/export interactions without console errors, and receives two independent PASS reviews before user acceptance",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "projects/sample-platform/golden-reports-logs/evidence/golden-2-v0.json",
+            "projects/sample-platform/golden-reports-logs/evidence/reviewers/reviewer-a-v0.json",
+            "projects/sample-platform/golden-reports-logs/evidence/reviewers/reviewer-b-v0.json",
+            "projects/sample-platform/golden-reports-logs/evidence/screenshots/golden-2-reports-logs-v0-1440x1100.png",
+            "projects/sample-platform/golden-reports-logs/evidence/screenshots/golden-2-reports-logs-v0-1024x768.png",
+            "projects/sample-platform/golden-reports-logs/evidence/screenshots/golden-2-reports-logs-v0-390x844.png",
+            "projects/sample-platform/golden-reports-logs/evidence/screenshots/golden-2-reports-logs-v0-refresh-loading.png",
+            "projects/sample-platform/golden-reports-logs/evidence/screenshots/golden-2-reports-logs-v0-refresh-complete.png",
+            "projects/sample-platform/golden-reports-logs/evidence/screenshots/golden-2-reports-logs-v0-export-complete.png"
+          ]
+        },
+        {
+          "id": "golden-3-v1-technical",
+          "criteria": "The formal AntD generator emits the RBAC forbidden Golden Page deterministically, rejects invalid permission-state contracts, preserves existing fixture hashes, typechecks, builds, exposes no protected tables, passes three responsive viewports plus request/recovery/focus/mobile interactions, and keeps the final browser console free of errors and warnings",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/golden-3-v0.failed.json",
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/golden-3-v1.json",
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/browser-v1.json",
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/screenshots/golden-3-rbac-forbidden-v1-1440x1100.png",
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/screenshots/golden-3-rbac-forbidden-v1-1024x768.png",
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/screenshots/golden-3-rbac-forbidden-v1-390x844.png",
+            "projects/tianshu-ops/golden-rbac-forbidden/evidence/screenshots/golden-3-rbac-forbidden-v1-request-panel.png"
+          ]
+        },
+        {
+          "id": "fresh-holdout-restart-final",
+          "criteria": "The old NO-GO stays immutable, Radio coverage is isolated to a non-Holdout fixture, two fresh mutually exclusive identities and both deterministic output bundles freeze before inspection, the 13-iteration budget stays exact, and a required Holdout failure records NO-GO before raw diff, reviewers, or Figma",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart/authorization-and-radio-remediation-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart/fresh-holdout-identities-and-prompts-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart/fresh-holdout-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart/fresh-holdout-derived-input-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart/fresh-holdout-generated-output-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart/fresh-holdout-final-evaluation-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart/evaluation/work-orders/evidence/browser-v3.failed.json",
+            "quality/image2-golden-pages/holdout-restart/evaluation/work-orders/evidence/screenshots/work-orders-v3-filter-attempt.png"
+          ]
+        },
+        {
+          "id": "second-fresh-holdout-authorization",
+          "criteria": "The prior NO-GO remains immutable, generic filter remediation is confined to a new non-Holdout canary, two implementation-unseen source variants reserve iterations 9 and 10, one-shot reference generation waits for prompt confirmation, and Figma remains locked",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/authorization-and-filter-remediation-2026-08-11.json"
+          ]
+        },
+        {
+          "id": "second-fresh-filter-remediation",
+          "criteria": "The opt-in list-filter contract is isolated to a non-Holdout canary, rejects six invalid mapping cases, generates deterministically, typechecks, filters and resets the visible business state in a clean browser, preserves every pre-existing fixture bundle, records the known worktree-only full-validation path failure without bypass, consumes no visible iteration, and keeps both Holdouts plus Figma sealed",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/filter-remediation-completion-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-worktree.failed.json",
+            "generator/fixtures/antd-simple-list-filtering/evidence/browser.json",
+            "generator/fixtures/antd-simple-list-filtering/evidence/screenshots/simple-list-filtering-initial.png",
+            "generator/fixtures/antd-simple-list-filtering/evidence/screenshots/simple-list-filtering-filtered.png",
+            "generator/fixtures/antd-simple-list-filtering/evidence/screenshots/simple-list-filtering-reset.png"
+          ]
+        },
+        {
+          "id": "second-fresh-reference-freeze",
+          "criteria": "User confirmation binds exactly two pre-frozen prompts; each candidate receives one and only one host-generated reference without prior candidate inspection, retry, multi-result selection, calibration expansion, iteration consumption, or Figma access; prompt, image, metadata, dimensions, and predecessor receipts fail closed",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/second-fresh-reference-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/fresh-inputs/overview/reference-image.metadata.json",
+            "quality/image2-golden-pages/holdout-restart-2/fresh-inputs/overview/reference-image.png",
+            "quality/image2-golden-pages/holdout-restart-2/fresh-inputs/work-order-detail/reference-image.metadata.json",
+            "quality/image2-golden-pages/holdout-restart-2/fresh-inputs/work-order-detail/reference-image.png"
+          ]
+        },
+        {
+          "id": "second-fresh-derived-input-freeze",
+          "criteria": "Both one-page descriptions remain canonical copies of the mutually exclusive frozen source pages, both library-native React AntD 6.5.0 contexts and preview inputs bind exact receipts, all generator dependencies freeze before either output exists, prior Holdout outputs remain excluded, and iterations 9 and 10 plus the Figma lock fail closed",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/second-fresh-derived-input-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/project-description.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/business-context.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/work-order-detail/project-description.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/work-order-detail/business-context.json"
+          ]
+        },
+        {
+          "id": "second-fresh-generated-output-freeze",
+          "criteria": "Iterations 9 and 10 each run the formal generator exactly twice from the committed derived inputs, all four runs exit zero, both three-file bundles are byte-identical, exact output and raw-run receipts freeze before any semantic or rendered inspection, no retry or result selection is allowed, and the 10/13 budget plus Figma lock fail closed",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/second-fresh-generated-output-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/second-fresh-generation.raw.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/generated/pages.tsx",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/work-order-detail/generated/pages.tsx"
+          ]
+        },
+        {
+          "id": "second-fresh-final-evaluation",
+          "criteria": "The frozen outputs remain immutable; overview typecheck and zero-issue AntD CLI lint are preserved; a required build command MODULE_NOT_FOUND failure closes the one-shot evaluation as NO-GO without claiming a candidate implementation defect, retrying the runner, starting the other candidate's technical gates, opening Browser or visual review, spending beyond 10/13, or entering Figma; targeted validators pass and the separate repository-wide blind N15 preview-readiness failure remains raw and unbypassed",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/second-fresh-final-evaluation-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/second-fresh-technical.raw.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final-attempt-2.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final-attempt-2.stdout.log",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-final-attempt-2.stderr.log"
+          ]
+        },
+        {
+          "id": "second-fresh-readonly-replay-final",
+          "criteria": "The user-authorized non-Holdout evaluator repair preserves the prior NO-GO, both unchanged frozen candidates pass typecheck, zero-issue AntD CLI lint, and write-disabled Vite build, and Overview's first Browser assertion failure closes the replay before Detail, responsive capture, raw diff, reviewers, or Figma. The replay consumes no implementation iteration, all candidate/reference receipts remain exact, the initial missing Playwright executable and the worktree-wide guided-pilot canonical-path failure remain raw, and no bypass or rerun is allowed",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-2/second-fresh-readonly-replay-authorization-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/second-fresh-readonly-replay-technical.raw.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/evidence/readonly-replay-browser.raw.json",
+            "quality/image2-golden-pages/holdout-restart-2/evaluation/overview/evidence/playwright-1440x1100-failure.png",
+            "quality/image2-golden-pages/holdout-restart-2/second-fresh-readonly-replay-final-evaluation-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-readonly-replay.json",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-readonly-replay.stdout.log",
+            "quality/image2-golden-pages/holdout-restart-2/evidence/full-validate-after-readonly-replay.stderr.log"
+          ]
+        },
+        {
+          "id": "final-fresh-holdout-final",
+          "criteria": "Two new mutually exclusive identities and both one-shot references freeze before implementation. Non-Holdout preflight passes without changing its existing dist. Candidate A runs the formal generator once and freezes a four-file receipt before inspection. Its library-native import boundary passes, then the generation-knowledge gate stops because the pre-inspection evaluator plan overconstrains Select even though the frozen source has one text filter and no select field. The NO-GO does not claim a candidate defect, forbids repair or replay, leaves Candidate B ungenerated, consumes only iteration 11, and keeps every browser, visual, reviewer, and Figma gate closed. The single repository-wide validation preserves the existing guided-pilot canonical-path failure after blind N15 passes.",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-3/final-fresh-preimplementation-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-3/final-fresh-reference-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-preflight.raw.json",
+            "quality/image2-golden-pages/holdout-restart-3/final-fresh-candidate-a-output-freeze-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-candidate-a-technical.raw.json",
+            "quality/image2-golden-pages/holdout-restart-3/final-fresh-holdout-final-evaluation-2026-08-11.json",
+            "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-full-validate.json",
+            "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-full-validate.stdout.log",
+            "quality/image2-golden-pages/holdout-restart-3/evidence/final-fresh-full-validate.stderr.log"
+          ]
+        },
+        {
+          "id": "iteration-13-program-closeout",
+          "criteria": "Iteration 13 preserves the one-shot reference and sealed candidate, records the 390x844 browser overflow failure at 161px against the frozen 0px maximum, stops before raw diff, reviewers, user final review, or Figma, closes the budget at 13/13, and keeps every historical NO-GO immutable. The successor catalog adjudication preserves that closeout while validating its old catalog receipt from the original commit and delegating the live catalog to validate:foundations.",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-4/iteration-13-browser-result-2026-08-13.json",
+            "quality/image2-golden-pages/holdout-restart-4/iteration-13-program-closeout-2026-08-13.json",
+            "quality/image2-golden-pages/holdout-restart-4/foundation-catalog-receipt-revision-01-2026-08-13.json",
+            "quality/image2-golden-pages/holdout-restart-4/foundation-catalog-adjudication-resolution-01-2026-08-13.json"
+          ]
+        },
+        {
+          "id": "responsive-overflow-non-holdout-canary",
+          "criteria": "A separate synthetic seven-column AntD filtering fixture reproduces the mobile page overflow without reading or changing any Holdout, then the conditional generator repair produces zero page-level overflow at 390, 1024, and 1440 widths, keeps wide-table scrolling inside the table, preserves filter and reset behavior, rejects five output mutations, and leaves the existing four-column fixture byte-identical. The successor receipt keeps the historical form-content implementation exact at its source commit, binds the live generator infrastructure to the responsive remediation commit, and records a repository-wide validation pass.",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "generator/fixtures/antd-responsive-list-overflow/evidence/pre-fix/reproduction.json",
+            "generator/fixtures/antd-responsive-list-overflow/evidence/pre-fix/mobile-390x844.png",
+            "generator/fixtures/antd-responsive-list-overflow/evidence/post-fix/remediation.json",
+            "generator/fixtures/antd-responsive-list-overflow/evidence/post-fix/mobile-390x844.png",
+            "quality/image2-golden-pages/holdout-restart-4/responsive-list-overflow-remediation-receipt-revision-01-2026-08-13.json",
+            "generator/fixtures/antd-responsive-list-overflow/evidence/post-fix/full-validate-after-receipt.json"
+          ]
+        },
+        {
+          "id": "new-holdout-round-authorization",
+          "criteria": "Restart-5 uses a separate 0/2 candidate-generation budget, requires two fresh mutually exclusive identities, permits one confirmed reference and one sealed candidate generation per Holdout, keeps the historical 13/13 and 0/2 result immutable, retains the frozen content, browser, raw-diff, two-reviewer, and user-final gates, and keeps Figma YOUR_NODE_ID locked until a separate post-2/2 authorization.",
+          "command": "npm run validate:image2-history",
+          "evidence": [
+            "quality/image2-golden-pages/holdout-restart-5/new-round-authorization-2026-08-13.json"
+          ]
+        },
+        {
+          "id": "routing-strategy-amendment",
+          "criteria": "General B2B defaults to the existing direct route without Image2, exploratory stays opt-in and visual-only with a frozen brief, restart-5 remains paused at 0/2, and every current generation, Reviewer, private-input, Figma, and push lock stays closed",
+          "command": "npm run validate:image2-routing-policy",
+          "evidence": [
+            "quality/image2-strategy/image2-routing-strategy-amendment-2026-08-14.json"
+          ]
+        },
+        {
+          "id": "figma-target-scope",
+          "criteria": "The live destination, viewport, receipts, write subtree, namespaced asset exception, and publish deny boundary remain machine-verifiable",
+          "command": "npm run validate:figma:targets",
+          "evidence": [
+            "figma/workflow-target-scopes-2026-08-09.json",
+            "figma/evidence/workflow-target-image2-2026-08-09.png"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/figma-evidence.schema.json",
+        "records": [
+          "figma/evidence/ops-canvas.external-blocked.json",
+          "figma/evidence/tianshu-firmware-image2.external-blocked.json"
+        ]
+      },
+      "examples": [
+        "skills/image2-to-figma-page/evals/evals.json",
+        "skills/image2-to-figma-page/fixtures/existing-direct.request.json",
+        "generator/fixtures/tianshu-firmware/image2/direction-proposal.json"
+      ],
+      "externalDependencies": [
+        {
+          "id": "host-image-generation",
+          "required": false,
+          "availability": "available",
+          "fallback": "Use only for an explicitly selected exploratory route after its frozen visual brief passes"
+        },
+        {
+          "id": "figma-target-file",
+          "required": true,
+          "availability": "available",
+          "fallback": "Keep the isolated target and deny boundaries; do not write while the raw visual and calibration gates remain closed"
+        }
+      ],
+      "completion": {
+        "status": "partial",
+        "summary": "The append-only strategy amendment makes existing the default route for general B2B pages and removes Image2 plus Image-to-html from that direct pipeline. Exploratory keeps Image2 only for explicit composition, atmosphere, material, brand, or visual-direction work; structured contracts and real components retain authority over copy, data, interaction, states, responsive behavior, and accessibility. Restart-5 is paused-by-strategy-review at 0/2. All historical Image2 evidence and verdicts remain frozen, and every generation, Reviewer, private-input, Figma YOUR_NODE_ID, and push lock remains closed.",
+        "remaining": [
+          "Apply the existing direct route to general B2B page work",
+          "Require an explicit exploratory selection and frozen visual brief before any future Image2 use",
+          "Create a new append-only decision before restart-5 or any currently locked stage can resume"
+        ]
+      }
+    },
+    {
+      "id": "prd-antd-to-figma-calibrated-page",
+      "title": "PRD plus antd to Figma-calibrated page",
+      "source": "../docs/03_基于开源UI库.md",
+      "inputs": [
+        {
+          "name": "prd",
+          "type": "file",
+          "required": true,
+          "description": "Schema-valid page and business description"
+        },
+        {
+          "name": "fileKey",
+          "type": "string",
+          "required": false,
+          "description": "Real Figma destination for calibration"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A management page uses the kit-owned antd v6 foundation",
+          "The result needs browser and optional Figma calibration"
+        ],
+        "stopWhen": [
+          "Business output bypasses the kit barrel",
+          "Build, bundle, visual, or Figma evidence gates fail"
+        ]
+      },
+      "tools": {
+        "skills": [
+          "playwright",
+          "figma:figma-generate-design",
+          "figma:figma-use"
+        ],
+        "scripts": [
+          "scripts/generate-project-pages.mjs",
+          "scripts/validate-kit.mjs",
+          "scripts/visual-diff.mjs"
+        ],
+        "external": [
+          "Ant Design CLI",
+          "Browser",
+          "Figma MCP"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "generated-page",
+          "type": "code",
+          "path": "generator/fixtures/antd-dashboard-content-fidelity/generated/pages.tsx",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "visual-metrics",
+          "type": "metrics",
+          "path": "figma/evidence/prd-antd-readback-2026-08-12/metrics.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-evidence",
+          "type": "evidence",
+          "path": "figma/evidence/prd-antd.verified.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-target-scopes",
+          "type": "evidence",
+          "path": "figma/workflow-target-scopes-2026-08-09.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "calibrated-page",
+          "label": "PRD plus antd calibrated page",
+          "description": "A non-Holdout AntD dashboard canary with verified content fidelity and a 1440x1100 Figma capture/readback."
+        },
+        "primaryArtifactId": "generated-page",
+        "presentationRequired": true,
+        "open": {
+          "mode": "browser",
+          "cwd": null,
+          "command": "node preview/node_modules/vite/bin/vite.js --config generator/fixtures/antd-dashboard-content-fidelity/preview/vite.config.ts --host 127.0.0.1 --port 5196 --strictPort",
+          "target": "http://127.0.0.1:5196/fixtures/dashboard-content-fidelity"
+        },
+        "supportingArtifactIds": [
+          "visual-metrics",
+          "figma-evidence",
+          "figma-target-scopes"
+        ],
+        "blockedDelivery": null
+      },
+      "acceptanceGates": [
+        {
+          "id": "antd-boundary",
+          "criteria": "Business code imports only the kit public API and stays within fixed bundle budgets",
+          "command": "npm run validate",
+          "evidence": [
+            "workflows/evidence/baseline.json"
+          ]
+        },
+        {
+          "id": "figma-calibration",
+          "criteria": "The clean non-Holdout route is captured at 1440x1100 inside target 19249:417; required copy is present, acceptance scaffolding is absent, and the final node screenshot and readback artifacts validate",
+          "command": "npm run validate:figma:evidence",
+          "evidence": [
+            "figma/evidence/prd-antd.verified.json",
+            "figma/evidence/prd-antd-verified-2026-08-12.png",
+            "figma/evidence/prd-antd-readback-2026-08-12/metrics.json",
+            "figma/evidence/prd-antd-readback-2026-08-12/diff-map.json"
+          ]
+        },
+        {
+          "id": "figma-target-scope",
+          "criteria": "The assigned 1440x1100 destination and write/readback boundary remain receipt-bound",
+          "command": "npm run validate:figma:targets",
+          "evidence": [
+            "figma/workflow-target-scopes-2026-08-09.json"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/figma-evidence.schema.json",
+        "records": [
+          "figma/evidence/prd-antd.verified.json"
+        ]
+      },
+      "examples": [
+        "generator/fixtures/antd-dashboard-content-fidelity/project-description.json",
+        "examples/list-page.tsx"
+      ],
+      "externalDependencies": [
+        {
+          "id": "approved-antd-foundation",
+          "required": true,
+          "availability": "available",
+          "fallback": "Keep the current kit-owned antd v6 adapter"
+        },
+        {
+          "id": "live-preview-route",
+          "required": true,
+          "availability": "available",
+          "fallback": "Preserve the generated canary and verified readback if the local preview is offline"
+        },
+        {
+          "id": "figma-target-file",
+          "required": false,
+          "availability": "available",
+          "fallback": "Preserve the verified target node, capture receipt, and local screenshot evidence"
+        }
+      ],
+      "completion": {
+        "status": "implemented",
+        "summary": "The repaired non-Holdout AntD dashboard canary was served at its registered route, captured once at 1440x1100, rebound into target node 19249:417 after the service placed it at page root, and read back with all 13 required strings present, all six acceptance-scaffold strings absent, existing target nodes preserved, and no library publication.",
+        "remaining": []
+      }
+    },
+    {
+      "id": "figma-spec-to-code-foundation",
+      "title": "Figma specification to code foundation",
+      "source": "../docs/01_Figma_规范转Token与组件.md",
+      "inputs": [
+        {
+          "name": "designSpec",
+          "type": "file",
+          "required": true,
+          "description": "Design rules, tokens, components, and page-shell decisions"
+        },
+        {
+          "name": "fileKey",
+          "type": "string",
+          "required": false,
+          "description": "Real Figma library authorized for read-only specification readback"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A Figma specification must become code tokens and reusable components",
+          "Design and production forms need an explicit translation layer"
+        ],
+        "stopWhen": [
+          "Specification decisions are unresolved",
+          "Live identifiers cannot be read from an authorized file"
+        ]
+      },
+      "tools": {
+        "skills": [
+          "figma:figma-use",
+          "figma-component-builder",
+          "playwright"
+        ],
+        "scripts": [
+          "scripts/validate-business-v3.mjs",
+          "scripts/validate-figma-evidence.mjs"
+        ],
+        "external": [
+          "Figma MCP",
+          "Browser"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "business-v3-tokens",
+          "type": "manifest",
+          "path": "design-systems/business-v3/tokens.json",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "business-v3-readback",
+          "type": "manifest",
+          "path": "design-systems/business-v3/figma-readback.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "business-v3-component-index",
+          "type": "manifest",
+          "path": "design-systems/business-v3/component-index.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "business-v3-antd-theme",
+          "type": "manifest",
+          "path": "design-systems/business-v3/antd-theme.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "business-v3-sync-contract",
+          "type": "manifest",
+          "path": "design-systems/business-v3/figma/sync.contract.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "business-v3-readback-baseline",
+          "type": "manifest",
+          "path": "figma/business-components-v3.readback-2026-07-29.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "foundation-contract",
+          "label": "Business V3 code-side foundation",
+          "description": "Read-only readback of the published Business Component Library V3.0 translated into tokens, a component index, an antd theme mapping, and a read-only sync contract."
+        },
+        "primaryArtifactId": "business-v3-tokens",
+        "presentationRequired": true,
+        "open": {
+          "mode": "file",
+          "cwd": null,
+          "command": null,
+          "target": "design-systems/business-v3/readback-contract.md"
+        },
+        "supportingArtifactIds": [
+          "business-v3-readback",
+          "business-v3-component-index",
+          "business-v3-antd-theme",
+          "business-v3-sync-contract",
+          "business-v3-readback-baseline"
+        ],
+        "blockedDelivery": null
+      },
+      "acceptanceGates": [
+        {
+          "id": "business-v3-four-layer-consistency",
+          "criteria": "Readback, tokens, component bindings, and antd theme stay consistent with the frozen 2026-07-29 baseline across all four layers",
+          "command": "npm run validate:business-v3",
+          "evidence": [
+            "design-systems/business-v3/figma-readback.json",
+            "design-systems/business-v3/tokens.json",
+            "design-systems/business-v3/component-index.json",
+            "design-systems/business-v3/antd-theme.json",
+            "design-systems/business-v3/figma/sync.contract.json"
+          ]
+        },
+        {
+          "id": "figma-evidence-history",
+          "criteria": "The pre-authorization external-blocked record remains preserved and schema-valid",
+          "command": "npm run validate:figma:evidence",
+          "evidence": [
+            "figma/evidence/figma-spec-foundation.external-blocked.json"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/figma-evidence.schema.json",
+        "records": [
+          "figma/evidence/figma-spec-foundation.external-blocked.json"
+        ]
+      },
+      "examples": [
+        "design-systems/business-v3/readback-contract.md",
+        "design-systems/business-v3/figma-readback.json"
+      ],
+      "externalDependencies": [
+        {
+          "id": "figma-library-readback",
+          "required": true,
+          "availability": "available",
+          "fallback": "Preserve the frozen 2026-07-29 readback baseline and the derived contracts without live re-reads"
+        },
+        {
+          "id": "figma-library-write",
+          "required": false,
+          "availability": "not-required",
+          "fallback": "figma/sync.contract.json fixes writeBack.allowed=false; write-back requires separate authorization"
+        }
+      ],
+      "completion": {
+        "status": "implemented",
+        "summary": "The published Business Component Library V3.0 (fileKey YOUR_FIGMA_FILE_KEY) was read back read-only on 2026-08-06: 66 CURRENT variables, 11 semantic aliases, 23 Paint Style bindings, seven component variant matrices, and eight page-template frames, all consistent with the frozen 2026-07-29 baseline. The code-side foundation (tokens.json, component-index.json, antd-theme.json, figma/sync.contract.json) is locked by validate:business-v3. Scope is the code-side foundation; component wrappers and comparison preview pages from the source document remain out of scope.",
+        "remaining": []
+      }
+    },
+    {
+      "id": "design-system-zero-to-one",
+      "title": "Design system zero to one",
+      "source": "../docs/01_颜色搭建.md",
+      "inputs": [
+        {
+          "name": "designBrief",
+          "type": "file",
+          "required": true,
+          "description": "Frozen design-system goals and usage context"
+        },
+        {
+          "name": "figmaTarget",
+          "type": "string",
+          "required": false,
+          "description": "Optional real Figma destination"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A product needs a minimal complete design-system foundation",
+          "Tokens, components, page shell, and specifications must share one contract"
+        ],
+        "stopWhen": [
+          "The brief is not frozen",
+          "Any token or component reference is unresolved",
+          "HTML or synchronization validation fails"
+        ]
+      },
+      "tools": {
+        "skills": [
+          "figma-component-builder",
+          "figma:figma-use",
+          "playwright",
+          "transitions-dev"
+        ],
+        "scripts": [
+          "scripts/validate-design-system-sample.mjs",
+          "scripts/run-image2-workflow.mjs"
+        ],
+        "external": [
+          "Browser",
+          "Figma MCP"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "design-guide",
+          "type": "document",
+          "path": "design-systems/ops-canvas/Design.md",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "tokens",
+          "type": "manifest",
+          "path": "design-systems/ops-canvas/tokens.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "component-index",
+          "type": "manifest",
+          "path": "design-systems/ops-canvas/component-index.json",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "html-spec",
+          "type": "code",
+          "path": "design-systems/ops-canvas/spec/index.html",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "existing-run",
+          "type": "evidence",
+          "path": "design-systems/ops-canvas/workflow/existing-run.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-evidence",
+          "type": "evidence",
+          "path": "figma/evidence/design-system-zero-to-one.verified.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-target-scopes",
+          "type": "evidence",
+          "path": "figma/workflow-target-scopes-2026-08-09.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "browser-page",
+          "label": "Ops Canvas design-system specification",
+          "description": "Runnable HTML product specification for the zero-to-one design-system workflow."
+        },
+        "primaryArtifactId": "html-spec",
+        "presentationRequired": true,
+        "open": {
+          "mode": "browser",
+          "cwd": null,
+          "command": "npm run serve:ops-canvas",
+          "target": "http://127.0.0.1:4177/"
+        },
+        "supportingArtifactIds": [
+          "design-guide",
+          "tokens",
+          "component-index",
+          "existing-run",
+          "figma-evidence",
+          "figma-target-scopes"
+        ],
+        "blockedDelivery": null
+      },
+      "acceptanceGates": [
+        {
+          "id": "zero-to-one-coverage",
+          "criteria": "Color, type, radius, spacing, shadow, layout, base and composite components, page shell, HTML spec, and Figma contract validate",
+          "command": "npm run validate:design-system",
+          "evidence": [
+            "design-systems/ops-canvas/workflow/existing-run.json"
+          ]
+        },
+        {
+          "id": "figma-native-readback",
+          "criteria": "Three AK/OPS collections, 39 variables, four Inter text styles, two effect styles, eight component sets, 21 variants, Auto Layout, component reuse, and variable bindings are contained inside target 19249:426 without existing-library mutation or publication",
+          "command": "npm run validate:figma:evidence",
+          "evidence": [
+            "figma/evidence/design-system-zero-to-one.verified.json",
+            "figma/evidence/design-system-zero-to-one-verified-2026-08-12.png",
+            "figma/evidence/design-system-zero-to-one-readback-2026-08-12/metrics.json",
+            "figma/evidence/design-system-zero-to-one-readback-2026-08-12/diff-map.json"
+          ]
+        },
+        {
+          "id": "figma-target-scope",
+          "criteria": "The specification target, AK/OPS namespace exception, immutable existing-library boundary, and publish deny rule validate",
+          "command": "npm run validate:figma:targets",
+          "evidence": [
+            "figma/workflow-target-scopes-2026-08-09.json"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/figma-evidence.schema.json",
+        "records": [
+          "figma/evidence/design-system-zero-to-one.verified.json"
+        ]
+      },
+      "examples": [
+        "design-systems/ops-canvas/spec/index.html",
+        "design-systems/ops-canvas/workflow/existing.request.json"
+      ],
+      "externalDependencies": [
+        {
+          "id": "figma-spec-page",
+          "required": false,
+          "availability": "available",
+          "fallback": "Preserve the isolated target; never mutate existing library assets or publish without new authorization"
+        }
+      ],
+      "completion": {
+        "status": "implemented",
+        "summary": "The Ops Canvas source contract now has a file-local native Figma implementation inside target 19249:426: three AK/OPS variable collections, 39 variables, four Inter text styles, two effect styles, eight component sets with 21 variants, eight reused instances, Auto Layout throughout, complete paint bindings, a verified screenshot, and no existing-library mutation or publication.",
+        "remaining": []
+      }
+    },
+    {
+      "id": "figma-3d-situation-screen",
+      "title": "Figma 3D situation screen",
+      "source": "../docs/02_数据大屏还原篇.md",
+      "inputs": [
+        {
+          "name": "screenBrief",
+          "type": "file",
+          "required": true,
+          "description": "Situation-screen data, interaction, visual, and performance requirements"
+        },
+        {
+          "name": "figmaTarget",
+          "type": "string",
+          "required": false,
+          "description": "Optional Figma source or destination"
+        }
+      ],
+      "routing": {
+        "when": [
+          "A situation screen needs real WebGL, drilldown, visual, responsive, and performance evidence",
+          "The screen belongs to the dedicated large-screen implementation track"
+        ],
+        "stopWhen": [
+          "Renderer license, data source, WebGL fallback, performance, or visual gates fail",
+          "The implementation would modify the Image2-owned generator or registry"
+        ]
+      },
+      "tools": {
+        "skills": [
+          "figma-3d-situation-screen",
+          "three-scope-map",
+          "transitions-dev",
+          "gsap-react",
+          "playwright",
+          "figma:figma-use"
+        ],
+        "scripts": [
+          "skills/figma-3d-situation-screen/scripts/validate_skill_contract.py",
+          "skills/figma-3d-situation-screen/scripts/validate_manifest_fragment.py",
+          "examples/figma-3d-situation-screen/scripts/lint-source.mjs"
+        ],
+        "external": [
+          "WebGL2",
+          "Browser",
+          "Playwright",
+          "Figma MCP"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "skill-source",
+          "type": "code",
+          "path": "skills/figma-3d-situation-screen/SKILL.md",
+          "required": true,
+          "role": "internal"
+        },
+        {
+          "id": "screen-example",
+          "type": "code",
+          "path": "examples/figma-3d-situation-screen/src/App.tsx",
+          "required": true,
+          "role": "product"
+        },
+        {
+          "id": "renderer",
+          "type": "code",
+          "path": "examples/figma-3d-situation-screen/src/map/ThreeSituationRenderer.ts",
+          "required": true,
+          "role": "supporting"
+        },
+        {
+          "id": "performance",
+          "type": "metrics",
+          "path": "examples/figma-3d-situation-screen/evidence/performance-clean.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "verification",
+          "type": "report",
+          "path": "examples/figma-3d-situation-screen/evidence/verification-summary.md",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-evidence",
+          "type": "evidence",
+          "path": "figma/evidence/figma-3d-situation-screen.verified.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "workflow-evidence",
+          "type": "evidence",
+          "path": "workflows/evidence/figma-3d-situation-screen.json",
+          "required": true,
+          "role": "evidence"
+        },
+        {
+          "id": "figma-target-scopes",
+          "type": "evidence",
+          "path": "figma/workflow-target-scopes-2026-08-09.json",
+          "required": true,
+          "role": "evidence"
+        }
+      ],
+      "handoff": {
+        "target": {
+          "kind": "browser-page",
+          "label": "3D situation screen",
+          "description": "Runnable WebGL situation-screen product sample with local performance and interaction evidence."
+        },
+        "primaryArtifactId": "screen-example",
+        "presentationRequired": true,
+        "open": {
+          "mode": "browser",
+          "cwd": "examples/figma-3d-situation-screen",
+          "command": "npm run dev",
+          "target": "http://127.0.0.1:5192/"
+        },
+        "supportingArtifactIds": [
+          "skill-source",
+          "renderer",
+          "performance",
+          "verification",
+          "figma-evidence",
+          "workflow-evidence",
+          "figma-target-scopes"
+        ],
+        "blockedDelivery": null
+      },
+      "acceptanceGates": [
+        {
+          "id": "skill-contract",
+          "criteria": "Cutout routing, renderer admission, motion routing, evidence rules, and stop conditions validate",
+          "command": "python skills/figma-3d-situation-screen/scripts/validate_skill_contract.py",
+          "evidence": [
+            "skills/figma-3d-situation-screen/SKILL.md",
+            "workflows/proposals/figma-3d-situation-screen.fragment.json"
+          ]
+        },
+        {
+          "id": "renderer-compliance",
+          "criteria": "One admitted WebGL renderer uses licensed map data and a documented fallback after BeautiMap NO-GO",
+          "command": "npm --prefix examples/figma-3d-situation-screen run check",
+          "evidence": [
+            "examples/figma-3d-situation-screen/public/data/provenance.json",
+            "examples/figma-3d-situation-screen/evidence/verification-summary.md"
+          ]
+        },
+        {
+          "id": "runtime-and-interaction",
+          "criteria": "WebGL2, states, hover, drilldown, return, context recovery, reduced motion, and zero console errors or warnings pass",
+          "command": "npm --prefix examples/figma-3d-situation-screen run check",
+          "evidence": [
+            "examples/figma-3d-situation-screen/evidence/verification-summary.md",
+            "examples/figma-3d-situation-screen/evidence/playwright-1920x1080-hover.png"
+          ]
+        },
+        {
+          "id": "responsive-and-performance",
+          "criteria": "Three responsive viewports have no page overflow; 1080p and 4K meet the fixed FPS, p95, and DPR gates",
+          "evidence": [
+            "examples/figma-3d-situation-screen/evidence/1024x768-clean.png",
+            "examples/figma-3d-situation-screen/evidence/1366x768-clean.png",
+            "examples/figma-3d-situation-screen/evidence/1920x1080-clean.png",
+            "examples/figma-3d-situation-screen/evidence/3840x2160-clean.png",
+            "examples/figma-3d-situation-screen/evidence/performance-clean.json"
+          ]
+        },
+        {
+          "id": "figma-calibration",
+          "criteria": "The live one-canvas Three.js ready state is captured at 1920x1080 inside target 19249:435 with the map image, required screen copy, path binding, screenshot, and comparison readback preserved",
+          "command": "npm run validate:figma:evidence",
+          "evidence": [
+            "figma/evidence/figma-3d-situation-screen.verified.json",
+            "figma/evidence/figma-3d-situation-screen-verified-2026-08-12.png",
+            "figma/evidence/figma-3d-situation-screen-readback-2026-08-12/metrics.json",
+            "figma/evidence/figma-3d-situation-screen-readback-2026-08-12/diff-map.json"
+          ]
+        },
+        {
+          "id": "figma-target-scope",
+          "criteria": "The 1920x1080 output target and write-then-readback boundary remain receipt-bound without library mutation",
+          "command": "npm run validate:figma:targets",
+          "evidence": [
+            "figma/workflow-target-scopes-2026-08-09.json"
+          ]
+        },
+        {
+          "id": "screen-regression",
+          "criteria": "Repository validation and fixed preview and starter bundle budgets remain green",
+          "command": "npm run validate && npm run build:preview && npm run build:starter && npm run check:package",
+          "evidence": [
+            "workflows/evidence/figma-3d-situation-screen.json"
+          ]
+        }
+      ],
+      "evidence": {
+        "schema": "schema/workflow-evidence.schema.json",
+        "records": [
+          "workflows/evidence/figma-3d-situation-screen.json"
+        ]
+      },
+      "examples": [
+        "examples/figma-3d-situation-screen/index.html",
+        "skills/figma-3d-situation-screen/SKILL.md",
+        "examples/figma-3d-situation-screen/evidence/verification-summary.md"
+      ],
+      "externalDependencies": [
+        {
+          "id": "natural-earth-data",
+          "required": true,
+          "availability": "available",
+          "fallback": "Stop renderer admission when provenance and hashes cannot be verified"
+        },
+        {
+          "id": "beauti-map",
+          "required": false,
+          "availability": "unavailable",
+          "fallback": "Use the audited Three.js renderer with Natural Earth public-domain data"
+        },
+        {
+          "id": "figma-target-file",
+          "required": false,
+          "availability": "available",
+          "fallback": "Preserve the verified output target, service capture receipt, and local browser evidence"
+        }
+      ],
+      "completion": {
+        "status": "implemented",
+        "summary": "The licensed Three.js situation screen passed the live one-canvas ready-state Browser gate, was captured once into a calibrated 1920x1080 canvas, rebound into target 19249:435 after the service placed it at page root, and read back with 405 nodes, 136 text nodes, one captured map image, all required screen copy, existing target nodes preserved, and no library mutation or publication.",
+        "remaining": []
+      }
+    }
+  ]
+}

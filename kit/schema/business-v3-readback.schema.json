@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.dev/schema/business-v3-readback.schema.json",
+  "title": "Business components V3 Figma readback",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "source", "collections", "variables", "components", "paintStyleBindings"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileKey", "fileName", "readbackMethod", "recordedAtUtc"],
+      "properties": {
+        "fileKey": { "const": "YOUR_FIGMA_FILE_KEY" },
+        "fileName": { "type": "string", "minLength": 1 },
+        "readbackMethod": { "type": "string", "minLength": 1 },
+        "recordedAtUtc": { "type": "string", "minLength": 20 }
+      }
+    },
+    "collections": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "modes", "defaultModeId"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "enum": ["V3 Core", "V3 Semantic"] },
+          "defaultModeId": { "type": "string", "minLength": 1 },
+          "modes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["modeId", "name"],
+              "properties": {
+                "modeId": { "type": "string", "minLength": 1 },
+                "name": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "variables": {
+      "type": "array",
+      "minItems": 66,
+      "maxItems": 66,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "collectionId", "resolvedType", "valuesByMode", "isAlias", "aliasTargetId"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "collectionId": { "type": "string", "minLength": 1 },
+          "resolvedType": { "enum": ["COLOR", "FLOAT", "STRING", "BOOLEAN"] },
+          "valuesByMode": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": ["string", "number", "boolean"]
+            }
+          },
+          "isAlias": { "type": "boolean" },
+          "aliasTargetId": { "type": ["string", "null"] },
+          "scopes": { "type": "array", "items": { "type": "string" } },
+          "codeSyntax": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": { "WEB": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "key", "variantProperties", "boundVariableIds"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "key": { "type": "string", "minLength": 1 },
+          "variantProperties": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            }
+          },
+          "boundVariableIds": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "paintStyleBindings": {
+      "type": "array",
+      "minItems": 23,
+      "maxItems": 23,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["styleName", "variableId"],
+        "properties": {
+          "styleName": { "type": "string", "minLength": 1 },
+          "variableId": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "pageTemplates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "nodeId"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "nodeId": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

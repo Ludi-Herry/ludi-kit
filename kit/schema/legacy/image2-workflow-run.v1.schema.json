@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/legacy/image2-workflow-run.v1.schema.json",
+  "title": "image2-to-figma-page legacy v1 run record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "runId", "requestId", "designContext", "status", "recordedAt", "frozenContext", "stages", "artifacts", "blockers"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "runId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "requestId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "designContext": { "enum": ["existing", "exploratory"] },
+    "status": { "enum": ["completed", "in-progress", "external-blocked", "failed"] },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "frozenContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "contractSha256", "sources", "selectedDirectionId"],
+      "properties": {
+        "kind": { "enum": ["existing-design-system", "mini-design-brief"] },
+        "contractSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": { "type": "string", "minLength": 3 },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+            }
+          }
+        },
+        "selectedDirectionId": { "type": ["string", "null"] }
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "summary", "evidence"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "status": { "enum": ["passed", "ready", "external-blocked", "failed"] },
+          "summary": { "type": "string", "minLength": 8 },
+          "evidence": { "type": "array", "items": { "type": "string", "minLength": 3 } }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pageEntry", "visualMetrics", "visualHeatmap", "figmaEvidence"],
+      "properties": {
+        "pageEntry": { "type": "string", "minLength": 3 },
+        "visualMetrics": { "type": "string", "minLength": 3 },
+        "visualHeatmap": { "type": "string", "minLength": 3 },
+        "figmaEvidence": { "type": "string", "minLength": 3 }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dependency", "reason", "resumeRequirements"],
+        "properties": {
+          "dependency": { "type": "string", "minLength": 3 },
+          "reason": { "type": "string", "minLength": 8 },
+          "resumeRequirements": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "external-blocked" } }, "required": ["status"] },
+      "then": { "properties": { "blockers": { "type": "array", "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "completed" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "blockers": { "type": "array", "maxItems": 0 },
+          "stages": {
+            "type": "array",
+            "items": { "type": "object", "properties": { "status": { "const": "passed" } }, "required": ["status"] }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "in-progress" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "blockers": { "type": "array", "maxItems": 0 },
+          "stages": {
+            "type": "array",
+            "contains": { "type": "object", "properties": { "status": { "const": "ready" } }, "required": ["status"] },
+            "items": { "type": "object", "properties": { "status": { "enum": ["passed", "ready"] } }, "required": ["status"] }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "external-blocked" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "stages": {
+            "type": "array",
+            "contains": { "type": "object", "properties": { "status": { "const": "external-blocked" } }, "required": ["status"] }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stages": {
+            "type": "array",
+            "contains": { "type": "object", "properties": { "status": { "const": "failed" } }, "required": ["status"] }
+          }
+        },
+        "required": ["stages"]
+      },
+      "then": { "properties": { "status": { "const": "failed" } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "failed" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "stages": {
+            "type": "array",
+            "contains": { "type": "object", "properties": { "status": { "const": "failed" } }, "required": ["status"] }
+          }
+        }
+      }
+    }
+  ]
+}

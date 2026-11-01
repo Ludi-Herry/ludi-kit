@@ -1,0 +1,39 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "generatedAt": "2026-07-07",
+  "itemId": "fb-20260707-001",
+  "title": "Permission status copy needs domain terms",
+  "mode": "dry-run",
+  "status": "ready",
+  "sourceDraft": "projects/sample-inventory-erp/feedback/promotions/fb-20260707-001.md",
+  "planFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-001.json",
+  "patchFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-001.diff",
+  "action": "update-rule",
+  "target": "rule",
+  "destination": "rules/anti-patterns.md",
+  "allowedDestinations": [
+    "rules/",
+    "recipes/"
+  ],
+  "willChangeFiles": [
+    "rules/anti-patterns.md",
+    "recipes/badge-variants.md"
+  ],
+  "guardrails": [
+    "Dry-run mode writes only application plan artifacts.",
+    "Every planned source file must match promotion gate allowed destinations.",
+    "Only accepted or promoted feedback items can produce application plans.",
+    "Run validation and build commands before marking the feedback item promoted."
+  ],
+  "validationCommands": [
+    "npm run validate:feedback",
+    "npm run validate",
+    "npm run check:harness",
+    "npm run build:preview",
+    "npm run build:starter"
+  ],
+  "command": "npm run apply:promotion -- fb-20260707-001 --dry-run --write-plan",
+  "sourceDraftIndex": "projects/sample-inventory-erp/feedback/promotions/index.json",
+  "patchPreview": "diff --git a/rules/anti-patterns.md b/rules/anti-patterns.md\n@@ status copy mapping\n+ Add a rule that Badge variant stays semantic while domain copy lives in page or generation mapping.\n+ Document permission statuses as Active, Review, and Risk with success, warning, and danger variants.\ndiff --git a/recipes/badge-variants.md b/recipes/badge-variants.md\n@@ domain copy\n+ Add a domain-copy table for permission and inventory statuses.\n+ Require generated permission pages to show Active, Review, and Risk instead of inventory copy."
+}

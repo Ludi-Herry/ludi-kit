@@ -1,0 +1,96 @@
+{
+  "version": "1.0.0",
+  "designSystem": "ops-canvas",
+  "source": "local-zero-to-one-sample",
+  "figma": { "fileKey": null, "auditStatus": "external-blocked" },
+  "components": [
+    {
+      "id": "button",
+      "name": "Button",
+      "category": "base",
+      "variants": ["primary", "secondary", "danger"],
+      "tokens": ["color.brand.primary", "color.brand.onPrimary", "radius.control", "layout.control.height"],
+      "useWhen": ["A user starts or confirms an action"],
+      "avoidWhen": ["The action is navigation-only text"],
+      "figmaComponent": "Components/Button",
+      "figmaNodeId": null
+    },
+    {
+      "id": "badge",
+      "name": "Badge",
+      "category": "base",
+      "variants": ["success", "warning", "danger", "info"],
+      "tokens": ["color.status.success", "color.status.warning", "color.status.danger", "color.status.info", "radius.pill"],
+      "useWhen": ["A compact label communicates a record state"],
+      "avoidWhen": ["Color would be the only state cue"],
+      "figmaComponent": "Components/Badge",
+      "figmaNodeId": null
+    },
+    {
+      "id": "input",
+      "name": "Input",
+      "category": "base",
+      "variants": ["default", "focus", "error"],
+      "tokens": ["color.bg.surface", "color.border.default", "shadow.focus", "radius.control", "layout.control.height"],
+      "useWhen": ["A user enters a short text value"],
+      "avoidWhen": ["The value comes from a fixed option list"],
+      "figmaComponent": "Components/Input",
+      "figmaNodeId": null
+    },
+    {
+      "id": "card",
+      "name": "Card",
+      "category": "base",
+      "variants": ["default", "elevated"],
+      "tokens": ["color.bg.surface", "color.border.default", "radius.card", "shadow.card"],
+      "useWhen": ["Related content needs one bounded surface"],
+      "avoidWhen": ["The card would be nested inside another card"],
+      "figmaComponent": "Components/Card",
+      "figmaNodeId": null
+    },
+    {
+      "id": "metric-card",
+      "name": "MetricCard",
+      "category": "composite",
+      "variants": ["neutral", "positive", "negative"],
+      "tokens": ["color.bg.surface", "typography.display.size", "spacing.4", "radius.card"],
+      "useWhen": ["An operational metric needs value, delta, and context"],
+      "avoidWhen": ["The value has no decision consequence"],
+      "figmaComponent": "Components/Metric Card",
+      "figmaNodeId": null
+    },
+    {
+      "id": "filter-bar",
+      "name": "FilterBar",
+      "category": "composite",
+      "variants": ["inline", "stacked"],
+      "tokens": ["color.bg.elevated", "spacing.3", "spacing.4", "radius.card"],
+      "useWhen": ["A list needs repeatable query and status filters"],
+      "avoidWhen": ["There is only one static data view"],
+      "figmaComponent": "Components/Filter Bar",
+      "figmaNodeId": null
+    },
+    {
+      "id": "work-order-table",
+      "name": "WorkOrderTable",
+      "category": "composite",
+      "variants": ["comfortable", "compact"],
+      "tokens": ["color.bg.surface", "color.border.default", "typography.body.size", "spacing.3"],
+      "useWhen": ["Work orders require stable sortable columns"],
+      "avoidWhen": ["Records are primarily visual media"],
+      "figmaComponent": "Components/Work Order Table",
+      "figmaNodeId": null
+    },
+    {
+      "id": "ops-shell",
+      "name": "OpsShell",
+      "category": "shell",
+      "variants": ["desktop", "compact"],
+      "tokens": ["color.bg.page", "layout.nav.width", "layout.content.maxWidth", "layout.page.gutter"],
+      "useWhen": ["An operations page needs product navigation and a bounded content area"],
+      "avoidWhen": ["The deliverable is an embedded widget"],
+      "figmaComponent": "Shell/Ops",
+      "figmaNodeId": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "import-profile-custom-native-good",
+  "prompt": "Import profile fixture: custom native output may use only React and local contract entries.",
+  "foundationContract": {
+    "businessContext": "quality/frontend-foundation.custom-native.context.json",
+    "projectId": "fixture-custom-native",
+    "outputMode": "custom-native",
+    "framework": "react"
+  },
+  "output": {
+    "file": "src/foundation/index.ts"
+  },
+  "report": "harness/reports/import-profile-custom-native-good.json"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "test-row-class-token-inert",
+  "expectedClassTokens": ["generated-row--high"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/row-class-token.tsx",
+    "symbol": "InertRowClassTokenPage"
+  },
+  "report": "harness/reports/test-row-class-token-inert.json"
+}

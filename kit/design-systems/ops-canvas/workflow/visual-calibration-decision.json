@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "decisionId": "ops-canvas-visual-calibration-2026-07-17",
+  "requestId": "ops-canvas-existing",
+  "status": "approved",
+  "recordedAt": "2026-07-17T09:18:52.178Z",
+  "decidedAt": "2026-07-17T11:09:11.307Z",
+  "proposalPath": "design-systems/ops-canvas/workflow/visual-calibration-proposal.md",
+  "evidence": {
+    "metricsPath": "design-systems/ops-canvas/workflow/visual-diff-artifacts/metrics.json",
+    "diagnosticMetricsPath": "design-systems/ops-canvas/workflow/calibration-diagnostics/metrics.json",
+    "heatmapPath": "design-systems/ops-canvas/workflow/visual-diff-artifacts/heatmap.png",
+    "browserEvidencePath": "design-systems/ops-canvas/workflow/browser-evidence.json",
+    "referenceSha256": "78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d",
+    "candidateSha256": "fa316c351bc844db8d7cfa23f572bb68e64fc7af99b280b93440222b89ebae86"
+  },
+  "immutableThresholds": {
+    "fullPage": { "minSsim": 0.985, "maxRms": 0.035, "maxChangedPixelRatio": 0.025 },
+    "criticalRegion": { "minSsim": 0.99, "maxRms": 0.025, "maxChangedPixelRatio": 0.025 },
+    "pixelDeltaThreshold": 0.06274509803921569
+  },
+  "machineVerdict": "failed",
+  "humanVerdict": "accepted-semantic-reconstruction",
+  "recommendedChoice": "approve-semantic-exception-and-calibration",
+  "allowedChoices": [
+    "approve-semantic-exception-and-calibration",
+    "reject-and-iterate-pixel-fidelity"
+  ],
+  "decision": "approve-semantic-exception-and-calibration",
+  "outcome": "accepted-with-semantic-exception",
+  "rawGateOverride": false,
+  "thresholdChangeApproved": false,
+  "formalCalibrationVerdict": "rejected",
+  "formalCalibrationNote": "The qualified pair label is rejected. The earlier user-approved local semantic exception remains recorded and does not change this calibration label.",
+  "reviews": [
+    {
+      "reviewerId": "image2-reviewer-c-20260730",
+      "independence": "independent-blind-calibration-review",
+      "recordPath": "design-systems/ops-canvas/workflow/reviews/ops-canvas-2026-07-17.image2-reviewer-c-20260730.json",
+      "calibrationLabel": "rejected",
+      "semanticVerdict": "rejected",
+      "interactionVerdict": "accepted",
+      "pixelFidelityVerdict": "rejected"
+    },
+    {
+      "reviewerId": "image2-reviewer-d-20260730",
+      "independence": "independent-blind-calibration-review",
+      "recordPath": "design-systems/ops-canvas/workflow/reviews/ops-canvas-2026-07-17.image2-reviewer-d-20260730.json",
+      "calibrationLabel": "rejected",
+      "semanticVerdict": "rejected",
+      "interactionVerdict": "accepted",
+      "pixelFidelityVerdict": "rejected"
+    }
+  ],
+  "calibrationStudy": {
+    "scope": "global-image2-study",
+    "status": "authorized",
+    "requiredPairs": 24,
+    "requiredAcceptedPairs": 12,
+    "requiredRejectedPairs": 12,
+    "requiredIndependentReviewers": 2,
+    "collectedPairs": 2,
+    "qualifiedPairs": 2,
+    "completedPairs": 2,
+    "acceptedPairs": 1,
+    "rejectedPairs": 1,
+    "disputedPairs": 0,
+    "lastQualifiedPair": "ops-canvas-2026-07-17",
+    "updatedAt": "2026-07-30T02:17:47.9601487-07:00",
+    "gateChangeAuthorized": false,
+    "remaining": "Collect 22 additional pairs with two independent reviews for every pair, including 11 more accepted and 11 more rejected pairs."
+  }
+}

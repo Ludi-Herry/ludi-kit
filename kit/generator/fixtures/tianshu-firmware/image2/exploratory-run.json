@@ -1,0 +1,111 @@
+{
+  "$schema": "../../../../schema/image2-workflow-run.schema.json",
+  "version": "1.0.0",
+  "runId": "tianshu-firmware-exploratory-run",
+  "requestId": "tianshu-firmware-exploratory",
+  "designContext": "exploratory",
+  "status": "failed",
+  "recordedAt": "2026-07-17T13:02:45.936Z",
+  "frozenContext": {
+    "kind": "mini-design-brief",
+    "contractSha256": "82c4990d66eb7525613e6354213bf64247ab6b29992582e6fe12d19afa19a8bf",
+    "sources": [],
+    "selectedDirectionId": "release-ledger"
+  },
+  "stages": [
+    {
+      "id": "context-freeze",
+      "status": "passed",
+      "summary": "Frozen the exploratory design contract before page work.",
+      "evidence": []
+    },
+    {
+      "id": "gpt-image-2",
+      "status": "passed",
+      "summary": "The confirmed prompt produced a real reference image with matching dimensions and SHA-256 evidence.",
+      "evidence": [
+        "generator/fixtures/tianshu-firmware/image2/reference-prompt.proposed.md",
+        "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+        "generator/fixtures/tianshu-firmware/image2/reference-image.metadata.json",
+        "generator/fixtures/tianshu-firmware/image2/reference-generation.evidence.json"
+      ]
+    },
+    {
+      "id": "image-to-html",
+      "status": "passed",
+      "summary": "Image-to-html reconstruction evidence matches the generated reference, measured reconstruction details, and implemented page entry.",
+      "evidence": [
+        "generator/fixtures/tianshu-firmware/image2/reconstruction.evidence.json",
+        "generator/fixtures/tianshu-firmware/image2/reconstruction-details.json"
+      ]
+    },
+    {
+      "id": "page-implementation",
+      "status": "passed",
+      "summary": "The local page entry and complete Ops Canvas specification are present.",
+      "evidence": [
+        "projects/tianshu-ops/generated/firmware-page.tsx"
+      ]
+    },
+    {
+      "id": "browser-playwright",
+      "status": "passed",
+      "summary": "Validated Browser and Playwright evidence for the unique local URL, screenshots, interaction gate, and clean console.",
+      "evidence": [
+        "generator/fixtures/tianshu-firmware/image2/browser-evidence.json"
+      ]
+    },
+    {
+      "id": "visual-diff",
+      "status": "failed",
+      "summary": "The executed comparison produced valid full-image and critical-region metrics and failed the immutable thresholds.",
+      "evidence": [
+        "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+        "projects/tianshu-ops/workflow/firmware-image2/visual-diff.config.json",
+        "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/metrics.json",
+        "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/heatmap.png"
+      ]
+    },
+    {
+      "id": "figma-generate-design",
+      "status": "external-blocked",
+      "summary": "Figma capture stopped at the authorized-target boundary.",
+      "evidence": [
+        "figma/evidence/tianshu-firmware-image2.external-blocked.json"
+      ]
+    },
+    {
+      "id": "figma-component-rebuild",
+      "status": "external-blocked",
+      "summary": "Variable binding, Auto Layout, and component reconstruction require the authorized Figma target.",
+      "evidence": [
+        "design-systems/ops-canvas/figma/sync.contract.json",
+        "figma/evidence/tianshu-firmware-image2.external-blocked.json"
+      ]
+    }
+  ],
+  "artifacts": {
+    "pageEntry": "projects/tianshu-ops/generated/firmware-page.tsx",
+    "visualMetrics": "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/metrics.json",
+    "visualHeatmap": "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/heatmap.png",
+    "figmaEvidence": "figma/evidence/tianshu-firmware-image2.external-blocked.json"
+  },
+  "blockers": [
+    {
+      "dependency": "visual-diff-thresholds",
+      "reason": "The executed visual comparison produced valid metrics and failed one or more immutable thresholds.",
+      "resumeRequirements": [
+        "Review the recorded metrics and heatmap, then iterate pixel fidelity or approve a separately recorded calibration decision"
+      ]
+    },
+    {
+      "dependency": "figma-authorized-target",
+      "reason": "No real authorized Figma fileKey and target page node were supplied for capture and component reconstruction.",
+      "resumeRequirements": [
+        "Provide a real Figma fileKey",
+        "Grant read and write scope",
+        "Provide or approve the target page node"
+      ]
+    }
+  ]
+}

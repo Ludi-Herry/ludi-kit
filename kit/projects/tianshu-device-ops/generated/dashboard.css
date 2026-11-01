@@ -1,0 +1,254 @@
+/* 工作台 · 个人首页（dashboard-page）。颜色与间距全部取自 styles.css 的 --do-* 与 antd 语义变量，不硬编码。 */
+
+.dashboard-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--do-space-sm);
+  justify-content: flex-end;
+}
+
+.dashboard-subtitle {
+  color: var(--do-text-secondary);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.dashboard-refresh-time {
+  color: var(--do-text-tertiary);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* 栅格：1440px 下每行 3 卡，1024px 下 2 卡，窄屏 1 卡；行内等高。 */
+.dashboard-grid {
+  display: grid;
+  gap: var(--do-space-md);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.dashboard-card.ant-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.dashboard-card.ant-card .ant-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboard-card--clickable {
+  cursor: pointer;
+}
+
+.dashboard-card--clickable:hover {
+  border-color: var(--do-primary);
+}
+
+.dashboard-card--clickable:focus-visible {
+  outline: 2px solid var(--do-primary);
+  outline-offset: 2px;
+}
+
+.dashboard-card--editing {
+  cursor: default;
+}
+
+.dashboard-card--dragging {
+  opacity: 0.55;
+}
+
+.dashboard-card--over {
+  border-color: var(--do-primary);
+}
+
+.dashboard-card__name {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.dashboard-card__edit {
+  align-items: center;
+  display: flex;
+  gap: 2px;
+}
+
+.dashboard-card__drag {
+  color: var(--do-text-tertiary);
+  cursor: grab;
+}
+
+.dashboard-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.dashboard-card__metric {
+  font-size: 30px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dashboard-card__metric-unit {
+  color: var(--do-text-secondary);
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.dashboard-card__zero {
+  color: var(--do-text-tertiary);
+  font-size: 15px;
+  margin: 0;
+}
+
+.dashboard-card__hint {
+  color: var(--do-text-tertiary);
+  font-size: 12px;
+  margin: 0;
+}
+
+.dashboard-card__footer {
+  align-items: center;
+  display: flex;
+  gap: var(--do-space-sm);
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.dashboard-quick {
+  align-items: center;
+  display: flex;
+  gap: var(--do-space-sm);
+}
+
+.dashboard-quick__icon {
+  align-items: center;
+  border: 1px solid var(--do-border);
+  border-radius: 8px;
+  color: var(--do-primary);
+  display: inline-flex;
+  font-size: 18px;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.dashboard-quick__text {
+  color: var(--do-text-secondary);
+  font-size: 13px;
+}
+
+/* 告警 / 熔断卡的 Top 5 浮层 */
+.dashboard-popover {
+  width: 320px;
+}
+
+.dashboard-popover__title {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.dashboard-popover__items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-popover__item {
+  border-radius: 6px;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+}
+
+.dashboard-popover__item:hover {
+  background: var(--do-bg);
+  color: inherit;
+}
+
+.dashboard-popover__item-top {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.dashboard-popover__item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-popover__item-meta {
+  color: var(--do-text-tertiary);
+  font-size: 12px;
+  padding-left: 2px;
+}
+
+.dashboard-popover__more {
+  border-top: 1px solid var(--do-border);
+  margin-top: 8px;
+  padding-top: 8px;
+  text-align: right;
+}
+
+/* 添加卡片抽屉 */
+.dashboard-drawer__group + .dashboard-drawer__group {
+  margin-top: var(--do-space-md);
+}
+
+.dashboard-drawer__group-title {
+  color: var(--do-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.dashboard-drawer__item {
+  align-items: center;
+  border: 1px solid var(--do-border);
+  border-radius: 6px;
+  display: flex;
+  gap: 10px;
+  padding: 8px 10px;
+}
+
+.dashboard-drawer__item + .dashboard-drawer__item {
+  margin-top: 8px;
+}
+
+.dashboard-drawer__name {
+  font-weight: 600;
+}
+
+.dashboard-drawer__tags {
+  margin-left: auto;
+}

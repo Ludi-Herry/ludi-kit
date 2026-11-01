@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+    "noEmit": true,
+    "types": [],
+    "tsBuildInfoFile": "../outside-write.tsbuildinfo"
+  },
+  "files": ["plain.ts"]
+}

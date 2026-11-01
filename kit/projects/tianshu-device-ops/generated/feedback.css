@@ -1,0 +1,293 @@
+/* 客户反馈页专用样式（2026-09-29 批 2 页面卡 · 页 9）
+   契约：类名前缀 feedback-，样式只用 theme/token 与已有 CSS 变量，不硬编码颜色。 */
+
+.feedback-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--do-space-md);
+}
+
+/* 顶部超时警告 Banner */
+.feedback-overdue-banner {
+  margin-bottom: 2px;
+}
+
+/* 筛选区面板 */
+.feedback-filter-panel {
+  background: var(--do-surface);
+  border: 1px solid var(--do-border);
+  border-radius: 8px;
+  padding: var(--do-space-md) var(--do-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--do-space-sm);
+}
+
+.feedback-filter-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--do-space-sm) var(--do-space-md);
+  align-items: flex-end;
+}
+
+.feedback-filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.feedback-filter-item label {
+  color: var(--ant-color-text);
+  font-size: var(--ant-font-size);
+  line-height: var(--ant-line-height);
+}
+
+.feedback-filter-item--disabled label {
+  color: var(--do-text-tertiary);
+}
+
+.feedback-filter-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--do-space-sm);
+  margin-top: 4px;
+  padding-top: var(--do-space-sm);
+  border-top: 1px dashed var(--do-border);
+}
+
+/* 表格超时行浅红底色（用 antd error 语义变量） */
+.feedback-row--overdue td {
+  background-color: var(--ant-color-error-bg) !important;
+}
+
+/* 优先级中性灰度阶（§3.1.1，不占语义色） */
+.feedback-priority {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+}
+
+.feedback-priority--p1 {
+  font-weight: 600;
+  color: var(--do-text);
+}
+
+.feedback-priority--p2 {
+  font-weight: 500;
+  color: var(--do-text-secondary);
+}
+
+.feedback-priority--p3 {
+  font-weight: 400;
+  color: var(--do-text-tertiary);
+}
+
+/* SLA 剩余时间文本三档 */
+.feedback-sla-time {
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.feedback-sla-time--normal {
+  color: var(--do-text);
+}
+
+.feedback-sla-time--near {
+  color: var(--ant-color-warning);
+  font-weight: 500;
+}
+
+.feedback-sla-time--overdue {
+  color: var(--ant-color-error);
+  font-weight: 600;
+}
+
+.feedback-sla-settled {
+  color: var(--do-text-secondary);
+  font-size: 12px;
+}
+
+/* 详情抽屉内容区排版 */
+.feedback-drawer-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--do-space-lg);
+}
+
+.feedback-section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--do-text);
+  margin-bottom: var(--do-space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feedback-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--do-space-sm) var(--do-space-md);
+}
+
+.feedback-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--do-space-sm) var(--do-space-md);
+}
+
+.feedback-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.feedback-field__label {
+  color: var(--do-text-secondary);
+  font-size: 12px;
+}
+
+.feedback-field__value {
+  color: var(--do-text);
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.feedback-content-box {
+  background: var(--do-bg);
+  border: 1px solid var(--do-border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.feedback-attachment-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.feedback-attachment-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--do-bg);
+  border: 1px solid var(--do-border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: var(--do-text);
+}
+
+/* 回复历史时间线 */
+.feedback-timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.feedback-timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--do-text-secondary);
+}
+
+.feedback-timeline-text {
+  background: var(--do-bg);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--do-text);
+}
+
+/* 抽屉 Footer */
+.feedback-drawer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.feedback-drawer-footer__right {
+  display: flex;
+  align-items: center;
+  gap: var(--do-space-sm);
+  margin-left: auto;
+}
+
+/* 详情抽屉内局部排版（从 JSX 内联样式收拢） */
+.feedback-muted-sm {
+  font-size: 13px;
+}
+
+.feedback-related-box {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: var(--do-bg);
+  border-radius: 6px;
+}
+
+.feedback-block {
+  margin-top: 14px;
+}
+
+.feedback-block--tight {
+  margin-top: 12px;
+}
+
+.feedback-block__label {
+  margin-bottom: 4px;
+}
+
+.feedback-flow-note {
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.feedback-reject-alert {
+  margin-top: 8px;
+}
+
+/* 回复抽屉与各弹窗排版 */
+.feedback-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.feedback-assign-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.feedback-select-full {
+  width: 100%;
+}
+
+.feedback-modal-form {
+  margin-top: 16px;
+}
+
+.feedback-modal-alert {
+  margin-bottom: 16px;
+}
+
+.feedback-modal-body {
+  margin-top: 12px;
+}
+
+.feedback-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}

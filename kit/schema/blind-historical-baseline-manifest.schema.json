@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/blind-historical-baseline-manifest.schema.json",
+  "title": "Blind Historical Evidence Baseline Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "scope", "frozenAtUtc", "registry", "files"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "scope": { "const": "three-qualifying-five-invalidated-complete-evidence" },
+    "frozenAtUtc": { "type": "string", "format": "date-time" },
+    "registry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "versionAtFreeze", "protectedRuns"],
+      "properties": {
+        "path": { "const": "quality/blind-adoption-registry.json" },
+        "versionAtFreeze": { "type": "string" },
+        "protectedRuns": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["runId", "status", "qualifying", "canonicalBytes", "sha256"],
+            "properties": {
+              "runId": { "type": "string", "minLength": 1 },
+              "status": { "enum": ["completed", "invalidated"] },
+              "qualifying": { "type": "boolean" },
+              "canonicalBytes": { "type": "integer", "minimum": 1 },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            }
+          }
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["runId", "path", "bytes", "sha256"],
+        "properties": {
+          "runId": { "type": "string", "minLength": 1 },
+          "path": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$"
+          },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    }
+  }
+}

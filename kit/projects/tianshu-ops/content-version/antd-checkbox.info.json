@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "kind": "page-local-antd-cli-reference",
+  "component": "Checkbox",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "command": "npm exec --offline -- antd info Checkbox --version 6.5.0 --format json",
+  "source": "installed-package-metadata",
+  "description": "Collect user's choices.",
+  "htmlElement": "input",
+  "relevantProps": [
+    { "name": "checked", "type": "boolean", "default": false },
+    { "name": "disabled", "type": "boolean", "default": false },
+    { "name": "indeterminate", "type": "boolean", "default": false },
+    { "name": "onChange", "type": "(event: CheckboxChangeEvent) => void" }
+  ],
+  "usage": "Require explicit acknowledgement of rollback impact before enabling the destructive submit action."
+}

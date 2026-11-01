@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/image2-workflow-request.schema.json",
+  "version": "1.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "invalid-existing",
+  "designContext": "existing",
+  "project": {
+    "name": "Invalid request",
+    "page": "Missing context",
+    "objective": "This request must fail before any workflow output is written.",
+    "audience": "Validator"
+  },
+  "viewport": { "width": 1440, "height": 900, "deviceScaleFactor": 1 },
+  "pageEntry": "design-systems/ops-canvas/spec/index.html",
+  "referencePrompt": "design-systems/ops-canvas/workflow/reference-prompt.md",
+  "visualDiffConfig": "visual-diff/fixtures/pass/config.json",
+  "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json",
+  "figmaTarget": { "fileKey": "FAKE_FILE_KEY", "pageNodeId": "0:1" }
+}

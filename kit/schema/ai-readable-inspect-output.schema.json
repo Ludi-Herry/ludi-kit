@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/ai-readable-inspect-output.schema.json",
+  "title": "AI-readable Inspect Output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "command",
+    "status",
+    "exitCode",
+    "repoRoot",
+    "scope",
+    "sources",
+    "requiredReads",
+    "writePolicy",
+    "readiness",
+    "clarifications",
+    "validationProfiles",
+    "errors"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://ai-readable.local/schema/ai-readable-inspect-output.schema.json"
+    },
+    "schemaVersion": { "const": "0.1.0" },
+    "command": { "const": "inspect" },
+    "status": { "enum": ["ready", "needs-clarification", "blocked", "failed"] },
+    "exitCode": { "enum": [0, 2, 3, 5] },
+    "repoRoot": { "type": "string", "minLength": 1 },
+    "scope": { "$ref": "#/$defs/scope" },
+    "project": { "$ref": "#/$defs/project" },
+    "foundation": { "$ref": "#/$defs/foundation" },
+    "page": { "$ref": "#/$defs/page" },
+    "flows": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "pattern": { "$ref": "#/$defs/pattern" },
+    "criticalStates": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "requiredReads": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requiredRead" }
+    },
+    "writePolicy": { "$ref": "#/$defs/writePolicy" },
+    "readiness": { "$ref": "#/$defs/readiness" },
+    "clarifications": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/clarification" }
+    },
+    "validationProfiles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/validationProfile" }
+    },
+    "errors": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/error" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "ready" } } },
+      "then": {
+        "properties": { "exitCode": { "const": 0 } },
+        "required": ["project", "foundation", "page", "flows", "pattern", "criticalStates"]
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "needs-clarification" } } },
+      "then": {
+        "properties": { "exitCode": { "const": 2 } },
+        "required": ["project", "foundation", "page", "flows", "pattern", "criticalStates"]
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "blocked" } } },
+      "then": {
+        "properties": { "exitCode": { "const": 3 } },
+        "required": ["project", "foundation", "page", "flows", "pattern", "criticalStates"]
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "failed" } } },
+      "then": {
+        "properties": {
+          "exitCode": { "const": 5 },
+          "errors": { "minItems": 1 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectId", "pageId"],
+      "properties": {
+        "projectId": { "type": ["string", "null"] },
+        "pageId": { "type": ["string", "null"] }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "contextType", "decision", "name", "audience", "scenario"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "contextType": { "enum": ["validation-sandbox", "real-product"] },
+        "decision": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "audience": { "type": "array", "items": { "type": "string" } },
+        "scenario": { "type": "string", "minLength": 1 }
+      }
+    },
+    "foundation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outputMode", "framework", "designSystem", "distribution", "designPack", "imports", "adapters"],
+      "properties": {
+        "outputMode": { "type": "string", "minLength": 1 },
+        "framework": { "type": "object", "additionalProperties": true },
+        "designSystem": { "type": "object", "additionalProperties": true },
+        "distribution": { "type": "string", "minLength": 1 },
+        "designPack": { "$ref": "#/$defs/pathHash" },
+        "knowledgeManifest": {
+          "anyOf": [
+            { "$ref": "#/$defs/pathHash" },
+            { "type": "null" }
+          ]
+        },
+        "imports": { "type": "object", "additionalProperties": true },
+        "adapters": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "route",
+        "title",
+        "pattern",
+        "flowIds",
+        "userGoal",
+        "pageGoal",
+        "successCriteria",
+        "componentPlan",
+        "dataRequirements",
+        "layoutTree"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "route": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "pattern": { "type": "string", "minLength": 1 },
+        "flowIds": { "type": "array", "items": { "type": "string" } },
+        "userGoal": { "type": "string", "minLength": 1 },
+        "pageGoal": { "type": "string", "minLength": 1 },
+        "successCriteria": { "type": "array", "items": { "type": "string" } },
+        "componentPlan": { "type": "array", "items": { "type": "string" } },
+        "dataRequirements": { "type": "array", "items": { "type": "string" } },
+        "layoutTree": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "pattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "layout", "regions", "requiredComponents", "optionalComponents", "relatedRecipe", "doNot"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "layout": { "type": "array", "items": { "type": "string" } },
+        "regions": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "requiredComponents": { "type": "array", "items": { "type": "string" } },
+        "optionalComponents": { "type": "array", "items": { "type": "string" } },
+        "relatedRecipe": { "type": "string", "minLength": 1 },
+        "doNot": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "pathHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "authority", "reason"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "authority": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "requiredRead": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "authority", "reason"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "authority": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "selector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field", "values"],
+          "properties": {
+            "field": { "type": "string", "minLength": 1 },
+            "values": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "writePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "source", "allowedWrites", "reason"],
+      "properties": {
+        "mode": { "const": "read-only" },
+        "source": { "const": "m0-inspect-contract" },
+        "allowedWrites": { "type": "array", "maxItems": 0 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context", "implementation", "reason"],
+      "properties": {
+        "context": { "enum": ["ready", "needs-clarification", "blocked", "failed"] },
+        "implementation": { "enum": ["needs-task-contract", "blocked"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "clarification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status", "impact", "message", "source", "blockingFor"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 },
+        "impact": { "enum": ["low", "medium", "high"] },
+        "message": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "blockingFor": { "enum": ["context", "implementation"] }
+      }
+    },
+    "validationProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "proves", "doesNotProve", "commands"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "status": { "const": "available" },
+        "proves": { "type": "array", "items": { "type": "string" } },
+        "doesNotProve": { "type": "array", "items": { "type": "string" } },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "cwd", "argv"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "cwd": { "type": "string", "minLength": 1 },
+              "argv": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

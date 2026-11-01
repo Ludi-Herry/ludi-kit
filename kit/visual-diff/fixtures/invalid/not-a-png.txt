@@ -1,0 +1,1 @@
+This fixture proves that unsupported input formats fail closed.

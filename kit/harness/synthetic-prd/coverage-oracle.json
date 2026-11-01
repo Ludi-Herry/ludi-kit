@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schema/synthetic-prd-coverage-oracle.schema.json",
+  "version": "1.0.0",
+  "owner": "blind-readiness-harness",
+  "profiles": [
+    {
+      "profileId": "historical-wide-01",
+      "expected": {
+        "pageCount": 11,
+        "flowCount": 5,
+        "entityCount": 8,
+        "fieldUnitsTotal": 68,
+        "flowStepCounts": [3, 3, 3, 3, 3],
+        "requirementCount": 40
+      },
+      "coverage": {
+        "perStepKinds": ["action", "state"],
+        "perFlowKinds": ["side-effect", "recovery"],
+        "appendRecoveryStep": true
+      }
+    },
+    {
+      "profileId": "compact-flow-02",
+      "expected": {
+        "pageCount": 3,
+        "flowCount": 1,
+        "entityCount": 1,
+        "fieldUnitsTotal": 20,
+        "flowStepCounts": [4],
+        "requirementCount": 10
+      },
+      "coverage": {
+        "perStepKinds": ["action", "state"],
+        "perFlowKinds": ["side-effect", "recovery"],
+        "appendRecoveryStep": true
+      }
+    },
+    {
+      "profileId": "compact-ai-03",
+      "expected": {
+        "pageCount": 3,
+        "flowCount": 1,
+        "entityCount": 3,
+        "fieldUnitsTotal": 28,
+        "flowStepCounts": [3],
+        "requirementCount": 8
+      },
+      "coverage": {
+        "perStepKinds": ["action", "state"],
+        "perFlowKinds": ["side-effect", "recovery"],
+        "appendRecoveryStep": true
+      }
+    }
+  ]
+}

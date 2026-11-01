@@ -1,0 +1,55 @@
+{
+  "id": "element-plus-2.14.3",
+  "foundationId": "element-plus",
+  "reviewedAt": "2026-09-29",
+  "source": {
+    "packageRegistry": "npm view element-plus version license homepage repository.url --json",
+    "principles": "https://element-plus.org/en-US/guide/design.html",
+    "components": "https://element-plus.org/en-US/component/button.html",
+    "templates": "https://element-plus.org/en-US/component/layout.html",
+    "source": "https://github.com/element-plus/element-plus/tree/2.14.3",
+    "styles": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk",
+    "theme": "https://element-plus.org/en-US/guide/theming.html",
+    "variables": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk/src/common/var.scss",
+    "homepage": "https://element-plus.org/",
+    "repository": "https://github.com/element-plus/element-plus"
+  },
+  "package": {
+    "name": "element-plus",
+    "version": "2.14.3",
+    "license": "MIT"
+  },
+  "distribution": "package-native",
+  "framework": {
+    "name": "vue3",
+    "version": "3.5.40"
+  },
+  "imports": {
+    "runtime": "element-plus",
+    "icons": "@element-plus/icons-vue",
+    "themeProvider": "ElConfigProvider",
+    "resetCss": "element-plus/dist/index.css",
+    "namedImportsOnly": true
+  },
+  "theme": {
+    "entry": "src/main.ts",
+    "exportName": null,
+    "cssVariables": true
+  },
+  "components": [
+    "ElButton",
+    "ElCard",
+    "ElConfigProvider",
+    "ElDescriptions",
+    "ElDescriptionsItem",
+    "ElForm",
+    "ElFormItem",
+    "ElInput",
+    "ElOption",
+    "ElPagination",
+    "ElSelect",
+    "ElStatistic",
+    "ElTable",
+    "ElTableColumn"
+  ]
+}

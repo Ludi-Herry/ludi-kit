@@ -1,0 +1,14 @@
+{
+  "id": "test-secure-build-jsonc",
+  "buildRuntime": {
+    "command": "npx",
+    "args": ["tsc", "--noEmit", "-p", "tsconfig-jsonc.json"],
+    "cwd": "."
+  },
+  "output": {
+    "type": "tsx",
+    "file": "page.tsx",
+    "symbol": "SecureBuildPage"
+  },
+  "report": "harness/reports/test-secure-build-jsonc.json"
+}

@@ -1,0 +1,70 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "generatedAt": "2026-07-07",
+  "sourceQueue": "projects/sample-inventory-erp/feedback/queue.json",
+  "sourceRules": "projects/sample-inventory-erp/feedback/promotion-rules.json",
+  "drafts": [
+    {
+      "itemId": "fb-20260707-001",
+      "title": "Permission status copy needs domain terms",
+      "status": "draft",
+      "target": "rule",
+      "action": "update-rule",
+      "destination": "rules/anti-patterns.md",
+      "draftFile": "projects/sample-inventory-erp/feedback/promotions/fb-20260707-001.md",
+      "sourceStatus": "promoted",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-07",
+      "checklist": [
+        "The issue appears in more than one generated context or can plausibly repeat.",
+        "The proposed rule is short, testable, and points to an existing component or pattern.",
+        "Harness or preview can verify the behavior after the rule lands."
+      ],
+      "todos": [
+        "Confirm rules/anti-patterns.md is still the right promotion destination.",
+        "Apply the proposed change: Add a reusable rule for page-level status copy mapping when the same Badge variants serve different business domains.",
+        "Keep public imports on the @radesign/kit barrel contract.",
+        "Run npm run validate:feedback and npm run validate after applying the patch.",
+        "Keep the rule short enough for agents to apply during generation."
+      ],
+      "acceptance": [
+        "Permission status copy uses Active, Review, and Risk.",
+        "Badge variants still follow semantic severity.",
+        "Future generated pages can keep copy mapping outside kit components."
+      ],
+      "patchDraft": "diff --git a/rules/anti-patterns.md b/rules/anti-patterns.md\n@@ status copy mapping\n+ Add a status-copy mapping rule: keep Badge variants semantic while page or generation layers provide domain labels.\ndiff --git a/recipes/badge-variants.md b/recipes/badge-variants.md\n@@ domain copy\n+ Add permission status copy mapping: active -> Active, review -> Review, risk -> Risk.\n+ Add inventory status copy mapping separately so generated pages do not reuse the wrong domain copy."
+    },
+    {
+      "itemId": "fb-20260707-002",
+      "title": "DataGrid needs first-class pagination display",
+      "status": "draft",
+      "target": "component",
+      "action": "update-component",
+      "destination": "components.manifest.json",
+      "draftFile": "projects/sample-inventory-erp/feedback/promotions/fb-20260707-002.md",
+      "sourceStatus": "promoted",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-07",
+      "checklist": [
+        "Existing props cannot solve the issue cleanly.",
+        "The change preserves the public barrel import contract.",
+        "At least one example or harness scenario covers the new capability."
+      ],
+      "todos": [
+        "Confirm components.manifest.json is still the right promotion destination.",
+        "Apply the proposed change: Add a lightweight Pagination component or DataGrid pagination recipe before promoting generated list pages to examples.",
+        "Keep public imports on the @radesign/kit barrel contract.",
+        "Run npm run validate:feedback and npm run validate after applying the patch.",
+        "Decide whether the capability belongs in component API, recipe guidance, or both.",
+        "Update examples, DOM checks, or harness coverage so the promoted capability has executable evidence."
+      ],
+      "acceptance": [
+        "List page generation can show paging intent through a kit-owned API.",
+        "Harness can check paged list scenarios without custom UI classes.",
+        "Existing DataGrid examples still compile."
+      ],
+      "patchDraft": "diff --git a/components.manifest.json b/components.manifest.json\n@@ DataGrid\n+ Add a reviewed pagination guidance note or helper entry tied to DataGrid.\n+ Keep optionalProps aligned with the public DataGrid API.\ndiff --git a/examples/list-page.tsx b/examples/list-page.tsx\n@@ DataGrid usage\n+ Pass kit-owned pagination UI through the DataGrid pagination slot once the helper is approved.\ndiff --git a/harness/scenarios/generated-sample-project.json b/harness/scenarios/generated-sample-project.json\n@@ checks\n+ Add a pagination-intent check for operational list pages."
+    }
+  ]
+}

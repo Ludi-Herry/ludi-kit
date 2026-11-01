@@ -1,0 +1,51 @@
+{
+  "id": "build-tianshu-production-testing",
+  "prompt": "天枢 · 测试管理：按 SN/机型/判定结果/设备状态筛选测试记录，行操作按设备状态条件显隐。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["测试记录", "判定结果", "设备状态", "新建测试方案", "查看详情", "录入结果", "返修回测"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "testJudge": { "sourceGroup": "测试判定", "statuses": ["pass", "fail", "pending", "downgraded", "scrapped"] },
+      "deviceStatus": { "sourceGroup": "设备状态", "statuses": ["testing", "test_failed", "in_stock", "scrapped"] },
+      "repairMark": { "sourceGroup": "返修标记", "statuses": ["repair", "first_test"] }
+    }
+  },
+  "expectedActions": {
+    "required": ["新建测试方案", "录入测试结果", "查看详情", "判定合格", "判定不合格", "录入结果", "返修回测", "降级入库", "报废"],
+    "danger": ["判定不合格", "报废"],
+    "conditions": [
+      {
+        "when": "record.device === \"testing\"",
+        "branch": "then",
+        "required": ["判定合格", "判定不合格", "录入结果"],
+        "danger": ["判定不合格"],
+        "forbidden": ["返修回测", "降级入库", "报废"]
+      },
+      {
+        "when": "record.device === \"test_failed\"",
+        "branch": "then",
+        "required": ["返修回测", "降级入库", "报废"],
+        "danger": ["报废"],
+        "forbidden": ["判定合格", "判定不合格", "录入结果"]
+      }
+    ]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "TestingListPage",
+    "pageId": "production-testing"
+  },
+  "report": "harness/reports/build-tianshu-production-testing.json"
+}

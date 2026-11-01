@@ -1,0 +1,75 @@
+{
+  "id": "generated-tianshu-project",
+  "prompt": "根据 tianshu-ops 的 pages.json 生成 16 个页面，覆盖正向生产、固件版本、RMA 逆向、广告投放与对账、内容排期、权限和审计。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedComponents": [
+    "PageLayout",
+    "PageHeader",
+    "MetricCard",
+    "Card",
+    "DataSection",
+    "FilterPanel",
+    "FormSection",
+    "DataGrid",
+    "Table",
+    "Pagination",
+    "BulkActionBar",
+    "ConfirmDialog",
+    "ForbiddenState",
+    "Tabs",
+    "Stepper",
+    "Badge",
+    "Button",
+    "Input",
+    "Select",
+    "Textarea"
+  ],
+  "expectedStaticValues": [
+    { "object": "domainCopy", "path": ["production", "label"], "value": "生产" },
+    { "object": "domainCopy", "path": ["production", "variant"], "value": "geekblue" },
+    { "object": "domainCopy", "path": ["ad", "label"], "value": "广告" },
+    { "object": "domainCopy", "path": ["ad", "variant"], "value": "purple" },
+    { "object": "domainCopy", "path": ["content", "label"], "value": "内容" },
+    { "object": "domainCopy", "path": ["content", "variant"], "value": "cyan" },
+    { "object": "domainCopy", "path": ["platform", "label"], "value": "平台" },
+    { "object": "domainCopy", "path": ["platform", "variant"], "value": "secondary" }
+  ],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "inbound": { "sourceGroup": "收货入库", "statuses": ["pending-inspection", "received", "abnormal"] },
+      "flashing": { "sourceGroup": "烧录任务", "statuses": ["flashing", "flash-failed", "completed"] },
+      "cert": { "sourceGroup": "证书", "statuses": ["valid", "pending", "revoked"] },
+      "snConflict": { "sourceGroup": "SN 冲突", "statuses": ["normal", "quarantined", "resolved"] },
+      "role": { "sourceGroup": "角色", "statuses": ["enabled", "disabled"] },
+      "deviceStatus": { "sourceGroup": "设备状态", "statuses": ["testing", "test_failed", "in_stock", "scrapped"] },
+      "testJudge": { "sourceGroup": "测试判定", "statuses": ["pass", "fail", "pending", "downgraded", "scrapped"] },
+      "repairMark": { "sourceGroup": "返修标记", "statuses": ["repair", "first_test"] },
+      "qcConclusion": { "sourceGroup": "质检结论", "statuses": ["qc_pending", "qc_inspecting", "qc_qualified", "qc_concession", "qc_rejected"] },
+      "inspectionMethod": { "sourceGroup": "检验方式", "statuses": ["sampling", "full_inspection"] },
+      "stockStatus": { "sourceGroup": "库存子状态", "statuses": ["available", "frozen", "allocated", "degraded"] },
+      "qualityGrade": { "sourceGroup": "品质等级", "statuses": ["good", "degraded_quality"] },
+      "shippingOrder": { "sourceGroup": "出货单", "statuses": ["pending", "picking", "shipped", "partial_shipped", "cancelled"] },
+      "auditResult": { "sourceGroup": "审计·操作结果", "statuses": ["success", "failed"] },
+      "auditSensitivity": { "sourceGroup": "审计·敏感标记", "statuses": ["sensitive"] },
+      "auditRisk": { "sourceGroup": "审计·风险等级", "statuses": ["low", "medium", "high"] }
+    }
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "buildRuntime": {
+    "command": "npx",
+    "args": ["tsc", "--noEmit", "-p", "harness/checks/tsconfig.tianshu-ops.json"],
+    "cwd": "."
+  },
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx"
+  },
+  "report": "harness/reports/generated-tianshu-project.json"
+}

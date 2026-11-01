@@ -1,0 +1,101 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "custom-ops-workbench",
+  "contextType": "real-product",
+  "decision": "generator fixture for React custom-native local source output",
+  "product": {
+    "name": "自定义运维工作台",
+    "realCustomer": true,
+    "audience": [
+      "运维主管"
+    ],
+    "scenario": "验证项目源码组件的 custom-native 输出。"
+  },
+  "sourceOfTruth": [
+    "generator/fixtures/custom-native/project-description.json"
+  ],
+  "coreFlows": [
+    "风险概览"
+  ],
+  "firstPages": [
+    "运维概览"
+  ],
+  "criticalStates": [
+    "待处理风险"
+  ],
+  "thirdPartyBaseline": {
+    "candidate": "defer",
+    "status": "fixture"
+  },
+  "frontendFoundation": {
+    "outputMode": "custom-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "local",
+      "displayName": "Local Project Components",
+      "version": "0.1.0",
+      "packageName": "project-source"
+    },
+    "distribution": "project-source",
+    "officialSources": {
+      "principles": "generator/fixtures/custom-native/business-context.json",
+      "components": "generator/fixtures/custom-native/generated/components.tsx",
+      "templates": "generator/fixtures/custom-native/project-description.json",
+      "source": "generator/fixtures/custom-native/generated/components.tsx",
+      "styles": "generator/fixtures/custom-native/generated/styles.css",
+      "theme": "generator/fixtures/custom-native/generated/components.tsx#ProjectThemeProvider",
+      "variables": "generator/fixtures/custom-native/generated/styles.css"
+    },
+    "license": "project-private",
+    "reviewedAt": "2026-07-19",
+    "designPack": {
+      "path": "foundations/design-packs/custom-native-local-0.1.0.json",
+      "sha256": "108a555f5f98cbbb6ab72ee7d3de362657792a5e3527d4f00e2bd5875d6e72fb"
+    },
+    "icons": {
+      "packageName": "project-source",
+      "version": "0.1.0",
+      "source": "./components"
+    },
+    "theme": {
+      "entry": "./components#ProjectThemeProvider",
+      "strategy": "project CSS variables"
+    },
+    "reset": {
+      "import": "./styles.css"
+    },
+    "imports": {
+      "root": "./components",
+      "allowedPackages": [
+        "./components",
+        "react"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "antd",
+        "@ant-design/",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn",
+        "element-plus"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-import-boundary",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "fixture"
+  },
+  "requiredBeforeRealWork": []
+}

@@ -1,0 +1,15 @@
+{
+  "id": "import-profile-library-native-bad",
+  "prompt": "Import profile fixture: Ant Design native output rejects @ai-readable/kit and unrelated third-party imports.",
+  "foundationContract": {
+    "businessContext": "quality/frontend-foundation.library-native.context.json",
+    "projectId": "fixture-library-native",
+    "outputMode": "library-native",
+    "framework": "react"
+  },
+  "forbiddenPatterns": ["direct-third-party-import"],
+  "output": {
+    "file": "examples/list-page.tsx"
+  },
+  "report": "harness/reports/import-profile-library-native-bad.json"
+}

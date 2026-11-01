@@ -1,0 +1,12 @@
+{
+  "id": "test-action-label-dynamic",
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/action-label-dynamic.bad.tsx",
+    "symbol": "ActionLabelDynamicPage"
+  },
+  "report": "harness/reports/test-action-label-dynamic.json"
+}

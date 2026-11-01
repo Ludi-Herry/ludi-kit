@@ -1,0 +1,12 @@
+{
+  "id": "test-static-value-proof",
+  "expectedStaticValues": [
+    { "object": "domainCopy", "path": ["production", "label"], "value": "生产" }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/static-value-proof.bad.tsx",
+    "symbol": "StaticValueProofPage"
+  },
+  "report": "harness/reports/test-static-value-proof.json"
+}

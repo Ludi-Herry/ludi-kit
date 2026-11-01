@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../schema/project-context.schema.json",
+  "version": "1.0.0",
+  "projectId": "tianshu-firmware-canary",
+  "contextType": "real-product",
+  "decision": "held-out product iteration and third-consumer smoke; excluded from the independent 5-PRD blind KPI",
+  "product": {
+    "name": "天枢 · 运营管理平台",
+    "realCustomer": true,
+    "audience": [
+      "固件管理员",
+      "研发管理员",
+      "生产履约运营"
+    ],
+    "scenario": "在生产履约域维护固件版本、签名状态和灰度发布进度，并向烧录任务提供受控的可选版本。"
+  },
+  "sourceOfTruth": ["generator/fixtures/tianshu-firmware/prd.mdx"],
+  "coreFlows": [
+    "草稿 → 测试中 → 灰度中 → 已全量",
+    "已全量或灰度中 → 已回滚",
+    "已全量或已回滚 → 已停用"
+  ],
+  "firstPages": [
+    "生产履约域 · 固件版本管理（/production/firmware）"
+  ],
+  "criticalStates": [
+    "版本状态与签名状态必须分别展示",
+    "无 production:firmware:view 时进入 403",
+    "危险操作需要二次确认",
+    "空态区分无数据与筛选无结果"
+  ],
+  "boundaries": {
+    "data": "页面中的版本、设备数、人员与时间均为遵循 PRD 格式的演示数据，不得标成真实生产记录。",
+    "integration": "本地页面不上传真实固件、不调用 KMS、不向设备推送更新，也不连接生产 API。",
+    "blindKpi": "天枢 PRD 已参与 kit 建设，本 canary 只能记为 held-out smoke，盲测计数保持 0/5。"
+  },
+  "thirdPartyBaseline": {
+    "candidate": "antd",
+    "status": "decided"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "version": "6.5.0",
+      "packageName": "antd"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://ant.design/docs/spec/introduce",
+      "components": "https://ant.design/components/overview",
+      "templates": "https://procomponents.ant.design/components",
+      "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+      "styles": "https://ant.design/docs/react/introduce#style",
+      "theme": "https://ant.design/docs/react/customize-theme",
+      "variables": "https://ant.design/docs/react/css-variables"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-07-22",
+    "designPack": {
+      "path": "foundations/design-packs/antd-6.5.0.json",
+      "sha256": "3259be1ca4e3be5b0982fc4515b2034a4cd6170090584e0554ee711a66e2a05b"
+    },
+    "icons": {
+      "packageName": "@ant-design/icons",
+      "version": "6.3.2",
+      "source": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react"
+    },
+    "theme": {
+      "entry": "src/foundation/antd-theme.ts#aiReadableAntdTheme",
+      "strategy": "ConfigProvider cssVar theme"
+    },
+    "reset": {
+      "import": "antd/dist/reset.css"
+    },
+    "imports": {
+      "root": "antd",
+      "allowedPackages": [
+        "antd",
+        "@ant-design/icons",
+        "react"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-antd-project",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "fixture"
+  },
+  "requiredBeforeRealWork": []
+}

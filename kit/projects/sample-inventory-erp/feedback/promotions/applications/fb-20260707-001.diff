@@ -1,0 +1,8 @@
+diff --git a/rules/anti-patterns.md b/rules/anti-patterns.md
+@@ status copy mapping
++ Add a rule that Badge variant stays semantic while domain copy lives in page or generation mapping.
++ Document permission statuses as Active, Review, and Risk with success, warning, and danger variants.
+diff --git a/recipes/badge-variants.md b/recipes/badge-variants.md
+@@ domain copy
++ Add a domain-copy table for permission and inventory statuses.
++ Require generated permission pages to show Active, Review, and Risk instead of inventory copy.

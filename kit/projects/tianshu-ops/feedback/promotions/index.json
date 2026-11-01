@@ -1,0 +1,135 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "generatedAt": "2026-07-15",
+  "sourceQueue": "projects/tianshu-ops/feedback/queue.json",
+  "sourceRules": "projects/tianshu-ops/feedback/promotion-rules.json",
+  "drafts": [
+    {
+      "itemId": "fb-20260715-002",
+      "title": "Selected table rows need a reusable batch action bar",
+      "status": "implemented",
+      "target": "component",
+      "action": "update-component",
+      "destination": "components.manifest.json",
+      "draftFile": "projects/tianshu-ops/feedback/promotions/fb-20260715-002.md",
+      "sourceStatus": "promoted",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-15",
+      "checklist": [
+        "Existing props cannot solve the issue cleanly.",
+        "The change preserves the public barrel import contract.",
+        "At least one example or harness scenario covers the new capability."
+      ],
+      "todos": [
+        "Confirm components.manifest.json is still the right promotion destination.",
+        "Apply the proposed change: Promote BulkActionBar and add backward-compatible controlled selection keys to DataGrid, while keeping mutation and confirmation logic in project pages composed with ConfirmDialog.",
+        "Keep public imports on the @radesign/kit barrel contract.",
+        "Run npm run validate:feedback and npm run validate after applying the patch.",
+        "Decide whether the capability belongs in component API, recipe guidance, or both.",
+        "Update examples, DOM checks, or harness coverage so the promoted capability has executable evidence."
+      ],
+      "acceptance": [
+        "Selecting inventory rows updates the visible count and clearing selection resets both checkboxes and the bar.",
+        "Batch freeze opens ConfirmDialog with the selected record count and does not mutate on cancel.",
+        "selectedCount zero renders no stale action bar and the 390px layout has no horizontal overflow.",
+        "Existing boolean rowSelection consumers, public imports, harness, package, and bundle budgets remain compatible."
+      ],
+      "patchDraft": "diff --git a/src/components.tsx b/src/components.tsx\n@@ planned promotion\n+ Add BulkActionBar and controlled DataGrid selection without exposing antd RowSelection.\ndiff --git a/src/index.ts b/src/index.ts\n@@ planned promotion\n+ Export BulkActionBar, BulkActionBarProps, and updated DataGrid types from the barrel.\ndiff --git a/src/styles.css b/src/styles.css\n@@ planned promotion\n+ Add sticky, responsive, token-based batch action styles below the selected data region.\ndiff --git a/components.manifest.json b/components.manifest.json\n@@ planned promotion\n+ Document the batch action component and DataGrid selection props.\ndiff --git a/examples/list-page.tsx b/examples/list-page.tsx\n@@ planned promotion\n+ Show selected count, clear selection, and dangerous confirmation composition.\ndiff --git a/recipes/list-page.md b/recipes/list-page.md\n@@ planned promotion\n+ Move selected-record actions from the static toolbar into BulkActionBar guidance.\ndiff --git a/figma/component-map.json b/figma/component-map.json\n@@ planned promotion\n+ Sync the code-first component mapping.\ndiff --git a/figma/variants-map.json b/figma/variants-map.json\n@@ planned promotion\n+ Sync the visible/hidden state mapping.\ndiff --git a/scripts/check-dom-contract.mjs b/scripts/check-dom-contract.mjs\n@@ planned promotion\n+ Assert hidden state, live selected count, action grouping, and controlled row keys.\ndiff --git a/harness/scenarios/build-tianshu-production-inventory.json b/harness/scenarios/build-tianshu-production-inventory.json\n@@ planned promotion\n+ Require the inventory page to wire selection, BulkActionBar, and ConfirmDialog."
+    },
+    {
+      "itemId": "fb-20260715-004",
+      "title": "Page-level authorization failures need a clear 403 state",
+      "status": "implemented",
+      "target": "component",
+      "action": "update-component",
+      "destination": "components.manifest.json",
+      "draftFile": "projects/tianshu-ops/feedback/promotions/fb-20260715-004.md",
+      "sourceStatus": "promoted",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-15",
+      "checklist": [
+        "Existing props cannot solve the issue cleanly.",
+        "The change preserves the public barrel import contract.",
+        "At least one example or harness scenario covers the new capability."
+      ],
+      "todos": [
+        "Confirm components.manifest.json is still the right promotion destination.",
+        "Apply the proposed change: Promote a lightweight ForbiddenState with a fixed visual 403 cue, accessible title and description, and a constrained recovery action slot; add a real RBAC forbidden page that never renders protected data.",
+        "Keep public imports on the @radesign/kit barrel contract.",
+        "Run npm run validate:feedback and npm run validate after applying the patch.",
+        "Decide whether the capability belongs in component API, recipe guidance, or both.",
+        "Update examples, DOM checks, or harness coverage so the promoted capability has executable evidence."
+      ],
+      "acceptance": [
+        "The RBAC forbidden route names platform:rbac:read and renders no role, user, or permission table.",
+        "The 403 numeral is decorative while the heading and description provide the full accessible meaning.",
+        "Recovery actions let the user return or request access without exposing unauthorized operations.",
+        "DOM, harness, browser, package, and bundle validation stay green."
+      ],
+      "patchDraft": "diff --git a/src/components.tsx b/src/components.tsx\n@@ planned promotion\n+ Add a page-level ForbiddenState with default recovery copy and no protected-data slot.\ndiff --git a/src/index.ts b/src/index.ts\n@@ planned promotion\n+ Export ForbiddenState and ForbiddenStateProps from the public barrel.\ndiff --git a/src/styles.css b/src/styles.css\n@@ planned promotion\n+ Add responsive, token-based 403 typography and action layout.\ndiff --git a/components.manifest.json b/components.manifest.json\n@@ planned promotion\n+ Document page, local-action, read-only, and empty-state boundaries.\ndiff --git a/examples/feedback-states.tsx b/examples/feedback-states.tsx\n@@ planned promotion\n+ Show an accessible missing-permission page through public imports.\ndiff --git a/recipes/permission-state.md b/recipes/permission-state.md\n@@ planned promotion\n+ Record 403 versus local disabled-action guidance.\ndiff --git a/figma/component-map.json b/figma/component-map.json\n@@ planned promotion\n+ Sync the code-first component mapping.\ndiff --git a/figma/variants-map.json b/figma/variants-map.json\n@@ planned promotion\n+ Sync the single default permission-state variant.\ndiff --git a/scripts/check-dom-contract.mjs b/scripts/check-dom-contract.mjs\n@@ planned promotion\n+ Assert title linkage, decorative code, description, and action group.\ndiff --git a/harness/scenarios/build-tianshu-platform-rbac-forbidden.json b/harness/scenarios/build-tianshu-platform-rbac-forbidden.json\n@@ planned promotion\n+ Require a real Tianshu RBAC forbidden page that omits role and permission tables."
+    },
+    {
+      "itemId": "fb-20260715-006",
+      "title": "Deferred business flows need one public interaction foundation",
+      "status": "implemented",
+      "target": "component",
+      "action": "update-component",
+      "destination": "components.manifest.json",
+      "draftFile": "projects/tianshu-ops/feedback/promotions/fb-20260715-006.md",
+      "sourceStatus": "promoted",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-15",
+      "checklist": [
+        "Existing props cannot solve the issue cleanly.",
+        "The change preserves the public barrel import contract.",
+        "At least one example or harness scenario covers the new capability."
+      ],
+      "todos": [
+        "Confirm components.manifest.json is still the right promotion destination.",
+        "Apply the proposed change: Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.",
+        "Keep public imports on the @radesign/kit barrel contract.",
+        "Run npm run validate:feedback and npm run validate after applying the patch.",
+        "Decide whether the capability belongs in component API, recipe guidance, or both.",
+        "Update examples, DOM checks, or harness coverage so the promoted capability has executable evidence."
+      ],
+      "acceptance": [
+        "All four deferred business pages use public interaction imports only.",
+        "Date callbacks expose strings and declarations contain no adapter types.",
+        "Drawer restores focus and blocks accidental backdrop close by default.",
+        "Upload never starts an implicit request, and full validation remains green."
+      ],
+      "patchDraft": "diff --git a/src/interaction.tsx b/src/interaction.tsx\n@@ planned promotion\n+ Add the eight domain-focused interaction APIs.\ndiff --git a/src/interaction.css b/src/interaction.css\n@@ planned promotion\n+ Keep date values as browser-native strings without a date adapter runtime.\ndiff --git a/src/index.ts b/src/index.ts\n@@ planned promotion\n+ Contain Drawer and TreeSelect portals inside the provider root.\ndiff --git a/components.manifest.json b/components.manifest.json\n@@ planned promotion\n+ Keep Upload request-free and report rejection reasons.\ndiff --git a/examples/interaction-foundation.tsx b/examples/interaction-foundation.tsx\n@@ planned promotion\n+ Use the controls in RMA, advertising, reconciliation, and content flows.\ndiff --git a/recipes/interaction-controls.md b/recipes/interaction-controls.md\n@@ planned promotion\n+ Sync manifests, mappings, tests, package checks, and browser coverage.\ndiff --git a/figma/component-map.json b/figma/component-map.json\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.\ndiff --git a/figma/variants-map.json b/figma/variants-map.json\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.\ndiff --git a/harness/tests/interaction-components.test.mjs b/harness/tests/interaction-components.test.mjs\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.\ndiff --git a/projects/tianshu-ops/generated/deferred-pages.tsx b/projects/tianshu-ops/generated/deferred-pages.tsx\n@@ planned promotion\n+ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation."
+    },
+    {
+      "itemId": "fb-20260717-001",
+      "title": "Firmware danger confirmation must restore the exact row trigger",
+      "status": "implemented",
+      "target": "page",
+      "action": "update-page-plan",
+      "destination": "projects/tianshu-ops/pages.json",
+      "draftFile": "projects/tianshu-ops/feedback/promotions/fb-20260717-001.md",
+      "sourceStatus": "promoted",
+      "reviewer": "codex-main",
+      "reviewedAt": "2026-07-17",
+      "checklist": [
+        "The issue changes page intent, flow, or generated layout.",
+        "The page still maps to the list-page pattern.",
+        "Regenerating and validating the page keeps build and harness green."
+      ],
+      "todos": [
+        "Record exact trigger focus restoration and desktop filter alignment in the page plan.",
+        "Register every rollback and stop action and resolve its exact button for focus fallback.",
+        "Prevent SideNav grid tracks from stretching across the rail.",
+        "Run Browser, Playwright, harness, feedback validation, and the immutable visual diff."
+      ],
+      "acceptance": [
+        "Cancelling rollback for v2.3.2-TJ-M1 restores focus to that row's rollback button.",
+        "Browser and Playwright both pass the target-specific confirmation flow with a clean console.",
+        "The 1440px filter card keeps four fields and two actions on one row.",
+        "The failed raw visual verdict and fixed thresholds remain unchanged."
+      ],
+      "patchDraft": "diff --git a/projects/tianshu-ops/pages.json b/projects/tianshu-ops/pages.json\n@@ planned promotion\n+ Require one-row desktop filters and exact row-trigger focus restoration.\ndiff --git a/projects/tianshu-ops/generated/firmware-page.tsx b/projects/tianshu-ops/generated/firmware-page.tsx\n@@ planned promotion\n+ Resolve the exact dangerous row button for ConfirmDialog focus fallback.\ndiff --git a/projects/tianshu-ops/generated/firmware-styles.css b/projects/tianshu-ops/generated/firmware-styles.css\n@@ planned promotion\n+ Align desktop filters and prevent SideNav grid-track stretching."
+    }
+  ]
+}

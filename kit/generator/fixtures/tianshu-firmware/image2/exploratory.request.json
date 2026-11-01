@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../../schema/image2-workflow-request.schema.json",
+  "version": "1.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "tianshu-firmware-exploratory",
+  "designContext": "exploratory",
+  "project": {
+    "name": "TianShu Operations Platform",
+    "page": "Firmware version management",
+    "objective": "Help firmware administrators distinguish lifecycle, signature, and rollout risk before taking a controlled action.",
+    "audience": "Firmware administrators, engineering administrators, and production operations"
+  },
+  "viewport": { "width": 1440, "height": 1100, "deviceScaleFactor": 1 },
+  "pageEntry": "projects/tianshu-ops/generated/firmware-page.tsx",
+  "referencePrompt": "generator/fixtures/tianshu-firmware/image2/reference-prompt.proposed.md",
+  "referenceImage": "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+  "visualDiffConfig": "projects/tianshu-ops/workflow/firmware-image2/visual-diff.config.json",
+  "browserEvidence": "generator/fixtures/tianshu-firmware/image2/browser-evidence.json",
+  "figmaEvidence": "figma/evidence/tianshu-firmware-image2.external-blocked.json",
+  "figmaTarget": { "fileKey": null, "pageNodeId": null },
+  "exploratoryContext": {
+    "directions": [
+      {
+        "id": "release-ledger",
+        "name": "Release Ledger",
+        "hypothesis": "A dense version ledger lets operators distinguish lifecycle, signature, and conditional next actions within the first viewport."
+      },
+      {
+        "id": "canary-command",
+        "name": "Canary Command",
+        "hypothesis": "Elevating canary progress and rollback risk shortens assessment and intervention time for active rollouts."
+      },
+      {
+        "id": "fleet-continuity",
+        "name": "Fleet Continuity",
+        "hypothesis": "Leading with bound devices and model coverage helps operations assess blast radius before choosing a version action."
+      }
+    ],
+    "selectedDirectionId": "release-ledger",
+    "miniDesignBrief": {
+      "principles": [
+        "Fast firmware scanning",
+        "Separate lifecycle and signature states",
+        "Conditional actions stay explicit",
+        "Operational risk remains visible"
+      ],
+      "colorIntent": "Ops Canvas neutral layered surfaces with one blue primary action and semantic success, warning, and danger states paired with text",
+      "typeIntent": "Compact Inter or Segoe UI system typography with tabular version, device-count, percentage, and timestamp values",
+      "density": "compact"
+    }
+  }
+}

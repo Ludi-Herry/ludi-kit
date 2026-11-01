@@ -1,0 +1,149 @@
+{
+  "id": "bigscreen-dark-0.1.0",
+  "foundationId": "bigscreen-dark",
+  "reviewedAt": "2026-10-05",
+  "source": {
+    "principles": "kit/skills/figma-3d-situation-screen/SKILL.md（态势屏工作流：单一主渲染器、真实数据与状态合同、可打断动效）",
+    "components": "kit/patterns.manifest.json situation-screen 条目 + kit/examples/figma-3d-situation-screen/src/App.tsx（示例壳层面板槽位）",
+    "templates": "kit/recipes/situation-screen.md（situation-screen 结构配方：screen theme → 全局指标/时间 → 12 列动态面板 → 实时行动列表）",
+    "source": "kit/examples/figma-3d-situation-screen/（反推来源工程：React 19 + Three.js 示例，美国地图主题）",
+    "styles": "kit/examples/figma-3d-situation-screen/src/styles.css（暗色样式全集，tokens 逐字段给出处行号）",
+    "theme": "kit/examples/figma-3d-situation-screen/src/styles.css:1-32（:root 令牌块）",
+    "variables": "kit/examples/figma-3d-situation-screen/src/styles.css:6-31（--cyan/--amber/--panel/--line/--muted 与动效变量）"
+  },
+  "package": {
+    "name": "bigscreen-dark 设计语言候选（随 kit design pack 提供，无独立 npm 包）",
+    "version": "0.1.0",
+    "license": "private（kit 内部 token 层，未发布）"
+  },
+  "iconPackage": {
+    "name": "none",
+    "version": "none",
+    "license": "示例壳层未使用图标库（品牌标记为纯 CSS 菱形点位）"
+  },
+  "distribution": "workspace-package（design pack 随 kit 提供；未选中项目不复制、不安装任何东西）",
+  "framework": {
+    "name": "react",
+    "version": "19.2.7"
+  },
+  "imports": {
+    "runtime": "无（token 层，不含组件运行时代码）",
+    "icons": "无",
+    "themeProvider": null,
+    "resetCss": "kit/examples/figma-3d-situation-screen/src/styles.css（反推样式原型）",
+    "namedImportsOnly": false
+  },
+  "tokens": {
+    "color": {
+      "background.base": { "value": "#030914", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:4（root background）" },
+      "background.spotlight": { "value": "radial-gradient(circle at 50% 48%, rgba(14,83,118,0.19), transparent 39%) + radial-gradient(circle at 78% 12%, rgba(14,98,126,0.09), transparent 24%) 叠在底色上", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:40-44（body 双层径向渐变）" },
+      "text.primary": { "value": "#d8f4ff", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:3（root color）" },
+      "text.screenTitle": { "value": "#ecfbff", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:82（brand-lockup h1）" },
+      "text.panelTitle": { "value": "#dff8ff", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:128（panel-heading h2）" },
+      "text.muted": { "value": "#7595a5", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:12（--muted）" },
+      "text.kicker": { "value": "#426b7e", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:127（panel-heading kicker）" },
+      "text.aux": { "value": "#8aa5b4", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:93（header-meta 时钟）" },
+      "accent.primary": { "value": "#54e6ff", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:6（--cyan）" },
+      "accent.soft": { "value": "#1b789b", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:7（--cyan-soft）" },
+      "accent.dim": { "value": "rgba(84, 230, 255, 0.16)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:8（--cyan-dim）" },
+      "accent.warning": { "value": "#ffc66b", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:9（--amber）" },
+      "panel.background": { "value": "rgba(6, 21, 37, 0.76)（--panel；实渲染另叠 135° 高光与纵向渐变为 rgba(8,29,48,0.76)→rgba(4,15,28,0.72)）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:10 与 :118-121（screen-panel 背景）" },
+      "panel.border": { "value": "rgba(96, 207, 240, 0.18)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:11（--line）" },
+      "header.border": { "value": "rgba(84, 230, 255, 0.12)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:75（screen-header border-bottom）" },
+      "state.live": { "value": "#45efa7", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:95（live-pill 在线点）" },
+      "state.up": { "value": "#54d9a2 / #50dda3", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:143 与 :149（迷你指标与趋势涨幅）" },
+      "state.danger": { "value": "rgba(255, 110, 99, 0.5) 描边配 #ff9e95 字色；错误态卡片边界 rgba(255,114,107,0.38) 配 #ffc3bd", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:201 与 :180（severity-高 与 error 卡片）" },
+      "state.empty": { "value": "rgba(255, 198, 107, 0.32) 描边配 #f2d5a5 字色", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:181（empty 卡片）" },
+      "degraded.indicator": { "value": "#ffc66b（复用 amber）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:168（renderer-health[data-tone=degraded]）" }
+    },
+    "glow": {
+      "brand.dot": { "value": "0 0 10px #54e6ff", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:85（brand-mark i）" },
+      "live.dot": { "value": "0 0 10px #45efa7", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:95（live-pill i）" },
+      "legend.dot.cyan": { "value": "0 0 7px #54e6ff", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:189（legend-cyan）" },
+      "legend.dot.amber": { "value": "0 0 7px #ffc66b", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:190（legend-amber）" },
+      "riskBar.cyan": { "value": "0 0 8px rgba(84,230,255,0.38)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:155（risk-bars b）" },
+      "riskBar.amber": { "value": "0 0 8px rgba(255,198,107,0.28)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:156（risk-bars b[data-tone=amber]）" },
+      "gauge.halo": { "value": "0 0 30px rgba(84,230,255,0.08)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:134（radial-gauge）" },
+      "mapFrame.corner": { "value": "border-image 四角发光 rgba(84,230,255,0.68)/0.52（四角贯通渐变）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:172（map-frame::before）" },
+      "header.topLine": { "value": "1px 横向渐变透明→rgba(84,230,255,0.5)→透明", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:68（situation-screen::after）" },
+      "health.dot": { "value": "0 0 8px #4ae9a7", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:167（renderer-health i）" }
+    },
+    "chart": {
+      "series.primary": { "value": "#54e6ff", "source": "kit/examples/figma-3d-situation-screen/src/App.tsx:64-69（Sparkline 青色描边）" },
+      "series.warning": { "value": "#ffc66b", "source": "kit/examples/figma-3d-situation-screen/src/App.tsx:64-69（Sparkline 琥珀描边）" },
+      "area.gradient": { "value": "同色 stopOpacity 0.34 → 0 纵向渐隐", "source": "kit/examples/figma-3d-situation-screen/src/App.tsx:63-66（spark 线性渐变）" },
+      "grid.spatial": { "value": "rgba(84,230,255,0.06) 38px 网格，透视 3D 地台", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:176（map-grid）" },
+      "riskGradient.cyan": { "value": "linear-gradient(90deg, #1c83a9, #54e6ff)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:155（risk-bars b 默认）" },
+      "riskGradient.amber": { "value": "linear-gradient(90deg, #9e6828, #ffc66b)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:156（risk-bars b[data-tone=amber]）" },
+      "link.line": { "value": "#57bdd7", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:191（legend-line 关联路径）" },
+      "severity.high": { "value": "rgba(255,110,99,0.5) 描边 / rgba(255,110,99,0.08) 底 / #ff9e95 字", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:201（severity-高）" },
+      "severity.mid": { "value": "rgba(255,198,107,0.45) 描边 / rgba(255,198,107,0.07) 底 / #ffc66b 字", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:202（severity-中）" },
+      "severity.low": { "value": "rgba(84,230,255,0.2) 描边 / #82cddd 字", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:200（severity 基础槽）" },
+      "mapFrame.backdrop": { "value": "radial-gradient(ellipse at 50% 52%, rgba(20,102,136,0.19), transparent 56%)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:170（map-frame 背景）" }
+    },
+    "type": {
+      "fontStack.base": { "value": "Inter, \"PingFang SC\", \"Microsoft YaHei\", sans-serif", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:2（:root font-family）" },
+      "fontStack.display": { "value": "Barlow Condensed, \"Microsoft YaHei\", sans-serif（数字场景以 monospace 兜底）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:82（h1）、:128（panel h2）、:132（hero 数字）" },
+      "scale.screenTitle": { "value": "600 clamp(17px, 1.25vw, 23px)/1, letter-spacing 0.08em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:82（brand-lockup h1）" },
+      "scale.panelTitle": { "value": "600 clamp(14px, 0.96vw, 18px)/1.1, letter-spacing 0.08em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:128（panel-heading h2）" },
+      "scale.heroMetric": { "value": "600 clamp(29px, 2.15vw, 42px)/1, letter-spacing 0.03em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:132（hero-metric 主数字）" },
+      "scale.gaugeValue": { "value": "600 20px/1", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:137（radial-gauge b）" },
+      "scale.footerMetric": { "value": "600 clamp(22px, 1.9vw, 34px)/1", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:226（screen-footer b）" },
+      "scale.trendValue": { "value": "600 28px/1", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:147（trend-summary b）" },
+      "scale.miniMetric": { "value": "600 18px/1", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:142（mini-metrics b）" },
+      "scale.caption": { "value": "600 17px/1.1", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:184（map-caption b）" },
+      "scale.eventIndex": { "value": "600 14px/1", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:207（event-list em）" },
+      "scale.kicker": { "value": "600 8px/1, letter-spacing 0.18em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:127（panel-heading span）" },
+      "scale.headerCenter": { "value": "500 11px/1, letter-spacing 0.3em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:90（header-center）" },
+      "scale.brandKicker": { "value": "500 10px/1.2, letter-spacing 0.2em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:81（brand-lockup p）" },
+      "scale.meta": { "value": "500 11px/1.2, letter-spacing 0.08em", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:93（header-meta）" },
+      "scale.bodySmall": { "value": "9px–10px（指标说明、事件标题与副信息）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:133、:148、:205-206、:225" },
+      "scale.note": { "value": "8px（图例、序号、页脚备注）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:138、:185-186、:228" },
+      "scale.micro": { "value": "7px（诊断标签、三指标说明）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:215-218（response-grid/diagnostics dt）" }
+    },
+    "layout": {
+      "rows.default": { "value": "72px 顶栏 / minmax(0,1fr) / 90px 页脚指标条", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:50（situation-screen grid-template-rows）" },
+      "rows.compact-1280": { "value": "64px / minmax(0,1fr) / 78px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:247（≤1280 断点）" },
+      "rows.compact-h820": { "value": "60px / minmax(0,1fr) / 70px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:277（≤820 高度断点）" },
+      "columns.default": { "value": "minmax(235px,0.84fr) / minmax(440px,2.35fr) / minmax(245px,0.9fr)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:99（screen-grid）" },
+      "columns.compact-1280": { "value": "226px / minmax(420px,1fr) / 236px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:249（≤1280 断点）" },
+      "columns.compact-1080": { "value": "205px / minmax(400px,1fr) / 205px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:263（≤1080 断点）" },
+      "gap.default": { "value": "14px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:102（screen-grid gap）" },
+      "gap.compact": { "value": "9px / 7px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:249 与 :263" },
+      "panel.padding": { "value": "14px 15px / 10px 11px / 9px（默认 / ≤1280 / ≤1080）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:115、:251、:264" },
+      "panel.radius": { "value": "2px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:117（screen-panel border-radius）" },
+      "panel.cornerBracket": { "value": "10px 方角，2px 描边：左上 #54e6ff、右下 rgba(84,230,255,0.55)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:123-125（screen-panel::before/::after）" },
+      "sideColumn.rows": { "value": "左列 1.08fr/0.94fr/0.85fr；右列 1.3fr/0.92fr/0.72fr", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:107-108（side-left/side-right）" },
+      "canvas.minWidth": { "value": "960px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:39（body min-width）" },
+      "header.padding": { "value": "0 24px / 0 16px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:74 与 :248" }
+    },
+    "texture": {
+      "gridCanvas": { "value": "44px 双色细格 rgba(55,133,162,0.035)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:54-57（situation-screen background-image）" },
+      "vignette": { "value": "inset 0 0 120px rgba(1,5,12,0.92)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:67（situation-screen::before）" }
+    },
+    "motion": {
+      "duration.quick": { "value": "150ms", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:13（--duration-quick）" },
+      "duration.fast": { "value": "250ms", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:14（--duration-fast）" },
+      "duration.medium": { "value": "350ms", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:15（--duration-medium）" },
+      "duration.slow": { "value": "400ms", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:16（--duration-slow）" },
+      "ease.smoothOut": { "value": "cubic-bezier(0.22, 1, 0.36, 1)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:17（--ease-smooth-out）" },
+      "digit": { "value": "500ms 翻牌，位移 8px、行间 stagger 70ms、模糊 2px、ease cubic-bezier(0.34,1.45,0.64,1)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:18-22 与 :231-239（digit 变量与 keyframes）；kit/examples/figma-3d-situation-screen/src/App.tsx:34-50（AnimatedNumber）" },
+      "panelSlide": { "value": "open 400ms / close 350ms，translateY 18px、blur 2px、cubic-bezier(0.22,1,0.36,1)", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:23-27 与 :240-241（panel 变量与 t-panel-slide）" },
+      "shimmer": { "value": "2000ms 扫光，基色 #7292a3、高光 #d9f7ff、带宽 400%", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:28-31 与 :242-244（shimmer 变量与 t-shimmer）" },
+      "reducedMotion": { "value": "prefers-reduced-motion: 数字翻牌与扫光动画关闭、面板滑入过渡关闭、scroll-behavior auto", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:288-292（reduced-motion 媒体查询）" }
+    }
+  },
+  "viewportTiers": [
+    { "tier": "1080p", "width": 1920, "height": 1080, "note": "基准验收档：默认布局（72/90 行列与 235/440/245 三列），clamp 字号在档内随视口内插", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:50、:99、:132" },
+    { "tier": "768p", "width": 1366, "height": 768, "note": "经 ≤1280 断点压缩：行列收至 64/78、列宽 226/420/236、面板 padding 10/11、sparkline 45px", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:246-258" },
+    { "tier": "custom-1024", "width": 1024, "height": 768, "note": "摘要模式：≤1080 断点隐藏 panel-secondary 面板与第 5 条起事件、header-center 隐藏（≤820 高触发附加压缩）", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:260-274 与 :276-286" },
+    { "tier": "4k", "width": 3840, "height": 2160, "note": "同布局等比放大；字号受 clamp 上限钳制（23/42/34px），不出现超大字", "source": "kit/examples/figma-3d-situation-screen/src/styles.css:82、:132、:226" }
+  ],
+  "constraints": [
+    "单一主 WebGL 渲染器：kit/skills/figma-3d-situation-screen/SKILL.md:52（禁止同屏两个主渲染器）",
+    "禁止整屏 transform scale：kit/recipes/situation-screen.md:23",
+    "预算：preview ≤700 KiB、starter ≤320 KiB gzip：kit/skills/figma-3d-situation-screen/SKILL.md:55",
+    "性能门：1080p 中位 FPS ≥45 且 p95 ≤33ms；4K 中位 FPS ≥30、p95 ≤50ms 且有效 DPR ≤1.5：kit/skills/figma-3d-situation-screen/references/verification.md:21-23",
+    "文字对比度 ≥4.5:1、图形控件 ≥3:1：kit/recipes/situation-screen.md:12"
+  ]
+}

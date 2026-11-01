@@ -1,0 +1,129 @@
+:root {
+  --generated-duration-fast: 250ms;
+  --generated-duration-very-slow: 500ms;
+  --generated-ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --generated-ease-in-out: ease-in-out;
+  --generated-distance-medium: 12px;
+  --generated-blur-medium: 3px;
+}
+
+.generated-page {
+  animation: generated-page-in var(--generated-duration-very-slow) var(--generated-ease-in-out) both;
+  max-width: 100%;
+}
+
+.generated-metric-grid,
+.generated-two-column {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.generated-two-column {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.generated-status-list,
+.generated-chip-list {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.generated-status-line {
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  gap: var(--spacing-sm);
+  grid-template-columns: minmax(90px, 0.7fr) minmax(0, 1fr) auto;
+  padding-top: var(--spacing-sm);
+}
+
+.generated-status-line:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.generated-status-line span {
+  color: var(--color-text-secondary);
+}
+
+.generated-chip-list {
+  align-content: start;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.generated-chip-list span {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.generated-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+@keyframes generated-page-in {
+  from {
+    filter: blur(var(--generated-blur-medium));
+    opacity: 0;
+    transform: translateY(var(--generated-distance-medium));
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 920px) {
+  .generated-metric-grid,
+  .generated-two-column,
+  .generated-status-line {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .generated-page,
+  .generated-page * {
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+.generated-form-stack {
+  display: flex;
+  width: 100%;
+}
+
+.generated-form-section {
+  display: grid;
+  gap: 16px;
+}
+
+.generated-form-section .ant-typography {
+  margin: 0;
+}
+
+.generated-form-section .ant-form-item:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .generated-form-actions {
+    display: flex;
+    width: 100%;
+  }
+
+  .generated-form-actions .ant-btn {
+    flex: 1;
+  }
+}

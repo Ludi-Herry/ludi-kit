@@ -1,0 +1,435 @@
+{
+  "version": "1.0.0",
+  "component": "Radio",
+  "queryComponent": "Radio",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-08-11",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Radio",
+        "nameZh": "单选框",
+        "description": "用于在多个备选项中选中单个状态。",
+        "props": [
+          {
+            "name": "checked",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "defaultChecked",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "value",
+            "type": "any",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "blur()",
+            "type": "",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "focus()",
+            "type": "",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Radio.Group": [
+            {
+              "name": "block",
+              "type": "boolean",
+              "default": "false",
+              "since": "5.21.0"
+            },
+            {
+              "name": "buttonStyle",
+              "type": "`outline` | `solid`",
+              "default": "`outline`",
+              "since": ""
+            },
+            {
+              "name": "classNames",
+              "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+              "default": "-",
+              "since": "6.0.0"
+            },
+            {
+              "name": "defaultValue",
+              "type": "any",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "options",
+              "type": "string[] | number[] | Array<[CheckboxOptionType](#checkboxoptiontype)>",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "optionType",
+              "type": "`default` | `button`",
+              "default": "`default`",
+              "since": "4.4.0"
+            },
+            {
+              "name": "orientation",
+              "type": "`horizontal` | `vertical`",
+              "default": "`horizontal`",
+              "since": ""
+            },
+            {
+              "name": "size",
+              "type": "`large` | `medium` | `small`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "styles",
+              "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+              "default": "-",
+              "since": "6.0.0"
+            },
+            {
+              "name": "value",
+              "type": "any",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "vertical",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "function(e:Event)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Radio.CheckboxOptionType": [
+            {
+              "name": "label",
+              "type": "`string`",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "value",
+              "type": "`string` | `number` | `boolean`",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "style",
+              "type": "`React.CSSProperties`",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "className",
+              "type": "`string`",
+              "default": "-",
+              "since": "5.25.0"
+            },
+            {
+              "name": "disabled",
+              "type": "`boolean`",
+              "default": "`false`",
+              "since": "4.4.0"
+            },
+            {
+              "name": "title",
+              "type": "`string`",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "id",
+              "type": "`string`",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "onChange",
+              "type": "`(e: CheckboxChangeEvent) => void;`",
+              "default": "-",
+              "since": "4.4.0"
+            },
+            {
+              "name": "required",
+              "type": "`boolean`",
+              "default": "`false`",
+              "since": "4.4.0"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "input"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Radio",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 用于在多个备选项中选中单个状态。\n- 和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。\n\n```tsx\n// 使用 Radio.Group 组件时，推荐的写法 ✅\nreturn (\n  <Radio.Group\n    value={value}\n    options={[\n      { value: 1, label: 'A' },\n      { value: 2, label: 'B' },\n      { value: 3, label: 'C' },\n    ]}\n  />\n);\n\n// 不推荐的写法 🙅🏻‍♀️\nreturn (\n  <Radio.Group value={value}>\n    <Radio value={1}>A</Radio>\n    <Radio value={2}>B</Radio>\n    <Radio value={3}>C</Radio>\n  </Radio.Group>\n);\n```\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore-start -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/disabled.tsx\">不可用</code>\n<code src=\"./demo/radiogroup.tsx\">单选组合</code>\n<code src=\"./demo/radiogroup-more.tsx\">Radio.Group 垂直</code>\n<code src=\"./demo/radiogroup-block.tsx\" version=\"5.21.0\">Block 单选组合</code>\n<code src=\"./demo/radiogroup-options.tsx\">Radio.Group 组合 - 配置方式</code>\n<code src=\"./demo/radiobutton.tsx\">按钮样式</code>\n<code src=\"./demo/radiogroup-with-name.tsx\">单选组合 - 配合 name 使用</code>\n<code src=\"./demo/size.tsx\">大小</code>\n<code src=\"./demo/radiobutton-solid.tsx\">填底的按钮样式</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/badge.tsx\" debug>测试 Badge 的样式</code>\n<code src=\"./demo/debug-group-width.tsx\" debug>Group 内图标等宽</code>\n<code src=\"./demo/wireframe.tsx\" debug>线框风格</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/debug-upload.tsx\" debug>Upload Debug</code>\n<!-- prettier-ignore-end -->\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Radio/Radio.Button\n\n<!-- prettier-ignore -->\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| checked | 指定当前是否选中 | boolean | false |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - | 6.0.0 | 6.0.0 |\n| defaultChecked | 初始是否选中 | boolean | false |  | × |\n| disabled | 禁用 Radio | boolean | false |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |\n| value | 根据 value 进行比较，判断是否选中 | any | - |  | × |\n\n### Radio.Group\n\n单选框组合，用于包裹一组 `Radio`。\n\n<!-- prettier-ignore -->\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| block | 将 RadioGroup 宽度调整为其父宽度的选项 | boolean | false | 5.21.0 |\n| buttonStyle | RadioButton 的风格样式，目前有描边和填色两种风格 | `outline` \\| `solid` | `outline` |  |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - | 6.0.0 |\n| defaultValue | 默认选中的值 | any | - |  |\n| disabled | 禁选所有子单选器 | boolean | false |  |\n| name | RadioGroup 下所有 `input[type=\"radio\"]` 的 `name` 属性。若未设置，则将回退到随机生成的名称 | string | - |  |\n| options | 以配置形式设置子元素 | string\\[] \\| number\\[] \\| Array&lt;[CheckboxOptionType](#checkboxoptiontype)> | - |  |\n| optionType | 用于设置 Radio `options` 类型 | `default` \\| `button` | `default` | 4.4.0 |\n| orientation | 排列方向 | `horizontal` \\| `vertical` | `horizontal` |  |\n| size | 大小，只对按钮样式生效 | `large` \\| `medium` \\| `small` | - |  |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 |\n| value | 用于设置当前选中的值 | any | - |  |\n| vertical | 值为 true，Radio Group 为垂直方向。与 `orientation` 同时存在，以 `orientation` 优先 | boolean | false |  |\n| onChange | 选项变化时的回调函数 | function(e:Event) | - |  |\n\n### CheckboxOptionType\n\n| 属性 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| label | 用于作为 Radio 选项展示的文本 | `string` | - | 4.4.0 |\n| value | 关联 Radio 选项的值 | `string` \\| `number` \\| `boolean` | - | 4.4.0 |\n| style | 应用到 Radio 选项的 style | `React.CSSProperties` | - | 4.4.0 |\n| className | Radio 选项的类名 | `string` | - | 5.25.0 |\n| disabled | 指定 Radio 选项是否要禁用 | `boolean` | `false` | 4.4.0 |\n| title | 添加 Title 属性值 | `string` | - | 4.4.0 |\n| id | 添加 Radio Id 属性值 | `string` | - | 4.4.0 |\n| onChange | 当 Radio Group 的值发送改变时触发 | `(e: CheckboxChangeEvent) => void;` | - | 4.4.0 |\n| required | 指定 Radio 选项是否必填 | `boolean` | `false` | 4.4.0 |\n\n## 方法\n\n### Radio\n\n| 名称    | 描述     |\n| ------- | -------- |\n| blur()  | 移除焦点 |\n| focus() | 获取焦点 |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Radio\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Radio",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "The simplest use."
+          },
+          {
+            "name": "disabled",
+            "title": "disabled",
+            "description": "Radio unavailable."
+          },
+          {
+            "name": "radiobutton-solid",
+            "title": "Solid radio button",
+            "description": "Solid radio button style."
+          },
+          {
+            "name": "radiobutton",
+            "title": "radio style",
+            "description": "The combination of radio button style."
+          },
+          {
+            "name": "radiogroup-block",
+            "title": "Block Radio.Group",
+            "description": "The `block` property will make a Radio.Group fit to its parent width."
+          },
+          {
+            "name": "radiogroup-more",
+            "title": "Vertical Radio.Group",
+            "description": "Vertical Radio.Group, with more radios."
+          },
+          {
+            "name": "radiogroup-options",
+            "title": "Radio.Group group - optional",
+            "description": "Render radios by configuring `options`. Radio type can also be set through the `optionType` parameter."
+          },
+          {
+            "name": "radiogroup-with-name",
+            "title": "Radio.Group with name",
+            "description": "Passing the `name` property to all `input[type=\"radio\"]` that are in the same Radio.Group. It is usually used to let the browser see your Radio.Group as a real \"group\" and keep the default behavior. For example, using left/right keyboard arrow to change your selection that in the same Radio.Group."
+          },
+          {
+            "name": "radiogroup",
+            "title": "Radio Group",
+            "description": "A group of radio components."
+          },
+          {
+            "name": "size",
+            "title": "Size",
+            "description": "There are three sizes available: large, medium, and small. It can coordinate with input box."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of radio by passing objects/functions through `classNames` and `styles`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Radio",
+        "tokens": [
+          {
+            "name": "buttonBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of Radio button",
+            "descriptionZh": "单选框按钮背景色"
+          },
+          {
+            "name": "buttonCheckedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of checked Radio button",
+            "descriptionZh": "单选框按钮选中背景色"
+          },
+          {
+            "name": "buttonCheckedBgDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Background color of checked and disabled Radio button",
+            "descriptionZh": "单选框按钮选中并禁用时的背景色"
+          },
+          {
+            "name": "buttonCheckedColorDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Color of checked and disabled Radio button text",
+            "descriptionZh": "单选框按钮选中并禁用时的文本颜色"
+          },
+          {
+            "name": "buttonColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of Radio button text",
+            "descriptionZh": "单选框按钮文本颜色"
+          },
+          {
+            "name": "buttonPaddingInline",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal padding of Radio button",
+            "descriptionZh": "单选框按钮横向内间距"
+          },
+          {
+            "name": "buttonSolidCheckedActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of checked solid Radio button text when active",
+            "descriptionZh": "单选框实色按钮选中时的激活态背景色"
+          },
+          {
+            "name": "buttonSolidCheckedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of checked solid Radio button text",
+            "descriptionZh": "单选框实色按钮选中时的背景色"
+          },
+          {
+            "name": "buttonSolidCheckedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of checked solid Radio button text",
+            "descriptionZh": "单选框实色按钮选中时的文本颜色"
+          },
+          {
+            "name": "buttonSolidCheckedHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of checked solid Radio button text when hover",
+            "descriptionZh": "单选框实色按钮选中时的悬浮态背景色"
+          },
+          {
+            "name": "dotColorDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Color of disabled Radio dot",
+            "descriptionZh": "单选框圆点禁用颜色"
+          },
+          {
+            "name": "dotSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of Radio dot",
+            "descriptionZh": "单选框圆点大小"
+          },
+          {
+            "name": "radioSize",
+            "type": "number",
+            "default": "",
+            "description": "Radio size",
+            "descriptionZh": "单选框大小"
+          },
+          {
+            "name": "wrapperMarginInlineEnd",
+            "type": "number",
+            "default": "",
+            "description": "Margin right of Radio button",
+            "descriptionZh": "单选框右间距"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Radio",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with layout styles, cursor styles, disabled text color and other basic container styles",
+            "descriptionZh": "根元素，包含布局样式、鼠标样式、禁用状态文字颜色等基础容器样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element with border radius, transition animations, border styles, hover states, focus states and other interactive styles",
+            "descriptionZh": "选中框元素，包含圆角样式、过渡动画、边框样式、悬停状态、焦点状态等交互样式"
+          },
+          {
+            "key": "label",
+            "description": "Label element with padding, text color, disabled states, alignment and other text styles",
+            "descriptionZh": "文本元素，包含内边距、文字颜色、禁用状态、对齐方式等文本样式"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "test-confirmation-business-if-good",
+  "expectedConfirmations": [
+    {
+      "action": "删除",
+      "title": "删除解析规则？",
+      "confirmLabel": "删除",
+      "requiredText": ["删除后数据不可恢复"],
+      "danger": true
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-business-if.good.tsx",
+    "symbol": "ConfirmationBusinessIfPage"
+  },
+  "report": "harness/reports/test-confirmation-business-if-good.json"
+}

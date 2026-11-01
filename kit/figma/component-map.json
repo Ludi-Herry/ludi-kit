@@ -1,0 +1,1216 @@
+{
+  "version": "0.1.0",
+  "status": "code-first",
+  "note": "Code-first Figma alignment map. Add nodeId values after connecting a real Figma library.",
+  "importEntry": "@ai-readable/kit",
+  "components": [
+    {
+      "codeComponent": "Button",
+      "figmaComponent": "Button",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "action",
+      "requiredProps": [
+        "children"
+      ],
+      "optionalProps": [
+        "variant",
+        "size",
+        "disabled",
+        "loading",
+        "danger",
+        "icon",
+        "title",
+        "onClick"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "outline",
+        "ghost",
+        "danger"
+      ],
+      "figmaVariants": [
+        "Variant",
+        "Size",
+        "State"
+      ],
+      "examples": [
+        "examples/form-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ConfirmDialog",
+      "figmaComponent": "Feedback / ConfirmDialog",
+      "importFrom": "@ai-readable/kit",
+      "category": "feedback",
+      "layoutRole": "confirmation-dialog",
+      "requiredProps": [
+        "open",
+        "title",
+        "description",
+        "confirmLabel",
+        "onConfirm",
+        "onCancel"
+      ],
+      "optionalProps": [
+        "cancelLabel",
+        "danger",
+        "loading",
+        "focusFallbackRef"
+      ],
+      "variants": [
+        "default",
+        "danger"
+      ],
+      "figmaVariants": [
+        "Tone"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Drawer",
+      "figmaComponent": "Overlay / Drawer",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "side-edit-panel",
+      "requiredProps": [
+        "open",
+        "title",
+        "children",
+        "onClose"
+      ],
+      "optionalProps": [
+        "footer",
+        "extra",
+        "size",
+        "loading",
+        "closeOnBackdrop",
+        "unmountOnClose"
+      ],
+      "variants": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "figmaVariants": [
+        "Size"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ImportFlow",
+      "figmaComponent": "Feedback / ImportFlow",
+      "importFrom": "@ai-readable/kit",
+      "category": "feedback",
+      "layoutRole": "import-workflow",
+      "requiredProps": [
+        "status"
+      ],
+      "optionalProps": [
+        "accept",
+        "fileName",
+        "fileLabel",
+        "helpText",
+        "validationError",
+        "title",
+        "description",
+        "details",
+        "actions",
+        "onFileSelect"
+      ],
+      "variants": [
+        "ready",
+        "processing",
+        "success",
+        "error"
+      ],
+      "figmaVariants": [
+        "Status"
+      ],
+      "examples": [
+        "examples/feedback-states.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Input",
+      "figmaComponent": "Input",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "form-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "id",
+        "label",
+        "aria-label",
+        "aria-labelledby",
+        "aria-describedby",
+        "value",
+        "defaultValue",
+        "placeholder",
+        "disabled",
+        "prefix",
+        "suffix",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "default",
+        "error"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/form-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Textarea",
+      "figmaComponent": "Textarea",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "form-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "id",
+        "label",
+        "aria-label",
+        "aria-labelledby",
+        "aria-describedby",
+        "value",
+        "defaultValue",
+        "placeholder",
+        "rows",
+        "disabled",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "default",
+        "error"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/form-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Select",
+      "figmaComponent": "Select",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "form-control",
+      "requiredProps": [
+        "options"
+      ],
+      "optionalProps": [
+        "id",
+        "label",
+        "aria-label",
+        "aria-labelledby",
+        "aria-describedby",
+        "value",
+        "defaultValue",
+        "placeholder",
+        "disabled",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "default",
+        "error"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/form-page.tsx",
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DatePicker",
+      "figmaComponent": "Input / DatePicker",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "date-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "id",
+        "label",
+        "mode",
+        "value",
+        "defaultValue",
+        "placeholder",
+        "disabled",
+        "required",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "date",
+        "datetime",
+        "time"
+      ],
+      "figmaVariants": [
+        "Mode",
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "RangePicker",
+      "figmaComponent": "Input / RangePicker",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "date-range-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "id",
+        "label",
+        "mode",
+        "value",
+        "defaultValue",
+        "presets",
+        "disabled",
+        "required",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "date",
+        "datetime",
+        "time"
+      ],
+      "figmaVariants": [
+        "Mode",
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "RadioGroup",
+      "figmaComponent": "Choice / RadioGroup",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "single-choice-control",
+      "requiredProps": [
+        "options"
+      ],
+      "optionalProps": [
+        "name",
+        "label",
+        "value",
+        "defaultValue",
+        "layout",
+        "disabled",
+        "required",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "horizontal",
+        "vertical"
+      ],
+      "figmaVariants": [
+        "Layout",
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "CheckboxGroup",
+      "figmaComponent": "Choice / CheckboxGroup",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "multiple-choice-control",
+      "requiredProps": [
+        "options"
+      ],
+      "optionalProps": [
+        "name",
+        "label",
+        "value",
+        "defaultValue",
+        "layout",
+        "disabled",
+        "required",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "horizontal",
+        "vertical",
+        "grid"
+      ],
+      "figmaVariants": [
+        "Layout",
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Switch",
+      "figmaComponent": "Choice / Switch",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "boolean-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "id",
+        "label",
+        "checked",
+        "defaultChecked",
+        "disabled",
+        "loading",
+        "onChange"
+      ],
+      "variants": [
+        "off",
+        "on",
+        "loading"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Upload",
+      "figmaComponent": "Input / Upload",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "file-selection-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "label",
+        "variant",
+        "accept",
+        "multiple",
+        "maxCount",
+        "maxSizeBytes",
+        "items",
+        "triggerLabel",
+        "disabled",
+        "required",
+        "status",
+        "onFilesSelected",
+        "onRemove",
+        "onReject"
+      ],
+      "variants": [
+        "button",
+        "drag"
+      ],
+      "figmaVariants": [
+        "Type",
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "TreeSelect",
+      "figmaComponent": "Input / TreeSelect",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "hierarchical-choice-control",
+      "requiredProps": [
+        "options"
+      ],
+      "optionalProps": [
+        "label",
+        "selectionMode",
+        "value",
+        "defaultValue",
+        "placeholder",
+        "searchable",
+        "clearable",
+        "loading",
+        "disabled",
+        "required",
+        "status",
+        "onChange"
+      ],
+      "variants": [
+        "single",
+        "multiple",
+        "checkbox"
+      ],
+      "figmaVariants": [
+        "Selection",
+        "State"
+      ],
+      "examples": [
+        "examples/interaction-foundation.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Card",
+      "figmaComponent": "Card",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "container",
+      "requiredProps": [],
+      "optionalProps": [
+        "title",
+        "extra",
+        "footer",
+        "padding",
+        "bordered",
+        "variant"
+      ],
+      "variants": [
+        "default",
+        "ghost"
+      ],
+      "figmaVariants": [
+        "Type"
+      ],
+      "examples": [
+        "examples/dashboard-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Badge",
+      "figmaComponent": "Badge",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "status",
+      "requiredProps": [
+        "children"
+      ],
+      "optionalProps": [
+        "variant",
+        "appearance"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "processing",
+        "geekblue",
+        "cyan",
+        "purple"
+      ],
+      "figmaVariants": [
+        "Variant",
+        "Appearance"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Tabs",
+      "figmaComponent": "Tabs",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "inline-navigation",
+      "requiredProps": [
+        "items"
+      ],
+      "optionalProps": [
+        "defaultActiveKey",
+        "activeKey",
+        "variant",
+        "onChange"
+      ],
+      "variants": [
+        "line",
+        "card"
+      ],
+      "figmaVariants": [
+        "Type"
+      ],
+      "examples": [
+        "examples/detail-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "SideNav",
+      "figmaComponent": "SideNav",
+      "importFrom": "@ai-readable/kit",
+      "category": "navigation",
+      "layoutRole": "primary-navigation",
+      "requiredProps": [
+        "items"
+      ],
+      "optionalProps": [
+        "activeKey",
+        "ariaLabel",
+        "onSelect"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/dashboard-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ThemeToggle",
+      "figmaComponent": "ThemeToggle",
+      "importFrom": "@ai-readable/kit",
+      "category": "primitive",
+      "layoutRole": "theme-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "value",
+        "onChange"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "Theme"
+      ],
+      "examples": [
+        "examples/dashboard-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "AppShell",
+      "figmaComponent": "AppShell",
+      "importFrom": "@ai-readable/kit",
+      "category": "layout",
+      "layoutRole": "app-frame",
+      "requiredProps": [
+        "children"
+      ],
+      "optionalProps": [
+        "nav",
+        "header",
+        "collapsed",
+        "onCollapse"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "NavState"
+      ],
+      "examples": [
+        "examples/dashboard-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "PageLayout",
+      "figmaComponent": "PageLayout",
+      "importFrom": "@ai-readable/kit",
+      "category": "layout",
+      "layoutRole": "page-container",
+      "requiredProps": [
+        "children"
+      ],
+      "optionalProps": [
+        "density"
+      ],
+      "variants": [
+        "compact",
+        "standard",
+        "loose"
+      ],
+      "figmaVariants": [
+        "Density"
+      ],
+      "examples": [
+        "examples/list-page.tsx",
+        "examples/dashboard-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ForbiddenState",
+      "figmaComponent": "Feedback / ForbiddenState",
+      "importFrom": "@ai-readable/kit",
+      "category": "feedback",
+      "layoutRole": "permission-page-state",
+      "requiredProps": [],
+      "optionalProps": [
+        "title",
+        "description",
+        "actions"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [],
+      "examples": [
+        "examples/feedback-states.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "PageHeader",
+      "figmaComponent": "PageHeader",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "page-header",
+      "requiredProps": [
+        "title"
+      ],
+      "optionalProps": [
+        "breadcrumb",
+        "description",
+        "actions",
+        "tabs"
+      ],
+      "variants": [
+        "default",
+        "with-tabs"
+      ],
+      "figmaVariants": [
+        "Type"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "FilterPanel",
+      "figmaComponent": "FilterPanel",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "filter-region",
+      "requiredProps": [
+        "fields"
+      ],
+      "optionalProps": [
+        "variant",
+        "onSearch",
+        "onReset",
+        "collapsed",
+        "defaultValues",
+        "resetVisibility"
+      ],
+      "variants": [
+        "inline",
+        "grid"
+      ],
+      "figmaVariants": [
+        "Layout"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DataSection",
+      "figmaComponent": "Data / DataSection",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "data-region",
+      "requiredProps": [
+        "title"
+      ],
+      "optionalProps": [
+        "description",
+        "toolbar",
+        "loading",
+        "empty",
+        "variant"
+      ],
+      "variants": [
+        "default",
+        "dense"
+      ],
+      "figmaVariants": [
+        "Density",
+        "State"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "BulkActionBar",
+      "figmaComponent": "Data / BulkActionBar",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "batch-action-region",
+      "requiredProps": [
+        "selectedCount",
+        "children"
+      ],
+      "optionalProps": [
+        "onClearSelection"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "FormSection",
+      "figmaComponent": "FormSection",
+      "importFrom": "@ai-readable/kit",
+      "category": "page-section",
+      "layoutRole": "form-section",
+      "requiredProps": [
+        "title",
+        "children"
+      ],
+      "optionalProps": [
+        "description",
+        "actions"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "Type"
+      ],
+      "examples": [
+        "examples/form-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "MetricCard",
+      "figmaComponent": "MetricCard",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "metric",
+      "requiredProps": [
+        "label",
+        "value"
+      ],
+      "optionalProps": [
+        "delta",
+        "trend",
+        "icon",
+        "unit",
+        "hint",
+        "variant"
+      ],
+      "variants": [
+        "default",
+        "compact"
+      ],
+      "figmaVariants": [
+        "Size",
+        "Trend"
+      ],
+      "examples": [
+        "examples/dashboard-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "ChartFrame",
+      "figmaComponent": "Visualization / ChartFrame",
+      "importFrom": "@ai-readable/kit",
+      "category": "visualization",
+      "layoutRole": "chart-panel",
+      "requiredProps": [
+        "title"
+      ],
+      "optionalProps": [
+        "state",
+        "description",
+        "actions",
+        "caption",
+        "size",
+        "message",
+        "action",
+        "children"
+      ],
+      "variants": [
+        "ready",
+        "loading",
+        "empty",
+        "error",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "figmaVariants": [
+        "State",
+        "Size"
+      ],
+      "examples": [
+        "examples/analytics-dashboard.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "TrendChart",
+      "figmaComponent": "Visualization / TrendChart",
+      "importFrom": "@ai-readable/kit",
+      "category": "visualization",
+      "layoutRole": "trend-chart",
+      "requiredProps": [
+        "categories",
+        "series",
+        "summary"
+      ],
+      "optionalProps": [
+        "area",
+        "curve",
+        "showLegend",
+        "showPoints",
+        "xAxisLabel",
+        "yAxisLabel",
+        "valueFormatter"
+      ],
+      "variants": [
+        "linear",
+        "smooth",
+        "area"
+      ],
+      "figmaVariants": [
+        "Curve",
+        "Area"
+      ],
+      "examples": [
+        "examples/analytics-dashboard.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "BarChart",
+      "figmaComponent": "Visualization / BarChart",
+      "importFrom": "@ai-readable/kit",
+      "category": "visualization",
+      "layoutRole": "comparison-chart",
+      "requiredProps": [
+        "categories",
+        "series",
+        "summary"
+      ],
+      "optionalProps": [
+        "orientation",
+        "showLegend",
+        "showValues",
+        "valueFormatter"
+      ],
+      "variants": [
+        "vertical",
+        "horizontal"
+      ],
+      "figmaVariants": [
+        "Orientation"
+      ],
+      "examples": [
+        "examples/analytics-dashboard.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DonutChart",
+      "figmaComponent": "Visualization / DonutChart",
+      "importFrom": "@ai-readable/kit",
+      "category": "visualization",
+      "layoutRole": "composition-chart",
+      "requiredProps": [
+        "data",
+        "summary"
+      ],
+      "optionalProps": [
+        "centerLabel",
+        "centerValue",
+        "showLegend",
+        "legendPosition",
+        "valueFormatter"
+      ],
+      "variants": [
+        "bottom-legend",
+        "right-legend"
+      ],
+      "figmaVariants": [
+        "Legend"
+      ],
+      "examples": [
+        "examples/analytics-dashboard.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "GaugeChart",
+      "figmaComponent": "Visualization / GaugeChart",
+      "importFrom": "@ai-readable/kit",
+      "category": "visualization",
+      "layoutRole": "threshold-chart",
+      "requiredProps": [
+        "label",
+        "value",
+        "summary"
+      ],
+      "optionalProps": [
+        "min",
+        "max",
+        "unit",
+        "bands",
+        "valueFormatter"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "Band"
+      ],
+      "examples": [
+        "examples/analytics-dashboard.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DetailHeader",
+      "figmaComponent": "DetailHeader",
+      "importFrom": "@ai-readable/kit",
+      "category": "composite",
+      "layoutRole": "detail-header",
+      "requiredProps": [
+        "title"
+      ],
+      "optionalProps": [
+        "subtitle",
+        "status",
+        "meta",
+        "actions",
+        "avatar"
+      ],
+      "variants": [
+        "default",
+        "with-status"
+      ],
+      "figmaVariants": [
+        "Type"
+      ],
+      "examples": [
+        "examples/detail-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DescriptionGrid",
+      "figmaComponent": "DescriptionGrid",
+      "importFrom": "@ai-readable/kit",
+      "category": "data-display",
+      "layoutRole": "key-value-data",
+      "requiredProps": [
+        "items"
+      ],
+      "optionalProps": [
+        "columns"
+      ],
+      "variants": [
+        "2",
+        "3",
+        "4"
+      ],
+      "figmaVariants": [
+        "Columns"
+      ],
+      "examples": [
+        "examples/detail-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "DataGrid",
+      "figmaComponent": "Data / Table",
+      "importFrom": "@ai-readable/kit",
+      "category": "data-display",
+      "layoutRole": "data-table",
+      "requiredProps": [
+        "columns",
+        "dataSource"
+      ],
+      "optionalProps": [
+        "rowKey",
+        "pagination",
+        "rowSelection",
+        "selectedRowKeys",
+        "loading",
+        "density",
+        "sortable",
+        "rowClassName",
+        "onRow",
+        "onSelectionChange",
+        "onChange"
+      ],
+      "variants": [
+        "default",
+        "compact"
+      ],
+      "figmaVariants": [
+        "Density",
+        "Selectable"
+      ],
+      "examples": [
+        "examples/list-page.tsx",
+        "examples/permissions-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Pagination",
+      "figmaComponent": "Pagination",
+      "importFrom": "@ai-readable/kit",
+      "category": "data-display",
+      "layoutRole": "pagination-control",
+      "requiredProps": [],
+      "optionalProps": [
+        "page",
+        "pageSize",
+        "total",
+        "disabled",
+        "onPageChange"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/list-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Table",
+      "figmaComponent": "Table",
+      "importFrom": "@ai-readable/kit",
+      "category": "data-display",
+      "layoutRole": "simple-table",
+      "requiredProps": [
+        "columns",
+        "dataSource"
+      ],
+      "optionalProps": [
+        "rowKey",
+        "empty",
+        "density"
+      ],
+      "variants": [
+        "default",
+        "compact"
+      ],
+      "figmaVariants": [
+        "Density"
+      ],
+      "examples": [
+        "examples/detail-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    },
+    {
+      "codeComponent": "Stepper",
+      "figmaComponent": "Stepper",
+      "importFrom": "@ai-readable/kit",
+      "category": "navigation",
+      "layoutRole": "process-navigation",
+      "requiredProps": [
+        "items"
+      ],
+      "optionalProps": [
+        "currentKey"
+      ],
+      "variants": [
+        "default"
+      ],
+      "figmaVariants": [
+        "State"
+      ],
+      "examples": [
+        "examples/form-page.tsx"
+      ],
+      "nodeId": null,
+      "source": "components.manifest.json"
+    }
+  ]
+}

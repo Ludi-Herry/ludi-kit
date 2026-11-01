@@ -1,0 +1,183 @@
+{
+  "version": "1.0.0",
+  "id": "national-cyber-defense-center",
+  "title": "国家网络安全态势中心",
+  "businessBrief": {
+    "summary": "实时联防监控的全屏值守大屏：美国本土地理态势国家级/州级两级下钻，核心资产、攻击趋势、风险构成、实时安全事件与自动处置效率同屏呈现",
+    "audience": "安全运营值守团队（全屏值守、固定大屏场景）"
+  },
+  "viewports": [
+    {
+      "tier": "1080p",
+      "width": 1920,
+      "height": 1080,
+      "deviceScaleFactor": 1,
+      "role": "primary"
+    },
+    {
+      "tier": "768p",
+      "width": 1366,
+      "height": 768,
+      "deviceScaleFactor": 1,
+      "role": "secondary"
+    },
+    {
+      "tier": "custom",
+      "width": 1024,
+      "height": 768,
+      "deviceScaleFactor": 1,
+      "role": "secondary"
+    },
+    {
+      "tier": "4k",
+      "width": 3840,
+      "height": 2160,
+      "deviceScaleFactor": 1,
+      "role": "secondary"
+    }
+  ],
+  "dataFreshness": {
+    "mode": "realtime",
+    "maxStaleSeconds": 2,
+    "note": "示例宣称全域数据延迟 1.8s 实时同步（页脚指标），事件流按秒级时间戳滚动；真实数据源接入时按合同复核上限"
+  },
+  "aggregationRules": [
+    {
+      "scope": "signals.today.high-confidence",
+      "window": "今日",
+      "description": "今日高置信信号计数与 00:00–NOW 分钟级趋势折线（攻击趋势面板）"
+    },
+    {
+      "scope": "connections.blocked",
+      "window": "过去 24 小时",
+      "description": "恶意连接阻断累计计数（页脚全局指标条）"
+    },
+    {
+      "scope": "rules.coverage",
+      "window": "12 个数据域",
+      "description": "检测规则覆盖按数据域聚合计数（页脚全局指标条）"
+    },
+    {
+      "scope": "incidents.live",
+      "window": "实时",
+      "description": "实时安全事件按严重度高/中/低分级滚动列表（实时安全事件面板）"
+    }
+  ],
+  "panels": [
+    {
+      "id": "asset-posture",
+      "title": "核心资产态势",
+      "kicker": "ASSET POSTURE",
+      "kind": "metric",
+      "placement": "side-left",
+      "description": "受监测核心资产主指标、防护覆盖环形仪表与在线探针/隔离资产迷你指标"
+    },
+    {
+      "id": "threat-trend",
+      "title": "攻击趋势",
+      "kicker": "THREAT TREND",
+      "kind": "chart",
+      "placement": "side-left",
+      "description": "今日高置信信号总数与分钟级 sparkline 趋势"
+    },
+    {
+      "id": "risk-profile",
+      "title": "风险构成",
+      "kicker": "RISK PROFILE",
+      "kind": "chart",
+      "placement": "side-left",
+      "description": "身份风险/暴露面/供应链/配置漂移四类风险条形占比"
+    },
+    {
+      "id": "live-incidents",
+      "title": "实时安全事件",
+      "kicker": "LIVE INCIDENTS",
+      "kind": "list",
+      "placement": "side-right",
+      "description": "严重度分级的事件滚动列表，含区域与相对时间"
+    },
+    {
+      "id": "response-automation",
+      "title": "自动处置效率",
+      "kicker": "RESPONSE AUTOMATION",
+      "kind": "chart",
+      "placement": "side-right",
+      "description": "高危事件自动闭环率、处置趋势与响应/恢复/超时三指标"
+    },
+    {
+      "id": "render-quality",
+      "title": "运行质量",
+      "kicker": "RENDER QUALITY",
+      "kind": "metric",
+      "placement": "side-right",
+      "description": "渲染中位 FPS、p95 帧时、画质档位与动效模式"
+    },
+    {
+      "id": "global-metrics-footer",
+      "title": "全局指标条",
+      "kind": "metric",
+      "placement": "footer",
+      "description": "综合风险指数、24 小时阻断、规则覆盖、情报命中、数据延迟五项屏级指标"
+    }
+  ],
+  "map": {
+    "baseLayer": {
+      "sourceName": "Natural Earth vector（美国本土与州界）",
+      "repository": "https://github.com/nvkelso/natural-earth-vector",
+      "version": "v5.1.2",
+      "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+      "license": "Public domain",
+      "termsUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "attributionNote": "公共领域数据；public/data/provenance.json 登记两份 GeoJSON（1 个本土要素 + 49 个州要素）的 SHA-256 出处链",
+      "redistributionNote": "公共领域允许再分发；仓库仅保留派生 GeoJSON、生成脚本与哈希记录",
+      "foo": "bar"
+    },
+    "reviewRequirement": "本示例为境外公开底图的通道演示，未涉中国国界线；任何渲染中国国界线或中国行政区划的上线大屏必须使用带审图号的标准地图底图，本字段不因本示例豁免"
+  },
+  "states": {
+    "loading": {
+      "behavior": "保留 WebGL 渲染器挂载，仅切换面板壳层与地图 shimmer 文案，不卸载画布"
+    },
+    "empty": {
+      "behavior": "渲染器保持挂载并以空 GeoJSON 渲染，地图区域展示空态卡片说明"
+    },
+    "error": {
+      "behavior": "展示可恢复错误面板，ready 控件可恢复视图",
+      "retry": true
+    }
+  },
+  "motion": {
+    "interruptible": true,
+    "reducedMotionFallback": "prefers-reduced-motion 命中时脉冲、数字翻牌、shimmer 与面板过渡全部停止并以静态呈现，动画计数归零"
+  },
+  "performanceTarget": {
+    "targets": [
+      {
+        "viewportTier": "1080p",
+        "medianFpsMin": 45,
+        "p95FrameMsMax": 33
+      },
+      {
+        "viewportTier": "4k",
+        "medianFpsMin": 30,
+        "p95FrameMsMax": 50
+      }
+    ],
+    "dprDegradation": {
+      "maxDevicePixelRatio": 1.5,
+      "strategy": "预热后对前 240 帧评估，未达标即自动降低 DPR 并减半飞线与脉冲特效，记录降级原因后按同口径复测归档"
+    }
+  },
+  "renderer": {
+    "mainRenderer": "Three.js（单一主渲染器，动态 import 独立 chunk，禁止同屏第二主 WebGL 渲染器）",
+    "minContext": "webgl2",
+    "browserSupport": [
+      "支持 WebGL2 的桌面 Chrome / Edge（示例验收于 ANGLE/D3D11 后端）"
+    ],
+    "budgetNote": "preview ≤700 KiB、starter ≤320 KiB gzip，预算随 SKILL 维护"
+  },
+  "figmaTarget": {
+    "fileKey": null,
+    "nodeId": null
+  }
+}

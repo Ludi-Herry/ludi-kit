@@ -1,0 +1,18 @@
+{
+  "id": "test-action-unknown-scope",
+  "expectedActions": {
+    "conditions": [
+      {
+        "when": "record.status === \"active\"",
+        "branch": "then",
+        "required": ["删除"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/action-unknown-scope.bad.tsx",
+    "symbol": "UnknownActionScopePage"
+  },
+  "report": "harness/reports/test-action-unknown-scope.json"
+}

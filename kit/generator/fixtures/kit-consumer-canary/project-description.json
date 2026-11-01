@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "kit-consumer-canary",
+  "contextType": "real-product",
+  "product": {
+    "name": "Kit Consumer Canary",
+    "description": "验证 kit-consumer 输出只从 @ai-readable/kit 公共入口导入。"
+  },
+  "pages": [
+    {
+      "id": "canary",
+      "route": "/canary",
+      "title": "Kit Consumer Canary",
+      "pattern": "dashboard-page",
+      "intent": {
+        "goal": "确认 @ai-readable/kit 公共入口仍可支撑生成页。",
+        "primaryAction": "运行 canary",
+        "secondaryActions": ["刷新"],
+        "successCriteria": ["只导入 @ai-readable/kit", "与 library-native fixture 分开计数"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader", "MetricCard", "Card", "Button"],
+      "content": {
+        "metrics": [
+          { "label": "公共入口", "value": "ok", "delta": "barrel", "trend": "flat" },
+          { "label": "模式", "value": "kit", "delta": "consumer", "trend": "flat" }
+        ]
+      }
+    }
+  ]
+}

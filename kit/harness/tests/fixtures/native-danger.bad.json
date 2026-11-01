@@ -1,0 +1,13 @@
+{
+  "id": "test-native-danger",
+  "expectedComponents": ["PageLayout", "Button"],
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/native-danger.bad.tsx",
+    "symbol": "NativeDangerPage"
+  },
+  "report": "harness/reports/test-native-danger.json"
+}

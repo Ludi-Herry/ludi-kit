@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "tianshu-firmware-real-visual-diff",
+  "workflowIds": [
+    "image2-to-figma-page"
+  ],
+  "status": "failed",
+  "recordedAt": "2026-07-17T12:46:36.566Z",
+  "summary": "The real 1440x1100 full-page and firmware-ledger comparisons ran with immutable thresholds and failed. The authorized semantic exception accepts the local reconstruction while preserving the raw failure and every fixed gate.",
+  "commands": [
+    {
+      "command": "node scripts/visual-diff.mjs --config projects/tianshu-ops/workflow/firmware-image2/visual-diff.config.json",
+      "exitCode": 1,
+      "result": "{\"global\":{\"ssim\":0.221048476439,\"rms\":0.131127185738,\"changedPixelRatio\":0.134121843434},\"firmware-ledger\":{\"ssim\":0.057744872142,\"rms\":0.139726577488,\"changedPixelRatio\":0.169178743961}}"
+    },
+    {
+      "command": "node scripts/run-image2-workflow.mjs --request generator/fixtures/tianshu-firmware/image2/exploratory.request.json --out generator/fixtures/tianshu-firmware/image2/exploratory-run.json",
+      "exitCode": 1,
+      "result": "Validated the frozen exploratory contract, generated reference, Image-to-html reconstruction, Browser and Playwright evidence, exact region crop, and Figma external blocker; fail-closed at the immutable raw visual gate."
+    }
+  ],
+  "artifacts": [
+    "projects/tianshu-ops/workflow/firmware-image2/visual-diff.config.json",
+    "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/metrics.json",
+    "projects/tianshu-ops/workflow/firmware-image2/visual-diff-artifacts/heatmap.png",
+    "projects/tianshu-ops/workflow/firmware-image2/visual-calibration-proposal.md",
+    "projects/tianshu-ops/workflow/firmware-image2/visual-calibration-decision.json",
+    "generator/fixtures/tianshu-firmware/image2/exploratory-run.json"
+  ],
+  "blockers": [
+    "The immutable raw visual gate rejects this pair. The approved semantic exception records local usability while preserving the failed machine verdict; the 24-pair calibration study remains incomplete."
+  ]
+}

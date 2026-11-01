@@ -1,0 +1,543 @@
+{
+  "version": "1.0.0",
+  "component": "Button",
+  "queryComponent": "Button",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Button",
+        "nameZh": "按钮",
+        "description": "按钮用于开始一个即时操作。",
+        "props": [
+          {
+            "name": "autoInsertSpace",
+            "type": "boolean",
+            "default": "`true`",
+            "since": "5.17.0"
+          },
+          {
+            "name": "block",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "color",
+            "type": "`default` | `primary` | `danger` | [PresetColors](#presetcolors)",
+            "default": "`primary` when `variant=\"solid\"`",
+            "since": "`default`, `primary` and `danger`: 5.21.0, `PresetColors`: 5.23.0, `solid` default color: 6.4.0"
+          },
+          {
+            "name": "danger",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "ghost",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "href",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "htmlType",
+            "type": "`submit` | `reset` | `button`",
+            "default": "`button`",
+            "since": ""
+          },
+          {
+            "name": "icon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "iconPlacement",
+            "type": "`start` | `end`",
+            "default": "`start`",
+            "since": "-"
+          },
+          {
+            "name": "iconPosition",
+            "type": "`start` | `end`",
+            "default": "`start`",
+            "since": "5.17.0"
+          },
+          {
+            "name": "loading",
+            "type": "boolean | { delay: number, icon: ReactNode }",
+            "default": "false",
+            "since": "icon: 5.23.0"
+          },
+          {
+            "name": "loadingIcon",
+            "type": "ReactNode",
+            "default": "`<LoadingOutlined />`",
+            "since": ""
+          },
+          {
+            "name": "onClick",
+            "type": "(event: React.MouseEvent<HTMLElement, MouseEvent>) => void",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "shape",
+            "type": "`default` | `circle` | `round`",
+            "default": "`default`",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`large` | `medium` | `small`",
+            "default": "`medium`",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "target",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "type",
+            "type": "`primary` | `dashed` | `link` | `text` | `default`",
+            "default": "`default`",
+            "since": ""
+          },
+          {
+            "name": "variant",
+            "type": "`outlined` | `dashed` | `solid` | `filled` | `text` | `link`",
+            "default": "-",
+            "since": "5.21.0"
+          }
+        ],
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "button"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Button",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。\n\n在 Ant Design 中我们提供了五种按钮。\n\n- 🔵 主按钮：用于主行动点，一个操作区域只能有一个主按钮。\n- ⚪️ 默认按钮：用于没有主次之分的一组行动点。\n- 😶 虚线按钮：常用于添加操作。\n- 🔤 文本按钮：用于最次级的行动点。\n- 🔗 链接按钮：一般用于链接，即导航至某位置。\n\n以及四种状态属性与上面配合使用。\n\n- ⚠️ 危险：删除/移动/修改权限等危险操作，一般需要二次确认。\n- 👻 幽灵：用于背景色比较复杂的地方，常用在首页/产品页等展示场景。\n- 🚫 禁用：行动点不可用的时候，一般需要文案解释。\n- 🔃 加载中：用于异步操作等待反馈的时候，也可以避免多次提交。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">语法糖</code>\n<code src=\"./demo/color-variant.tsx\" version=\"5.21.0\">颜色与变体</code>\n<code src=\"./demo/debug-color-variant\" debug>调试颜色与变体</code>\n<code src=\"./demo/icon.tsx\">按钮图标</code>\n<code src=\"./demo/icon-placement.tsx\" version=\"5.17.0\">按钮图标位置</code>\n<code src=\"./demo/debug-icon.tsx\" debug>调试图标按钮</code>\n<code src=\"./demo/debug-block.tsx\" debug>调试按钮block属性</code>\n<code src=\"./demo/size.tsx\">按钮尺寸</code>\n<code src=\"./demo/disabled.tsx\">不可用状态</code>\n<code src=\"./demo/loading.tsx\">加载中状态</code>\n<code src=\"./demo/multiple.tsx\">多个按钮组合</code>\n<code src=\"./demo/ghost.tsx\">幽灵按钮</code>\n<code src=\"./demo/danger.tsx\">危险按钮</code>\n<code src=\"./demo/block.tsx\">Block 按钮</code>\n<code src=\"./demo/legacy-group.tsx\" debug>废弃的 Block 组</code>\n<code src=\"./demo/chinese-chars-loading.tsx\" debug>加载中状态 bug 还原</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/linear-gradient.tsx\">渐变按钮</code>\n<code src=\"./demo/wave.tsx\">自定义按钮波纹</code>\n<code src=\"./demo/chinese-space.tsx\" version=\"5.17.0\">移除两个汉字之间的空格</code>\n<code src=\"./demo/custom-disabled-bg.tsx\">自定义禁用样式背景</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：`type` -> `shape` -> `size` -> `loading` -> `disabled`。\n\n按钮的属性说明如下：\n\n| 属性 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| autoInsertSpace | 我们默认提供两个汉字之间的空格，可以设置 `autoInsertSpace` 为 `false` 关闭 | boolean | `true` | 5.17.0 | 5.17.0 |\n| block | 将按钮宽度调整为其父宽度的选项 | boolean | false |  | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - | 6.0.0 | 6.0.0 |\n| color | 设置按钮的颜色 | `default` \\| `primary` \\| `danger` \\| [PresetColors](#presetcolors) | `variant=\"solid\"` 时为 `primary` | `default`、`primary` 和 `danger`: 5.21.0, `PresetColors`: 5.23.0, `solid` 默认颜色: 6.4.0 | 5.25.0 |\n| danger | 语法糖，设置危险按钮。当设置 `color` 时会以后者为准 | boolean | false |  | × |\n| disabled | 设置按钮失效状态 | boolean | false |  | × |\n| ghost | 幽灵属性，使按钮背景透明 | boolean | false |  | × |\n| href | 点击跳转的地址，指定此属性 button 的行为和 a 链接一致 | string | - |  | × |\n| htmlType | 设置 `button` 原生的 `type` 值，可选值请参考 [HTML 标准](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button#type) | `submit` \\| `reset` \\| `button` | `button` |  | × |\n| icon | 设置按钮的图标组件 | ReactNode | - |  | × |\n| iconPlacement | 设置按钮图标组件的位置 | `start` \\| `end` | `start` | - | × |\n| ~~iconPosition~~ | 设置按钮图标组件的位置,请使用 `iconPlacement` 替换 | `start` \\| `end` | `start` | 5.17.0 | × |\n| loading | 设置按钮载入状态 | boolean \\| { delay: number, icon: ReactNode } | false | icon: 5.23.0 | × |\n| loadingIcon | （仅支持全局配置）设置按钮的加载图标 | ReactNode | `<LoadingOutlined />` |  | 6.3.0 |\n| onClick | 点击按钮时的回调 | (event: React.MouseEvent<HTMLElement, MouseEvent>) => void | - |  | × |\n| shape | 设置按钮形状 | `default` \\| `circle` \\| `round` | `default` |  | 5.27.0 |\n| size | 设置按钮大小 | `large` \\| `medium` \\| `small` | `medium` |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |\n| target | 相当于 a 链接的 target 属性，href 存在时生效 | string | - |  | × |\n| type | 语法糖，设置按钮类型。当设置 `variant` 与 `color` 时以后者为准 | `primary` \\| `dashed` \\| `link` \\| `text` \\| `default` | `default` |  | × |\n| variant | 设置按钮的变体 | `outlined` \\| `dashed` \\| `solid` \\| `filled` \\| `text` \\| `link` | - | 5.21.0 | 5.25.0 |\n\n支持原生 button 的其他所有属性。\n\n### PresetColors\n\n> type PresetColors = 'blue' | 'purple' | 'cyan' | 'green' | 'magenta' | 'pink' | 'red' | 'orange' | 'yellow' | 'volcano' | 'geekblue' | 'lime' | 'gold';\n\n## Semantic DOM\n\n<!-- prettier-ignore -->\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Button\"></ComponentTokenTable>\n\n## FAQ\n\n### 类型和颜色与变体如何选择？ {#faq-type-color-variant}\n\n类型本质上是颜色与变体的语法糖，内部为其提供了一组颜色与变体的映射关系。如果两者同时存在，优先使用颜色与变体。\n\n```jsx\n<Button type=\"primary\">click</Button>\n```\n\n等同于\n\n```jsx\n<Button color=\"primary\" variant=\"solid\">\n  click\n</Button>\n```\n\n### 如何关闭点击波纹效果？ {#faq-close-wave-effect}\n\n如果你不需要这个特性，可以设置 [ConfigProvider](/components/config-provider-cn#api) 的 `wave` 的 `disabled` 为 `true`。\n\n```jsx\n<ConfigProvider wave={{ disabled: true }}>\n  <Button>click</Button>\n</ConfigProvider>\n```\n\n<style>\n.site-button-ghost-wrapper {\n  padding: 16px;\n  background: rgb(190, 200, 200);\n}\n</style>\n\n## 设计指引 {#design-guide}\n\n- [我的按钮究竟该放哪儿！？| Ant Design 4.0 系列分享](https://zhuanlan.zhihu.com/p/109644406)\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Button",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Syntactic sugar",
+            "description": "Through the `type` syntactic sugar, use the preset button styles: `primary` buttons, `default` buttons, `dashed` buttons, `text` buttons, and `link` buttons."
+          },
+          {
+            "name": "block",
+            "title": "Block Button",
+            "description": "The `block` property will make a button fit to its parent width."
+          },
+          {
+            "name": "color-variant",
+            "title": "Color & Variant",
+            "description": "You can set the `color` and `variant` attributes at the same time can derive more variant buttons."
+          },
+          {
+            "name": "custom-disabled-bg",
+            "title": "Custom disabled backgroundColor",
+            "description": "Customize the background color with disable (applicable to type `default` and `dashed`)"
+          },
+          {
+            "name": "danger",
+            "title": "Danger Buttons",
+            "description": "The `danger` is a property of buttons after antd 4.0."
+          },
+          {
+            "name": "disabled",
+            "title": "Disabled",
+            "description": "To mark a button as disabled, add the `disabled` property to the `Button`."
+          },
+          {
+            "name": "ghost",
+            "title": "Ghost Button",
+            "description": "The `ghost` property will make a button's background transparent, this is commonly used in colored background."
+          },
+          {
+            "name": "icon-placement",
+            "title": "Icon Placement",
+            "description": "You can set the position of a button's icon by setting the `iconPlacement` to `start` or `end` respectively."
+          },
+          {
+            "name": "icon",
+            "title": "Icon",
+            "description": "You can add an icon using the `icon` property."
+          },
+          {
+            "name": "linear-gradient",
+            "title": "Gradient Button",
+            "description": "Buttons with a gradient background."
+          },
+          {
+            "name": "loading",
+            "title": "Loading",
+            "description": "A loading indicator can be added to a button by setting the `loading` property on the `Button`. The `loading.icon` can be used to customize the loading icon."
+          },
+          {
+            "name": "multiple",
+            "title": "Multiple Buttons",
+            "description": "If you need several buttons, we recommend that you use 1 primary button + n secondary buttons. If there are more than three operations, you can group some of them into a [Dropdown](/components/dropdown/#dropdown-demo-dropdown-button)."
+          },
+          {
+            "name": "size",
+            "title": "Size",
+            "description": "Ant Design supports three sizes of buttons: small, medium and large."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Button by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "wave",
+            "title": "Custom Wave",
+            "description": "Wave effect brings dynamic. You can also use HappyProvider from [`@ant-design/happy-work-theme`](https://github.com/ant-design/happy-work-theme) to implement dynamic wave effect."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Button",
+        "tokens": [
+          {
+            "name": "contentFontSize",
+            "type": "number",
+            "default": "",
+            "description": "Font size of button content",
+            "descriptionZh": "按钮内容字体大小"
+          },
+          {
+            "name": "contentFontSizeLG",
+            "type": "number",
+            "default": "",
+            "description": "Font size of large button content",
+            "descriptionZh": "大号按钮内容字体大小"
+          },
+          {
+            "name": "contentFontSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Font size of small button content",
+            "descriptionZh": "小号按钮内容字体大小"
+          },
+          {
+            "name": "dangerColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of danger button",
+            "descriptionZh": "危险按钮文本颜色"
+          },
+          {
+            "name": "dangerShadow",
+            "type": "string",
+            "default": "",
+            "description": "Shadow of danger button",
+            "descriptionZh": "危险按钮阴影"
+          },
+          {
+            "name": "dashedBgDisabled",
+            "type": "string",
+            "default": "",
+            "description": "",
+            "descriptionZh": "type='dashed' 禁用状态下的背景颜色"
+          },
+          {
+            "name": "defaultActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of default button when active",
+            "descriptionZh": "默认按钮激活态背景色"
+          },
+          {
+            "name": "defaultActiveBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of default button when active",
+            "descriptionZh": "默认按钮激活态边框颜色"
+          },
+          {
+            "name": "defaultActiveColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of default button when active",
+            "descriptionZh": "默认按钮激活态文字颜色"
+          },
+          {
+            "name": "defaultBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of default button",
+            "descriptionZh": "默认按钮背景色"
+          },
+          {
+            "name": "defaultBgDisabled",
+            "type": "string",
+            "default": "",
+            "description": "",
+            "descriptionZh": "type='default' 禁用状态下的背景颜色"
+          },
+          {
+            "name": "defaultBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of default button",
+            "descriptionZh": "默认按钮边框颜色"
+          },
+          {
+            "name": "defaultColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of default button",
+            "descriptionZh": "默认按钮文本颜色"
+          },
+          {
+            "name": "defaultGhostBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of default ghost button",
+            "descriptionZh": "默认幽灵按钮边框颜色"
+          },
+          {
+            "name": "defaultGhostColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of default ghost button",
+            "descriptionZh": "默认幽灵按钮文本颜色"
+          },
+          {
+            "name": "defaultHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of default button when hover",
+            "descriptionZh": "默认按钮悬浮态背景色"
+          },
+          {
+            "name": "defaultHoverBorderColor",
+            "type": "string",
+            "default": "",
+            "description": "Border color of default button",
+            "descriptionZh": "默认按钮悬浮态边框颜色"
+          },
+          {
+            "name": "defaultHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of default button when hover",
+            "descriptionZh": "默认按钮悬浮态文本颜色"
+          },
+          {
+            "name": "defaultShadow",
+            "type": "string",
+            "default": "",
+            "description": "Shadow of default button",
+            "descriptionZh": "默认按钮阴影"
+          },
+          {
+            "name": "fontWeight",
+            "type": "FontWeight | undefined",
+            "default": "",
+            "description": "Font weight of text",
+            "descriptionZh": "文字字重"
+          },
+          {
+            "name": "ghostBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of ghost button",
+            "descriptionZh": "幽灵按钮背景色"
+          },
+          {
+            "name": "iconGap",
+            "type": "Gap<string | number> | undefined",
+            "default": "",
+            "description": "Gap between icon and text",
+            "descriptionZh": "图标文字间距"
+          },
+          {
+            "name": "linkHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of link button when hover",
+            "descriptionZh": "链接按钮悬浮态背景色"
+          },
+          {
+            "name": "onlyIconSize",
+            "type": "string | number",
+            "default": "",
+            "description": "Icon size of button which only contains icon",
+            "descriptionZh": "只有图标的按钮图标尺寸"
+          },
+          {
+            "name": "onlyIconSizeLG",
+            "type": "string | number",
+            "default": "",
+            "description": "Icon size of large button which only contains icon",
+            "descriptionZh": "大号只有图标的按钮图标尺寸"
+          },
+          {
+            "name": "onlyIconSizeSM",
+            "type": "string | number",
+            "default": "",
+            "description": "Icon size of small button which only contains icon",
+            "descriptionZh": "小号只有图标的按钮图标尺寸"
+          },
+          {
+            "name": "paddingInline",
+            "type": "PaddingInline<string | number> | undefined",
+            "default": "",
+            "description": "Horizontal padding of button",
+            "descriptionZh": "按钮横向内间距"
+          },
+          {
+            "name": "paddingInlineLG",
+            "type": "PaddingInline<string | number> | undefined",
+            "default": "",
+            "description": "Horizontal padding of large button",
+            "descriptionZh": "大号按钮横向内间距"
+          },
+          {
+            "name": "paddingInlineSM",
+            "type": "PaddingInline<string | number> | undefined",
+            "default": "",
+            "description": "Horizontal padding of small button",
+            "descriptionZh": "小号按钮横向内间距"
+          },
+          {
+            "name": "primaryColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of primary button",
+            "descriptionZh": "主要按钮文本颜色"
+          },
+          {
+            "name": "primaryShadow",
+            "type": "string",
+            "default": "",
+            "description": "Shadow of primary button",
+            "descriptionZh": "主要按钮阴影"
+          },
+          {
+            "name": "solidTextColor",
+            "type": "string",
+            "default": "",
+            "description": "Default text color for solid buttons.",
+            "descriptionZh": "默认实心按钮的文本色"
+          },
+          {
+            "name": "textHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of text button when hover",
+            "descriptionZh": "文本按钮悬浮态背景色"
+          },
+          {
+            "name": "textTextActiveColor",
+            "type": "string",
+            "default": "",
+            "description": "Default text color for text buttons on active",
+            "descriptionZh": "默认文本按钮激活态文字颜色"
+          },
+          {
+            "name": "textTextColor",
+            "type": "string",
+            "default": "",
+            "description": "Default text color for text buttons",
+            "descriptionZh": "默认文本按钮的文本色"
+          },
+          {
+            "name": "textTextHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Default text color for text buttons on hover",
+            "descriptionZh": "默认文本按钮悬浮态文本颜色"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Button",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with comprehensive button styling including border, background, padding, border-radius, box-shadow, transitions, cursor, font-weight, alignment, and layout properties",
+            "descriptionZh": "根元素，包含边框样式、背景色、内边距、圆角、阴影效果、过渡动画、光标样式、文字权重、对齐方式等完整的按钮外观样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element with font-size, color inheritance, and SVG style reset for proper icon display",
+            "descriptionZh": "图标元素，包含图标的字体大小、颜色继承、SVG 样式重置等图标显示相关样式"
+          },
+          {
+            "key": "content",
+            "description": "Content element that wraps button text with typography styles including nowrap, text-align center, and Chinese character spacing optimization",
+            "descriptionZh": "内容元素，包装按钮文本内容，控制文本的不换行显示、居中对齐、中文字符间距优化等文本排版样式"
+          }
+        ]
+      }
+    }
+  }
+}

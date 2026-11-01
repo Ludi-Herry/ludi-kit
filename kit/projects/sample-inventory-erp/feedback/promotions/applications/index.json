@@ -1,0 +1,57 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "generatedAt": "2026-07-07",
+  "sourceDrafts": "projects/sample-inventory-erp/feedback/promotions/index.json",
+  "plans": [
+    {
+      "itemId": "fb-20260707-002",
+      "title": "DataGrid needs first-class pagination display",
+      "mode": "dry-run",
+      "status": "ready",
+      "action": "update-component",
+      "target": "component",
+      "destination": "components.manifest.json",
+      "planFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-002.json",
+      "patchFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-002.diff",
+      "willChangeFiles": [
+        "components.manifest.json",
+        "src/components.tsx",
+        "src/index.ts",
+        "src/styles.css",
+        "examples/list-page.tsx"
+      ],
+      "validationCommands": [
+        "npm run validate:feedback",
+        "npm run validate",
+        "npm run check:harness",
+        "npm run build:preview",
+        "npm run build:starter"
+      ],
+      "command": "npm run apply:promotion -- fb-20260707-002 --dry-run --write-plan"
+    },
+    {
+      "itemId": "fb-20260707-001",
+      "title": "Permission status copy needs domain terms",
+      "mode": "dry-run",
+      "status": "ready",
+      "action": "update-rule",
+      "target": "rule",
+      "destination": "rules/anti-patterns.md",
+      "planFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-001.json",
+      "patchFile": "projects/sample-inventory-erp/feedback/promotions/applications/fb-20260707-001.diff",
+      "willChangeFiles": [
+        "rules/anti-patterns.md",
+        "recipes/badge-variants.md"
+      ],
+      "validationCommands": [
+        "npm run validate:feedback",
+        "npm run validate",
+        "npm run check:harness",
+        "npm run build:preview",
+        "npm run build:starter"
+      ],
+      "command": "npm run apply:promotion -- fb-20260707-001 --dry-run --write-plan"
+    }
+  ]
+}

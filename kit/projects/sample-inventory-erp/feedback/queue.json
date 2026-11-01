@@ -1,0 +1,108 @@
+{
+  "version": "0.1.0",
+  "projectId": "sample-inventory-erp",
+  "items": [
+    {
+      "id": "fb-20260707-001",
+      "source": "qa",
+      "target": "rule",
+      "status": "promoted",
+      "severity": "medium",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-07",
+      "pageId": "permissions",
+      "generatedFile": "projects/sample-inventory-erp/generated/pages.tsx",
+      "title": "Permission status copy needs domain terms",
+      "finding": "The generated permission table reuses generic stock status copy. Role access review needs Active, Review, and Risk wording.",
+      "evidence": [
+        "Generated Permissions page renders a status column from shared StatusBadge copy.",
+        "Permission Review flow calls out risky role assignments as the user goal."
+      ],
+      "proposedChange": "Add a reusable rule for page-level status copy mapping when the same Badge variants serve different business domains.",
+      "promotion": {
+        "destination": "rules/anti-patterns.md",
+        "action": "update-rule",
+        "requiresReview": true
+      },
+      "promotionEvidence": {
+        "ruleSource": "rules/anti-patterns.md",
+        "recipeSource": "recipes/badge-variants.md",
+        "harnessScenario": "harness/scenarios/build-permissions-list.json"
+      },
+      "acceptance": [
+        "Permission status copy uses Active, Review, and Risk.",
+        "Badge variants still follow semantic severity.",
+        "Future generated pages can keep copy mapping outside kit components."
+      ],
+      "createdAt": "2026-07-07"
+    },
+    {
+      "id": "fb-20260707-002",
+      "source": "harness",
+      "target": "component",
+      "status": "promoted",
+      "severity": "high",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-07",
+      "pageId": "inventory-list",
+      "generatedFile": "projects/sample-inventory-erp/generated/pages.tsx",
+      "title": "DataGrid needs first-class pagination display",
+      "finding": "Generated list pages can pass harness without pagination even when the page plan describes list workflows that normally need paging.",
+      "evidence": [
+        "Inventory List page plan uses DataGrid for operational records.",
+        "DataGrid exposes a pagination slot but no default pagination helper exists in component manifest."
+      ],
+      "proposedChange": "Add a lightweight Pagination component or DataGrid pagination recipe before promoting generated list pages to examples.",
+      "promotion": {
+        "destination": "components.manifest.json",
+        "action": "update-component",
+        "requiresReview": true
+      },
+      "promotionEvidence": {
+        "componentPlan": "Add a kit-owned Pagination helper or a documented DataGrid pagination slot recipe.",
+        "affectedComponents": ["DataGrid", "Table"]
+      },
+      "acceptance": [
+        "List page generation can show paging intent through a kit-owned API.",
+        "Harness can check paged list scenarios without custom UI classes.",
+        "Existing DataGrid examples still compile."
+      ],
+      "createdAt": "2026-07-07"
+    },
+    {
+      "id": "fb-20260707-003",
+      "source": "manual-edit",
+      "target": "demo",
+      "status": "rejected",
+      "severity": "low",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-09",
+      "rejectionReason": "Sample project is a validation-sandbox (see business-context.json). Promoting its purchase order form into examples/ would harden a fictional ERP scenario into the kit's demo layer. Revisit after a real-product brief lands: pick a form page from the real flow instead.",
+      "pageId": "purchase-order-form",
+      "generatedFile": "projects/sample-inventory-erp/generated/pages.tsx",
+      "title": "Purchase order form is a candidate demo",
+      "finding": "The generated form page combines Stepper, FormSection, Select, Input, Textarea, and action hierarchy in a reusable B-side pattern.",
+      "evidence": [
+        "Generated Create Purchase Order page builds from the form-page pattern.",
+        "The page covers supplier, lines, delivery, review notes, and draft action states."
+      ],
+      "proposedChange": "Promote the purchase order form into examples after copy and data fields are reviewed.",
+      "promotion": {
+        "destination": "examples/form-page.tsx",
+        "action": "save-demo",
+        "requiresReview": true
+      },
+      "promotionEvidence": {
+        "prdSource": "projects/sample-inventory-erp/prd.mdx",
+        "flowSource": "projects/sample-inventory-erp/flows.json",
+        "pageIntentSource": "projects/sample-inventory-erp/pages.json"
+      },
+      "acceptance": [
+        "Demo source imports only from @radesign/kit.",
+        "Demo description records the PRD, flow, and page intent source.",
+        "Preview Examples can still build after promotion."
+      ],
+      "createdAt": "2026-07-07"
+    }
+  ]
+}

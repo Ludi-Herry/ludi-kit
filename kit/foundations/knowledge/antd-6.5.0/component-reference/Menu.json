@@ -1,0 +1,849 @@
+{
+  "version": "1.0.0",
+  "component": "Menu",
+  "queryComponent": "Menu",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Menu",
+        "nameZh": "导航菜单",
+        "description": "为页面和功能提供导航的菜单列表。",
+        "props": [
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultOpenKeys",
+            "type": "string[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultSelectedKeys",
+            "type": "string[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "expandIcon",
+            "type": "ReactNode | `(props: SubMenuProps & { isSubMenu: boolean }) => ReactNode`",
+            "default": "-",
+            "since": "4.9.0"
+          },
+          {
+            "name": "forceSubMenuRender",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "inlineCollapsed",
+            "type": "boolean",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "inlineIndent",
+            "type": "number",
+            "default": "24",
+            "since": ""
+          },
+          {
+            "name": "items",
+            "type": "[ItemType[]](#itemtype)",
+            "default": "-",
+            "since": "4.20.0"
+          },
+          {
+            "name": "mode",
+            "type": "`vertical` | `horizontal` | `inline`",
+            "default": "`vertical`",
+            "since": ""
+          },
+          {
+            "name": "multiple",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "openKeys",
+            "type": "string[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "overflowedIndicator",
+            "type": "ReactNode",
+            "default": "`<EllipsisOutlined />`",
+            "since": ""
+          },
+          {
+            "name": "selectable",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "selectedKeys",
+            "type": "string[]",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "subMenuCloseDelay",
+            "type": "number",
+            "default": "0.1",
+            "since": ""
+          },
+          {
+            "name": "subMenuOpenDelay",
+            "type": "number",
+            "default": "0",
+            "since": ""
+          },
+          {
+            "name": "tooltip",
+            "type": "false | TooltipProps",
+            "default": "-",
+            "since": "6.3.0"
+          },
+          {
+            "name": "theme",
+            "type": "`light` | `dark`",
+            "default": "`light`",
+            "since": ""
+          },
+          {
+            "name": "triggerSubMenuAction",
+            "type": "`hover` | `click`",
+            "default": "`hover`",
+            "since": ""
+          },
+          {
+            "name": "onClick",
+            "type": "function({ key, keyPath, domEvent, itemData })",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onDeselect",
+            "type": "function({ key, keyPath, selectedKeys, domEvent, itemData })",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onOpenChange",
+            "type": "function(openKeys: string[])",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onSelect",
+            "type": "function({ key, keyPath, selectedKeys, domEvent, itemData })",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "popupRender",
+            "type": "(node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactElement",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Menu.ItemType": [
+            {
+              "name": "danger",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "extra",
+              "type": "ReactNode",
+              "default": "-",
+              "since": "5.21.0"
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "key",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "children",
+              "type": "[ItemType[]](#itemtype)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "key",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "popupClassName",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "popupOffset",
+              "type": "[number, number]",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "theme",
+              "type": "`light` | `dark`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onTitleClick",
+              "type": "function({ key, domEvent })",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "popupRender",
+              "type": "(node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactElement",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "children",
+              "type": "[MenuItemType[]](#menuitemtype)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "label",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "dashed",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Menu",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n导航菜单是一个网站的灵魂，用户依赖导航在各个页面中进行跳转。一般分为顶部导航和侧边导航，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。\n\n更多布局和导航的使用可以参考：[通用布局](/components/layout-cn)。\n\n## 开发者注意事项 {#notes-for-developers}\n\n- Menu 元素为 `ul`，因而仅支持 [`li` 以及 `script-supporting` 子元素](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)。因而你的子节点元素应该都在 `Menu.Item` 内使用。\n- Menu 需要计算节点结构，因而其子元素仅支持 `Menu.*` 以及对此进行封装的 HOC 组件。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/horizontal.tsx\">顶部导航</code>\n<code src=\"./demo/horizontal-dark.tsx\" debug>顶部导航（dark）</code>\n<code src=\"./demo/inline.tsx\">内嵌菜单</code>\n<code src=\"./demo/inline-collapsed.tsx\">缩起内嵌菜单</code>\n<code src=\"./demo/tooltip.tsx\">菜单项提示</code>\n<code src=\"./demo/sider-current.tsx\">只展开当前父级菜单</code>\n<code src=\"./demo/vertical.tsx\">垂直菜单</code>\n<code src=\"./demo/theme.tsx\">主题</code>\n<code src=\"./demo/submenu-theme.tsx\">子菜单主题</code>\n<code src=\"./demo/switch-mode.tsx\">切换菜单类型</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/style-debug.tsx\" debug>Style debug</code>\n<code src=\"./demo/menu-v4.tsx\" debug>v4 版本 Menu</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/extra-style.tsx\" debug>Extra Style debug</code>\n<code src=\"./demo/extra-collapsed-debug.tsx\" debug>Extra 折叠调试</code>\n<code src=\"./demo/custom-popup-render.tsx\">自定义弹出框</code>\n<code src=\"./demo/collapsed-icon-debug.tsx\" debug>折叠菜单 icon 对齐</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Menu\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| defaultOpenKeys | 初始展开的 SubMenu 菜单项 key 数组 | string\\[] | - |  | × |\n| defaultSelectedKeys | 初始选中的菜单项 key 数组 | string\\[] | - |  | × |\n| expandIcon | 自定义展开图标 | ReactNode \\| `(props: SubMenuProps & { isSubMenu: boolean }) => ReactNode` | - | 4.9.0 | 5.15.0 |\n| forceSubMenuRender | 在子菜单展示之前就渲染进 DOM | boolean | false |  | × |\n| inlineCollapsed | inline 时菜单是否收起状态 | boolean | - |  | × |\n| inlineIndent | inline 模式的菜单缩进宽度 | number | 24 |  | × |\n| items | 菜单内容 | [ItemType\\[\\]](#itemtype) | - | 4.20.0 | × |\n| mode | 菜单类型，现在支持垂直、水平、和内嵌模式三种 | `vertical` \\| `horizontal` \\| `inline` | `vertical` |  | × |\n| multiple | 是否允许多选 | boolean | false |  | × |\n| openKeys | 当前展开的 SubMenu 菜单项 key 数组 | string\\[] | - |  | × |\n| overflowedIndicator | 用于自定义 Menu 水平空间不足时的省略收缩的图标 | ReactNode | `<EllipsisOutlined />` |  | × |\n| selectable | 是否允许选中 | boolean | true |  | × |\n| selectedKeys | 当前选中的菜单项 key 数组 | string\\[] | - |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom) , CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom) , CSSProperties> | - |  | 6.0.0 |\n| subMenuCloseDelay | 用户鼠标离开子菜单后关闭延时，单位：秒 | number | 0.1 |  | × |\n| subMenuOpenDelay | 用户鼠标进入子菜单后开启延时，单位：秒 | number | 0 |  | × |\n| tooltip | 配置 inline 折叠时的 MenuItem 悬浮提示，设为 `false` 可关闭 | false \\| TooltipProps | - | 6.3.0 | × |\n| theme | 主题颜色 | `light` \\| `dark` | `light` |  | × |\n| triggerSubMenuAction | SubMenu 展开/关闭的触发行为 | `hover` \\| `click` | `hover` |  | × |\n| onClick | 点击 MenuItem 调用此函数 | function({ key, keyPath, domEvent, itemData }) | - |  | × |\n| onDeselect | 取消选中时调用，仅在 multiple 生效 | function({ key, keyPath, selectedKeys, domEvent, itemData }) | - |  | × |\n| onOpenChange | SubMenu 展开/关闭的回调 | function(openKeys: string\\[]) | - |  | × |\n| onSelect | 被选中时调用 | function({ key, keyPath, selectedKeys, domEvent, itemData }) | - |  | × |\n| popupRender | 自定义子菜单的弹出框 | (node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactElement | - |  | × |\n\n> 更多属性查看 [@rc-component/menu](https://github.com/react-component/menu#api)\n\n### ItemType\n\n> type ItemType = [MenuItemType](#menuitemtype) | [SubMenuType](#submenutype) | [MenuItemGroupType](#menuitemgrouptype) | [MenuDividerType](#menudividertype);\n\n#### MenuItemType\n\n| 参数     | 说明                     | 类型      | 默认值 | 版本   |\n| -------- | ------------------------ | --------- | ------ | ------ |\n| danger   | 展示错误状态样式         | boolean   | false  |        |\n| disabled | 是否禁用                 | boolean   | false  |        |\n| extra    | 额外节点                 | ReactNode | -      | 5.21.0 |\n| icon     | 菜单图标                 | ReactNode | -      |        |\n| key      | item 的唯一标志          | string    | -      |        |\n| label    | 菜单项标题               | ReactNode | -      |        |\n| title    | 设置收缩时展示的悬浮标题 | string    | -      |        |\n\n#### SubMenuType\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| children | 子菜单的菜单项 | [ItemType\\[\\]](#itemtype) | - |  |\n| disabled | 是否禁用 | boolean | false |  |\n| icon | 菜单图标 | ReactNode | - |  |\n| key | 唯一标志 | string | - |  |\n| label | 菜单项标题 | ReactNode | - |  |\n| popupClassName | 子菜单样式，`mode=\"inline\"` 时无效 | string | - |  |\n| popupOffset | 子菜单偏移量，`mode=\"inline\"` 时无效 | \\[number, number] | - |  |\n| onTitleClick | 点击子菜单标题 | function({ key, domEvent }) | - |  |\n| theme | 设置子菜单的主题，默认从 Menu 上继承 | `light` \\| `dark` | - |  |\n| popupRender | 自定义当前子菜单的弹出框 | (node: ReactElement, props: { item: SubMenuProps; keys: string[] }) => ReactElement | - |  |\n\n#### MenuItemGroupType\n\n定义类型为 `group` 时，会作为分组处理:\n\n```ts\nconst groupItem = {\n  type: 'group', // Must have\n  label: 'My Group',\n  children: [],\n};\n```\n\n| 参数     | 说明         | 类型                              | 默认值 | 版本 |\n| -------- | ------------ | --------------------------------- | ------ | ---- |\n| children | 分组的菜单项 | [MenuItemType\\[\\]](#menuitemtype) | -      |      |\n| label    | 分组标题     | ReactNode                         | -      |      |\n\n#### MenuDividerType\n\n菜单项分割线，只用在弹出菜单内，需要定义类型为 `divider`：\n\n```ts\nconst dividerItem = {\n  type: 'divider', // Must have\n};\n```\n\n| 参数   | 说明     | 类型    | 默认值 | 版本 |\n| ------ | -------- | ------- | ------ | ---- |\n| dashed | 是否虚线 | boolean | false  |      |\n\n## FAQ\n\n### 为何 Menu 的子元素会渲染两次？ {#faq-render-twice}\n\nMenu 通过[二次渲染](https://github.com/react-component/menu/blob/f4684514096d6b7123339cbe72e7b0f68db0bce2/src/Menu.tsx#L543)收集嵌套结构信息以支持 HOC 的结构。合并成一个推导结构会使得逻辑变得十分复杂，欢迎 PR 以协助改进该设计。\n\n### 在 Flex 布局中，Menu 没有按照预期响应式省略菜单？ {#faq-flex-layout}\n\nMenu 初始化时会先全部渲染，然后根据宽度裁剪内容。当处于 Flex 布局中，你需要告知其预期宽度为响应式宽度（[在线 Demo](https://codesandbox.io/s/ding-bu-dao-hang-antd-4-21-7-forked-5e3imy?file=/demo.js)）：\n\n```jsx\n<div style={{ flex }}>\n  <div style={{ ... }}>Some Content</div>\n  <Menu style={{ minWidth: 0, flex: \"auto\" }} />\n</div>\n```\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Menu\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Menu",
+        "demos": [
+          {
+            "name": "custom-popup-render",
+            "title": "Custom Submenu Render",
+            "description": "Use the `popupRender` prop to customize submenu popup rendering."
+          },
+          {
+            "name": "horizontal",
+            "title": "Top Navigation",
+            "description": "Horizontal top navigation menu."
+          },
+          {
+            "name": "inline-collapsed",
+            "title": "Collapsed inline menu",
+            "description": "Inline menu could be collapsed."
+          },
+          {
+            "name": "inline",
+            "title": "Inline menu",
+            "description": "Vertical menu with inline submenus."
+          },
+          {
+            "name": "sider-current",
+            "title": "Open current submenu only",
+            "description": "Click the menu and you will see that all the other menus gets collapsed to keep the entire menu compact."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Menu by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "submenu-theme",
+            "title": "Sub-menu theme",
+            "description": "You can config SubMenu theme with `theme` prop to enable different theme color effect. This sample is dark for root and light for SubMenu."
+          },
+          {
+            "name": "switch-mode",
+            "title": "Switch the menu type",
+            "description": "Show the dynamic switching mode (between `inline` and `vertical`)."
+          },
+          {
+            "name": "theme",
+            "title": "Menu Themes",
+            "description": "There are two built-in themes: `light` and `dark`. The default value is `light`."
+          },
+          {
+            "name": "tooltip",
+            "title": "Menu tooltip",
+            "description": "Configure `tooltip` in inline collapsed mode, or disable it."
+          },
+          {
+            "name": "vertical",
+            "title": "Vertical menu",
+            "description": "Submenus open as pop-ups."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Menu",
+        "tokens": [
+          {
+            "name": "activeBarBorderWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Border width of menu item active bar",
+            "descriptionZh": "菜单项指示条边框宽度"
+          },
+          {
+            "name": "activeBarHeight",
+            "type": "number",
+            "default": "",
+            "description": "Height of menu item active bar",
+            "descriptionZh": "菜单项指示条高度"
+          },
+          {
+            "name": "activeBarWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Width of menu item active bar",
+            "descriptionZh": "菜单项指示条宽度"
+          },
+          {
+            "name": "collapsedIconSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of icon when collapsed",
+            "descriptionZh": "收起时图标尺寸"
+          },
+          {
+            "name": "collapsedWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Width when collapsed",
+            "descriptionZh": "收起后的宽度"
+          },
+          {
+            "name": "dangerItemActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of danger menu item when active",
+            "descriptionZh": "危险菜单项激活态背景色"
+          },
+          {
+            "name": "dangerItemColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of danger menu item text",
+            "descriptionZh": "危险菜单项文字颜色"
+          },
+          {
+            "name": "dangerItemHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Hover color of danger menu item text",
+            "descriptionZh": "危险菜单项文字悬浮颜色"
+          },
+          {
+            "name": "dangerItemSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of selected danger menu item",
+            "descriptionZh": "危险菜单项选中背景色"
+          },
+          {
+            "name": "dangerItemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of selected danger menu item text",
+            "descriptionZh": "危险菜单项文字选中颜色"
+          },
+          {
+            "name": "darkDangerItemActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of active danger menu item in dark mode",
+            "descriptionZh": "暗色模式下的危险菜单项激活态背景"
+          },
+          {
+            "name": "darkDangerItemColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of danger menu item text in dark mode",
+            "descriptionZh": "暗色模式下的危险菜单项文字颜色"
+          },
+          {
+            "name": "darkDangerItemHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Background of hovered danger menu item in dark mode",
+            "descriptionZh": "暗色模式下的危险菜单项悬浮文字背景"
+          },
+          {
+            "name": "darkDangerItemSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of active danger menu item in dark mode",
+            "descriptionZh": "暗色模式下的危险菜单项选中背景"
+          },
+          {
+            "name": "darkDangerItemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of selected danger menu item in dark mode",
+            "descriptionZh": "暗色模式下的危险菜单项选中文字颜色"
+          },
+          {
+            "name": "darkGroupTitleColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of group title text in dark mode",
+            "descriptionZh": "暗色模式下的分组标题文字颜色"
+          },
+          {
+            "name": "darkItemBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of menu item in dark mode",
+            "descriptionZh": "暗色模式下的菜单项背景"
+          },
+          {
+            "name": "darkItemColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of menu item text in dark mode",
+            "descriptionZh": "暗色模式下的菜单项文字颜色"
+          },
+          {
+            "name": "darkItemDisabledColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of disabled menu item in dark mode",
+            "descriptionZh": "暗色模式下的菜单项禁用颜色"
+          },
+          {
+            "name": "darkItemHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of hovered menu item in dark mode",
+            "descriptionZh": "暗色模式下的菜单项悬浮背景"
+          },
+          {
+            "name": "darkItemHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of hovered menu item in dark mode",
+            "descriptionZh": "暗色模式下的菜单项悬浮颜色"
+          },
+          {
+            "name": "darkItemSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of active menu item in dark mode",
+            "descriptionZh": "暗色模式下的菜单项选中背景"
+          },
+          {
+            "name": "darkItemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of selected menu item in dark mode",
+            "descriptionZh": "暗色模式下的菜单项选中颜色"
+          },
+          {
+            "name": "darkPopupBg",
+            "type": "string",
+            "default": "",
+            "description": "The background color of the overlay menu in dark mode.",
+            "descriptionZh": "暗色模式下的浮层菜单的背景颜色"
+          },
+          {
+            "name": "darkSubMenuItemBg",
+            "type": "string",
+            "default": "",
+            "description": "Background of submenu item in dark mode",
+            "descriptionZh": "暗色模式下的子菜单项背景"
+          },
+          {
+            "name": "dropdownWidth",
+            "type": "string | number",
+            "default": "",
+            "description": "Width of popup menu",
+            "descriptionZh": "弹出菜单的宽度"
+          },
+          {
+            "name": "groupTitleColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of group title text",
+            "descriptionZh": "分组标题文字颜色"
+          },
+          {
+            "name": "groupTitleFontSize",
+            "type": "number",
+            "default": "",
+            "description": "font-size of group title",
+            "descriptionZh": "分组标题文字大小"
+          },
+          {
+            "name": "groupTitleLineHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "line-height of group title",
+            "descriptionZh": "分组标题文字高度"
+          },
+          {
+            "name": "horizontalItemBorderRadius",
+            "type": "number",
+            "default": "",
+            "description": "Border radius of horizontal menu item",
+            "descriptionZh": "横向菜单项圆角"
+          },
+          {
+            "name": "horizontalItemHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of horizontal menu item when hover",
+            "descriptionZh": "横向菜单项横悬浮态背景色"
+          },
+          {
+            "name": "horizontalItemHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Hover color of horizontal menu item text",
+            "descriptionZh": "水平菜单项文字悬浮颜色"
+          },
+          {
+            "name": "horizontalItemSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of horizontal menu item when selected",
+            "descriptionZh": "水平菜单项选中态背景色"
+          },
+          {
+            "name": "horizontalItemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of selected horizontal menu item text",
+            "descriptionZh": "水平菜单项文字选中颜色"
+          },
+          {
+            "name": "horizontalLineHeight",
+            "type": "LineHeight<string | number> | undefined",
+            "default": "",
+            "description": "LineHeight of horizontal menu item",
+            "descriptionZh": "横向菜单行高"
+          },
+          {
+            "name": "iconMarginInlineEnd",
+            "type": "MarginInlineEnd<string | number> | undefined",
+            "default": "",
+            "description": "Spacing between icon and text",
+            "descriptionZh": "图标与文字间距"
+          },
+          {
+            "name": "iconSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of icon",
+            "descriptionZh": "图标尺寸"
+          },
+          {
+            "name": "itemActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of menu item when active",
+            "descriptionZh": "菜单项激活态背景色"
+          },
+          {
+            "name": "itemBg",
+            "type": "string",
+            "default": "",
+            "description": "",
+            "descriptionZh": "菜单项背景色"
+          },
+          {
+            "name": "itemBorderRadius",
+            "type": "number",
+            "default": "",
+            "description": "Radius of menu item",
+            "descriptionZh": "菜单项的圆角"
+          },
+          {
+            "name": "itemColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of menu item text",
+            "descriptionZh": "菜单项文字颜色"
+          },
+          {
+            "name": "itemDisabledColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of disabled menu item text",
+            "descriptionZh": "菜单项文字禁用颜色"
+          },
+          {
+            "name": "itemHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of menu item",
+            "descriptionZh": "菜单项高度"
+          },
+          {
+            "name": "itemHoverBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of menu item when hover",
+            "descriptionZh": "菜单项悬浮态背景色"
+          },
+          {
+            "name": "itemHoverColor",
+            "type": "string",
+            "default": "",
+            "description": "Hover color of menu item text",
+            "descriptionZh": "菜单项文字悬浮颜色"
+          },
+          {
+            "name": "itemMarginBlock",
+            "type": "MarginBlock<string | number> | undefined",
+            "default": "",
+            "description": "margin-block of menu item",
+            "descriptionZh": "菜单项纵向外间距"
+          },
+          {
+            "name": "itemMarginInline",
+            "type": "number",
+            "default": "",
+            "description": "Horizontal margin of menu item",
+            "descriptionZh": "菜单项横向外间距"
+          },
+          {
+            "name": "itemPaddingInline",
+            "type": "PaddingInline<string | number> | undefined",
+            "default": "",
+            "description": "padding-inline of menu item",
+            "descriptionZh": "菜单项横向内间距"
+          },
+          {
+            "name": "itemSelectedBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of menu item when selected",
+            "descriptionZh": "菜单项选中态背景色"
+          },
+          {
+            "name": "itemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of selected menu item text",
+            "descriptionZh": "菜单项文字选中颜色"
+          },
+          {
+            "name": "popupBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of popup",
+            "descriptionZh": "弹出框背景色"
+          },
+          {
+            "name": "subMenuItemBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of sub-menu item",
+            "descriptionZh": "子菜单项背景色"
+          },
+          {
+            "name": "subMenuItemBorderRadius",
+            "type": "number",
+            "default": "",
+            "description": "Radius of sub-menu item",
+            "descriptionZh": "子菜单项的圆角"
+          },
+          {
+            "name": "subMenuItemSelectedColor",
+            "type": "string",
+            "default": "",
+            "description": "Color of submenu title when submenu has selected item",
+            "descriptionZh": "子菜单内有选中项时，子菜单标题色"
+          },
+          {
+            "name": "zIndexPopup",
+            "type": "number",
+            "default": "",
+            "description": "z-index of popup menu",
+            "descriptionZh": "弹出菜单的 z-index"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Menu",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with basic menu container styles and layout",
+            "descriptionZh": "根元素，包含菜单容器的基础样式和布局"
+          },
+          {
+            "key": "item",
+            "description": "Item element with relative positioning, block display, margins, whitespace handling, cursor styles, transitions and other basic interactive styles for menu items",
+            "descriptionZh": "条目元素，包含相对定位、块级显示、外边距、空白符处理、光标样式、过渡动画等菜单项的基础交互样式"
+          },
+          {
+            "key": "itemIcon",
+            "description": "Icon element with min-width, font-size, transitions, icon reset styles, and spacing control with text",
+            "descriptionZh": "图标元素，包含最小宽度、字体大小、过渡动画、图标重置样式，以及与文本的间距控制"
+          },
+          {
+            "key": "itemContent",
+            "description": "Item content element with layout and typography styles for menu item content",
+            "descriptionZh": "条目内容元素，包含菜单项内容的布局和排版样式"
+          },
+          {
+            "key": "subMenu.itemTitle",
+            "description": "Submenu title element with submenu title styles and interactive effects",
+            "descriptionZh": "子菜单标题元素，包含子菜单标题的样式和交互效果"
+          },
+          {
+            "key": "subMenu.list",
+            "description": "Submenu list element with submenu list layout and container styles",
+            "descriptionZh": "子菜单列表元素，包含子菜单列表的布局和容器样式"
+          },
+          {
+            "key": "subMenu.item",
+            "description": "Submenu item element with submenu item styles and interactive effects",
+            "descriptionZh": "子菜单单项元素，包含子菜单项的样式和交互效果"
+          },
+          {
+            "key": "subMenu.itemIcon",
+            "description": "Submenu item icon element with submenu icon size and styles",
+            "descriptionZh": "子菜单条目图标元素，包含子菜单图标的尺寸和样式"
+          },
+          {
+            "key": "subMenu.itemContent",
+            "description": "Submenu item content element with submenu content layout and typography",
+            "descriptionZh": "子菜单条目内容元素，包含子菜单内容的布局和排版"
+          },
+          {
+            "key": "itemTitle",
+            "description": "Item title element (no effect in horizontal mode) with title text styles and layout",
+            "descriptionZh": "菜单标题元素(horizontal 模式不生效)，包含标题文字的样式和布局"
+          },
+          {
+            "key": "list",
+            "description": "Menu list element (no effect in horizontal mode) with menu list layout and container styles",
+            "descriptionZh": "菜单列表元素(horizontal 模式不生效)，包含菜单列表的布局和容器样式"
+          },
+          {
+            "key": "popup",
+            "description": "Popup menu element (no effect in inline mode) with popup layer positioning, z-index, background and other styles",
+            "descriptionZh": "弹出菜单(inline 模式不生效)，包含弹出层的定位、层级、背景等样式"
+          }
+        ]
+      }
+    }
+  }
+}

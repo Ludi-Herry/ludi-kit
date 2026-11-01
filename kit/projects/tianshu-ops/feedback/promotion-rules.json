@@ -1,0 +1,121 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "workflow": [
+    "queued",
+    "accepted",
+    "promoted",
+    "rejected"
+  ],
+  "gates": [
+    {
+      "target": "rule",
+      "allowedActions": [
+        "update-rule"
+      ],
+      "allowedDestinations": [
+        "rules/",
+        "recipes/"
+      ],
+      "requiredEvidence": [
+        "generatedFile",
+        "finding",
+        "acceptance"
+      ],
+      "reviewChecklist": [
+        "The issue appears in more than one generated context or can plausibly repeat.",
+        "The proposed rule is short, testable, and points to an existing component or pattern.",
+        "Harness or preview can verify the behavior after the rule lands."
+      ]
+    },
+    {
+      "target": "component",
+      "allowedActions": [
+        "update-component"
+      ],
+      "allowedDestinations": [
+        "src/",
+        "components.manifest.json",
+        "patterns.manifest.json",
+        "package.json",
+        "package-lock.json",
+        "projects/tianshu-ops/generated/",
+        "examples/",
+        "recipes/",
+        "figma/",
+        "harness/",
+        "scripts/check-dom-contract.mjs"
+      ],
+      "requiredEvidence": [
+        "generatedFile",
+        "promotionEvidence.componentPlan",
+        "acceptance"
+      ],
+      "reviewChecklist": [
+        "Existing props cannot solve the issue cleanly.",
+        "The change preserves the public barrel import contract.",
+        "At least one example or harness scenario covers the new capability."
+      ]
+    },
+    {
+      "target": "token",
+      "allowedActions": [
+        "update-token"
+      ],
+      "allowedDestinations": [
+        "tokens.manifest.json",
+        "src/styles.css",
+        "figma/variables-map.json"
+      ],
+      "requiredEvidence": [
+        "promotionEvidence.visualEvidence",
+        "promotionEvidence.affectedComponents",
+        "acceptance"
+      ],
+      "reviewChecklist": [
+        "The visual decision repeats across components or pages.",
+        "The token name describes usage, not a raw color or one-off style.",
+        "Figma variable mapping stays in sync after the token change."
+      ]
+    },
+    {
+      "target": "page",
+      "allowedActions": [
+        "update-page-plan"
+      ],
+      "allowedDestinations": [
+        "projects/tianshu-ops/pages.json",
+        "projects/tianshu-ops/flows.json"
+      ],
+      "requiredEvidence": [
+        "pageId",
+        "promotionEvidence.flowImpact",
+        "acceptance"
+      ],
+      "reviewChecklist": [
+        "The issue changes page intent, flow, or generated layout.",
+        "The page still maps to a known pattern.",
+        "Regenerating pages keeps build and harness green."
+      ]
+    },
+    {
+      "target": "demo",
+      "allowedActions": [
+        "save-demo"
+      ],
+      "allowedDestinations": [
+        "examples/"
+      ],
+      "requiredEvidence": [
+        "generatedFile",
+        "promotionEvidence.prdSource",
+        "acceptance"
+      ],
+      "reviewChecklist": [
+        "The page demonstrates a reusable pattern, not a project-only exception.",
+        "The demo records source PRD, flow card, and intent card.",
+        "The demo compiles with the public kit API."
+      ]
+    }
+  ]
+}

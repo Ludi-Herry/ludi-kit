@@ -1,0 +1,13 @@
+{
+  "id": "test-incremental-write",
+  "buildRuntime": {
+    "command": "npx",
+    "args": ["tsc", "--noEmit", "-p", "harness/tests/fixtures/tsconfig-incremental.json"],
+    "cwd": "."
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.good.tsx"
+  },
+  "report": "harness/reports/test-incremental-write.json"
+}

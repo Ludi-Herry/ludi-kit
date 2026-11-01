@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "baseline": "../images/baseline.png",
+  "candidate": "../images/pass-candidate.png",
+  "output": {
+    "metrics": "../../artifacts/invalid-region/metrics.json",
+    "heatmap": "../../artifacts/invalid-region/heatmap.png"
+  },
+  "thresholds": {
+    "minSsim": 0.985,
+    "maxRms": 0.035,
+    "pixelDeltaThreshold": 0.06274509803921569,
+    "maxChangedPixelRatio": 0.025
+  },
+  "regions": [
+    {
+      "name": "outside-image",
+      "x": 70,
+      "y": 12,
+      "width": 20,
+      "height": 32,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      }
+    }
+  ]
+}

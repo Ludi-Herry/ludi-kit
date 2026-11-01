@@ -1,0 +1,142 @@
+{
+  "$schema": "../../schema/project-context.schema.json",
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "contextType": "real-product",
+  "decision": "first-real-product: 天枢运营管理平台；16 页已覆盖生产正向、固件版本、RMA 逆向、广告投放与对账、内容排期、权限和审计（2026-07-19）",
+  "product": {
+    "name": "天枢 · 运营管理平台",
+    "realCustomer": true,
+    "audience": [
+      "产线/质检/仓管/物流",
+      "商业化/广告运营",
+      "市场/内容运营",
+      "平台管理员"
+    ],
+    "scenario": "「小豆盒」硬件+软件背后的内部 B 端运营中枢：生产履约（收货→烧录→SN/证书→测试→质检→入库→出货）、广告变现、内容运营全链路。内部后台，信息密度优先，中性调性。"
+  },
+  "sourceOfTruth": ["docs/tianshu-ops.business-brief.md"],
+  "coreFlows": [
+    "生产正向主链：收货入库 → 烧录发证 → SN/证书 → 测试 → 质检 → 库存 → 出货",
+    "生产逆向链：退货 RMA → 到件与检测 → 返修/二次入库/报废裁决",
+    "广告变现链：广告位/广告主/订单 → 投放计划 → T+1 对账与核销",
+    "内容运营链：内容素材 → 内容位 → 排期 → 审批与上下架",
+    "L0 全局地基：账号与权限（RBAC）、审计留痕",
+    "日常运营巡检：工作台待办/告警下钻到生产页处理"
+  ],
+  "firstPages": [
+    "工作台·个人首页（dashboard-page）",
+    "生产·收货入库（list-page）",
+    "生产·烧录发证·新建烧录任务（form-page）",
+    "生产·固件版本管理（list-page）",
+    "生产·SN/证书管理（list-page）",
+    "平台·账号与权限（list-page）",
+    "平台·403 无权限预览（permission-state）",
+    "生产·测试管理（list-page）",
+    "生产·质检管理（list-page）",
+    "生产·库存管理（list-page）",
+    "生产·出货管理（list-page）",
+    "平台·审计日志（list-page）",
+    "生产·退货 RMA（list-page）",
+    "广告·投放计划（list-page）",
+    "广告·对账管理（list-page）",
+    "内容·排期与发布（list-page）"
+  ],
+  "criticalStates": [
+    "设备生命周期状态机（PRD §四）：收货入场/烧录中/烧录失败/待测试/合格入库/出货/RMA/报废",
+    "证书状态：有效/待发/已吊销；SN 冲突：正常/冲突隔离/已裁决",
+    "状态→语义色映射（PRD §3.1）：success/processing/warning/error/default + geekblue/cyan/purple 强调态",
+    "无权限态三种处理（PRD §3.3）：按钮置灰+Tooltip / 403 占位页"
+  ],
+  "boundaries": {
+    "doNotBuild": [
+      "citypulse/态势感知大屏（另一 pattern 家族，roadmap）",
+      "小豆盒消费端 App、广告主自助门户、渠道 SDK、开放生态",
+      "真实生产、广告、结算和内容发布接口调用（当前页面只更新本地演示状态）",
+      "广告实时竞价引擎、支付结算与内容分发服务实现"
+    ]
+  },
+  "thirdPartyBaseline": {
+    "candidate": "antd",
+    "version": "6.5.0",
+    "proComponents": "MIT 开源免费（ProTable/ProForm/ProLayout），可作为 kit 内部实现候选",
+    "status": "decided",
+    "decidedAt": "2026-07-09",
+    "rationale": "PRD 通篇按 Ant Design Pro 词汇写成（ProTable/ProForm/Tag 语义色），底座与 PRD 同源；antd v6 默认纯 CSS Variables 主题模式，天枢业务输出固定为直接使用 antd 与 @ant-design/icons。"
+  },
+  "frontendFoundation": {
+    "outputMode": "library-native",
+    "framework": {
+      "name": "react",
+      "version": "19.2.7"
+    },
+    "foundation": {
+      "id": "antd",
+      "displayName": "Ant Design",
+      "version": "6.5.0",
+      "packageName": "antd"
+    },
+    "distribution": "package-native",
+    "officialSources": {
+      "principles": "https://ant.design/docs/spec/introduce",
+      "components": "https://ant.design/components/overview",
+      "templates": "https://procomponents.ant.design/components",
+      "source": "https://github.com/ant-design/ant-design/tree/6.5.0",
+      "styles": "https://ant.design/docs/react/introduce#style",
+      "theme": "https://ant.design/docs/react/customize-theme",
+      "variables": "https://ant.design/docs/react/css-variables"
+    },
+    "license": "MIT",
+    "reviewedAt": "2026-07-22",
+    "designPack": {
+      "path": "foundations/design-packs/antd-6.5.0.json",
+      "sha256": "3259be1ca4e3be5b0982fc4515b2034a4cd6170090584e0554ee711a66e2a05b"
+    },
+    "icons": {
+      "packageName": "@ant-design/icons",
+      "version": "6.3.2",
+      "source": "https://github.com/ant-design/ant-design-icons/tree/master/packages/icons-react"
+    },
+    "theme": {
+      "entry": "projects/tianshu-ops/native-theme.ts#tianshuTheme",
+      "strategy": "ConfigProvider cssVar theme"
+    },
+    "reset": {
+      "import": "antd/dist/reset.css"
+    },
+    "imports": {
+      "root": "antd",
+      "allowedPackages": [
+        "antd",
+        "@ant-design/icons",
+        "../native-ui",
+        "react"
+      ],
+      "forbiddenPackages": [
+        "@ai-readable/kit",
+        "@arco-design/",
+        "@radix-ui/",
+        "@/components/ui/",
+        "components/ui/",
+        "shadcn"
+      ],
+      "namedImportsOnly": true
+    },
+    "adapters": {
+      "lint": "lint.react-antd-project",
+      "build": "build.vite-react",
+      "browser": "browser.playwright-react",
+      "visual": "visual.playwright-screenshot"
+    }
+  },
+  "businessComponentPolicy": {
+    "status": "brief-driven",
+    "candidates": [
+      "kit-consumer canary 独立验证 BulkActionBar、ConfirmDialog、ImportFlow、Upload 与 ForbiddenState 等公共能力",
+      "天枢 library-native 页面使用 AntD Table rowSelection、Modal、Drawer、DatePicker、Select、Switch 与 TreeSelect 原生语义",
+      "天枢业务组合组件仅保留在 projects/tianshu-ops/native-ui.tsx，不回流为 @ai-readable/kit 公共 wrapper",
+      "SN 链接（项目层拼装）"
+    ]
+  },
+  "requiredBeforeRealWork": []
+}

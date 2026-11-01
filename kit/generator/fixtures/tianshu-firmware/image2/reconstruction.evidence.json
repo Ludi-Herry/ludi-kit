@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "tianshu-firmware-image-to-html-reconstruction",
+  "workflowIds": [
+    "image2-to-figma-page"
+  ],
+  "status": "passed",
+  "recordedAt": "2026-07-17T12:32:16.418Z",
+  "summary": "Image-to-html reconstructed the confirmed 1440x1100 Release Ledger reference as the production-firmware page using public kit components, semantic tokens, controlled local interactions, and the frozen Ops Canvas contract.",
+  "commands": [
+    {
+      "command": "Image-to-html reconstruction using the confirmed Release Ledger reference and frozen Ops Canvas contract",
+      "exitCode": 0,
+      "result": "{\"requestId\":\"tianshu-firmware-exploratory\",\"referenceSha256\":\"9b91bc7ae84ee94b370d69b4fa6693f280d82ea67ebd062fee30d24c455e5deb\",\"referenceMetadataSha256\":\"63cf61b767b0206a55bed2145a73930ac09b45c92e50d11cf75ddfcc14a1680b\",\"reconstructionDetailsSha256\":\"60d1043eff3ee79cdee5477a4e657c60b5973e0229c54414414479ee8326fca8\",\"pageEntrySha256\":\"fb0b1944fa958556e852b0bb943e0c026cfd69d8e6b2897f9a1d80081dc213e7\"}"
+    }
+  ],
+  "artifacts": [
+    "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+    "generator/fixtures/tianshu-firmware/image2/reference-image.metadata.json",
+    "generator/fixtures/tianshu-firmware/image2/reconstruction-details.json",
+    "projects/tianshu-ops/generated/firmware-page.tsx"
+  ],
+  "blockers": []
+}

@@ -1,0 +1,14 @@
+{
+  "id": "import-profile-library-native-good",
+  "prompt": "Import profile fixture: Ant Design native output may import React, local files, antd, and @ant-design/icons.",
+  "foundationContract": {
+    "businessContext": "quality/frontend-foundation.library-native.context.json",
+    "projectId": "fixture-library-native",
+    "outputMode": "library-native",
+    "framework": "react"
+  },
+  "output": {
+    "file": "src/foundation/antd-theme.ts"
+  },
+  "report": "harness/reports/import-profile-library-native-good.json"
+}

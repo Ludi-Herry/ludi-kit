@@ -1,0 +1,30 @@
+diff --git a/src/interaction.tsx b/src/interaction.tsx
+@@ planned promotion
++ Add the eight domain-focused interaction APIs.
+diff --git a/src/interaction.css b/src/interaction.css
+@@ planned promotion
++ Keep date values as browser-native strings without a date adapter runtime.
+diff --git a/src/index.ts b/src/index.ts
+@@ planned promotion
++ Contain Drawer and TreeSelect portals inside the provider root.
+diff --git a/components.manifest.json b/components.manifest.json
+@@ planned promotion
++ Keep Upload request-free and report rejection reasons.
+diff --git a/examples/interaction-foundation.tsx b/examples/interaction-foundation.tsx
+@@ planned promotion
++ Use the controls in RMA, advertising, reconciliation, and content flows.
+diff --git a/recipes/interaction-controls.md b/recipes/interaction-controls.md
+@@ planned promotion
++ Sync manifests, mappings, tests, package checks, and browser coverage.
+diff --git a/figma/component-map.json b/figma/component-map.json
+@@ planned promotion
++ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.
+diff --git a/figma/variants-map.json b/figma/variants-map.json
+@@ planned promotion
++ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.
+diff --git a/harness/tests/interaction-components.test.mjs b/harness/tests/interaction-components.test.mjs
+@@ planned promotion
++ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.
+diff --git a/projects/tianshu-ops/generated/deferred-pages.tsx b/projects/tianshu-ops/generated/deferred-pages.tsx
+@@ planned promotion
++ Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.

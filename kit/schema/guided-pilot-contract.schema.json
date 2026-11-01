@@ -1,0 +1,448 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/guided-pilot-contract.schema.json",
+  "title": "Non-scoring Guided Pilot Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "mode",
+    "runId",
+    "artifactId",
+    "projectId",
+    "evidenceRoot",
+    "workspace",
+    "consent",
+    "source",
+    "flowContract",
+    "package",
+    "commandStages",
+    "qualifying",
+    "scoring",
+    "winner",
+    "registryWrite",
+    "syntheticLedgerWrite",
+    "isolation"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "mode": { "const": "non-scoring-guided-pilot" },
+    "runId": {
+      "type": "string",
+      "pattern": "^guided-pilot-[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactId": { "$ref": "#/$defs/artifactId" },
+    "projectId": {
+      "type": "string",
+      "pattern": "^guided-[a-z0-9][a-z0-9-]*$"
+    },
+    "evidenceRoot": {
+      "type": "string",
+      "pattern": "^quality/blind-harness/guided-pilots/guided-pilot-[a-z0-9][a-z0-9-]*$"
+    },
+    "workspace": { "$ref": "#/$defs/workspace" },
+    "consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "scope", "recordedAtUtc"],
+      "properties": {
+        "mode": { "const": "explicit" },
+        "scope": { "const": "one-consumed-historical-prd" },
+        "recordedAtUtc": { "type": "string", "format": "date-time" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "historicalRunId", "receipt", "current"],
+      "properties": {
+        "kind": { "const": "consumed-historical-prd" },
+        "historicalRunId": {
+          "type": "string",
+          "pattern": "^blind-prd-[a-z0-9][a-z0-9-]*$"
+        },
+        "receipt": { "$ref": "#/$defs/sourceReceipt" },
+        "current": { "$ref": "#/$defs/sourceCurrent" }
+      }
+    },
+    "flowContract": { "$ref": "guided-pilot-flow-contract.schema.json" },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "receipt"],
+      "properties": {
+        "name": { "const": "@ai-readable/kit" },
+        "receipt": { "$ref": "#/$defs/packageReceipt" }
+      }
+    },
+    "commandStages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        { "const": "typecheck" },
+        { "const": "build" },
+        { "const": "flow-smoke" }
+      ],
+      "items": false
+    },
+    "qualifying": { "const": false },
+    "scoring": { "const": false },
+    "winner": { "type": "null" },
+    "registryWrite": { "const": false },
+    "syntheticLedgerWrite": { "const": false },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry", "syntheticLedger"],
+      "properties": {
+        "registry": { "$ref": "#/$defs/registryFingerprint" },
+        "syntheticLedger": { "$ref": "#/$defs/syntheticLedgerFingerprint" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$"
+        },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "sourceReceipt": {
+      "allOf": [
+        { "$ref": "#/$defs/receipt" },
+        {
+          "type": "object",
+          "properties": {
+            "path": { "const": "source-receipt.json" }
+          }
+        }
+      ]
+    },
+    "sourceCurrent": {
+      "allOf": [
+        { "$ref": "#/$defs/receipt" },
+        {
+          "type": "object",
+          "properties": {
+            "path": { "const": "inputs/guided-prd.md" }
+          }
+        }
+      ]
+    },
+    "canonicalPackageReceipt": {
+      "allOf": [
+        { "$ref": "#/$defs/receipt" },
+        {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "quality/blind-harness/synthetic-consumer-package-receipt.json"
+            }
+          }
+        }
+      ]
+    },
+    "packageReceipt": {
+      "allOf": [
+        { "$ref": "#/$defs/receipt" },
+        {
+          "type": "object",
+          "properties": {
+            "path": { "const": "package/package-receipt.json" }
+          }
+        }
+      ]
+    },
+    "frozenTarball": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "const": ".local-pack/ai-readable-kit-0.1.0-a38cc586fd15.tgz" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^\\.guided-pilot-workspaces/guided-pilot-[a-z0-9][a-z0-9-]*$"
+        }
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "registryFingerprint": {
+      "allOf": [
+        { "$ref": "#/$defs/fingerprint" },
+        {
+          "type": "object",
+          "properties": {
+            "path": { "const": "quality/blind-adoption-registry.json" }
+          }
+        }
+      ]
+    },
+    "syntheticLedgerFingerprint": {
+      "allOf": [
+        { "$ref": "#/$defs/fingerprint" },
+        {
+          "type": "object",
+          "properties": {
+            "path": {
+              "const": "quality/blind-harness/synthetic-readiness-matrix-report.json"
+            }
+          }
+        }
+      ]
+    },
+    "flowContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "projectId",
+        "owner",
+        "source",
+        "entry",
+        "requiredTestIds",
+        "flows"
+      ],
+      "properties": {
+        "contractId": {
+          "type": "string",
+          "pattern": "^guided-pilot-[a-z0-9][a-z0-9-]*$"
+        },
+        "projectId": {
+          "type": "string",
+          "pattern": "^guided-[a-z0-9][a-z0-9-]*$"
+        },
+        "owner": { "const": "guided-pilot-harness" },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "historicalRunId", "currentSha256"],
+          "properties": {
+            "kind": { "const": "consumed-historical-prd" },
+            "historicalRunId": {
+              "type": "string",
+              "pattern": "^blind-prd-[a-z0-9][a-z0-9-]*$"
+            },
+            "currentSha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "entry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["route", "identityPath"],
+          "properties": {
+            "route": { "$ref": "#/$defs/route" },
+            "identityPath": { "$ref": "#/$defs/route" }
+          }
+        },
+        "requiredTestIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/testId" }
+        },
+        "flows": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/flow" }
+        }
+      }
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^/[a-z0-9/?=&._-]*$"
+    },
+    "testId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flowId", "steps"],
+      "properties": {
+        "flowId": { "$ref": "#/$defs/testId" },
+        "steps": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/step" }
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stepId", "pageId", "action", "assertions"],
+      "properties": {
+        "stepId": { "$ref": "#/$defs/testId" },
+        "pageId": { "$ref": "#/$defs/testId" },
+        "action": { "$ref": "#/$defs/action" },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/assertion" }
+        }
+      }
+    },
+    "action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId"],
+          "properties": {
+            "type": { "const": "click" },
+            "testId": { "$ref": "#/$defs/testId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId", "value"],
+          "properties": {
+            "type": { "const": "fill" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId", "optionTestId", "value"],
+          "properties": {
+            "type": { "const": "select" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "optionTestId": { "$ref": "#/$defs/testId" },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "testId", "key"],
+          "properties": {
+            "type": { "const": "press" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "key": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "route"],
+          "properties": {
+            "type": { "const": "navigate" },
+            "route": { "$ref": "#/$defs/route" }
+          }
+        }
+      ]
+    },
+    "assertion": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "value"],
+          "properties": {
+            "kind": { "const": "route" },
+            "value": { "$ref": "#/$defs/route" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "name", "value"],
+          "properties": {
+            "kind": { "const": "searchParam" },
+            "name": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$" },
+            "value": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId"],
+          "properties": {
+            "kind": { "const": "visibleTestId" },
+            "testId": { "$ref": "#/$defs/testId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId"],
+          "properties": {
+            "kind": { "const": "absentTestId" },
+            "testId": { "$ref": "#/$defs/testId" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId", "count"],
+          "properties": {
+            "kind": { "const": "testIdCount" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "count": { "type": "integer", "minimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId", "value"],
+          "properties": {
+            "kind": { "const": "value" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "value": { "type": ["string", "number", "boolean"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "testId", "name", "value"],
+          "properties": {
+            "kind": { "const": "ariaState" },
+            "testId": { "$ref": "#/$defs/testId" },
+            "name": { "enum": ["checked", "selected", "expanded", "pressed"] },
+            "value": { "enum": ["true", "false", "mixed"] }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "build-tianshu-platform-rbac-forbidden",
+  "prompt": "天枢 · 账号与权限 403：整页无权限态明确缺失权限点与恢复路径，不加载敏感数据。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "detail-page",
+  "expectedComponents": ["PageLayout", "ForbiddenState", "Button"],
+  "expectedOrder": ["PageLayout", "ForbiddenState", "Button"],
+  "expectedText": ["无权访问账号与权限", "platform:rbac:read", "角色、用户与权限点数据未加载", "联系平台管理员申请权限", "返回工作台"],
+  "expectedActions": {
+    "required": ["联系管理员申请权限", "返回工作台"]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "RbacForbiddenPage",
+    "pageId": "platform-rbac-forbidden"
+  },
+  "report": "harness/reports/build-tianshu-platform-rbac-forbidden.json"
+}

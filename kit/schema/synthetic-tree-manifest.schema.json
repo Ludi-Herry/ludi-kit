@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/synthetic-tree-manifest.schema.json",
+  "title": "Synthetic Readiness Tree Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "algorithm", "rootLabel", "excluded", "files", "treeSha256"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "algorithm": { "const": "sha256-path-bytes-v1" },
+    "rootLabel": { "enum": ["source", "dist"] },
+    "excluded": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^[^\\\\/:*?\"<>|]+(?:/[^\\\\/:*?\"<>|]+)*$"
+          },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "treeSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

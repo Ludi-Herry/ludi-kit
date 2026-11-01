@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/workflow-evidence.schema.json",
+  "version": "1.0.0",
+  "evidenceId": "ops-canvas-image-to-html-reconstruction",
+  "workflowIds": ["image2-to-figma-page"],
+  "status": "passed",
+  "recordedAt": "2026-07-17T09:12:42.230Z",
+  "summary": "Image-to-html reconstructed the complete 1440x1100 Ops Canvas reference as a working semantic page, mapped every frozen component, and recorded reference-to-contract conflicts.",
+  "commands": [
+    {
+      "command": "Image-to-html reconstruction using the confirmed reference and frozen Ops Canvas contract",
+      "exitCode": 0,
+      "result": "{\"requestId\":\"ops-canvas-existing\",\"referenceSha256\":\"78f9dc58ac8cb91e9bda70649a3b0402f5b66bd4bc8df5cfdfd8e39cc505618d\",\"referenceMetadataSha256\":\"bb64608d5428f5d12700e023d0d37b85394cacf5e4b3bfbb3a3e09313ab05126\",\"reconstructionDetailsSha256\":\"749c38da57b8242779e435f96f44a91d84c4d9d4e34b7724824b8a8107027f6c\",\"pageEntrySha256\":\"13f42776234f6191bfd43125ab174c4091c49881c93116896c145892fe748f93\"}"
+    }
+  ],
+  "artifacts": [
+    "design-systems/ops-canvas/workflow/reference-image.png",
+    "design-systems/ops-canvas/workflow/reference-image.metadata.json",
+    "design-systems/ops-canvas/workflow/reconstruction-details.json",
+    "design-systems/ops-canvas/spec/index.html"
+  ],
+  "blockers": []
+}

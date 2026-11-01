@@ -1,0 +1,60 @@
+{
+  "id": "build-tianshu-production-inventory",
+  "prompt": "天枢 · 库存管理：按仓库/库存状态/品质等级筛选库存记录，库龄行内色预警。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "ConfirmDialog", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["库存记录", "库龄（天）", "品质等级", "批量冻结", "批量解冻", "盘点录入", "分配出货", "批量冻结库存？"],
+  "expectedConfirmations": [
+    {
+      "action": "批量冻结",
+      "title": "批量冻结库存？",
+      "confirmLabel": "确认冻结",
+      "requiredText": ["冻结后不可分配出货"],
+      "danger": true
+    }
+  ],
+  "expectedClassTokens": ["generated-aging--danger", "generated-aging--warning"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "stockStatus": { "sourceGroup": "库存子状态", "statuses": ["available", "frozen", "allocated", "degraded"] },
+      "deviceStatus": { "sourceGroup": "设备状态", "statuses": ["in_stock"] },
+      "qualityGrade": { "sourceGroup": "品质等级", "statuses": ["good", "degraded_quality"] }
+    }
+  },
+  "expectedActions": {
+    "required": ["新建调拨单", "批量冻结", "批量解冻", "盘点录入", "导出", "查看详情", "调拨", "冻结", "解冻", "分配出货", "盘点调整"],
+    "danger": ["批量冻结", "冻结"],
+    "conditions": [
+      {
+        "when": "record.stock === \"available\"",
+        "branch": "then",
+        "required": ["调拨", "冻结", "分配出货"],
+        "danger": ["冻结"],
+        "forbidden": ["解冻"]
+      },
+      {
+        "when": "record.stock === \"frozen\"",
+        "branch": "then",
+        "required": ["解冻"],
+        "forbidden": ["调拨", "冻结", "分配出货"]
+      }
+    ]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "InventoryListPage",
+    "pageId": "production-inventory"
+  },
+  "report": "harness/reports/build-tianshu-production-inventory.json"
+}

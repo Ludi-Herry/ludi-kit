@@ -1,0 +1,86 @@
+# 进销存准 ERP 管理系统 PRD
+
+version: 0.1.0
+status: draft
+domain: inventory-erp
+
+## Product Goal
+
+Build an operations workspace for trade and wholesale teams that need reliable inventory, purchasing, sales, finance, and permission workflows.
+
+The MVP focuses on five page types:
+
+- Operations dashboard
+- Inventory list
+- SKU detail
+- Purchase order form
+- Permission management
+
+## Users
+
+| Role | Goal | Key Pages |
+| --- | --- | --- |
+| Operations Manager | See daily risk, throughput, and pending work | Dashboard, Inventory List |
+| Warehouse Lead | Review stock, batches, and location issues | Inventory List, SKU Detail |
+| Buyer | Create purchase orders and track supplier status | Purchase Order Form |
+| Finance Reviewer | Check period close and cost differences | Dashboard, SKU Detail |
+| Admin | Maintain roles and access | Permission Management |
+
+## Scope
+
+### In
+
+- Multi-warehouse inventory visibility
+- Batch and expiry risk tracking
+- Purchase order creation
+- SKU detail and activity review
+- Role and permission review
+- Dashboard for daily operational health
+
+### Out
+
+- MRP production planning
+- POS cashier workflows
+- E-commerce storefront
+- Accounting voucher posting
+- Real API integration
+
+## Data Entities
+
+| Entity | Key Fields |
+| --- | --- |
+| Organization | id, name, accountSetId |
+| Warehouse | id, name, region, locations |
+| SKU | id, name, category, unit, batchPolicy |
+| InventoryBalance | skuId, warehouseId, quantity, availableQuantity, expiryDate |
+| PurchaseOrder | id, supplierId, status, lines, expectedAt |
+| Supplier | id, name, rating, paymentTerms |
+| Role | id, name, permissionCount, userCount |
+| ApprovalTask | id, type, status, owner, dueAt |
+
+## North Star Metrics
+
+- Inventory account accuracy >= 99.5%
+- Period close difference = 0
+- Expiry-risk handling within 24 hours
+- Purchase order exception rate below 3%
+
+## Navigation
+
+```text
+Dashboard
+Inventory
+  Inventory List
+  SKU Detail
+Purchasing
+  Create Purchase Order
+System
+  Permissions
+```
+
+## Acceptance
+
+- Every planned page has one `flowCard` and one `intentCard`.
+- Every page maps to one kit page pattern.
+- Every component in a page plan exists in `components.manifest.json`.
+- Generated pages can be explained from PRD, flow, intent, and component plan.

@@ -1,0 +1,11 @@
+{
+  "id": "test-const-alias-tdz",
+  "expectedComponents": ["PageLayout", "FilterPanel"],
+  "expectedText": ["TDZ_COPY"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/const-alias-tdz.bad.tsx",
+    "symbol": "ConstAliasTdzPage"
+  },
+  "report": "harness/reports/test-const-alias-tdz.json"
+}

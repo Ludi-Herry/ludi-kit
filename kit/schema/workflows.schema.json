@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/workflows.schema.json",
+  "title": "AI-readable Workflow Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "provenance", "workflows"],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 3 },
+    "version": { "const": "1.0.0" },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "decision", "sources"],
+      "properties": {
+        "status": { "const": "confirmed" },
+        "decision": { "type": "string", "minLength": 12 },
+        "sources": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": { "$ref": "#/$defs/workflow" }
+    }
+  },
+  "$defs": {
+    "path": { "type": "string", "minLength": 3, "pattern": "^(?![A-Za-z]:|/|\\\\).+" },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "required", "description"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9]*$" },
+        "type": { "enum": ["string", "file", "directory", "enum", "object", "array", "boolean"] },
+        "required": { "type": "boolean" },
+        "description": { "type": "string", "minLength": 4 },
+        "allowedValues": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "path", "required", "role"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "type": { "enum": ["document", "manifest", "code", "image", "metrics", "evidence", "figma-node", "package", "report"] },
+        "path": { "$ref": "#/$defs/path" },
+        "required": { "type": "boolean" },
+        "role": { "enum": ["product", "supporting", "evidence", "internal"] }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "primaryArtifactId", "presentationRequired", "open", "supportingArtifactIds", "blockedDelivery"],
+      "properties": {
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "label", "description"],
+          "properties": {
+            "kind": { "type": "string", "minLength": 3 },
+            "label": { "type": "string", "minLength": 3 },
+            "description": { "type": "string", "minLength": 8 }
+          }
+        },
+        "primaryArtifactId": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "presentationRequired": { "const": true },
+        "open": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["mode", "cwd", "command", "target"],
+          "properties": {
+            "mode": { "enum": ["browser", "figma", "package", "file"] },
+            "cwd": { "type": ["string", "null"], "minLength": 1 },
+            "command": { "type": ["string", "null"], "minLength": 3 },
+            "target": { "type": "string", "minLength": 1 }
+          }
+        },
+        "supportingArtifactIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }
+        },
+        "blockedDelivery": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["deliverNow", "reason", "resumeRequirements"],
+          "properties": {
+            "deliverNow": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" }
+            },
+            "reason": { "type": "string", "minLength": 8 },
+            "resumeRequirements": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 4 }
+            }
+          }
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "criteria", "evidence"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "criteria": { "type": "string", "minLength": 8 },
+        "command": { "type": "string", "minLength": 3 },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/path" } }
+      }
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "required", "availability", "fallback"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "required": { "type": "boolean" },
+        "availability": { "enum": ["available", "unavailable", "unknown", "not-required"] },
+        "fallback": { "type": "string", "minLength": 4 }
+      }
+    },
+    "routePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "selector", "defaultRoute", "unknownRouteDisposition", "routes"],
+      "properties": {
+        "decision": { "$ref": "#/$defs/path" },
+        "selector": { "type": "string", "minLength": 3 },
+        "defaultRoute": { "type": "string", "minLength": 3 },
+        "unknownRouteDisposition": { "type": "string", "minLength": 3 },
+        "routes": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "defaultForGeneralB2B", "image2Allowed", "skillSequence", "pipeline", "requiredInputs", "frozenVisualBriefRequired", "allowedVisualGoals", "structuralAuthority"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+              "defaultForGeneralB2B": { "type": "boolean" },
+              "image2Allowed": { "type": "boolean" },
+              "skillSequence": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+              "pipeline": { "type": "array", "minItems": 5, "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+              "requiredInputs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+              "frozenVisualBriefRequired": { "type": "boolean" },
+              "allowedVisualGoals": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 3 } },
+              "structuralAuthority": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 3 } }
+            }
+          }
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "source", "inputs", "routing", "tools", "artifacts", "acceptanceGates", "evidence", "examples", "externalDependencies", "completion", "handoff"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "title": { "type": "string", "minLength": 4 },
+        "source": { "$ref": "#/$defs/path" },
+        "inputs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/input" } },
+        "routing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["when", "stopWhen"],
+          "properties": {
+            "when": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } },
+            "stopWhen": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } }
+          }
+        },
+        "routePolicy": { "$ref": "#/$defs/routePolicy" },
+        "tools": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["skills", "scripts", "external"],
+          "properties": {
+            "skills": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+            "scripts": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/path" } },
+            "external": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+          }
+        },
+        "artifacts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/artifact" } },
+        "handoff": { "$ref": "#/$defs/handoff" },
+        "acceptanceGates": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/gate" } },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema", "records"],
+          "properties": {
+            "schema": { "$ref": "#/$defs/path" },
+            "records": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/path" } }
+          }
+        },
+        "examples": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/path" } },
+        "externalDependencies": { "type": "array", "items": { "$ref": "#/$defs/dependency" } },
+        "completion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "summary", "remaining"],
+          "properties": {
+            "status": { "enum": ["implemented", "partial", "documented", "in-progress", "external-blocked"] },
+            "summary": { "type": "string", "minLength": 8 },
+            "remaining": { "type": "array", "items": { "type": "string", "minLength": 4 } }
+          }
+        }
+      }
+    }
+  }
+}

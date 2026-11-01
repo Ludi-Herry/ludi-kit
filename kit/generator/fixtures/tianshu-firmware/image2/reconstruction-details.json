@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "requestId": "tianshu-firmware-exploratory",
+  "recordedAt": "2026-07-17T11:50:35.383Z",
+  "sourcePriority": [
+    "frozen Ops Canvas contract",
+    "user-confirmed Release Ledger reference image",
+    "TianShu PRD business contract",
+    "current runnable page evidence"
+  ],
+  "reference": {
+    "path": "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+    "sha256": "9b91bc7ae84ee94b370d69b4fa6693f280d82ea67ebd062fee30d24c455e5deb",
+    "width": 1440,
+    "height": 1100
+  },
+  "measurements": {
+    "reference": {
+      "rail": { "x": 0, "y": 0, "width": 230, "height": 1100 },
+      "header": { "x": 230, "y": 0, "width": 1210, "height": 79 },
+      "pageHeader": { "x": 260, "y": 112, "width": 1150, "height": 73 },
+      "filters": { "x": 261, "y": 218, "width": 1149, "height": 143 },
+      "sectionHeader": { "x": 260, "y": 397, "width": 1150, "height": 63 },
+      "ledger": { "x": 260, "y": 480, "width": 1150, "height": 583 },
+      "criticalRegion": { "x": 260, "y": 480, "width": 1150, "height": 495 }
+    },
+    "implementationContract": {
+      "rail": { "x": 0, "y": 0, "width": 240, "height": 1100 },
+      "header": { "x": 240, "y": 0, "width": 1200, "height": 64 },
+      "pageGutter": 24
+    }
+  },
+  "responsiveAssumptions": [
+    "The deterministic desktop evidence canvas is exactly 1440x1100.",
+    "The product page keeps all nine operational columns available through horizontal table overflow on narrower viewports.",
+    "The navigation and filter controls collapse only outside the fixed desktop evidence viewport."
+  ],
+  "componentMappings": [
+    {
+      "region": "product shell, rail, header, and content frame",
+      "components": ["AppShell", "SideNav", "PageLayout"],
+      "tokens": ["color.bg.page", "layout.nav.width", "layout.page.gutter"]
+    },
+    {
+      "region": "page title and actions",
+      "components": ["PageHeader", "Button"],
+      "tokens": ["color.text.primary", "color.text.secondary", "color.brand.primary", "radius.control"]
+    },
+    {
+      "region": "firmware filters",
+      "components": ["FilterPanel", "Input", "Select", "Button"],
+      "tokens": ["color.bg.surface", "color.border.default", "radius.card", "spacing.3", "spacing.4"]
+    },
+    {
+      "region": "firmware ledger",
+      "components": ["DataSection", "DataGrid", "Badge", "Pagination"],
+      "tokens": ["color.bg.surface", "color.border.default", "typography.body.size", "color.status.success", "color.status.warning", "color.status.danger", "color.status.info"]
+    },
+    {
+      "region": "create and dangerous action overlays",
+      "components": ["Drawer", "FormSection", "Upload", "ConfirmDialog"],
+      "tokens": ["color.bg.surface", "color.brand.primary", "color.status.danger", "shadow.card", "motion.fast"]
+    }
+  ],
+  "referenceContractConflicts": [
+    {
+      "detail": "The generated rail measures about 230px while the frozen layout.nav.width token is 240px.",
+      "resolution": "The implementation keeps the frozen 240px rail and records the resulting shell displacement in raw diff evidence."
+    },
+    {
+      "detail": "The generated product header measures about 79px while the frozen product header contract is 64px.",
+      "resolution": "The implementation keeps the frozen 64px header and treats the vertical displacement as a known semantic reconstruction residual."
+    },
+    {
+      "detail": "The generated filter controls and table rows are taller than the compact frozen control tokens.",
+      "resolution": "The implementation uses the current kit components and adjusts page-level density without changing shared token or bundle gates."
+    },
+    {
+      "detail": "Generated Chinese glyphs and small navigation icons contain raster variation.",
+      "resolution": "All interface text and icons are reconstructed as accessible code using the frozen component and token system."
+    }
+  ],
+  "interactionStates": [
+    "New Firmware Version opens a controlled Drawer and restores the base state after cancel.",
+    "Rollback and stop actions open a ConfirmDialog that names the target version and restores focus to the exact row action that opened it.",
+    "The screenshot baseline keeps every overlay closed.",
+    "Visible focus and reduced-motion behavior remain available."
+  ],
+  "motion": {
+    "quickMs": 150,
+    "fastMs": 250,
+    "easing": [0.22, 1, 0.36, 1],
+    "reducedMotion": true
+  }
+}

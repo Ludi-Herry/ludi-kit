@@ -1,0 +1,38 @@
+{
+  "id": "local-ai-readable-kit-0.1.0",
+  "foundationId": "local",
+  "reviewedAt": "2026-07-19",
+  "source": {
+    "packageMetadata": "package.json",
+    "principles": "DESIGN.md",
+    "components": "components.manifest.json",
+    "templates": "recipes/",
+    "source": "src/index.ts",
+    "styles": "src/styles.css",
+    "theme": "src/components.tsx#AIReadableProvider",
+    "variables": "tokens.manifest.json",
+    "publicEntry": "src/index.ts"
+  },
+  "package": {
+    "name": "@ai-readable/kit",
+    "version": "0.1.0",
+    "license": "private"
+  },
+  "distribution": "workspace-package",
+  "framework": {
+    "name": "react",
+    "version": "19.2.7"
+  },
+  "imports": {
+    "runtime": "@ai-readable/kit",
+    "icons": "@ai-readable/kit",
+    "themeProvider": "AIReadableProvider",
+    "resetCss": "@ai-readable/kit/styles.css",
+    "namedImportsOnly": true
+  },
+  "theme": {
+    "entry": "src/components.tsx",
+    "exportName": "AIReadableProvider",
+    "cssVariables": true
+  }
+}

@@ -1,0 +1,623 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/project-description.schema.json",
+  "title": "AI-readable Generated Project Description",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "projectId", "contextType", "product", "pages"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "projectId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "contextType": { "const": "real-product" },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string", "minLength": 2 },
+        "description": { "type": "string", "minLength": 8 }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/page" }
+    }
+  },
+  "$defs": {
+    "scalar": { "type": ["string", "number", "boolean", "null"] },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 }
+      }
+    },
+    "filter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "label", "type"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "type": { "enum": ["text", "select", "date-range", "switch"] },
+        "dataKey": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "startKey": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "endKey": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "placeholder": { "type": "string" },
+        "options": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/option" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "select" } }, "required": ["type"] },
+          "then": { "properties": { "options": true }, "required": ["options"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "date-range" } }, "required": ["type"] },
+          "then": { "properties": { "startKey": true, "endKey": true }, "required": ["startKey", "endKey"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "switch" } }, "required": ["type"] },
+          "then": { "properties": { "dataKey": true }, "required": ["dataKey"] }
+        }
+      ]
+    },
+    "simpleListFilterMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "rowKeys", "match"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "rowKeys": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" }
+        },
+        "match": { "enum": ["contains", "equals"] },
+        "valueMap": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "simpleListFiltering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mappings"],
+      "properties": {
+        "mappings": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/simpleListFilterMapping" }
+        }
+      }
+    },
+    "contentFidelity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metricDeltas", "secondaryActions", "acceptanceCriteria"],
+      "properties": {
+        "metricDeltas": { "const": "visible" },
+        "secondaryActions": { "const": "visible" },
+        "acceptanceCriteria": { "const": "evaluation-only" }
+      }
+    },
+    "formSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "fieldNames"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "fieldNames": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" }
+        }
+      }
+    },
+    "formPresentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps", "currentStep", "sections", "secondaryActions", "acceptanceCriteria"],
+      "properties": {
+        "steps": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "currentStep": { "type": "integer", "minimum": 0 },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/formSection" }
+        },
+        "secondaryActions": { "const": "visible" },
+        "acceptanceCriteria": { "const": "evaluation-only" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": ["string", "number"] },
+        "unit": { "type": "string" },
+        "hint": { "type": "string", "minLength": 1 },
+        "icon": { "enum": ["global", "cluster", "location", "team"] },
+        "delta": { "type": "string" },
+        "trend": { "enum": ["up", "down", "flat"] }
+      }
+    },
+    "analyticsSeries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "tone"],
+      "properties": {
+        "key": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "tone": { "enum": ["blue", "cyan", "orange", "violet"] }
+      }
+    },
+    "analyticsDatum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "values"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "values": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": ["number", "null"] }
+        }
+      }
+    },
+    "analyticsTrend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "summary", "caption", "yMax", "yStep", "series", "rows"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 4 },
+        "summary": { "type": "string", "minLength": 8 },
+        "caption": { "type": "string", "minLength": 4 },
+        "yMax": { "type": "number", "exclusiveMinimum": 0 },
+        "yStep": { "type": "number", "exclusiveMinimum": 0 },
+        "series": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/analyticsSeries" }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 12,
+          "items": { "$ref": "#/$defs/analyticsDatum" }
+        }
+      }
+    },
+    "analyticsGroupedBars": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "summary", "maxValue", "series", "rows"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 4 },
+        "summary": { "type": "string", "minLength": 8 },
+        "maxValue": { "type": "number", "exclusiveMinimum": 0 },
+        "series": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/analyticsSeries" }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/analyticsDatum" }
+        }
+      }
+    },
+    "analyticsDonutSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "value", "tone"],
+      "properties": {
+        "key": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": "number", "minimum": 0 },
+        "tone": { "enum": ["blue", "cyan", "orange", "violet"] }
+      }
+    },
+    "analyticsDonut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "summary", "centerLabel", "centerValue", "segments"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 4 },
+        "summary": { "type": "string", "minLength": 8 },
+        "centerLabel": { "type": "string", "minLength": 1 },
+        "centerValue": { "type": "number", "minimum": 0 },
+        "segments": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/analyticsDonutSegment" }
+        }
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["refresh", "trend", "groupedBars", "donut", "qualityAlert"],
+      "properties": {
+        "refresh": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["initialTimestamp", "completedTimestamp", "loadingLabel", "completedPrefix", "durationMs"],
+          "properties": {
+            "initialTimestamp": { "type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$" },
+            "completedTimestamp": { "type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$" },
+            "loadingLabel": { "type": "string", "minLength": 1 },
+            "completedPrefix": { "type": "string", "minLength": 1 },
+            "durationMs": { "type": "integer", "minimum": 100, "maximum": 2000 }
+          }
+        },
+        "trend": { "$ref": "#/$defs/analyticsTrend" },
+        "groupedBars": { "$ref": "#/$defs/analyticsGroupedBars" },
+        "donut": { "$ref": "#/$defs/analyticsDonut" },
+        "qualityAlert": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "description", "type"],
+          "properties": {
+            "title": { "type": "string", "minLength": 1 },
+            "description": { "type": "string", "minLength": 8 },
+            "type": { "const": "warning" }
+          }
+        }
+      }
+    },
+    "table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "rowKey", "columns"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "rowKey": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "dataEntity": { "type": "string", "pattern": "^[A-Z][A-Za-z0-9]*$" },
+        "columns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["key", "title"],
+            "properties": {
+              "key": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+              "title": { "type": "string", "minLength": 1 },
+              "display": { "enum": ["text", "tag", "actions"] },
+              "width": { "type": "integer", "minimum": 48, "maximum": 360 },
+              "ellipsis": { "type": "boolean" },
+              "secondaryKey": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+              "secondaryTone": { "enum": ["success", "warning", "danger", "secondary"] },
+              "tagColors": {
+                "type": "object",
+                "minProperties": 1,
+                "additionalProperties": { "type": "string", "minLength": 1 }
+              },
+              "actions": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "secondaryActionWhenKey": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": { "$ref": "#/$defs/scalar" }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["rows"],
+          "properties": {
+            "rows": true,
+            "dataEntity": false
+          }
+        },
+        {
+          "type": "object",
+          "required": ["dataEntity"],
+          "properties": {
+            "dataEntity": true,
+            "rows": false
+          }
+        }
+      ]
+    },
+    "detail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" }
+      }
+    },
+    "permissionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statusCode",
+        "title",
+        "description",
+        "permissionLabel",
+        "permissionIdentifier",
+        "primaryAction",
+        "secondaryAction",
+        "requestPanel",
+        "privacyMode"
+      ],
+      "properties": {
+        "statusCode": { "const": 403 },
+        "title": { "type": "string", "minLength": 4 },
+        "description": { "type": "string", "minLength": 16 },
+        "permissionLabel": { "type": "string", "minLength": 1 },
+        "permissionIdentifier": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]*(?::[a-z][a-z0-9-]*){2,3}$"
+        },
+        "primaryAction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label", "targetRoute"],
+          "properties": {
+            "label": { "type": "string", "minLength": 1 },
+            "targetRoute": { "type": "string", "pattern": "^/" }
+          }
+        },
+        "secondaryAction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label"],
+          "properties": {
+            "label": { "type": "string", "minLength": 1 }
+          }
+        },
+        "requestPanel": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "description", "safetyNote", "closeLabel"],
+          "properties": {
+            "title": { "type": "string", "minLength": 4 },
+            "description": { "type": "string", "minLength": 12 },
+            "safetyNote": { "type": "string", "minLength": 12 },
+            "closeLabel": { "type": "string", "minLength": 1 }
+          }
+        },
+        "privacyMode": { "const": "no-protected-data" }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "label", "control", "required"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "control": { "enum": ["input", "select", "textarea", "date-range", "radio"] },
+        "required": { "type": "boolean" },
+        "placeholder": { "type": "string" },
+        "options": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/option" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "control": { "enum": ["select", "radio"] } }, "required": ["control"] },
+          "then": { "properties": { "options": true }, "required": ["options"] }
+        }
+      ]
+    },
+    "process": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "current", "steps"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 4 },
+        "current": { "type": "integer", "minimum": 0 },
+        "steps": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 7,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "operationalTab": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label"],
+      "properties": {
+        "key": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "emptyDescription": { "type": "string", "minLength": 4 }
+      }
+    },
+    "taskDrawer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "submitLabel", "fields"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 4 },
+        "submitLabel": { "type": "string", "minLength": 1 },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/field" }
+        }
+      }
+    },
+    "uploadDrawer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "accept", "submitLabel"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "description": { "type": "string", "minLength": 4 },
+        "accept": { "type": "string", "minLength": 1 },
+        "submitLabel": { "type": "string", "minLength": 1 }
+      }
+    },
+    "operationalList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["notice", "process", "defaultTab", "tabs", "primaryDrawer"],
+      "properties": {
+        "notice": { "type": "string", "minLength": 8 },
+        "process": { "$ref": "#/$defs/process" },
+        "defaultTab": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "tabs": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 7,
+          "items": { "$ref": "#/$defs/operationalTab" }
+        },
+        "primaryDrawer": { "$ref": "#/$defs/taskDrawer" },
+        "secondaryDrawer": { "$ref": "#/$defs/uploadDrawer" }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "route", "title", "pattern", "intent", "componentPlan", "content"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "route": { "type": "string", "pattern": "^/" },
+        "title": { "type": "string", "minLength": 1 },
+        "pattern": { "enum": ["dashboard-page", "list-page", "detail-page", "form-page"] },
+        "intent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["goal", "primaryAction", "secondaryActions", "successCriteria"],
+          "properties": {
+            "goal": { "type": "string", "minLength": 8 },
+            "primaryAction": { "type": "string", "minLength": 1 },
+            "secondaryActions": { "type": "array", "items": { "type": "string" } },
+            "successCriteria": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 4 } },
+            "prdAnchor": { "type": "string", "minLength": 1 },
+            "referenceImplementations": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "antiPatterns": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "componentPlan": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+        "content": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "metrics": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/metric" } },
+            "filters": { "type": "array", "items": { "$ref": "#/$defs/filter" } },
+            "table": { "$ref": "#/$defs/table" },
+            "details": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/detail" } },
+            "permissionState": { "$ref": "#/$defs/permissionState" },
+            "fields": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/field" } },
+            "operationalList": { "$ref": "#/$defs/operationalList" },
+            "simpleListFiltering": { "$ref": "#/$defs/simpleListFiltering" },
+            "contentFidelity": { "$ref": "#/$defs/contentFidelity" },
+            "formPresentation": { "$ref": "#/$defs/formPresentation" },
+            "analytics": { "$ref": "#/$defs/analytics" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "content": { "type": "object", "properties": { "operationalList": true }, "required": ["operationalList"] } } },
+          "then": { "properties": { "pattern": { "const": "list-page" } } }
+        },
+        {
+          "if": { "properties": { "content": { "type": "object", "properties": { "simpleListFiltering": true }, "required": ["simpleListFiltering"] } } },
+          "then": {
+            "properties": {
+              "pattern": { "const": "list-page" },
+              "content": {
+                "type": "object",
+                "required": ["filters", "table"],
+                "properties": { "filters": true, "table": true }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "content": { "type": "object", "properties": { "formPresentation": true }, "required": ["formPresentation"] } } },
+          "then": { "properties": { "pattern": { "const": "form-page" } } }
+        },
+        {
+          "if": { "properties": { "content": { "type": "object", "properties": { "analytics": true }, "required": ["analytics"] } } },
+          "then": { "properties": { "pattern": { "const": "dashboard-page" } } }
+        },
+        {
+          "if": { "properties": { "content": { "type": "object", "properties": { "permissionState": true }, "required": ["permissionState"] } } },
+          "then": { "properties": { "pattern": { "const": "detail-page" } } }
+        },
+        {
+          "if": { "properties": { "pattern": { "const": "dashboard-page" } }, "required": ["pattern"] },
+          "then": { "properties": { "content": { "type": "object", "properties": { "metrics": true }, "required": ["metrics"] } } }
+        },
+        {
+          "if": { "properties": { "pattern": { "const": "list-page" } }, "required": ["pattern"] },
+          "then": { "properties": { "content": { "type": "object", "properties": { "table": true }, "required": ["table"] } } }
+        },
+        {
+          "if": { "properties": { "pattern": { "const": "detail-page" } }, "required": ["pattern"] },
+          "then": {
+            "properties": {
+              "content": {
+                "type": "object",
+                "oneOf": [
+                  { "properties": { "details": true, "permissionState": false }, "required": ["details"] },
+                  { "properties": { "details": false, "permissionState": true }, "required": ["permissionState"] }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "pattern": { "const": "form-page" } }, "required": ["pattern"] },
+          "then": { "properties": { "content": { "type": "object", "properties": { "fields": true }, "required": ["fields"] } } }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,159 @@
+/* 退货 RMA 页面局部样式：颜色一律取 antd token 变量，留白的加载骨架与空态分开。 */
+
+.rma-section + .rma-section {
+  border-top: 1px solid var(--ant-color-border-secondary);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.rma-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.rma-kv {
+  display: grid;
+  gap: 10px 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.rma-kv > div {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rma-kv .rma-kv-wide {
+  grid-column: 1 / -1;
+}
+
+.rma-kv dt {
+  color: var(--ant-color-text-secondary);
+  flex: none;
+  white-space: nowrap;
+}
+
+.rma-kv dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.rma-attachments {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rma-attachments li {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rma-attachments__size {
+  color: var(--ant-color-text-secondary);
+  flex: none;
+}
+
+/* 详情抽屉第四区：该 SN 的关键履历（收货 → 烧录 → 测试 → 入库 → 出货 → RMA）。 */
+.rma-history {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rma-history li {
+  display: flex;
+  gap: 12px;
+  min-width: 0;
+}
+
+.rma-history__kind {
+  color: var(--ant-color-text-secondary);
+  flex: none;
+  width: 64px;
+}
+
+.rma-history__body {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  min-width: 0;
+  width: 100%;
+}
+
+.rma-history__at {
+  color: var(--ant-color-text-secondary);
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.rma-detail-links {
+  margin: 12px 0 0;
+}
+
+/* 检测抽屉顶部只读信息条。 */
+.rma-readonly-bar {
+  background: var(--ant-color-fill-tertiary);
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+}
+
+.rma-readonly-bar strong {
+  color: var(--ant-color-text-secondary);
+  font-weight: 400;
+  margin-right: 4px;
+}
+
+/* 裁决弹窗（C 档）只读信息块：对象、结论、预选处理方式、流转说明。 */
+.rma-decide-summary {
+  background: var(--ant-color-fill-quaternary);
+  border: 1px solid var(--ant-color-border-secondary);
+  border-radius: 6px;
+  display: grid;
+  gap: 6px;
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+}
+
+.rma-decide-row {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rma-decide-key {
+  color: var(--ant-color-text-secondary);
+  flex: none;
+}
+
+.rma-modal-alert {
+  margin-top: 12px;
+}
+
+.rma-form-group {
+  border-bottom: 1px solid var(--ant-color-border-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 16px 0 12px;
+  padding-bottom: 6px;
+}
+
+.rma-form-group:first-of-type {
+  margin-top: 0;
+}
+
+.rma-empty-sub {
+  color: var(--ant-color-text-secondary);
+}

@@ -1,0 +1,1203 @@
+{
+  "id": "element-plus-2.14.3-components-v2",
+  "foundationId": "element-plus",
+  "reviewedAt": "2026-10-13",
+  "supersedes": {
+    "path": "foundations/design-packs/element-plus-2.14.3.json",
+    "bytes": 1669,
+    "sha256": "dc62b7e8ca428a18bd250a6dfba61e7c2d05f43d7066705cfa9047a8910af86a"
+  },
+  "source": {
+    "packageRegistry": "npm view element-plus version license homepage repository.url --json",
+    "principles": "https://element-plus.org/en-US/guide/design.html",
+    "components": "https://element-plus.org/en-US/component/button.html",
+    "templates": "https://element-plus.org/en-US/component/layout.html",
+    "source": "https://github.com/element-plus/element-plus/tree/2.14.3",
+    "styles": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk",
+    "theme": "https://element-plus.org/en-US/guide/theming.html",
+    "variables": "https://github.com/element-plus/element-plus/tree/2.14.3/packages/theme-chalk/src/common/var.scss",
+    "homepage": "https://element-plus.org/",
+    "repository": "https://github.com/element-plus/element-plus"
+  },
+  "package": {
+    "name": "element-plus",
+    "version": "2.14.3",
+    "license": "MIT"
+  },
+  "distribution": "package-native",
+  "framework": {
+    "name": "vue3",
+    "version": "3.5.40"
+  },
+  "imports": {
+    "runtime": "element-plus",
+    "icons": "@element-plus/icons-vue",
+    "themeProvider": "ElConfigProvider",
+    "resetCss": "element-plus/dist/index.css",
+    "namedImportsOnly": true
+  },
+  "theme": {
+    "entry": "src/main.ts",
+    "exportName": null,
+    "cssVariables": true
+  },
+  "components": [
+    {
+      "name": "ElButton",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/button"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-button",
+          "lab:element-plus/src/styles.css#.el-button.is-disabled"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83"
+        ]
+      }
+    },
+    {
+      "name": "ElCard",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [],
+      "compensation": {
+        "status": "unknown",
+        "implementation": [],
+        "evidence": []
+      }
+    },
+    {
+      "name": "ElConfigProvider",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [],
+      "compensation": {
+        "status": "unknown",
+        "implementation": [],
+        "evidence": []
+      }
+    },
+    {
+      "name": "ElDescriptions",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/descriptions"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-descriptions__body .el-descriptions__table .el-descriptions__cell",
+          "lab:element-plus/src/styles.css#.el-descriptions__body"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83"
+        ]
+      }
+    },
+    {
+      "name": "ElDescriptionsItem",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/descriptions"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-descriptions__body .el-descriptions__table .el-descriptions__cell"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83"
+        ]
+      }
+    },
+    {
+      "name": "ElForm",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [],
+      "compensation": {
+        "status": "unknown",
+        "implementation": [],
+        "evidence": []
+      }
+    },
+    {
+      "name": "ElFormItem",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/formLabel"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-form-item__label",
+          "lab:element-plus/src/styles.css#.el-form-item__label"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:87"
+        ]
+      }
+    },
+    {
+      "name": "ElInput",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/input"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-input__wrapper",
+          "lab:element-plus/src/styles.css#.el-input__inner"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83"
+        ]
+      }
+    },
+    {
+      "name": "ElOption",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [],
+      "compensation": {
+        "status": "unknown",
+        "implementation": [],
+        "evidence": []
+      }
+    },
+    {
+      "name": "ElPagination",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/pagination"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-pagination .el-pager li",
+          "lab:element-plus/src/styles.css#.el-pagination"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83"
+        ]
+      }
+    },
+    {
+      "name": "ElSelect",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/select"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-select__wrapper",
+          "lab:element-plus/src/styles.css#.el-select__placeholder"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83"
+        ]
+      }
+    },
+    {
+      "name": "ElStatistic",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [],
+      "compensation": {
+        "status": "unknown",
+        "implementation": [],
+        "evidence": []
+      }
+    },
+    {
+      "name": "ElTable",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/table"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-table th.el-table__cell",
+          "lab:element-plus/src/suite/controls.suite.css#.el-table td.el-table__cell",
+          "lab:element-plus/src/styles.css#.el-table"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:87",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:97"
+        ]
+      }
+    },
+    {
+      "name": "ElTableColumn",
+      "source": {
+        "kind": "package",
+        "ref": "foundations/design-packs/element-plus-2.14.3-components-v2.json#/package"
+      },
+      "spec": [
+        {
+          "ref": {
+            "path": "design-systems/tianshu/controls.spec.json",
+            "pointer": "/controls/table"
+          },
+          "status": "confirmed"
+        }
+      ],
+      "compensation": {
+        "status": "implemented",
+        "implementation": [
+          "lab:element-plus/src/suite/controls.suite.css#.el-table td.el-table__cell"
+        ],
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:83",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:97"
+        ]
+      }
+    }
+  ],
+  "knownGaps": [
+    {
+      "component": "表格 / 排序列表头与数据格底色",
+      "status": "已修复（Owner 10-12 按建议走：补 token color.bg.tableHeaderSorted/tableBodySorted 与规格部位，两端所有带排序的表已接，三端实测一致）",
+      "layer": "visual",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：排序底色只是选中态外观，不触碰数据",
+          "会：缺底色时用户看到的排序列与 antd 不同",
+          "不会：点击表头排序的操作与结果不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:60",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:76",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:92",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:97",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:96"
+        ]
+      }
+    },
+    {
+      "component": "反馈页 / 超时行高亮",
+      "status": "已统一（2026-10-13）：三端超时行数据格均为 #fff2f0（antd colorErrorBg），token color.bg.tableBodyError 与规格 table.bodyCell.states.error 已补",
+      "layer": "visual",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：行高亮只是提示样式，不改工单数据",
+          "会：三端看到的超时提示颜色与有无不一致",
+          "不会：对超时行的操作不受颜色影响"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:103",
+          "foundation-parity-2026-10-10/phase4-6-unify/FINDINGS.md:3",
+          "foundation-parity-2026-10-10/phase4-6-unify/FINDINGS.md:29"
+        ]
+      }
+    },
+    {
+      "component": "表格 / 固件推送任务表固定列底色",
+      "status": "已统一（2026-10-13）：两端任务名称列左固定、操作列右固定，固定格白底，与 antd 一致",
+      "layer": "visual",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：固定列底色是滚动遮挡的外观，不改数据",
+          "会：横向滚动时固定列下是否透出内容肉眼可见",
+          "不会：固定列本身的交互不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:103",
+          "foundation-parity-2026-10-10/phase4-6-unify/FINDINGS.md:3",
+          "foundation-parity-2026-10-10/phase4-6-unify/FINDINGS.md:29"
+        ]
+      }
+    },
+    {
+      "component": "表格 / 表头排序图标形状",
+      "status": "仍未处理：Element Plus 用自带图标，第二轮后仍与 antd 不同，Owner 未裁决",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：排序状态两端都能读出",
+          "不会：操作结果相同"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:89",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "顶栏 / 搜索框右侧形态",
+      "status": "仍未处理：Element Plus 是独立图标，antd 是按钮",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：搜索入口都在",
+          "不会：回车与点击都能搜索"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:89",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "工作台 / 「查用户绑定」卡快捷行高",
+      "status": "已接受保留：该卡比 antd 矮 4.8px（快捷行高 36 无对应变量），Owner 10-12 接受，不为单张卡新增变量",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：卡片矮 4.8px 不改数据",
+          "不会：卡片只矮 4.8px，显示的信息与含义不变",
+          "不会：快捷行点击行为不变"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:93",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:98",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:96"
+        ]
+      }
+    },
+    {
+      "component": "表格 / RMA 单号链接按钮 padding",
+      "status": "已裁决不改规格（Owner 10-12）：两端测点落在不同元素上，不是规格错误",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：测量落点差异不改数据",
+          "不会：两端实际渲染一致，规格并非写错",
+          "不会：链接点击行为不变"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:94",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:99",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:96"
+        ]
+      }
+    },
+    {
+      "component": "页面版式 / EP 首轮可见差异（选择列撑高、SN/心跳/RMA 时间列等宽字体、统计卡数字与卡高、角标形态、说明文字色、rma/flashing 更多筛选、binding 行内筛选标签）",
+      "status": "已修复：Owner 批准第二轮逐页对齐（要求用掉剩余额度按建议推进），主要修复项三端过验",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：均为字体、间距、角标等写法差异，不改数据",
+          "会：行高、字体、卡片与角标形态肉眼可见",
+          "不会：操作路径与结果不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:60",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:61",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:72",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:87"
+        ]
+      }
+    },
+    {
+      "component": "工具栏 / EP 列表计数空格、图标间距与更多筛选箭头",
+      "status": "已核实（2026-10-13 Flash 看图）：「共 11 台设备」两侧有空格、图标与文字有间距、箭头大小相近，与 antd 一致",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：缺空格与间距肉眼可见",
+          "不会：刷新、导出、筛选操作不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:60",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:87",
+          "foundation-parity-2026-10-10/phase4-6-decide/flash-verify.json",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "表格 / EP 表头高与整表下移",
+      "status": "已核实（2026-10-13 Flash 看图）：devices、rma、flashing 表头高与表格位置与 antd 相近；结构合同与控件规格三端全过",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：表高不改数据",
+          "会：表头与整表位置和 antd 不同",
+          "不会：表格操作不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:55",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:87",
+          "foundation-parity-2026-10-10/phase4-6-decide/flash-verify.json",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "标题 / rma、flashing 页 h1 高度",
+      "status": "仍未处理：比 antd 高 2.7px，原因未查（antd 这两页自身也与其他页不同）",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：信息与含义相同，只是外观",
+          "不会：操作结果相同"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:105",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "工具栏 / rma 刷新按钮形态",
+      "status": "仍未处理：Element Plus 为圆钮、antd 为纯图标，探针不比对",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：信息与含义相同，只是外观",
+          "不会：操作结果相同"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:105",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "详情描述列表 / 两种样式（设备详情竖排 13px 对 护照详情带边框横排 14px）",
+      "status": "已按两组规格部位如实记录并对齐（两端规格全过、按页各自实现）；Owner 画押未见记录",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：antd 页间差异，两端按页各自对齐 antd",
+          "不会：操作结果相同"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:60",
+          "foundation-parity-2026-10-10/phase3-round2b/FINDINGS.md:64",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "表格 / 表头高与行高的页间差异（55 对 77、57 对 79/81）",
+      "status": "已接受保留：Owner 10-10 裁决不改（长表头折行与行内容撑开所致），规格按页如实记录",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：折行与内容撑开不改数据",
+          "不会：同页两端一致，页间差异由内容决定",
+          "不会：操作不变"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase3-routes/FINDINGS.md:54",
+          "foundation-parity-2026-10-10/phase3-routes/FINDINGS.md:55",
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:19"
+        ]
+      }
+    },
+    {
+      "component": "表格 / 行内链接内边距（antd 页间 4 对 7）",
+      "status": "已修复：Owner 10-10 裁决统一为 4，反馈页操作列与工作台 Top5 已改，两端规格过验",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：间距不改数据",
+          "会：两套间距肉眼可见",
+          "不会：链接目标不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase3-routes/FINDINGS.md:56",
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:9",
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:15"
+        ]
+      }
+    },
+    {
+      "component": "分段控制器 / 选中项行高（antd 页间 28 对 22）",
+      "status": "已修复：Owner 10-10 裁决统一，antd 补变量公式，两端规格过验",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：选中项高度两种肉眼可见",
+          "不会：切换视图操作不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase3-routes/FINDINGS.md:57",
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:16"
+        ]
+      }
+    },
+    {
+      "component": "表单 / 反馈页标签字号字色（antd 页间 14px 正文色 对 13px 次要色）",
+      "status": "已修复：Owner 10-10 裁决统一为 14px 正文色，两端规格过验",
+      "layer": "visual",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：标签字号字色两套可见",
+          "不会：筛选操作不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase3-routes/FINDINGS.md:59",
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:17"
+        ]
+      }
+    },
+    {
+      "component": "按钮 / 「重置」两套外观（antd 页间白底描边 对 透明无描边）",
+      "status": "已修复：Owner 10-10 裁决统一为透明无描边（type=text），两端规格过验",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：白底描边与透明无描边明显不同",
+          "不会：重置行为不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase3-routes/FINDINGS.md:60",
+          "foundation-parity-2026-10-10/phase3-round2/FINDINGS.md:18"
+        ]
+      }
+    },
+    {
+      "component": "表格 / 多选框列宽（antd 三档 48/32/49.8）",
+      "status": "已修复（Owner 裁决统一 48）：护照、反馈、固件三表已加 columnWidth:48；固件表因 max-content 自动布局实测仍 49.8，挂「表格列宽签字」待处理",
+      "layer": "structure",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：列宽不改数据",
+          "会：选择列宽三档可见",
+          "不会：勾选行为不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-2/FINDINGS.md:57",
+          "foundation-parity-2026-10-10/phase4-3/FINDINGS.md:3",
+          "foundation-parity-2026-10-10/phase4-3/FINDINGS.md:12",
+          "foundation-parity-2026-10-10/phase4-3/FINDINGS.md:81"
+        ]
+      }
+    },
+    {
+      "component": "筛选区 / 上方留白（告警 14、绑定 25 对标准 18）",
+      "status": "已修复（Owner 裁决统一 18，§4.2 第 11 条）：antd 已改、两端规格过验",
+      "layer": "control",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：筛选区留白三档可见",
+          "不会：操作不变"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-2/FINDINGS.md:58",
+          "foundation-parity-2026-10-10/phase4-3/FINDINGS.md:3",
+          "foundation-parity-2026-10-10/phase4-3/FINDINGS.md:13"
+        ]
+      }
+    },
+    {
+      "component": "列表 / 排序三态与清除（设备、绑定、反馈、固件、烧录、RMA；R02/R07/R09/R17/R22/R31）",
+      "status": "已统一（2026-10-13）：控制器改为升序 → 降序 → 清除，新列首次升序，默认降序列首次点击即清除；两端表头接入",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：排序指示的状态不同",
+          "会：连续点击表头，antd 能回到未排序，两端不能"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:43",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:138",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "表单 / 可选纯空格文本校验（告警备注、RMA 描述/备注/说明；R03/R32）",
+      "status": "已统一（2026-10-13）：控制器对选填字段的非空纯空白报错（文案沿用 antd 规则 message），两端接入",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "会：两端可提交后由 store 去空白",
+          "会：antd 报错，两端不报",
+          "会：antd 拦下提交，两端放行"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:44",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:92",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:140",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "表单 / 数值与空格格式归整（规则页整数、固件版本与问题单空格、烧录重试筛选与上限、SN 范围；R05/R19/R20/R23/R24/R26）",
+      "status": "已统一（2026-10-13）：core/number.ts normalizeInteger 对齐 antd InputNumber 失焦归整，两端失焦与回车时调用；版本号、问题单号、SN 范围按原串匹配",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "会：存下的数值不同（1.5 → 2 对 保留或截断）",
+          "会：输入框显示的值不同",
+          "会：带空格版本号 antd 报格式错误，两端放行"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:46",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:139",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "烧录新建 / 范围错误落点（R25）",
+      "status": "保留（2026-10-13 裁决）：两端字段错误加聚焦对读屏更友好；antd 全局提示不改",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：提示内容相同，只是落点不同",
+          "不会：都拦下预览"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:78",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "反馈 / 同值排序与 SN 筛选规整（R08/R28）",
+      "status": "已修复：接入控制器时向 antd 对齐（同值不再按 SLA 重排；SN trim 后查），断言不覆盖该条件",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：同值记录顺序与带空格 SN 的查询结果可见",
+          "会：排序与筛选的返回结果不同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:54",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:88",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:137",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "反馈 / 必填与长度前置校验（R10/R11/R12）",
+      "status": "已修复：接入后向 antd 前置规则对齐，空内容最终都不能提交；错误落点差异另见「校验错误触发与清除时机」条目",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：两侧最终都不会提交空内容",
+          "会：字段提示与提交后全局失败的呈现不同",
+          "会：被拦的时机不同（填写时对提交时）"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:56",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:136",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "反馈 / 代录关联 SN 空格规整（R13/R14）",
+      "status": "已修复：4.5 二轮统一为去首尾空格提交、纯空格按未关联；antd 原串提交已于 2026-10-13 第 5 阶段 5.1 修复（提交前去首尾空格，三端实测通过）",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "会：带空格 SN 能否代录成功、入库形态不同",
+          "会：成功或报错的呈现不同",
+          "会：相同输入的提交结果不同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:59",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:60",
+          "foundation-parity-2026-10-10/phase4-5/FINDINGS.md:101",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "RMA / 待裁决抽屉入口条件（R36）",
+      "status": "保留（2026-10-13 裁决）：界面不可达的条件项，控制器多一道保护不改",
+      "layer": "logic",
+      "appliesTo": [
+        "shadcn",
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：样例 6 张单里没有 inspected + pending_check 组合",
+          "不会：antd 录入检测只能选可返修、可二次入库、报废，界面造不出该组合",
+          "不会：该组合下 antd 点开也会被 store 拒绝"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:96",
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:144",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "告警页 / 分栏左列宽、选中卡片与详情元信息排布",
+      "status": "已统一（2026-10-13）：规格补 splitList.list / item / itemSelected（左列 420、选中 #e6f4ff / #91caff）；元信息改同行连排（行距 4、列距 24），三端实测一致",
+      "layer": "structure",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：窄列让标题与时间折行；选中态承载当前看的是哪条",
+          "不会：操作结果相同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:19",
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:53",
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:98",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "标签 / 错误态与紫色（「失败」「已回滚」「灰度中」）",
+      "status": "已统一（2026-10-13，phase4-6-visual-r2）：token 补 color.status.error.fill 与 color.status.purple，规格补 tag.error / tag.purple",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：状态色承载含义，灰色「灰度中」读不出状态",
+          "不会：操作结果相同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:11"
+        ]
+      }
+    },
+    {
+      "component": "表单 / 新建固件「机型」、新建烧录「烧录工位」必填标记",
+      "status": "已统一（2026-10-13）：两端显示必填星号；antd 这两个字段已于 2026-10-13 第 5 阶段 5.1 补上星号，三端一致",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：校验不变",
+          "会：用户看不出这两项必填",
+          "不会：提交结果相同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:26",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "页面版式 / 截图清单第二轮其余外观差异",
+      "status": "已接受保留（2026-10-13）：返回链接颜色与箭头、复制图标颜色、日期框单双框、星号前后、字数统计位置、开关大小、步骤条样式、等宽字体、分页文案空格与边框、筛选区虚线分隔等，逐条见 DECISIONS.md",
+      "layer": "visual",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：信息与含义相同，只是外观",
+          "不会：操作结果相同"
+        ],
+        "verdict": "preserve",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:28",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "护照详情 / 档案信息 SN 复制入口",
+      "status": "已统一（2026-10-13）：档案信息 SN 后补复制按钮",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：信息相同",
+          "会：在档案信息里复制 SN 做不到"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:63",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:23",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "设备列表 / 「我的视图」下拉宽度",
+      "status": "已统一（2026-10-13）：规格补 select.viewsTrigger.width 180（antd 最小宽），EP 由 116 改读变量",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：视图名被截断看不全",
+          "不会：操作结果相同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:48",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:24",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "护照列表 / 行操作、筛选文案、排序图标与面包屑",
+      "status": "已统一（2026-10-13，phase4-6-visual-r2）：「关闭公开」收进「更多」、文案与 antd 相同、4 个排序列补图标、面包屑中间层级改次要色",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：文案与排序状态读法不同",
+          "会：行操作露出规则不同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:14",
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:15",
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:16",
+          "foundation-parity-2026-10-10/phase4-6-visual-r2/FINDINGS.md:18"
+        ]
+      }
+    },
+    {
+      "component": "反馈与护照公开设置 / 超长输入截断",
+      "status": "已统一（2026-10-13）：回复、驳回、代录内容与护照公开备注去掉 maxlength 截断，由长度校验报错（antd 不截断）",
+      "layer": "logic",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "会：截断后提交的是截断文本",
+          "会：antd 报超长，EP 不提示",
+          "会：同样的粘贴得到不同结果"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:61",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:63",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "RMA / 日期选择流程与自然日计算",
+      "status": "已统一（2026-10-13）：366 天跨度只在选结束日时按开始日限制，跨度用 core naturalDayDiff 按自然日计算",
+      "layer": "logic",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "不会：信息相同",
+          "会：已有范围时改远端起点的结果不同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-4/RULE-DIFF-antd-vs-shadcn.md:94",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:64",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    },
+    {
+      "component": "烧录列表 / 排序表头方向图标",
+      "status": "已统一（2026-10-13）：4 个可排序列表头补升 / 降 / 未排序图标与 aria-label（同 EP 护照列表写法），原来只有文字，读不出排序方向",
+      "layer": "control",
+      "appliesTo": [
+        "element-plus"
+      ],
+      "decision": {
+        "definitionRef": "rules/foundation-differences.md",
+        "answers": [
+          "不会：不改数据",
+          "会：读不出当前按哪个方向排序",
+          "不会：点击结果相同"
+        ],
+        "verdict": "unify",
+        "evidence": [
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:68",
+          "foundation-parity-2026-10-10/phase4-6-decide/DECISIONS.md:5"
+        ]
+      }
+    }
+  ]
+}

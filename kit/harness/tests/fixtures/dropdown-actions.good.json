@@ -1,0 +1,28 @@
+{
+  "id": "test-dropdown-actions",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedActions": {
+    "required": ["更多操作", "编辑", "删除"],
+    "danger": ["删除"],
+    "conditions": [
+      {
+        "when": "record.active",
+        "branch": "then",
+        "required": ["编辑", "删除"],
+        "danger": ["删除"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/dropdown-actions.good.tsx",
+    "symbol": "DropdownActionsPage"
+  },
+  "report": "harness/reports/test-dropdown-actions.json"
+}

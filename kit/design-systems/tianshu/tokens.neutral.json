@@ -1,0 +1,694 @@
+{
+  "version": "0.1.0",
+  "name": "tianshu",
+  "status": "signed",
+  "signoff": {
+    "date": "2026-10-13",
+    "by": "Owner",
+    "ref": "docs/PLAN-四底座第5阶段-转正与收口-2026-10-13.md"
+  },
+  "note": "天枢中立 token：按角色命名，不使用任何组件库的 token 名。初稿数值取自 antd 天枢现版，Owner 签字后才是权威；签字前各底座生成器可以消费，但不得据此回改 antd 基准。控件怎么用这些数值（高度、内边距、描边画法）不在本文件，见第 3 阶段控件规格。",
+  "derivedFrom": {
+    "antdTheme": {
+      "path": "projects/tianshu-device-ops/theme.ts",
+      "sha256": "a4da1f533bb614412fc754c07e1346bdc6a59fd39e766890ae16f09ef20314a1"
+    },
+    "antdVersion": "6.5.0",
+    "probe": {
+      "path": "workflows/evidence/foundation-parity-2026-10-10/routes/dashboard/parity-report.json"
+    }
+  },
+  "tokens": {
+    "color": {
+      "brand": {
+        "base": {
+          "value": "#1677ff",
+          "source": "antd:colorPrimary"
+        },
+        "hover": {
+          "value": "#4096ff",
+          "source": "antd:colorPrimaryHover"
+        },
+        "active": {
+          "value": "#0958d9",
+          "source": "antd:colorPrimaryActive"
+        },
+        "bg": {
+          "value": "#e6f4ff",
+          "source": "antd:colorPrimaryBg"
+        },
+        "bgHover": {
+          "value": "#bae0ff",
+          "source": "antd:colorPrimaryBgHover"
+        },
+        "border": {
+          "value": "#91caff",
+          "source": "antd:colorPrimaryBorder"
+        },
+        "borderHover": {
+          "value": "#69b1ff",
+          "source": "antd:colorPrimaryBorderHover"
+        },
+        "text": {
+          "value": "#1677ff",
+          "source": "antd:colorPrimaryText"
+        },
+        "textHover": {
+          "value": "#4096ff",
+          "source": "antd:colorPrimaryTextHover"
+        },
+        "textActive": {
+          "value": "#0958d9",
+          "source": "antd:colorPrimaryTextActive"
+        }
+      },
+      "text": {
+        "primary": {
+          "value": "#1f2937",
+          "source": "antd:colorText",
+          "note": "正文、标题"
+        },
+        "heading": {
+          "value": "#1f2937",
+          "source": "antd:colorTextHeading"
+        },
+        "secondary": {
+          "value": "#6b7280",
+          "source": "antd:colorTextSecondary",
+          "note": "次要文字、描述"
+        },
+        "tertiary": {
+          "value": "rgba(0,0,0,0.45)",
+          "source": "antd:colorTextTertiary"
+        },
+        "hint": {
+          "value": "#9ca3af",
+          "source": "tianshu:generated/styles.css --do-text-tertiary",
+          "note": "工作台卡片说明这类弱提示文字。天枢项目自定的灰，与 antd colorTextTertiary（rgba(0,0,0,0.45)）不同"
+        },
+        "quaternary": {
+          "value": "rgba(0,0,0,0.25)",
+          "source": "antd:colorTextQuaternary"
+        },
+        "placeholder": {
+          "value": "rgba(0,0,0,0.25)",
+          "source": "antd:colorTextPlaceholder"
+        },
+        "disabled": {
+          "value": "rgba(0,0,0,0.25)",
+          "source": "antd:colorTextDisabled"
+        },
+        "inverse": {
+          "value": "#fff",
+          "source": "antd:colorTextLightSolid",
+          "note": "深色底上的文字，如主按钮"
+        },
+        "link": {
+          "value": "#1677ff",
+          "source": "antd:colorLink"
+        }
+      },
+      "bg": {
+        "page": {
+          "value": "#f6f8fb",
+          "source": "antd:components.Layout.bodyBg",
+          "note": "页面底色"
+        },
+        "container": {
+          "value": "#ffffff",
+          "source": "antd:colorBgContainer",
+          "note": "卡片、表格、输入框底色"
+        },
+        "elevated": {
+          "value": "#f8f8f9",
+          "source": "antd:colorBgElevated",
+          "note": "弹层、下拉、抽屉"
+        },
+        "tableHeader": {
+          "value": "#f8fafc",
+          "source": "antd:components.Table.headerBg"
+        },
+        "tableHeaderSorted": {
+          "value": "#f0f0f0",
+          "source": "antd:components.Table.headerSortActiveBg",
+          "note": "当前排序列的表头底色"
+        },
+        "tableBodySorted": {
+          "value": "#fafafa",
+          "source": "antd:components.Table.bodySortBg",
+          "note": "当前排序列的数据格底色"
+        },
+        "tableBodyError": {
+          "value": "#fff2f0",
+          "source": "antd:colorErrorBg",
+          "note": "需要优先处理的行（如反馈页 SLA 已超时）的数据格底色，整行着色"
+        },
+        "track": {
+          "value": "#eeeeef",
+          "source": "antd:colorBgLayout",
+          "note": "分段控制器轨道等嵌入式底色；天枢页面底色另由 page 定义，两者不同"
+        },
+        "progressTrack": {
+          "value": "#eef1f6",
+          "source": "tianshu:generated/styles.css .device-ops-phase__bar",
+          "note": "全部设备页阶段卡占比条的轨道底色（天枢页面级样式写死，antd 无对应 token）"
+        },
+        "progressFill": {
+          "value": "rgba(22,119,255,0.55)",
+          "source": "tianshu:generated/styles.css .device-ops-phase__bar > span",
+          "note": "占比条填充：品牌色 #1677ff × 不透明度 0.55"
+        },
+        "spotlight": {
+          "value": "rgba(0,0,0,0.85)",
+          "source": "antd:colorBgSpotlight",
+          "note": "Tooltip 底色"
+        },
+        "mask": {
+          "value": "rgba(0,0,0,0.45)",
+          "source": "antd:colorBgMask"
+        },
+        "disabled": {
+          "value": "rgba(0,0,0,0.04)",
+          "source": "antd:colorBgContainerDisabled"
+        },
+        "fill": {
+          "value": "rgba(0,0,0,0.15)",
+          "source": "antd:colorFill"
+        },
+        "fillSecondary": {
+          "value": "rgba(0,0,0,0.06)",
+          "source": "antd:colorFillSecondary"
+        },
+        "fillTertiary": {
+          "value": "rgba(0,0,0,0.04)",
+          "source": "antd:colorFillTertiary",
+          "note": "悬停底色"
+        },
+        "fillQuaternary": {
+          "value": "rgba(0,0,0,0.02)",
+          "source": "antd:colorFillQuaternary"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "#d8dee8",
+          "source": "antd:colorBorder",
+          "note": "输入框、按钮描边"
+        },
+        "secondary": {
+          "value": "#e9e9ea",
+          "source": "antd:colorBorderSecondary",
+          "note": "卡片、表格分隔"
+        },
+        "split": {
+          "value": "rgba(11,11,22,0.09)",
+          "source": "antd:colorSplit"
+        }
+      },
+      "status": {
+        "processing": {
+          "text": {
+            "value": "#0958d9",
+            "source": "palette:blue.7"
+          },
+          "bg": {
+            "value": "#e6f4ff",
+            "source": "palette:blue.1"
+          },
+          "border": {
+            "value": "#91caff",
+            "source": "palette:blue.3"
+          },
+          "solid": {
+            "value": "#1677ff",
+            "source": "antd:colorInfo"
+          }
+        },
+        "success": {
+          "text": {
+            "value": "#389e0d",
+            "source": "palette:green.7"
+          },
+          "bg": {
+            "value": "#f6ffed",
+            "source": "palette:green.1"
+          },
+          "border": {
+            "value": "#b7eb8f",
+            "source": "palette:green.3"
+          },
+          "solid": {
+            "value": "#52c41a",
+            "source": "antd:colorSuccess"
+          }
+        },
+        "warning": {
+          "text": {
+            "value": "#d48806",
+            "source": "palette:gold.7"
+          },
+          "bg": {
+            "value": "#fffbe6",
+            "source": "palette:gold.1"
+          },
+          "border": {
+            "value": "#ffe58f",
+            "source": "palette:gold.3"
+          },
+          "solid": {
+            "value": "#faad14",
+            "source": "antd:colorWarning"
+          }
+        },
+        "error": {
+          "text": {
+            "value": "#cf1322",
+            "source": "palette:red.7"
+          },
+          "bg": {
+            "value": "#fff1f0",
+            "source": "palette:red.1"
+          },
+          "border": {
+            "value": "#ffa39e",
+            "source": "palette:red.3"
+          },
+          "solid": {
+            "value": "#ff4d4f",
+            "source": "antd:colorError"
+          },
+          "fill": {
+            "value": "#fff2f0",
+            "source": "antd:colorErrorBg",
+            "note": "antd 错误态 Tag（filled 变体）的底色；与 bg（palette:red.1 #fff1f0）不同"
+          }
+        },
+        "shipped": {
+          "text": {
+            "value": "#1d39c4",
+            "source": "palette:geekblue.7"
+          },
+          "bg": {
+            "value": "#f0f5ff",
+            "source": "palette:geekblue.1"
+          },
+          "border": {
+            "value": "#adc6ff",
+            "source": "palette:geekblue.3"
+          },
+          "solid": {
+            "value": "#2f54eb",
+            "source": "palette:geekblue.6"
+          }
+        },
+        "purple": {
+          "text": {
+            "value": "#531dab",
+            "source": "palette:purple.7"
+          },
+          "bg": {
+            "value": "#f9f0ff",
+            "source": "palette:purple.1"
+          },
+          "border": {
+            "value": "#d3adf7",
+            "source": "palette:purple.3"
+          },
+          "solid": {
+            "value": "#722ed1",
+            "source": "palette:purple.6",
+            "note": "固件「灰度中」等 antd purple 预设色标签"
+          }
+        },
+        "neutral": {
+          "text": {
+            "value": "#1f2937",
+            "source": "antd:colorText"
+          },
+          "bg": {
+            "value": "rgb(245, 245, 245)",
+            "source": "measured:antd 中性 Tag 底色（feedback tag:类型）",
+            "note": "antd Tag 默认底色，不是 colorFillQuaternary；控件规格复核时更正（10-10）"
+          },
+          "border": {
+            "value": "#d8dee8",
+            "source": "antd:colorBorder"
+          },
+          "solid": {
+            "value": "rgba(0,0,0,0.45)",
+            "source": "antd:colorTextTertiary"
+          }
+        }
+      },
+      "palette": {
+        "blue": {
+          "1": {
+            "value": "#e6f4ff",
+            "source": "palette:blue.1"
+          },
+          "2": {
+            "value": "#bae0ff",
+            "source": "palette:blue.2"
+          },
+          "3": {
+            "value": "#91caff",
+            "source": "palette:blue.3"
+          },
+          "4": {
+            "value": "#69b1ff",
+            "source": "palette:blue.4"
+          },
+          "5": {
+            "value": "#4096ff",
+            "source": "palette:blue.5"
+          },
+          "6": {
+            "value": "#1677ff",
+            "source": "palette:blue.6"
+          },
+          "7": {
+            "value": "#0958d9",
+            "source": "palette:blue.7"
+          },
+          "8": {
+            "value": "#003eb3",
+            "source": "palette:blue.8"
+          },
+          "9": {
+            "value": "#002c8c",
+            "source": "palette:blue.9"
+          },
+          "10": {
+            "value": "#001d66",
+            "source": "palette:blue.10"
+          }
+        },
+        "green": {
+          "1": {
+            "value": "#f6ffed",
+            "source": "palette:green.1"
+          },
+          "2": {
+            "value": "#d9f7be",
+            "source": "palette:green.2"
+          },
+          "3": {
+            "value": "#b7eb8f",
+            "source": "palette:green.3"
+          },
+          "4": {
+            "value": "#95de64",
+            "source": "palette:green.4"
+          },
+          "5": {
+            "value": "#73d13d",
+            "source": "palette:green.5"
+          },
+          "6": {
+            "value": "#52c41a",
+            "source": "palette:green.6"
+          },
+          "7": {
+            "value": "#389e0d",
+            "source": "palette:green.7"
+          },
+          "8": {
+            "value": "#237804",
+            "source": "palette:green.8"
+          },
+          "9": {
+            "value": "#135200",
+            "source": "palette:green.9"
+          },
+          "10": {
+            "value": "#092b00",
+            "source": "palette:green.10"
+          }
+        },
+        "gold": {
+          "1": {
+            "value": "#fffbe6",
+            "source": "palette:gold.1"
+          },
+          "2": {
+            "value": "#fff1b8",
+            "source": "palette:gold.2"
+          },
+          "3": {
+            "value": "#ffe58f",
+            "source": "palette:gold.3"
+          },
+          "4": {
+            "value": "#ffd666",
+            "source": "palette:gold.4"
+          },
+          "5": {
+            "value": "#ffc53d",
+            "source": "palette:gold.5"
+          },
+          "6": {
+            "value": "#faad14",
+            "source": "palette:gold.6"
+          },
+          "7": {
+            "value": "#d48806",
+            "source": "palette:gold.7"
+          },
+          "8": {
+            "value": "#ad6800",
+            "source": "palette:gold.8"
+          },
+          "9": {
+            "value": "#874d00",
+            "source": "palette:gold.9"
+          },
+          "10": {
+            "value": "#613400",
+            "source": "palette:gold.10"
+          }
+        },
+        "red": {
+          "1": {
+            "value": "#fff1f0",
+            "source": "palette:red.1"
+          },
+          "2": {
+            "value": "#ffccc7",
+            "source": "palette:red.2"
+          },
+          "3": {
+            "value": "#ffa39e",
+            "source": "palette:red.3"
+          },
+          "4": {
+            "value": "#ff7875",
+            "source": "palette:red.4"
+          },
+          "5": {
+            "value": "#ff4d4f",
+            "source": "palette:red.5"
+          },
+          "6": {
+            "value": "#f5222d",
+            "source": "palette:red.6"
+          },
+          "7": {
+            "value": "#cf1322",
+            "source": "palette:red.7"
+          },
+          "8": {
+            "value": "#a8071a",
+            "source": "palette:red.8"
+          },
+          "9": {
+            "value": "#820014",
+            "source": "palette:red.9"
+          },
+          "10": {
+            "value": "#5c0011",
+            "source": "palette:red.10"
+          }
+        },
+        "geekblue": {
+          "1": {
+            "value": "#f0f5ff",
+            "source": "palette:geekblue.1"
+          },
+          "2": {
+            "value": "#d6e4ff",
+            "source": "palette:geekblue.2"
+          },
+          "3": {
+            "value": "#adc6ff",
+            "source": "palette:geekblue.3"
+          },
+          "4": {
+            "value": "#85a5ff",
+            "source": "palette:geekblue.4"
+          },
+          "5": {
+            "value": "#597ef7",
+            "source": "palette:geekblue.5"
+          },
+          "6": {
+            "value": "#2f54eb",
+            "source": "palette:geekblue.6"
+          },
+          "7": {
+            "value": "#1d39c4",
+            "source": "palette:geekblue.7"
+          },
+          "8": {
+            "value": "#10239e",
+            "source": "palette:geekblue.8"
+          },
+          "9": {
+            "value": "#061178",
+            "source": "palette:geekblue.9"
+          },
+          "10": {
+            "value": "#030852",
+            "source": "palette:geekblue.10"
+          }
+        }
+      }
+    },
+    "radius": {
+      "xs": {
+        "value": 2,
+        "source": "antd:borderRadiusXS"
+      },
+      "sm": {
+        "value": 4,
+        "source": "antd:borderRadiusSM",
+        "note": "Tag 等小件"
+      },
+      "base": {
+        "value": 6,
+        "source": "antd:borderRadius",
+        "note": "按钮、输入框"
+      },
+      "lg": {
+        "value": 8,
+        "source": "antd:borderRadiusLG",
+        "note": "卡片、弹窗"
+      }
+    },
+    "font": {
+      "family": {
+        "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Microsoft YaHei\", \"PingFang SC\", sans-serif",
+        "source": "antd:fontFamily"
+      },
+      "familyMono": {
+        "value": "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+        "source": "antd:fontFamilyCode"
+      },
+      "size": {
+        "sm": {
+          "value": 12,
+          "source": "antd:fontSizeSM"
+        },
+        "base": {
+          "value": 14,
+          "source": "antd:fontSize"
+        },
+        "lg": {
+          "value": 16,
+          "source": "antd:fontSizeLG"
+        },
+        "xl": {
+          "value": 20,
+          "source": "antd:fontSizeXL"
+        },
+        "pageTitle": {
+          "value": 22,
+          "source": "measured:antd h1（dashboard）",
+          "note": "页面主标题"
+        }
+      },
+      "weight": {
+        "regular": {
+          "value": 400,
+          "source": "antd:默认字重"
+        },
+        "strong": {
+          "value": 600,
+          "source": "antd:fontWeightStrong",
+          "note": "表头、标题"
+        },
+        "pageTitle": {
+          "value": 600,
+          "source": "measured:antd h1（dashboard）"
+        }
+      },
+      "lineHeight": {
+        "base": {
+          "value": 1.5714285714285714,
+          "source": "antd:lineHeight"
+        },
+        "sm": {
+          "value": 1.6666666666666667,
+          "source": "antd:lineHeightSM"
+        },
+        "lg": {
+          "value": 1.5,
+          "source": "antd:lineHeightLG"
+        }
+      }
+    },
+    "size": {
+      "control": {
+        "sm": {
+          "value": 24,
+          "source": "antd:controlHeightSM"
+        },
+        "base": {
+          "value": 32,
+          "source": "antd:controlHeight",
+          "note": "输入框、下拉"
+        },
+        "lg": {
+          "value": 40,
+          "source": "antd:controlHeightLG"
+        }
+      },
+      "lineWidth": {
+        "value": 1,
+        "source": "antd:lineWidth"
+      }
+    },
+    "shadow": {
+      "base": {
+        "value": "0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05)",
+        "source": "antd:boxShadow"
+      },
+      "secondary": {
+        "value": "0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05)",
+        "source": "antd:boxShadowSecondary",
+        "note": "弹层"
+      },
+      "tertiary": {
+        "value": "0 1px 2px 0 rgba(0,0,0,0.05), 0 1px 6px -1px rgba(0,0,0,0.03), 0 2px 4px 0 rgba(0,0,0,0.03)",
+        "source": "antd:boxShadowTertiary"
+      }
+    },
+    "motion": {
+      "fast": {
+        "value": "0.1s",
+        "source": "antd:motionDurationFast"
+      },
+      "mid": {
+        "value": "0.2s",
+        "source": "antd:motionDurationMid"
+      },
+      "slow": {
+        "value": "0.3s",
+        "source": "antd:motionDurationSlow"
+      },
+      "easeInOut": {
+        "value": "cubic-bezier(0.645, 0.045, 0.355, 1)",
+        "source": "antd:motionEaseInOut"
+      }
+    }
+  }
+}

@@ -1,0 +1,458 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "items": [
+    {
+      "id": "fb-20260715-002",
+      "source": "qa",
+      "target": "component",
+      "status": "promoted",
+      "severity": "high",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-15",
+      "pageId": "production-inventory",
+      "generatedFile": "projects/tianshu-ops/generated/pages.tsx",
+      "title": "Selected table rows need a reusable batch action bar",
+      "finding": "Tianshu inventory and SA list pages enable row selection but keep batch actions in a static toolbar, so users cannot see the selected count, clear selection, or understand which records a dangerous action will affect.",
+      "evidence": [
+        "The Tianshu inventory page has rowSelection plus batch freeze and unfreeze actions, and its harness marks batch freeze as dangerous.",
+        "The SA alert and device pages also expose row selection with batch-oriented actions.",
+        "DataGrid currently exposes rowSelection only as a boolean and cannot report or clear selected keys."
+      ],
+      "proposedChange": "Promote BulkActionBar and add backward-compatible controlled selection keys to DataGrid, while keeping mutation and confirmation logic in project pages composed with ConfirmDialog.",
+      "promotion": {
+        "destination": "components.manifest.json",
+        "action": "update-component",
+        "requiresReview": true
+      },
+      "promotionEvidence": {
+        "evidencePolicy": "strict-v1",
+        "componentPlan": "Add BulkActionBar plus DataGrid selectedRowKeys/onSelectionChange; do not add action-config arrays or embed mutation logic.",
+        "plannedFiles": [
+          "src/components.tsx",
+          "src/index.ts",
+          "src/styles.css",
+          "components.manifest.json",
+          "examples/list-page.tsx",
+          "recipes/list-page.md",
+          "figma/component-map.json",
+          "figma/variants-map.json",
+          "scripts/check-dom-contract.mjs",
+          "harness/scenarios/build-tianshu-production-inventory.json"
+        ],
+        "patchPlan": [
+          "Add BulkActionBar and controlled DataGrid selection without exposing antd RowSelection.",
+          "Export BulkActionBar, BulkActionBarProps, and updated DataGrid types from the barrel.",
+          "Add sticky, responsive, token-based batch action styles below the selected data region.",
+          "Document the batch action component and DataGrid selection props.",
+          "Show selected count, clear selection, and dangerous confirmation composition.",
+          "Move selected-record actions from the static toolbar into BulkActionBar guidance.",
+          "Sync the code-first component mapping.",
+          "Sync the visible/hidden state mapping.",
+          "Assert hidden state, live selected count, action grouping, and controlled row keys.",
+          "Require the inventory page to wire selection, BulkActionBar, and ConfirmDialog."
+        ],
+        "implementation": {
+          "files": [
+            { "path": "src/components.tsx", "sha256": "17d4120ca2700b3facf97fd25ca4902abce1851306b09db1b8fa0ad964a07a32" },
+            { "path": "src/index.ts", "sha256": "fac5a1de820db55a494ae5493e0d93191939d50843f914ab77ec0b1a4883d421" },
+            { "path": "src/styles.css", "sha256": "458bc445d38eb1d9d1e8626f582a7f0f113a04a8d4ccd3a10c383e805b5a4bbe" },
+            { "path": "components.manifest.json", "sha256": "f21bb46bf952f6ed6e4349c83cd13af4cf4cef9322b1f8067096914b987ef7bb" },
+            { "path": "examples/list-page.tsx", "sha256": "27cce2defaf86e835b4305a71b0edf336e8fa6c5fd94485a97f8acdcdaf5bc44" },
+            { "path": "recipes/list-page.md", "sha256": "9648fcda0337e01e12cebc74d45219db110cd5b485d9134fcb27a78cab0f2d78" },
+            { "path": "figma/component-map.json", "sha256": "876b04e80dac7a07187f872a3637fe9484b57a5c8aa6e18e6b384c95caade7db" },
+            { "path": "figma/variants-map.json", "sha256": "9d79e8e8cd9b1167c950eaa940d2d6f890286d36fbe370947631da4fe96b7c99" },
+            { "path": "scripts/check-dom-contract.mjs", "sha256": "67b1d92faa2eb9c74aa0d40e3bca53bbe9b28ef6e97e9273083ffa661c2a5663" },
+            { "path": "harness/scenarios/build-tianshu-production-inventory.json", "sha256": "0e0995f5b88b79a4d45b8009e3d54db9888d216470e4a781ffcaeefa6add1fc6" }
+          ]
+        },
+        "regression": {
+          "commands": [
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-production-inventory.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-production-inventory.json", "sha256": "fb7b30629938b4144c7a175973abd5b36a9326cb28749b9825cf8f8aca89ba28" }
+              ]
+            }
+          ]
+        },
+        "evidenceArtifacts": {
+          "harness": [
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-production-inventory.json", "sha256": "fb7b30629938b4144c7a175973abd5b36a9326cb28749b9825cf8f8aca89ba28" }
+          ],
+          "browser": [
+            { "type": "browser", "status": "passed", "path": "output/playwright/foundation-audit-2026-07-19/browser-run.json", "sha256": "7cbe88c028affe01edd6defefae8f21562cb732fe06e4c5a175133ea45ae87f6" },
+            { "type": "browser", "status": "passed", "path": "projects/tianshu-ops/evidence/content-version-feedback-rebind-2026-08-21.json", "sha256": "158501eced392e63a6b48a83fbc5655c184886fadc1860dd9646987c5d8bcc51" }
+          ],
+          "visual": [
+            { "type": "visual", "status": "passed", "path": "projects/tianshu-ops/evidence/page-acceptance.visual.json", "sha256": "707d522411be907232a814fad12453abaf748a1d4acbd88a765f13eebb99afd6" }
+          ]
+        }
+      },
+      "acceptance": [
+        "Selecting inventory rows updates the visible count and clearing selection resets both checkboxes and the bar.",
+        "Batch freeze opens ConfirmDialog with the selected record count and does not mutate on cancel.",
+        "selectedCount zero renders no stale action bar and the 390px layout has no horizontal overflow.",
+        "Existing boolean rowSelection consumers, public imports, harness, package, and bundle budgets remain compatible."
+      ],
+      "createdAt": "2026-07-15"
+    },
+    {
+      "id": "fb-20260715-004",
+      "source": "qa",
+      "target": "component",
+      "status": "promoted",
+      "severity": "high",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-15",
+      "pageId": "platform-rbac-forbidden",
+      "generatedFile": "projects/tianshu-ops/generated/pages.tsx",
+      "title": "Page-level authorization failures need a clear 403 state",
+      "finding": "Tianshu defines a full-page 403 response for missing route permissions, while current generated pages only disable isolated actions and cannot explain why protected content was not loaded or how the user can recover.",
+      "evidence": [
+        "The Tianshu platform brief explicitly requires both disabled permission actions and a 403 placeholder page.",
+        "The RBAC route contains role, user, and permission data that must stay hidden when platform:rbac:read is absent.",
+        "Empty data, API errors, and route authorization have different user meaning and need separate page semantics."
+      ],
+      "proposedChange": "Promote a lightweight ForbiddenState with a fixed visual 403 cue, accessible title and description, and a constrained recovery action slot; add a real RBAC forbidden page that never renders protected data.",
+      "promotion": {
+        "destination": "components.manifest.json",
+        "action": "update-component",
+        "requiresReview": true
+      },
+      "promotionEvidence": {
+        "evidencePolicy": "strict-v1",
+        "componentPlan": "Add ForbiddenState only; keep list empty states and button-level permission explanations separate.",
+        "plannedFiles": [
+          "src/components.tsx",
+          "src/index.ts",
+          "src/styles.css",
+          "components.manifest.json",
+          "examples/feedback-states.tsx",
+          "recipes/permission-state.md",
+          "figma/component-map.json",
+          "figma/variants-map.json",
+          "scripts/check-dom-contract.mjs",
+          "harness/scenarios/build-tianshu-platform-rbac-forbidden.json"
+        ],
+        "patchPlan": [
+          "Add a page-level ForbiddenState with default recovery copy and no protected-data slot.",
+          "Export ForbiddenState and ForbiddenStateProps from the public barrel.",
+          "Add responsive, token-based 403 typography and action layout.",
+          "Document page, local-action, read-only, and empty-state boundaries.",
+          "Show an accessible missing-permission page through public imports.",
+          "Record 403 versus local disabled-action guidance.",
+          "Sync the code-first component mapping.",
+          "Sync the single default permission-state variant.",
+          "Assert title linkage, decorative code, description, and action group.",
+          "Require a real Tianshu RBAC forbidden page that omits role and permission tables."
+        ],
+        "implementation": {
+          "files": [
+            { "path": "src/components.tsx", "sha256": "17d4120ca2700b3facf97fd25ca4902abce1851306b09db1b8fa0ad964a07a32" },
+            { "path": "src/index.ts", "sha256": "fac5a1de820db55a494ae5493e0d93191939d50843f914ab77ec0b1a4883d421" },
+            { "path": "src/styles.css", "sha256": "458bc445d38eb1d9d1e8626f582a7f0f113a04a8d4ccd3a10c383e805b5a4bbe" },
+            { "path": "components.manifest.json", "sha256": "f21bb46bf952f6ed6e4349c83cd13af4cf4cef9322b1f8067096914b987ef7bb" },
+            { "path": "examples/feedback-states.tsx", "sha256": "3ed7d81f052ab4e57e8fd80c0b1f9ee10a5d9e917825e55476021fbd7abfd385" },
+            { "path": "recipes/permission-state.md", "sha256": "0f7b38bf9135dfdd422132727832c2fc7e43df0509130e6b8454c7e0ebf57d4d" },
+            { "path": "figma/component-map.json", "sha256": "876b04e80dac7a07187f872a3637fe9484b57a5c8aa6e18e6b384c95caade7db" },
+            { "path": "figma/variants-map.json", "sha256": "9d79e8e8cd9b1167c950eaa940d2d6f890286d36fbe370947631da4fe96b7c99" },
+            { "path": "scripts/check-dom-contract.mjs", "sha256": "67b1d92faa2eb9c74aa0d40e3bca53bbe9b28ef6e97e9273083ffa661c2a5663" },
+            { "path": "harness/scenarios/build-tianshu-platform-rbac-forbidden.json", "sha256": "699b4e8019152d67acb4873d4dba1176c11531c860a21f1fefd5704fd374f8ad" }
+          ]
+        },
+        "regression": {
+          "commands": [
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-platform-rbac-forbidden.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-platform-rbac-forbidden.json", "sha256": "48f743649a2225c004df287d2409c366fd371449fa5f5a9f1dae7be1ccb1149a" }
+              ]
+            }
+          ]
+        },
+        "evidenceArtifacts": {
+          "harness": [
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-platform-rbac-forbidden.json", "sha256": "48f743649a2225c004df287d2409c366fd371449fa5f5a9f1dae7be1ccb1149a" }
+          ],
+          "browser": [
+            { "type": "browser", "status": "passed", "path": "output/playwright/foundation-audit-2026-07-19/browser-run.json", "sha256": "7cbe88c028affe01edd6defefae8f21562cb732fe06e4c5a175133ea45ae87f6" },
+            { "type": "browser", "status": "passed", "path": "projects/tianshu-ops/evidence/content-version-feedback-rebind-2026-08-21.json", "sha256": "158501eced392e63a6b48a83fbc5655c184886fadc1860dd9646987c5d8bcc51" }
+          ],
+          "visual": [
+            { "type": "visual", "status": "passed", "path": "projects/tianshu-ops/evidence/page-acceptance.visual.json", "sha256": "707d522411be907232a814fad12453abaf748a1d4acbd88a765f13eebb99afd6" }
+          ]
+        }
+      },
+      "acceptance": [
+        "The RBAC forbidden route names platform:rbac:read and renders no role, user, or permission table.",
+        "The 403 numeral is decorative while the heading and description provide the full accessible meaning.",
+        "Recovery actions let the user return or request access without exposing unauthorized operations.",
+        "DOM, harness, browser, package, and bundle validation stay green."
+      ],
+      "createdAt": "2026-07-15"
+    },
+    {
+      "id": "fb-20260715-006",
+      "source": "qa",
+      "target": "component",
+      "status": "promoted",
+      "severity": "high",
+      "reviewer": "kit-maintainer",
+      "reviewedAt": "2026-07-15",
+      "pageId": "production-rma",
+      "generatedFile": "projects/tianshu-ops/generated/deferred-pages.tsx",
+      "title": "Deferred business flows need one public interaction foundation",
+      "finding": "RMA, advertising, reconciliation, and content scheduling repeat side editing, date ranges, choice groups, switches, file selection, and hierarchical selection that the public kit could not express.",
+      "evidence": ["All four deferred pages need Drawer while preserving list context.", "Scheduling and reconciliation use date or date-range values in multiple flows.", "Uploads must remain local until business code starts a request, and organization or region choices need a hierarchy-aware control."],
+      "proposedChange": "Promote Drawer, DatePicker, RangePicker, RadioGroup, CheckboxGroup, Switch, Upload, and TreeSelect with domain-only props, provider-contained portals, accessible semantics, and no implicit network mutation.",
+      "promotion": { "destination": "components.manifest.json", "action": "update-component", "requiresReview": true },
+      "promotionEvidence": {
+        "evidencePolicy": "strict-v1",
+        "componentPlan": "Add eight focused controls; use native date inputs to preserve the bundle gate, and keep InputNumber, Cascader, Transfer, dynamic lists, search, and password fields in the feedback queue until repeated product evidence appears.",
+        "migrationNote": "The promoted kit controls remain owned by the independent kit-consumer canary. TianShu moved to library-native on 2026-07-19 and now exercises the equivalent Ant Design 6.5.0 controls directly.",
+        "plannedFiles": ["src/interaction.tsx", "src/interaction.css", "src/index.ts", "components.manifest.json", "examples/interaction-foundation.tsx", "recipes/interaction-controls.md", "figma/component-map.json", "figma/variants-map.json", "harness/tests/interaction-components.test.mjs", "projects/tianshu-ops/generated/deferred-pages.tsx"],
+        "patchPlan": ["Add the eight domain-focused interaction APIs.", "Keep date values as browser-native strings without a date adapter runtime.", "Contain Drawer and TreeSelect portals inside the provider root.", "Keep Upload request-free and report rejection reasons.", "Use the controls in RMA, advertising, reconciliation, and content flows.", "Sync manifests, mappings, tests, package checks, and browser coverage."],
+        "implementation": {
+          "files": [
+            { "path": "src/interaction.tsx", "sha256": "996f6658384cde7555bd2171b4ef450abff5c1d64882953c24f5cf26f54add4c" },
+            { "path": "src/interaction.css", "sha256": "73a187f87dd12f7e85ee20ecd656dfa53f3e3628ee97dc8c2bb7d6ac89ca33a7" },
+            { "path": "src/index.ts", "sha256": "fac5a1de820db55a494ae5493e0d93191939d50843f914ab77ec0b1a4883d421" },
+            { "path": "components.manifest.json", "sha256": "f21bb46bf952f6ed6e4349c83cd13af4cf4cef9322b1f8067096914b987ef7bb" },
+            { "path": "examples/interaction-foundation.tsx", "sha256": "8dfee98cf5646d6df78ea7b175f825dd5161cfdce124ceecbf4d55e689e295b1" },
+            { "path": "recipes/interaction-controls.md", "sha256": "8aef18de0412d972b6e20c0b52bf14944a4548d609b4280b214b464f910d5f01" },
+            { "path": "figma/component-map.json", "sha256": "876b04e80dac7a07187f872a3637fe9484b57a5c8aa6e18e6b384c95caade7db" },
+            { "path": "figma/variants-map.json", "sha256": "9d79e8e8cd9b1167c950eaa940d2d6f890286d36fbe370947631da4fe96b7c99" },
+            { "path": "harness/tests/interaction-components.test.mjs", "sha256": "c01f8201855c8c8a4af0e88b9946d7038b2a8761e9719478a773aa33ceec173e" },
+            { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "d511c4c4726b07f1daa073702ad8e9fbfade3e30e6ba3b2288a6805e3a589001" },
+            { "path": "projects/tianshu-ops/evidence/antd-api-migration-2026-07-22.json", "sha256": "3e440f406bce40452385b6e2c0070f33e37339ce99dcc797ee48436ff679233d" },
+            { "path": "projects/tianshu-ops/evidence/feedback-revision-rebind-2026-07-24.json", "sha256": "f0fe9261a1f85e4455ecc89a3d89d927da23f83303a028ee03707a1491ccb40a" },
+            { "path": "projects/tianshu-ops/evidence/antd-rule-fixes-feedback-rebind-2026-07-24.json", "sha256": "5c648d96351a93075eab3dad2e64528a07f297b1b9ee02c0e62cb07b47fecd69" },
+            { "path": "projects/tianshu-ops/evidence/independent-visual-closeout-feedback-rebind-2026-07-26.json", "sha256": "c8df5113b4e891f4176e33d4571d123b60d4d8d2f71e3db303948bc43a2b351e" }
+          ]
+        },
+        "postPromotionRevision": {
+          "recordedAt": "2026-07-22",
+          "reason": "Ant Design 6.5.0 API compatibility migration after the original promotion evidence was recorded.",
+          "previousImplementation": { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "da5c51cf10dead49314b89ed3627bff21c11056b95dd3f4b7af31044e67f4848" },
+          "currentImplementation": { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "26fd9829f24f8a1ba2167add9b177843ede402e0918996d3155b6f25d153e32c" },
+          "evidence": { "path": "projects/tianshu-ops/evidence/antd-api-migration-2026-07-22.json", "sha256": "3e440f406bce40452385b6e2c0070f33e37339ce99dcc797ee48436ff679233d" },
+          "historicalEvidenceScope": "The 2026-07-19 Browser and visual artifacts remain evidence for the previous implementation hash; current typecheck and four current-source harness reports cover this API-only revision.",
+          "laterRevisions": [
+            {
+              "recordedAt": "2026-07-24",
+              "reason": "Commit 963db6a added responsive pagination without changing the promoted interaction controls or their handlers.",
+              "previousImplementations": [
+                { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "26fd9829f24f8a1ba2167add9b177843ede402e0918996d3155b6f25d153e32c" }
+              ],
+              "currentImplementations": [
+                { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "6c75ac76bc07ac27b9f618881835ee08a6c066fb425f0e768cea00099fe51213" }
+              ],
+              "evidence": { "path": "projects/tianshu-ops/evidence/feedback-revision-rebind-2026-07-24.json", "sha256": "f0fe9261a1f85e4455ecc89a3d89d927da23f83303a028ee03707a1491ccb40a" },
+              "historicalEvidenceScope": "Historical Browser and visual artifacts keep their original source hashes; current typecheck and four current-source harness reports cover this pagination-only revision."
+            },
+            {
+              "recordedAt": "2026-07-24",
+              "reason": "The approved rule-driven repair added Ant Design Form lifecycle and the Drawer size matrix to the deferred business pages.",
+              "previousImplementations": [
+                { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "6c75ac76bc07ac27b9f618881835ee08a6c066fb425f0e768cea00099fe51213" }
+              ],
+              "currentImplementations": [
+                { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "e561cdbf04396f55a811a0e5de2e11ae7b80b2844898b5b9c409620f8e646f9c" }
+              ],
+              "evidence": { "path": "projects/tianshu-ops/evidence/antd-rule-fixes-feedback-rebind-2026-07-24.json", "sha256": "5c648d96351a93075eab3dad2e64528a07f297b1b9ee02c0e62cb07b47fecd69" },
+              "historicalEvidenceScope": "Historical Browser and visual artifacts keep their original source hashes; current-source harness plus the new dual-theme Browser report cover the Form and Drawer revision."
+            },
+            {
+              "recordedAt": "2026-07-26",
+              "reason": "The accepted independent visual finding moved the RMA attachment counter into its Upload form item and aligned the rollout notice with the established Alert treatment.",
+              "previousImplementations": [
+                { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "e561cdbf04396f55a811a0e5de2e11ae7b80b2844898b5b9c409620f8e646f9c" }
+              ],
+              "currentImplementations": [
+                { "path": "projects/tianshu-ops/generated/deferred-pages.tsx", "sha256": "d511c4c4726b07f1daa073702ad8e9fbfade3e30e6ba3b2288a6805e3a589001" }
+              ],
+              "evidence": { "path": "projects/tianshu-ops/evidence/independent-visual-closeout-feedback-rebind-2026-07-26.json", "sha256": "c8df5113b4e891f4176e33d4571d123b60d4d8d2f71e3db303948bc43a2b351e" },
+              "historicalEvidenceScope": "Historical Browser, visual, and frozen acceptance artifacts keep their original source hashes; the current RMA harness and new vivid/calm Drawer screenshots cover this focused revision."
+            }
+          ]
+        },
+        "regression": {
+          "commands": [
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-production-rma.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-production-rma.json", "sha256": "5f4a91ba73cbdb8826c33fd5f1b3225d49d6a07caf5304fb40b7ae81e03913f7" }
+              ]
+            },
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-ad-campaigns.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-ad-campaigns.json", "sha256": "871e3494d86ab105243c499a86d620be3b75ba8591c9f5422882d467c4cd1710" }
+              ]
+            },
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-ad-reconciliation.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-ad-reconciliation.json", "sha256": "0ce6513b1c253ceeac21da593049d2828d30c57374f84a0a31dd6d7185fc96bf" }
+              ]
+            },
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-content-schedule.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-content-schedule.json", "sha256": "631f6edbfab782e18f381493741747f8b11a1d7ba04449d28edacee8bc722cbc" }
+              ]
+            }
+          ]
+        },
+        "evidenceArtifacts": {
+          "harness": [
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-production-rma.json", "sha256": "5f4a91ba73cbdb8826c33fd5f1b3225d49d6a07caf5304fb40b7ae81e03913f7" },
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-ad-campaigns.json", "sha256": "871e3494d86ab105243c499a86d620be3b75ba8591c9f5422882d467c4cd1710" },
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-ad-reconciliation.json", "sha256": "0ce6513b1c253ceeac21da593049d2828d30c57374f84a0a31dd6d7185fc96bf" },
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-content-schedule.json", "sha256": "631f6edbfab782e18f381493741747f8b11a1d7ba04449d28edacee8bc722cbc" }
+          ],
+          "browser": [
+            { "type": "browser", "status": "passed", "path": "output/playwright/foundation-audit-2026-07-19/browser-run.json", "sha256": "7cbe88c028affe01edd6defefae8f21562cb732fe06e4c5a175133ea45ae87f6" },
+            { "type": "browser", "status": "passed", "path": "projects/tianshu-ops/evidence/antd-rule-fixes-feedback-rebind-2026-07-24.json", "sha256": "5c648d96351a93075eab3dad2e64528a07f297b1b9ee02c0e62cb07b47fecd69" },
+            { "type": "browser", "status": "passed", "path": "projects/tianshu-ops/evidence/content-version-feedback-rebind-2026-08-21.json", "sha256": "158501eced392e63a6b48a83fbc5655c184886fadc1860dd9646987c5d8bcc51" }
+          ],
+          "visual": [
+            { "type": "visual", "status": "passed", "path": "projects/tianshu-ops/evidence/page-acceptance.visual.json", "sha256": "707d522411be907232a814fad12453abaf748a1d4acbd88a765f13eebb99afd6" }
+          ]
+        }
+      },
+      "acceptance": ["The kit-consumer canary keeps the promoted public interaction APIs importable from @radesign/kit.", "All four TianShu deferred business pages use the contract-selected Ant Design controls directly.", "Drawer and Modal preserve focus and block accidental risky mutation.", "Upload never starts an implicit request, and full validation remains green."],
+      "createdAt": "2026-07-15"
+    },
+    {
+      "id": "fb-20260717-001",
+      "source": "qa",
+      "target": "page",
+      "status": "promoted",
+      "severity": "high",
+      "reviewer": "codex-main",
+      "reviewedAt": "2026-07-17",
+      "pageId": "production-firmware",
+      "generatedFile": "projects/tianshu-ops/generated/firmware-page.tsx",
+      "title": "Firmware danger confirmation must restore the exact row trigger",
+      "finding": "The independent Image2 review found that rollback and stop actions reused shared focus refs across multiple rows, so cancelling ConfirmDialog could return focus to a different version action. The same review found wrapped desktop filter actions and a vertically stretched SideNav.",
+      "evidence": [
+        "The final Browser interaction opened rollback for v2.3.2-TJ-M1, cancelled it, and observed focus on the exact originating row button.",
+        "The final Playwright interaction repeated the same target-specific rollback flow and reported focusRestoredToExactTrigger=true with zero console errors and warnings.",
+        "generator/fixtures/tianshu-firmware/image2/browser-evidence.json binds the final page hash, screenshots, interaction assertions, and console result.",
+        "generator/fixtures/tianshu-firmware/image2/visual-diff.evidence.json preserves the failed raw visual verdict and the separate semantic decision."
+      ],
+      "proposedChange": "Record exact row-trigger focus restoration in the page plan, register every dangerous row action and resolve its exact button when opening ConfirmDialog, and keep desktop filters and navigation tracks aligned to the approved Release Ledger layout.",
+      "promotion": {
+        "destination": "projects/tianshu-ops/pages.json",
+        "action": "update-page-plan",
+        "requiresReview": true
+      },
+      "promotionEvidence": {
+        "evidencePolicy": "strict-v1",
+        "flowImpact": "Firmware rollback and stop sit between controlled release state and downstream flashing; focus must return to the exact version action so keyboard users retain row context after cancelling a risky operation.",
+        "plannedFiles": [
+          "projects/tianshu-ops/pages.json",
+          "projects/tianshu-ops/generated/firmware-page.tsx",
+          "projects/tianshu-ops/generated/firmware-styles.css"
+        ],
+        "patchPlan": [
+          "Tighten the production-firmware success criteria to require exact row-trigger focus restoration and one-row desktop filtering.",
+          "Register each dangerous row action and pass its exact button element to ConfirmDialog focusFallbackRef.",
+          "Keep four desktop filters and actions on one row and prevent SideNav grid tracks from stretching."
+        ],
+        "implementation": {
+          "files": [
+            { "path": "projects/tianshu-ops/pages.json", "sha256": "49aa0b6d0ea5eebf3fd2c68a2f7f7040b84070490c4e69dfdc30102afa0c9fbd" },
+            { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "f3300de9cd5a6db56156c60c44bd093d07a5ce20325ef8085ab3d71e510fa257" },
+            { "path": "projects/tianshu-ops/generated/firmware-styles.css", "sha256": "7871a43588e712151d10271904fb06c0fd4d163a3644fbfa44efd8c7ac2a8161" },
+            { "path": "projects/tianshu-ops/evidence/antd-api-migration-2026-07-22.json", "sha256": "3e440f406bce40452385b6e2c0070f33e37339ce99dcc797ee48436ff679233d" },
+            { "path": "projects/tianshu-ops/evidence/feedback-revision-rebind-2026-07-24.json", "sha256": "f0fe9261a1f85e4455ecc89a3d89d927da23f83303a028ee03707a1491ccb40a" },
+            { "path": "projects/tianshu-ops/evidence/antd-rule-fixes-feedback-rebind-2026-07-24.json", "sha256": "5c648d96351a93075eab3dad2e64528a07f297b1b9ee02c0e62cb07b47fecd69" }
+          ]
+        },
+        "postPromotionRevision": {
+          "recordedAt": "2026-07-22",
+          "reason": "Ant Design 6.5.0 controlled Upload lifecycle migration after the original focus-restoration evidence was recorded.",
+          "previousImplementation": { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "8d8c02e09962ea36a501777b12828e510cc9ea1b17524af2df97b744c93c639e" },
+          "currentImplementation": { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "ecd855bb4857fb49f64969ff1d894caccbbf9545d16a8e99eccd2349d2815b4f" },
+          "evidence": { "path": "projects/tianshu-ops/evidence/antd-api-migration-2026-07-22.json", "sha256": "3e440f406bce40452385b6e2c0070f33e37339ce99dcc797ee48436ff679233d" },
+          "historicalEvidenceScope": "The exact-trigger Browser and visual artifacts remain evidence for the previous implementation hash; the focus-target code is unchanged, and current typecheck plus the current-source firmware harness cover this Upload-only revision.",
+          "laterRevisions": [
+            {
+              "recordedAt": "2026-07-24",
+              "reason": "Commit 963db6a normalized shared spacing and pagination after the API migration evidence was recorded.",
+              "previousImplementations": [
+                { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "ecd855bb4857fb49f64969ff1d894caccbbf9545d16a8e99eccd2349d2815b4f" },
+                { "path": "projects/tianshu-ops/generated/firmware-styles.css", "sha256": "313d5e7ff3122e985ce29c5d96922ae0639ccdb7aaa6f063deb545d643656ba6" }
+              ],
+              "currentImplementations": [
+                { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "15c87e3034c7dd13ca93416572a2f8846c28e0cb6a714e61c05de7f7f1944f77" },
+                { "path": "projects/tianshu-ops/generated/firmware-styles.css", "sha256": "7871a43588e712151d10271904fb06c0fd4d163a3644fbfa44efd8c7ac2a8161" }
+              ],
+              "evidence": { "path": "projects/tianshu-ops/evidence/feedback-revision-rebind-2026-07-24.json", "sha256": "f0fe9261a1f85e4455ecc89a3d89d927da23f83303a028ee03707a1491ccb40a" },
+              "historicalEvidenceScope": "Historical visual artifacts keep their original source hashes; the current-source firmware harness and exact-trigger Browser interaction cover this layout and pagination revision."
+            },
+            {
+              "recordedAt": "2026-07-24",
+              "reason": "The approved rule-driven repair added table, Form, Drawer, and row-action density contracts while preserving the direct rollback trigger.",
+              "previousImplementations": [
+                { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "15c87e3034c7dd13ca93416572a2f8846c28e0cb6a714e61c05de7f7f1944f77" },
+                { "path": "projects/tianshu-ops/generated/firmware-styles.css", "sha256": "7871a43588e712151d10271904fb06c0fd4d163a3644fbfa44efd8c7ac2a8161" }
+              ],
+              "currentImplementations": [
+                { "path": "projects/tianshu-ops/generated/firmware-page.tsx", "sha256": "f3300de9cd5a6db56156c60c44bd093d07a5ce20325ef8085ab3d71e510fa257" },
+                { "path": "projects/tianshu-ops/generated/firmware-styles.css", "sha256": "7871a43588e712151d10271904fb06c0fd4d163a3644fbfa44efd8c7ac2a8161" }
+              ],
+              "evidence": { "path": "projects/tianshu-ops/evidence/antd-rule-fixes-feedback-rebind-2026-07-24.json", "sha256": "5c648d96351a93075eab3dad2e64528a07f297b1b9ee02c0e62cb07b47fecd69" },
+              "historicalEvidenceScope": "Historical Browser and visual artifacts keep their original source hashes; current-source harness and the dual-theme exact-row rollback interaction cover this revision."
+            }
+          ]
+        },
+        "regression": {
+          "commands": [
+            {
+              "command": "npm run typecheck",
+              "status": "passed"
+            },
+            {
+              "command": "node harness/runner/run-scenario.mjs harness/scenarios/build-tianshu-production-firmware.json",
+              "status": "passed",
+              "evidence": [
+                { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-production-firmware.json", "sha256": "69265c30185bba0c8e972ff54c28f5fcf37ce7cb0cf23ce40f30726d0dd76d08" }
+              ]
+            }
+          ]
+        },
+        "evidenceArtifacts": {
+          "harness": [
+            { "type": "harness", "status": "passed", "path": "harness/reports/build-tianshu-production-firmware.json", "sha256": "69265c30185bba0c8e972ff54c28f5fcf37ce7cb0cf23ce40f30726d0dd76d08" }
+          ],
+          "browser": [
+            { "type": "browser", "status": "passed", "path": "generator/fixtures/tianshu-firmware/image2/browser-evidence.json", "sha256": "a923a4288ebcef248a31a85824929aa4c38f99df63bb9c36d304dccf846bba21" },
+            { "type": "browser", "status": "passed", "path": "output/playwright/foundation-audit-2026-07-19/browser-run.json", "sha256": "7cbe88c028affe01edd6defefae8f21562cb732fe06e4c5a175133ea45ae87f6" },
+            { "type": "browser", "status": "passed", "path": "projects/tianshu-ops/evidence/feedback-revision-rebind-2026-07-24.json", "sha256": "f0fe9261a1f85e4455ecc89a3d89d927da23f83303a028ee03707a1491ccb40a" },
+            { "type": "browser", "status": "passed", "path": "projects/tianshu-ops/evidence/antd-rule-fixes-feedback-rebind-2026-07-24.json", "sha256": "5c648d96351a93075eab3dad2e64528a07f297b1b9ee02c0e62cb07b47fecd69" }
+          ],
+          "visual": [
+            { "type": "visual", "status": "incomplete", "reason": "The real full-page and firmware-ledger diff executed and failed the immutable visual gate; the semantic exception is recorded separately." }
+          ]
+        }
+      },
+      "acceptance": [
+        "Cancelling rollback for v2.3.2-TJ-M1 restores focus to that row's rollback button.",
+        "Browser and Playwright both report the target-specific confirmation flow passed with zero console errors and warnings.",
+        "The 1440px filter card keeps four fields plus query and reset actions on one row.",
+        "The raw visual diff remains failed and fixed thresholds remain unchanged."
+      ],
+      "createdAt": "2026-07-17"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "evidenceId": "tianshu-firmware-browser-playwright-image2",
+  "requestId": "tianshu-firmware-exploratory",
+  "pageEntry": {
+    "path": "projects/tianshu-ops/generated/firmware-page.tsx",
+    "sha256": "fb0b1944fa958556e852b0bb943e0c026cfd69d8e6b2897f9a1d80081dc213e7"
+  },
+  "referenceImage": {
+    "path": "generator/fixtures/tianshu-firmware/image2/reference-image.png",
+    "sha256": "9b91bc7ae84ee94b370d69b4fa6693f280d82ea67ebd062fee30d24c455e5deb"
+  },
+  "url": "http://127.0.0.1:5197/?render=tianshu-ops%3Aproduction-firmware",
+  "viewport": {
+    "requestedWidth": 1440,
+    "requestedHeight": 1100,
+    "deviceScaleFactor": 1
+  },
+  "tools": [
+    "Codex In-app Browser",
+    "@playwright/cli"
+  ],
+  "screenshots": [
+    {
+      "kind": "browser-full-page",
+      "format": "png",
+      "path": "generator/fixtures/tianshu-firmware/image2/browser-image2-full-page.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "c8f8484e12654d25e3b78c7ec67592a09113f89638533e83ebfb2a18265f4b5e"
+    },
+    {
+      "kind": "playwright-full-page",
+      "format": "png",
+      "path": "output/playwright/tianshu-firmware-image2-full.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "7a854782ce146eab6b56d48ab22d720b198600c62bddcfea43216a972d2eb4f4"
+    },
+    {
+      "kind": "playwright-critical-region",
+      "name": "firmware-ledger",
+      "bounds": {
+        "x": 260,
+        "y": 480,
+        "width": 1150,
+        "height": 495
+      },
+      "format": "png",
+      "path": "output/playwright/tianshu-firmware-image2-critical-region.png",
+      "width": 1150,
+      "height": 495,
+      "sha256": "5ffa995c754582a7899bfa4c61a2ef618386a882cce2d3af592b8dc3028e472d"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "browser-canary-rollback-cancel",
+      "tool": "Codex In-app Browser",
+      "result": "passed",
+      "assertions": {
+        "dialogTitle": "确认回滚固件版本？",
+        "targetVersion": "v2.3.2-TJ-M1",
+        "dialogClosed": true,
+        "focusRestoredToExactTrigger": true,
+        "noticeVisible": "已取消 v2.3.2-TJ-M1 的回滚确认。"
+      }
+    },
+    {
+      "id": "playwright-canary-rollback-cancel",
+      "tool": "@playwright/cli",
+      "result": "passed",
+      "assertions": {
+        "targetVersion": "v2.3.2-TJ-M1",
+        "descriptionVisible": true,
+        "dialogClosed": true,
+        "focusRestoredToExactTrigger": true,
+        "baselineRestoredAfterReload": true
+      }
+    }
+  ],
+  "console": {
+    "browserErrors": 0,
+    "browserWarnings": 0,
+    "playwrightErrors": 0,
+    "playwrightWarnings": 0
+  },
+  "notes": [
+    "Both tools used the same unique local URL and exact 1440x1100 viewport.",
+    "The interaction was completed before a reload restored the default visual comparison state.",
+    "The Browser-native JPEG source is retained beside the lossless PNG conversion for provenance."
+  ]
+}

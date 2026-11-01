@@ -1,0 +1,358 @@
+{
+  "version": "1.0.0",
+  "component": "Alert",
+  "queryComponent": "Alert",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Alert",
+        "nameZh": "警告提示",
+        "description": "警告提示，展现需要关注的信息。",
+        "props": [
+          {
+            "name": "action",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "afterClose",
+            "type": "() => void",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "banner",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "variant",
+            "type": "`outlined` | `filled`",
+            "default": "`outlined`",
+            "since": "6.4.0"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "closable",
+            "type": "boolean | [ClosableType](#closabletype) & React.AriaAttributes",
+            "default": "`false`",
+            "since": ""
+          },
+          {
+            "name": "closeIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "×"
+          },
+          {
+            "name": "description",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "errorIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "×"
+          },
+          {
+            "name": "icon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "infoIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "×"
+          },
+          {
+            "name": "message",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onClose",
+            "type": "(e: MouseEvent) => void",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "closeText",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "showIcon",
+            "type": "boolean",
+            "default": "false, in `banner` mode default is true",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "successIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "×"
+          },
+          {
+            "name": "title",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "default": "`info`, in `banner` mode default is `warning`",
+            "since": ""
+          },
+          {
+            "name": "warningIcon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "×"
+          }
+        ],
+        "subComponentProps": {
+          "Alert.ClosableType": [
+            {
+              "name": "afterClose",
+              "type": "function",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "closeIcon",
+              "type": "ReactNode",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "onClose",
+              "type": "(e: MouseEvent) => void",
+              "default": "-",
+              "since": "-"
+            }
+          ],
+          "Alert.ErrorBoundary": [
+            {
+              "name": "description",
+              "type": "ReactNode",
+              "default": "{{ error stack }}",
+              "since": ""
+            },
+            {
+              "name": "message",
+              "type": "ReactNode",
+              "default": "{{ error }}",
+              "since": ""
+            },
+            {
+              "name": "title",
+              "type": "ReactNode",
+              "default": "{{ error }}",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Alert",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 当某个页面需要向用户显示警告的信息时。\n- 非浮层的静态展现形式，始终展现，不会自动消失，用户可以点击关闭。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/style.tsx\">四种样式</code>\n<code src=\"./demo/filled.tsx\">无边框</code>\n<code src=\"./demo/closable.tsx\">可关闭的警告提示</code>\n<code src=\"./demo/description.tsx\">含有辅助性文字介绍</code>\n<code src=\"./demo/icon.tsx\">图标</code>\n<code src=\"./demo/banner.tsx\" iframe=\"250\">顶部公告</code>\n<code src=\"./demo/loop-banner.tsx\">轮播的公告</code>\n<code src=\"./demo/smooth-closed.tsx\">平滑地卸载</code>\n<code src=\"./demo/error-boundary.tsx\">React 错误处理</code>\n<code src=\"./demo/custom-icon.tsx\" debug>自定义图标</code>\n<code src=\"./demo/action.tsx\">操作</code>\n<code src=\"./demo/custom-title-alignment.tsx\">自定义标题对齐</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| action | 自定义操作项 | ReactNode | - |  | × |\n| ~~afterClose~~ | 关闭动画结束后触发的回调函数，请使用 `closable.afterClose` 替换 | () => void | - |  | × |\n| banner | 是否用作顶部公告 | boolean | false |  | × |\n| variant | 警告提示样式变体 | `outlined` \\| `filled` | `outlined` | 6.4.0 | 6.4.0 |\n| classNames | 自定义组件内部各语义化结构的类名。支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| closable | 可关闭配置 | boolean \\| [ClosableType](#closabletype) & React.AriaAttributes | `false` |  | 5.15.0 |\n| closeIcon | （仅支持全局配置）自定义关闭图标 | ReactNode | - | × | 5.14.0 |\n| description | 警告提示的辅助性文字介绍 | ReactNode | - |  | × |\n| errorIcon | （仅支持全局配置）自定义错误图标 | ReactNode | - | × | 6.2.0 |\n| icon | 自定义图标，`showIcon` 为 true 时有效 | ReactNode | - |  | × |\n| infoIcon | （仅支持全局配置）自定义信息图标 | ReactNode | - | × | 6.2.0 |\n| ~~message~~ | 警告提示内容，请使用 `title` 替换 | ReactNode | - |  | × |\n| ~~onClose~~ | 关闭时触发的回调函数，请使用 `closable.onClose` 替换 | (e: MouseEvent) => void | - |  | × |\n| ~~closeIcon~~ | 自定义关闭图标，请使用 `closable.closeIcon` 替代 | ReactNode | - | - | × |\n| ~~closeText~~ | 自定义关闭文案，请使用 `closable.closeIcon` 替代 | ReactNode | - | - | × |\n| showIcon | 是否显示辅助图标 | boolean | false，`banner` 模式下默认值为 true |  | × |\n| styles | 自定义组件内部各语义化结构的内联样式。支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| successIcon | （仅支持全局配置）自定义成功图标 | ReactNode | - | × | 6.2.0 |\n| title | 警告提示内容 | ReactNode | - |  | × |\n| type | 指定警告提示的样式，有四种选择 `success`、`info`、`warning`、`error` | string | `info`，`banner` 模式下默认值为 `warning` |  | × |\n| warningIcon | （仅支持全局配置）自定义警告图标 | ReactNode | - | × | 6.2.0 |\n\n### ClosableType\n\n| 参数       | 说明                         | 类型                    | 默认值 | 版本 |\n| ---------- | ---------------------------- | ----------------------- | ------ | ---- |\n| afterClose | 关闭动画结束后触发的回调函数 | function                | -      | -    |\n| closeIcon  | 自定义关闭图标               | ReactNode               | -      | -    |\n| onClose    | 关闭时触发的回调函数         | (e: MouseEvent) => void | -      | -    |\n\n### Alert.ErrorBoundary\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| description | 自定义错误内容，如果未指定会展示报错堆栈 | ReactNode | {{ error stack }} |  |\n| ~~message~~ | 自定义错误标题，如果未指定会展示原生报错信息，请使用 `title` 替换 | ReactNode | {{ error }} |  |\n| title | 自定义错误标题，如果未指定会展示原生报错信息 | ReactNode | {{ error }} |  |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## Design Token\n\n<ComponentTokenTable component=\"Alert\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Alert",
+        "demos": [
+          {
+            "name": "action",
+            "title": "Custom action",
+            "description": "Custom action."
+          },
+          {
+            "name": "banner",
+            "title": "Banner",
+            "description": "Display Alert as a banner at top of page."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "The simplest usage for short messages."
+          },
+          {
+            "name": "closable",
+            "title": "Closable",
+            "description": "To show close button."
+          },
+          {
+            "name": "custom-title-alignment",
+            "title": "Custom title alignment",
+            "description": "When `description` is not set, Alert vertically centers the icon, content, action, and close button as a group. Ant Design does not switch this default layout to `flex-start` with token-derived offsets because customized `styles` may change font size, line height, or action size, making those offsets no longer match the actual rendered styles. When a wrapping title should align those elements with the first line, adjust them with semantic `styles`."
+          },
+          {
+            "name": "description",
+            "title": "Description",
+            "description": "Additional description for alert message."
+          },
+          {
+            "name": "error-boundary",
+            "title": "ErrorBoundary",
+            "description": "ErrorBoundary Component for making error handling easier in [React](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)."
+          },
+          {
+            "name": "filled",
+            "title": "Filled",
+            "description": "Hide the border with `variant=\"filled\"`."
+          },
+          {
+            "name": "icon",
+            "title": "Icon",
+            "description": "A relevant icon will make information clearer and more friendly."
+          },
+          {
+            "name": "loop-banner",
+            "title": "Loop Banner",
+            "description": "Show a loop banner by using with [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) or [react-fast-marquee](https://npmjs.com/package/react-fast-marquee)."
+          },
+          {
+            "name": "smooth-closed",
+            "title": "Smoothly Unmount",
+            "description": "Smoothly unmount Alert upon close."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Alert by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "style",
+            "title": "More types",
+            "description": "There are 4 types of Alert: `success`, `info`, `warning`, `error`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Alert",
+        "tokens": [
+          {
+            "name": "defaultPadding",
+            "type": "Padding<string | number> | undefined",
+            "default": "",
+            "description": "Default padding",
+            "descriptionZh": "默认内间距"
+          },
+          {
+            "name": "withDescriptionIconSize",
+            "type": "string | number",
+            "default": "",
+            "description": "Icon size with description",
+            "descriptionZh": "带有描述时的图标尺寸"
+          },
+          {
+            "name": "withDescriptionPadding",
+            "type": "Padding<string | number> | undefined",
+            "default": "",
+            "description": "Padding with description",
+            "descriptionZh": "带有描述的内间距"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Alert",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with border, background, padding, border-radius, and positioning styles for the alert container",
+            "descriptionZh": "根元素，包含边框、背景色、内边距、圆角、位置布局等警告提示框的基础样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element with color, line-height, and margin styles, supporting different status icon types",
+            "descriptionZh": "图标元素，包含图标的颜色、行高、外边距等样式，支持不同类型的状态图标"
+          },
+          {
+            "key": "section",
+            "description": "Content element with flex layout controlling content area typography and minimum width",
+            "descriptionZh": "内容元素，采用 flex 布局控制内容区域的排版和最小宽度"
+          },
+          {
+            "key": "title",
+            "description": "Title element with text color and font styling for the alert title",
+            "descriptionZh": "标题元素，包含标题文字的颜色、字体等样式"
+          },
+          {
+            "key": "description",
+            "description": "Description element with font-size and line-height styles for additional content",
+            "descriptionZh": "描述元素，包含描述文字的字体大小、行高等排版样式"
+          },
+          {
+            "key": "actions",
+            "description": "Actions element with layout and spacing styles for action buttons",
+            "descriptionZh": "操作组元素，包含操作按钮的布局和间距样式"
+          },
+          {
+            "key": "close",
+            "description": "Close button element with basic button styling",
+            "descriptionZh": "关闭按钮元素，包含按钮的基础样式"
+          }
+        ]
+      }
+    }
+  }
+}

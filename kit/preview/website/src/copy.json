@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "eyebrow": "为 AI 界面建立设计标准",
+    "titleLine1": "让 AI 做界面，",
+    "titleLine2": "也有你的标准。",
+    "description": "用统一的设计规则指导生成，再检查页面与交互，让设计意图落到实际界面。",
+    "primary": "看实际效果",
+    "secondary": "观看操作"
+  },
+  "principles": {
+    "title": "好界面，从清楚的规则开始。",
+    "description": "从页面布局到一个按钮，让 AI 有依据，让你能检查。",
+    "items": [
+      {
+        "problem": "AI产出质量低",
+        "title": "生成前，先定标准",
+        "description": "生成前读取项目合同，锁定组件库版本与样式变量，让页面生成有章可循。"
+      },
+      {
+        "problem": "界面杂乱",
+        "title": "从结构，建立秩序",
+        "description": "按整体布局、功能模块到细节状态逐步推进，让界面层次井然有序。"
+      },
+      {
+        "problem": "设计与实现不一致",
+        "title": "让设计，有据可查",
+        "description": "明确设计规范来源并绑定设计变量，让颜色与组件样式能清楚核对。"
+      },
+      {
+        "problem": "跨组件库改造不一致",
+        "title": "换底座，逐层对齐",
+        "description": "从视觉、控件、结构到交互逐层处理差异，平稳推进组件库替换。"
+      }
+    ]
+  },
+  "comparison": {
+    "titleLine1": "换组件库，",
+    "titleLine2": "设计标准不换。",
+    "description": "从视觉、控件、结构到交互，逐层处理底座差异，让改造有清楚的依据。",
+    "note": "当前展示适配方法，整页视觉一致性仍需验收。"
+  },
+  "workflow": {
+    "titleLine1": "从一个想法，",
+    "titleLine2": "到可以交付的页面。",
+    "description": "明确需求并锁定规则，分步生成，再用技术检查与视觉复核确认结果。",
+    "steps": [
+      {
+        "title": "明确需求",
+        "description": "梳理页面意图与核心流程，明确生成目标。"
+      },
+      {
+        "title": "锁定规则",
+        "description": "读取合同与设计包，固定底座与样式变量。"
+      },
+      {
+        "title": "生成页面",
+        "description": "依循规则，按布局、模块到细节分步生成。"
+      },
+      {
+        "title": "检查交付",
+        "description": "检查交互与视觉，导出前端工程和交接包。"
+      }
+    ]
+  },
+  "demo": {
+    "titleLine1": "从页面，",
+    "titleLine2": "看到组件细节。",
+    "description": "录屏真实演示本地原型，展示页面结构、全局颜色面板与按钮导航。",
+    "asideTitleLine1": "从页面到颜色，",
+    "asideTitleLine2": "再到一个按钮。",
+    "asideDescription": "这段实录依次进入页面画布、颜色面板和 Button 矩阵，查看设计变量与组件状态。"
+  },
+  "feel": {
+    "titleLine1": "一处调整，",
+    "titleLine2": "一组细节一起响应。",
+    "description": "在官网示意中调整圆角与按钮样式，即时体验规则联动带来的变化。"
+  },
+  "closing": {
+    "titleLine1": "让下一次生成，",
+    "titleLine2": "更接近你的设计。",
+    "description": "打开本地产品，查看真实页面与设计规则。",
+    "button": "打开本地产品"
+  },
+  "footer": "让设计标准，落在界面上。"
+}

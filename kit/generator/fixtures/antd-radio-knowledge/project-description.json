@@ -1,0 +1,62 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "antd-radio-knowledge-canary",
+  "contextType": "real-product",
+  "product": {
+    "name": "发布策略校验台",
+    "description": "用于验证 AntD Radio.Group 冻结知识覆盖的独立非 Holdout 生成器 fixture。"
+  },
+  "pages": [
+    {
+      "id": "radio-coverage-form",
+      "route": "/fixtures/radio-coverage",
+      "title": "发布策略校验",
+      "pattern": "form-page",
+      "intent": {
+        "goal": "选择一个发布模式并提交校验，确认正式 library-native 生成路径可以完整冻结 Radio 组件知识。",
+        "primaryAction": "提交校验",
+        "secondaryActions": [
+          "取消"
+        ],
+        "successCriteria": [
+          "发布模式使用 Radio.Group 且只能单选",
+          "生成知识包含 Radio 的冻结 CLI 引用",
+          "基础 AntD design pack 与历史 generator 产物保持字节不变"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FormSection",
+        "RadioGroup",
+        "Input",
+        "Button"
+      ],
+      "content": {
+        "fields": [
+          {
+            "name": "releaseMode",
+            "label": "发布模式",
+            "control": "radio",
+            "required": true,
+            "options": [
+              {
+                "label": "灰度发布",
+                "value": "canary"
+              },
+              {
+                "label": "全量发布",
+                "value": "full"
+              },
+              {
+                "label": "仅校验",
+                "value": "validate-only"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

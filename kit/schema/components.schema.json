@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.dev/schema/components.schema.json",
+  "title": "AI-readable Kit Components Manifest",
+  "description": "校验 kit/components.manifest.json 的结构。cli/validate-output 与回流入库前用它把关。",
+  "type": "object",
+  "required": ["version", "components"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "string" },
+    "importEntry": { "type": "string" },
+    "frameworks": {
+      "type": "object",
+      "description": "多框架路线声明。kit 读取层（rules/recipes/manifest/tokens）框架中立，实现层 per-framework 平行。",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status"],
+        "properties": {
+          "status": { "enum": ["active", "planned", "candidate"] },
+          "importEntry": { "type": ["string", "null"] },
+          "implementation": { "type": ["string", "null"] },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/component" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "component": {
+      "type": "object",
+      "description": "组件不能只写名字，要写成 AI 能决策的结构。",
+      "required": [
+        "name",
+        "category",
+        "layoutRole",
+        "importFrom",
+        "useWhen",
+        "avoidWhen",
+        "examples",
+        "doNot"
+      ],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[A-Z][A-Za-z0-9]+$" },
+        "category": {
+          "type": "string",
+          "enum": ["primitive", "composite", "layout", "data-display", "feedback", "navigation", "page-section"]
+        },
+        "layoutRole": { "type": "string", "description": "在页面里承担的角色，如 page-header / filter-region / data-region。" },
+        "importFrom": { "type": "string", "const": "@ai-readable/kit", "description": "只允许从 barrel 入口导入。" },
+        "useWhen": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "avoidWhen": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "requiredProps": { "type": "array", "items": { "type": "string" } },
+        "optionalProps": { "type": "array", "items": { "type": "string" } },
+        "slots": { "type": "array", "items": { "type": "string" } },
+        "variants": { "type": "array", "items": { "type": "string" } },
+        "relatedRules": { "type": "array", "items": { "type": "string" } },
+        "relatedRecipes": { "type": "array", "items": { "type": "string" } },
+        "examples": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "至少一个真实可运行示例。" },
+        "figma": {
+          "type": "object",
+          "required": ["component"],
+          "properties": {
+            "component": { "type": "string" },
+            "variants": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        },
+        "doNot": { "type": "array", "minItems": 1, "items": { "type": "string" }, "description": "禁令。AI 最容易犯的错写这里。" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

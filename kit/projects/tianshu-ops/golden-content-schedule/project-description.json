@@ -1,0 +1,258 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "tianshu-ops",
+  "contextType": "real-product",
+  "product": {
+    "name": "天枢内容排期与发布",
+    "description": "供内容运营人员管理自营内容素材、内容位、排期冲突与上下架审批的高密度生产页面。"
+  },
+  "pages": [
+    {
+      "id": "content-schedule",
+      "route": "/content/schedule",
+      "title": "内容排期与上下架",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "贯通内容素材、内容位、排期和上下架审批，保持自营内容入口独立并让冲突排期可快速识别与处理。",
+        "primaryAction": "新建排期",
+        "secondaryActions": ["上传内容素材"],
+        "successCriteria": [
+          "优先级使用中性层级，冲突与排期状态分别使用危险和生命周期语义",
+          "首屏同时呈现内容运营主链、常用筛选与排期列表",
+          "默认态的抽屉、下拉列表和日期面板全部关闭",
+          "新建排期、上传素材、筛选、冲突开关与详情入口均可操作"
+        ],
+        "prdAnchor": "内容运营链：内容素材 → 内容位 → 排期 → 审批与上下架",
+        "referenceImplementations": [
+          "quality/image2-calibration/batch-01/content-schedule/reference-image.png",
+          "projects/tianshu-ops/generated/deferred-pages.tsx#TianshuContentSchedulePage"
+        ],
+        "antiPatterns": [
+          "把全部筛选拆成多个松散卡片",
+          "默认展开抽屉、下拉选项或日期面板",
+          "让冲突状态与排期生命周期共用同一语义标签"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Input",
+        "Select",
+        "Stepper",
+        "Tabs",
+        "Card",
+        "FormSection"
+      ],
+      "content": {
+        "filters": [
+          {
+            "name": "scheduleId",
+            "label": "排期 ID",
+            "type": "text",
+            "dataKey": "id",
+            "placeholder": "SCH-YYYYMMDD-NNNNN"
+          },
+          {
+            "name": "slot",
+            "label": "内容位",
+            "type": "select",
+            "dataKey": "slot",
+            "placeholder": "全部内容位",
+            "options": [
+              { "label": "首页 Banner 位-顶部", "value": "首页 Banner 位-顶部" },
+              { "label": "首页 Banner 位-底部", "value": "首页 Banner 位-底部" },
+              { "label": "详情页顶部活动位", "value": "详情页顶部活动位" }
+            ]
+          },
+          {
+            "name": "status",
+            "label": "排期状态",
+            "type": "select",
+            "dataKey": "status",
+            "placeholder": "全部状态",
+            "options": [
+              { "label": "待生效", "value": "待生效" },
+              { "label": "冲突待解决", "value": "冲突待解决" },
+              { "label": "生效中", "value": "生效中" }
+            ]
+          },
+          {
+            "name": "priority",
+            "label": "优先级",
+            "type": "select",
+            "dataKey": "priority",
+            "placeholder": "全部优先级",
+            "options": [
+              { "label": "P1", "value": "P1" },
+              { "label": "P2", "value": "P2" },
+              { "label": "P3", "value": "P3" }
+            ]
+          },
+          {
+            "name": "period",
+            "label": "排期周期",
+            "type": "date-range",
+            "startKey": "startDate",
+            "endKey": "endDate"
+          },
+          {
+            "name": "conflictOnly",
+            "label": "仅查看冲突排期",
+            "type": "switch",
+            "dataKey": "conflict"
+          }
+        ],
+        "table": {
+          "title": "排期列表",
+          "rowKey": "id",
+          "columns": [
+            { "key": "id", "title": "排期 ID", "width": 132, "ellipsis": true },
+            { "key": "slot", "title": "内容位", "width": 112, "ellipsis": true },
+            { "key": "material", "title": "内容素材", "width": 128, "ellipsis": true, "secondaryKey": "materialStatus", "secondaryTone": "success" },
+            { "key": "period", "title": "排期周期", "width": 108 },
+            { "key": "timeRange", "title": "时段", "width": 78 },
+            { "key": "priority", "title": "优先级", "width": 58 },
+            { "key": "conflictLabel", "title": "冲突", "display": "tag", "width": 54, "tagColors": { "冲突": "red", "—": "default" } },
+            { "key": "status", "title": "排期状态", "display": "tag", "width": 88, "tagColors": { "待生效": "gold", "冲突待解决": "red", "生效中": "green" } },
+            { "key": "owner", "title": "创建人", "width": 60 },
+            { "key": "createdAt", "title": "创建时间", "width": 116 },
+            { "key": "operations", "title": "操作", "display": "actions", "width": 90, "actions": ["详情", "冲突调整"], "secondaryActionWhenKey": "conflict" }
+          ],
+          "rows": [
+            {
+              "id": "SCH-20260715-00081",
+              "slot": "首页 Banner 位-顶部",
+              "material": "暑期家庭伴主视觉",
+              "materialStatus": "审核通过",
+              "period": "2026-07-16 ~ 2026-07-31",
+              "startDate": "2026-07-16",
+              "endDate": "2026-07-31",
+              "timeRange": "全天",
+              "priority": "P1",
+              "conflict": false,
+              "conflictLabel": "—",
+              "status": "待生效",
+              "owner": "夏知遥",
+              "createdAt": "2026-07-15 10:04",
+              "operations": ""
+            },
+            {
+              "id": "SCH-20260715-00079",
+              "slot": "首页 Banner 位-底部",
+              "material": "会员日预热 Banner",
+              "materialStatus": "审核通过",
+              "period": "2026-07-18 ~ 2026-07-20",
+              "startDate": "2026-07-18",
+              "endDate": "2026-07-20",
+              "timeRange": "18:00 ~ 24:00",
+              "priority": "P2",
+              "conflict": true,
+              "conflictLabel": "冲突",
+              "status": "冲突待解决",
+              "owner": "苏澄",
+              "createdAt": "2026-07-15 09:21",
+              "operations": ""
+            },
+            {
+              "id": "SCH-20260714-00073",
+              "slot": "详情页顶部活动位",
+              "material": "亲子出行内容专题",
+              "materialStatus": "审核通过",
+              "period": "2026-07-14 ~ 2026-07-21",
+              "startDate": "2026-07-14",
+              "endDate": "2026-07-21",
+              "timeRange": "全天",
+              "priority": "P2",
+              "conflict": false,
+              "conflictLabel": "—",
+              "status": "生效中",
+              "owner": "夏知遥",
+              "createdAt": "2026-07-14 14:32",
+              "operations": ""
+            }
+          ]
+        },
+        "operationalList": {
+          "notice": "本页只管理自营内容素材与内容位；广告素材、广告位与商业化标识保持独立入口。",
+          "process": {
+            "title": "内容运营主链",
+            "description": "素材通过审核并绑定内容位后，才能进入排期与上下架审批。",
+            "current": 2,
+            "steps": ["内容素材", "内容位", "排期", "上下架"]
+          },
+          "defaultTab": "schedule",
+          "tabs": [
+            { "key": "schedule", "label": "排期管理" },
+            { "key": "approval", "label": "上下架审批", "emptyDescription": "当前没有待处理的上下架审批" }
+          ],
+          "primaryDrawer": {
+            "title": "新建排期",
+            "description": "选择已审核素材、内容位与生效周期；提交后先执行冲突检测。",
+            "submitLabel": "提交并检测冲突",
+            "fields": [
+              {
+                "name": "slot",
+                "label": "内容位",
+                "control": "select",
+                "required": true,
+                "options": [
+                  { "label": "首页 Banner 位-顶部", "value": "home-banner-top" },
+                  { "label": "首页 Banner 位-底部", "value": "home-banner-bottom" },
+                  { "label": "详情页顶部活动位", "value": "detail-top" }
+                ]
+              },
+              {
+                "name": "material",
+                "label": "内容素材",
+                "control": "select",
+                "required": true,
+                "options": [
+                  { "label": "暑期家庭伴主视觉", "value": "summer-family" },
+                  { "label": "会员日预热 Banner", "value": "member-day" },
+                  { "label": "亲子出行内容专题", "value": "family-trip" }
+                ]
+              },
+              {
+                "name": "priority",
+                "label": "优先级",
+                "control": "select",
+                "required": true,
+                "options": [
+                  { "label": "P1", "value": "P1" },
+                  { "label": "P2", "value": "P2" },
+                  { "label": "P3", "value": "P3" }
+                ]
+              },
+              {
+                "name": "period",
+                "label": "排期周期",
+                "control": "date-range",
+                "required": true
+              },
+              {
+                "name": "remark",
+                "label": "排期说明",
+                "control": "textarea",
+                "required": false,
+                "placeholder": "补充适用场景、时段或冲突处理说明"
+              }
+            ]
+          },
+          "secondaryDrawer": {
+            "title": "上传内容素材",
+            "description": "上传文件后将进入素材审核，审核通过后才可绑定排期。",
+            "accept": ".jpg,.jpeg,.png,.gif,.webp,.mp4,.mov,.zip",
+            "submitLabel": "上传为草稿"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+/* 固件与推送页（firmware / firmware-form）局部样式。
+   只引用 device-ops 面板变量与 antd 语义 token，不硬编码颜色。 */
+
+/* —— 页面级页签：Tabs 直接放在标题下方，不套卡片（2026-09-29 视觉评审回改）—— */
+
+/* —— 筛选区：常驻 4 列 —— */
+.firmware-filters {
+  display: grid;
+  gap: 0 var(--do-space-md);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.firmware-filters .ant-form-item {
+  margin-bottom: var(--do-space-sm);
+}
+
+.firmware-filters .ant-picker,
+.firmware-full {
+  width: 100%;
+}
+
+.firmware-range {
+  align-items: center;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr auto 1fr;
+  height: 34px;
+}
+
+@media (max-width: 1200px) {
+  .firmware-filters {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* —— 表格内强调 —— */
+.firmware-clamp {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+/* 2026-09-29 批 2 P2：push-task 任务名单行省略，避免长任务名把固定列表格撑出折行。 */
+.firmware-task-name {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+.firmware-fail {
+  color: var(--ant-color-error);
+}
+
+.firmware-fail-rate {
+  color: var(--ant-color-error);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.firmware-empty-action {
+  margin-top: var(--do-space-sm);
+}
+
+/* —— 抽屉描述列表 —— */
+.firmware-desc {
+  display: grid;
+  gap: var(--do-space-sm) var(--do-space-lg);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.firmware-desc__item {
+  min-width: 0;
+}
+
+.firmware-desc__item--wide {
+  grid-column: 1 / -1;
+}
+
+.firmware-desc dt {
+  color: var(--do-text-secondary);
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.firmware-desc dd {
+  color: var(--do-text);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* —— 逐台结果筛选行 —— */
+.firmware-result-filters {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--do-space-sm);
+  margin-bottom: var(--do-space-sm);
+}
+
+.firmware-result-filters__status {
+  width: 180px;
+}
+
+.firmware-result-filters__sn {
+  flex: 1;
+  min-width: 180px;
+}
+
+/* —— SN 清单 / 上传文件的校验预览条 —— */
+.firmware-snfile {
+  align-items: center;
+  border: 1px solid var(--do-border);
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--do-space-sm);
+  padding: 8px var(--do-space-sm);
+}
+
+.firmware-snfile__name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.firmware-estimate {
+  margin-top: var(--do-space-sm);
+}
+
+/* —— 弹窗内的表单行 —— */
+.firmware-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--do-space-md);
+}
+
+.firmware-field__label {
+  color: var(--do-text-secondary);
+  font-size: 13px;
+}
+
+.firmware-modal-gap {
+  margin-bottom: var(--do-space-md);
+}
+
+.firmware-confirm-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* —— 表单页 —— */
+.firmware-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1200px) {
+  .firmware-desc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

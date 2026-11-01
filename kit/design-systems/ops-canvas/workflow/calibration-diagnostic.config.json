@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "baseline": "reference-image.png",
+  "candidate": "../../../output/playwright/ops-canvas-image2-full.png",
+  "output": {
+    "metrics": "calibration-diagnostics/metrics.json",
+    "heatmap": "calibration-diagnostics/heatmap.png"
+  },
+  "thresholds": {
+    "minSsim": 0.985,
+    "maxRms": 0.035,
+    "pixelDeltaThreshold": 0.06274509803921569,
+    "maxChangedPixelRatio": 0.025
+  },
+  "regions": [
+    {
+      "name": "rail",
+      "x": 0,
+      "y": 0,
+      "width": 240,
+      "height": 1100,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    },
+    {
+      "name": "header",
+      "x": 240,
+      "y": 0,
+      "width": 1200,
+      "height": 80,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    },
+    {
+      "name": "overview",
+      "x": 260,
+      "y": 99,
+      "width": 1160,
+      "height": 128,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    },
+    {
+      "name": "foundations",
+      "x": 260,
+      "y": 242,
+      "width": 1160,
+      "height": 172,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    },
+    {
+      "name": "base-components",
+      "x": 260,
+      "y": 429,
+      "width": 1160,
+      "height": 173,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    },
+    {
+      "name": "composite-components",
+      "x": 260,
+      "y": 617,
+      "width": 1160,
+      "height": 300,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    },
+    {
+      "name": "page-shell",
+      "x": 260,
+      "y": 932,
+      "width": 1160,
+      "height": 137,
+      "thresholds": { "minSsim": 0.99, "maxRms": 0.025, "pixelDeltaThreshold": 0.06274509803921569, "maxChangedPixelRatio": 0.025 }
+    }
+  ]
+}

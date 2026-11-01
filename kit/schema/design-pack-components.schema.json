@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/design-pack-components.schema.json",
+  "title": "Design pack components and knownGaps (v2, transitional)",
+  "description": "过渡期同时接受旧写法（组件名字符串、无 layer/decision 的缺口）与新写法。只校验 components 与 knownGaps 两个字段，pack 其余字段不在此处约束。裁决口径见 rules/foundation-differences.md。",
+  "type": "object",
+  "properties": {
+    "components": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          { "$ref": "#/$defs/componentV2" }
+        ]
+      }
+    },
+    "knownGaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knownGap" }
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "required": ["path", "pointer"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "pointer": { "type": "string", "pattern": "^(/.*)?$" }
+      },
+      "additionalProperties": false
+    },
+    "componentV2": {
+      "type": "object",
+      "required": ["name", "source", "spec", "compensation"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "source": {
+          "type": "object",
+          "required": ["kind", "ref"],
+          "properties": {
+            "kind": { "enum": ["package", "registry", "community", "project", "unknown"] },
+            "ref": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "spec": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ref", "status"],
+            "properties": {
+              "ref": { "$ref": "#/$defs/ref" },
+              "status": { "enum": ["candidate", "confirmed"] }
+            },
+            "additionalProperties": false
+          }
+        },
+        "compensation": {
+          "type": "object",
+          "required": ["status", "implementation", "evidence"],
+          "properties": {
+            "status": { "enum": ["implemented", "none-confirmed", "unknown"] },
+            "implementation": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "evidence": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision": {
+      "type": "object",
+      "required": ["definitionRef", "answers", "verdict", "evidence"],
+      "properties": {
+        "definitionRef": { "type": ["string", "null"] },
+        "answers": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": ["string", "null"] }
+        },
+        "verdict": { "enum": ["unify", "preserve", "pending-owner"] },
+        "evidence": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": false
+    },
+    "knownGap": {
+      "type": "object",
+      "required": ["component", "status"],
+      "properties": {
+        "component": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 },
+        "layer": { "enum": ["visual", "control", "structure", "logic", "unknown"] },
+        "appliesTo": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "decision": { "$ref": "#/$defs/decision" }
+      }
+    }
+  }
+}

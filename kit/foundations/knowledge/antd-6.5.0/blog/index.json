@@ -1,0 +1,3095 @@
+{
+  "version": "1.0.0",
+  "id": "antd-official-blog",
+  "repository": "https://github.com/ant-design/ant-design",
+  "directory": "docs/blog",
+  "commit": "f06ce22f89c04c120b59a275411f41873a212525",
+  "treeUrl": "https://github.com/ant-design/ant-design/tree/f06ce22f89c04c120b59a275411f41873a212525/docs/blog",
+  "refreshedAt": "2026-07-22",
+  "targetVersion": "6.5.0",
+  "selectionPolicy": "Select localized articles by the components actually used by a page or by an explicit page-pattern match; maintenance-only articles stay out of routine generation input.",
+  "applicabilityPolicy": "The frozen 6.5.0 CLI remains authoritative for API details. Conditional and historical articles supply rationale, risks, and upgrade observations.",
+  "counts": {
+    "files": 75,
+    "markdownSources": 72,
+    "articles": 36,
+    "supportSources": 3
+  },
+  "files": [
+    {
+      "repositoryPath": "docs/blog/build-ghost.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/build-ghost.en-US.md",
+      "blobSha": "bc32488261d97b0453d140c784c2ebba3778daf6",
+      "sha256": "cccd7c56ea41cd64c7c183866a9e499191dbbec2497a26bde4ef79ec98d5c59b",
+      "bytes": 6349,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/build-ghost.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/build-ghost.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/build-ghost.zh-CN.md",
+      "blobSha": "6910882527c91fc2ce125590116e810d517f0af2",
+      "sha256": "28eb85cfcc04494f3fe8f6a67eb9da34d5d7ec222cc8780c673276c994b753e8",
+      "bytes": 6018,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/build-ghost.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/button-loading-animation.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.en-US.md",
+      "blobSha": "e071e35a8649a5c5059c4a3fe89f2f735ca6ec45",
+      "sha256": "1d3be02508851f8b82ee28517818e632f8eb764b58700bfba35aaf62f3983e52",
+      "bytes": 6043,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/button-loading-animation.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/button-loading-animation.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.zh-CN.md",
+      "blobSha": "8cc9940dc8224e831b48e3f58743276cc5065406",
+      "sha256": "b354a18b585a5ed0f5c7aa59877b3dd6534f052f1f48fd991e197ae632067ab5",
+      "bytes": 5721,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/button-loading-animation.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/check-conduct.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/check-conduct.en-US.md",
+      "blobSha": "6b56636613834f929f2110e7447ccd87f1beeaba",
+      "sha256": "634af4bd6f8c55ff52b3413d046cbc787fd57ce5a685a814de1909c3c12462e7",
+      "bytes": 5604,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/check-conduct.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/check-conduct.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/check-conduct.zh-CN.md",
+      "blobSha": "cf6137c59d86781f8b1f570a2b354cd1babe6f76",
+      "sha256": "cc7d407bf3d17c8d0ada1ea3fe82be45a781b79da5f5f0f61d7b36a322ceccec",
+      "bytes": 5280,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/check-conduct.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/color-picker.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/color-picker.en-US.md",
+      "blobSha": "82c30ff7f4e4d9d032f06e1473c241106be32192",
+      "sha256": "6e7d4a56263a7b77f4540de3ce12c796eb4766c3a3590590b00eb88f542f5d5c",
+      "bytes": 8002,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/color-picker.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/color-picker.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/color-picker.zh-CN.md",
+      "blobSha": "1a7e0134c159b917d826ac6aa4a1db0a7625632f",
+      "sha256": "67d1d56044db1ae0b5ef92f8797592090ad4468e09971b35f23c7e1943111ef6",
+      "bytes": 7475,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/color-picker.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/config-provider-style.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/config-provider-style.en-US.md",
+      "blobSha": "d956829691f6b608de497535e5ad533847891a0f",
+      "sha256": "eb3e84c66d1d0217e83655a5fde4b2c96bd252d304dc801ea618723e0d5407d8",
+      "bytes": 5348,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/config-provider-style.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/config-provider-style.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/config-provider-style.zh-CN.md",
+      "blobSha": "bc15f8be1051dbc9c53c36c78a01a0940f87ddf0",
+      "sha256": "b83f87cd1349f8602d2a2026b3be7fb92a8916d2ae761d5bfc347b27e281a2d7",
+      "bytes": 5255,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/config-provider-style.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/contributor-development-maintenance-guide.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/contributor-development-maintenance-guide.en-US.md",
+      "blobSha": "82392bb8e99a18ca1e08a7bf286af1fe4b3d6311",
+      "sha256": "88de26ea7c4b5dc9815fc2be3748e43ecbf012ad5c71e9553a019da26530dafd",
+      "bytes": 11185,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/contributor-development-maintenance-guide.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/contributor-development-maintenance-guide.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/contributor-development-maintenance-guide.zh-CN.md",
+      "blobSha": "cd220f2cfd8b49c1c086a4e2f0561fa2d0459d7d",
+      "sha256": "befaaae177d3caf48226cfd540fe2685491f51f1d08d3b373a75e3cbfdef99a8",
+      "bytes": 11768,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/contributor-development-maintenance-guide.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/css-in-js.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-in-js.en-US.md",
+      "blobSha": "f93164c45e68122e6aac68ecfa6e5d20038940b5",
+      "sha256": "cfdab6675e58be15ec708c0369e8c06c61183db8170e9b3f30cd9426b3ca1a6a",
+      "bytes": 5914,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-in-js.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/css-in-js.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-in-js.zh-CN.md",
+      "blobSha": "0accac94384551e8fe167a27aa632f5060db79e0",
+      "sha256": "10ff93eeefd7bbdf26709f04a1788b7d4c0eeb197700765a8e78f56366847cb2",
+      "bytes": 5513,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-in-js.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/css-tricks.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks.en-US.md",
+      "blobSha": "d76072ac5d23babc894eaaba1278c70d4d3cb43a",
+      "sha256": "be3e191525219c83fc9bf175c3ecfce1473081e4b0b9d221838b5aa8ef5f4372",
+      "bytes": 5538,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-tricks.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/css-tricks.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks.zh-CN.md",
+      "blobSha": "e9bdcdee47e134bb94b98a6d55206ba34aaf6497",
+      "sha256": "8ed24ba38b25d10231eab57b2c52c1374d9a3de70349ace09ecb897f3405c364",
+      "bytes": 5411,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-tricks.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/css-tricks/condition.tsx",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks/condition.tsx",
+      "blobSha": "3ef87238eee474295a06336d324759ea5a9278f6",
+      "sha256": "29be47cccc63ce7a393a220768d63bd4fe44b88a0a72831f5bcca21bcdde81ce",
+      "bytes": 688,
+      "mediaType": "text/typescript",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-tricks/condition.tsx"
+    },
+    {
+      "repositoryPath": "docs/blog/css-tricks/scope.tsx",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks/scope.tsx",
+      "blobSha": "1d644f4b5f400f8418e86afed58d90a711275cd6",
+      "sha256": "dc20fec4e8543652ac358777c77d3d7280a85b16c8616c7744a2b4a67707cad8",
+      "bytes": 579,
+      "mediaType": "text/typescript",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-tricks/scope.tsx"
+    },
+    {
+      "repositoryPath": "docs/blog/css-var-plan.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-var-plan.en-US.md",
+      "blobSha": "3dc9c946e2373acbc8db89fc2821ea3b3300113d",
+      "sha256": "5fdc1703e52439fc0e2f4011f62a0fb50242174f1621d992b2580dcb3dda6631",
+      "bytes": 18176,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-var-plan.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/css-var-plan.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-var-plan.zh-CN.md",
+      "blobSha": "de413063aee93c675fbe2371b15e41c5e3459216",
+      "sha256": "832d1ee47646b7bf8bc169ed2b7dcba562f84843ca2d889d5be2344683588c23",
+      "bytes": 17129,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-var-plan.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/extract-ssr.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/extract-ssr.en-US.md",
+      "blobSha": "678b763126b73b3af15ccd558427bee477810a80",
+      "sha256": "7b7c50c70551477d6893bff15524e21cc71487b7b5d50bc4c08ad5ba98045914",
+      "bytes": 6735,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/extract-ssr.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/extract-ssr.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/extract-ssr.zh-CN.md",
+      "blobSha": "1f0e55814df576f3c7afce8bdcffddfee97beab1",
+      "sha256": "ae678fdc7ffd5bdad34d2b3bcc28ac7aace2f0879db0e408e6db4bd980bca5c6",
+      "bytes": 6293,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/extract-ssr.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/form-names.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/form-names.en-US.md",
+      "blobSha": "6553fcb9c6ceb58ed84fc8915660121e11c14fb4",
+      "sha256": "5d7c0c67ed6ba77d4fc5a0428899d1b3e7aeffcc0ac2dae011313ae41bcf0c9b",
+      "bytes": 7175,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/form-names.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/form-names.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/form-names.zh-CN.md",
+      "blobSha": "0c76fb47a4972cf75803dda23ec4e1a196c12631",
+      "sha256": "d3bf440011ba9aa3c2eaf0d85d025bb6a0073007f14263b11537cabcc1f27457",
+      "bytes": 6489,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/form-names.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/getContainer.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.en-US.md",
+      "blobSha": "76e4af2a46ca264d775842a020604eedf689743a",
+      "sha256": "0ea0bd5c0b30d535c32df55b838aa7fb53d7aa49d8d66af8180ae08bbf16468b",
+      "bytes": 4895,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/getContainer.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/getContainer.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.zh-CN.md",
+      "blobSha": "5f5d8c11ec301de3a13a34cd7fc249a9aeb80d45",
+      "sha256": "7ba8ce323e78272c6e7187e821463377fbf10bede1bf584f160aac7c2217748f",
+      "bytes": 4491,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/getContainer.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/github-actions-workflow.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/github-actions-workflow.en-US.md",
+      "blobSha": "1a0f7e07a5b0d60fdf7f84f5f6d13bb5cd458b6b",
+      "sha256": "f32e750a74763b40adbbe3b6c90ff40d44ff3bca0a01af8ec1d35d9c1cf57e90",
+      "bytes": 19074,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/github-actions-workflow.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/github-actions-workflow.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/github-actions-workflow.zh-CN.md",
+      "blobSha": "3e1ef3bf891f1a1958bd830486967b03f1821b4e",
+      "sha256": "0f86f8b4537be1341f53f2aacea24a1539fb60f923d7394cbb226f4e1831ece9",
+      "bytes": 18238,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/github-actions-workflow.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/happy-work.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/happy-work.en-US.md",
+      "blobSha": "e3c7b25beb718cb1bf641adedb36acd021897590",
+      "sha256": "db50b329bac38c53ea958b1bc902cacc5ab5686ee5933fa888075ef216afefa6",
+      "bytes": 4214,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/happy-work.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/happy-work.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/happy-work.zh-CN.md",
+      "blobSha": "ecc87f85800087d348aed9fada1f5c7e7edd7122",
+      "sha256": "5549825f30b673c658dcc52901bc11b13569cd7dcf79e5e2a366348ce3bf7407",
+      "bytes": 4040,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/happy-work.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/historical-debt.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/historical-debt.en-US.md",
+      "blobSha": "523a7435500d4874bf27ebb702a997c3f3c09e62",
+      "sha256": "3e312f6cfe4b8afda4662d4ad39a12dc1584833da0f65ecd2102eb195f0da4ef",
+      "bytes": 6704,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/historical-debt.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/historical-debt.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/historical-debt.zh-CN.md",
+      "blobSha": "1feca0575b88f0a9c2f89e800f5878ffa7408e97",
+      "sha256": "1b2563b1a7a99b07bb9712ad51d1e056bdad34866b7701317ef12308aca4c6a6",
+      "bytes": 6178,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/historical-debt.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/hydrate-cssinjs.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/hydrate-cssinjs.en-US.md",
+      "blobSha": "05eef60bf4cdddddad6c62a2f002fa12c3fc7cd3",
+      "sha256": "f8bf5622b6759a81dda80019e4fc08399c2b51bb50910907e6f6fb281a5b257b",
+      "bytes": 5957,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/hydrate-cssinjs.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/hydrate-cssinjs.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/hydrate-cssinjs.zh-CN.md",
+      "blobSha": "9e6768b1701fd5c390dbb98325467d6bb964bf43",
+      "sha256": "cd52b2166c94e89cdae38b19d4c7f63acc0cea0907ae94c3b1bdc6a7db004c8b",
+      "bytes": 5659,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/hydrate-cssinjs.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/issue-helper.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/issue-helper.en-US.md",
+      "blobSha": "699e54b47e34ce8e8b5cb661e149baac209f286c",
+      "sha256": "e2ec81de7158ab1cdd8b8d1de2e0266479ecbb219322c0ec694941db9cde9060",
+      "bytes": 10516,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/issue-helper.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/issue-helper.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/issue-helper.zh-CN.md",
+      "blobSha": "462cdb8435322df1da6b211b3b6276d5fc4aaa78",
+      "sha256": "af3c7549215f1c135c5c6963a7d3a07a2c8eba971b68c5fc51bb95a345419a41",
+      "bytes": 10472,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/issue-helper.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/line-ellipsis.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.en-US.md",
+      "blobSha": "1a90385f061791d22fcdbb095b6041d44f30e3f2",
+      "sha256": "16ecd42d770b0ccfa6e977cb1796858fea52a52fac36764d69522fecb5d1cf13",
+      "bytes": 4422,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/line-ellipsis.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/line-ellipsis.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.zh-CN.md",
+      "blobSha": "383657775cea5e6e78bcadd14bcbb49ab48d510d",
+      "sha256": "1f1f82eca1faa165c223b8399e5b768fb5443662fcd52031ff2fef533223599e",
+      "bytes": 4109,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/line-ellipsis.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/mock-project-build.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/mock-project-build.en-US.md",
+      "blobSha": "8b2e4ef3dc96f3040ae6624f4dbff553c5050a8d",
+      "sha256": "951b226350018ed57e42db31b4b62259962259a0fa746f79be77daacfbf3648b",
+      "bytes": 5492,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/mock-project-build.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/mock-project-build.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/mock-project-build.zh-CN.md",
+      "blobSha": "16f54e389bb67285278a5cb14dae7244c86045fa",
+      "sha256": "1bbca11190c8e539f957c3253bd452a601be36da9722145bd2ebbd9fb1a01ceb",
+      "bytes": 4919,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/mock-project-build.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/modal-hook-order.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/modal-hook-order.en-US.md",
+      "blobSha": "6c9326a8d19da7caf54cfeafa41dba5f2009ab77",
+      "sha256": "3d257422aaea14ba3513b62d9327dfcf734cecfe6b49eced433f790fb549acac",
+      "bytes": 5312,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/modal-hook-order.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/modal-hook-order.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/modal-hook-order.zh-CN.md",
+      "blobSha": "a17aed5ed32ec1d6066b42b4cde7411901de29b0",
+      "sha256": "ab8375a649a995c0760ce569abc685a4a4c30fdafcd7131ee4cf4ef944a28afa",
+      "bytes": 5045,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/modal-hook-order.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/notification-stack.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/notification-stack.en-US.md",
+      "blobSha": "2e217b1cc1c488079afeca5a2d0b14ac02e614ce",
+      "sha256": "0615ba18efb8fe29b978f024cf53a466f17a4d89a4b271a2cae613d7db22cc2f",
+      "bytes": 5342,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/notification-stack.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/notification-stack.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/notification-stack.zh-CN.md",
+      "blobSha": "2259d42163525c416ecfe4c691bc45c60eeebb80",
+      "sha256": "fd7e1a129c738da8af032f5df5376a14e7c9fb078cf299c72b3dbb1a74f640ea",
+      "bytes": 4734,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/notification-stack.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/picker.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/picker.en-US.md",
+      "blobSha": "d4dd64f2d9c605dbce537d0b2e18956f6d303e71",
+      "sha256": "a78a9e2d74d991e46af49343b49ab1500d6463c074d476d25b04ccc92936743e",
+      "bytes": 5106,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/picker.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/picker.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/picker.zh-CN.md",
+      "blobSha": "5c40751eff37f12656c92ca68e2663324752787e",
+      "sha256": "bc5845a1e472444de9e44547b49b463b5e2edcd08e23a65a8fe3a5e3500c2723",
+      "bytes": 4930,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/picker.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/render-times.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/render-times.en-US.md",
+      "blobSha": "4d62b0448ba35f18342a768e985f140ddfa68d4b",
+      "sha256": "7403a11aca60b43779138c4f8f62785ad2e001d99b861ad9043552deba3da7c2",
+      "bytes": 7740,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/render-times.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/render-times.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/render-times.zh-CN.md",
+      "blobSha": "8539ad9d896821304b630d370bd5ee8581d996b5",
+      "sha256": "c495096a1833d80a6d98cf7db1cf66ed263190b4ad542ac83ab35f26f2e8c03b",
+      "bytes": 7411,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/render-times.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/semantic-beauty.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty.en-US.md",
+      "blobSha": "120d3a7269ba682e43343c2d32ecbd0a16ce104a",
+      "sha256": "021de6d9a47947c8f6b33b6089dab16dd5b05d933ca53ed07cb17376a04fb71e",
+      "bytes": 5220,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/semantic-beauty.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/semantic-beauty.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty.zh-CN.md",
+      "blobSha": "c5a94862fcdd07314e604321d8a2e9c345f0baaf",
+      "sha256": "edd9cb21d49ebaf20e1b91847ce6a084598f746113550fb8ea52bc51c6c8984a",
+      "bytes": 4752,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/semantic-beauty.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/semantic-beauty/demos.tsx",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty/demos.tsx",
+      "blobSha": "af1680825992f7cedeb5469d7270270ccbce5ece",
+      "sha256": "13a9af631483aa0d386b00d0656929a1ceb7007c9ead43f20677f736746b7150",
+      "bytes": 3048,
+      "mediaType": "text/typescript",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/semantic-beauty/demos.tsx"
+    },
+    {
+      "repositoryPath": "docs/blog/suspense.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/suspense.en-US.md",
+      "blobSha": "2e4e1294e23ae3fa2bf3c554a51282cea4d27eeb",
+      "sha256": "4f12064cda4ac2c57712c36911887c7549c429a6450116d581f99fcebde3b8c0",
+      "bytes": 8883,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/suspense.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/suspense.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/suspense.zh-CN.md",
+      "blobSha": "e1fd8fc9425266952df1a282a4a7664e157faf32",
+      "sha256": "097a1c6728d4e8117a0b8a0808a6062ad3214f8e7eba79dd67c39c77b3d0a0bb",
+      "bytes": 8632,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/suspense.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/table-scroll-ghost.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/table-scroll-ghost.en-US.md",
+      "blobSha": "8476e04d9b93b3686f71f54dc622d8d2d2016c44",
+      "sha256": "5bcfcf082d6e6493ebba0cb6a23323a4c8492fe562d77482056ba806aa4edfc1",
+      "bytes": 9843,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/table-scroll-ghost.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/table-scroll-ghost.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/table-scroll-ghost.zh-CN.md",
+      "blobSha": "94785e889e84586c3663aadd631c8cd4073d69a7",
+      "sha256": "92dbcbde3206c3640f599157db7d7a397af9789bfdc464d4c0bb67f57441d142",
+      "bytes": 8867,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/table-scroll-ghost.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/testing-migrate.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/testing-migrate.en-US.md",
+      "blobSha": "9f1793690b1ac6fe2489ffa4252e091edad43b1e",
+      "sha256": "12861520d10a62db42c24d0ab4bbbaa392cbb91ae31054a19b8192765a50b4d9",
+      "bytes": 11929,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/testing-migrate.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/testing-migrate.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/testing-migrate.zh-CN.md",
+      "blobSha": "162d398e1e0dd7a9e080cc931da10bb76321776b",
+      "sha256": "79ff787ddce1c18dd3f4fc3f98fc7d649e15166bb90e9d8278d22a8edc723ec0",
+      "bytes": 11175,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/testing-migrate.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/to-be-collaborator.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-collaborator.en-US.md",
+      "blobSha": "c8f7505240e445d29027da23b4c8a1d292e22681",
+      "sha256": "cd7b5a4de22672cabdf9bb50e590310aef58b863af35947c1780416e9b2158e0",
+      "bytes": 7168,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-collaborator.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/to-be-collaborator.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-collaborator.zh-CN.md",
+      "blobSha": "e435e5ae19158408370fac2aaa886de00015193a",
+      "sha256": "f38d2dccf9c2c27ece4dc4c9b64327a22c5646b97fd03cd1f787fe7b3320dca6",
+      "bytes": 6761,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-collaborator.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/to-be-what-you-see.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-what-you-see.en-US.md",
+      "blobSha": "dc790d11b66d3689c2fa950e96b1080d0ed320b6",
+      "sha256": "d2f3f153d0b72a83ac9a284e1a8b81c7e0354d1c3187fff585ad3a9dbce72213",
+      "bytes": 4713,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-what-you-see.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/to-be-what-you-see.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-what-you-see.zh-CN.md",
+      "blobSha": "b7f6c5c823af0517a5c20ae9e980ae57a84b3be8",
+      "sha256": "557b3b9663fb3179537712ac7dc05358af82835a709ea89a38af72cbb3bcb4a5",
+      "bytes": 4415,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-what-you-see.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/tooltip-align.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tooltip-align.en-US.md",
+      "blobSha": "f5a1fabcefd05d6d3ec9a48518ac336b5344f8d7",
+      "sha256": "dd525d9b150d940feed6de7fd9750608e1869ed65f0586c8d158ee30d5727bd7",
+      "bytes": 8013,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tooltip-align.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/tooltip-align.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tooltip-align.zh-CN.md",
+      "blobSha": "a82f6664795ca84a2bfd085cede080f3a0a7cc7a",
+      "sha256": "350fab6376cdacd1fa110032e43a4b53f72ab6b5047e3f146820cfcfeab43fd1",
+      "bytes": 7166,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tooltip-align.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/tree-shaking.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tree-shaking.en-US.md",
+      "blobSha": "d277d8446c4d0a7a77f8f88b2907b5226b9d6f3f",
+      "sha256": "1b9476212c9239bdec8ed7bd3ea73cb158767d1332b19bc5ad6e245ba984e672",
+      "bytes": 4920,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tree-shaking.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/tree-shaking.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tree-shaking.zh-CN.md",
+      "blobSha": "87865bee56c70db2e763726ea7a5a41ad453182a",
+      "sha256": "8429dbdd903d61863023c257ce712d2cce545ec65dfdefc98a1130a59caf9455",
+      "bytes": 4819,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tree-shaking.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/type-util.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/type-util.en-US.md",
+      "blobSha": "65a3892d7460455c82cadf1c4165bccd3c230675",
+      "sha256": "728a007a30d2d2238c133b6e609d42892837bd952bc69c9dd3ad756bb084e539",
+      "bytes": 2870,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/type-util.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/type-util.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/type-util.zh-CN.md",
+      "blobSha": "fc2918a5d44e2882a6ed46942fd20f37cb4c9856",
+      "sha256": "f94c24b3f34805f6ffa2d41ef2575e0b7dd5f0842061c85e404eb4260f1d04b7",
+      "bytes": 2849,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/type-util.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/v4-ood.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/v4-ood.en-US.md",
+      "blobSha": "9181eba279209af7eed6ffb52cfe1ee6954d4203",
+      "sha256": "2dab6b97e705a3243a2be7483484c0a94ba91c249afb48c7378b642e8944448a",
+      "bytes": 1546,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/v4-ood.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/v4-ood.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/v4-ood.zh-CN.md",
+      "blobSha": "dc279233f316e81faa0d7262aac3f7b0b54567ce",
+      "sha256": "1e4934ec725b7454ed5875b7caaf4080c5c7b62b70cf6998f8d837ec5b3966f5",
+      "bytes": 1387,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/v4-ood.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/virtual-table.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/virtual-table.en-US.md",
+      "blobSha": "9a6a4685df048a6e22d6c2bf2144a0e02965e974",
+      "sha256": "1a75dc3aa67f2c92145e8345e9dac7b3c52e0ba138387bd534910d95b5b5bc50",
+      "bytes": 9097,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/virtual-table.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/virtual-table.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/virtual-table.zh-CN.md",
+      "blobSha": "38ed1c0c8ea416dd57fb38fb5a626aa9d2737c6e",
+      "sha256": "9c3bb543fbc5763bcc701be43ff78eb2e18d641e45a0cde7ff043689f130ca14",
+      "bytes": 8773,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/virtual-table.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/visual-regression.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.en-US.md",
+      "blobSha": "95ef34715d5c32fdf20a44060abbcfa42fd8774c",
+      "sha256": "b044d9c2d73e5fcbd7cc711fc1a34c0c3da522251f014b4ca19cd080a82e3e7d",
+      "bytes": 3636,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/visual-regression.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/visual-regression.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.zh-CN.md",
+      "blobSha": "2d1bb4b6cb5b3061bb0ba6cabb5d727c564a56a8",
+      "sha256": "ff628a76477f142528b59b1c35ff0e680a6923b55ffaa246a1588a5b37f4a2ea",
+      "bytes": 3275,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/visual-regression.zh-CN.md"
+    },
+    {
+      "repositoryPath": "docs/blog/why-not-static.en-US.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/why-not-static.en-US.md",
+      "blobSha": "f2fae092c0b0b9eaa6e8edf73f1ae8e6397f3dee",
+      "sha256": "0166e199b6f82e5eb5c38ddbc8db21be8612845d9be09f328988f7dc3452612e",
+      "bytes": 5909,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/why-not-static.en-US.md"
+    },
+    {
+      "repositoryPath": "docs/blog/why-not-static.zh-CN.md",
+      "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/why-not-static.zh-CN.md",
+      "blobSha": "db89e91cc039b0b87bbdba9cd8f8d90877279856",
+      "sha256": "532f922665a11f5940ff7d45dd3e126a7e601564b6acc3d53b2b9c434c489f64",
+      "bytes": 5826,
+      "mediaType": "text/markdown",
+      "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/why-not-static.zh-CN.md"
+    }
+  ],
+  "articles": [
+    {
+      "id": "build-ghost",
+      "title": {
+        "zh-CN": "一个构建的幽灵",
+        "en-US": "A build ghost"
+      },
+      "publishedAt": "2023-12-20",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [],
+      "topics": [
+        "dependency-resolution",
+        "build-diagnostics"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Build diagnosis remains useful; dependency details must be checked against the frozen 6.5.0 graph."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "dependency-and-build-behavior"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/build-ghost.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/build-ghost.zh-CN.md",
+          "blobSha": "6910882527c91fc2ce125590116e810d517f0af2",
+          "sha256": "28eb85cfcc04494f3fe8f6a67eb9da34d5d7ec222cc8780c673276c994b753e8",
+          "bytes": 6018,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/build-ghost.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "一个构建的幽灵",
+          "date": "2023-12-20",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/build-ghost.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/build-ghost.en-US.md",
+          "blobSha": "bc32488261d97b0453d140c784c2ebba3778daf6",
+          "sha256": "cccd7c56ea41cd64c7c183866a9e499191dbbec2497a26bde4ef79ec98d5c59b",
+          "bytes": 6349,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/build-ghost.en-US.md",
+          "locale": "en-US",
+          "title": "A build ghost",
+          "date": "2023-12-20",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "button-loading-animation",
+      "title": {
+        "zh-CN": "一个重构引发的疑问",
+        "en-US": "A Question Raised by a Refactor"
+      },
+      "publishedAt": "2026-07-14",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "visual-regression"
+      ],
+      "components": [
+        "Button",
+        "Form",
+        "Slider",
+        "Upload"
+      ],
+      "topics": [
+        "loading",
+        "motion",
+        "layout-stability",
+        "wave"
+      ],
+      "applicability": {
+        "status": "direct",
+        "basis": "Published for the v6 code line immediately before this frozen snapshot."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Button"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "button-loading-layout-stability"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/button-loading-animation.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.zh-CN.md",
+          "blobSha": "8cc9940dc8224e831b48e3f58743276cc5065406",
+          "sha256": "b354a18b585a5ed0f5c7aa59877b3dd6534f052f1f48fd991e197ae632067ab5",
+          "bytes": 5721,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/button-loading-animation.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "一个重构引发的疑问",
+          "date": "2026-07-14",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/button-loading-animation.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.en-US.md",
+          "blobSha": "e071e35a8649a5c5059c4a3fe89f2f735ca6ec45",
+          "sha256": "1d3be02508851f8b82ee28517818e632f8eb764b58700bfba35aaf62f3983e52",
+          "bytes": 6043,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/button-loading-animation.en-US.md",
+          "locale": "en-US",
+          "title": "A Question Raised by a Refactor",
+          "date": "2026-07-14",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "check-conduct",
+      "title": {
+        "zh-CN": "Tree 的勾选传导",
+        "en-US": "Tree's check conduction"
+      },
+      "publishedAt": "2022-12-14",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail"
+      ],
+      "components": [
+        "Tree",
+        "TreeSelect",
+        "Cascader"
+      ],
+      "topics": [
+        "checked-conduction",
+        "disabled-node",
+        "checkStrictly"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "The interaction principle remains relevant; current prop details come from the 6.5.0 CLI references."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Tree"
+        },
+        {
+          "kind": "decision-card",
+          "target": "TreeSelect"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "tree-disabled-conduction"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/check-conduct.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/check-conduct.zh-CN.md",
+          "blobSha": "cf6137c59d86781f8b1f570a2b354cd1babe6f76",
+          "sha256": "cc7d407bf3d17c8d0ada1ea3fe82be45a781b79da5f5f0f61d7b36a322ceccec",
+          "bytes": 5280,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/check-conduct.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "Tree 的勾选传导",
+          "date": "2022-12-14",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/check-conduct.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/check-conduct.en-US.md",
+          "blobSha": "6b56636613834f929f2110e7447ccd87f1beeaba",
+          "sha256": "634af4bd6f8c55ff52b3413d046cbc787fd57ce5a685a814de1909c3c12462e7",
+          "bytes": 5604,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/check-conduct.en-US.md",
+          "locale": "en-US",
+          "title": "Tree's check conduction",
+          "date": "2022-12-14",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "color-picker",
+      "title": {
+        "zh-CN": "色彩模型与颜色选择器",
+        "en-US": "Color Models and Color Picker"
+      },
+      "publishedAt": "2023-09-07",
+      "authors": [
+        "Redjue"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail"
+      ],
+      "components": [
+        "ColorPicker"
+      ],
+      "topics": [
+        "color-model",
+        "format",
+        "precision"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Color-model guidance is stable; the 6.5.0 component API remains authoritative."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "ColorPicker-format-and-precision"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/color-picker.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/color-picker.zh-CN.md",
+          "blobSha": "1a7e0134c159b917d826ac6aa4a1db0a7625632f",
+          "sha256": "67d1d56044db1ae0b5ef92f8797592090ad4468e09971b35f23c7e1943111ef6",
+          "bytes": 7475,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/color-picker.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "色彩模型与颜色选择器",
+          "date": "2023-09-07",
+          "author": "Redjue"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/color-picker.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/color-picker.en-US.md",
+          "blobSha": "82c30ff7f4e4d9d032f06e1473c241106be32192",
+          "sha256": "6e7d4a56263a7b77f4540de3ce12c796eb4766c3a3590590b00eb88f542f5d5c",
+          "bytes": 8002,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/color-picker.en-US.md",
+          "locale": "en-US",
+          "title": "Color Models and Color Picker",
+          "date": "2023-09-07",
+          "author": "Redjue"
+        }
+      }
+    },
+    {
+      "id": "config-provider-style",
+      "title": {
+        "zh-CN": "主题拓展",
+        "en-US": "Extends Theme"
+      },
+      "publishedAt": "2023-09-03",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "engineering-risk"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "theme-extension",
+        "component-token",
+        "context"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Theme-extension intent applies; token and provider APIs are resolved from 6.5.0."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "ConfigProvider"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/config-provider-style.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/config-provider-style.zh-CN.md",
+          "blobSha": "bc15f8be1051dbc9c53c36c78a01a0940f87ddf0",
+          "sha256": "b83f87cd1349f8602d2a2026b3be7fb92a8916d2ae761d5bfc347b27e281a2d7",
+          "bytes": 5255,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/config-provider-style.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "主题拓展",
+          "date": "2023-09-03",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/config-provider-style.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/config-provider-style.en-US.md",
+          "blobSha": "d956829691f6b608de497535e5ad533847891a0f",
+          "sha256": "eb3e84c66d1d0217e83655a5fde4b2c96bd252d304dc801ea618723e0d5407d8",
+          "bytes": 5348,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/config-provider-style.en-US.md",
+          "locale": "en-US",
+          "title": "Extends Theme",
+          "date": "2023-09-03",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "contributor-development-maintenance-guide",
+      "title": {
+        "zh-CN": "贡献者开发维护指南",
+        "en-US": "Contributor Development Maintenance Guide"
+      },
+      "publishedAt": "2023-03-10",
+      "authors": [
+        "kiner-tang"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "contribution",
+        "maintenance",
+        "repository-workflow"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Repository process guidance may drift independently of runtime 6.5.0."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "upstream-maintenance-process"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/contributor-development-maintenance-guide.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/contributor-development-maintenance-guide.zh-CN.md",
+          "blobSha": "cd220f2cfd8b49c1c086a4e2f0561fa2d0459d7d",
+          "sha256": "befaaae177d3caf48226cfd540fe2685491f51f1d08d3b373a75e3cbfdef99a8",
+          "bytes": 11768,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/contributor-development-maintenance-guide.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "贡献者开发维护指南",
+          "date": "2023-03-10",
+          "author": "kiner-tang"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/contributor-development-maintenance-guide.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/contributor-development-maintenance-guide.en-US.md",
+          "blobSha": "82392bb8e99a18ca1e08a7bf286af1fe4b3d6311",
+          "sha256": "88de26ea7c4b5dc9815fc2be3748e43ecbf012ad5c71e9553a019da26530dafd",
+          "bytes": 11185,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/contributor-development-maintenance-guide.en-US.md",
+          "locale": "en-US",
+          "title": "Contributor Development Maintenance Guide",
+          "date": "2023-03-10",
+          "author": "kiner-tang"
+        }
+      }
+    },
+    {
+      "id": "css-in-js",
+      "title": {
+        "zh-CN": "组件级别的 CSS-in-JS",
+        "en-US": "Component-level CSS-in-JS"
+      },
+      "publishedAt": "2022-11-25",
+      "authors": [
+        "MadCcc"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "css-in-js",
+        "style-isolation",
+        "dynamic-theme"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Architecture background predates v6 and must be reconciled with v6 CSS variables and current tokens."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "style-engine-evolution"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/css-in-js.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-in-js.zh-CN.md",
+          "blobSha": "0accac94384551e8fe167a27aa632f5060db79e0",
+          "sha256": "10ff93eeefd7bbdf26709f04a1788b7d4c0eeb197700765a8e78f56366847cb2",
+          "bytes": 5513,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-in-js.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "组件级别的 CSS-in-JS",
+          "date": "2022-11-25",
+          "author": "MadCcc"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/css-in-js.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-in-js.en-US.md",
+          "blobSha": "f93164c45e68122e6aac68ecfa6e5d20038940b5",
+          "sha256": "cfdab6675e58be15ec708c0369e8c06c61183db8170e9b3f30cd9426b3ca1a6a",
+          "bytes": 5914,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-in-js.en-US.md",
+          "locale": "en-US",
+          "title": "Component-level CSS-in-JS",
+          "date": "2022-11-25",
+          "author": "MadCcc"
+        }
+      }
+    },
+    {
+      "id": "css-tricks",
+      "title": {
+        "zh-CN": "v6 的一些 CSS 琐事",
+        "en-US": "CSS in v6"
+      },
+      "publishedAt": "2025-05-23",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "engineering-risk",
+        "version-migration"
+      ],
+      "components": [
+        "Button",
+        "Card",
+        "Input",
+        "Select"
+      ],
+      "topics": [
+        "v6",
+        "css-variables",
+        "variant",
+        "logical-properties"
+      ],
+      "applicability": {
+        "status": "direct",
+        "basis": "The article explicitly documents v6 CSS behavior."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "lint-rule",
+          "target": "antd-v6-deprecated-api"
+        },
+        {
+          "kind": "upgrade-watch",
+          "target": "v6-css-behavior"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/css-tricks.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks.zh-CN.md",
+          "blobSha": "e9bdcdee47e134bb94b98a6d55206ba34aaf6497",
+          "sha256": "8ed24ba38b25d10231eab57b2c52c1374d9a3de70349ace09ecb897f3405c364",
+          "bytes": 5411,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-tricks.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "v6 的一些 CSS 琐事",
+          "date": "2025-05-23",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/css-tricks.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks.en-US.md",
+          "blobSha": "d76072ac5d23babc894eaaba1278c70d4d3cb43a",
+          "sha256": "be3e191525219c83fc9bf175c3ecfce1473081e4b0b9d221838b5aa8ef5f4372",
+          "bytes": 5538,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-tricks.en-US.md",
+          "locale": "en-US",
+          "title": "CSS in v6",
+          "date": "2025-05-23",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "css-var-plan",
+      "title": {
+        "zh-CN": "当 Ant Design 遇上 CSS 变量",
+        "en-US": "Ant Design meets CSS Variables"
+      },
+      "publishedAt": "2023-11-21",
+      "authors": [
+        "MadCcc"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk",
+        "version-migration"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "css-variables",
+        "theme",
+        "ssr",
+        "migration"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "The plan explains the path to v6; implementation details are checked against the frozen v6 design language."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "css-variable-runtime"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/css-var-plan.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-var-plan.zh-CN.md",
+          "blobSha": "de413063aee93c675fbe2371b15e41c5e3459216",
+          "sha256": "832d1ee47646b7bf8bc169ed2b7dcba562f84843ca2d889d5be2344683588c23",
+          "bytes": 17129,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-var-plan.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "当 Ant Design 遇上 CSS 变量",
+          "date": "2023-11-21",
+          "author": "MadCcc"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/css-var-plan.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-var-plan.en-US.md",
+          "blobSha": "3dc9c946e2373acbc8db89fc2821ea3b3300113d",
+          "sha256": "5fdc1703e52439fc0e2f4011f62a0fb50242174f1621d992b2580dcb3dda6631",
+          "bytes": 18176,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/css-var-plan.en-US.md",
+          "locale": "en-US",
+          "title": "Ant Design meets CSS Variables",
+          "date": "2023-11-21",
+          "author": "MadCcc"
+        }
+      }
+    },
+    {
+      "id": "extract-ssr",
+      "title": {
+        "zh-CN": "SSR 静态样式导出",
+        "en-US": "SSR Static style export"
+      },
+      "publishedAt": "2023-04-25",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "ssr",
+        "static-style",
+        "hydration"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "SSR mechanics can drift with the style engine and require project-runtime verification."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "ssr-style-extraction"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/extract-ssr.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/extract-ssr.zh-CN.md",
+          "blobSha": "1f0e55814df576f3c7afce8bdcffddfee97beab1",
+          "sha256": "ae678fdc7ffd5bdad34d2b3bcc28ac7aace2f0879db0e408e6db4bd980bca5c6",
+          "bytes": 6293,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/extract-ssr.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "SSR 静态样式导出",
+          "date": "2023-04-25",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/extract-ssr.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/extract-ssr.en-US.md",
+          "blobSha": "678b763126b73b3af15ccd558427bee477810a80",
+          "sha256": "7b7c50c70551477d6893bff15524e21cc71487b7b5d50bc4c08ad5ba98045914",
+          "bytes": 6735,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/extract-ssr.en-US.md",
+          "locale": "en-US",
+          "title": "SSR Static style export",
+          "date": "2023-04-25",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "form-names",
+      "title": {
+        "zh-CN": "封装 Form.Item 实现数组转对象",
+        "en-US": "HOC Aggregate FieldItem"
+      },
+      "publishedAt": "2024-04-26",
+      "authors": [
+        "crazyair"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail"
+      ],
+      "components": [
+        "Form"
+      ],
+      "topics": [
+        "field-name",
+        "data-shape",
+        "wrapper-component"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Data-shape guidance applies when current Form name-path behavior is confirmed in 6.5.0."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Form"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/form-names.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/form-names.zh-CN.md",
+          "blobSha": "0c76fb47a4972cf75803dda23ec4e1a196c12631",
+          "sha256": "d3bf440011ba9aa3c2eaf0d85d025bb6a0073007f14263b11537cabcc1f27457",
+          "bytes": 6489,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/form-names.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "封装 Form.Item 实现数组转对象",
+          "date": "2024-04-26",
+          "author": "crazyair"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/form-names.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/form-names.en-US.md",
+          "blobSha": "6553fcb9c6ceb58ed84fc8915660121e11c14fb4",
+          "sha256": "5d7c0c67ed6ba77d4fc5a0428899d1b3e7aeffcc0ac2dae011313ae41bcf0c9b",
+          "bytes": 7175,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/form-names.en-US.md",
+          "locale": "en-US",
+          "title": "HOC Aggregate FieldItem",
+          "date": "2024-04-26",
+          "author": "crazyair"
+        }
+      }
+    },
+    {
+      "id": "getContainer",
+      "title": {
+        "zh-CN": "getContainer 的一些变化",
+        "en-US": "Some change on getContainer"
+      },
+      "publishedAt": "2022-12-08",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "engineering-risk",
+        "version-migration"
+      ],
+      "components": [
+        "Modal",
+        "Drawer",
+        "Tooltip",
+        "Dropdown"
+      ],
+      "topics": [
+        "portal",
+        "getContainer",
+        "concurrent-rendering"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Portal ownership remains relevant; current 6.5.0 props and React behavior control implementation."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "lint-rule",
+          "target": "stable-overlay-container"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "overlay-container-placement"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/getContainer.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.zh-CN.md",
+          "blobSha": "5f5d8c11ec301de3a13a34cd7fc249a9aeb80d45",
+          "sha256": "7ba8ce323e78272c6e7187e821463377fbf10bede1bf584f160aac7c2217748f",
+          "bytes": 4491,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/getContainer.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "getContainer 的一些变化",
+          "date": "2022-12-08",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/getContainer.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.en-US.md",
+          "blobSha": "76e4af2a46ca264d775842a020604eedf689743a",
+          "sha256": "0ea0bd5c0b30d535c32df55b838aa7fb53d7aa49d8d66af8180ae08bbf16468b",
+          "bytes": 4895,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/getContainer.en-US.md",
+          "locale": "en-US",
+          "title": "Some change on getContainer",
+          "date": "2022-12-08",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "github-actions-workflow",
+      "title": {
+        "zh-CN": "你好，GitHub Actions",
+        "en-US": "Hi, GitHub Actions"
+      },
+      "publishedAt": "2023-06-06",
+      "authors": [
+        "Wxh16144"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "maintenance-process",
+        "engineering-risk"
+      ],
+      "components": [],
+      "topics": [
+        "github-actions",
+        "ci",
+        "release-workflow"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "CI workflow guidance is independent of the component runtime and may drift."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "upstream-ci-workflow"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/github-actions-workflow.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/github-actions-workflow.zh-CN.md",
+          "blobSha": "3e1ef3bf891f1a1958bd830486967b03f1821b4e",
+          "sha256": "0f86f8b4537be1341f53f2aacea24a1539fb60f923d7394cbb226f4e1831ece9",
+          "bytes": 18238,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/github-actions-workflow.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "你好，GitHub Actions",
+          "date": "2023-06-06",
+          "author": "Wxh16144"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/github-actions-workflow.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/github-actions-workflow.en-US.md",
+          "blobSha": "1a0f7e07a5b0d60fdf7f84f5f6d13bb5cd458b6b",
+          "sha256": "f32e750a74763b40adbbe3b6c90ff40d44ff3bca0a01af8ec1d35d9c1cf57e90",
+          "bytes": 19074,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/github-actions-workflow.en-US.md",
+          "locale": "en-US",
+          "title": "Hi, GitHub Actions",
+          "date": "2023-06-06",
+          "author": "Wxh16144"
+        }
+      }
+    },
+    {
+      "id": "happy-work",
+      "title": {
+        "zh-CN": "快乐工作主题（一）",
+        "en-US": "Happy Work Theme"
+      },
+      "publishedAt": "2023-08-04",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "team-culture",
+        "developer-experience"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Team-process material has no direct runtime dependency."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "upstream-team-practice"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/happy-work.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/happy-work.zh-CN.md",
+          "blobSha": "ecc87f85800087d348aed9fada1f5c7e7edd7122",
+          "sha256": "5549825f30b673c658dcc52901bc11b13569cd7dcf79e5e2a366348ce3bf7407",
+          "bytes": 4040,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/happy-work.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "快乐工作主题（一）",
+          "date": "2023-08-04",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/happy-work.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/happy-work.en-US.md",
+          "blobSha": "e3c7b25beb718cb1bf641adedb36acd021897590",
+          "sha256": "db50b329bac38c53ea958b1bc902cacc5ab5686ee5933fa888075ef216afefa6",
+          "bytes": 4214,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/happy-work.en-US.md",
+          "locale": "en-US",
+          "title": "Happy Work Theme",
+          "date": "2023-08-04",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "historical-debt",
+      "title": {
+        "zh-CN": "API 的历史债务",
+        "en-US": "Historical Debt of API"
+      },
+      "publishedAt": "2023-10-11",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk",
+        "version-migration"
+      ],
+      "components": [],
+      "topics": [
+        "api-deprecation",
+        "compatibility",
+        "maintenance"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "The API-debt lesson applies directly; concrete deprecated props come from CLI 6.5.1 lint."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "lint-rule",
+          "target": "antd-v6-deprecated-api"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/historical-debt.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/historical-debt.zh-CN.md",
+          "blobSha": "1feca0575b88f0a9c2f89e800f5878ffa7408e97",
+          "sha256": "1b2563b1a7a99b07bb9712ad51d1e056bdad34866b7701317ef12308aca4c6a6",
+          "bytes": 6178,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/historical-debt.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "API 的历史债务",
+          "date": "2023-10-11",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/historical-debt.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/historical-debt.en-US.md",
+          "blobSha": "523a7435500d4874bf27ebb702a997c3f3c09e62",
+          "sha256": "3e312f6cfe4b8afda4662d4ad39a12dc1584833da0f65ecd2102eb195f0da4ef",
+          "bytes": 6704,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/historical-debt.en-US.md",
+          "locale": "en-US",
+          "title": "Historical Debt of API",
+          "date": "2023-10-11",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "hydrate-cssinjs",
+      "title": {
+        "zh-CN": "动态样式去哪儿了？",
+        "en-US": "Where is the dynamic style?"
+      },
+      "publishedAt": "2023-07-21",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "hydration",
+        "dynamic-style",
+        "cache"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Hydration risks remain; implementation details require the current style engine."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "hydration-style-cache"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/hydrate-cssinjs.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/hydrate-cssinjs.zh-CN.md",
+          "blobSha": "9e6768b1701fd5c390dbb98325467d6bb964bf43",
+          "sha256": "cd52b2166c94e89cdae38b19d4c7f63acc0cea0907ae94c3b1bdc6a7db004c8b",
+          "bytes": 5659,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/hydrate-cssinjs.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "动态样式去哪儿了？",
+          "date": "2023-07-21",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/hydrate-cssinjs.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/hydrate-cssinjs.en-US.md",
+          "blobSha": "05eef60bf4cdddddad6c62a2f002fa12c3fc7cd3",
+          "sha256": "f8bf5622b6759a81dda80019e4fc08399c2b51bb50910907e6f6fb281a5b257b",
+          "bytes": 5957,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/hydrate-cssinjs.en-US.md",
+          "locale": "en-US",
+          "title": "Where is the dynamic style?",
+          "date": "2023-07-21",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "issue-helper",
+      "title": {
+        "zh-CN": "转载-如何提交无法解答的问题",
+        "en-US": "Repost: How to submit a riddle"
+      },
+      "publishedAt": "2023-02-22",
+      "authors": [
+        "afc163"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "issue-report",
+        "reproduction",
+        "debugging"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Debugging-process guidance has no direct runtime dependency."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "upstream-debugging-practice"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/issue-helper.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/issue-helper.zh-CN.md",
+          "blobSha": "462cdb8435322df1da6b211b3b6276d5fc4aaa78",
+          "sha256": "af3c7549215f1c135c5c6963a7d3a07a2c8eba971b68c5fc51bb95a345419a41",
+          "bytes": 10472,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/issue-helper.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "转载-如何提交无法解答的问题",
+          "date": "2023-02-22",
+          "author": "afc163"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/issue-helper.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/issue-helper.en-US.md",
+          "blobSha": "699e54b47e34ce8e8b5cb661e149baac209f286c",
+          "sha256": "e2ec81de7158ab1cdd8b8d1de2e0266479ecbb219322c0ec694941db9cde9060",
+          "bytes": 10516,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/issue-helper.en-US.md",
+          "locale": "en-US",
+          "title": "Repost: How to submit a riddle",
+          "date": "2023-02-22",
+          "author": "afc163"
+        }
+      }
+    },
+    {
+      "id": "line-ellipsis",
+      "title": {
+        "zh-CN": "行省略计算",
+        "en-US": "Line Ellipsis Calculation"
+      },
+      "publishedAt": "2024-03-01",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "visual-regression"
+      ],
+      "components": [
+        "Typography"
+      ],
+      "topics": [
+        "ellipsis",
+        "measurement",
+        "responsive-text"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Text-measurement principles apply; current Typography behavior comes from 6.5.0."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Typography"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "typography-multiline-ellipsis"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/line-ellipsis.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.zh-CN.md",
+          "blobSha": "383657775cea5e6e78bcadd14bcbb49ab48d510d",
+          "sha256": "1f1f82eca1faa165c223b8399e5b768fb5443662fcd52031ff2fef533223599e",
+          "bytes": 4109,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/line-ellipsis.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "行省略计算",
+          "date": "2024-03-01",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/line-ellipsis.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.en-US.md",
+          "blobSha": "1a90385f061791d22fcdbb095b6041d44f30e3f2",
+          "sha256": "16ecd42d770b0ccfa6e977cb1796858fea52a52fac36764d69522fecb5d1cf13",
+          "bytes": 4422,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/line-ellipsis.en-US.md",
+          "locale": "en-US",
+          "title": "Line Ellipsis Calculation",
+          "date": "2024-03-01",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "mock-project-build",
+      "title": {
+        "zh-CN": "依赖排查",
+        "en-US": "Dependency troubleshooting"
+      },
+      "publishedAt": "2023-04-13",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [],
+      "topics": [
+        "dependency-debugging",
+        "minimal-reproduction",
+        "build"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "The diagnostic method applies while package-specific details can drift."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "dependency-reproduction"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/mock-project-build.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/mock-project-build.zh-CN.md",
+          "blobSha": "16f54e389bb67285278a5cb14dae7244c86045fa",
+          "sha256": "1bbca11190c8e539f957c3253bd452a601be36da9722145bd2ebbd9fb1a01ceb",
+          "bytes": 4919,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/mock-project-build.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "依赖排查",
+          "date": "2023-04-13",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/mock-project-build.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/mock-project-build.en-US.md",
+          "blobSha": "8b2e4ef3dc96f3040ae6624f4dbff553c5050a8d",
+          "sha256": "951b226350018ed57e42db31b4b62259962259a0fa746f79be77daacfbf3648b",
+          "bytes": 5492,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/mock-project-build.en-US.md",
+          "locale": "en-US",
+          "title": "Dependency troubleshooting",
+          "date": "2023-04-13",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "modal-hook-order",
+      "title": {
+        "zh-CN": "Modal hook 的有趣 BUG",
+        "en-US": "Funny Modal hook BUG"
+      },
+      "publishedAt": "2022-12-21",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "engineering-risk"
+      ],
+      "components": [
+        "Modal"
+      ],
+      "topics": [
+        "hook-api",
+        "context",
+        "destroy-order"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Lifecycle ordering remains relevant; 6.5.0 hook behavior must be used."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Modal"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "modal-hook-lifecycle"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/modal-hook-order.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/modal-hook-order.zh-CN.md",
+          "blobSha": "a17aed5ed32ec1d6066b42b4cde7411901de29b0",
+          "sha256": "ab8375a649a995c0760ce569abc685a4a4c30fdafcd7131ee4cf4ef944a28afa",
+          "bytes": 5045,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/modal-hook-order.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "Modal hook 的有趣 BUG",
+          "date": "2022-12-21",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/modal-hook-order.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/modal-hook-order.en-US.md",
+          "blobSha": "6c9326a8d19da7caf54cfeafa41dba5f2009ab77",
+          "sha256": "3d257422aaea14ba3513b62d9327dfcf734cecfe6b49eced433f790fb549acac",
+          "bytes": 5312,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/modal-hook-order.en-US.md",
+          "locale": "en-US",
+          "title": "Funny Modal hook BUG",
+          "date": "2022-12-21",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "notification-stack",
+      "title": {
+        "zh-CN": "灵动的 Notification",
+        "en-US": "Stacked Notification"
+      },
+      "publishedAt": "2023-10-07",
+      "authors": [
+        "MadCcc"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "visual-regression"
+      ],
+      "components": [
+        "Notification"
+      ],
+      "topics": [
+        "stack",
+        "maxCount",
+        "feedback-lifecycle"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Stacking behavior is relevant; current Notification props come from 6.5.0."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Notification"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "notification-stack-density"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/notification-stack.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/notification-stack.zh-CN.md",
+          "blobSha": "2259d42163525c416ecfe4c691bc45c60eeebb80",
+          "sha256": "fd7e1a129c738da8af032f5df5376a14e7c9fb078cf299c72b3dbb1a74f640ea",
+          "bytes": 4734,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/notification-stack.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "灵动的 Notification",
+          "date": "2023-10-07",
+          "author": "MadCcc"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/notification-stack.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/notification-stack.en-US.md",
+          "blobSha": "2e217b1cc1c488079afeca5a2d0b14ac02e614ce",
+          "sha256": "0615ba18efb8fe29b978f024cf53a466f17a4d89a4b271a2cae613d7db22cc2f",
+          "bytes": 5342,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/notification-stack.en-US.md",
+          "locale": "en-US",
+          "title": "Stacked Notification",
+          "date": "2023-10-07",
+          "author": "MadCcc"
+        }
+      }
+    },
+    {
+      "id": "picker",
+      "title": {
+        "zh-CN": "为什么禁用日期这么难？",
+        "en-US": "Why is it so hard to disable the date?"
+      },
+      "publishedAt": "2024-09-23",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail"
+      ],
+      "components": [
+        "DatePicker",
+        "TimePicker"
+      ],
+      "topics": [
+        "disabledDate",
+        "disabledTime",
+        "range",
+        "performance"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Constraint-model guidance applies; current picker callback signatures come from 6.5.0."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "DatePicker"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/picker.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/picker.zh-CN.md",
+          "blobSha": "5c40751eff37f12656c92ca68e2663324752787e",
+          "sha256": "bc5845a1e472444de9e44547b49b463b5e2edcd08e23a65a8fe3a5e3500c2723",
+          "bytes": 4930,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/picker.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "为什么禁用日期这么难？",
+          "date": "2024-09-23",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/picker.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/picker.en-US.md",
+          "blobSha": "d4dd64f2d9c605dbce537d0b2e18956f6d303e71",
+          "sha256": "a78a9e2d74d991e46af49343b49ab1500d6463c074d476d25b04ccc92936743e",
+          "bytes": 5106,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/picker.en-US.md",
+          "locale": "en-US",
+          "title": "Why is it so hard to disable the date?",
+          "date": "2024-09-23",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "render-times",
+      "title": {
+        "zh-CN": "非必要的渲染",
+        "en-US": "Unnecessary Rerender"
+      },
+      "publishedAt": "2022-12-31",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [
+        "Table",
+        "Form"
+      ],
+      "topics": [
+        "render-performance",
+        "memoization",
+        "context"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Rendering diagnostics apply; component internals can differ in v6."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "component-render-performance"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/render-times.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/render-times.zh-CN.md",
+          "blobSha": "8539ad9d896821304b630d370bd5ee8581d996b5",
+          "sha256": "c495096a1833d80a6d98cf7db1cf66ed263190b4ad542ac83ab35f26f2e8c03b",
+          "bytes": 7411,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/render-times.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "非必要的渲染",
+          "date": "2022-12-31",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/render-times.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/render-times.en-US.md",
+          "blobSha": "4d62b0448ba35f18342a768e985f140ddfa68d4b",
+          "sha256": "7403a11aca60b43779138c4f8f62785ad2e001d99b861ad9043552deba3da7c2",
+          "bytes": 7740,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/render-times.en-US.md",
+          "locale": "en-US",
+          "title": "Unnecessary Rerender",
+          "date": "2022-12-31",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "semantic-beauty",
+      "title": {
+        "zh-CN": "语义化发现组件精致的美",
+        "en-US": "Discover the Delicate Beauty of Components with Semantic Design"
+      },
+      "publishedAt": "2025-11-22",
+      "authors": [
+        "meet-student,thinkasany"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "engineering-risk",
+        "version-migration"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "v6",
+        "semantic-dom",
+        "classNames",
+        "styles"
+      ],
+      "applicability": {
+        "status": "direct",
+        "basis": "The article documents v6 semantic styling and aligns with frozen CLI semantic output."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "lint-rule",
+          "target": "prefer-semantic-dom-over-structural-css"
+        },
+        {
+          "kind": "upgrade-watch",
+          "target": "semantic-dom-contract"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/semantic-beauty.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty.zh-CN.md",
+          "blobSha": "c5a94862fcdd07314e604321d8a2e9c345f0baaf",
+          "sha256": "edd9cb21d49ebaf20e1b91847ce6a084598f746113550fb8ea52bc51c6c8984a",
+          "bytes": 4752,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/semantic-beauty.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "语义化发现组件精致的美",
+          "date": "2025-11-22",
+          "author": "meet-student,thinkasany"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/semantic-beauty.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty.en-US.md",
+          "blobSha": "120d3a7269ba682e43343c2d32ecbd0a16ce104a",
+          "sha256": "021de6d9a47947c8f6b33b6089dab16dd5b05d933ca53ed07cb17376a04fb71e",
+          "bytes": 5220,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/semantic-beauty.en-US.md",
+          "locale": "en-US",
+          "title": "Discover the Delicate Beauty of Components with Semantic Design",
+          "date": "2025-11-22",
+          "author": "meet-student,thinkasany"
+        }
+      }
+    },
+    {
+      "id": "suspense",
+      "title": {
+        "zh-CN": "Suspense 引发的样式丢失问题",
+        "en-US": "Suspense breaks styles"
+      },
+      "publishedAt": "2023-07-07",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [
+        "ConfigProvider"
+      ],
+      "topics": [
+        "suspense",
+        "style-loss",
+        "concurrent-rendering"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Concurrent rendering risk remains; reproduce against the current React and v6 style engine."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "suspense-style-lifecycle"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/suspense.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/suspense.zh-CN.md",
+          "blobSha": "e1fd8fc9425266952df1a282a4a7664e157faf32",
+          "sha256": "097a1c6728d4e8117a0b8a0808a6062ad3214f8e7eba79dd67c39c77b3d0a0bb",
+          "bytes": 8632,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/suspense.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "Suspense 引发的样式丢失问题",
+          "date": "2023-07-07",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/suspense.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/suspense.en-US.md",
+          "blobSha": "2e4e1294e23ae3fa2bf3c554a51282cea4d27eeb",
+          "sha256": "4f12064cda4ac2c57712c36911887c7549c429a6450116d581f99fcebde3b8c0",
+          "bytes": 8883,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/suspense.en-US.md",
+          "locale": "en-US",
+          "title": "Suspense breaks styles",
+          "date": "2023-07-07",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "table-scroll-ghost",
+      "title": {
+        "zh-CN": "Table 的滚动偏啦",
+        "en-US": "Table Scroll Goes Off Track"
+      },
+      "publishedAt": "2026-07-08",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "visual-regression"
+      ],
+      "components": [
+        "Table"
+      ],
+      "topics": [
+        "scroll",
+        "sticky",
+        "rounding",
+        "fixed-column"
+      ],
+      "applicability": {
+        "status": "direct",
+        "basis": "Published for the v6 code line immediately before this frozen snapshot."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Table"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "table-horizontal-scroll-alignment"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/table-scroll-ghost.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/table-scroll-ghost.zh-CN.md",
+          "blobSha": "94785e889e84586c3663aadd631c8cd4073d69a7",
+          "sha256": "92dbcbde3206c3640f599157db7d7a397af9789bfdc464d4c0bb67f57441d142",
+          "bytes": 8867,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/table-scroll-ghost.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "Table 的滚动偏啦",
+          "date": "2026-07-08",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/table-scroll-ghost.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/table-scroll-ghost.en-US.md",
+          "blobSha": "8476e04d9b93b3686f71f54dc622d8d2d2016c44",
+          "sha256": "5bcfcf082d6e6493ebba0cb6a23323a4c8492fe562d77482056ba806aa4edfc1",
+          "bytes": 9843,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/table-scroll-ghost.en-US.md",
+          "locale": "en-US",
+          "title": "Table Scroll Goes Off Track",
+          "date": "2026-07-08",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "testing-migrate",
+      "title": {
+        "zh-CN": "antd 测试库迁移的那些事儿",
+        "en-US": "about antd test library migration"
+      },
+      "publishedAt": "2022-12-20",
+      "authors": [
+        "li-jia-nan,zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk",
+        "version-migration",
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "testing-library",
+        "migration",
+        "interaction-test"
+      ],
+      "applicability": {
+        "status": "historical",
+        "basis": "The migration record is historical; retain it for test-infrastructure upgrades."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "test-library-migration"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/testing-migrate.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/testing-migrate.zh-CN.md",
+          "blobSha": "162d398e1e0dd7a9e080cc931da10bb76321776b",
+          "sha256": "79ff787ddce1c18dd3f4fc3f98fc7d649e15166bb90e9d8278d22a8edc723ec0",
+          "bytes": 11175,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/testing-migrate.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "antd 测试库迁移的那些事儿",
+          "date": "2022-12-20",
+          "author": "li-jia-nan,zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/testing-migrate.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/testing-migrate.en-US.md",
+          "blobSha": "9f1793690b1ac6fe2489ffa4252e091edad43b1e",
+          "sha256": "12861520d10a62db42c24d0ab4bbbaa392cbb91ae31054a19b8192765a50b4d9",
+          "bytes": 11929,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/testing-migrate.en-US.md",
+          "locale": "en-US",
+          "title": "about antd test library migration",
+          "date": "2022-12-20",
+          "author": "li-jia-nan,zombieJ"
+        }
+      }
+    },
+    {
+      "id": "to-be-collaborator",
+      "title": {
+        "zh-CN": "如何成长为 Collaborator",
+        "en-US": "How to Grow as a Collaborator"
+      },
+      "publishedAt": "2022-12-22",
+      "authors": [
+        "heiyu4585"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "contribution",
+        "collaboration"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Community process is independent of component runtime and can drift."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "upstream-collaboration-process"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/to-be-collaborator.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-collaborator.zh-CN.md",
+          "blobSha": "e435e5ae19158408370fac2aaa886de00015193a",
+          "sha256": "f38d2dccf9c2c27ece4dc4c9b64327a22c5646b97fd03cd1f787fe7b3320dca6",
+          "bytes": 6761,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-collaborator.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "如何成长为 Collaborator",
+          "date": "2022-12-22",
+          "author": "heiyu4585"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/to-be-collaborator.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-collaborator.en-US.md",
+          "blobSha": "c8f7505240e445d29027da23b4c8a1d292e22681",
+          "sha256": "cd7b5a4de22672cabdf9bb50e590310aef58b863af35947c1780416e9b2158e0",
+          "bytes": 7168,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-collaborator.en-US.md",
+          "locale": "en-US",
+          "title": "How to Grow as a Collaborator",
+          "date": "2022-12-22",
+          "author": "heiyu4585"
+        }
+      }
+    },
+    {
+      "id": "to-be-what-you-see",
+      "title": {
+        "zh-CN": "所见即所得",
+        "en-US": "To be what you see"
+      },
+      "publishedAt": "2023-05-10",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk",
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "documentation",
+        "demo",
+        "source-of-truth"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Documentation-generation principles apply while upstream tooling can drift."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "documentation-source-alignment"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/to-be-what-you-see.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-what-you-see.zh-CN.md",
+          "blobSha": "b7f6c5c823af0517a5c20ae9e980ae57a84b3be8",
+          "sha256": "557b3b9663fb3179537712ac7dc05358af82835a709ea89a38af72cbb3bcb4a5",
+          "bytes": 4415,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-what-you-see.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "所见即所得",
+          "date": "2023-05-10",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/to-be-what-you-see.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-what-you-see.en-US.md",
+          "blobSha": "dc790d11b66d3689c2fa950e96b1080d0ed320b6",
+          "sha256": "d2f3f153d0b72a83ac9a284e1a8b81c7e0354d1c3187fff585ad3a9dbce72213",
+          "bytes": 4713,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/to-be-what-you-see.en-US.md",
+          "locale": "en-US",
+          "title": "To be what you see",
+          "date": "2023-05-10",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "tooltip-align",
+      "title": {
+        "zh-CN": "新的 Tooltip 对齐方式",
+        "en-US": "Tooltip align update"
+      },
+      "publishedAt": "2023-02-15",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "visual-regression"
+      ],
+      "components": [
+        "Tooltip",
+        "Popover",
+        "Dropdown"
+      ],
+      "topics": [
+        "popup-align",
+        "viewport",
+        "arrow",
+        "placement"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Alignment intent applies; current popup engine and props come from 6.5.0."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Tooltip"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "tooltip-edge-alignment"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/tooltip-align.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tooltip-align.zh-CN.md",
+          "blobSha": "a82f6664795ca84a2bfd085cede080f3a0a7cc7a",
+          "sha256": "350fab6376cdacd1fa110032e43a4b53f72ab6b5047e3f146820cfcfeab43fd1",
+          "bytes": 7166,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tooltip-align.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "新的 Tooltip 对齐方式",
+          "date": "2023-02-15",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/tooltip-align.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tooltip-align.en-US.md",
+          "blobSha": "f5a1fabcefd05d6d3ec9a48518ac336b5344f8d7",
+          "sha256": "dd525d9b150d940feed6de7fd9750608e1869ed65f0586c8d158ee30d5727bd7",
+          "bytes": 8013,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tooltip-align.en-US.md",
+          "locale": "en-US",
+          "title": "Tooltip align update",
+          "date": "2023-02-15",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "tree-shaking",
+      "title": {
+        "zh-CN": "打包体积优化",
+        "en-US": "Bundle Size Optimization"
+      },
+      "publishedAt": "2023-06-25",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [],
+      "topics": [
+        "bundle-size",
+        "tree-shaking",
+        "module-side-effects"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Bundling principles apply; verify with the current v6 package and consumer bundler."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "bundle-tree-shaking"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/tree-shaking.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tree-shaking.zh-CN.md",
+          "blobSha": "87865bee56c70db2e763726ea7a5a41ad453182a",
+          "sha256": "8429dbdd903d61863023c257ce712d2cce545ec65dfdefc98a1130a59caf9455",
+          "bytes": 4819,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tree-shaking.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "打包体积优化",
+          "date": "2023-06-25",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/tree-shaking.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/tree-shaking.en-US.md",
+          "blobSha": "d277d8446c4d0a7a77f8f88b2907b5226b9d6f3f",
+          "sha256": "1b9476212c9239bdec8ed7bd3ea73cb158767d1332b19bc5ad6e245ba984e672",
+          "bytes": 4920,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/tree-shaking.en-US.md",
+          "locale": "en-US",
+          "title": "Bundle Size Optimization",
+          "date": "2023-06-25",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "type-util",
+      "title": {
+        "zh-CN": "antd 里常用的 TypeScript 工具方法",
+        "en-US": "Type Util"
+      },
+      "publishedAt": "2024-01-11",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "engineering-risk"
+      ],
+      "components": [],
+      "topics": [
+        "typescript",
+        "type-utility",
+        "api-design"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Type patterns are reusable; exported utilities must be checked in 6.5.0."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "typescript-utility-surface"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/type-util.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/type-util.zh-CN.md",
+          "blobSha": "fc2918a5d44e2882a6ed46942fd20f37cb4c9856",
+          "sha256": "f94c24b3f34805f6ffa2d41ef2575e0b7dd5f0842061c85e404eb4260f1d04b7",
+          "bytes": 2849,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/type-util.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "antd 里常用的 TypeScript 工具方法",
+          "date": "2024-01-11",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/type-util.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/type-util.en-US.md",
+          "blobSha": "65a3892d7460455c82cadf1c4165bccd3c230675",
+          "sha256": "728a007a30d2d2238c133b6e609d42892837bd952bc69c9dd3ad756bb084e539",
+          "bytes": 2870,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/type-util.en-US.md",
+          "locale": "en-US",
+          "title": "Type Util",
+          "date": "2024-01-11",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "v4-ood",
+      "title": {
+        "zh-CN": "📢 v4 维护周期截止",
+        "en-US": "📢 v4 surpassed maintenance period"
+      },
+      "publishedAt": "2024-02-28",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "version-migration"
+      ],
+      "components": [],
+      "topics": [
+        "v4",
+        "end-of-maintenance",
+        "migration"
+      ],
+      "applicability": {
+        "status": "historical",
+        "basis": "The article records the completed v4 maintenance transition and is retained as migration history."
+      },
+      "selection": {
+        "mode": "maintenance-only"
+      },
+      "outputs": [
+        {
+          "kind": "upgrade-watch",
+          "target": "unsupported-major-version"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/v4-ood.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/v4-ood.zh-CN.md",
+          "blobSha": "dc279233f316e81faa0d7262aac3f7b0b54567ce",
+          "sha256": "1e4934ec725b7454ed5875b7caaf4080c5c7b62b70cf6998f8d837ec5b3966f5",
+          "bytes": 1387,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/v4-ood.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "📢 v4 维护周期截止",
+          "date": "2024-02-28",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/v4-ood.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/v4-ood.en-US.md",
+          "blobSha": "9181eba279209af7eed6ffb52cfe1ee6954d4203",
+          "sha256": "2dab6b97e705a3243a2be7483484c0a94ba91c249afb48c7378b642e8944448a",
+          "bytes": 1546,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/v4-ood.en-US.md",
+          "locale": "en-US",
+          "title": "📢 v4 surpassed maintenance period",
+          "date": "2024-02-28",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "virtual-table",
+      "title": {
+        "zh-CN": "虚拟表格来了！",
+        "en-US": "Virtual Table is here!"
+      },
+      "publishedAt": "2023-08-29",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "interaction-detail",
+        "engineering-risk"
+      ],
+      "components": [
+        "Table"
+      ],
+      "topics": [
+        "virtualization",
+        "large-data",
+        "fixed-column",
+        "rowspan"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Virtualization decisions apply; current Table virtual API comes from 6.5.0."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Table"
+        },
+        {
+          "kind": "visual-regression-case",
+          "target": "table-virtual-scroll"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/virtual-table.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/virtual-table.zh-CN.md",
+          "blobSha": "38ed1c0c8ea416dd57fb38fb5a626aa9d2737c6e",
+          "sha256": "9c3bb543fbc5763bcc701be43ff78eb2e18d641e45a0cde7ff043689f130ca14",
+          "bytes": 8773,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/virtual-table.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "虚拟表格来了！",
+          "date": "2023-08-29",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/virtual-table.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/virtual-table.en-US.md",
+          "blobSha": "9a6a4685df048a6e22d6c2bf2144a0e02965e974",
+          "sha256": "1a75dc3aa67f2c92145e8345e9dac7b3c52e0ba138387bd534910d95b5b5bc50",
+          "bytes": 9097,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/virtual-table.en-US.md",
+          "locale": "en-US",
+          "title": "Virtual Table is here!",
+          "date": "2023-08-29",
+          "author": "zombieJ"
+        }
+      }
+    },
+    {
+      "id": "visual-regression",
+      "title": {
+        "zh-CN": "👀 视觉回归测试",
+        "en-US": "👀 Visual Regression Testing"
+      },
+      "publishedAt": "2025-01-05",
+      "authors": [
+        "Wxh16144"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "visual-regression",
+        "maintenance-process"
+      ],
+      "components": [],
+      "topics": [
+        "baseline-screenshot",
+        "pixel-diff",
+        "flaky-test",
+        "threshold"
+      ],
+      "applicability": {
+        "status": "direct",
+        "basis": "The quality method is runtime-independent and is adopted by this pack's visual cases."
+      },
+      "selection": {
+        "mode": "page-pattern",
+        "pagePatterns": [
+          "dashboard-page",
+          "list-page",
+          "detail-page",
+          "form-page",
+          "step-flow",
+          "audit-log"
+        ]
+      },
+      "outputs": [
+        {
+          "kind": "visual-regression-case",
+          "target": "golden-page-baseline"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/visual-regression.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.zh-CN.md",
+          "blobSha": "2d1bb4b6cb5b3061bb0ba6cabb5d727c564a56a8",
+          "sha256": "ff628a76477f142528b59b1c35ff0e680a6923b55ffaa246a1588a5b37f4a2ea",
+          "bytes": 3275,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/visual-regression.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "👀 视觉回归测试",
+          "date": "2025-01-05",
+          "author": "Wxh16144"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/visual-regression.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.en-US.md",
+          "blobSha": "95ef34715d5c32fdf20a44060abbcfa42fd8774c",
+          "sha256": "b044d9c2d73e5fcbd7cc711fc1a34c0c3da522251f014b4ca19cd080a82e3e7d",
+          "bytes": 3636,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/visual-regression.en-US.md",
+          "locale": "en-US",
+          "title": "👀 Visual Regression Testing",
+          "date": "2025-01-05",
+          "author": "Wxh16144"
+        }
+      }
+    },
+    {
+      "id": "why-not-static",
+      "title": {
+        "zh-CN": "静态方法之痛",
+        "en-US": "Pain of static methods"
+      },
+      "publishedAt": "2023-04-26",
+      "authors": [
+        "zombieJ"
+      ],
+      "targetVersion": "6.5.0",
+      "categories": [
+        "component-decision",
+        "engineering-risk",
+        "version-migration"
+      ],
+      "components": [
+        "Message",
+        "Notification",
+        "Modal"
+      ],
+      "topics": [
+        "static-method",
+        "context",
+        "theme",
+        "locale"
+      ],
+      "applicability": {
+        "status": "conditional",
+        "basis": "Context loss remains relevant; current v6 hook and App APIs are authoritative."
+      },
+      "selection": {
+        "mode": "component"
+      },
+      "outputs": [
+        {
+          "kind": "decision-card",
+          "target": "Message"
+        },
+        {
+          "kind": "decision-card",
+          "target": "Notification"
+        },
+        {
+          "kind": "lint-rule",
+          "target": "prefer-context-aware-feedback-api"
+        }
+      ],
+      "sources": {
+        "zh-CN": {
+          "repositoryPath": "docs/blog/why-not-static.zh-CN.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/why-not-static.zh-CN.md",
+          "blobSha": "db89e91cc039b0b87bbdba9cd8f8d90877279856",
+          "sha256": "532f922665a11f5940ff7d45dd3e126a7e601564b6acc3d53b2b9c434c489f64",
+          "bytes": 5826,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/why-not-static.zh-CN.md",
+          "locale": "zh-CN",
+          "title": "静态方法之痛",
+          "date": "2023-04-26",
+          "author": "zombieJ"
+        },
+        "en-US": {
+          "repositoryPath": "docs/blog/why-not-static.en-US.md",
+          "path": "snapshots/f06ce22f89c04c120b59a275411f41873a212525/why-not-static.en-US.md",
+          "blobSha": "f2fae092c0b0b9eaa6e8edf73f1ae8e6397f3dee",
+          "sha256": "0166e199b6f82e5eb5c38ddbc8db21be8612845d9be09f328988f7dc3452612e",
+          "bytes": 5909,
+          "mediaType": "text/markdown",
+          "rawUrl": "https://raw.githubusercontent.com/ant-design/ant-design/f06ce22f89c04c120b59a275411f41873a212525/docs/blog/why-not-static.en-US.md",
+          "locale": "en-US",
+          "title": "Pain of static methods",
+          "date": "2023-04-26",
+          "author": "zombieJ"
+        }
+      }
+    }
+  ]
+}

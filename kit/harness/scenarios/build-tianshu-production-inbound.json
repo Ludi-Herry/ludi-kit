@@ -1,0 +1,29 @@
+{
+  "id": "build-tianshu-production-inbound",
+  "prompt": "天枢 · 收货入库：按批次/供应商/状态筛选到货记录，发现待验收与异常批次。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "DataSection", "DataGrid"],
+  "expectedText": ["批次号", "供应商", "到货批次"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "inbound": { "sourceGroup": "收货入库", "statuses": ["pending-inspection", "received", "abnormal"] }
+    }
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "InboundListPage",
+    "pageId": "production-inbound"
+  },
+  "report": "harness/reports/build-tianshu-production-inbound.json"
+}

@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "targetVersion": "6.5.0",
+  "defaultProtocol": {
+    "waitFor": ["document fonts ready", "network idle", "entry motion complete", "stable loading state"],
+    "viewports": [1440, 1280, 768, 390],
+    "forbid": ["cropping a failing region", "updating a baseline without review", "hiding dynamic failures with broad masks"]
+  },
+  "cases": [
+    {
+      "id": "golden-page-baseline",
+      "sourceArticles": ["visual-regression"],
+      "pagePatterns": ["dashboard-page", "list-page", "detail-page", "form-page", "step-flow", "audit-log"],
+      "components": [],
+      "states": ["loaded", "loading", "empty", "request-error"],
+      "assertions": ["No page-level horizontal overflow at any required viewport.", "Heading, actions, content surface, and feedback keep the frozen hierarchy.", "Diff review distinguishes intentional content changes from component or layout regressions."]
+    },
+    {
+      "id": "button-loading-layout-stability",
+      "sourceArticles": ["button-loading-animation"],
+      "pagePatterns": [],
+      "components": ["Button"],
+      "states": ["idle", "loading-start", "loading-steady", "success", "failure"],
+      "assertions": ["Outer button width changes by at most one CSS pixel when loading begins.", "Icon, label, gap, and wave holder do not produce a one-frame horizontal jump.", "The loading state blocks duplicate activation while retaining the outcome label."]
+    },
+    {
+      "id": "table-horizontal-scroll-alignment",
+      "sourceArticles": ["table-scroll-ghost"],
+      "pagePatterns": ["list-page", "audit-log"],
+      "components": ["Table"],
+      "states": ["scroll-start", "scroll-middle", "scroll-end"],
+      "assertions": ["Header and body column boundaries differ by at most one CSS pixel.", "Sticky scrollbar and fixed-column masks do not cover content or actions.", "Identity, status, and action columns remain usable at the narrowest supported viewport."]
+    },
+    {
+      "id": "table-virtual-scroll",
+      "sourceArticles": ["virtual-table"],
+      "pagePatterns": ["list-page", "audit-log"],
+      "components": ["Table"],
+      "states": ["initial", "deep-scroll", "expanded-or-spanning-row"],
+      "assertions": ["Virtual rows preserve stable keys, heights, and focus while scrolling.", "Fixed columns, expandable rows, and merged cells follow the declared support boundary.", "Empty, loading, and error states do not inherit a stale virtual height."]
+    },
+    {
+      "id": "tree-disabled-conduction",
+      "sourceArticles": ["check-conduct"],
+      "pagePatterns": ["form-page", "detail-page"],
+      "components": ["Tree", "TreeSelect"],
+      "states": ["unchecked", "parent-checked", "disabled-child", "half-checked", "checkStrictly"],
+      "assertions": ["Checked, half-checked, and disabled visuals match the declared conduction rule.", "A disabled node is not changed indirectly by an ambiguous parent action.", "The effective selected scope remains readable before submission."]
+    },
+    {
+      "id": "overlay-container-placement",
+      "sourceArticles": ["getContainer"],
+      "pagePatterns": ["list-page", "detail-page", "form-page", "step-flow", "audit-log"],
+      "components": ["Modal", "Drawer", "Tooltip", "Dropdown"],
+      "states": ["open", "scroll-parent", "route-change", "close"],
+      "assertions": ["Overlay placement and z-index remain correct inside the application shell.", "Opening an overlay does not create a new container on each render.", "Theme, locale, focus restoration, and scroll lock follow the owning provider."]
+    },
+    {
+      "id": "typography-multiline-ellipsis",
+      "sourceArticles": ["line-ellipsis"],
+      "pagePatterns": ["dashboard-page", "list-page", "detail-page"],
+      "components": ["Typography"],
+      "states": ["short", "exact-fit", "overflow", "expanded", "container-resize"],
+      "assertions": ["Line count remains stable with the production font and mixed Chinese, Latin, and numeric content.", "Expand and collapse do not cause oscillating measurements.", "Keyboard and assistive technology can reach the full value."]
+    },
+    {
+      "id": "modal-hook-lifecycle",
+      "sourceArticles": ["modal-hook-order"],
+      "pagePatterns": ["list-page", "detail-page", "form-page", "step-flow"],
+      "components": ["Modal"],
+      "states": ["open", "confirm-loading", "error", "success-close", "route-unmount"],
+      "assertions": ["Context holder remains mounted through close animation and callback completion.", "Failure keeps values and actionable feedback visible.", "Success closes once and restores focus to a stable trigger."]
+    },
+    {
+      "id": "notification-stack-density",
+      "sourceArticles": ["notification-stack"],
+      "pagePatterns": [],
+      "components": ["Notification"],
+      "states": ["one", "maximum-stack", "overflow-summary", "update-by-key"],
+      "assertions": ["The stack keeps viewport margins and does not cover primary navigation or page actions.", "Repeated events update or aggregate instead of creating an unbounded pile.", "Title, detail, status, and recovery action remain scannable at 390 px."]
+    },
+    {
+      "id": "tooltip-edge-alignment",
+      "sourceArticles": ["tooltip-align"],
+      "pagePatterns": ["dashboard-page", "list-page", "detail-page", "form-page", "step-flow", "audit-log"],
+      "components": ["Tooltip"],
+      "states": ["top-edge", "right-edge", "bottom-edge", "left-edge", "scroll-container"],
+      "assertions": ["Popup, arrow, and target remain visually associated after collision handling.", "Content stays inside the viewport without covering the target's actionable area.", "Keyboard focus and Escape follow the same visible lifecycle as hover."]
+    }
+  ]
+}

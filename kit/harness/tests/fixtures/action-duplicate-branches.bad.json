@@ -1,0 +1,18 @@
+{
+  "id": "test-action-duplicate-branches",
+  "expectedActions": {
+    "conditions": [
+      {
+        "when": "record.active",
+        "branch": "then",
+        "required": ["吊销"]
+      }
+    ]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/action-duplicate-branches.bad.tsx",
+    "symbol": "DuplicateBranchActionPage"
+  },
+  "report": "harness/reports/test-action-duplicate-branches.json"
+}

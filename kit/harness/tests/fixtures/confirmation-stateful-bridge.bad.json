@@ -1,0 +1,19 @@
+{
+  "id": "test-confirmation-stateful-bridge",
+  "expectedConfirmations": [
+    {
+      "action": "紧急下架",
+      "title": "确认紧急下架？",
+      "confirmLabel": "确认下架",
+      "requiredText": ["立即生效且不可撤销"],
+      "danger": true,
+      "state": { "variable": "emergencyRow", "openMode": "truthy", "triggerValue": "non-null", "clearValue": null }
+    }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/confirmation-stateful-bridge.bad.tsx",
+    "symbol": "ConfirmationStatefulBridgePage"
+  },
+  "report": "harness/reports/test-confirmation-stateful-bridge.json"
+}

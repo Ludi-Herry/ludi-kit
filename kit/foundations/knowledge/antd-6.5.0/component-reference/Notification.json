@@ -1,0 +1,479 @@
+{
+  "version": "1.0.0",
+  "component": "Notification",
+  "queryComponent": "Notification",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Notification",
+        "nameZh": "通知提醒框",
+        "description": "全局展示通知提醒信息。",
+        "props": [
+          {
+            "name": "actions",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "5.24.0"
+          },
+          {
+            "name": "btn",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "closable",
+            "type": "boolean | [ClosableType](#closabletype)",
+            "default": "true",
+            "since": "-"
+          },
+          {
+            "name": "closeIcon",
+            "type": "ReactNode",
+            "default": "true",
+            "since": "5.7.0: close button will be hidden when setting to null or false"
+          },
+          {
+            "name": "description",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "duration",
+            "type": "number | false",
+            "default": "4.5",
+            "since": "-"
+          },
+          {
+            "name": "showProgress",
+            "type": "boolean",
+            "default": "-",
+            "since": "5.18.0"
+          },
+          {
+            "name": "pauseOnHover",
+            "type": "boolean",
+            "default": "true",
+            "since": "5.18.0"
+          },
+          {
+            "name": "icon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "key",
+            "type": "string",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "title",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "message",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "placement",
+            "type": "string",
+            "default": "`topRight`",
+            "since": "-"
+          },
+          {
+            "name": "role",
+            "type": "`alert | status`",
+            "default": "`alert`",
+            "since": "5.6.0"
+          },
+          {
+            "name": "style",
+            "type": "[CSSProperties](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e434515761b36830c3e58a970abf5186f005adac/types/react/index.d.ts#L794)",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onClick",
+            "type": "function",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "onClose",
+            "type": "function",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "props",
+            "type": "Object",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "bottom",
+            "type": "number",
+            "default": "24",
+            "since": ""
+          },
+          {
+            "name": "getContainer",
+            "type": "() => HTMLNode",
+            "default": "() => document.body",
+            "since": ""
+          },
+          {
+            "name": "rtl",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "stack",
+            "type": "boolean | `{ threshold: number }`",
+            "default": "`{ threshold: 3 }`",
+            "since": "5.10.0"
+          },
+          {
+            "name": "top",
+            "type": "number",
+            "default": "24",
+            "since": ""
+          },
+          {
+            "name": "maxCount",
+            "type": "number",
+            "default": "-",
+            "since": "4.17.0"
+          }
+        ],
+        "subComponentProps": {
+          "Notification.ClosableType": [
+            {
+              "name": "closeIcon",
+              "type": "ReactNode",
+              "default": "undefined",
+              "since": "-"
+            },
+            {
+              "name": "onClose",
+              "type": "Function",
+              "default": "undefined",
+              "since": "-"
+            }
+          ],
+          "Notification.Global configuration": [
+            {
+              "name": "bottom",
+              "type": "number",
+              "default": "24",
+              "since": ""
+            },
+            {
+              "name": "closeIcon",
+              "type": "ReactNode",
+              "default": "true",
+              "since": "5.7.0: close button will be hidden when setting to null or false"
+            },
+            {
+              "name": "duration",
+              "type": "number",
+              "default": "4.5",
+              "since": ""
+            },
+            {
+              "name": "getContainer",
+              "type": "() => HTMLNode",
+              "default": "() => document.body",
+              "since": ""
+            },
+            {
+              "name": "placement",
+              "type": "string",
+              "default": "`topRight`",
+              "since": ""
+            },
+            {
+              "name": "showProgress",
+              "type": "boolean",
+              "default": "-",
+              "since": "5.18.0"
+            },
+            {
+              "name": "pauseOnHover",
+              "type": "boolean",
+              "default": "true",
+              "since": "5.18.0"
+            },
+            {
+              "name": "rtl",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "top",
+              "type": "number",
+              "default": "24",
+              "since": ""
+            },
+            {
+              "name": "maxCount",
+              "type": "number",
+              "default": "-",
+              "since": "4.17.0"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Notification",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n在系统四个角显示通知提醒信息。经常用于以下情况：\n\n- 较为复杂的通知内容。\n- 带有交互的通知，给出用户下一步的行动点。\n- 系统主动推送。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/hooks.tsx\">Hooks 调用（推荐）</code>\n<code src=\"./demo/duration.tsx\">自动关闭的延时</code>\n<code src=\"./demo/with-icon.tsx\">带有图标的通知提醒框</code>\n<code src=\"./demo/with-btn.tsx\">自定义按钮</code>\n<code src=\"./demo/custom-icon.tsx\">自定义图标</code>\n<code src=\"./demo/placement.tsx\">位置</code>\n<code src=\"./demo/update.tsx\">更新消息内容</code>\n<code src=\"./demo/stack.tsx\" version=\"5.10.0\">堆叠</code>\n<code src=\"./demo/show-with-progress.tsx\" version=\"5.18.0\">显示进度条</code>\n<code src=\"./demo/basic.tsx\">静态方法（不推荐）</code>\n<code src=\"./demo/progress-color.tsx\">自定义进度条颜色</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/render-panel.tsx\" debug>_InternalPanelDoNotUseOrYouWillBeFired</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构样式</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n- `notification.success(config)`\n- `notification.error(config)`\n- `notification.info(config)`\n- `notification.warning(config)`\n- `notification.open(config)`\n- `notification.destroy(key?: String)`\n\nconfig 参数如下：\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| actions | 自定义按钮组 | ReactNode | - | 5.24.0 | × |\n| ~~btn~~ | 自定义按钮组，请使用 `actions` 替换 | ReactNode | - | - | × |\n| className | 自定义 CSS class | string | - | - | 5.7.0 |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| closable | 是否显示右上角的关闭按钮 | boolean \\| [ClosableType](#closabletype) | true | - | × |\n| closeIcon | 自定义关闭图标 | ReactNode | true | 5.7.0：设置为 null 或 false 时隐藏关闭按钮 | 5.14.0 |\n| description | 通知提醒内容，必选 | ReactNode | - | - | × |\n| duration | 默认 4.5 秒后自动关闭，配置为 `0 \\| false` 则不会自动关闭 | number \\| false | 4.5 | - | × |\n| showProgress | 显示自动关闭通知框的进度条 | boolean |  | 5.18.0 | × |\n| pauseOnHover | 悬停时是否暂停计时器 | boolean | true | 5.18.0 | × |\n| icon | 自定义图标 | ReactNode | - | - | × |\n| key | 当前通知唯一标志 | string | - | - | × |\n| title | 通知提醒标题 | ReactNode | - | 6.0.0 | × |\n| ~~message~~ | 通知提醒标题，请使用 `title` 替换 | ReactNode | - | - | × |\n| placement | 弹出位置，可选 `top` \\| `topLeft` \\| `topRight` \\| `bottom` \\| `bottomLeft` \\| `bottomRight` | string | `topRight` | - | × |\n| role | 供屏幕阅读器识别的通知内容语义，默认为 `alert`。此情况下屏幕阅读器会立即打断当前正在阅读的其他内容，转而阅读通知内容 | `alert \\| status` | `alert` | 5.6.0 | × |\n| style | 自定义内联样式 | [CSSProperties](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e434515761b36830c3e58a970abf5186f005adac/types/react/index.d.ts#L794) | - | - | 5.7.0 |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| onClick | 点击通知时触发的回调函数 | function | - | - | × |\n| onClose | 当通知关闭时触发 | function | - | - | × |\n| props | 透传至通知 `div` 上的 props 对象，支持传入 `data-*` `aria-*` 或 `role` 作为对象的属性。需要注意的是，虽然在 TypeScript 类型中声明的类型支持传入 `data-*` 作为对象的属性，但目前只允许传入 `data-testid` 作为对象的属性。 详见 https://github.com/microsoft/TypeScript/issues/28960 | Object | - | - | × |\n\n- `notification.useNotification(config)`\n\nconfig 参数如下：\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| bottom | 消息从底部弹出时，距离底部的位置，单位像素 | number | 24 |  | × |\n| closeIcon | 自定义关闭图标 | ReactNode | true | 5.7.0：设置为 null 或 false 时隐藏关闭按钮 | 5.14.0 |\n| getContainer | 配置渲染节点的输出位置 | () => HTMLNode | () => document.body |  | × |\n| placement | 弹出位置，可选 `top` \\| `topLeft` \\| `topRight` \\| `bottom` \\| `bottomLeft` \\| `bottomRight` | string | `topRight` |  | × |\n| showProgress | 显示自动关闭通知框的进度条 | boolean |  | 5.18.0 | × |\n| pauseOnHover | 悬停时是否暂停计时器 | boolean | true | 5.18.0 | × |\n| rtl | 是否开启 RTL 模式 | boolean | false |  | × |\n| stack | 堆叠模式，超过阈值时会将所有消息收起 | boolean \\| `{ threshold: number }` | `{ threshold: 3 }` | 5.10.0 | × |\n| top | 消息从顶部弹出时，距离顶部的位置，单位像素 | number | 24 |  | × |\n| maxCount | 最大显示数，超过限制时，最早的消息会被自动关闭 | number | - | 4.17.0 | × |\n\n### ClosableType\n\n| 参数      | 说明             | 类型      | 默认值    | 版本 |\n| --------- | ---------------- | --------- | --------- | ---- |\n| closeIcon | 自定义关闭图标   | ReactNode | undefined | -    |\n| onClose   | 当通知关闭时触发 | function  | -         | -    |\n\n### 全局配置\n\n还提供了一个全局配置方法，在调用前提前配置，全局一次生效。\n\n`notification.config(options)`\n\n> 当你使用 `ConfigProvider` 进行全局化配置时，系统会默认自动开启 RTL 模式。(4.3.0+)\n>\n> 当你想单独使用，可通过如下设置开启 RTL 模式。\n\n```js\nnotification.config({\n  placement: 'bottomRight',\n  bottom: 50,\n  duration: 3,\n  rtl: true,\n});\n```\n\n#### notification.config\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| bottom | 消息从底部弹出时，距离底部的位置，单位像素 | number | 24 |  |\n| closeIcon | 自定义关闭图标 | ReactNode | true | 5.7.0：设置为 null 或 false 时隐藏关闭按钮 |\n| duration | 默认自动关闭延时，单位秒 | number | 4.5 |  |\n| showProgress | 显示自动关闭通知框的进度条 | boolean |  | 5.18.0 |\n| pauseOnHover | 悬停时是否暂停计时器 | boolean | true | 5.18.0 |\n| getContainer | 配置渲染节点的输出位置，但依旧为全屏展示 | () => HTMLNode | () => document.body |  |\n| placement | 弹出位置，可选 `top` `topLeft` `topRight` `bottom` `bottomLeft` `bottomRight` | string | `topRight` |  |\n| rtl | 是否开启 RTL 模式 | boolean | false |  |\n| top | 消息从顶部弹出时，距离顶部的位置，单位像素 | number | 24 |  |\n| maxCount | 最大显示数，超过限制时，最早的消息会被自动关闭 | number | - | 4.17.0 |\n\n## Semantic DOM\n\n<!-- prettier-ignore -->\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Notification\"></ComponentTokenTable>\n\n## FAQ\n\n### 为什么 notification 不能获取 context、redux 的内容和 ConfigProvider 的 `locale/prefixCls/theme` 等配置？ {#faq-context-redux}\n\n直接调用 notification 方法，antd 会通过 `ReactDOM.render` 动态创建新的 React 实体。其 context 与当前代码所在 context 并不相同，因而无法获取 context 信息。\n\n当你需要 context 信息（例如 ConfigProvider 配置的内容）时，可以通过 `notification.useNotification` 方法会返回 `api` 实体以及 `contextHolder` 节点。将其插入到你需要获取 context 位置即可：\n\n```tsx\nconst [api, contextHolder] = notification.useNotification();\n\nreturn (\n  <Context1.Provider value=\"Ant\">\n    {/* contextHolder 在 Context1 内，它可以获得 Context1 的 context */}\n    {contextHolder}\n    <Context2.Provider value=\"Design\">\n      {/* contextHolder 在 Context2 外，因而不会获得 Context2 的 context */}\n    </Context2.Provider>\n  </Context1.Provider>\n);\n```\n\n**异同**：通过 hooks 创建的 `contextHolder` 必须插入到子元素节点中才会生效，当你不需要上下文信息时请直接调用。\n\n> 可通过 [App 包裹组件](/components/app-cn) 简化 `useNotification` 等方法需要手动植入 contextHolder 的问题。\n\n### 静态方法如何设置 prefixCls ？ {#faq-set-prefix-cls}\n\n你可以通过 [`ConfigProvider.config`](/components/config-provider-cn#configproviderconfig-4130) 进行设置。\n\n### 为什么 `style={{ width: 'max-content' }}` 在 Notification 上不生效？ {#faq-notification-width}\n\nNotification 使用固定宽度布局，以保证堆叠卡片样式的一致性。因此不支持在通知外层节点上使用 `max-content`、`min-content`、`fit-content(...)` 这类 intrinsic width。\n\n如果你需要调整 Notification 的整体宽度，建议通过组件 token `width` 来配置：\n\n```tsx\n<ConfigProvider\n  theme={{\n    components: {\n      Notification: {\n        width: 480,\n      },\n    },\n  }}\n>\n  <App />\n</ConfigProvider>\n```\n\n如果你只是希望通知内容本身按内容宽度排布，可以在 `title` 或 `description` 里自行渲染 ReactNode，并把 `max-content` 放在内部节点上，而不是放在 Notification 根节点上。\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Notification",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Static Method (deprecated)",
+            "description": "Static methods cannot consume Context provided by `ConfigProvider`. When enable `layer`, they may also cause style errors. Please use hooks version or `App` provided instance first."
+          },
+          {
+            "name": "custom-icon",
+            "title": "Customized Icon",
+            "description": "The icon can be customized to any react node."
+          },
+          {
+            "name": "duration",
+            "title": "Duration after which the notification box is closed",
+            "description": "`Duration` can be used to specify how long the notification stays open. After the duration time elapses, the notification closes automatically. If not specified, default value is 4.5 seconds. If you set the value to 0, the notification box will never close automatically."
+          },
+          {
+            "name": "hooks",
+            "title": "Hooks usage (recommended)",
+            "description": "Use `notification.useNotification` to get `contextHolder` with context accessible issue. Please note that, we recommend to use top level registration instead of `notification` static method, because static method cannot consume context, and ConfigProvider data will not work."
+          },
+          {
+            "name": "placement",
+            "title": "Placement",
+            "description": "A notification box can appear from the `top` `bottom` `topLeft` `topRight` `bottomLeft` or `bottomRight` of the viewport via `placement`."
+          },
+          {
+            "name": "progress-color",
+            "title": "Customize progress bar color",
+            "description": "Customize the progress bar color by configuring the component token."
+          },
+          {
+            "name": "show-with-progress",
+            "title": "Show with progress",
+            "description": "Show progress bar for auto-closing notification."
+          },
+          {
+            "name": "stack",
+            "title": "Stack",
+            "description": "Stack configuration, enabled by default. Notifications will be stacked when the amount is over `threshold`. Up to 3 notifications are shown in the collapsed stack."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic styles",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Notification with `classNames` and `styles`."
+          },
+          {
+            "name": "update",
+            "title": "Update Message Content",
+            "description": "Update content with unique key."
+          },
+          {
+            "name": "with-btn",
+            "title": "Custom close button",
+            "description": "To customize the style or font of the close button."
+          },
+          {
+            "name": "with-icon",
+            "title": "Notification with icon",
+            "description": "A notification box with a icon at the left side."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Notification",
+        "tokens": [
+          {
+            "name": "colorErrorBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of error notification container",
+            "descriptionZh": "错误提醒框容器背景色"
+          },
+          {
+            "name": "colorInfoBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of info notification container",
+            "descriptionZh": "信息提醒框容器背景色"
+          },
+          {
+            "name": "colorSuccessBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of success notification container",
+            "descriptionZh": "成功提醒框容器背景色"
+          },
+          {
+            "name": "colorWarningBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of warning notification container",
+            "descriptionZh": "警告提醒框容器背景色"
+          },
+          {
+            "name": "progressBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of Notification progress bar",
+            "descriptionZh": "提醒框进度条背景色"
+          },
+          {
+            "name": "width",
+            "type": "string | number",
+            "default": "",
+            "description": "Width of Notification",
+            "descriptionZh": "提醒框宽度"
+          },
+          {
+            "name": "zIndexPopup",
+            "type": "number",
+            "default": "",
+            "description": "z-index of Notification",
+            "descriptionZh": "提醒框 z-index"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Notification",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Notice root element, set background color, border radius, shadow, padding and animation styles",
+            "descriptionZh": "通知项根元素，设置背景色、圆角、阴影、内边距和动画样式"
+          },
+          {
+            "key": "wrapper",
+            "description": "Wrapper element for icon and content with content layout styles",
+            "descriptionZh": "图标与内容的包裹元素，设置内容布局样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element, set absolute positioning, font size, line height and status color styles",
+            "descriptionZh": "图标元素，设置绝对定位、字体大小、行高和状态颜色样式"
+          },
+          {
+            "key": "section",
+            "description": "Content section element that contains title and description",
+            "descriptionZh": "内容区域元素，包含标题和描述内容"
+          },
+          {
+            "key": "title",
+            "description": "Title element, set color, font size, line height and margin styles",
+            "descriptionZh": "标题元素，设置颜色、字体大小、行高和外边距样式"
+          },
+          {
+            "key": "description",
+            "description": "Description element, set font size, color and margin styles",
+            "descriptionZh": "描述元素，设置字体大小、颜色和外边距样式"
+          },
+          {
+            "key": "close",
+            "description": "Close button element, set position, size and interaction styles",
+            "descriptionZh": "关闭按钮元素，设置位置、尺寸和交互样式"
+          },
+          {
+            "key": "actions",
+            "description": "Actions element, set float right, top margin and action button layout styles",
+            "descriptionZh": "操作组元素，设置右浮动、上边距和操作按钮布局样式"
+          },
+          {
+            "key": "progress",
+            "description": "Progress element, set progress styles for auto-closing notifications",
+            "descriptionZh": "进度条元素，设置自动关闭通知的进度样式"
+          },
+          {
+            "key": "list",
+            "description": "Notification list root element, set positioning, z-index, width, scroll area and placement styles",
+            "descriptionZh": "通知列表根元素，设置定位、层级、宽度、滚动区域和位置样式"
+          },
+          {
+            "key": "listContent",
+            "description": "Notification list content element, set notice layout, gap and height transition styles",
+            "descriptionZh": "通知列表内容元素，设置通知项排列、间距和高度动画样式"
+          }
+        ]
+      }
+    }
+  }
+}

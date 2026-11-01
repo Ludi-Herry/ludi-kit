@@ -1,0 +1,299 @@
+{
+  "version": "1.0.0",
+  "component": "Tag",
+  "queryComponent": "Tag",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Tag",
+        "nameZh": "标签",
+        "description": "进行标记和分类的小标签。",
+        "props": [
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "closeIcon",
+            "type": "ReactNode",
+            "default": "false",
+            "since": "4.4.0"
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "default": "`default` when `variant=\"solid\"`",
+            "since": "`solid` default color: 6.4.0"
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "false",
+            "since": "6.0.0"
+          },
+          {
+            "name": "href",
+            "type": "string",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "icon",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onClose",
+            "type": "(e: React.MouseEvent<HTMLElement, MouseEvent>) => void",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "target",
+            "type": "string",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "variant",
+            "type": "`'filled' | 'solid' | 'outlined'`",
+            "default": "`'filled'`",
+            "since": "6.0.0"
+          },
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "default": "true",
+            "since": "-"
+          }
+        ],
+        "subComponentProps": {
+          "Tag.CheckableTag": [
+            {
+              "name": "checked",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "default": "-",
+              "since": "5.27.0"
+            },
+            {
+              "name": "onChange",
+              "type": "(checked) => void",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Tag.CheckableTagGroup": [
+            {
+              "name": "classNames",
+              "type": "Record<[SemanticDOM](#semantic-group), string> | (info: { props }) => Record<[SemanticDOM](#semantic-group), string>",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "defaultValue",
+              "type": "`string | number | Array<string | number> | null`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "disabled",
+              "type": "`boolean`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "multiple",
+              "type": "`boolean`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "options",
+              "type": "`Array<{ className?: string; label: ReactNode; style?: CSSProperties; value: string | number } | string | number>`",
+              "default": "-",
+              "since": "`className` and `style`: 6.4.0"
+            },
+            {
+              "name": "styles",
+              "type": "Record<[SemanticDOM](#semantic-group), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-group), CSSProperties>",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "value",
+              "type": "`string | number | Array<string | number> | null`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onChange",
+              "type": "`(value: string | number | Array<string | number> | null) => void`",
+              "default": "-",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "span"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Tag",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 用于标记事物的属性和维度。\n- 进行分类。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/colorful.tsx\">多彩标签</code>\n<code src=\"./demo/control.tsx\">动态添加和删除</code>\n<code src=\"./demo/checkable.tsx\">可选择标签</code>\n<code src=\"./demo/animation.tsx\">添加动画</code>\n<code src=\"./demo/icon.tsx\">图标按钮</code>\n<code src=\"./demo/status.tsx\">预设状态的标签</code>\n<code src=\"./demo/customize.tsx\" debug>自定义关闭按钮</code>\n<code src=\"./demo/draggable.tsx\">可拖拽标签</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/disabled.tsx\" debug>禁用标签</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Tag\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| closeIcon | 自定义关闭按钮。5.7.0：设置为 `null` 或 `false` 时隐藏关闭按钮 | ReactNode | false | 4.4.0 | 5.14.0 |\n| color | 标签色 | string | `variant=\"solid\"` 时为 `default` | `solid` 默认颜色: 6.4.0 | × |\n| disabled | 是否禁用标签 | boolean | false | 6.0.0 | × |\n| href | 点击跳转的地址，指定此属性`tag`组件会渲染成 `<a>` 标签 | string | - | 6.0.0 | × |\n| icon | 设置图标 | ReactNode | - |  | × |\n| onClose | 关闭时的回调（可通过 `e.preventDefault()` 来阻止默认行为） | (e: React.MouseEvent<HTMLElement, MouseEvent>) => void | - |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| target | 相当于 a 标签的 target 属性，href 存在时生效 | string | - | 6.0.0 | × |\n| variant | 标签变体 | `'filled' \\| 'solid' \\| 'outlined'` | `'filled'` | 6.0.0 | 6.0.0 |\n| ~~bordered~~ | 是否带边框，请使用 `variant=\"filled\"` 替代 | boolean | true | - | × |\n\n### Tag.CheckableTag\n\n| 参数     | 说明                 | 类型              | 默认值 | 版本   |\n| -------- | -------------------- | ----------------- | ------ | ------ |\n| checked  | 设置标签的选中状态   | boolean           | false  |        |\n| icon     | 设置图标             | ReactNode         | -      | 5.27.0 |\n| onChange | 点击标签时触发的回调 | (checked) => void | -      |        |\n\n### Tag.CheckableTagGroup\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-group), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-group), string> | - |  |\n| defaultValue | 初始选中值 | `string \\| number \\| Array<string \\| number> \\| null` | - |  |\n| disabled | 禁用选中 | `boolean` | - |  |\n| multiple | 多选模式 | `boolean` | - |  |\n| options | 选项列表。对象类型的选项支持为每一项单独设置 `className` 和 `style` | `Array<{ className?: string; label: ReactNode; style?: CSSProperties; value: string \\| number } \\| string \\| number>` | - | `className` 和 `style`: 6.4.0 |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-group), CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-group), CSSProperties> | - |  |\n| value | 选中值 | `string \\| number \\| Array<string \\| number> \\| null` | - |  |\n| onChange | 点击标签时触发的回调 | `(value: string \\| number \\| Array<string \\| number> \\| null) => void` | - |  |\n\n## Semantic DOM\n\n### Tag\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n### Tag.CheckableTagGroup {#semantic-group}\n\n<code src=\"./demo/_semantic_group.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Tag\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Tag",
+        "demos": [
+          {
+            "name": "animation",
+            "title": "Animate",
+            "description": "Animating the Tag by using [motion](https://motion.dev/)."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Usage of basic Tag, and it could be closable and customize close button by set `closeIcon` property, will display default close button when `closeIcon` is setting to `true`. Closable Tag supports `onClose` events."
+          },
+          {
+            "name": "checkable",
+            "title": "Checkable",
+            "description": "`CheckableTag` works like Checkbox, click it to toggle checked state. `CheckableTagGroup` provides function that is similar to `CheckboxGroup` or `RadioGroup`."
+          },
+          {
+            "name": "colorful",
+            "title": "Colorful Tag",
+            "description": "We preset a series of colorful tag styles for use in different situations. You can also set it to a hex color string for custom color."
+          },
+          {
+            "name": "control",
+            "title": "Add & Remove Dynamically",
+            "description": "Generating a set of Tags by array, you can add and remove dynamically."
+          },
+          {
+            "name": "draggable",
+            "title": "Draggable Tag",
+            "description": "Draggable tags using [dnd kit](https://dndkit.com)."
+          },
+          {
+            "name": "icon",
+            "title": "Icon",
+            "description": "You can add a custom icon to the tag via the `icon` prop. Note that the `icon` prop for CheckableTag is only supported in version `>=5.27.0`."
+          },
+          {
+            "name": "status",
+            "title": "Status Tag",
+            "description": "We preset five different colors, you can set color property such as `success`,`processing`,`error`,`default` and `warning` to indicate specific status."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Tag by passing objects/functions through `classNames` and `styles`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Tag",
+        "tokens": [
+          {
+            "name": "defaultBg",
+            "type": "string",
+            "default": "",
+            "description": "Default background color",
+            "descriptionZh": "默认背景色"
+          },
+          {
+            "name": "defaultColor",
+            "type": "string",
+            "default": "",
+            "description": "Default text color",
+            "descriptionZh": "默认文字颜色"
+          },
+          {
+            "name": "solidTextColor",
+            "type": "string",
+            "default": "",
+            "description": "Default text color for solid tag.",
+            "descriptionZh": "默认实心标签的文本色"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Tag",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with inline-block display, auto height, padding, font size, line height, nowrap, background color, border, border radius, opacity, transition animations, text alignment, relative positioning and other basic tag styles",
+            "descriptionZh": "根元素，包含行内块布局、自动高度、内边距、字体大小、行高、禁止换行、背景色、边框、圆角、透明度、过渡动画、文本对齐、相对定位等标签的基础样式"
+          },
+          {
+            "key": "icon",
+            "description": "Icon element with font size, color, cursor style, transition animations and other icon display styles",
+            "descriptionZh": "图标元素，包含字体大小、颜色、光标样式、过渡动画等图标的显示样式"
+          },
+          {
+            "key": "content",
+            "description": "Content element with text content color, font styles and other content area styles",
+            "descriptionZh": "内容元素，包含文本内容的颜色、字体样式等内容区域的样式"
+          },
+          {
+            "key": "close",
+            "description": "Close element with close button layout, cursor styles, transition animations and other interaction styles",
+            "descriptionZh": "关闭元素，包含关闭按钮的布局、光标样式、过渡动画等交互样式"
+          }
+        ]
+      }
+    }
+  }
+}

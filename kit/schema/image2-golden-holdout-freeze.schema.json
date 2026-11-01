@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/image2-golden-holdout-freeze.schema.json",
+  "title": "Image2 Golden and Holdout pre-freeze contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "contractId",
+    "recordedAtUtc",
+    "programId",
+    "repositoryBaseCommit",
+    "status",
+    "freezeState",
+    "executionBaseline",
+    "iterationBudget",
+    "candidatePool",
+    "assignments",
+    "holdouts",
+    "evaluationGates",
+    "boundaries"
+  ],
+  "properties": {
+    "$schema": { "const": "../../schema/image2-golden-holdout-freeze.schema.json" },
+    "version": { "const": "1.0.0" },
+    "contractId": { "const": "image2-golden-holdout-freeze-2026-08-09" },
+    "recordedAtUtc": { "type": "string", "format": "date-time" },
+    "programId": { "const": "image2-golden-pages-v1" },
+    "repositoryBaseCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+    "status": { "const": "pre-frozen" },
+    "freezeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unacceptedCandidateSourceCodeOpened",
+        "unacceptedCandidateScreenshotsOpened",
+        "unacceptedCandidateBrowserResultsOpened",
+        "historicalAccountingLabelsKnown",
+        "golden2IterationStarted",
+        "golden3IterationStarted",
+        "holdoutEvaluationStarted"
+      ],
+      "properties": {
+        "unacceptedCandidateSourceCodeOpened": { "const": false },
+        "unacceptedCandidateScreenshotsOpened": { "const": false },
+        "unacceptedCandidateBrowserResultsOpened": { "const": false },
+        "historicalAccountingLabelsKnown": { "const": true },
+        "golden2IterationStarted": { "const": false },
+        "golden3IterationStarted": { "const": false },
+        "holdoutEvaluationStarted": { "const": false }
+      }
+    },
+    "executionBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outputMode",
+        "framework",
+        "foundation",
+        "foundationVersion",
+        "iconPackage",
+        "designPack",
+        "formalGeneratorRequired",
+        "oneOffHtmlForbidden"
+      ],
+      "properties": {
+        "outputMode": { "const": "library-native" },
+        "framework": { "const": "react" },
+        "foundation": { "const": "antd" },
+        "foundationVersion": { "const": "6.5.0" },
+        "iconPackage": { "const": "@ant-design/icons" },
+        "designPack": { "$ref": "#/$defs/fileReceipt" },
+        "formalGeneratorRequired": { "const": true },
+        "oneOffHtmlForbidden": { "const": true }
+      }
+    },
+    "iterationBudget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxTotalIterations",
+        "consumedAtFreeze",
+        "remainingAtFreeze",
+        "reservedFinalHoldoutEvaluations",
+        "maxRemainingGoldenIterations",
+        "countingRule"
+      ],
+      "properties": {
+        "maxTotalIterations": { "const": 13 },
+        "consumedAtFreeze": { "const": 1 },
+        "remainingAtFreeze": { "const": 12 },
+        "reservedFinalHoldoutEvaluations": { "const": 2 },
+        "maxRemainingGoldenIterations": { "const": 10 },
+        "countingRule": { "type": "string", "minLength": 16 }
+      }
+    },
+    "candidatePool": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "assignments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["golden1", "golden2", "golden3", "holdouts", "reserveUnused"],
+      "properties": {
+        "golden1": { "type": "string", "minLength": 1 },
+        "golden2": { "type": "string", "minLength": 1 },
+        "golden3": { "type": "string", "minLength": 1 },
+        "holdouts": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "reserveUnused": { "type": "string", "minLength": 1 }
+      }
+    },
+    "holdouts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "$ref": "#/$defs/holdout" }
+    },
+    "evaluationGates": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "required", "criteria"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "required": { "const": true },
+          "criteria": { "type": "string", "minLength": 12 }
+        }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "newCalibrationBatchAuthorized",
+        "remainingCalibrationPairsPaused",
+        "holdoutRepairAuthorized",
+        "holdoutIterationUseAuthorized",
+        "frozenCalibrationEvidenceMutationAuthorized",
+        "rawThresholdChangeAuthorized",
+        "rawGateOverride",
+        "protectedFinalEligiblePrdRead",
+        "protectedFinalEligiblePrdRegistered",
+        "figmaWriteAuthorizedBeforeGateClose"
+      ],
+      "properties": {
+        "newCalibrationBatchAuthorized": { "const": false },
+        "remainingCalibrationPairsPaused": { "const": true },
+        "holdoutRepairAuthorized": { "const": false },
+        "holdoutIterationUseAuthorized": { "const": false },
+        "frozenCalibrationEvidenceMutationAuthorized": { "const": false },
+        "rawThresholdChangeAuthorized": { "const": false },
+        "rawGateOverride": { "const": false },
+        "protectedFinalEligiblePrdRead": { "const": false },
+        "protectedFinalEligiblePrdRegistered": { "const": false },
+        "figmaWriteAuthorizedBeforeGateClose": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "fileReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "path", "bytes", "sha256", "permittedForGeneration"],
+      "properties": {
+        "role": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "path": { "type": "string", "pattern": "^(?![A-Za-z]:|/|\\\\).+" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "permittedForGeneration": { "type": "boolean" }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidateId",
+        "sourceVariantId",
+        "projectId",
+        "pageId",
+        "route",
+        "sourceContextType",
+        "sourceOutputMode",
+        "complexityBand",
+        "archetype",
+        "allocation",
+        "historicalCalibrationLabel",
+        "qualityGateResultAtFreeze",
+        "selectionReason",
+        "inputReceipts",
+        "sealedImplementationReceipts",
+        "sealedImplementationRoots"
+      ],
+      "properties": {
+        "candidateId": { "type": "string", "minLength": 4 },
+        "sourceVariantId": { "type": "string", "minLength": 4 },
+        "projectId": { "type": "string", "minLength": 2 },
+        "pageId": { "type": "string", "minLength": 2 },
+        "route": { "type": "string", "pattern": "^/" },
+        "sourceContextType": { "type": "string", "minLength": 2 },
+        "sourceOutputMode": { "enum": ["library-native", "kit-consumer", "custom-native"] },
+        "complexityBand": { "enum": ["lower", "higher", "out-of-scope"] },
+        "archetype": { "type": "string", "minLength": 4 },
+        "allocation": { "enum": ["golden-1", "golden-2", "golden-3", "holdout-a", "holdout-b", "reserve-unused"] },
+        "historicalCalibrationLabel": { "enum": ["accepted", "reviewed-disputed", "rejected"] },
+        "qualityGateResultAtFreeze": { "type": ["string", "null"] },
+        "selectionReason": { "type": "string", "minLength": 16 },
+        "inputReceipts": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/fileReceipt" }
+        },
+        "sealedImplementationReceipts": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/fileReceipt" }
+        },
+        "sealedImplementationRoots": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "holdout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateId", "identity", "selectionReason", "evaluationPolicy", "reviewPolicy", "inputPolicy"],
+      "properties": {
+        "candidateId": { "type": "string", "minLength": 4 },
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["projectId", "pageId", "route", "sourceVariantId"],
+          "properties": {
+            "projectId": { "type": "string", "minLength": 2 },
+            "pageId": { "type": "string", "minLength": 2 },
+            "route": { "type": "string", "pattern": "^/" },
+            "sourceVariantId": { "type": "string", "minLength": 4 }
+          }
+        },
+        "selectionReason": { "type": "string", "minLength": 16 },
+        "evaluationPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "evaluateAfter",
+            "finalEvaluationOnly",
+            "implementationAttemptLimit",
+            "derivedGeneratorContractRevisionLimit",
+            "usedForIteration",
+            "repairAllowed",
+            "onFailure"
+          ],
+          "properties": {
+            "status": { "const": "pre-frozen" },
+            "evaluateAfter": { "const": "golden-2-and-golden-3-user-accepted" },
+            "finalEvaluationOnly": { "const": true },
+            "implementationAttemptLimit": { "const": 1 },
+            "derivedGeneratorContractRevisionLimit": { "const": 1 },
+            "usedForIteration": { "const": false },
+            "repairAllowed": { "const": false },
+            "onFailure": { "const": "stop-and-report-no-go" }
+          }
+        },
+        "reviewPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["independentReviewersRequired", "unanimousAcceptanceRequired", "reviewerResultMayInformRepair"],
+          "properties": {
+            "independentReviewersRequired": { "const": 2 },
+            "unanimousAcceptanceRequired": { "const": true },
+            "reviewerResultMayInformRepair": { "const": false }
+          }
+        },
+        "inputPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "consumeOnlyFrozenReceipts",
+            "existingGeneratedImplementationAllowed",
+            "existingCalibrationTargetAllowed",
+            "resultRootsRemainSealedUntilEvaluation"
+          ],
+          "properties": {
+            "consumeOnlyFrozenReceipts": { "const": true },
+            "existingGeneratedImplementationAllowed": { "const": false },
+            "existingCalibrationTargetAllowed": { "const": false },
+            "resultRootsRemainSealedUntilEvaluation": { "const": true }
+          }
+        }
+      }
+    }
+  }
+}

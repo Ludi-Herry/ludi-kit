@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/synthetic-consumer-package-receipt.schema.json",
+  "title": "Synthetic Readiness Consumer Package Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "purpose",
+    "qualifying",
+    "scoring",
+    "sourceCommit",
+    "package",
+    "canonicalPack",
+    "frozenPack",
+    "createdAtUtc"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "purpose": { "const": "synthetic-generation-readiness" },
+    "qualifying": { "const": false },
+    "scoring": { "const": false },
+    "sourceCommit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "@ai-readable/kit" },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "canonicalPack": { "$ref": "#/$defs/file" },
+    "frozenPack": { "$ref": "#/$defs/file" },
+    "createdAtUtc": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    }
+  }
+}

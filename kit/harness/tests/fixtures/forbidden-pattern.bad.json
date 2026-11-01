@@ -1,0 +1,14 @@
+{
+  "id": "test-forbidden-pattern",
+  "forbiddenPatterns": [
+    "custom-button-style",
+    "hardcoded-brand-color",
+    "card-inside-card",
+    "direct-third-party-import"
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/fixtures/permissions-list.bad.tsx"
+  },
+  "report": "harness/reports/test-forbidden-pattern.json"
+}

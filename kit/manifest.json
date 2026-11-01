@@ -1,0 +1,149 @@
+{
+  "name": "@ai-readable/kit",
+  "version": "0.1.0",
+  "purpose": "可选择前端基础设施的生成与验收系统：生成前冻结项目合同，按 outputMode 选用公共 kit、第三方原生库或本地组件，并分别记录技术与视觉证据。",
+  "docs": {
+    "businessContextGate": "docs/business-context-gate.md",
+    "realBusinessBriefTemplate": "docs/real-business-brief.template.md",
+    "frontendFoundationSystem": "docs/frontend-foundation-system.md",
+    "frontendFoundationImplementationNotes": "docs/implementation-notes.frontend-foundations.md",
+    "image2ImplementationNotes": "docs/implementation-notes.image2-to-figma-page.md"
+  },
+  "knowledge": {},
+  "entry": {
+    "runtime": "src/index.ts",
+    "ai": "AGENTS.md",
+    "design": "DESIGN.md",
+    "components": "components.manifest.json",
+    "tokens": "tokens.manifest.json",
+    "patterns": "patterns.manifest.json",
+    "workflows": "workflows.manifest.json",
+    "foundations": "foundations/catalog.json",
+    "foundationAdapters": "foundations/adapters.json"
+  },
+  "rules": {
+    "layout": "rules/layout.md",
+    "dataTable": "rules/data-table.md",
+    "form": "rules/form.md",
+    "dashboard": "rules/dashboard.md",
+    "detailPage": "rules/detail-page.md",
+    "theme": "rules/theme.md",
+    "componentPriority": "rules/component-priority.md",
+    "informationArchitecture": "rules/information-architecture.md",
+    "antiPatterns": "rules/anti-patterns.md"
+  },
+  "recipes": {
+    "listPage": "recipes/list-page.md",
+    "dashboardPage": "recipes/dashboard-page.md",
+    "detailPage": "recipes/detail-page.md",
+    "formPage": "recipes/form-page.md",
+    "tableVsDataGrid": "recipes/table-vs-data-grid.md",
+    "dialogVsDrawer": "recipes/dialog-vs-drawer.md",
+    "badgeVariants": "recipes/badge-variants.md",
+    "buttonHierarchy": "recipes/button-hierarchy.md",
+    "emptyLoadingError": "recipes/empty-loading-error.md",
+    "prdToPages": "recipes/prd-to-pages.md",
+    "analyticsDashboard": "recipes/analytics-dashboard.md",
+    "situationScreen": "recipes/situation-screen.md",
+    "screenPublishFlow": "recipes/screen-publish-flow.md",
+    "importExportFlow": "recipes/import-export-flow.md",
+    "interactionControls": "recipes/interaction-controls.md",
+    "permissionState": "recipes/permission-state.md"
+  },
+  "themes": [
+    "vivid",
+    "calm",
+    "screen"
+  ],
+  "importEntry": "@ai-readable/kit",
+  "schema": {
+    "components": "schema/components.schema.json",
+    "feedback": "schema/feedback.schema.json",
+    "projectContext": "schema/project-context.schema.json",
+    "harnessScenario": "schema/harness-scenario.schema.json",
+    "workflows": "schema/workflows.schema.json",
+    "workflowEvidence": "schema/workflow-evidence.schema.json",
+    "projectDescription": "schema/project-description.schema.json",
+    "projectFlowAcceptance": "schema/project-flow-acceptance.schema.json",
+    "projectFlowAcceptanceEvidence": "schema/project-flow-acceptance-evidence.schema.json",
+    "projectArtifactReceipt": "schema/project-artifact-under-test.schema.json",
+    "blindArtifactSeal": "schema/blind-artifact-seal.schema.json",
+    "blindEvaluatorReceipt": "schema/blind-evaluator-receipt.schema.json",
+    "blindConsumerPackageReceipt": "schema/blind-consumer-package-receipt.schema.json",
+    "blindPreRevealContract": "schema/blind-prd-pre-reveal-contract.schema.json",
+    "blindInputReceipt": "schema/blind-prd-input-receipt.schema.json",
+    "blindAdoptionRegistry": "schema/blind-adoption-registry.schema.json",
+    "figmaEvidence": "schema/figma-evidence.schema.json",
+    "figmaAudit": "schema/figma-audit.schema.json",
+    "image2WorkflowRequest": "schema/image2-workflow-request.schema.json",
+    "image2WorkflowRun": "schema/image2-workflow-run.schema.json",
+    "pageAcceptanceTechnical": "schema/page-acceptance.technical.schema.json",
+    "pageAcceptanceVisual": "schema/page-acceptance.visual.schema.json"
+  },
+  "harness": {
+    "defaultScenario": "harness/scenarios/build-permissions-list.json",
+    "runner": "harness/runner/run-scenario.mjs",
+    "execution": {
+      "isolation": "worker-thread",
+      "timeoutMs": 45000,
+      "maxOldGenerationSizeMb": 512
+    },
+    "reports": "harness/reports"
+  },
+  "preview": {
+    "app": "preview",
+    "build": "npm run build:preview",
+    "dev": "npm run dev:preview"
+  },
+  "figma": {
+    "readme": "figma/README.md",
+    "componentMap": "figma/component-map.json",
+    "variablesMap": "figma/variables-map.json",
+    "variantsMap": "figma/variants-map.json",
+    "sync": "scripts/sync-figma-maps.mjs",
+    "validator": "scripts/validate-figma-maps.mjs",
+    "evidence": "figma/evidence",
+    "evidenceValidator": "scripts/validate-figma-evidence.mjs",
+    "auditAdapter": "scripts/build-figma-component-index.mjs"
+  },
+  "feedback": {
+    "schema": "schema/feedback.schema.json",
+    "implementationRevisions": "quality/feedback-implementation-revisions.json",
+    "sampleQueue": "projects/sample-inventory-erp/feedback/queue.json",
+    "promotionRules": "projects/sample-inventory-erp/feedback/promotion-rules.json",
+    "promotionDrafts": "projects/sample-inventory-erp/feedback/promotions/index.json",
+    "promotionApplications": "projects/sample-inventory-erp/feedback/promotions/applications/index.json",
+    "promotionGenerator": "scripts/generate-feedback-promotions.mjs",
+    "promotionApplier": "scripts/apply-feedback-promotion.mjs",
+    "validator": "scripts/validate-feedback.mjs"
+  },
+  "projects": {
+    "readme": "projects/README.md",
+    "sample": "projects/sample-inventory-erp",
+    "generator": "scripts/generate-project-pages.mjs",
+    "validator": "scripts/validate-projects.mjs",
+    "descriptionSchema": "schema/project-description.schema.json",
+    "generatorFixtures": "generator/fixtures",
+    "foundationValidator": "scripts/validate-foundations.mjs",
+    "pageAcceptanceValidator": "scripts/validate-page-acceptance.mjs"
+  },
+  "quality": {
+    "componentStatusMatrix": "quality/component-status-matrix.json",
+    "scenarioIndex": "quality/scenario-index.json",
+    "labInventory": "quality/lab-frontend-inventory.json",
+    "tianshuInventory": "projects/tianshu-ops/frontend-inventory.json",
+    "blindAdoptionRegistry": "quality/blind-adoption-registry.json",
+    "blindProtocolValidator": "scripts/test-blind-protocol-v1.2.mjs",
+    "blindEvaluatorValidator": "scripts/validate-blind-evaluator.mjs",
+    "blindEvidenceValidator": "scripts/validate-blind-evidence.mjs",
+    "blindAssignmentGenerator": "scripts/create-blind-assignment.mjs",
+    "blindPackageFreezer": "scripts/freeze-consumer-package-receipt.mjs"
+  },
+  "workflows": {
+    "manifest": "workflows.manifest.json",
+    "validator": "scripts/validate-workflows.mjs",
+    "image2Skill": "skills/image2-to-figma-page",
+    "designSystemSample": "design-systems/ops-canvas",
+    "visualDiff": "scripts/visual-diff.mjs"
+  }
+}

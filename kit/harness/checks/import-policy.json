@@ -1,0 +1,30 @@
+{
+  "kitImport": "@ai-readable/kit",
+  "reactRuntimeImports": ["react", "react-dom", "react/jsx-runtime"],
+  "reactRuntimePrefixes": ["react/", "react-dom/"],
+  "defaultProfile": "kit-consumer",
+  "profiles": {
+    "kit-consumer": {
+      "requiresRootImport": true,
+      "allowLocalImports": true
+    },
+    "library-native": {
+      "requiresRootImport": true,
+      "allowLocalImports": true
+    },
+    "custom-native": {
+      "requiresRootImport": false,
+      "allowLocalImports": "contract"
+    }
+  },
+  "forbiddenDirectImports": [
+    "antd",
+    "antd/",
+    "@ant-design/",
+    "@arco-design/",
+    "@radix-ui/",
+    "@/components/ui/",
+    "components/ui/",
+    "shadcn"
+  ]
+}

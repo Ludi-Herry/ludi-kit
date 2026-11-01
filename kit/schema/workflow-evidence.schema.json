@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/workflow-evidence.schema.json",
+  "title": "AI-readable Workflow Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "evidenceId", "workflowIds", "status", "recordedAt", "summary", "commands", "artifacts", "blockers"],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 3 },
+    "version": { "const": "1.0.0" },
+    "evidenceId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "workflowIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+    "status": { "enum": ["passed", "failed", "external-blocked"] },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string", "minLength": 8 },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "exitCode", "result"],
+        "properties": {
+          "command": { "type": "string", "minLength": 3 },
+          "exitCode": { "type": "integer", "minimum": 0 },
+          "result": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "artifacts": { "type": "array", "items": { "type": "string", "minLength": 3 } },
+    "blockers": { "type": "array", "items": { "type": "string", "minLength": 4 } }
+  }
+}

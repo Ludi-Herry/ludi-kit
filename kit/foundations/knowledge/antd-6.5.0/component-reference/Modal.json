@@ -1,0 +1,643 @@
+{
+  "version": "1.0.0",
+  "component": "Modal",
+  "queryComponent": "Modal",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Modal",
+        "nameZh": "对话框",
+        "description": "展示一个对话框，提供标题、内容区、操作区。",
+        "props": [
+          {
+            "name": "afterClose",
+            "type": "function",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "cancelButtonProps",
+            "type": "[ButtonProps](/components/button/#api)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "cancelText",
+            "type": "ReactNode",
+            "default": "`Cancel`",
+            "since": ""
+          },
+          {
+            "name": "centered",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "closable",
+            "type": "boolean | [ClosableType](#closabletype)",
+            "default": "true",
+            "since": "-"
+          },
+          {
+            "name": "closeIcon",
+            "type": "ReactNode",
+            "default": "<CloseOutlined />",
+            "since": ""
+          },
+          {
+            "name": "confirmLoading",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "destroyOnClose",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "destroyOnHidden",
+            "type": "boolean",
+            "default": "false",
+            "since": "5.25.0"
+          },
+          {
+            "name": "focusTriggerAfterClose",
+            "type": "boolean",
+            "default": "true",
+            "since": "4.9.0"
+          },
+          {
+            "name": "footer",
+            "type": "ReactNode | (originNode: ReactNode, extra: { OkBtn: React.FC, CancelBtn: React.FC }) => ReactNode",
+            "default": "(OK and Cancel buttons)",
+            "since": "renderFunction: 5.9.0"
+          },
+          {
+            "name": "forceRender",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "focusable",
+            "type": "`{ trap?: boolean, focusTriggerAfterClose?: boolean }`",
+            "default": "-",
+            "since": "6.2.0"
+          },
+          {
+            "name": "getContainer",
+            "type": "HTMLElement | () => HTMLElement | Selectors | false",
+            "default": "document.body",
+            "since": ""
+          },
+          {
+            "name": "keyboard",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "mask",
+            "type": "boolean | `{enabled?: boolean, blur?: boolean, closable?: boolean}`",
+            "default": "true",
+            "since": "mask.closable: 6.3.0"
+          },
+          {
+            "name": "maskClosable",
+            "type": "boolean",
+            "default": "true",
+            "since": "-"
+          },
+          {
+            "name": "modalRender",
+            "type": "(node: ReactNode) => ReactNode",
+            "default": "-",
+            "since": "4.7.0"
+          },
+          {
+            "name": "okButtonProps",
+            "type": "[ButtonProps](/components/button/#api)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "okText",
+            "type": "ReactNode",
+            "default": "`OK`",
+            "since": ""
+          },
+          {
+            "name": "okType",
+            "type": "string",
+            "default": "`primary`",
+            "since": ""
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "default": "-",
+            "since": "5.18.0"
+          },
+          {
+            "name": "scrollLock",
+            "type": "boolean",
+            "default": "true",
+            "since": "6.5.0"
+          },
+          {
+            "name": "title",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "width",
+            "type": "string | number | [Breakpoint](/components/grid#col)",
+            "default": "520",
+            "since": "Breakpoint: 5.23.0"
+          },
+          {
+            "name": "wrapClassName",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "zIndex",
+            "type": "number",
+            "default": "1000",
+            "since": ""
+          },
+          {
+            "name": "onCancel",
+            "type": "function(e)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onOk",
+            "type": "function(e)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "afterOpenChange",
+            "type": "(open: boolean) => void",
+            "default": "-",
+            "since": "5.4.0"
+          }
+        ],
+        "subComponentProps": {
+          "Modal.method()": [
+            {
+              "name": "afterClose",
+              "type": "function",
+              "default": "-",
+              "since": "4.9.0"
+            },
+            {
+              "name": "autoFocusButton",
+              "type": "null | `ok` | `cancel`",
+              "default": "`ok`",
+              "since": ""
+            },
+            {
+              "name": "cancelButtonProps",
+              "type": "[ButtonProps](/components/button/#api)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "cancelText",
+              "type": "string",
+              "default": "`Cancel`",
+              "since": ""
+            },
+            {
+              "name": "centered",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "className",
+              "type": "string",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "closable",
+              "type": "boolean | [ClosableType](#closabletype)",
+              "default": "false",
+              "since": "-"
+            },
+            {
+              "name": "closeIcon",
+              "type": "ReactNode",
+              "default": "undefined",
+              "since": "4.9.0"
+            },
+            {
+              "name": "content",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "focusable.autoFocusButton",
+              "type": "null | `ok` | `cancel`",
+              "default": "`ok`",
+              "since": "6.2.0"
+            },
+            {
+              "name": "footer",
+              "type": "ReactNode | (originNode: ReactNode, extra: { OkBtn: React.FC, CancelBtn: React.FC }) => ReactNode",
+              "default": "-",
+              "since": "renderFunction: 5.9.0"
+            },
+            {
+              "name": "getContainer",
+              "type": "HTMLElement | () => HTMLElement | Selectors | false",
+              "default": "document.body",
+              "since": ""
+            },
+            {
+              "name": "icon",
+              "type": "ReactNode",
+              "default": "<ExclamationCircleFilled />",
+              "since": ""
+            },
+            {
+              "name": "keyboard",
+              "type": "boolean",
+              "default": "true",
+              "since": ""
+            },
+            {
+              "name": "mask",
+              "type": "boolean | `{enabled?: boolean, blur?: boolean, closable?: boolean}`",
+              "default": "true",
+              "since": ""
+            },
+            {
+              "name": "maskClosable",
+              "type": "boolean",
+              "default": "false",
+              "since": "-"
+            },
+            {
+              "name": "scrollLock",
+              "type": "boolean",
+              "default": "true",
+              "since": "6.5.0"
+            },
+            {
+              "name": "okButtonProps",
+              "type": "[ButtonProps](/components/button/#api)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "okText",
+              "type": "string",
+              "default": "`OK`",
+              "since": ""
+            },
+            {
+              "name": "okType",
+              "type": "string",
+              "default": "`primary`",
+              "since": ""
+            },
+            {
+              "name": "style",
+              "type": "CSSProperties",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "title",
+              "type": "ReactNode",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "width",
+              "type": "string | number",
+              "default": "416",
+              "since": ""
+            },
+            {
+              "name": "wrapClassName",
+              "type": "string",
+              "default": "-",
+              "since": "4.18.0"
+            },
+            {
+              "name": "zIndex",
+              "type": "number",
+              "default": "1000",
+              "since": ""
+            },
+            {
+              "name": "onCancel",
+              "type": "function(close)",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "onOk",
+              "type": "function(close)",
+              "default": "-",
+              "since": ""
+            }
+          ],
+          "Modal.ClosableType": [
+            {
+              "name": "afterClose",
+              "type": "function",
+              "default": "-",
+              "since": "-"
+            },
+            {
+              "name": "closeIcon",
+              "type": "ReactNode",
+              "default": "undefined",
+              "since": "-"
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "default": "false",
+              "since": "-"
+            },
+            {
+              "name": "onClose",
+              "type": "Function",
+              "default": "undefined",
+              "since": "-"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Modal",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 `Modal` 在当前页面正中打开一个浮层，承载相应的操作。\n\n另外当需要一个简洁的确认框询问用户时，可以使用 [`App.useApp`](/components/app-cn/) 封装的语法糖方法。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/async.tsx\">异步关闭</code>\n<code src=\"./demo/footer.tsx\">自定义页脚</code>\n<code src=\"./demo/mask.tsx\">遮罩</code>\n<code src=\"./demo/loading.tsx\" version=\"5.18.0\">加载中</code>\n<code src=\"./demo/footer-render.tsx\" version=\"5.9.0\">自定义页脚渲染函数</code>\n<code src=\"./demo/hooks.tsx\">使用 hooks 获得上下文</code>\n<code src=\"./demo/locale.tsx\">国际化</code>\n<code src=\"./demo/manual.tsx\">手动更新和移除</code>\n<code src=\"./demo/position.tsx\">自定义位置</code>\n<code src=\"./demo/dark.tsx\" debug>调试使用</code>\n<code src=\"./demo/button-props.tsx\">自定义页脚按钮属性</code>\n<code src=\"./demo/modal-render.tsx\">自定义渲染对话框</code>\n<code src=\"./demo/width.tsx\">自定义模态的宽度</code>\n<code src=\"./demo/static-info.tsx\">静态方法</code>\n<code src=\"./demo/confirm.tsx\">静态确认对话框</code>\n<code src=\"./demo/confirm-router.tsx\">销毁确认对话框</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/nested.tsx\" debug>嵌套弹框</code>\n<code src=\"./demo/render-panel.tsx\" debug>\\_InternalPanelDoNotUseOrYouWillBeFired</code>\n<code src=\"./demo/custom-mouse-position.tsx\" debug>控制弹框动画原点</code>\n<code src=\"./demo/wireframe.tsx\" debug>线框风格</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| afterClose | Modal 完全关闭后的回调 | function | - |  | × |\n| cancelButtonProps | cancel 按钮 props | [ButtonProps](/components/button-cn#api) | - |  | 6.0.0 |\n| cancelText | 取消按钮文字 | ReactNode | `取消` |  | × |\n| centered | 垂直居中展示 Modal | boolean | false |  | 5.24.0 |\n| classNames | 用于自定义 Modal 组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 5.10.0 |\n| closable | 是否显示右上角的关闭按钮 | boolean \\| [ClosableType](#closabletype) | true | - | 5.16.0 |\n| closeIcon | 自定义关闭图标。5.7.0：设置为 `null` 或 `false` 时隐藏关闭按钮 | ReactNode | &lt;CloseOutlined /> |  | 5.14.0 |\n| confirmLoading | 确定按钮 loading | boolean | false |  | × |\n| ~~destroyOnClose~~ | 关闭时销毁 Modal 里的子元素 | boolean | false |  | × |\n| destroyOnHidden | 关闭时销毁 Modal 里的子元素 | boolean | false | 5.25.0 | × |\n| ~~focusTriggerAfterClose~~ | 对话框关闭后是否需要聚焦触发元素。请使用 `focusable.focusTriggerAfterClose` 替代 | boolean | true | 4.9.0 | × |\n| footer | 底部内容，当不需要默认底部按钮时，可以设为 `footer={null}` | ReactNode \\| (originNode: ReactNode, extra: { OkBtn: React.FC, CancelBtn: React.FC }) => ReactNode | (确定取消按钮) | renderFunction: 5.9.0 | × |\n| forceRender | 强制渲染 Modal | boolean | false |  | × |\n| focusable | 对话框内焦点管理的配置 | `{ trap?: boolean, focusTriggerAfterClose?: boolean }` | - | 6.2.0 | 6.4.0 |\n| getContainer | 指定 Modal 挂载的节点，但依旧为全屏展示，`false` 为挂载在当前位置 | HTMLElement \\| () => HTMLElement \\| Selectors \\| false | document.body |  | × |\n| keyboard | 是否支持键盘 esc 关闭 | boolean | true |  | × |\n| mask | 遮罩效果 | boolean \\| `{enabled: boolean, blur: boolean, closable?: boolean}` | true | mask.closable: 6.3.0 | 6.0.0，mask.closable: 6.3.0 |\n| ~~maskClosable~~ | 点击蒙层是否允许关闭。请使用 `mask.closable` 替代。 | boolean | true | - | × |\n| modalRender | 自定义渲染对话框 | (node: ReactNode) => ReactNode | - | 4.7.0 | × |\n| okButtonProps | ok 按钮 props | [ButtonProps](/components/button-cn#api) | - |  | 6.0.0 |\n| okText | 确认按钮文字 | ReactNode | `确定` |  | × |\n| okType | 确认按钮类型 | string | `primary` |  | × |\n| style | 可用于设置浮层的样式，调整浮层位置等 | CSSProperties | - |  | 5.7.0 |\n| styles | 用于自定义 Modal 组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.10.0 |\n| loading | 显示骨架屏 | boolean |  | 5.18.0 | × |\n| scrollLock | 弹窗打开时是否锁定body滚动 | boolean | true | 6.5.0 | × |\n| title | 标题 | ReactNode | - |  | × |\n| open | 对话框是否可见 | boolean | - |  | × |\n| width | 宽度 | string \\| number \\| [Breakpoint](/components/grid-cn#col) | 520 | Breakpoint: 5.23.0 | × |\n| wrapClassName | 对话框外层容器的类名 | string | - |  | × |\n| zIndex | 设置 Modal 的 `z-index` | number | 1000 |  | × |\n| onCancel | 点击遮罩层或右上角叉或取消按钮的回调 | function(e) | - |  | × |\n| onOk | 点击确定回调 | function(e) | - |  | × |\n| afterOpenChange | 打开和关闭 Modal 时动画结束后的回调 | (open: boolean) => void | - | 5.4.0 | × |\n\n#### 注意\n\n- `<Modal />` 默认关闭后状态不会自动清空，如果希望每次打开都是新内容，请设置 `destroyOnHidden`。\n- `<Modal />` 和 Form 一起配合使用时，设置 `destroyOnHidden` 也不会在 Modal 关闭时销毁表单字段数据，需要设置 `<Form preserve={false} />`。\n- `Modal.method()` RTL 模式仅支持 hooks 用法。\n\n### Modal.method()\n\n包括：\n\n- `Modal.info`\n- `Modal.success`\n- `Modal.error`\n- `Modal.warning`\n- `Modal.confirm`\n\n以上均为一个函数，参数为 object，具体属性如下：\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| afterClose | Modal 完全关闭后的回调 | function | - | 4.9.0 |\n| ~~autoFocusButton~~ | 指定自动获得焦点的按钮。请使用 `focusable.autoFocusButton` 替代 | null \\| `ok` \\| `cancel` | `ok` |  |\n| cancelButtonProps | cancel 按钮 props | [ButtonProps](/components/button-cn#api) | - |  |\n| cancelText | 设置 Modal.confirm 取消按钮文字 | string | `取消` |  |\n| centered | 垂直居中展示 Modal | boolean | false |  |\n| className | 容器类名 | string | - |  |\n| closable | 是否显示右上角的关闭按钮 | boolean \\| [ClosableType](#closabletype) | false | - |\n| closeIcon | 自定义关闭图标 | ReactNode | undefined | 4.9.0 |\n| content | 内容 | ReactNode | - |  |\n| focusable.autoFocusButton | 指定自动获得焦点的按钮 | null \\| `ok` \\| `cancel` | `ok` | 6.2.0 |\n| footer | 底部内容，当不需要默认底部按钮时，可以设为 `footer: null` | ReactNode \\| (originNode: ReactNode, extra: { OkBtn: React.FC, CancelBtn: React.FC }) => ReactNode | - | renderFunction: 5.9.0 |\n| getContainer | 指定 Modal 挂载的 HTML 节点，false 为挂载在当前 dom | HTMLElement \\| () => HTMLElement \\| Selectors \\| false | document.body |  |\n| icon | 自定义图标 | ReactNode | &lt;ExclamationCircleFilled /> |  |\n| keyboard | 是否支持键盘 esc 关闭 | boolean | true |  |\n| mask | 遮罩效果 | boolean \\| `{enabled?: boolean, blur?: boolean, closable?: boolean}` | true |  |\n| ~~maskClosable~~ | 点击蒙层是否允许关闭。请使用 `mask.closable` 替代。 | boolean | false | - |\n| scrollLock | 弹窗打开时是否锁定body滚动 | boolean | true | 6.5.0 |\n| okButtonProps | ok 按钮 props | [ButtonProps](/components/button-cn#api) | - |  |\n| okText | 确认按钮文字 | string | `确定` |  |\n| okType | 确认按钮类型 | string | `primary` |  |\n| style | 可用于设置浮层的样式，调整浮层位置等 | CSSProperties | - |  |\n| title | 标题 | ReactNode | - |  |\n| width | 宽度 | string \\| number | 416 |  |\n| wrapClassName | 对话框外层容器的类名 | string | - | 4.18.0 |\n| zIndex | 设置 Modal 的 `z-index` | number | 1000 |  |\n| onCancel | 点击取消回调，参数为关闭函数，若返回 promise 时 resolve 为正常关闭, reject 为不关闭 | function(close) | - |  |\n| onOk | 点击确定回调，参数为关闭函数，若返回 promise 时 resolve 为正常关闭, reject 为不关闭 | function(close) | - |  |\n\n以上函数调用后，会返回一个引用，可以通过该引用更新和关闭弹窗。\n\n### ClosableType\n\n| 参数       | 说明                   | 类型      | 默认值    | 版本 |\n| ---------- | ---------------------- | --------- | --------- | ---- |\n| afterClose | Modal 完全关闭后的回调 | function  | -         | -    |\n| closeIcon  | 自定义关闭图标         | ReactNode | undefined | -    |\n| disabled   | 关闭图标是否禁用       | boolean   | false     | -    |\n| onClose    | 弹窗关闭即时调用       | Function  | undefined | -    |\n\n```jsx\nconst modal = Modal.info();\n\nmodal.update({\n  title: '修改的标题',\n  content: '修改的内容',\n});\n\n// 在 4.8.0 或更高版本中，可以通过传入函数的方式更新弹窗\nmodal.update((prevConfig) => ({\n  ...prevConfig,\n  title: `${prevConfig.title}（新）`,\n}));\n\nmodal.destroy();\n```\n\n- `Modal.destroyAll`\n\n使用 `Modal.destroyAll()` 可以销毁弹出的确认窗（即上述的 `Modal.info`、`Modal.success`、`Modal.error`、`Modal.warning`、`Modal.confirm`）。通常用于路由监听当中，处理路由前进、后退不能销毁确认对话框的问题，而不用各处去使用实例的返回值进行关闭（`modal.destroy()` 适用于主动关闭，而不是路由这样被动关闭）\n\n```jsx\nimport { browserHistory } from 'react-router';\n\n// router change\nbrowserHistory.listen(() => {\n  Modal.destroyAll();\n});\n```\n\n### Modal.useModal()\n\n当你需要使用 Context 时，可以通过 `Modal.useModal` 创建一个 `contextHolder` 插入子节点中。通过 hooks 创建的临时 Modal 将会得到 `contextHolder` 所在位置的所有上下文。创建的 `modal` 对象拥有与 [`Modal.method`](#modalmethod) 相同的创建通知方法。\n\n```jsx\nconst [modal, contextHolder] = Modal.useModal();\n\nReact.useEffect(() => {\n  modal.confirm({\n    // ...\n  });\n}, []);\n\nreturn <div>{contextHolder}</div>;\n```\n\n`modal.confirm` 返回方法：\n\n- `destroy`：销毁当前窗口\n- `update`：更新当前窗口\n- `then`：Promise 链式调用，支持 `await` 操作。该方法为 Hooks 仅有\n\n```tsx\n//点击 `onOk` 时返回 `true`，点击 `onCancel` 时返回 `false`\nconst confirmed = await modal.confirm({ ... });\n```\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Modal\"></ComponentTokenTable>\n\n## FAQ\n\n### 为什么 Modal 关闭时，内容不会更新？ {#faq-content-not-update}\n\nModal 在关闭时会将内容进行 memo 从而避免关闭过程中的内容跳跃。也因此如果你在配合使用 Form 有关闭时重置 `initialValues` 的操作，请通过在 effect 中调用 `resetFields` 来重置。\n\n### 为什么 Modal 方法不能获取 context、redux 的内容和 ConfigProvider `locale/prefixCls/theme` 等配置？ {#faq-context-redux}\n\n直接调用 Modal 方法，antd 会通过 `ReactDOM.render` 动态创建新的 React 实体。其 context 与当前代码所在 context 并不相同，因而无法获取 context 信息。\n\n当你需要 context 信息（例如 ConfigProvider 配置的内容）时，可以通过 `Modal.useModal` 方法会返回 `modal` 实体以及 `contextHolder` 节点。将其插入到你需要获取 context 位置即可：\n\n```tsx\nconst [modal, contextHolder] = Modal.useModal();\n\nreturn (\n  <Context1.Provider value=\"Ant\">\n    {/* contextHolder 在 Context1 内，它可以获得 Context1 的 context */}\n    {contextHolder}\n    <Context2.Provider value=\"Design\">\n      {/* contextHolder 在 Context2 外，因而不会获得 Context2 的 context */}\n    </Context2.Provider>\n  </Context1.Provider>\n);\n```\n\n**异同**：通过 hooks 创建的 `contextHolder` 必须插入到子元素节点中才会生效，当你不需要上下文信息时请直接调用。\n\n> 可通过 [App 包裹组件](/components/app-cn) 简化 `useModal` 等方法需要手动植入 contextHolder 的问题。\n\n### 静态方法如何设置 prefixCls ？ {#faq-set-prefix-cls}\n\n你可以通过 [`ConfigProvider.config`](/components/config-provider-cn#configproviderconfig-4130) 进行设置。\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Modal",
+        "demos": [
+          {
+            "name": "async",
+            "title": "Asynchronously close",
+            "description": "Asynchronously close a modal dialog when the OK button is pressed. For example, you can use this pattern when you submit a form."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Basic modal."
+          },
+          {
+            "name": "button-props",
+            "title": "Customize footer buttons props",
+            "description": "Passing `okButtonProps` and `cancelButtonProps` will customize the OK button and cancel button props."
+          },
+          {
+            "name": "confirm-router",
+            "title": "destroy confirmation modal dialog",
+            "description": "`Modal.destroyAll()` will destroy all confirmation modal dialogs. Usually, you can use it in router change event to destroy confirm modal dialog automatically."
+          },
+          {
+            "name": "confirm",
+            "title": "Static confirmation",
+            "description": "Use `confirm()` to show a confirmation modal dialog. Let onCancel/onOk function return a promise object to delay closing the dialog."
+          },
+          {
+            "name": "footer-render",
+            "title": "Customized Footer render function",
+            "description": "Customize the footer rendering function to support extensions on top of the original."
+          },
+          {
+            "name": "footer",
+            "title": "Customized Footer",
+            "description": "A more complex example which define a customized footer button bar. The dialog will change to loading state after clicking the submit button, and when the loading is done, the modal dialog will be closed."
+          },
+          {
+            "name": "hooks",
+            "title": "Use hooks to get context",
+            "description": "Use `Modal.useModal` to get `contextHolder` with context accessible issue. Only hooks method support Promise `await` operation."
+          },
+          {
+            "name": "loading",
+            "title": "Loading",
+            "description": "Set the loading status of Modal."
+          },
+          {
+            "name": "locale",
+            "title": "Internationalization",
+            "description": "To customize the text of the buttons, you need to set `okText` and `cancelText` props."
+          },
+          {
+            "name": "manual",
+            "title": "Manual to update destroy",
+            "description": "Manually updating and destroying a modal through instance."
+          },
+          {
+            "name": "mask",
+            "title": "mask",
+            "description": "mask effect."
+          },
+          {
+            "name": "modal-render",
+            "title": "Custom modal content render",
+            "description": "Custom modal content render. use `react-draggable` implements draggable."
+          },
+          {
+            "name": "position",
+            "title": "To customize the position of modal",
+            "description": "You can use `centered`,`style.top` or other styles to set position of modal dialog."
+          },
+          {
+            "name": "static-info",
+            "title": "Static Method",
+            "description": "Static methods cannot consume Context provided by `ConfigProvider`. When enable `layer`, they may also cause style errors. Please use hooks version or `App` provided instance first."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Modal by passing objects or functions through `classNames` and `styles`."
+          },
+          {
+            "name": "width",
+            "title": "To customize the width of modal",
+            "description": "Use `width` to set the width of the modal dialog."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Modal",
+        "tokens": [
+          {
+            "name": "contentBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of content",
+            "descriptionZh": "内容区域背景色"
+          },
+          {
+            "name": "footerBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of footer",
+            "descriptionZh": "底部区域背景色"
+          },
+          {
+            "name": "headerBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of header",
+            "descriptionZh": "顶部背景色"
+          },
+          {
+            "name": "titleColor",
+            "type": "string",
+            "default": "",
+            "description": "Font color of title",
+            "descriptionZh": "标题字体颜色"
+          },
+          {
+            "name": "titleFontSize",
+            "type": "string | number",
+            "default": "",
+            "description": "Font size of title",
+            "descriptionZh": "标题字体大小"
+          },
+          {
+            "name": "titleLineHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Line height of title",
+            "descriptionZh": "标题行高"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Modal",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with relative positioning, top position, width, max-width, margins, bottom padding and other basic layout styles for modal container",
+            "descriptionZh": "根元素，包含相对定位、顶部位置、宽度、最大宽度、外边距、底部内边距等模态框容器的基础布局样式"
+          },
+          {
+            "key": "mask",
+            "description": "Mask element with fixed positioning, z-index, background color, animation transitions and other mask layer styles",
+            "descriptionZh": "遮罩层元素，包含固定定位、层级、背景色、动画过渡等遮罩层的样式"
+          },
+          {
+            "key": "container",
+            "description": "Modal container element with relative positioning, background, background-clip, border, border-radius, box-shadow, pointer-events, padding and other modal body styles",
+            "descriptionZh": "Modal 容器元素，包含相对定位、背景色、背景裁剪、边框、圆角、阴影、指针事件、内边距等模态框主体样式"
+          },
+          {
+            "key": "wrapper",
+            "description": "Wrapper element used for motion container with animation and transition effect styles",
+            "descriptionZh": "包裹层元素，一般用于动画容器，包含动画和过渡效果的样式"
+          },
+          {
+            "key": "header",
+            "description": "Header element with padding, bottom border and other header area styles",
+            "descriptionZh": "头部元素，包含头部内边距、下边框等头部区域样式"
+          },
+          {
+            "key": "title",
+            "description": "Title element with margin, color, font-weight, font-size, line-height, word-wrap and other title text styles",
+            "descriptionZh": "标题元素，包含外边距、颜色、字体权重、字体大小、行高、文字换行等标题文字样式"
+          },
+          {
+            "key": "body",
+            "description": "Body element with content area background color, padding and other content display styles",
+            "descriptionZh": "内容元素，包含内容区域的背景色、内边距等内容展示样式"
+          },
+          {
+            "key": "footer",
+            "description": "Footer element with footer background color, padding, top border, border-radius and other footer area styles",
+            "descriptionZh": "底部元素，包含底部的背景色、内边距、上边框、圆角等底部区域样式"
+          },
+          {
+            "key": "close",
+            "description": "Preview close button element, sets basic button styles",
+            "descriptionZh": "预览关闭按钮元素，设置按钮的基础样式"
+          }
+        ]
+      }
+    }
+  }
+}

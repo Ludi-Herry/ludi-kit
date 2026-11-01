@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/blind-historical-diagnostics.schema.json",
+  "title": "Blind Historical Stage Diagnostics",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "assessment",
+    "recordedAtUtc",
+    "baselineManifest",
+    "interpretation",
+    "runs"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "assessment": { "const": "indeterminate-current-harness" },
+    "recordedAtUtc": { "type": "string", "format": "date-time" },
+    "baselineManifest": { "$ref": "#/$defs/receipt" },
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conclusion", "rawKitFirstPassPreserved", "unknownPolicy"],
+      "properties": {
+        "conclusion": { "const": "kitFirstPass KPI 在当前 harness 下不可判定" },
+        "rawKitFirstPassPreserved": { "const": true },
+        "unknownPolicy": {
+          "const": "缺少同阶段命令、entry 或 shutdown 证据时保持 unknown"
+        }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/run" }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "reason", "evidence"],
+      "properties": {
+        "value": { "enum": [true, false, "unknown"] },
+        "reason": { "type": "string", "minLength": 1 },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/receipt" }
+        }
+      }
+    },
+    "arm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["typecheckPass", "buildPass", "flowSmokePass", "previewIdentityPass"],
+      "properties": {
+        "typecheckPass": { "$ref": "#/$defs/metric" },
+        "buildPass": { "$ref": "#/$defs/metric" },
+        "flowSmokePass": { "$ref": "#/$defs/metric" },
+        "previewIdentityPass": { "$ref": "#/$defs/metric" }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "slot",
+        "status",
+        "qualifying",
+        "analysisClass",
+        "rawKitFirstPass",
+        "arms"
+      ],
+      "properties": {
+        "runId": { "type": "string", "minLength": 1 },
+        "slot": { "type": "integer", "minimum": 1 },
+        "status": { "enum": ["completed", "invalidated"] },
+        "qualifying": { "type": "boolean" },
+        "analysisClass": {
+          "enum": ["qualifying", "invalidated", "invalidated-generation-readiness"]
+        },
+        "rawKitFirstPass": { "const": "failed" },
+        "arms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["consumer", "control"],
+          "properties": {
+            "consumer": { "$ref": "#/$defs/arm" },
+            "control": { "$ref": "#/$defs/arm" }
+          }
+        }
+      }
+    }
+  }
+}

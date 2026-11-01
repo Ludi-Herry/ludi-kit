@@ -1,0 +1,54 @@
+{
+  "version": "0.1.0",
+  "note": "token 的语义与用途。AI 用语义选 token，不要凭色值硬编码。doNotUseFor 是硬边界。",
+  "color": {
+    "color.bg.page": { "css": "--color-bg-page", "usage": "页面背景", "doNotUseFor": ["按钮背景", "状态色"] },
+    "color.bg.surface": { "css": "--color-bg-surface", "usage": "卡片、内容区块背景", "doNotUseFor": ["页面背景"] },
+    "color.brand.primary": { "css": "--color-brand-primary", "usage": "主按钮、重点数字、当前状态", "doNotUseFor": ["大面积页面背景"] },
+    "color.text.primary": { "css": "--color-text-primary", "usage": "正文主文字、标题", "doNotUseFor": ["占位符", "禁用态"] },
+    "color.text.secondary": { "css": "--color-text-secondary", "usage": "次要文字、描述、辅助信息", "doNotUseFor": ["正文主内容"] },
+    "color.border": { "css": "--color-border", "usage": "分隔线、卡片描边、输入框边框", "doNotUseFor": ["文字颜色"] },
+    "color.status.success": { "css": "--color-status-success", "usage": "成功/已完成/已保护状态", "doNotUseFor": ["主操作按钮"] },
+    "color.status.warning": { "css": "--color-status-warning", "usage": "警告/待处理/预警状态", "doNotUseFor": ["普通信息"] },
+    "color.status.danger": { "css": "--color-status-danger", "usage": "危险/错误/需立即处理", "doNotUseFor": ["不危险的'未完成'态"] },
+    "color.status.info": { "css": "--color-status-info", "usage": "中性信息/提示", "doNotUseFor": ["成功或危险语义"] },
+    "color.chart.series.1": { "css": "--color-chart-series-1", "usage": "图表第一主序列", "doNotUseFor": ["业务状态", "按钮背景"] },
+    "color.chart.series.2": { "css": "--color-chart-series-2", "usage": "图表第二主序列", "doNotUseFor": ["业务状态", "按钮背景"] },
+    "color.chart.series.3": { "css": "--color-chart-series-3", "usage": "图表第三主序列", "doNotUseFor": ["业务状态", "按钮背景"] },
+    "color.chart.series.4": { "css": "--color-chart-series-4", "usage": "图表第四主序列", "doNotUseFor": ["业务状态", "按钮背景"] },
+    "color.chart.series.5": { "css": "--color-chart-series-5", "usage": "图表第五主序列", "doNotUseFor": ["业务状态", "按钮背景"] },
+    "color.chart.series.6": { "css": "--color-chart-series-6", "usage": "图表第六主序列", "doNotUseFor": ["业务状态", "按钮背景"] },
+    "color.chart.grid": { "css": "--color-chart-grid", "usage": "图表网格线", "doNotUseFor": ["内容分隔线", "文字颜色"] },
+    "color.chart.axis": { "css": "--color-chart-axis", "usage": "图表坐标轴与刻度文字", "doNotUseFor": ["正文主文字"] },
+    "color.chart.tooltip.bg": { "css": "--color-chart-tooltip-bg", "usage": "图表悬浮提示背景", "doNotUseFor": ["卡片背景"] },
+    "color.chart.tooltip.text": { "css": "--color-chart-tooltip-text", "usage": "图表悬浮提示文字", "doNotUseFor": ["正文主文字"] }
+  },
+  "typography": {
+    "font.title-1": { "css": "--font-title-1", "usage": "页面主标题" },
+    "font.title-2": { "css": "--font-title-2", "usage": "区块标题" },
+    "font.title-3": { "css": "--font-title-3", "usage": "卡片标题、小节标题" },
+    "font.body": { "css": "--font-body", "usage": "正文" },
+    "font.caption": { "css": "--font-caption", "usage": "辅助说明、表格次要信息" },
+    "font.metric": { "css": "--font-metric", "usage": "KPI 大数字", "doNotUseFor": ["正文"] }
+  },
+  "spacing": {
+    "spacing.xs": { "css": "--spacing-xs", "usage": "紧凑间距、图标与文字" },
+    "spacing.sm": { "css": "--spacing-sm", "usage": "组件内内边距" },
+    "spacing.md": { "css": "--spacing-md", "usage": "区块内元素间距（默认）" },
+    "spacing.lg": { "css": "--spacing-lg", "usage": "区块之间间距" },
+    "spacing.xl": { "css": "--spacing-xl", "usage": "页面级留白" }
+  },
+  "radius": {
+    "radius.control": { "css": "--radius-control", "usage": "按钮、输入框等控件圆角" },
+    "radius.card": { "css": "--radius-card", "usage": "普通卡片和内容区块" }
+  },
+  "shadow": {
+    "shadow.card": { "css": "--shadow-card", "usage": "卡片浮起", "doNotUseFor": ["大面积区块", "页面背景"] },
+    "shadow.popover": { "css": "--shadow-popover", "usage": "浮层、下拉、气泡" }
+  },
+  "density": {
+    "density.compact": { "css": "--density-compact", "usage": "高密度数据表、信息密集后台" },
+    "density.standard": { "css": "--density-standard", "usage": "默认密度" },
+    "density.loose": { "css": "--density-loose", "usage": "展示型、低密度页面" }
+  }
+}

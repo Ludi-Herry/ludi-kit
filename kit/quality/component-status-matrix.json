@@ -1,0 +1,485 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-07-19",
+  "componentCount": 39,
+  "statusCounts": {
+    "implemented": 24,
+    "partial": 15
+  },
+  "components": [
+    {
+      "name": "Button",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-alerts-realtime",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-dashboard",
+        "build-sa-siem-parser-library",
+        "build-sa-situation-publish",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "ConfirmDialog",
+      "category": "feedback",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-assets-devices",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Drawer",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "ImportFlow",
+      "category": "feedback",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-siem-parser-library",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Input",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "Textarea",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "Select",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-situation-publish"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "DatePicker",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "RangePicker",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "RadioGroup",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "CheckboxGroup",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "Switch",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "Upload",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "TreeSelect",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "Card",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-situation-publish"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Badge",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-analysis-trace",
+        "build-sa-reports-logs",
+        "build-sa-siem-parser-library",
+        "build-sa-situation-monitor",
+        "build-sa-situation-publish",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Tabs",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "SideNav",
+      "category": "navigation",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "ThemeToggle",
+      "category": "primitive",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "AppShell",
+      "category": "layout",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "PageLayout",
+      "category": "layout",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-permissions-list",
+        "build-sa-alerts-realtime",
+        "build-sa-analysis-trace",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-dashboard",
+        "build-sa-reports-logs",
+        "build-sa-siem-parser-library",
+        "build-sa-situation-publish",
+        "generated-sa-project",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "ForbiddenState",
+      "category": "feedback",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "PageHeader",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-permissions-list",
+        "build-sa-alerts-realtime",
+        "build-sa-analysis-trace",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-dashboard",
+        "build-sa-reports-logs",
+        "build-sa-siem-parser-library",
+        "build-sa-situation-publish",
+        "generated-sa-project",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "FilterPanel",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-permissions-list",
+        "build-sa-alerts-realtime",
+        "build-sa-analysis-trace",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-siem-parser-library",
+        "generated-sa-project",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "DataSection",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-permissions-list",
+        "build-sa-alerts-realtime",
+        "build-sa-analysis-trace",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-dashboard",
+        "build-sa-siem-parser-library",
+        "build-sa-situation-publish",
+        "generated-sa-project",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "BulkActionBar",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": false,
+      "harnessScenarios": [],
+      "status": "partial"
+    },
+    {
+      "name": "FormSection",
+      "category": "page-section",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-situation-publish",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "MetricCard",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-dashboard",
+        "build-sa-reports-logs",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "ChartFrame",
+      "category": "visualization",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-dashboard",
+        "build-sa-reports-logs",
+        "build-sa-situation-monitor",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "TrendChart",
+      "category": "visualization",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-dashboard",
+        "build-sa-reports-logs",
+        "build-sa-situation-monitor",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "BarChart",
+      "category": "visualization",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-reports-logs",
+        "build-sa-situation-monitor"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "DonutChart",
+      "category": "visualization",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-reports-logs",
+        "build-sa-situation-monitor"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "GaugeChart",
+      "category": "visualization",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-situation-monitor"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "DetailHeader",
+      "category": "composite",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "DescriptionGrid",
+      "category": "data-display",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "DataGrid",
+      "category": "data-display",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-permissions-list",
+        "build-sa-alerts-realtime",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-siem-parser-library",
+        "generated-sa-project",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Pagination",
+      "category": "data-display",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-permissions-list",
+        "build-sa-alerts-realtime",
+        "build-sa-assets-compliance",
+        "build-sa-assets-devices",
+        "build-sa-siem-parser-library",
+        "generated-sa-project",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Table",
+      "category": "data-display",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-analysis-trace",
+        "build-sa-dashboard",
+        "generated-sa-project"
+      ],
+      "status": "implemented"
+    },
+    {
+      "name": "Stepper",
+      "category": "navigation",
+      "publicExported": true,
+      "previewListed": true,
+      "harnessCovered": true,
+      "harnessScenarios": [
+        "build-sa-situation-publish",
+        "generated-sample-project"
+      ],
+      "status": "implemented"
+    }
+  ]
+}

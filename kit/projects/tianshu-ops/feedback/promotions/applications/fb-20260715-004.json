@@ -1,0 +1,58 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "generatedAt": "2026-07-15",
+  "itemId": "fb-20260715-004",
+  "title": "Page-level authorization failures need a clear 403 state",
+  "mode": "recorded",
+  "status": "implemented",
+  "sourceDraft": "projects/tianshu-ops/feedback/promotions/fb-20260715-004.md",
+  "planFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-004.json",
+  "patchFile": "projects/tianshu-ops/feedback/promotions/applications/fb-20260715-004.diff",
+  "action": "update-component",
+  "target": "component",
+  "destination": "components.manifest.json",
+  "allowedDestinations": [
+    "src/",
+    "components.manifest.json",
+    "patterns.manifest.json",
+    "package.json",
+    "package-lock.json",
+    "projects/tianshu-ops/generated/",
+    "examples/",
+    "recipes/",
+    "figma/",
+    "harness/",
+    "scripts/check-dom-contract.mjs"
+  ],
+  "willChangeFiles": [
+    "src/components.tsx",
+    "src/index.ts",
+    "src/styles.css",
+    "components.manifest.json",
+    "examples/feedback-states.tsx",
+    "recipes/permission-state.md",
+    "figma/component-map.json",
+    "figma/variants-map.json",
+    "scripts/check-dom-contract.mjs",
+    "harness/scenarios/build-tianshu-platform-rbac-forbidden.json"
+  ],
+  "guardrails": [
+    "Recorded mode documents already implemented files and keeps patch artifacts as semantic plans.",
+    "Every planned source file must match promotion gate allowed destinations.",
+    "Only accepted or promoted feedback items can produce application plans.",
+    "Run validation and build commands before marking the feedback item promoted."
+  ],
+  "validationCommands": [
+    "npm run validate:feedback",
+    "npm run validate",
+    "npm run check:dom",
+    "npm run check:harness",
+    "npm run build:preview",
+    "npm run build:starter",
+    "npm run check:package"
+  ],
+  "command": "npm run validate:feedback -- fb-20260715-004 --recorded",
+  "sourceDraftIndex": "projects/tianshu-ops/feedback/promotions/index.json",
+  "patchPreview": "diff --git a/src/components.tsx b/src/components.tsx\n@@ planned promotion\n+ Add a page-level ForbiddenState with default recovery copy and no protected-data slot.\ndiff --git a/src/index.ts b/src/index.ts\n@@ planned promotion\n+ Export ForbiddenState and ForbiddenStateProps from the public barrel.\ndiff --git a/src/styles.css b/src/styles.css\n@@ planned promotion\n+ Add responsive, token-based 403 typography and action layout.\ndiff --git a/components.manifest.json b/components.manifest.json\n@@ planned promotion\n+ Document page, local-action, read-only, and empty-state boundaries.\ndiff --git a/examples/feedback-states.tsx b/examples/feedback-states.tsx\n@@ planned promotion\n+ Show an accessible missing-permission page through public imports.\ndiff --git a/recipes/permission-state.md b/recipes/permission-state.md\n@@ planned promotion\n+ Record 403 versus local disabled-action guidance.\ndiff --git a/figma/component-map.json b/figma/component-map.json\n@@ planned promotion\n+ Sync the code-first component mapping.\ndiff --git a/figma/variants-map.json b/figma/variants-map.json\n@@ planned promotion\n+ Sync the single default permission-state variant.\ndiff --git a/scripts/check-dom-contract.mjs b/scripts/check-dom-contract.mjs\n@@ planned promotion\n+ Assert title linkage, decorative code, description, and action group.\ndiff --git a/harness/scenarios/build-tianshu-platform-rbac-forbidden.json b/harness/scenarios/build-tianshu-platform-rbac-forbidden.json\n@@ planned promotion\n+ Require a real Tianshu RBAC forbidden page that omits role and permission tables."
+}

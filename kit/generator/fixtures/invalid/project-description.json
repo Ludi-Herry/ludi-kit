@@ -1,0 +1,28 @@
+{
+  "$schema": "../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "invalid-field-service",
+  "contextType": "real-product",
+  "product": {
+    "name": "无效夹具",
+    "description": "故意缺失列表数据合同，用于证明生成前失败。"
+  },
+  "pages": [
+    {
+      "id": "broken-list",
+      "route": "/broken",
+      "title": "无效列表",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "这个输入必须在任何写入发生前被拒绝。",
+        "primaryAction": "新建",
+        "secondaryActions": [],
+        "successCriteria": ["必须失败"]
+      },
+      "componentPlan": ["PageLayout", "PageHeader"],
+      "content": {
+        "filters": []
+      }
+    }
+  ]
+}

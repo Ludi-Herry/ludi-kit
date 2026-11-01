@@ -1,0 +1,139 @@
+{
+  "$schema": "../../../../schema/project-description.schema.json",
+  "version": "1.0.0",
+  "projectId": "tianshu-firmware-canary",
+  "contextType": "real-product",
+  "product": {
+    "name": "天枢固件版本管理终评",
+    "description": "供固件管理员检索版本、判断生命周期、签名与灰度风险，并进入受控发布操作的冻结 Holdout 页面。"
+  },
+  "pages": [
+    {
+      "id": "production-firmware",
+      "route": "/production/firmware",
+      "title": "固件版本管理",
+      "pattern": "list-page",
+      "intent": {
+        "goal": "维护固件、签名和灰度发布状态，为烧录任务提供受控版本。",
+        "primaryAction": "新建固件版本",
+        "secondaryActions": ["导出版本列表", "刷新"],
+        "successCriteria": [
+          "共 24 个版本 · 数据更新时间 2026-07-17 10:32",
+          "版本状态与签名状态保持独立列并配合可见文字",
+          "筛选区支持版本号、机型、版本状态和签名状态",
+          "新建固件版本从主操作打开且不暴露固件、密钥、证书或 KMS 内容"
+        ]
+      },
+      "componentPlan": [
+        "PageLayout",
+        "PageHeader",
+        "FilterPanel",
+        "DataSection",
+        "DataGrid",
+        "Pagination",
+        "Badge",
+        "Button",
+        "Input",
+        "Select",
+        "Stepper",
+        "Tabs",
+        "Card",
+        "FormSection"
+      ],
+      "content": {
+        "filters": [
+          { "name": "firmwareVersion", "label": "固件版本号", "type": "text", "dataKey": "version", "placeholder": "输入版本号" },
+          {
+            "name": "model",
+            "label": "机型",
+            "type": "select",
+            "dataKey": "model",
+            "placeholder": "全部机型",
+            "options": [
+              { "label": "TJ-M1", "value": "TJ-M1" },
+              { "label": "TJ-S1", "value": "TJ-S1" },
+              { "label": "TJ-Pro", "value": "TJ-Pro" }
+            ]
+          },
+          {
+            "name": "versionStatus",
+            "label": "版本状态",
+            "type": "select",
+            "dataKey": "versionStatus",
+            "placeholder": "全部状态",
+            "options": [
+              { "label": "草稿", "value": "草稿" },
+              { "label": "测试中", "value": "测试中" },
+              { "label": "灰度中", "value": "灰度中" },
+              { "label": "已全量", "value": "已全量" },
+              { "label": "已回滚", "value": "已回滚" },
+              { "label": "已停用", "value": "已停用" }
+            ]
+          },
+          {
+            "name": "signatureStatus",
+            "label": "签名状态",
+            "type": "select",
+            "dataKey": "signatureStatus",
+            "placeholder": "全部状态",
+            "options": [
+              { "label": "未签名", "value": "未签名" },
+              { "label": "签名中", "value": "签名中" },
+              { "label": "签名成功", "value": "签名成功" },
+              { "label": "签名失败", "value": "签名失败" }
+            ]
+          }
+        ],
+        "table": {
+          "title": "固件版本",
+          "rowKey": "version",
+          "columns": [
+            { "key": "version", "title": "固件版本号", "width": 142, "ellipsis": true },
+            { "key": "model", "title": "机型", "width": 68 },
+            { "key": "versionStatus", "title": "版本状态", "display": "tag", "width": 82, "tagColors": { "草稿": "default", "测试中": "blue", "灰度中": "gold", "已全量": "green", "已回滚": "red", "已停用": "default" } },
+            { "key": "signatureStatus", "title": "签名状态", "display": "tag", "width": 88, "tagColors": { "未签名": "default", "签名中": "blue", "签名成功": "green", "签名失败": "red" } },
+            { "key": "rollout", "title": "灰度比例", "width": 78 },
+            { "key": "devices", "title": "绑定设备数", "width": 86 },
+            { "key": "publisher", "title": "发布人", "width": 70 },
+            { "key": "publishedAt", "title": "发布时间", "width": 128 },
+            { "key": "operations", "title": "操作", "width": 188 }
+          ],
+          "rows": [
+            { "version": "v2.4.0-TJ-M1-beta", "model": "TJ-M1", "versionStatus": "测试中", "signatureStatus": "签名成功", "rollout": "—", "devices": 0, "publisher": "林嘉禾", "publishedAt": "—", "operations": "查看 · 编辑 · 发起灰度" },
+            { "version": "v2.3.2-TJ-M1", "model": "TJ-M1", "versionStatus": "灰度中", "signatureStatus": "签名成功", "rollout": "25%", "devices": 1280, "publisher": "周启明", "publishedAt": "2026-07-16 18:20", "operations": "查看 · 调整灰度 · 回滚" },
+            { "version": "v2.3.1-TJ-M1", "model": "TJ-M1", "versionStatus": "已全量", "signatureStatus": "签名成功", "rollout": "—", "devices": 4896, "publisher": "周启明", "publishedAt": "2026-07-11 10:08", "operations": "查看 · 回滚 · 停用" },
+            { "version": "v1.9.8-TJ-S1", "model": "TJ-S1", "versionStatus": "已回滚", "signatureStatus": "签名成功", "rollout": "—", "devices": 742, "publisher": "顾言", "publishedAt": "2026-07-04 15:36", "operations": "查看 · 停用" },
+            { "version": "v3.0.0-TJ-Pro-rc1", "model": "TJ-Pro", "versionStatus": "草稿", "signatureStatus": "未签名", "rollout": "—", "devices": 0, "publisher": "沈秋", "publishedAt": "—", "operations": "编辑 · 上传固件 · 发起签名" },
+            { "version": "v2.2.7-TJ-M1", "model": "TJ-M1", "versionStatus": "已停用", "signatureStatus": "签名失败", "rollout": "—", "devices": 315, "publisher": "周启明", "publishedAt": "2026-06-18 09:24", "operations": "查看" }
+          ]
+        },
+        "operationalList": {
+          "notice": "页面只使用冻结演示数据；不会上传固件、调用 KMS、写入证书或向设备推送更新。",
+          "process": {
+            "title": "固件发布主链",
+            "description": "签名完成后进入测试与灰度，风险确认后才能全量发布。",
+            "current": 2,
+            "steps": ["草稿与签名", "测试验证", "灰度发布", "全量或回滚"]
+          },
+          "defaultTab": "versions",
+          "tabs": [
+            { "key": "versions", "label": "版本台账" },
+            { "key": "release-review", "label": "发布审批", "emptyDescription": "当前没有待处理的发布审批" }
+          ],
+          "primaryDrawer": {
+            "title": "新建固件版本",
+            "description": "登记版本元数据与发布范围；当前终评不会上传固件内容或连接生产服务。",
+            "submitLabel": "保存版本草稿",
+            "fields": [
+              { "name": "version", "label": "固件版本号", "control": "input", "required": true, "placeholder": "例如 v2.4.1-TJ-M1" },
+              { "name": "model", "label": "机型", "control": "select", "required": true, "options": [{ "label": "TJ-M1", "value": "tj-m1" }, { "label": "TJ-S1", "value": "tj-s1" }, { "label": "TJ-Pro", "value": "tj-pro" }] },
+              { "name": "channel", "label": "发布通道", "control": "radio", "required": true, "options": [{ "label": "测试", "value": "testing" }, { "label": "灰度", "value": "canary" }] },
+              { "name": "window", "label": "计划验证周期", "control": "date-range", "required": true },
+              { "name": "remark", "label": "版本说明", "control": "textarea", "required": false, "placeholder": "补充变更范围与风险说明" }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

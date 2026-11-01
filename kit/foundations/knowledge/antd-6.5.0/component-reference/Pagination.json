@@ -1,0 +1,367 @@
+{
+  "version": "1.0.0",
+  "component": "Pagination",
+  "queryComponent": "Pagination",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Pagination",
+        "nameZh": "分页",
+        "description": "分页器用于分隔长列表，每次只加载一个页面。",
+        "props": [
+          {
+            "name": "align",
+            "type": "start | center | end",
+            "default": "-",
+            "since": "5.19.0"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "current",
+            "type": "number",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "defaultCurrent",
+            "type": "number",
+            "default": "1",
+            "since": ""
+          },
+          {
+            "name": "defaultPageSize",
+            "type": "number",
+            "default": "10",
+            "since": ""
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "hideOnSinglePage",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "itemRender",
+            "type": "(page, type: 'page' | 'prev' | 'next', originalElement) => React.ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "pageSize",
+            "type": "number",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "pageSizeOptions",
+            "type": "number[]",
+            "default": "[`10`, `20`, `50`, `100`]",
+            "since": ""
+          },
+          {
+            "name": "responsive",
+            "type": "boolean",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "showLessItems",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "showQuickJumper",
+            "type": "boolean | { goButton: ReactNode }",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "showSizeChanger",
+            "type": "boolean | [SelectProps](/components/select#api)",
+            "default": "-",
+            "since": "SelectProps: 5.21.0"
+          },
+          {
+            "name": "showTitle",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "showTotal",
+            "type": "function(total, range)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "simple",
+            "type": "boolean | { readOnly?: boolean }",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "`large` | `medium` | `small`",
+            "default": "`medium`",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "default": "0",
+            "since": ""
+          },
+          {
+            "name": "totalBoundaryShowSizeChanger",
+            "type": "number",
+            "default": "50",
+            "since": ""
+          },
+          {
+            "name": "onChange",
+            "type": "function(page, pageSize)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onShowSizeChange",
+            "type": "function(current, size)",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Pagination",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 当加载/渲染所有数据将花费很多时间时；\n- 可切换页码浏览数据。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/align.tsx\" version=\"5.19.0\">方向</code>\n<code src=\"./demo/more.tsx\">更多</code>\n<code src=\"./demo/changer.tsx\">改变</code>\n<code src=\"./demo/jump.tsx\">跳转</code>\n<code src=\"./demo/mini.tsx\">尺寸</code>\n<code src=\"./demo/simple.tsx\">简洁</code>\n<code src=\"./demo/controlled.tsx\">受控</code>\n<code src=\"./demo/total.tsx\">总数</code>\n<code src=\"./demo/all.tsx\">全部展示</code>\n<code src=\"./demo/itemRender.tsx\">上一步和下一步</code>\n<code src=\"./demo/wireframe.tsx\" debug>线框风格</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n<code src=\"./demo/variant-debug.tsx\" debug>变体 Debug</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n```jsx\n<Pagination onChange={onChange} total={50} />\n```\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| align | 对齐方式 | start \\| center \\| end | - | 5.19.0 | × |\n| classNames | 自定义组件内部各语义化结构的类名。支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| current | 当前页数 | number | - |  | × |\n| defaultCurrent | 默认的当前页数 | number | 1 |  | × |\n| defaultPageSize | 默认的每页条数 | number | 10 |  | × |\n| disabled | 禁用分页 | boolean | - |  | × |\n| hideOnSinglePage | 只有一页时是否隐藏分页器 | boolean | false |  | × |\n| itemRender | 用于自定义页码的结构，可用于优化 SEO | (page, type: 'page' \\| 'prev' \\| 'next', originalElement) => React.ReactNode | - |  | × |\n| pageSize | 每页条数 | number | - |  | × |\n| pageSizeOptions | 指定每页可以显示多少条 | number\\[] | \\[`10`, `20`, `50`, `100`] |  | × |\n| responsive | 当 size 未指定时，根据屏幕宽度自动调整尺寸 | boolean | - |  | × |\n| showLessItems | 是否显示较少页面内容 | boolean | false |  | × |\n| showQuickJumper | 是否可以快速跳转至某页 | boolean \\| { goButton: ReactNode } | false |  | × |\n| showSizeChanger | 是否展示 `pageSize` 切换器 | boolean \\| [SelectProps](/components/select-cn#api) | - | SelectProps: 5.21.0 | 4.21.0，SelectProps: 5.21.0 |\n| showTitle | 是否显示原生 tooltip 页码提示 | boolean | true |  | × |\n| showTotal | 用于显示数据总量和当前数据顺序 | function(total, range) | - |  | × |\n| simple | 当添加该属性时，显示为简单分页 | boolean \\| { readOnly?: boolean } | - |  | × |\n| size | 组件尺寸 | `large` \\| `medium` \\| `small` | `medium` |  | × |\n| styles | 自定义组件内部各语义化结构的内联样式。支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| total | 数据总数 | number | 0 |  | × |\n| totalBoundaryShowSizeChanger | 当 `total` 大于该值时，`showSizeChanger` 默认为 true | number | 50 |  | 6.2.0 |\n| onChange | 页码或 `pageSize` 改变的回调，参数是改变后的页码及每页条数 | function(page, pageSize) | - |  | × |\n| onShowSizeChange | pageSize 变化的回调 | function(current, size) | - |  | × |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Pagination\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Pagination",
+        "demos": [
+          {
+            "name": "align",
+            "title": "Align",
+            "description": ""
+          },
+          {
+            "name": "all",
+            "title": "Show All",
+            "description": "Show all configured prop."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Basic pagination."
+          },
+          {
+            "name": "changer",
+            "title": "Changer",
+            "description": "Change `pageSize`."
+          },
+          {
+            "name": "controlled",
+            "title": "Controlled",
+            "description": "Controlled page number."
+          },
+          {
+            "name": "itemRender",
+            "title": "Prev and next",
+            "description": "Use text link for prev and next button."
+          },
+          {
+            "name": "jump",
+            "title": "Jumper",
+            "description": "Jump to a page directly."
+          },
+          {
+            "name": "mini",
+            "title": "Size",
+            "description": "Small and large size pagination."
+          },
+          {
+            "name": "more",
+            "title": "More",
+            "description": "More pages."
+          },
+          {
+            "name": "simple",
+            "title": "Simple mode",
+            "description": "Simple mode."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Pagination by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "total",
+            "title": "Total number",
+            "description": "You can show the total number of data by setting `showTotal`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Pagination",
+        "tokens": [
+          {
+            "name": "itemActiveBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of active Pagination item",
+            "descriptionZh": "页码激活态背景色"
+          },
+          {
+            "name": "itemActiveBgDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Background color of disabled active Pagination item",
+            "descriptionZh": "页码激活态禁用状态背景色"
+          },
+          {
+            "name": "itemActiveColor",
+            "type": "string",
+            "default": "",
+            "description": "Text color of active Pagination item",
+            "descriptionZh": "页码激活态文字颜色"
+          },
+          {
+            "name": "itemActiveColorDisabled",
+            "type": "string",
+            "default": "",
+            "description": "Text color of disabled active Pagination item",
+            "descriptionZh": "页码激活态禁用状态文字颜色"
+          },
+          {
+            "name": "itemActiveColorHover",
+            "type": "string",
+            "default": "",
+            "description": "Text color of active Pagination item hover",
+            "descriptionZh": "页码激活态文字颜色悬停态"
+          },
+          {
+            "name": "itemBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of Pagination item",
+            "descriptionZh": "页码选项背景色"
+          },
+          {
+            "name": "itemInputBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of input",
+            "descriptionZh": "输入框背景色"
+          },
+          {
+            "name": "itemLinkBg",
+            "type": "string",
+            "default": "",
+            "description": "Background color of Pagination item link",
+            "descriptionZh": "页码链接背景色"
+          },
+          {
+            "name": "itemSize",
+            "type": "number",
+            "default": "",
+            "description": "Size of Pagination item",
+            "descriptionZh": "页码尺寸"
+          },
+          {
+            "name": "itemSizeLG",
+            "type": "number",
+            "default": "",
+            "description": "Size of large Pagination item",
+            "descriptionZh": "大号页码尺寸"
+          },
+          {
+            "name": "itemSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Size of small Pagination item",
+            "descriptionZh": "小号页码尺寸"
+          },
+          {
+            "name": "miniOptionsSizeChangerTop",
+            "type": "number",
+            "default": "",
+            "description": "Top of Pagination size changer",
+            "descriptionZh": "每页展示数量选择器 top"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Pagination",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element, set flex layout, alignment, flex wrap and list styles",
+            "descriptionZh": "根元素，设置flex布局、对齐方式、换行和列表样式"
+          },
+          {
+            "key": "item",
+            "description": "Item element, set size, padding, border, background color, hover state and active state styles",
+            "descriptionZh": "页码元素，设置尺寸、内边距、边框、背景色、悬停态和激活态样式"
+          }
+        ]
+      }
+    }
+  }
+}

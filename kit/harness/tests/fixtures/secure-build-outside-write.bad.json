@@ -1,0 +1,14 @@
+{
+  "id": "test-secure-build-outside-write",
+  "buildRuntime": {
+    "command": "npx",
+    "args": ["tsc", "--noEmit", "-p", "tsconfig-outside-write.json"],
+    "cwd": "."
+  },
+  "output": {
+    "type": "tsx",
+    "file": "page.tsx",
+    "symbol": "SecureBuildPage"
+  },
+  "report": "harness/reports/test-secure-build-outside-write.json"
+}

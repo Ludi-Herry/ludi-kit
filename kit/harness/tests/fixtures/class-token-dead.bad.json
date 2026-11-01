@@ -1,0 +1,10 @@
+{
+  "id": "test-class-token-dead",
+  "expectedClassTokens": ["generated-aging--danger"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/class-token-dead.bad.tsx",
+    "symbol": "DeadClassTokenPage"
+  },
+  "report": "harness/reports/test-class-token-dead.json"
+}

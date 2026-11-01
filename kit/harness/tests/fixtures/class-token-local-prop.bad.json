@@ -1,0 +1,10 @@
+{
+  "id": "test-class-token-local-prop",
+  "expectedClassTokens": ["generated-row--high"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/class-token-local-prop.bad.tsx",
+    "symbol": "ClassTokenLocalPropPage"
+  },
+  "report": "harness/reports/test-class-token-local-prop.json"
+}

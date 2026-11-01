@@ -1,0 +1,2 @@
+{"seq":1,"ts":"2026-08-22T15:04:05+08:00","kind":"stage-start","stageId":"route-selection","attemptId":null,"status":null,"summary":"Started route selection.","evidence":[]}
+{"seq":1,"ts":"2026-08-22T15:04:06+08:00","kind":"stage-status","stageId":"route-selection","attemptId":null,"status":"passed","summary":"Selected route.","evidence":[]}

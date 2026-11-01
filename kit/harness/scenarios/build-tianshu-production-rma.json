@@ -1,0 +1,75 @@
+{
+  "id": "build-tianshu-production-rma",
+  "prompt": "天枢 · 退货 RMA：到件、检测、裁决与设备状态分层，危险裁决均需确认。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "Pagination", "BulkActionBar", "Drawer", "DatePicker", "RadioGroup", "CheckboxGroup", "Upload", "ConfirmDialog", "ForbiddenState", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "FilterPanel", "RangePicker", "DataSection", "DataGrid", "BulkActionBar", "Drawer", "ConfirmDialog"],
+  "expectedText": ["退货 RMA", "灰度阶段", "检测结论", "二次入库", "报废", "批量关闭"],
+  "expectedActions": {
+    "required": ["返修", "二次入库", "报废", "批量关闭", "返修裁决", "报废裁决"]
+  },
+  "expectedConfirmations": [
+    {
+      "action": "返修",
+      "title": "确认进入返修链路？",
+      "confirmLabel": "确认裁决",
+      "requiredText": ["裁决完成后不可撤销"],
+      "danger": false,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "repair" }, "clearValue": null }
+    },
+    {
+      "action": "二次入库",
+      "title": "确认二次入库？",
+      "confirmLabel": "确认裁决",
+      "requiredText": ["裁决完成后不可撤销"],
+      "danger": false,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "restock" }, "clearValue": null }
+    },
+    {
+      "action": "报废",
+      "title": "确认报废设备？",
+      "confirmLabel": "确认报废",
+      "requiredText": ["裁决完成后不可撤销"],
+      "danger": true,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "scrap" }, "clearValue": null }
+    },
+    {
+      "action": "批量关闭",
+      "title": "批量关闭 RMA 单？",
+      "confirmLabel": "确认关闭",
+      "requiredText": ["关闭后不可重新开启"],
+      "danger": true,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "close" }, "clearValue": null }
+    },
+    {
+      "action": "返修裁决",
+      "title": "确认进入返修链路？",
+      "confirmLabel": "确认裁决",
+      "requiredText": ["裁决完成后不可撤销"],
+      "danger": false,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "repair" }, "clearValue": null }
+    },
+    {
+      "action": "报废裁决",
+      "title": "确认报废设备？",
+      "confirmLabel": "确认报废",
+      "requiredText": ["裁决完成后不可撤销"],
+      "danger": true,
+      "state": { "variable": "decision", "openMode": "truthy", "triggerValue": { "action": "scrap" }, "clearValue": null }
+    }
+  ],
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/deferred-pages.tsx",
+    "symbol": "TianshuRmaPage"
+  },
+  "report": "harness/reports/build-tianshu-production-rma.json"
+}

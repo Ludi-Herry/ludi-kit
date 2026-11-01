@@ -1,0 +1,11 @@
+{
+  "id": "test-const-alias-dead",
+  "expectedComponents": ["PageLayout", "FilterPanel"],
+  "expectedText": ["CONST_ALIAS_AFTER_PAGE_DEAD_COPY", "CONST_ALIAS_LOCAL_DEAD_COPY"],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/const-alias-dead.bad.tsx",
+    "symbol": "ConstAliasDeadPage"
+  },
+  "report": "harness/reports/test-const-alias-dead.json"
+}

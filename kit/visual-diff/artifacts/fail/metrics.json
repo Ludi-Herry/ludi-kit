@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "result": "fail",
+  "images": {
+    "baseline": "../images/baseline.png",
+    "candidate": "../images/fail-candidate.png",
+    "width": 80,
+    "height": 60,
+    "baselineSha256": "f4808d08b9a26a53552bbacf82a800ed9281d791bcb00386fc034fadb07b112f",
+    "candidateSha256": "74cf2eaf2c27f3ebc132e9c31a9a4cd78aa620a52103066637c064accc62c90a"
+  },
+  "formula": {
+    "colorComparison": "sRGB channels composited over white and normalized to [0,1]",
+    "rms": "sqrt(sum((baselineRGB-candidateRGB)^2)/(pixelCount*3))",
+    "ssim": "global luminance SSIM using BT.709 coefficients, population variance/covariance, K1=0.01, K2=0.03, L=1",
+    "changedPixel": "max absolute composited RGB channel delta strictly greater than pixelDeltaThreshold"
+  },
+  "global": {
+    "rms": 0.270691243694,
+    "ssim": 0.769839962943,
+    "changedPixels": 1248,
+    "pixelCount": 4800,
+    "changedPixelRatio": 0.26,
+    "thresholds": {
+      "minSsim": 0.985,
+      "maxRms": 0.035,
+      "pixelDeltaThreshold": 0.06274509803921569,
+      "maxChangedPixelRatio": 0.025
+    },
+    "pass": false,
+    "failures": [
+      "normalized RMS 0.27069124369403 exceeds 0.035",
+      "SSIM 0.7698399629430442 is below 0.985",
+      "changed pixel ratio 0.26 exceeds 0.025"
+    ]
+  },
+  "regions": [
+    {
+      "name": "primary-content",
+      "bounds": {
+        "x": 16,
+        "y": 12,
+        "width": 48,
+        "height": 32
+      },
+      "rms": 0.47851903506,
+      "ssim": 0.234823119822,
+      "changedPixels": 1248,
+      "pixelCount": 1536,
+      "changedPixelRatio": 0.8125,
+      "thresholds": {
+        "minSsim": 0.99,
+        "maxRms": 0.025,
+        "pixelDeltaThreshold": 0.06274509803921569,
+        "maxChangedPixelRatio": 0.025
+      },
+      "pass": false,
+      "failures": [
+        "normalized RMS 0.47851903505967225 exceeds 0.025",
+        "SSIM 0.23482311982221923 is below 0.99",
+        "changed pixel ratio 0.8125 exceeds 0.025"
+      ]
+    }
+  ],
+  "failures": [
+    "global: normalized RMS 0.27069124369403 exceeds 0.035",
+    "global: SSIM 0.7698399629430442 is below 0.985",
+    "global: changed pixel ratio 0.26 exceeds 0.025",
+    "region \"primary-content\": normalized RMS 0.47851903505967225 exceeds 0.025",
+    "region \"primary-content\": SSIM 0.23482311982221923 is below 0.99",
+    "region \"primary-content\": changed pixel ratio 0.8125 exceeds 0.025"
+  ],
+  "artifacts": {
+    "metrics": "../../artifacts/fail/metrics.json",
+    "heatmap": "../../artifacts/fail/heatmap.png",
+    "heatmapSha256": "87b0e34a5aee30de0f32f942b3e6606704b76d73c3f9f04f65dfb70854e0eb58"
+  }
+}

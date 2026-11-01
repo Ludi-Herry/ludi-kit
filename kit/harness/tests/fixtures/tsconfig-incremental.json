@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "lib": ["ES2020"],
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": [],
+    "tsBuildInfoFile": "../../reports/test-incremental.tsbuildinfo"
+  },
+  "files": ["incremental-source.ts"]
+}

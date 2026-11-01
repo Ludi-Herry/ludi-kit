@@ -1,0 +1,780 @@
+{
+  "version": "1.0.0",
+  "id": "antd-6.5.0-designer-knowledge",
+  "foundation": {
+    "id": "antd",
+    "version": "6.5.0"
+  },
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "offline": true,
+  "counts": {
+    "decisionCards": 31,
+    "pageTemplates": 6,
+    "componentReferences": 35,
+    "blogArticles": 36,
+    "blogFiles": 75,
+    "blogLintRules": 5,
+    "visualRegressionCases": 10,
+    "upgradeWatchItems": 7,
+    "assets": 126
+  },
+  "assets": [
+    {
+      "kind": "blog-curation",
+      "id": "blog-curation",
+      "path": "blog-curation.json",
+      "sha256": "def095f2f22f26997bf0c37e29324e1f6766ca06f7eaab76d7832a608e10626e"
+    },
+    {
+      "kind": "blog-lint-rules",
+      "id": "blog-lint-rules",
+      "path": "blog-lint-rules.json",
+      "sha256": "0292401f5d3341bec1b022f01992bc4a389377169fae9b5cdff538d223de36b9"
+    },
+    {
+      "kind": "blog-index",
+      "id": "blog-index",
+      "path": "blog/index.json",
+      "sha256": "3d8c3b86ce00f87594b5eac027bc689b707a26523ed9566599b215d9ace62130"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/build-ghost.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/build-ghost.en-US.md",
+      "sha256": "cccd7c56ea41cd64c7c183866a9e499191dbbec2497a26bde4ef79ec98d5c59b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/build-ghost.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/build-ghost.zh-CN.md",
+      "sha256": "28eb85cfcc04494f3fe8f6a67eb9da34d5d7ec222cc8780c673276c994b753e8"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/button-loading-animation.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.en-US.md",
+      "sha256": "1d3be02508851f8b82ee28517818e632f8eb764b58700bfba35aaf62f3983e52"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/button-loading-animation.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/button-loading-animation.zh-CN.md",
+      "sha256": "b354a18b585a5ed0f5c7aa59877b3dd6534f052f1f48fd991e197ae632067ab5"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/check-conduct.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/check-conduct.en-US.md",
+      "sha256": "634af4bd6f8c55ff52b3413d046cbc787fd57ce5a685a814de1909c3c12462e7"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/check-conduct.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/check-conduct.zh-CN.md",
+      "sha256": "cc7d407bf3d17c8d0ada1ea3fe82be45a781b79da5f5f0f61d7b36a322ceccec"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/color-picker.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/color-picker.en-US.md",
+      "sha256": "6e7d4a56263a7b77f4540de3ce12c796eb4766c3a3590590b00eb88f542f5d5c"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/color-picker.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/color-picker.zh-CN.md",
+      "sha256": "67d1d56044db1ae0b5ef92f8797592090ad4468e09971b35f23c7e1943111ef6"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/config-provider-style.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/config-provider-style.en-US.md",
+      "sha256": "eb3e84c66d1d0217e83655a5fde4b2c96bd252d304dc801ea618723e0d5407d8"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/config-provider-style.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/config-provider-style.zh-CN.md",
+      "sha256": "b83f87cd1349f8602d2a2026b3be7fb92a8916d2ae761d5bfc347b27e281a2d7"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/contributor-development-maintenance-guide.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/contributor-development-maintenance-guide.en-US.md",
+      "sha256": "88de26ea7c4b5dc9815fc2be3748e43ecbf012ad5c71e9553a019da26530dafd"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/contributor-development-maintenance-guide.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/contributor-development-maintenance-guide.zh-CN.md",
+      "sha256": "befaaae177d3caf48226cfd540fe2685491f51f1d08d3b373a75e3cbfdef99a8"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-in-js.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-in-js.en-US.md",
+      "sha256": "cfdab6675e58be15ec708c0369e8c06c61183db8170e9b3f30cd9426b3ca1a6a"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-in-js.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-in-js.zh-CN.md",
+      "sha256": "10ff93eeefd7bbdf26709f04a1788b7d4c0eeb197700765a8e78f56366847cb2"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-tricks.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks.en-US.md",
+      "sha256": "be3e191525219c83fc9bf175c3ecfce1473081e4b0b9d221838b5aa8ef5f4372"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-tricks.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks.zh-CN.md",
+      "sha256": "8ed24ba38b25d10231eab57b2c52c1374d9a3de70349ace09ecb897f3405c364"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-tricks/condition.tsx",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks/condition.tsx",
+      "sha256": "29be47cccc63ce7a393a220768d63bd4fe44b88a0a72831f5bcca21bcdde81ce"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-tricks/scope.tsx",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-tricks/scope.tsx",
+      "sha256": "dc20fec4e8543652ac358777c77d3d7280a85b16c8616c7744a2b4a67707cad8"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-var-plan.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-var-plan.en-US.md",
+      "sha256": "5fdc1703e52439fc0e2f4011f62a0fb50242174f1621d992b2580dcb3dda6631"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/css-var-plan.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/css-var-plan.zh-CN.md",
+      "sha256": "832d1ee47646b7bf8bc169ed2b7dcba562f84843ca2d889d5be2344683588c23"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/extract-ssr.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/extract-ssr.en-US.md",
+      "sha256": "7b7c50c70551477d6893bff15524e21cc71487b7b5d50bc4c08ad5ba98045914"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/extract-ssr.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/extract-ssr.zh-CN.md",
+      "sha256": "ae678fdc7ffd5bdad34d2b3bcc28ac7aace2f0879db0e408e6db4bd980bca5c6"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/form-names.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/form-names.en-US.md",
+      "sha256": "5d7c0c67ed6ba77d4fc5a0428899d1b3e7aeffcc0ac2dae011313ae41bcf0c9b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/form-names.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/form-names.zh-CN.md",
+      "sha256": "d3bf440011ba9aa3c2eaf0d85d025bb6a0073007f14263b11537cabcc1f27457"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/getContainer.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.en-US.md",
+      "sha256": "0ea0bd5c0b30d535c32df55b838aa7fb53d7aa49d8d66af8180ae08bbf16468b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/getContainer.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/getContainer.zh-CN.md",
+      "sha256": "7ba8ce323e78272c6e7187e821463377fbf10bede1bf584f160aac7c2217748f"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/github-actions-workflow.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/github-actions-workflow.en-US.md",
+      "sha256": "f32e750a74763b40adbbe3b6c90ff40d44ff3bca0a01af8ec1d35d9c1cf57e90"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/github-actions-workflow.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/github-actions-workflow.zh-CN.md",
+      "sha256": "0f86f8b4537be1341f53f2aacea24a1539fb60f923d7394cbb226f4e1831ece9"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/happy-work.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/happy-work.en-US.md",
+      "sha256": "db50b329bac38c53ea958b1bc902cacc5ab5686ee5933fa888075ef216afefa6"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/happy-work.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/happy-work.zh-CN.md",
+      "sha256": "5549825f30b673c658dcc52901bc11b13569cd7dcf79e5e2a366348ce3bf7407"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/historical-debt.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/historical-debt.en-US.md",
+      "sha256": "3e312f6cfe4b8afda4662d4ad39a12dc1584833da0f65ecd2102eb195f0da4ef"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/historical-debt.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/historical-debt.zh-CN.md",
+      "sha256": "1b2563b1a7a99b07bb9712ad51d1e056bdad34866b7701317ef12308aca4c6a6"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/hydrate-cssinjs.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/hydrate-cssinjs.en-US.md",
+      "sha256": "f8bf5622b6759a81dda80019e4fc08399c2b51bb50910907e6f6fb281a5b257b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/hydrate-cssinjs.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/hydrate-cssinjs.zh-CN.md",
+      "sha256": "cd52b2166c94e89cdae38b19d4c7f63acc0cea0907ae94c3b1bdc6a7db004c8b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/issue-helper.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/issue-helper.en-US.md",
+      "sha256": "e2ec81de7158ab1cdd8b8d1de2e0266479ecbb219322c0ec694941db9cde9060"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/issue-helper.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/issue-helper.zh-CN.md",
+      "sha256": "af3c7549215f1c135c5c6963a7d3a07a2c8eba971b68c5fc51bb95a345419a41"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/line-ellipsis.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.en-US.md",
+      "sha256": "16ecd42d770b0ccfa6e977cb1796858fea52a52fac36764d69522fecb5d1cf13"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/line-ellipsis.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/line-ellipsis.zh-CN.md",
+      "sha256": "1f1f82eca1faa165c223b8399e5b768fb5443662fcd52031ff2fef533223599e"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/mock-project-build.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/mock-project-build.en-US.md",
+      "sha256": "951b226350018ed57e42db31b4b62259962259a0fa746f79be77daacfbf3648b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/mock-project-build.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/mock-project-build.zh-CN.md",
+      "sha256": "1bbca11190c8e539f957c3253bd452a601be36da9722145bd2ebbd9fb1a01ceb"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/modal-hook-order.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/modal-hook-order.en-US.md",
+      "sha256": "3d257422aaea14ba3513b62d9327dfcf734cecfe6b49eced433f790fb549acac"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/modal-hook-order.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/modal-hook-order.zh-CN.md",
+      "sha256": "ab8375a649a995c0760ce569abc685a4a4c30fdafcd7131ee4cf4ef944a28afa"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/notification-stack.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/notification-stack.en-US.md",
+      "sha256": "0615ba18efb8fe29b978f024cf53a466f17a4d89a4b271a2cae613d7db22cc2f"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/notification-stack.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/notification-stack.zh-CN.md",
+      "sha256": "fd7e1a129c738da8af032f5df5376a14e7c9fb078cf299c72b3dbb1a74f640ea"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/picker.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/picker.en-US.md",
+      "sha256": "a78a9e2d74d991e46af49343b49ab1500d6463c074d476d25b04ccc92936743e"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/picker.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/picker.zh-CN.md",
+      "sha256": "bc5845a1e472444de9e44547b49b463b5e2edcd08e23a65a8fe3a5e3500c2723"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/render-times.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/render-times.en-US.md",
+      "sha256": "7403a11aca60b43779138c4f8f62785ad2e001d99b861ad9043552deba3da7c2"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/render-times.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/render-times.zh-CN.md",
+      "sha256": "c495096a1833d80a6d98cf7db1cf66ed263190b4ad542ac83ab35f26f2e8c03b"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/semantic-beauty.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty.en-US.md",
+      "sha256": "021de6d9a47947c8f6b33b6089dab16dd5b05d933ca53ed07cb17376a04fb71e"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/semantic-beauty.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty.zh-CN.md",
+      "sha256": "edd9cb21d49ebaf20e1b91847ce6a084598f746113550fb8ea52bc51c6c8984a"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/semantic-beauty/demos.tsx",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/semantic-beauty/demos.tsx",
+      "sha256": "13a9af631483aa0d386b00d0656929a1ceb7007c9ead43f20677f736746b7150"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/suspense.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/suspense.en-US.md",
+      "sha256": "4f12064cda4ac2c57712c36911887c7549c429a6450116d581f99fcebde3b8c0"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/suspense.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/suspense.zh-CN.md",
+      "sha256": "097a1c6728d4e8117a0b8a0808a6062ad3214f8e7eba79dd67c39c77b3d0a0bb"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/table-scroll-ghost.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/table-scroll-ghost.en-US.md",
+      "sha256": "5bcfcf082d6e6493ebba0cb6a23323a4c8492fe562d77482056ba806aa4edfc1"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/table-scroll-ghost.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/table-scroll-ghost.zh-CN.md",
+      "sha256": "92dbcbde3206c3640f599157db7d7a397af9789bfdc464d4c0bb67f57441d142"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/testing-migrate.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/testing-migrate.en-US.md",
+      "sha256": "12861520d10a62db42c24d0ab4bbbaa392cbb91ae31054a19b8192765a50b4d9"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/testing-migrate.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/testing-migrate.zh-CN.md",
+      "sha256": "79ff787ddce1c18dd3f4fc3f98fc7d649e15166bb90e9d8278d22a8edc723ec0"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/to-be-collaborator.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-collaborator.en-US.md",
+      "sha256": "cd7b5a4de22672cabdf9bb50e590310aef58b863af35947c1780416e9b2158e0"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/to-be-collaborator.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-collaborator.zh-CN.md",
+      "sha256": "f38d2dccf9c2c27ece4dc4c9b64327a22c5646b97fd03cd1f787fe7b3320dca6"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/to-be-what-you-see.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-what-you-see.en-US.md",
+      "sha256": "d2f3f153d0b72a83ac9a284e1a8b81c7e0354d1c3187fff585ad3a9dbce72213"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/to-be-what-you-see.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/to-be-what-you-see.zh-CN.md",
+      "sha256": "557b3b9663fb3179537712ac7dc05358af82835a709ea89a38af72cbb3bcb4a5"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/tooltip-align.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/tooltip-align.en-US.md",
+      "sha256": "dd525d9b150d940feed6de7fd9750608e1869ed65f0586c8d158ee30d5727bd7"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/tooltip-align.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/tooltip-align.zh-CN.md",
+      "sha256": "350fab6376cdacd1fa110032e43a4b53f72ab6b5047e3f146820cfcfeab43fd1"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/tree-shaking.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/tree-shaking.en-US.md",
+      "sha256": "1b9476212c9239bdec8ed7bd3ea73cb158767d1332b19bc5ad6e245ba984e672"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/tree-shaking.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/tree-shaking.zh-CN.md",
+      "sha256": "8429dbdd903d61863023c257ce712d2cce545ec65dfdefc98a1130a59caf9455"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/type-util.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/type-util.en-US.md",
+      "sha256": "728a007a30d2d2238c133b6e609d42892837bd952bc69c9dd3ad756bb084e539"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/type-util.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/type-util.zh-CN.md",
+      "sha256": "f94c24b3f34805f6ffa2d41ef2575e0b7dd5f0842061c85e404eb4260f1d04b7"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/v4-ood.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/v4-ood.en-US.md",
+      "sha256": "2dab6b97e705a3243a2be7483484c0a94ba91c249afb48c7378b642e8944448a"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/v4-ood.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/v4-ood.zh-CN.md",
+      "sha256": "1e4934ec725b7454ed5875b7caaf4080c5c7b62b70cf6998f8d837ec5b3966f5"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/virtual-table.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/virtual-table.en-US.md",
+      "sha256": "1a75dc3aa67f2c92145e8345e9dac7b3c52e0ba138387bd534910d95b5b5bc50"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/virtual-table.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/virtual-table.zh-CN.md",
+      "sha256": "9c3bb543fbc5763bcc701be43ff78eb2e18d641e45a0cde7ff043689f130ca14"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/visual-regression.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.en-US.md",
+      "sha256": "b044d9c2d73e5fcbd7cc711fc1a34c0c3da522251f014b4ca19cd080a82e3e7d"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/visual-regression.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/visual-regression.zh-CN.md",
+      "sha256": "ff628a76477f142528b59b1c35ff0e680a6923b55ffaa246a1588a5b37f4a2ea"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/why-not-static.en-US.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/why-not-static.en-US.md",
+      "sha256": "0166e199b6f82e5eb5c38ddbc8db21be8612845d9be09f328988f7dc3452612e"
+    },
+    {
+      "kind": "blog-source",
+      "id": "docs/blog/why-not-static.zh-CN.md",
+      "path": "blog/snapshots/f06ce22f89c04c120b59a275411f41873a212525/why-not-static.zh-CN.md",
+      "sha256": "532f922665a11f5940ff7d45dd3e126a7e601564b6acc3d53b2b9c434c489f64"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Alert",
+      "path": "component-reference/Alert.json",
+      "sha256": "41da9673a4e57a60e0c5248b842aa1d9c70c9a17aaeabf51625916e5641d5a92"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Badge",
+      "path": "component-reference/Badge.json",
+      "sha256": "a3ef74ebca86575b4f922e13dec39a9bdd89e1877401bb5d4066675ac9cd07c9"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Button",
+      "path": "component-reference/Button.json",
+      "sha256": "3a87e6b0b1fe0dc9ad0fa00c9c1f807aa7b58df9a1dfe1c1ca1350f014ae2414"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Card",
+      "path": "component-reference/Card.json",
+      "sha256": "63551bace3dbe242a098520e6b3ee520f620a03f7df6f413f0acd328ba0b296b"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Col",
+      "path": "component-reference/Col.json",
+      "sha256": "6da75b64e8e7bfd4ee865a1e4f12a4157acb15f9bbe34970ce1b24a6bde83d44"
+    },
+    {
+      "kind": "component-reference",
+      "id": "ConfigProvider",
+      "path": "component-reference/ConfigProvider.json",
+      "sha256": "1e3b6ddaf41566f50ba36fbe2be8236b283acc4a913ec17c4bbea10e0599f94c"
+    },
+    {
+      "kind": "component-reference",
+      "id": "DatePicker",
+      "path": "component-reference/DatePicker.json",
+      "sha256": "c2d0565ba8b8f2f0c42b9bbdf1af0745b4cae0500f59b3f20f32380f293c4ab5"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Descriptions",
+      "path": "component-reference/Descriptions.json",
+      "sha256": "0e1abfd18a86e5e019c0bdcf0e10725dd5e74686cdb29214d1a3abee1d48d34e"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Drawer",
+      "path": "component-reference/Drawer.json",
+      "sha256": "21eb1e0f446f1fd845fc45cd5929fbb8c79979c6a4f1cba254505861b4b8580f"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Dropdown",
+      "path": "component-reference/Dropdown.json",
+      "sha256": "284fe31984a3bc59e2a5d510c3a068a4568555e13381b869a2e6f09197c4f4dd"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Empty",
+      "path": "component-reference/Empty.json",
+      "sha256": "d572c88b290e12c450ae62b80bc8318591ba061da531f4169e6ce946810921e4"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Form",
+      "path": "component-reference/Form.json",
+      "sha256": "69f05bb8648da0b04ae4a1c7250fc02e1b096c9a8cda3a175210f70d250b7971"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Input",
+      "path": "component-reference/Input.json",
+      "sha256": "9da5e2fd725c4b02bea7e3fbb7113be8ab060b004fd6428385f27793b817d77c"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Menu",
+      "path": "component-reference/Menu.json",
+      "sha256": "2b1444bc017c0c0152d39257b8dc617120fbb358f9fcee104e11ab94acaed8b4"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Message",
+      "path": "component-reference/Message.json",
+      "sha256": "7eabccb3b050d8670641d3a3282f80f34ae2aa8c381e3f1fd932b5dfbc0fe349"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Modal",
+      "path": "component-reference/Modal.json",
+      "sha256": "3d636cc2ab1c17c9b361c8a93b141487ace638781c98ff90c57edb5f45de14ff"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Notification",
+      "path": "component-reference/Notification.json",
+      "sha256": "814e044bf5962055dcb7cb6484d0ffd502deefeeabc2ce8cc7614843166efa1c"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Pagination",
+      "path": "component-reference/Pagination.json",
+      "sha256": "55d8825a377ae328dffa62015e98b06428e2344fd02b9a707383867b735b1e3e"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Popconfirm",
+      "path": "component-reference/Popconfirm.json",
+      "sha256": "b1f79069ef38233e5e3fab7792d26504071a40f5bb02343f574463f8c5e6d38d"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Row",
+      "path": "component-reference/Row.json",
+      "sha256": "dc1a3f6afe23ebefb99b351809d930e5bfe0d7bbb808c6ff12c090905f624390"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Select",
+      "path": "component-reference/Select.json",
+      "sha256": "cf042db724812ad114ee3091d01d75d92ecfbbbeb5a578d675f7d0b4f91c1f4d"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Skeleton",
+      "path": "component-reference/Skeleton.json",
+      "sha256": "9522065c45147a59c5d469682698b65e1a1bb14d525603d133e56de275662d04"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Space",
+      "path": "component-reference/Space.json",
+      "sha256": "f3d34e1abf5cbe014ea9f706dba40fff4e4abf2a0fac54afbbabd4c0379961ed"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Spin",
+      "path": "component-reference/Spin.json",
+      "sha256": "3c12b1328ad85d143b6a42ce4d539d3b6df46b91431c7ed166d8505b53d92b2d"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Statistic",
+      "path": "component-reference/Statistic.json",
+      "sha256": "97f6b3260ad5dda663c3c9a1cc1462732a43000a98c78480404b94ef06f106ab"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Steps",
+      "path": "component-reference/Steps.json",
+      "sha256": "dc41630e9cea39f2f99578ebdace900e1a55cb5b5604dadf95aee33357334782"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Switch",
+      "path": "component-reference/Switch.json",
+      "sha256": "35345e74e181114df69b4cea7f036423f49bc07a901d80a75167012a3bfb1119"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Table",
+      "path": "component-reference/Table.json",
+      "sha256": "5f9f610a492501422b5e6ace40dd5ae894cd6f1492c2e0fe10296ed5f47aa6af"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Tabs",
+      "path": "component-reference/Tabs.json",
+      "sha256": "c2592f33e558a05d217cea9037b1c66776ce7aa645ca7a7ec20912a34e9c0020"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Tag",
+      "path": "component-reference/Tag.json",
+      "sha256": "ac65cddbb91e0333083b839766d4b72671e889b9182841fb1160052e16d10207"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Tooltip",
+      "path": "component-reference/Tooltip.json",
+      "sha256": "5ff68d7d47365e078ca239b09294403a6753a89fbad181bbf9ade30153c7bfb8"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Tree",
+      "path": "component-reference/Tree.json",
+      "sha256": "1bb87ed8cafa9fcdf72f7b0cd5528e6cd460b8ec93afc7a3e765e31f254712e1"
+    },
+    {
+      "kind": "component-reference",
+      "id": "TreeSelect",
+      "path": "component-reference/TreeSelect.json",
+      "sha256": "c4a63066782ddffba7494d549335c22290d714453c1dd1e1da312637e111c14c"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Typography",
+      "path": "component-reference/Typography.json",
+      "sha256": "6678b7bf4cfd9227df99dc25061201abbdd94fd6458ec5e4243fa4e325c12f3f"
+    },
+    {
+      "kind": "component-reference",
+      "id": "Upload",
+      "path": "component-reference/Upload.json",
+      "sha256": "b586a407008c63f1fb6f3f51683ef2eb55834f0484494d9375571433b9548320"
+    },
+    {
+      "kind": "decision-cards",
+      "id": "decision-cards",
+      "path": "decision-cards.json",
+      "sha256": "71385a38edaefa91bc0e5efff999eadead0bfc5e9e52345f9b3c8e017441ac6f"
+    },
+    {
+      "kind": "design-language",
+      "id": "design-language",
+      "path": "design-language.md",
+      "sha256": "ed8ca7e3692a1a05980b09af24669c9a97a23d7c4f3421cf33e3eaeed989f5a9"
+    },
+    {
+      "kind": "page-component-map",
+      "id": "page-component-map",
+      "path": "page-component-map.json",
+      "sha256": "563e22ad4e40f2c1ee46bfc85c54f8d2aa525d20fe4172b81a8fcb5bf264fe31"
+    },
+    {
+      "kind": "page-template",
+      "id": "audit-log",
+      "path": "page-templates/audit-log.md",
+      "sha256": "833df2428b942e8dd61a75977370c1e4b8d9647f8f07f1d09d7684303892505d"
+    },
+    {
+      "kind": "page-template",
+      "id": "dashboard-page",
+      "path": "page-templates/dashboard.md",
+      "sha256": "f361e2f6b5f8b616005b732cdebaaf5a7069e647adf401f828486e05a2994f7e"
+    },
+    {
+      "kind": "page-template",
+      "id": "detail-page",
+      "path": "page-templates/detail.md",
+      "sha256": "ebb0b0837e62b6612d3584cde7b0745b195d394d56790ec04509c1636e46e5e0"
+    },
+    {
+      "kind": "page-template",
+      "id": "form-page",
+      "path": "page-templates/form.md",
+      "sha256": "843099b02eecb9313d096624b0ef0b7036b70199f7de44984cabc68b5efd7f34"
+    },
+    {
+      "kind": "page-template",
+      "id": "list-page",
+      "path": "page-templates/list.md",
+      "sha256": "f8867149df974ff95f3aa405ecd02a2b36574819d98dfeeb2884e9ff40961f23"
+    },
+    {
+      "kind": "page-template",
+      "id": "step-flow",
+      "path": "page-templates/step-flow.md",
+      "sha256": "ac060912045819601a0e03707f78651584e59c8e40126c2283df004f58b355b5"
+    },
+    {
+      "kind": "guide",
+      "id": "readme",
+      "path": "README.md",
+      "sha256": "1f615adf7b58c77e18f25344cabc2221d3a45c8ed9b310b93c944fb3ce5953ee"
+    },
+    {
+      "kind": "source-ledger",
+      "id": "sources",
+      "path": "sources.json",
+      "sha256": "8adfc06c4f9e3e280fd771469bad879e8ab506aaebe38d7d51ed55810d0ef2e0"
+    },
+    {
+      "kind": "upgrade-watch",
+      "id": "upgrade-watch",
+      "path": "upgrade-watch.json",
+      "sha256": "c796cfde5b2efb8d2d6fcebfe597b1336506fa49dcbad644587301948258409e"
+    },
+    {
+      "kind": "visual-regression-cases",
+      "id": "visual-regression-cases",
+      "path": "visual-regression-cases.json",
+      "sha256": "d0b2f70f03547ea7c337a866b5d273ea07e5e1f84872d4e61aecc0ae6280703c"
+    }
+  ]
+}

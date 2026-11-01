@@ -1,0 +1,239 @@
+{
+  "version": "1.0.0",
+  "component": "Spin",
+  "queryComponent": "Spin",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Spin",
+        "nameZh": "加载中",
+        "description": "用于页面和区块的加载中状态。",
+        "props": [
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "delay",
+            "type": "number (milliseconds)",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "description",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "6.3.0"
+          },
+          {
+            "name": "fullscreen",
+            "type": "boolean",
+            "default": "false",
+            "since": "5.11.0"
+          },
+          {
+            "name": "indicator",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "percent",
+            "type": "number | 'auto'",
+            "default": "-",
+            "since": "5.18.0"
+          },
+          {
+            "name": "size",
+            "type": "string",
+            "default": "`medium`",
+            "since": ""
+          },
+          {
+            "name": "spinning",
+            "type": "boolean",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "tip",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "wrapperClassName",
+            "type": "string",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Spin",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本用法</code>\n<code src=\"./demo/size.tsx\">各种大小</code>\n<code src=\"./demo/nested.tsx\">卡片加载中</code>\n<code src=\"./demo/tip.tsx\">自定义描述文案</code>\n<code src=\"./demo/delayAndDebounce.tsx\">延迟</code>\n<code src=\"./demo/custom-indicator.tsx\">自定义指示符</code>\n<code src=\"./demo/percent.tsx\" version=\"5.18.0\">进度</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/fullscreen.tsx\">全屏</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| delay | 延迟显示加载效果的时间（防止闪烁） | number (毫秒) | - |  | × |\n| description | 可以自定义描述文案 | ReactNode | - | 6.3.0 | × |\n| fullscreen | 显示带有 `Spin` 组件的背景 | boolean | false | 5.11.0 | × |\n| indicator | 加载指示符 | ReactNode | - |  | 5.20.0 |\n| percent | 展示进度，当设置 `percent=\"auto\"` 时会预估一个永远不会停止的进度 | number \\| 'auto' | - | 5.18.0 | × |\n| size | 组件大小，可选值为 `small` `medium` `large` | string | `medium` |  | × |\n| spinning | 是否为加载中状态 | boolean | true |  | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| ~~tip~~ | 当作为包裹元素时，可以自定义描述文案。已废弃，请使用 `description` | ReactNode | - |  | × |\n| ~~wrapperClassName~~ | 包装器的类属性。已废弃，请使用 `classNames.root` | string | - |  | × |\n\n### 静态方法\n\n- `Spin.setDefaultIndicator(indicator: ReactNode)`\n\n  你可以自定义全局默认 Spin 的元素。\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Spin\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Spin",
+        "demos": [
+          {
+            "name": "basic",
+            "title": "Basic Usage",
+            "description": "A simple loading status."
+          },
+          {
+            "name": "custom-indicator",
+            "title": "Custom spinning indicator",
+            "description": "Use custom loading indicator."
+          },
+          {
+            "name": "delayAndDebounce",
+            "title": "Delay",
+            "description": "Specifies a delay for loading state. If `spinning` ends during delay, loading status won't appear."
+          },
+          {
+            "name": "fullscreen",
+            "title": "Fullscreen",
+            "description": "The `fullscreen` mode is perfect for creating page loaders. It adds a dimmed overlay with a centered spinner."
+          },
+          {
+            "name": "nested",
+            "title": "Embedded mode",
+            "description": "Embedding content into `Spin` will set it into loading state."
+          },
+          {
+            "name": "percent",
+            "title": "Progress",
+            "description": "Show the progress. When `percent=\"auto\"` is set, an indeterminate progress will be displayed."
+          },
+          {
+            "name": "size",
+            "title": "Size",
+            "description": "A small `Spin` is used for loading text, default sized `Spin` for loading a card-level block, and large `Spin` used for loading a **page**."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Spin by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "tip",
+            "title": "Customized description",
+            "description": "Customize the description text."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Spin",
+        "tokens": [
+          {
+            "name": "contentHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of content area",
+            "descriptionZh": "内容区域高度"
+          },
+          {
+            "name": "dotSize",
+            "type": "number",
+            "default": "",
+            "description": "Loading icon size",
+            "descriptionZh": "加载图标尺寸"
+          },
+          {
+            "name": "dotSizeLG",
+            "type": "number",
+            "default": "",
+            "description": "Large loading icon size",
+            "descriptionZh": "大号加载图标尺寸"
+          },
+          {
+            "name": "dotSizeSM",
+            "type": "number",
+            "default": "",
+            "description": "Small loading icon size",
+            "descriptionZh": "小号加载图标尺寸"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Spin",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "The root element, which sets absolute positioning, display control, color, font size, text alignment, vertical alignment, opacity, and transition animation (only effective when fullscreen is false)",
+            "descriptionZh": "根元素，设置绝对定位、显示控制、颜色、字体大小、文本对齐、垂直对齐、透明度和过渡动画(fullscreen 为 false 时才有效)"
+          },
+          {
+            "key": "section",
+            "description": "The loading element area, which sets relative positioning, flexbox layout, alignment, and color",
+            "descriptionZh": "加载元素区域，设置相对定位、弹性盒子布局、对齐方式和颜色"
+          },
+          {
+            "key": "indicator",
+            "description": "The indicator element, which sets width, height, font size, inline-block display, transition animation, transform origin, and line height",
+            "descriptionZh": "指示器元素，设置宽度、高度、字体大小、行内块显示、过渡动画、变换原点、行高"
+          },
+          {
+            "key": "description",
+            "description": "The description element, which sets font size and line height",
+            "descriptionZh": "描述元素，设置字体大小、行高"
+          },
+          {
+            "key": "container",
+            "description": "The container element that holds the child elements wrapped by Spin, setting opacity and transition animation",
+            "descriptionZh": "容器元素，放置被 Spin 包裹的子元素，设置透明度和过渡动画"
+          }
+        ]
+      }
+    }
+  }
+}

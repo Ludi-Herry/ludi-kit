@@ -1,0 +1,241 @@
+{
+  "version": "1.0.0",
+  "component": "Space",
+  "queryComponent": "Space",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Space",
+        "nameZh": "间距",
+        "description": "设置组件之间的间距。",
+        "props": [
+          {
+            "name": "align",
+            "type": "`start` | `end` |`center` |`baseline`",
+            "default": "-",
+            "since": "4.2.0"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props: SpaceProps })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "direction",
+            "type": "`vertical` | `horizontal`",
+            "default": "`horizontal`",
+            "since": "4.1.0"
+          },
+          {
+            "name": "orientation",
+            "type": "`vertical` | `horizontal`",
+            "default": "`horizontal`",
+            "since": ""
+          },
+          {
+            "name": "size",
+            "type": "[Size](#size) | [Size[]](#size)",
+            "default": "`small`",
+            "since": "4.1.0 | Array: 4.9.0"
+          },
+          {
+            "name": "split",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "4.7.0"
+          },
+          {
+            "name": "separator",
+            "type": "ReactNode",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props: SpaceProps })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "vertical",
+            "type": "boolean",
+            "default": "false",
+            "since": "-"
+          },
+          {
+            "name": "wrap",
+            "type": "boolean",
+            "default": "false",
+            "since": "4.9.0"
+          }
+        ],
+        "subComponentProps": {
+          "Space.Compact": [
+            {
+              "name": "block",
+              "type": "boolean",
+              "default": "false",
+              "since": "4.24.0"
+            },
+            {
+              "name": "direction",
+              "type": "`vertical` | `horizontal`",
+              "default": "`horizontal`",
+              "since": "4.24.0"
+            },
+            {
+              "name": "orientation",
+              "type": "`vertical` | `horizontal`",
+              "default": "`horizontal`",
+              "since": ""
+            },
+            {
+              "name": "vertical",
+              "type": "boolean",
+              "default": "false",
+              "since": "-"
+            },
+            {
+              "name": "size",
+              "type": "`large` | `medium` | `small`",
+              "default": "`medium`",
+              "since": "4.24.0"
+            }
+          ],
+          "Space.Addon": [
+            {
+              "name": "children",
+              "type": "ReactNode",
+              "default": "-",
+              "since": "5.29.0"
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Space",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n避免组件紧贴在一起，拉开统一的空间。\n\n- 适合行内元素的水平间距。\n- 可以设置各种水平对齐方式。\n- 需要表单组件之间紧凑连接且合并边框时，使用 Space.Compact（自 `antd@4.24.0` 版本开始提供该组件）。\n\n### 与 Flex 组件的区别 {#difference-with-flex-component}\n\n- Space 为内联元素提供间距，其本身会为每一个子元素添加包裹元素用于内联对齐。适用于行、列中多个子元素的等距排列。\n- Flex 为块级元素提供间距，其本身不会添加包裹元素。适用于垂直或水平方向上的子元素布局，并提供了更多的灵活性和控制能力。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/base.tsx\">基本用法</code>\n<code src=\"./demo/vertical.tsx\">垂直间距</code>\n<code src=\"./demo/size.tsx\">间距大小</code>\n<code src=\"./demo/align.tsx\">对齐</code>\n<code src=\"./demo/wrap.tsx\">自动换行</code>\n<code src=\"./demo/separator.tsx\">分隔符</code>\n<code src=\"./demo/compact.tsx\">紧凑布局组合</code>\n<code src=\"./demo/compact-buttons.tsx\">Button 紧凑布局</code>\n<code src=\"./demo/compact-button-vertical.tsx\">垂直方向紧凑布局</code>\n<code src=\"./demo/compact-debug.tsx\" debug>调试 Input 前置/后置标签</code>\n<code src=\"./demo/compact-nested.tsx\" debug>紧凑布局嵌套</code>\n<code src=\"./demo/debug.tsx\" debug>多样的 Child</code>\n<code src=\"./demo/gap-in-line.tsx\" debug>Flex gap 样式</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/component-token.tsx\" debug>自定义主题</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### Space\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| align | 对齐方式 | `start` \\| `end` \\|`center` \\|`baseline` | - | 4.2.0 | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props: SpaceProps })=> Record<[SemanticDOM](#semantic-dom), string> | - |  | 5.6.0 |\n| ~~direction~~ | 间距方向 | `vertical` \\| `horizontal` | `horizontal` | 4.1.0 | × |\n| orientation | 间距方向 | `vertical` \\| `horizontal` | `horizontal` |  | × |\n| size | 间距大小 | [Size](#size) \\| [Size\\[\\]](#size) | `small` | 4.1.0 \\| Array: 4.9.0 | 5.6.0 |\n| ~~split~~ | 设置分隔符, 请使用 `separator` 替换 | ReactNode | - | 4.7.0 | × |\n| separator | 设置分隔符 | ReactNode | - | - | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props: SpaceProps })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.6.0 |\n| vertical | 是否垂直，和 `orientation` 同时配置以 `orientation` 优先 | boolean | false | - | × |\n| wrap | 是否自动换行，仅在 `horizontal` 时有效 | boolean | false | 4.9.0 | × |\n\n### Size\n\n`'small' | 'medium' | 'large' | number`\n\n### Space.Compact\n\n需要表单组件之间紧凑连接且合并边框时，使用 Space.Compact，支持的组件有：\n\n- Button\n- AutoComplete\n- Cascader\n- DatePicker\n- Input/Input.Search\n- InputNumber\n- Select\n- TimePicker\n- TreeSelect\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| block | 将宽度调整为父元素宽度的选项 | boolean | false | 4.24.0 |\n| ~~direction~~ | 指定排列方向 | `vertical` \\| `horizontal` | `horizontal` | 4.24.0 |\n| orientation | 指定排列方向 | `vertical` \\| `horizontal` | `horizontal` |  |\n| size | 子组件大小 | `large` \\| `medium` \\| `small` | `medium` | 4.24.0 |\n| vertical | 是否垂直，和 `orientation` 同时配置以 `orientation` 优先 | boolean | false | - |\n\n### Space.Addon\n\n> 自 antd@5.29.0 版本开始提供该组件。\n\n用于在紧凑布局中创建自定义单元格。\n\n| 参数     | 说明       | 类型      | 默认值 | 版本   |\n| -------- | ---------- | --------- | ------ | ------ |\n| children | 自定义内容 | ReactNode | -      | 5.29.0 |\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Space\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Space",
+        "demos": [
+          {
+            "name": "align",
+            "title": "Align",
+            "description": "Config item align."
+          },
+          {
+            "name": "base",
+            "title": "Basic Usage",
+            "description": "Crowded components horizontal spacing."
+          },
+          {
+            "name": "compact-button-vertical",
+            "title": "Vertical Compact Mode",
+            "description": "Vertical Mode for Space.Compact, support Button only."
+          },
+          {
+            "name": "compact-buttons",
+            "title": "Button Compact Mode",
+            "description": "Button component compact example."
+          },
+          {
+            "name": "compact",
+            "title": "Compact Mode for form component",
+            "description": "Compact Mode for form component."
+          },
+          {
+            "name": "separator",
+            "title": "separator",
+            "description": "Crowded components separator."
+          },
+          {
+            "name": "size",
+            "title": "Space Size",
+            "description": "Use `size` to set the spacing. Three sizes are preset: `small`, `medium`, `large`. You can also customize the spacing. If `size` is not set, the spacing is `small`."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Space by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "vertical",
+            "title": "Vertical Space",
+            "description": "Crowded components vertical spacing."
+          },
+          {
+            "name": "wrap",
+            "title": "Wrap",
+            "description": "Auto wrap line."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Space",
+        "tokens": []
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Space",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with flex layout, gap settings, alignment, wrap and other spacing container basic styles",
+            "descriptionZh": "根元素，包含 flex 布局、间隙设置、对齐方式、换行等间距容器的基础样式"
+          },
+          {
+            "key": "item",
+            "description": "Wrapped item element with spacing item layout and styles, providing wrapper for each child element for inline alignment",
+            "descriptionZh": "包裹的子组件，包含间距项的布局和样式，为每个子元素提供包装用于内联对齐"
+          },
+          {
+            "key": "separator",
+            "description": "Separator element with divider styling",
+            "descriptionZh": "分隔符，包含分隔元素的样式"
+          }
+        ]
+      }
+    }
+  }
+}

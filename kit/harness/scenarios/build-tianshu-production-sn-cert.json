@@ -1,0 +1,46 @@
+{
+  "id": "build-tianshu-production-sn-cert",
+  "prompt": "天枢 · SN/证书管理：按证书状态/冲突状态筛选 SN 记录，操作按状态机条件显隐。",
+  "foundationContract": {
+    "businessContext": "projects/tianshu-ops/business-context.json",
+    "projectId": "tianshu-ops",
+    "outputMode": "library-native",
+    "framework": "react",
+    "foundation": "antd"
+  },
+  "expectedPattern": "list-page",
+  "expectedComponents": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection", "DataGrid", "Pagination", "Button"],
+  "expectedOrder": ["PageLayout", "PageHeader", "Tabs", "FilterPanel", "DataSection"],
+  "expectedText": ["SN 冲突", "冲突隔离区", "吊销"],
+  "expectedStatusCopy": {
+    "source": "projects/tianshu-ops/status-copy.md",
+    "groups": {
+      "cert": { "sourceGroup": "证书", "statuses": ["valid", "pending", "revoked"] },
+      "snConflict": { "sourceGroup": "SN 冲突", "statuses": ["quarantined", "normal"] }
+    }
+  },
+  "expectedActions": {
+    "danger": ["吊销"],
+    "conditions": [
+      {
+        "when": "record.certStatus === \"valid\"",
+        "branch": "then",
+        "required": ["吊销"],
+        "danger": ["吊销"]
+      },
+      {
+        "when": "record.conflictStatus === \"quarantined\"",
+        "branch": "then",
+        "required": ["裁决"]
+      }
+    ]
+  },
+  "forbiddenPatterns": ["custom-button-style", "hardcoded-brand-color", "card-inside-card", "direct-third-party-import"],
+  "output": {
+    "type": "tsx",
+    "file": "projects/tianshu-ops/generated/pages.tsx",
+    "symbol": "SnCertListPage",
+    "pageId": "production-sn-cert"
+  },
+  "report": "harness/reports/build-tianshu-production-sn-cert.json"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/synthetic-artifact-identity.schema.json",
+  "title": "Synthetic Readiness Artifact Identity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["runId", "arm", "projectId", "artifactId"],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "pattern": "^synthetic-readiness-[a-z0-9][a-z0-9-]*$"
+    },
+    "arm": { "enum": ["consumer", "control"] },
+    "projectId": {
+      "type": "string",
+      "pattern": "^synthetic-[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    }
+  }
+}

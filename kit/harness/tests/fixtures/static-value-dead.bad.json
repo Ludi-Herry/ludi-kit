@@ -1,0 +1,13 @@
+{
+  "id": "test-static-value-dead",
+  "expectedStaticValues": [
+    { "object": "domainCopy", "path": ["production", "label"], "value": "生产" },
+    { "object": "domainCopy", "path": ["production", "variant"], "value": "geekblue" }
+  ],
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/static-value-dead.bad.tsx",
+    "symbol": "DeadStaticValuePage"
+  },
+  "report": "harness/reports/test-static-value-dead.json"
+}

@@ -1,0 +1,292 @@
+{
+  "version": "1.0.0",
+  "component": "Skeleton",
+  "queryComponent": "Skeleton",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Skeleton",
+        "nameZh": "骨架屏",
+        "description": "在需要等待加载内容的位置提供一个占位图形组合。",
+        "props": [
+          {
+            "name": "active",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "avatar",
+            "type": "boolean | [SkeletonAvatar](#skeletonavatar)",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "paragraph",
+            "type": "boolean | [SkeletonParagraphProps](#skeletonparagraphprops)",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "round",
+            "type": "boolean",
+            "default": "false",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "boolean | [SkeletonTitleProps](#skeletontitleprops)",
+            "default": "true",
+            "since": ""
+          },
+          {
+            "name": "width",
+            "type": "number | string",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "rows",
+            "type": "number",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "subComponentProps": {
+          "Skeleton.Avatar": [
+            {
+              "name": "active",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "shape",
+              "type": "`circle` | `square`",
+              "default": "`circle`",
+              "since": ""
+            },
+            {
+              "name": "size",
+              "type": "number | `large` | `medium` | `small`",
+              "default": "`medium`",
+              "since": ""
+            }
+          ],
+          "Skeleton.Button": [
+            {
+              "name": "active",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "block",
+              "type": "boolean",
+              "default": "false",
+              "since": "4.17.0"
+            },
+            {
+              "name": "shape",
+              "type": "`circle` | `round` | `square` | `default`",
+              "default": "-",
+              "since": ""
+            },
+            {
+              "name": "size",
+              "type": "`large` | `medium` | `small`",
+              "default": "`medium`",
+              "since": ""
+            }
+          ],
+          "Skeleton.Input": [
+            {
+              "name": "active",
+              "type": "boolean",
+              "default": "false",
+              "since": ""
+            },
+            {
+              "name": "size",
+              "type": "`large` | `medium` | `small`",
+              "default": "`medium`",
+              "since": ""
+            }
+          ]
+        },
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Skeleton",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 网络较慢，需要长时间等待加载处理的情况下。\n- 图文信息内容较多的列表/卡片中。\n- 只在第一次加载数据的时候使用。\n- 可以被 Spin 完全代替，但是在可用的场景下可以比 Spin 提供更好的视觉效果和用户体验。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/complex.tsx\">复杂的组合</code>\n<code src=\"./demo/active.tsx\">动画效果</code>\n<code src=\"./demo/element.tsx\">按钮/头像/输入框/图像/自定义节点</code>\n<code src=\"./demo/children.tsx\">包含子组件</code>\n<code src=\"./demo/list.tsx\">列表</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/componentToken.tsx\" debug>自定义组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n### 共同的 API\n\n<embed src=\"./shared/sharedProps.zh-CN.md\"></embed>\n\n### Skeleton\n\n| 属性 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| active | 是否展示动画效果 | boolean | false |  | × |\n| avatar | 是否显示头像占位图 | boolean \\| [SkeletonAvatar](#skeletonavatar) | false |  | × |\n| loading | 为 true 时，显示占位图。反之则直接展示子组件 | boolean | - |  | × |\n| paragraph | 是否显示段落占位图 | boolean \\| [SkeletonParagraphProps](#skeletonparagraphprops) | true |  | × |\n| round | 为 true 时，段落和标题显示圆角 | boolean | false |  | × |\n| title | 是否显示标题占位图 | boolean \\| [SkeletonTitleProps](#skeletontitleprops) | true |  | × |\n\n#### SkeletonTitleProps\n\n| 属性  | 说明                 | 类型             | 默认值 |\n| ----- | -------------------- | ---------------- | ------ |\n| width | 设置标题占位图的宽度 | number \\| string | -      |\n\n#### SkeletonParagraphProps\n\n| 属性 | 说明 | 类型 | 默认值 |\n| --- | --- | --- | --- |\n| rows | 设置段落占位图的行数 | number | - |\n| width | 设置段落占位图的宽度，若为数组时则为对应的每行宽度，反之则是最后一行的宽度 | number \\| string \\| Array&lt;number \\| string> | - |\n\n### Skeleton.Avatar\n\n| 属性 | 说明 | 类型 | 默认值 |\n| --- | --- | --- | --- |\n| active | 是否展示动画效果，只在独立使用头像时有效 | boolean | false |\n| shape | 指定头像的形状 | `circle` \\| `square` | `circle` |\n| size | 设置头像占位图的大小 | number \\| `large` \\| `medium` \\| `small` | `medium` |\n\n### Skeleton.Button\n\n| 属性 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| active | 是否展示动画效果 | boolean | false |  |\n| block | 将按钮宽度调整为其父宽度的选项 | boolean | false | 4.17.0 |\n| shape | 指定按钮的形状 | `circle` \\| `round` \\| `square` \\| `default` | - |  |\n| size | 设置按钮的大小 | `large` \\| `medium` \\| `small` | `medium` |  |\n\n### Skeleton.Input\n\n| 属性   | 说明             | 类型                           | 默认值   |\n| ------ | ---------------- | ------------------------------ | -------- |\n| active | 是否展示动画效果 | boolean                        | false    |\n| size   | 设置输入框的大小 | `large` \\| `medium` \\| `small` | `medium` |\n\n## Semantic DOM\n\n### Skeleton\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n### Skeleton.Element\n\n<code src=\"./demo/_semantic_element.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Skeleton\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Skeleton",
+        "demos": [
+          {
+            "name": "active",
+            "title": "Active Animation",
+            "description": "Display active animation."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Simplest Skeleton usage."
+          },
+          {
+            "name": "children",
+            "title": "Contains sub component",
+            "description": "Skeleton contains sub component."
+          },
+          {
+            "name": "complex",
+            "title": "Complex combination",
+            "description": "Complex combination with avatar and multiple paragraphs."
+          },
+          {
+            "name": "element",
+            "title": "Button/Avatar/Input/Image/Node",
+            "description": "Skeleton Button, Avatar, Input, Image and Node."
+          },
+          {
+            "name": "list",
+            "title": "List",
+            "description": "Use skeleton in list component."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of Skeleton by passing objects or functions through `classNames` and `styles`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Skeleton",
+        "tokens": [
+          {
+            "name": "blockRadius",
+            "type": "number",
+            "default": "",
+            "description": "Border radius of skeleton",
+            "descriptionZh": "骨架屏圆角"
+          },
+          {
+            "name": "gradientFromColor",
+            "type": "string",
+            "default": "",
+            "description": "Start color of gradient",
+            "descriptionZh": "渐变色起点颜色"
+          },
+          {
+            "name": "gradientToColor",
+            "type": "string",
+            "default": "",
+            "description": "End color of gradient",
+            "descriptionZh": "渐变色终点颜色"
+          },
+          {
+            "name": "paragraphLiHeight",
+            "type": "number",
+            "default": "",
+            "description": "Line height of paragraph skeleton",
+            "descriptionZh": "段落骨架屏单行高度"
+          },
+          {
+            "name": "paragraphMarginTop",
+            "type": "number",
+            "default": "",
+            "description": "Margin top of paragraph skeleton",
+            "descriptionZh": "段落骨架屏上间距"
+          },
+          {
+            "name": "titleHeight",
+            "type": "string | number",
+            "default": "",
+            "description": "Height of title skeleton",
+            "descriptionZh": "标题骨架屏高度"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Skeleton",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with table display, width, animation effects, border radius and other skeleton container basic styles",
+            "descriptionZh": "根元素，包含表格显示、宽度、动画效果、圆角等骨架屏容器的基础样式"
+          },
+          {
+            "key": "header",
+            "description": "Header element with table cell, padding, vertical alignment and other avatar placeholder area layout styles",
+            "descriptionZh": "头部元素，包含表格单元格、内边距、垂直对齐等头像占位区域的布局样式"
+          },
+          {
+            "key": "section",
+            "description": "Section element with skeleton content area layout styles",
+            "descriptionZh": "区块元素，包含骨架屏内容区域的布局样式"
+          },
+          {
+            "key": "avatar",
+            "description": "Avatar element with inline-block display, vertical alignment, background color, size, border radius and other avatar placeholder styles",
+            "descriptionZh": "头像元素，包含行内块显示、垂直对齐、背景色、尺寸、圆角等头像占位的样式"
+          },
+          {
+            "key": "title",
+            "description": "Title element with width, height, background color, border radius and other title placeholder styles",
+            "descriptionZh": "标题元素，包含宽度、高度、背景色、圆角等标题占位的样式"
+          },
+          {
+            "key": "paragraph",
+            "description": "Paragraph element with padding, list item styles, background color, border radius and other paragraph placeholder styles",
+            "descriptionZh": "段落元素，包含内边距、列表项样式、背景色、圆角等段落占位的样式"
+          }
+        ]
+      }
+    }
+  }
+}

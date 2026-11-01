@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-readable.local/schema/guided-pilot-result.schema.json",
+  "title": "Non-scoring Guided Pilot Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "mode",
+    "runId",
+    "artifactId",
+    "projectId",
+    "evidenceRoot",
+    "workspace",
+    "status",
+    "qualifying",
+    "scoring",
+    "winner",
+    "registryWrite",
+    "syntheticLedgerWrite",
+    "contract",
+    "source",
+    "package",
+    "generation",
+    "readiness",
+    "flow",
+    "isolation"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": "1.0.0" },
+    "mode": { "const": "non-scoring-guided-pilot" },
+    "runId": {
+      "type": "string",
+      "pattern": "^guided-pilot-[a-z0-9][a-z0-9-]*$"
+    },
+    "artifactId": { "$ref": "#/$defs/artifactId" },
+    "projectId": {
+      "type": "string",
+      "pattern": "^guided-[a-z0-9][a-z0-9-]*$"
+    },
+    "evidenceRoot": {
+      "type": "string",
+      "pattern": "^quality/blind-harness/guided-pilots/guided-pilot-[a-z0-9][a-z0-9-]*$"
+    },
+    "workspace": { "$ref": "#/$defs/workspace" },
+    "status": { "enum": ["passed", "failed", "blocked"] },
+    "qualifying": { "const": false },
+    "scoring": { "const": false },
+    "winner": { "type": "null" },
+    "registryWrite": { "const": false },
+    "syntheticLedgerWrite": { "const": false },
+    "contract": { "$ref": "#/$defs/fileReceipt" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt", "current"],
+      "properties": {
+        "receipt": { "$ref": "#/$defs/fileReceipt" },
+        "current": { "$ref": "#/$defs/fileReceipt" }
+      }
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "receipt"],
+      "properties": {
+        "name": { "const": "@ai-readable/kit" },
+        "receipt": {
+          "allOf": [
+            { "$ref": "#/$defs/fileReceipt" },
+            {
+              "type": "object",
+              "properties": {
+                "path": { "const": "package/package-receipt.json" }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command"],
+      "properties": {
+        "command": {
+          "allOf": [
+            { "$ref": "#/$defs/fileReceipt" },
+            {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "pattern": "^generation-attempt-[0-9][0-9]*/command\\.json$"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result"],
+      "properties": {
+        "result": { "$ref": "#/$defs/fileReceipt" }
+      }
+    },
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runner", "result"],
+      "properties": {
+        "runner": { "$ref": "#/$defs/fileReceipt" },
+        "result": { "$ref": "#/$defs/fileReceipt" }
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry", "syntheticLedger"],
+      "properties": {
+        "registry": { "$ref": "#/$defs/fingerprintPair" },
+        "syntheticLedger": { "$ref": "#/$defs/fingerprintPair" }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifactId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "fileReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._/-]*$"
+        },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "frozenTarball": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "const": ".local-pack/ai-readable-kit-0.1.0-a38cc586fd15.tgz" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^\\.guided-pilot-workspaces/guided-pilot-[a-z0-9][a-z0-9-]*$"
+        }
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "fingerprintPair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre", "post"],
+      "properties": {
+        "pre": { "$ref": "#/$defs/fingerprint" },
+        "post": { "$ref": "#/$defs/fingerprint" }
+      }
+    }
+  }
+}

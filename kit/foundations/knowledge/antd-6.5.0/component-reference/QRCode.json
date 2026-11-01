@@ -1,0 +1,229 @@
+{
+  "version": "1.0.0",
+  "component": "QRCode",
+  "queryComponent": "QRCode",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-09-29",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "QRCode",
+        "nameZh": "二维码",
+        "description": "能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。",
+        "props": [
+          {
+            "name": "value",
+            "type": "`string | string[]`",
+            "default": "-",
+            "since": "`string[]`: 5.28.0"
+          },
+          {
+            "name": "type",
+            "type": "`canvas | svg`",
+            "default": "`canvas`",
+            "since": "5.6.0"
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "default": "-",
+            "since": "-"
+          },
+          {
+            "name": "size",
+            "type": "number",
+            "default": "160",
+            "since": "-"
+          },
+          {
+            "name": "iconSize",
+            "type": "number | { width: number; height: number }",
+            "default": "40",
+            "since": "5.19.0"
+          },
+          {
+            "name": "color",
+            "type": "string",
+            "default": "`#000`",
+            "since": "-"
+          },
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": "6.0.0"
+          },
+          {
+            "name": "bgColor",
+            "type": "string",
+            "default": "`transparent`",
+            "since": "5.5.0"
+          },
+          {
+            "name": "marginSize",
+            "type": "number",
+            "default": "`0`",
+            "since": "6.2.0"
+          },
+          {
+            "name": "bordered",
+            "type": "boolean",
+            "default": "true",
+            "since": "-"
+          },
+          {
+            "name": "errorLevel",
+            "type": "`'L' | 'M' | 'Q' | 'H'`",
+            "default": "`M`",
+            "since": "-"
+          },
+          {
+            "name": "boostLevel",
+            "type": "`boolean`",
+            "default": "true",
+            "since": "5.28.0"
+          },
+          {
+            "name": "status",
+            "type": "`active | expired | loading | scanned`",
+            "default": "`active`",
+            "since": "scanned: 5.13.0"
+          },
+          {
+            "name": "statusRender",
+            "type": "(info: [StatusRenderInfo](/components/qr-code#statusrenderinfo)) => React.ReactNode",
+            "default": "-",
+            "since": "5.20.0"
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": "6.0.0"
+          }
+        ],
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "QRCode",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n当需要将文本转换成为二维码时使用。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/base.tsx\">基本使用</code>\n<code src=\"./demo/icon.tsx\">带 Icon 的例子</code>\n<code src=\"./demo/status.tsx\">不同的状态</code>\n<code src=\"./demo/customStatusRender.tsx\" version=\"5.20.0\">自定义状态渲染器</code>\n<code src=\"./demo/type.tsx\">自定义渲染类型</code>\n<code src=\"./demo/customSize.tsx\">自定义尺寸</code>\n<code src=\"./demo/customColor.tsx\">自定义颜色</code>\n<code src=\"./demo/download.tsx\">下载二维码</code>\n<code src=\"./demo/errorlevel.tsx\">纠错比例</code>\n<code src=\"./demo/Popover.tsx\">高级用法</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n> 自 `antd@5.1.0` 版本开始提供该组件。\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| :-- | :-- | :-- | :-- | :-- | --- |\n| value | 扫描后的文本 | `string \\| string[]` | - | `string[]`: 5.28.0 | × |\n| type | 渲染类型 | `canvas \\| svg` | `canvas` | 5.6.0 | × |\n| icon | 二维码中图片的地址（目前只支持图片地址） | string | - | - | × |\n| size | 二维码大小 | number | 160 | - | × |\n| iconSize | 二维码中图片的大小 | number \\| { width: number; height: number } | 40 | 5.19.0 | × |\n| color | 二维码颜色 | string | `#000` | - | × |\n| classNames | 用于自定义组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), string> | - | 6.0.0 | 6.0.0 |\n| bgColor | 二维码背景颜色 | string | `transparent` | 5.5.0 | × |\n| marginSize | 留白（安静区）大小（单位为模块数），`0` 表示无留白 | number | `0` | 6.2.0 | × |\n| bordered | 是否有边框 | boolean | true | - | × |\n| errorLevel | 二维码纠错等级 | `'L' \\| 'M' \\| 'Q' \\| 'H'` | `M` | - | × |\n| boostLevel | 如果启用，自动提升纠错等级，结果的纠错级别可能会高于指定的纠错级别 | `boolean` | true | 5.28.0 | × |\n| status | 二维码状态 | `active \\| expired \\| loading \\| scanned` | `active` | scanned: 5.13.0 | × |\n| statusRender | 自定义状态渲染器 | (info: [StatusRenderInfo](/components/qr-code-cn#statusrenderinfo)) => React.ReactNode | - | 5.20.0 | × |\n| styles | 用于自定义组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record<[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |\n\n### StatusRenderInfo\n\n```typescript\ntype StatusRenderInfo = {\n  status: QRStatus;\n  locale: Locale['QRCode'];\n  onRefresh?: () => void;\n};\n```\n\n## Semantic DOM\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"QRCode\"></ComponentTokenTable>\n\n## FAQ\n\n### 关于二维码纠错等级 {#faq-error-correction-level}\n\n纠错等级也叫纠错率，就是指二维码可以被遮挡后还能正常扫描，而这个能被遮挡的最大面积就是纠错率。\n\n通常情况下二维码分为 4 个纠错级别：`L级` 可纠正约 `7%` 错误、`M级` 可纠正约 `15%` 错误、`Q级` 可纠正约 `25%` 错误、`H级` 可纠正约`30%` 错误。并不是所有位置都可以缺损，像最明显的三个角上的方框，直接影响初始定位。中间零散的部分是内容编码，可以容忍缺损。当二维码的内容编码携带信息比较少的时候，也就是链接比较短的时候，设置不同的纠错等级，生成的图片不会发生变化。\n\n> 有关更多信息，可参阅相关资料：[https://www.qrcode.com/zh/about/error_correction](https://www.qrcode.com/zh/about/error_correction.html)\n\n### ⚠️⚠️⚠️ 二维码无法扫描？ {#faq-cannot-scan}\n\n若二维码无法扫码识别，可能是因为链接地址过长导致像素过于密集，可以通过 size 配置二维码更大，或者通过短链接服务等方式将链接变短。\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "QRCode",
+        "demos": [
+          {
+            "name": "Popover",
+            "title": "Advanced Usage",
+            "description": "With Popover."
+          },
+          {
+            "name": "base",
+            "title": "base",
+            "description": "Basic Usage."
+          },
+          {
+            "name": "customColor",
+            "title": "Custom Color",
+            "description": "Custom Color."
+          },
+          {
+            "name": "customSize",
+            "title": "Custom Size",
+            "description": "Custom Size."
+          },
+          {
+            "name": "customStatusRender",
+            "title": "custom status render",
+            "description": "You can control the rendering logic of the QR code in different states through the value of `statusRender`."
+          },
+          {
+            "name": "download",
+            "title": "Download QRCode",
+            "description": "A way to download QRCode."
+          },
+          {
+            "name": "errorlevel",
+            "title": "Error Level",
+            "description": "set Error Level."
+          },
+          {
+            "name": "icon",
+            "title": "With Icon",
+            "description": "QRCode with Icon."
+          },
+          {
+            "name": "status",
+            "title": "other status",
+            "description": "The status can be controlled by the value `status`, four values ​​of `active`, `expired`, `loading`, `scanned` are provided."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of QRCode by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "type",
+            "title": "Custom Render Type",
+            "description": "Customize the rendering results by `type`, provide options `canvas` and `svg`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "QRCode",
+        "tokens": []
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "QRCode",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element, set flex layout, padding, background color, border, border radius and relative positioning styles",
+            "descriptionZh": "根元素，设置flex布局、内边距、背景色、边框、圆角和相对定位样式"
+          },
+          {
+            "key": "cover",
+            "description": "Cover element, set absolute positioning, z-index, background color and loading state overlay styles",
+            "descriptionZh": "遮罩层元素，设置绝对定位、层级、背景色和加载状态覆盖样式"
+          }
+        ]
+      }
+    }
+  }
+}

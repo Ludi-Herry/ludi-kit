@@ -1,0 +1,250 @@
+{
+  "version": "1.0.0",
+  "component": "Statistic",
+  "queryComponent": "Statistic",
+  "antdVersion": "6.5.0",
+  "cliVersion": "6.5.1",
+  "reviewedAt": "2026-07-22",
+  "queries": {
+    "info": {
+      "status": "ok",
+      "data": {
+        "name": "Statistic",
+        "nameZh": "统计数值",
+        "description": "展示统计数值。",
+        "props": [
+          {
+            "name": "classNames",
+            "type": "Record<[SemanticDOM](#semantic-dom), string> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), string>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "decimalSeparator",
+            "type": "string",
+            "default": "`.`",
+            "since": ""
+          },
+          {
+            "name": "formatter",
+            "type": "(value) => ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "groupSeparator",
+            "type": "string",
+            "default": "`,`",
+            "since": ""
+          },
+          {
+            "name": "loading",
+            "type": "boolean",
+            "default": "false",
+            "since": "4.8.0"
+          },
+          {
+            "name": "precision",
+            "type": "number",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "prefix",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "styles",
+            "type": "Record<[SemanticDOM](#semantic-dom), CSSProperties> | (info: { props }) => Record<[SemanticDOM](#semantic-dom), CSSProperties>",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "suffix",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "title",
+            "type": "ReactNode",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "value",
+            "type": "string | number",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "valueStyle",
+            "type": "CSSProperties",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "format",
+            "type": "string",
+            "default": "`HH:mm:ss`",
+            "since": ""
+          },
+          {
+            "name": "onFinish",
+            "type": "() => void",
+            "default": "-",
+            "since": ""
+          },
+          {
+            "name": "onChange",
+            "type": "(value: number) => void",
+            "default": "-",
+            "since": "4.16.0"
+          },
+          {
+            "name": "type",
+            "type": "`countdown` | `countup`",
+            "default": "-",
+            "since": ""
+          }
+        ],
+        "commonProps": [
+          {
+            "name": "className",
+            "type": "string",
+            "default": "-",
+            "description": "Additional CSS class",
+            "descriptionZh": "额外的 CSS 类名"
+          },
+          {
+            "name": "style",
+            "type": "CSSProperties",
+            "default": "-",
+            "description": "Additional style",
+            "descriptionZh": "额外的样式"
+          },
+          {
+            "name": "rootClassName",
+            "type": "string",
+            "default": "-",
+            "description": "ClassName on the root element",
+            "descriptionZh": "根元素的类名"
+          }
+        ],
+        "htmlElement": "div"
+      }
+    },
+    "doc": {
+      "status": "ok",
+      "data": {
+        "name": "Statistic",
+        "doc": "\n## 何时使用 {#when-to-use}\n\n- 当需要突出某个或某组数字时。\n- 当需要展示带描述的统计类数据时使用。\n\n## 代码演示 {#examples}\n\n<!-- prettier-ignore -->\n<code src=\"./demo/basic.tsx\">基本</code>\n<code src=\"./demo/unit.tsx\">单位</code>\n<code src=\"./demo/animated.tsx\">动画效果</code>\n<code src=\"./demo/card.tsx\" background=\"grey\">在卡片中使用</code>\n<code src=\"./demo/timer.tsx\" version=\"5.25.0\">计时器</code>\n<code src=\"./demo/style-class.tsx\" version=\"6.0.0\">自定义语义结构的样式和类</code>\n<code src=\"./demo/component-token.tsx\" debug>组件 Token</code>\n\n## API\n\n通用属性参考：[通用属性](/docs/react/common-props)\n\n#### Statistic\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 | [全局配置](/components/config-provider-cn#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | 用于自定义 Statistic 组件内部各语义化结构的 class，支持对象或函数 | Record<[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| decimalSeparator | 设置小数点 | string | `.` |  | × |\n| formatter | 自定义数值展示 | (value) => ReactNode | - |  | × |\n| groupSeparator | 设置千分位标识符 | string | `,` |  | × |\n| loading | 数值是否加载中 | boolean | false | 4.8.0 | × |\n| precision | 数值精度 | number | - |  | × |\n| prefix | 设置数值的前缀 | ReactNode | - |  | × |\n| styles | 用于自定义 Statistic 组件内部各语义化结构的行内 style，支持对象或函数 | Record<[SemanticDOM](#semantic-dom) , CSSProperties> \\| (info: { props }) => Record<[SemanticDOM](#semantic-dom) , CSSProperties> | - |  | 6.0.0 |\n| suffix | 设置数值的后缀 | ReactNode | - |  | × |\n| title | 数值的标题 | ReactNode | - |  | × |\n| value | 数值内容 | string \\| number | - |  | × |\n| ~~valueStyle~~ | 设置数值区域的样式，请使用 `styles.content` 替代 | CSSProperties | - |  | × |\n\n#### Statistic.Countdown <Badge type=\"error\">Deprecated</Badge>\n\n<Antd component=\"Alert\" title=\"版本 >= 5.25.0 时请使用 Statistic.Timer 作为替代方案。\" type=\"warning\" banner=\"true\"></Antd>\n\n<!-- prettier-ignore -->\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| format | 格式化倒计时展示，参考 [dayjs](https://day.js.org/) | string | `HH:mm:ss` |  |\n| prefix | 设置数值的前缀 | ReactNode | - |  |\n| suffix | 设置数值的后缀 | ReactNode | - |  |\n| title | 数值的标题 | ReactNode | - |  |\n| value | 数值内容 | number | - |  |\n| valueStyle | 设置数值区域的样式 | CSSProperties | - |  |\n| onFinish | 倒计时完成时触发 | () => void | - |  |\n| onChange | 倒计时时间变化时触发 | (value: number) => void | - |  |\n\n#### Statistic.Timer <Badge>5.25.0+</Badge>\n\n| 参数 | 说明 | 类型 | 默认值 | 版本 |\n| --- | --- | --- | --- | --- |\n| type | 计时类型，倒计时或者正计时 | `countdown` \\| `countup` | - |  |\n| format | 格式化倒计时展示，参考 [dayjs](https://day.js.org/) | string | `HH:mm:ss` |  |\n| prefix | 设置数值的前缀 | ReactNode | - |  |\n| suffix | 设置数值的后缀 | ReactNode | - |  |\n| title | 数值的标题 | ReactNode | - |  |\n| value | `countdown` 模式下为目标时间，`countup` 模式下为起始时间（毫秒时间戳） | number | - |  |\n| valueStyle | 设置数值区域的样式 | CSSProperties | - |  |\n| onFinish | 倒计时完成时触发，指定为 `countup` 时此属性不生效 | () => void | - |  |\n| onChange | 倒计时时间变化时触发 | (value: number) => void | - |  |\n\n## Semantic DOM\n\nStatistic 提供 `root`、`header`、`title`、`content`、`value`、`prefix` 和 `suffix` 语义化 DOM 节点。\n\n<code src=\"./demo/_semantic.tsx\" simplify=\"true\"></code>\n\n## 主题变量（Design Token）{#design-token}\n\n<ComponentTokenTable component=\"Statistic\"></ComponentTokenTable>\n"
+      }
+    },
+    "demo": {
+      "status": "ok",
+      "data": {
+        "component": "Statistic",
+        "demos": [
+          {
+            "name": "animated",
+            "title": "Animated number",
+            "description": "Animated number with [react-countup](https://www.npmjs.com/package/react-countup)."
+          },
+          {
+            "name": "basic",
+            "title": "Basic",
+            "description": "Simplest Usage."
+          },
+          {
+            "name": "card",
+            "title": "In Card",
+            "description": "Display statistic data in Card."
+          },
+          {
+            "name": "style-class",
+            "title": "Custom semantic dom styling",
+            "description": "You can customize the [semantic dom](#semantic-dom) style of the Statistic by passing objects/functions through `classNames` and `styles`."
+          },
+          {
+            "name": "timer",
+            "title": "Timer",
+            "description": "Timer component."
+          },
+          {
+            "name": "unit",
+            "title": "Unit",
+            "description": "Add unit through `prefix` and `suffix`."
+          }
+        ]
+      }
+    },
+    "token": {
+      "status": "ok",
+      "data": {
+        "component": "Statistic",
+        "tokens": [
+          {
+            "name": "contentFontSize",
+            "type": "string | number",
+            "default": "",
+            "description": "Content font size",
+            "descriptionZh": "内容字体大小"
+          },
+          {
+            "name": "titleFontSize",
+            "type": "number",
+            "default": "",
+            "description": "Title font size",
+            "descriptionZh": "标题字体大小"
+          }
+        ]
+      }
+    },
+    "semantic": {
+      "status": "ok",
+      "data": {
+        "name": "Statistic",
+        "semanticStructure": [
+          {
+            "key": "root",
+            "description": "Root element with reset styles and overall container styles for statistic component",
+            "descriptionZh": "根元素，包含统计数值组件的重置样式和整体容器样式"
+          },
+          {
+            "key": "header",
+            "description": "Header element with bottom padding and title area layout styles",
+            "descriptionZh": "头部元素，包含下内边距和标题区域的布局样式"
+          },
+          {
+            "key": "title",
+            "description": "Title element with text color, font size and other title text display styles",
+            "descriptionZh": "标题元素，包含文字颜色、字体大小等标题文字的显示样式"
+          },
+          {
+            "key": "prefix",
+            "description": "Prefix element with inline-block display, right margin and other prefix content layout styles",
+            "descriptionZh": "前缀元素，包含行内块显示、右外边距等前缀内容的布局样式"
+          },
+          {
+            "key": "content",
+            "description": "Content element with layout and alignment styles for the prefix, value and suffix area",
+            "descriptionZh": "内容元素，包含前缀、数值、后缀的布局和对齐等内容区域样式"
+          },
+          {
+            "key": "value",
+            "description": "Value element with text color, font size, font family and other statistic number display styles",
+            "descriptionZh": "数值元素，包含文字颜色、字体大小、字体族等统计数值的展示样式"
+          },
+          {
+            "key": "suffix",
+            "description": "Suffix element with inline-block display, left margin and other suffix content layout styles",
+            "descriptionZh": "后缀元素，包含行内块显示、左外边距等后缀内容的布局样式"
+          }
+        ]
+      }
+    }
+  }
+}

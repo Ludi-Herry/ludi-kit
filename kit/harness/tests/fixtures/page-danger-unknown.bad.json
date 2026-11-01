@@ -1,0 +1,12 @@
+{
+  "id": "test-page-danger-unknown",
+  "expectedActions": {
+    "danger": ["删除"]
+  },
+  "output": {
+    "type": "tsx",
+    "file": "harness/tests/fixtures/page-danger-unknown.bad.tsx",
+    "symbol": "PageDangerUnknownPage"
+  },
+  "report": "harness/reports/test-page-danger-unknown.json"
+}

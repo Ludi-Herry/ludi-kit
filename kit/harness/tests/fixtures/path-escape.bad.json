@@ -1,0 +1,8 @@
+{
+  "id": "test-path-escape",
+  "output": {
+    "type": "tsx",
+    "file": "../outside.tsx"
+  },
+  "report": "harness/reports/test-path-escape.json"
+}

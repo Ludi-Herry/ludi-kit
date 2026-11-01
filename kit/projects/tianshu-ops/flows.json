@@ -1,0 +1,129 @@
+{
+  "version": "0.1.0",
+  "projectId": "tianshu-ops",
+  "flows": [
+    {
+      "id": "daily-ops-review",
+      "title": "日常运营巡检",
+      "entry": "/dashboard",
+      "userGoal": "一屏看清各域待办与告警，下钻到能处理它的页面。",
+      "businessState": "运营人员每日开工巡检。",
+      "steps": [
+        { "pageId": "dashboard", "route": "/dashboard", "role": "overview" },
+        { "pageId": "production-sn-cert", "route": "/production/sn-cert", "role": "risk-handling" }
+      ],
+      "successCriteria": [
+        "首屏不滚动可见最高优先级待办与告警。",
+        "待办卡片可直接下钻到对应生产页面并保留上下文。",
+        "处理完成后回工作台，对应角标清零。"
+      ]
+    },
+    {
+      "id": "production-forward-chain",
+      "title": "生产正向主链（期 1 前段）",
+      "entry": "/production/inbound",
+      "userGoal": "设备批次沿 收货 → 烧录 → SN/证书 逐环推进，全程状态可追溯。",
+      "businessState": "产线按批次推进设备生命周期，后序模块依赖前序产出。",
+      "steps": [
+        { "pageId": "production-inbound", "route": "/production/inbound", "role": "receive" },
+        { "pageId": "production-flashing", "route": "/production/flashing", "role": "flash-and-certify" },
+        { "pageId": "production-sn-cert", "route": "/production/sn-cert", "role": "sn-cert-tracking" },
+        { "pageId": "production-testing", "route": "/production/testing", "role": "test-and-judge" },
+        { "pageId": "production-qc", "route": "/production/qc", "role": "quality-inspection" },
+        { "pageId": "production-inventory", "route": "/production/inventory", "role": "stock-keeping" },
+        { "pageId": "production-shipping", "route": "/production/shipping", "role": "ship-out" }
+      ],
+      "successCriteria": [
+        "批次入场后才能创建烧录任务（依赖前序产出）。",
+        "烧录任务必须绑定固件版本（MVP 必补项）。",
+        "SN/证书页可追踪证书状态与 SN 冲突，异常有处理入口。",
+        "测试判定与质检结论分属两套状态机，界面不并列混用（§3.4）。",
+        "测试、质检与库存行操作均保留查看详情，并按状态开放判定、撤销、调拨、盘点和分配出货。",
+        "库存数量（在库/可用/已分配/冻结）实时口径一致，出货扫描仅接受 in_stock 设备。",
+        "出货列表负责进入扫描/物流/取消，确认出库与部分发运仅在扫描工作台按扫描数量开放。"
+      ]
+    },
+    {
+      "id": "audit-traceability",
+      "title": "审计追溯（L0 地基 · 只读）",
+      "entry": "/platform/audit",
+      "userGoal": "对任意操作或任意 SN 的全生命周期留痕做合规追溯。",
+      "businessState": "平台每笔关键操作自动写审计日志；客服/安全按需检索，数据只读。",
+      "steps": [
+        { "pageId": "platform-audit", "route": "/platform/audit", "role": "trace" },
+        { "pageId": "dashboard", "route": "/dashboard", "role": "alert-followup" }
+      ],
+      "successCriteria": [
+        "日志只读：界面无任何新建/编辑/删除入口。",
+        "高风险与失败日志均有整行可视强调，高风险优先；风险等级、操作结果和敏感标记分组展示。",
+        "按 SN 追溯入口可用（客服场景），SN 与商业化标识不并列（§3.4）。"
+      ]
+    },
+    {
+      "id": "rbac-setup",
+      "title": "账号与权限配置（L0 地基）",
+      "entry": "/platform/rbac",
+      "userGoal": "配置角色与权限点，保证各域人员最小权限访问。",
+      "businessState": "平台管理员先行配置，任何业务模块依赖它鉴权留痕。",
+      "steps": [
+        { "pageId": "platform-rbac", "route": "/platform/rbac", "role": "configure" },
+        { "pageId": "dashboard", "route": "/dashboard", "role": "verify" }
+      ],
+      "successCriteria": [
+        "权限点命名遵循 域:模块[:对象]:动作。",
+        "角色启停即时生效，无权限态按 PRD §3.3 呈现。",
+        "配置动作全部进审计日志（界面第二批，模型先行）。"
+      ]
+    },
+    {
+      "id": "production-reverse-chain",
+      "title": "生产逆向链（退货 RMA）",
+      "entry": "/production/rma",
+      "userGoal": "从退货到件、检测到返修、二次入库或报废完成一次可追溯裁决。",
+      "businessState": "设备离开正向履约后进入独立逆向状态链，裁决结果回接测试、库存或报废终态。",
+      "steps": [
+        { "pageId": "production-rma", "route": "/production/rma", "role": "receive-inspect-and-decide" },
+        { "pageId": "production-testing", "route": "/production/testing", "role": "repair-verification" },
+        { "pageId": "production-inventory", "route": "/production/inventory", "role": "restock" }
+      ],
+      "successCriteria": [
+        "RMA 单覆盖到件、检测和裁决状态，设备状态独立展示。",
+        "返修、二次入库和报废均经过二次确认并写明影响对象。",
+        "批量关闭只接受已经进入终态的记录。"
+      ]
+    },
+    {
+      "id": "ad-monetization-chain",
+      "title": "广告投放与对账链",
+      "entry": "/ad/campaigns",
+      "userGoal": "完成广告位、订单、投放计划到 T+1 对账核销的运营闭环。",
+      "businessState": "投放页承载配置与暂停控制，对账页使用定版金额口径并按权限脱敏。",
+      "steps": [
+        { "pageId": "ad-campaigns", "route": "/ad/campaigns", "role": "configure-and-deliver" },
+        { "pageId": "ad-reconciliation", "route": "/ad/reconciliation", "role": "reconcile-and-close" }
+      ],
+      "successCriteria": [
+        "投放计划依赖已启用广告位和已审核订单。",
+        "暂停、批量暂停和核销均经过二次确认。",
+        "金额默认按权限脱敏，T+1 与实时竞价口径分开说明。"
+      ]
+    },
+    {
+      "id": "content-publish-chain",
+      "title": "内容排期与发布链",
+      "entry": "/content/schedule",
+      "userGoal": "上传素材、安排内容位排期、完成审批并控制上下架。",
+      "businessState": "内容素材、内容位、排期和发布记录在同一工作台按标签页分区管理。",
+      "steps": [
+        { "pageId": "content-schedule", "route": "/content/schedule", "role": "schedule-approve-and-publish" },
+        { "pageId": "content-version", "route": "/content/version", "role": "trace-compare-and-rollback" }
+      ],
+      "successCriteria": [
+        "排期冲突可筛选并单独标记。",
+        "素材版权到期时间和发布生效时间使用明确日期控件。",
+        "批量取消与紧急下架均经过二次确认。",
+        "发布后可定位版本历史，并在回滚前完成差异确认和影响范围确认。"
+      ]
+    }
+  ]
+}

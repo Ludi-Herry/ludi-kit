@@ -1,0 +1,1249 @@
+.tianshu-shell {
+  --color-bg-page: #f6f8fb;
+  --color-bg-surface: #ffffff;
+  --color-border: #d8dee8;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-brand-primary: #1677ff;
+  --color-brand-primary-strong: #0958d9;
+  --color-brand-soft: #e6f4ff;
+  --color-status-success: #16a34a;
+  --color-status-warning: #d97706;
+  --color-status-danger: #dc2626;
+  --color-status-info: #2563eb;
+  --radius-sm: 4px;
+  --radius-control: 6px;
+  --radius-card: 8px;
+  --radius-pill: 999px;
+  --shadow-card: 0 8px 24px rgb(31 41 55 / 8%);
+  --shadow-popover: 0 18px 40px rgb(31 41 55 / 18%);
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --tianshu-motion-fast: 150ms;
+  --tianshu-motion-standard: 220ms;
+  --tianshu-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  background: var(--color-bg-page);
+  min-height: 100vh;
+}
+
+.tianshu-shell[data-theme="calm"] {
+  --color-bg-page: #f7f6f2;
+  --color-bg-surface: #fffdfa;
+  --color-border: #d8d6cd;
+  --color-text-primary: #1f2a28;
+  --color-text-secondary: #687572;
+  --color-brand-primary: #28786c;
+  --color-brand-primary-strong: #1d5e55;
+  --color-brand-soft: #e4f2ee;
+  --color-status-info: #366f9b;
+}
+
+.tianshu-shell__sider {
+  background: var(--color-bg-surface) !important;
+  border-right: 1px solid var(--color-border);
+  min-height: 100vh;
+}
+
+.tianshu-shell__main {
+  min-width: 0;
+}
+
+.tianshu-shell__header {
+  align-items: center;
+  background: var(--color-bg-surface) !important;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  height: 56px;
+  padding: 0 var(--spacing-xl);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.tianshu-shell__content {
+  min-width: 0;
+  padding: var(--spacing-xl);
+}
+
+.tianshu-nav {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
+
+.tianshu-nav__head {
+  display: contents;
+}
+
+.tianshu-brand {
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-lg);
+  text-decoration: none;
+}
+
+.tianshu-brand__mark {
+  align-items: center;
+  background: var(--color-brand-soft);
+  border-radius: var(--radius-card);
+  color: var(--color-brand-primary-strong);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 22px;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.tianshu-brand > span:last-child {
+  display: grid;
+  gap: 2px;
+}
+
+.tianshu-brand strong {
+  font-size: 18px;
+}
+
+.tianshu-brand small {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.tianshu-nav__toggle {
+  align-items: center;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  display: none;
+  flex: 0 0 auto;
+  font: inherit;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.tianshu-nav__groups {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.tianshu-nav-menu {
+  border-inline-end: 0 !important;
+}
+
+.tianshu-nav-menu .ant-menu-item,
+.tianshu-nav-menu .ant-menu-submenu-title {
+  transition:
+    background-color var(--tianshu-motion-fast) var(--tianshu-motion-ease),
+    color var(--tianshu-motion-fast) var(--tianshu-motion-ease),
+    transform 80ms var(--tianshu-motion-ease);
+}
+
+.tianshu-nav-menu .ant-menu-item:active {
+  transform: scale(0.99);
+}
+
+.tianshu-nav-menu a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tianshu-nav__lab-link {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  margin-top: auto;
+  padding: var(--spacing-lg) 12px var(--spacing-sm);
+  text-decoration: none;
+}
+
+.tianshu-nav__lab-link:hover {
+  color: var(--color-brand-primary-strong);
+}
+
+.tianshu-brand:focus-visible,
+.tianshu-nav__lab-link:focus-visible,
+.tianshu-nav__toggle:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand-primary) 28%, transparent);
+  outline: 2px solid var(--color-brand-primary-strong);
+  outline-offset: 2px;
+}
+
+.tianshu-topbar {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tianshu-topbar__breadcrumb {
+  min-width: 0;
+}
+
+.tianshu-topbar__account,
+.tianshu-topbar__account > span {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--spacing-xs);
+}
+
+.tianshu-topbar__account {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  gap: var(--spacing-md);
+}
+
+.tianshu-topbar__divider {
+  background: var(--color-border);
+  height: 18px;
+  width: 1px;
+}
+
+.tianshu-ui-page {
+  display: grid;
+  gap: var(--spacing-lg);
+  max-width: 100%;
+}
+
+.tianshu-ui-page--compact {
+  gap: var(--spacing-md);
+}
+
+.tianshu-ui-page--loose {
+  gap: var(--spacing-xl);
+}
+
+.tianshu-ui-page-header {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.tianshu-ui-page-header__breadcrumb {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.tianshu-ui-page-header__main {
+  align-items: start;
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: space-between;
+}
+
+.tianshu-ui-page-header h1,
+.tianshu-ui-data-section h2,
+.tianshu-ui-form-section h2,
+.tianshu-ui-card h2 {
+  color: var(--color-text-primary);
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.tianshu-ui-page-header h1 {
+  font-size: 28px;
+  line-height: 1.22;
+}
+
+.tianshu-ui-page-header p,
+.tianshu-ui-data-section p,
+.tianshu-ui-form-section p {
+  color: var(--color-text-secondary);
+  margin: 6px 0 0;
+}
+
+.tianshu-ui-page-header__actions,
+.tianshu-ui-page-header__tabs,
+.tianshu-ui-data-section__toolbar,
+.tianshu-ui-bulk-action-bar__actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+.tianshu-ui-card,
+.tianshu-ui-data-section,
+.tianshu-ui-filter,
+.tianshu-ui-form-section,
+.tianshu-ui-metric {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.tianshu-ui-card--ghost {
+  background: transparent;
+  box-shadow: none;
+}
+
+.tianshu-ui-data-section,
+.tianshu-ui-filter,
+.tianshu-ui-form-section,
+.tianshu-ui-metric {
+  padding: var(--spacing-md);
+}
+
+.tianshu-ui-data-section {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.tianshu-ui-data-section__state {
+  display: grid;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.tianshu-ui-data-section__header {
+  align-items: start;
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: space-between;
+}
+
+.tianshu-ui-filter {
+  align-items: end;
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.tianshu-ui-filter__body {
+  display: grid;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.tianshu-ui-filter__fields {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+}
+
+.tianshu-ui-filter__fields--advanced {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
+}
+
+.tianshu-ui-filter__field,
+.tianshu-ui-form-field {
+  display: grid;
+  gap: 6px;
+}
+
+.tianshu-ui-filter__field label,
+.tianshu-ui-form-field__label {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tianshu-ui-filter__actions,
+.tianshu-ui-pagination,
+.tianshu-ui-bulk-action-bar,
+.tianshu-ui-bulk-action-bar__summary {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.tianshu-ui-data-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.tianshu-ui-table-wrap {
+  min-width: 0;
+  overflow: visible;
+}
+
+.tianshu-ui-table {
+  width: 100%;
+}
+
+.tianshu-shell .tianshu-ui-table th,
+.tianshu-shell .tianshu-ui-table .tianshu-ui-button,
+.tianshu-shell .tianshu-ui-table .tianshu-ui-badge {
+  white-space: nowrap;
+}
+
+.tianshu-ui-pagination {
+  justify-content: space-between;
+}
+
+.tianshu-shell .ant-pagination-mini {
+  --ant-pagination-item-size-actual: var(--ant-pagination-item-size-sm);
+  --ant-pagination-item-spacing-actual: 4px;
+}
+
+.tianshu-ui-pagination__summary,
+.tianshu-ui-empty {
+  color: var(--color-text-secondary);
+}
+
+.tianshu-ui-bulk-action-bar {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-brand-primary);
+  border-radius: var(--radius-card);
+  bottom: var(--spacing-md);
+  box-shadow: var(--shadow-popover);
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  position: sticky;
+  z-index: 1;
+}
+
+.tianshu-ui-metric {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.tianshu-ui-metric .ant-statistic-title {
+  align-items: center;
+  color: var(--color-text-secondary);
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.tianshu-ui-metric .ant-statistic-content strong {
+  color: var(--color-text-primary);
+  font-size: 26px;
+}
+
+.tianshu-ui-metric__meta {
+  color: var(--color-text-secondary);
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.tianshu-ui-metric__meta--up {
+  color: var(--color-status-success);
+}
+
+.tianshu-ui-metric__meta--down {
+  color: var(--color-status-danger);
+}
+
+.tianshu-ui-form-section {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.tianshu-ui-form-section__header {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tianshu-ui-form-section__body,
+.tianshu-ui-description-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.tianshu-ui-description-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+}
+
+.tianshu-ui-description-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tianshu-ui-description-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tianshu-ui-description-grid__item {
+  display: grid;
+  gap: 4px;
+}
+
+.tianshu-ui-description-grid dt {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.tianshu-ui-description-grid dd {
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.tianshu-ui-forbidden {
+  align-content: center;
+  display: grid;
+  gap: var(--spacing-sm);
+  justify-items: center;
+  min-height: 420px;
+  text-align: center;
+}
+
+.tianshu-ui-forbidden h1,
+.tianshu-ui-forbidden p {
+  margin: 0;
+}
+
+.tianshu-ui-forbidden__actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin-top: var(--spacing-sm);
+}
+
+.tianshu-ui-forbidden__code {
+  color: color-mix(in srgb, var(--color-brand-primary) 18%, transparent);
+  font-size: 92px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tianshu-ui-range-picker {
+  align-items: center;
+  display: grid;
+  gap: var(--spacing-xs);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.tianshu-ui-native-date,
+.tianshu-ui-range-picker input {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  color: var(--color-text-primary);
+  min-height: 32px;
+  padding: 4px 10px;
+}
+
+.tianshu-ui-radio-group--vertical,
+.tianshu-ui-checkbox-group--vertical,
+.tianshu-ui-checkbox-group--grid {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.tianshu-ui-checkbox-group--grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tianshu-ui-switch-field {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--spacing-xs);
+}
+
+.tianshu-ui-sidenav {
+  display: grid;
+  gap: 4px;
+}
+
+.tianshu-ui-sidenav__item {
+  align-items: center;
+  border-radius: var(--radius-control);
+  color: var(--color-text-primary);
+  display: flex;
+  gap: var(--spacing-xs);
+  min-height: 38px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.tianshu-ui-sidenav__item--active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand-primary-strong);
+}
+
+.tianshu-not-found {
+  min-height: 420px;
+}
+
+.tianshu-toast {
+  background: color-mix(in srgb, var(--color-text-primary) 94%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-text-primary) 72%, var(--color-border));
+  border-radius: var(--radius-card);
+  bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-popover);
+  color: var(--color-bg-surface);
+  left: 50%;
+  max-width: min(520px, calc(100vw - 32px));
+  opacity: 0;
+  padding: 12px 16px;
+  pointer-events: none;
+  position: fixed;
+  transform: translate(-50%, 12px);
+  transition:
+    opacity var(--tianshu-motion-fast) var(--tianshu-motion-ease),
+    transform var(--tianshu-motion-standard) var(--tianshu-motion-ease);
+  z-index: 1000;
+}
+
+.tianshu-toast--visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (min-width: 761px) {
+  .tianshu-shell__sider {
+    height: 100vh;
+    overflow: auto;
+    position: sticky !important;
+    top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .tianshu-topbar__account > span:first-child,
+  .tianshu-topbar__divider {
+    display: none;
+  }
+
+  .tianshu-ui-filter,
+  .tianshu-ui-filter__fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .tianshu-shell {
+    display: block;
+  }
+
+  .tianshu-shell__sider {
+    max-width: none !important;
+    min-height: auto;
+    min-width: 0 !important;
+    position: sticky !important;
+    top: 0;
+    width: auto !important;
+    z-index: 3;
+  }
+
+  .tianshu-shell.ant-layout-has-sider > .tianshu-shell__main {
+    width: 100%;
+  }
+
+  .tianshu-nav {
+    min-height: auto;
+    padding: 10px var(--spacing-md);
+    position: relative;
+  }
+
+  .tianshu-nav__head {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tianshu-brand {
+    border-bottom: 0;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .tianshu-brand__mark {
+    height: 36px;
+    width: 36px;
+  }
+
+  .tianshu-nav__toggle {
+    display: inline-flex;
+  }
+
+  .tianshu-nav__groups {
+    background: var(--color-bg-surface);
+    border-block: 1px solid var(--color-border);
+    box-shadow: var(--shadow-popover);
+    display: none;
+    left: 0;
+    max-height: calc(100vh - 92px);
+    overflow: auto;
+    padding: var(--spacing-md);
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    z-index: 4;
+  }
+
+  .tianshu-nav[data-mobile-open="true"] .tianshu-nav__groups {
+    display: flex;
+  }
+
+  .tianshu-nav__lab-link {
+    display: none;
+  }
+
+  .tianshu-nav[data-mobile-open="true"] .tianshu-nav__lab-link {
+    display: block;
+  }
+
+  .tianshu-shell__header {
+    min-height: 50px;
+    padding: 0 var(--spacing-md);
+    top: 61px;
+  }
+
+  .tianshu-topbar__account {
+    display: none;
+  }
+
+  .tianshu-shell__content {
+    padding: 12px;
+  }
+
+  .tianshu-ui-card,
+  .tianshu-ui-data-section,
+  .tianshu-ui-filter,
+  .tianshu-ui-form-section,
+  .tianshu-ui-metric {
+    padding: var(--spacing-md);
+  }
+
+  .tianshu-ui-page-header__main,
+  .tianshu-ui-data-section__header {
+    display: grid;
+  }
+
+  .tianshu-ui-page > *,
+  .tianshu-ui-page-header > *,
+  .tianshu-ui-page-header__main > *,
+  .tianshu-ui-filter > *,
+  .tianshu-ui-filter__fields > *,
+  .tianshu-ui-data-section > *,
+  .tianshu-ui-data-grid > * {
+    min-width: 0;
+  }
+
+  .tianshu-ui-page-header h1 {
+    font-size: 24px;
+  }
+
+  .tianshu-ui-description-grid,
+  .tianshu-ui-description-grid--2,
+  .tianshu-ui-description-grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .tianshu-toast {
+    bottom: var(--spacing-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tianshu-nav-menu .ant-menu-item,
+  .tianshu-toast {
+    transition-duration: 1ms !important;
+  }
+}
+
+/* —— 同页内一镜到底转场：内容区在导航切换时走 View Transitions API，
+   壳层 chrome（侧栏/品牌/顶栏）保持静止；不支持的浏览器由 JS 降级直切。—— */
+.tianshu-shell__content {
+  view-transition-name: ops-page-content;
+}
+
+/* 整页根快照不做淡入淡出，壳层 chrome 与背景静止；只有内容区走自己的组动画。 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-name: none;
+}
+
+::view-transition-old(ops-page-content) {
+  animation: ops-page-out 160ms ease-in both;
+}
+
+::view-transition-new(ops-page-content) {
+  animation: ops-page-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ops-page-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes ops-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(ops-page-content),
+  ::view-transition-new(ops-page-content) {
+    animation: none;
+  }
+}
+
+/* —— 相关模块（页面底相关导航，全模块串联）—— */
+.tianshu-related {
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+}
+
+.tianshu-related__label {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+  margin-right: var(--spacing-xs);
+}
+
+.tianshu-related__link {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 12.5px;
+  line-height: 22px;
+  padding: 3px 12px;
+  transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+}
+
+.tianshu-related__link:hover {
+  background: var(--color-brand-primary-subtle, rgba(22, 119, 255, 0.08));
+  border-color: var(--color-brand-primary, #1677ff);
+  color: var(--color-brand-primary, #1677ff);
+}
+
+.tianshu-related__link:focus-visible {
+  outline: 2px solid var(--color-brand-primary, #1677ff);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tianshu-related__link {
+    transition: none;
+  }
+}
+
+/* =====================================================================
+ * Glass Fresh · 清新玻璃质感（界面层）
+ * 渐变：页面底色 + 渐变图标块；阴影：低饱和蓝色漫射；描边：白色内高光 + 浅蓝外描边
+ * ===================================================================== */
+.tianshu-shell {
+  --color-bg-page: #f3f7fd;
+  --color-border: #e3eaf5;
+  --color-border-strong: #d3deee;
+  --color-text-primary: #1b2333;
+  --color-text-secondary: #6b7588;
+  --color-text-tertiary: #98a2b3;
+  --color-brand-primary: #2f7bf6;
+  --color-brand-primary-strong: #1d63e0;
+  --color-brand-soft: #eaf2ff;
+  --color-status-success: #16a36a;
+  --color-status-warning: #f08a24;
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --glass-surface: rgb(255 255 255 / 78%);
+  --glass-surface-strong: rgb(255 255 255 / 92%);
+  --glass-surface-tint: rgb(244 248 254 / 72%);
+  --glass-blur: saturate(160%) blur(18px);
+  --glass-stroke: 1px solid rgb(255 255 255 / 90%);
+  --glass-stroke-outer: 1px solid #e3eaf5;
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 95%);
+  --shadow-card: 0 1px 2px rgb(30 64 175 / 4%), 0 8px 24px -8px rgb(37 99 235 / 10%);
+  --shadow-panel: 0 1px 2px rgb(30 64 175 / 3%), 0 12px 32px -12px rgb(37 99 235 / 12%);
+  --shadow-float: 0 6px 16px -4px rgb(15 23 42 / 12%);
+  --shadow-focus: 0 0 0 3px rgb(47 123 246 / 16%);
+  --grad-page:
+    radial-gradient(1200px 520px at 8% -10%, rgb(120 170 255 / 16%), transparent 60%),
+    radial-gradient(900px 480px at 100% 0%, rgb(94 234 212 / 10%), transparent 55%),
+    linear-gradient(180deg, #f5f8fe 0%, #eef3fb 100%);
+  --grad-active-tint: linear-gradient(90deg, rgb(47 123 246 / 14%), rgb(47 123 246 / 4%));
+  --grad-blue: linear-gradient(135deg, #6aa8ff 0%, #2f6ff5 100%);
+  --grad-sky: linear-gradient(135deg, #8ad8ff 0%, #2ba4f4 100%);
+  --grad-teal: linear-gradient(135deg, #74ecd9 0%, #13b3ad 100%);
+  --grad-violet: linear-gradient(135deg, #c7b8ff 0%, #8a6cf5 100%);
+  --grad-indigo: linear-gradient(135deg, #93b9ff 0%, #4b62ef 100%);
+  background: var(--grad-page) fixed !important;
+}
+
+.tianshu-shell .ant-layout { background: transparent; }
+
+.tianshu-shell__sider {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: rgb(255 255 255 / 66%) !important;
+  border-right: 1px solid rgb(255 255 255 / 80%);
+  box-shadow: 1px 0 0 #e6edf7, 8px 0 32px -20px rgb(37 99 235 / 18%);
+}
+
+.tianshu-shell__header {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: rgb(255 255 255 / 62%) !important;
+  border-bottom: 1px solid rgb(227 234 245 / 80%);
+}
+
+.tianshu-shell__content { padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl); }
+.tianshu-brand { border-bottom-color: rgb(227 234 245 / 90%); }
+
+.tianshu-brand__mark {
+  background: var(--grad-blue);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%), 0 6px 14px -4px rgb(47 111 245 / 45%);
+  color: #fff;
+  font-size: 20px;
+}
+
+.tianshu-shell .tianshu-nav-menu { background: transparent; }
+.tianshu-shell .tianshu-nav-menu .ant-menu-item { border-radius: 10px; color: #3b4558; }
+.tianshu-shell .tianshu-nav-menu .ant-menu-item:hover { background: rgb(47 123 246 / 6%) !important; }
+
+.tianshu-shell .tianshu-nav-menu .ant-menu-item-selected {
+  background: var(--grad-active-tint) !important;
+  box-shadow: inset 0 0 0 1px rgb(47 123 246 / 10%);
+  color: var(--color-brand-primary-strong);
+  font-weight: 600;
+  position: relative;
+}
+
+.tianshu-shell .tianshu-nav-menu .ant-menu-item-selected::before {
+  background: var(--grad-blue);
+  border-radius: 0 3px 3px 0;
+  content: "";
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+}
+
+.tianshu-shell .tianshu-nav-menu .ant-menu-item-group-title { color: var(--color-text-tertiary); font-size: 12px; letter-spacing: 0.04em; }
+
+.tianshu-topbar__account { line-height: 1.5; }
+
+.tianshu-topbar__account > span:last-child {
+  background: var(--glass-surface-tint);
+  border: var(--glass-stroke-outer);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-primary);
+  padding: 4px 12px;
+}
+
+.tianshu-ui-card,
+.tianshu-ui-data-section,
+.tianshu-ui-filter,
+.tianshu-ui-form-section,
+.tianshu-ui-metric {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface);
+  border: var(--glass-stroke-outer);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--glass-highlight), var(--shadow-panel);
+}
+
+.tianshu-ui-data-section,
+.tianshu-ui-form-section { padding: 20px 24px; }
+.tianshu-ui-filter { border-radius: var(--radius-card); padding: 16px 20px; }
+.tianshu-ui-metric { border-radius: var(--radius-card); box-shadow: var(--glass-highlight), var(--shadow-card); }
+.tianshu-ui-page-header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.01em; }
+
+.tianshu-ui-data-section h2,
+.tianshu-ui-form-section h2 { align-items: center; display: flex; font-size: 17px; font-weight: 700; gap: 10px; }
+
+.tianshu-ui-data-section h2::before,
+.tianshu-ui-form-section h2::before {
+  background: var(--grad-blue);
+  border-radius: 2px;
+  content: "";
+  flex: 0 0 auto;
+  height: 16px;
+  width: 4px;
+}
+
+.tianshu-ui-data-section__header p,
+.tianshu-ui-form-section__header p { font-size: 13px; padding-left: 14px; }
+
+.tianshu-shell .tianshu-ui-table .ant-table { background: transparent; }
+.tianshu-shell .tianshu-ui-table .ant-table-container { border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; }
+
+.tianshu-shell .tianshu-ui-table .ant-table-thead > tr > th {
+  background: linear-gradient(180deg, #f7faff 0%, #f1f5fc 100%);
+  border-bottom-color: var(--color-border);
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.tianshu-shell .tianshu-ui-table .ant-table-thead > tr > th::before { display: none; }
+.tianshu-shell .tianshu-ui-table .ant-table-tbody > tr > td { background: rgb(255 255 255 / 60%); border-bottom-color: #edf1f8; }
+.tianshu-shell .tianshu-ui-table .ant-table-tbody > tr:last-child > td { border-bottom: 0; }
+.tianshu-shell .tianshu-ui-table .ant-table-tbody > tr:hover > td { background: #f5f9ff; }
+
+.tianshu-ui-bulk-action-bar {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface-strong);
+  border: 1px solid rgb(47 123 246 / 40%);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-highlight), var(--shadow-float);
+}
+
+.tianshu-shell[data-theme="calm"] { --grad-page: linear-gradient(180deg, #f8f7f3 0%, #f2f1ec 100%); }
+
+/* ---- v2 调整：菜单选中态改为整圈描边，不再使用左侧竖线 ---- */
+.tianshu-shell .tianshu-nav-menu .ant-menu-item-selected {
+  background: rgb(47 123 246 / 8%) !important;
+  box-shadow: inset 0 0 0 1px rgb(47 123 246 / 35%);
+}
+
+.tianshu-shell .tianshu-nav-menu .ant-menu-item-selected::before { content: none; }
+
+/* ---- v2 调整：状态标签换成清透的浅色（不再用灰绿/墨绿底） ---- */
+.tianshu-shell .tianshu-ui-badge.ant-tag {
+  --badge-bg: #f2f5f9;
+  --badge-fg: #5b6577;
+  --badge-bd: #e3e8ef;
+  background: var(--badge-bg) !important;
+  border: 1px solid var(--badge-bd) !important;
+  border-radius: 6px;
+  color: var(--badge-fg) !important;
+  font-weight: 500;
+  line-height: 20px;
+  padding-inline: 8px;
+}
+
+.tianshu-shell .tianshu-ui-badge--success.ant-tag { --badge-bg: #eafaf1; --badge-fg: #14a155; --badge-bd: #c5efd7; }
+.tianshu-shell .tianshu-ui-badge--warning.ant-tag { --badge-bg: #fff5ea; --badge-fg: #e5780f; --badge-bd: #ffdcb5; }
+.tianshu-shell .tianshu-ui-badge--danger.ant-tag { --badge-bg: #fff1f1; --badge-fg: #e5484d; --badge-bd: #ffd1d3; }
+.tianshu-shell .tianshu-ui-badge--primary.ant-tag,
+.tianshu-shell .tianshu-ui-badge--info.ant-tag,
+.tianshu-shell .tianshu-ui-badge--processing.ant-tag { --badge-bg: #edf4ff; --badge-fg: #2f7bf6; --badge-bd: #cfe0ff; }
+.tianshu-shell .tianshu-ui-badge--geekblue.ant-tag { --badge-bg: #eef0ff; --badge-fg: #4b62ef; --badge-bd: #d5dbff; }
+.tianshu-shell .tianshu-ui-badge--cyan.ant-tag { --badge-bg: #e8f9fb; --badge-fg: #0e9fb3; --badge-bd: #bdeef4; }
+.tianshu-shell .tianshu-ui-badge--purple.ant-tag { --badge-bg: #f4f0ff; --badge-fg: #7a5af5; --badge-bd: #ddd3ff; }
+
+/* ---- v3 调整：间距统一 ---- */
+.tianshu-shell .ant-form:has(> .tianshu-ui-form-section) { display: grid; gap: var(--spacing-md); }
+.tianshu-shell .ant-form:has(> .tianshu-ui-form-section) > .generated-actions { padding-top: 4px; }
+.tianshu-ui-form-section__body { gap: 16px; }
+.tianshu-ui-form-section__body > .ant-form-item,
+.tianshu-ui-form-section__body .ant-form-item:last-child { margin-bottom: 0; }
+.tianshu-ui-form-section__body > .ant-form-item .ant-form-item-label { padding-bottom: 6px; }
+.tianshu-ui-form-section__body > .generated-field-error { margin: -8px 0 0; }
+
+/* ---- v3 调整：所有表格统一（含原生 Card 页面）；单元格不透明，固定列不再透底 ---- */
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table { background: transparent; }
+
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-container {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-thead > tr > th,
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-thead > tr > td {
+  background: linear-gradient(180deg, #f7faff 0%, #f1f5fc 100%);
+  border-bottom-color: var(--color-border);
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-thead > tr > th::before { display: none; }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-tbody > tr > td { background: #fff; border-bottom-color: #edf1f8; }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-tbody > tr:last-child > td { border-bottom: 0; }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-tbody > tr:hover > td { background: #f5f9ff; }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-tbody > tr.ant-table-row-selected > td { background: #f0f6ff; }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-tbody > tr.ant-table-row-selected:hover > td { background: #e8f1ff; }
+
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-cell-fix-end-shadow-show::after { box-shadow: inset -12px 0 10px -10px rgb(30 64 175 / 22%); }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-cell-fix-start-shadow-show::after { box-shadow: inset 12px 0 10px -10px rgb(30 64 175 / 22%); }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-table-cell-fix-end-shadow-show { border-left: 1px solid #e6ecf5; }
+.tianshu-shell .tianshu-shell__content .ant-table-wrapper .ant-pagination { margin: 16px 0 0; }
+
+/* 原生 antd Card 页面使用同一套玻璃面板 */
+.tianshu-shell .tianshu-shell__content .ant-card:not(.ant-card-type-inner) {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface);
+  border: var(--glass-stroke-outer);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--glass-highlight), var(--shadow-panel);
+}
+
+.tianshu-shell .tianshu-shell__content .ant-card .ant-card-head { border-bottom-color: #edf1f8; }
+
+/* 原生 antd Tag 预设色与 Badge 同色系 */
+.tianshu-shell .tianshu-shell__content .ant-tag:not(.tianshu-ui-badge) { border-radius: 6px; font-weight: 500; line-height: 20px; padding-inline: 8px; }
+.tianshu-shell .tianshu-shell__content .ant-tag-green:not(.tianshu-ui-badge),
+.tianshu-shell .tianshu-shell__content .ant-tag-success:not(.tianshu-ui-badge) { background: #eafaf1; border-color: #c5efd7; color: #14a155; }
+.tianshu-shell .tianshu-shell__content .ant-tag-gold:not(.tianshu-ui-badge),
+.tianshu-shell .tianshu-shell__content .ant-tag-orange:not(.tianshu-ui-badge),
+.tianshu-shell .tianshu-shell__content .ant-tag-warning:not(.tianshu-ui-badge) { background: #fff5ea; border-color: #ffdcb5; color: #e5780f; }
+.tianshu-shell .tianshu-shell__content .ant-tag-red:not(.tianshu-ui-badge),
+.tianshu-shell .tianshu-shell__content .ant-tag-error:not(.tianshu-ui-badge) { background: #fff1f1; border-color: #ffd1d3; color: #e5484d; }
+.tianshu-shell .tianshu-shell__content .ant-tag-blue:not(.tianshu-ui-badge),
+.tianshu-shell .tianshu-shell__content .ant-tag-processing:not(.tianshu-ui-badge) { background: #edf4ff; border-color: #cfe0ff; color: #2f7bf6; }
+
+/* ======================================================================
+   Glass Fresh · 组件层（v4）
+   token 在 native-theme.ts；这里只补 token 覆盖不到的渐变、玻璃与细节。
+   全部限定在 .tianshu-shell 内，不影响其他项目。
+   ====================================================================== */
+
+/* 按钮：主按钮蓝色渐变 + 顶部高光；危险主按钮红色渐变；默认按钮白底细描边 */
+.tianshu-shell .ant-btn-variant-solid.ant-btn-color-primary:not(:disabled) {
+  background: linear-gradient(180deg, #5b9bff 0%, #2f7bf6 55%, #2a6fe8 100%);
+  border-color: transparent;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 28%), 0 6px 14px -6px rgb(47 111 245 / 55%);
+}
+
+.tianshu-shell .ant-btn-variant-solid.ant-btn-color-primary:not(:disabled):hover {
+  background: linear-gradient(180deg, #74abff 0%, #4189fa 55%, #3579ee 100%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 32%), 0 8px 18px -6px rgb(47 111 245 / 60%);
+}
+
+.tianshu-shell .ant-btn-variant-solid.ant-btn-color-primary:not(:disabled):active { background: #2563eb; box-shadow: inset 0 1px 2px rgb(0 0 0 / 12%); }
+
+.tianshu-shell .ant-btn-variant-solid.ant-btn-color-dangerous:not(:disabled) {
+  background: linear-gradient(180deg, #ff7b7f 0%, #e5484d 100%);
+  border-color: transparent;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 14px -6px rgb(229 72 77 / 45%);
+}
+
+.tianshu-shell .ant-btn-variant-outlined:not(:disabled):not(.ant-btn-color-dangerous):hover { background: #f7faff; }
+.tianshu-shell .ant-btn-variant-text:not(:disabled):hover,
+.tianshu-shell .ant-btn-variant-link:not(:disabled):hover { background: rgb(47 123 246 / 6%); }
+.tianshu-shell .ant-btn:disabled { box-shadow: none; }
+
+/* 输入类：统一白底、细描边、聚焦柔和光圈（token 控制），禁用态浅灰蓝 */
+.tianshu-shell .ant-input-outlined.ant-input-disabled,
+.tianshu-shell .ant-select-outlined.ant-select-disabled .ant-select-selector,
+.tianshu-shell .ant-picker-outlined.ant-picker-disabled { background: #f6f8fc; }
+.tianshu-shell .ant-input-affix-wrapper .ant-input-prefix,
+.tianshu-shell .ant-select-arrow,
+.tianshu-shell .ant-picker-suffix { color: #9aa6b8; }
+
+/* 复选框 / 单选 / 开关：选中态使用品牌渐变 */
+.tianshu-shell .ant-checkbox-checked .ant-checkbox-inner,
+.tianshu-shell .ant-checkbox-indeterminate .ant-checkbox-inner { background: var(--grad-blue); border-color: #2f7bf6; }
+.tianshu-shell .ant-checkbox-indeterminate .ant-checkbox-inner { background: #fff; }
+.tianshu-shell .ant-radio-checked .ant-radio-inner { border-color: #2f7bf6; }
+.tianshu-shell .ant-switch.ant-switch-checked { background: var(--grad-blue); }
+.tianshu-shell .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) { background: linear-gradient(135deg, #7db4ff, #3b7cf7); }
+
+/* Tabs：渐变墨条，选中加粗 */
+.tianshu-shell .ant-tabs-ink-bar { background: var(--grad-blue); border-radius: 2px; height: 3px !important; }
+.tianshu-shell .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn { font-weight: 600; }
+.tianshu-shell .ant-tabs-top > .ant-tabs-nav::before { border-bottom-color: #e3eaf5; }
+
+/* Steps：进行中渐变圆 + 光晕；已完成浅蓝底 */
+.tianshu-shell .ant-steps-item-process .ant-steps-item-icon {
+  background: var(--grad-blue);
+  border-color: transparent;
+  box-shadow: 0 0 0 4px rgb(47 123 246 / 12%), 0 6px 12px -4px rgb(47 111 245 / 45%);
+}
+
+.tianshu-shell .ant-steps-item-finish .ant-steps-item-icon { background: #edf4ff; border-color: #cfe0ff; }
+.tianshu-shell .ant-steps-item-wait .ant-steps-item-icon { background: #f4f7fc; border-color: #e3eaf5; }
+.tianshu-shell .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after,
+.tianshu-shell .ant-steps-item-finish .ant-steps-item-rail { background: linear-gradient(90deg, #8fbaff, #cfe0ff); }
+
+/* 分页：当前页浅蓝底 + 品牌描边 */
+.tianshu-shell .ant-pagination .ant-pagination-item { border-radius: 8px; }
+.tianshu-shell .ant-pagination .ant-pagination-item-active { background: #edf4ff; border-color: rgb(47 123 246 / 55%); box-shadow: 0 2px 6px -2px rgb(47 123 246 / 30%); }
+.tianshu-shell .ant-pagination .ant-pagination-item-active a { color: #2f7bf6; font-weight: 600; }
+.tianshu-shell .ant-pagination .ant-pagination-item:not(.ant-pagination-item-active):hover { background: #f5f9ff; }
+
+/* 提示条：圆角 12 + 顶部高光，与面板同一语言 */
+.tianshu-shell .ant-alert { border-radius: var(--radius-card); box-shadow: var(--glass-highlight); }
+
+/* 描述列表 / 上传拖拽区 / 分段控制器 */
+.tianshu-shell .ant-descriptions-bordered .ant-descriptions-view { border-color: #e3eaf5; border-radius: var(--radius-card); }
+.tianshu-shell .ant-descriptions-bordered .ant-descriptions-item-label { color: #5b6577; }
+.tianshu-shell .ant-upload-wrapper .ant-upload-drag { background: linear-gradient(180deg, #f8fbff, #f2f6fd); border-color: #cfdcf1; border-radius: var(--radius-card); }
+.tianshu-shell .ant-upload-wrapper .ant-upload-drag:hover { border-color: #2f7bf6; }
+.tianshu-shell .ant-segmented { border: 1px solid #e3eaf5; }
+.tianshu-shell .ant-segmented .ant-segmented-item-selected { box-shadow: 0 1px 3px rgb(30 64 175 / 10%), 0 0 0 1px rgb(47 123 246 / 12%); font-weight: 600; }
+
+/* 空态 */
+.tianshu-shell .ant-empty-description { color: var(--color-text-secondary); }
+
+/* 业务组件：指标卡（MetricCard） */
+.tianshu-ui-metric { padding: 18px 20px; position: relative; }
+.tianshu-ui-metric .ant-statistic-title { font-size: 14px; margin-bottom: 8px; }
+.tianshu-ui-metric .ant-statistic-title .anticon {
+  align-items: center;
+  background: var(--grad-blue);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 40%), 0 4px 10px -4px rgb(47 111 245 / 50%);
+  color: #fff;
+  display: inline-flex;
+  font-size: 14px;
+  height: 26px;
+  justify-content: center;
+  width: 26px;
+}
+
+.tianshu-ui-metric .ant-statistic-content strong { font-feature-settings: "tnum"; font-size: 28px; font-weight: 700; }
+.tianshu-ui-metric .ant-statistic-content strong + span { color: var(--color-text-secondary); font-size: 14px; margin-left: 4px; }
+.tianshu-ui-metric__meta { align-items: center; font-size: 12px; }
+.tianshu-ui-metric__meta--up,
+.tianshu-ui-metric__meta--down { border-radius: 4px; justify-self: start; padding: 2px 6px; }
+.tianshu-ui-metric__meta--up { background: #e9f8f0; }
+.tianshu-ui-metric__meta--down { background: #fff1f1; }
+
+/* 业务组件：无权限（ForbiddenState） */
+.tianshu-ui-forbidden {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface);
+  border: var(--glass-stroke-outer);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--glass-highlight), var(--shadow-panel);
+  padding: 48px 24px;
+}
+
+.tianshu-ui-forbidden__code {
+  -webkit-background-clip: text;
+  background: linear-gradient(135deg, #b9d4ff 0%, #6aa8ff 50%, #8a6cf5 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+/* 业务组件：批量操作条 / 数据区状态 */
+.tianshu-ui-bulk-action-bar__summary strong { color: var(--color-brand-primary); }
+.tianshu-ui-data-section__state { border-radius: var(--radius-card); }
+
+/* ---- 共享层补充：相关模块链接同步玻璃语言 ---- */
+.tianshu-related { border-top-color: rgb(227 234 245 / 90%); }
+
+.tianshu-related__link {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface);
+  border: var(--glass-stroke-outer);
+  box-shadow: var(--glass-highlight), 0 1px 2px rgb(30 64 175 / 4%);
+  color: #3b4558;
+}
+
+.tianshu-related__link:hover {
+  background: rgb(47 123 246 / 8%);
+  border-color: rgb(47 123 246 / 35%);
+  color: var(--color-brand-primary-strong);
+}

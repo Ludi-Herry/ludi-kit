@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../schema/image2-workflow-request.schema.json",
+  "version": "2.0.0",
+  "workflowId": "image2-to-figma-page",
+  "requestId": "ops-canvas-existing-direct",
+  "designContext": "existing",
+  "routing": {
+    "strategyDecisionId": "image2-routing-strategy-amendment-2026-08-14",
+    "selectedRoute": "existing",
+    "selectionReason": "A frozen design system and component foundation already define this B2B page."
+  },
+  "project": {
+    "name": "Ops Canvas",
+    "page": "Design system specification",
+    "objective": "Prove the direct existing-system route without an Image2 reference or reconstruction step.",
+    "audience": "Operations product designers and frontend engineers"
+  },
+  "viewport": { "width": 1440, "height": 1100, "deviceScaleFactor": 1 },
+  "pageEntry": "design-systems/ops-canvas/spec/index.html",
+  "visualDiffConfig": "visual-diff/fixtures/pass/config.json",
+  "figmaEvidence": "figma/evidence/ops-canvas.external-blocked.json",
+  "figmaTarget": { "fileKey": null, "pageNodeId": null },
+  "existingContext": {
+    "designDoc": "design-systems/ops-canvas/Design.md",
+    "tokens": "design-systems/ops-canvas/tokens.json",
+    "componentIndex": "design-systems/ops-canvas/component-index.json",
+    "figmaSyncContract": "design-systems/ops-canvas/figma/sync.contract.json",
+    "patternManifest": "patterns.manifest.json",
+    "recipe": "recipes/dashboard-page.md",
+    "rules": "rules/dashboard.md"
+  }
+}
